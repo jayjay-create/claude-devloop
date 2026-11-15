@@ -378,10 +378,19 @@ that is what is held against skills/.
 
 A thing whose name no longer says what the thing says is renamed, where no
 run hangs on it; where runs hang on it, it keeps its name, since the name is
-what its runs are keyed by, and the note says what holds now. Two things
-were renamed so on 9 October 2026, the registration in hooks.json and
-start condition 4 of build-work, both with no run; the note of a renamed
-thing names the old name.
+what its runs are keyed by, and the note says what holds now, unless it is
+renamed with all its runs in the same commit, every run record keyed to it
+and every record that names it after "part of:" carrying the new name
+there. Two things were renamed on 9 October 2026, the registration in
+hooks.json and start condition 4 of build-work, both with no run; the note
+of a renamed thing names the old name. The renaming with the runs stands
+since 14 November 2026, the decision of 13 November 2026 in the roadmap
+entry of that date on the one entry held, built by the entry of 14 November
+2026 on gh under the bound: a thing whose name names a green and a red end
+at once is split in two, one thing for each outcome; one that carries runs
+is renamed to its green end with all of them, and its red end stands as a
+thing of its own, Built, never walked until a run brings it about on
+purpose; the entry of 14 November 2026 names the things split on that day.
 
 A thing's note carries each of these forms exactly, separated from anything
 else in the note by "; ":

@@ -88,6 +88,42 @@ reads it; it concerns a check class otherwise. gh is found on PATH through
 shutil.which, as that program finds it, and called in DIR, each call with 60
 seconds.
 
+How a command that does not answer is ended, since 14 November 2026, the
+roadmap entry of that date on gh under the bound. Every command this
+program runs - gh, and bash with bin/devloop-tool-state - runs under
+bin/devloop-bounded, the program beside this one, as
+bin/devloop-auto-mode-question runs gh since that day and for the reasons
+its head gives: a command that has not ended at its limit is ended with
+everything it started, its process group sent SIGTERM and, where something
+of it stands a second later, SIGKILL, the bound back at most two seconds
+after the limit with exit 124 and its line, read here as no answer within
+the seconds of that limit; the output goes to two files and through no
+pipe, and the input is empty, so that the call is back with the bound on
+every system; what the bound does not reach its head says, the block of
+milestone 12 on Windows with Git Bash in docs/defects.md among it. The
+limits: gh 60 seconds a call. bin/devloop-tool-state bounds its own queries
+with sixty seconds each, a query that does not answer leaving its line not
+read there, and this program's limit for it lies above what those bounds
+take, so that it never ends that program before its own bound has: 72
+seconds under --build, which with one TOOL asks at most one query, sixty
+seconds and the two its bound may take to return, and ten for the program
+itself; 134 seconds under --installed, which asks go two, GOBIN and then
+GOPATH where GOBIN is empty, 124 seconds and the ten. Where such a limit
+fires all the same, the bound of that program, which stands in the group
+this one's bound ends, ends its own command first, bin/devloop-bounded on a
+bound inside a bound. Until that day every command ran through
+subprocess.run with a timeout of sixty seconds, which ends the one process
+it started: what the command had started ran on, under
+bin/devloop-tool-state its bound with the query, until that bound's own
+sixty seconds; and the two limits being the same number, this program's
+fired first and ended with issues: not decided where the tool state program
+would have printed its line a moment later. Measured on 14 November 2026 on
+macOS and in alpine:3.22 with a stand-in for the project's Playwright that
+starts a sleep and waits in a second one: back after 60.011 and 60.025
+seconds with no answer within 60 seconds and exit 2, and, this program's
+limit set to one second, the bound of the tool state program and both
+sleeps standing for the rest of its sixty.
+
 What is read. For each issue, bin/devloop-tool-state --build TOOL, the
 program beside this one run with bash in DIR, whose first line is the
 tool's: found, not found, or not read. Found: the issue is closed with gh
@@ -129,7 +165,9 @@ concludes nothing of the issues not read; an issue closed before that stays
 closed, which the comment on it says. Exit 2 with one line on stderr on an
 argument it does not know.
 
-It needs python3, bash, git and gh, and nothing else. The self-test runs
+It needs python3, bash, git and gh, and nothing else; where PATH holds no gh
+or no bash, nothing is started and the message is the system's for a file
+that is not there, naming it, since 14 November 2026. The self-test runs
 every outcome against a stand-in for gh that answers from scripted files, as
 the self-test of bin/devloop-auto-mode-question does - the stand-in first on
 the path, a launcher of sh on macOS and Linux and of cmd on Windows, the
@@ -139,9 +177,20 @@ program, with a tool that stands on the self-test's own path and one that
 does not, one installed by a stand-in for go into a folder the search path
 does not reach, and a browser in a project without its package, which the
 program cannot read; nothing of it reaches GitHub, and the settings of this
-machine are not touched.
+machine are not touched. The cases of a command that does not answer, since
+14 November 2026: the stand-in for gh, a stand-in for the project's
+Playwright under --build and the stand-in for go under --installed each
+start a second process and stand with it, each writing a mark into a file
+of its own, for a minute at most; the self-test loads this program in an
+interpreter of its own, sets the limit of that call to a few seconds there
+and calls it, so that no setting of the environment moves a limit in
+operation, and holds the answer to the message with those seconds, to the
+files standing still once the program has returned, and to the call being
+back no later than those seconds and two after a call that is answered at
+once.
 """
 
+import errno
 import json
 import os
 import shutil
@@ -149,11 +198,16 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 TOOL_STATE = os.path.join(HERE, "devloop-tool-state")
+BOUNDED = os.path.join(HERE, "devloop-bounded")
 LABELS = ["raised-here", "needs-human"]
 SECONDS = 60
+# the limits for bin/devloop-tool-state, above what its own bounds take: one query under --build, two under --installed, each sixty seconds and the two its bound may take to return, and ten for the program itself
+BUILD_SECONDS = 72
+INSTALLED_SECONDS = 134
 
 
 def usage(msg):
@@ -169,19 +223,60 @@ def one_line(s):
     return " ".join(s.replace("\r\n", "\n").replace("\r", "\n").split("\n"))
 
 
-def run(args, d, env=None):
+def quoted(word):
+    """A word of a Windows command line in double quotes, as
+    subprocess.list2cmdline writes a word that holds a blank: a quote behind
+    a backslash, and the backslashes before a quote or before the end of the
+    word doubled."""
+    out = []
+    slashes = 0
+    for c in word:
+        if c == "\\":
+            slashes += 1
+            continue
+        out.append("\\" * (slashes * 2 + 1) + c if c == '"' else "\\" * slashes + c)
+        slashes = 0
+    return '"' + "".join(out) + "\\" * (slashes * 2) + '"'
+
+
+def under_bound(seconds, words):
+    """The call that runs the words of a command under bin/devloop-bounded
+    with the seconds: on macOS and Linux the bound by its first line, a
+    list; on Windows one command line, bash found on PATH running the bound,
+    every word in double quotes and the command's own path with forward
+    slashes, a word bash reads as a path; the head says why."""
+    if os.name != "nt":
+        return [BOUNDED, str(seconds)] + words
+    bash = shutil.which("bash") or "bash"
+    return " ".join(quoted(w) for w in [bash, BOUNDED, str(seconds), words[0].replace("\\", "/")] + words[1:])
+
+
+def run(args, d, env=None, seconds=None):
     """The output of a command, or None with the command shown and the
     message. The first word is found on PATH through shutil.which, as a
-    shell finds it, and goes through as it is where PATH holds none."""
+    shell finds it; where PATH holds none, nothing is started and the
+    message names it. The command runs under bin/devloop-bounded with the
+    seconds, SECONDS where none are given, its output into two files and its
+    input empty: one that does not answer is ended by the bound with
+    everything it started, exit 124 and the bound's line on stderr, read
+    here as no answer within those seconds."""
     shown = " ".join(args)
-    exe = shutil.which(args[0]) or args[0]
+    if seconds is None:
+        seconds = SECONDS
+    exe = shutil.which(args[0])
+    if exe is None:  # the first word not on PATH: nothing started, the system's message for a file that is not there
+        return None, shown, str(FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), args[0])), None
     try:
-        r = subprocess.run([exe] + args[1:], cwd=d, capture_output=True, text=True,
-                           timeout=SECONDS, env=env)
+        with tempfile.TemporaryFile(mode="w+") as out, tempfile.TemporaryFile(mode="w+") as err:
+            rc = subprocess.run(under_bound(seconds, [exe] + args[1:]), cwd=d, stdin=subprocess.DEVNULL,
+                                stdout=out, stderr=err, env=env).returncode
+            out.seek(0)
+            err.seek(0)
+            r = subprocess.CompletedProcess(args, rc, out.read(), err.read())
     except OSError as e:
         return None, shown, str(e), None
-    except subprocess.TimeoutExpired:
-        return None, shown, "no answer within %d seconds" % SECONDS, None
+    if r.returncode == 124 and any(line.startswith("no answer within %d seconds: " % seconds) for line in r.stderr.split("\n")):
+        return None, shown, "no answer within %d seconds" % seconds, None
     if r.returncode != 0:
         return None, shown, (r.stderr.strip() or r.stdout.strip() or
                              "exit %d with nothing printed" % r.returncode), r
@@ -210,7 +305,7 @@ def tool_line(tool, d):
     message where the program did not answer."""
     env = dict(os.environ)
     env["CLAUDE_PROJECT_DIR"] = d
-    out, shown, err, r = run(["bash", TOOL_STATE, "--build", tool], d, env)
+    out, shown, err, r = run(["bash", TOOL_STATE, "--build", tool], d, env, BUILD_SECONDS)
     shown = "bin/devloop-tool-state --build %s" % tool
     if r is None:
         return None, False, (shown, err)
@@ -234,7 +329,7 @@ def folder_line(tool, command, d):
     program did not answer."""
     env = dict(os.environ)
     env["CLAUDE_PROJECT_DIR"] = d
-    out, shown, err, rr = run(["bash", TOOL_STATE, "--installed", command, tool], d, env)
+    out, shown, err, rr = run(["bash", TOOL_STATE, "--installed", command, tool], d, env, INSTALLED_SECONDS)
     shown = "bin/devloop-tool-state --installed '%s' %s" % (command, tool)
     if rr is None:  # the folder read: the program did not answer
         return None, (shown, err)
@@ -323,7 +418,11 @@ def read(d, after_install=False):
 # off PATH, as in the self-test of bin/devloop-auto-mode-question. It answers
 # the issue list, the blocking relation of one issue and the closing of one
 # issue from scripted files under $DEVLOOP_ISSUES_SCRIPT, logs every call,
-# and marks a call no answer was scripted for.
+# and marks a call no answer was scripted for. Where a file .hang stands
+# beside the scripted answer it does not answer: it starts a second process
+# and stands with it, each writing a mark into a file of its own twenty
+# times a second, thirty seconds at most, so that the self-test reads off
+# the two files whether either still stands.
 STAND_IN = r'''import os
 import re
 import sys
@@ -341,6 +440,15 @@ elif c:
     a = os.path.join(S, "close." + c.group(1))
 else:
     a = os.path.join(S, "other")
+if os.path.exists(a + ".hang"):
+    import subprocess
+    import time
+    marks = "import sys, time\nfor i in range(600):\n    open(sys.argv[1], 'a').write('.')\n    time.sleep(0.05)\n"
+    subprocess.Popen([sys.executable, "-c", marks, os.path.join(S, "marks.started")])
+    for i in range(600):
+        open(os.path.join(S, "marks.gh"), "a").write(".")
+        time.sleep(0.05)
+    sys.exit(3)
 if not os.path.exists(a + ".rc"):
     sys.stderr.write("stand-in for gh: no answer scripted for: gh %s\n" % args)
     open(os.path.join(S, "unscripted"), "w").close()
@@ -351,6 +459,33 @@ sys.exit(int(open(a + ".rc", encoding="utf-8").read().strip()))
 '''
 LAUNCHER_SH = '#!/bin/sh\nexec "%s" "%s" "$@"\n'
 LAUNCHER_CMD = '@"%s" "%%~dp0gh-stand-in.py" %%*\r\n'
+# The opening of a stand-in of sh, for go and for the project's Playwright,
+# which bin/devloop-tool-state calls from bash: where the file named .hang
+# stands under $DEVLOOP_ISSUES_SCRIPT it does not answer, starts a second
+# process and stands with it, each writing a mark into a file of its own, six
+# hundred marks at most; without that file the stand-in goes on to its answer.
+HANG_SH = """if [ -e "$DEVLOOP_ISSUES_SCRIPT/%s.hang" ]; then
+  ( i=0; while [ $i -lt 600 ]; do echo . >> "$DEVLOOP_ISSUES_SCRIPT/marks.started"; sleep 0.05; i=$((i+1)); done ) &
+  i=0; while [ $i -lt 600 ]; do echo . >> "$DEVLOOP_ISSUES_SCRIPT/marks.%s"; sleep 0.05; i=$((i+1)); done
+  exit 3
+fi
+"""
+# The program loaded in an interpreter of its own, for the cases of the
+# self-test that need what no call from outside sets: the limits named in the
+# second argument, SECONDS=3 or BUILD_SECONDS=3, several joined by a comma,
+# and a command taken off the lookup where the third argument names it. No
+# setting of the environment moves a limit in operation.
+LOADER = """import shutil
+import sys
+p, limits, gone = sys.argv[1], sys.argv[2], sys.argv[3]
+g = {"__name__": "devloop_install_issues", "__file__": p}
+exec(compile(open(p, encoding="utf-8").read(), p, "exec"), g)
+for limit in limits.split(","):
+    g[limit.split("=")[0]] = int(limit.split("=")[1])
+found = shutil.which
+shutil.which = lambda name, *a, **k: None if name == gone else found(name, *a, **k)
+sys.exit(g["main"](sys.argv[4:]))
+"""
 
 
 def same(a, b):
@@ -389,7 +524,7 @@ def selftest():
         os.chmod(infolder, os.stat(infolder).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
         go_path = os.path.join(T, "bin", "go")
         with open(go_path, "w", encoding="utf-8") as f:
-            f.write("#!/bin/sh\nprintf '%s\\n' '%s'\n" % ("%s", go_bin.replace("\\", "/")))
+            f.write("#!/bin/sh\n" + HANG_SH % ("go", "go") + "printf '%s\\n' '%s'\n" % ("%s", go_bin.replace("\\", "/")))
         os.chmod(go_path, os.stat(go_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
         subprocess.run(["git", "init", "-q", os.path.join(T, "p")], check=True)
         env = dict(os.environ)
@@ -438,6 +573,41 @@ def selftest():
 
         def got_out(_):
             return last["out"].split("\n")
+
+        def loaded(limits, gone, *args):
+            """the program through LOADER: (exit code, output) and the seconds the call took"""
+            began = time.monotonic()
+            r = subprocess.run([sys.executable, "-c", LOADER, me, limits, gone] + list(args),
+                               cwd=os.path.join(T, "p"), capture_output=True, text=True, env=env)
+            last["out"] = r.stdout + r.stderr
+            return (r.returncode, last["out"]), time.monotonic() - began
+
+        def standing_still(name, *files):
+            """every file of marks there, so that its writer had started, and
+            none longer half a second later, so that no writer stands"""
+            n[0] += 1
+            paths = [os.path.join(S, f) for f in files]
+            before = [os.path.getsize(q) if os.path.exists(q) else -1 for q in paths]
+            time.sleep(0.5)
+            after = [os.path.getsize(q) if os.path.exists(q) else -1 for q in paths]
+            for f, b, a in zip(files, before, after):
+                if b < 1:
+                    print("FAIL %s: %s was never written, its writer had not started" % (name, f)); red[0] += 1
+                    return False
+                if a != b:
+                    print("FAIL %s: %s grew from %d to %d marks in half a second, its writer still stands" % (name, f, b, a)); red[0] += 1
+                    return False
+            print("ok   %s" % name)
+            return True
+
+        def in_time(name, hung, at_once, limit):
+            """the call that was not answered back no later than the limit and two seconds after the call that was answered at once"""
+            n[0] += 1
+            if hung > at_once + limit + 2:
+                print("FAIL %s: back after %.3f seconds, %.3f where it is answered at once, more than the %d seconds and 2 apart" % (name, hung, at_once, limit)); red[0] += 1
+                return False
+            print("ok   %s" % name)
+            return True
 
         def calls():
             with open(os.path.join(S, "log"), encoding="utf-8") as f:
@@ -594,6 +764,66 @@ def selftest():
         fresh(); issues((15, "First", body_present), (16, "Second", body_present)); blocking(15, "open"); close(15); ans("blocking.16", 1, "", "gh: HTTP 500")
         expect("a query fails after an issue was closed: that issue's group stands, then not decided, 2", go(), 2,
                "issue: 15", "closed: yes", "issues: not decided", "message: gh: HTTP 500", absent=("issue: 16",))
+
+        # a command that does not answer within its limit, the limit set through LOADER: ended by the bound with the process it started, the message with the seconds of that limit, and the call back no later than those seconds and two after a call answered at once; the seconds longer on Windows, where the processes of a stand-in take longer to start
+        short = 5 if os.name == "nt" else 3
+        longer = 10 if os.name == "nt" else 3
+        listing = "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body"
+        # gh
+        fresh(); ans("issues", 1, "", "gh: Not logged in")
+        got, at_once = loaded("SECONDS=%d" % short, "")
+        expect("the limit of gh set to a few seconds and gh answering at once: as with sixty, 2", got, 2,
+               "issues: not decided", listing, "message: gh: Not logged in")
+        open(os.path.join(S, "issues.hang"), "w").close()
+        got, hung = loaded("SECONDS=%d" % short, "")
+        expect("gh does not answer within its limit: not decided, the command, no answer within the seconds, 2", got, 2,
+               "issues: not decided", listing, "message: no answer within %d seconds" % short)
+        standing_still("gh does not answer within its limit: ended with the process it started, neither standing once the program has returned",
+                       "marks.gh", "marks.started")
+        in_time("gh does not answer within its limit: back no later than the limit and two seconds after a call answered at once", hung, at_once, short)
+        # the tool state program under --build: its query a stand-in for the project's Playwright
+        os.makedirs(os.path.join(T, "p", "node_modules", ".bin"))
+        playwright = os.path.join(T, "p", "node_modules", ".bin", "playwright")
+        with open(playwright, "w", encoding="utf-8") as f:
+            f.write("#!/bin/sh\n" + HANG_SH % ("query", "query") + "echo 'no dry run scripted' >&2\nexit 1\n")
+        os.chmod(playwright, os.stat(playwright).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        webkit = "install-tool: playwright:webkit\ninstall-command: npx playwright install webkit\n"
+        fresh(); issues((21, "Download WebKit", webkit)); blocking(21)
+        got, at_once = loaded("BUILD_SECONDS=%d" % longer, "")
+        expect("the limit under --build set to a few seconds and the query answering at once: the line not read with the query's message, not closed, 0", got, 0,
+               "issue: 21",
+               "tool: playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: node_modules/.bin/playwright install --dry-run webkit did not answer: no dry run scripted (on %s)" % present_line[-11:-1],
+               "closed: no")
+        open(os.path.join(S, "query.hang"), "w").close()
+        got, hung = loaded("BUILD_SECONDS=%d" % longer, "")
+        expect("the tool state program does not answer within its limit under --build: not decided, the command, no answer within the seconds, the group not printed, 2", got, 2,
+               "issues: not decided", "command: bin/devloop-tool-state --build playwright:webkit",
+               "message: no answer within %d seconds" % longer, absent=("issue: 21",))
+        standing_still("the tool state program does not answer under --build: its bound, the query and the process the query started ended, none standing once the program has returned",
+                       "marks.query", "marks.started")
+        in_time("the tool state program does not answer under --build: back no later than the limit and two seconds after a call answered at once", hung, at_once, longer)
+        shutil.rmtree(os.path.join(T, "p", "node_modules"))
+        # the tool state program under --installed: its query the stand-in for go
+        infolder = "install-tool: devloop-selftest-infolder\ninstall-command: go install example.invalid/x/cmd/devloop-selftest-infolder@latest\n"
+        fresh(); issues((22, "Install devloop-selftest-infolder", infolder)); blocking(22)
+        got, at_once = loaded("INSTALLED_SECONDS=%d" % longer, "")
+        expect("the limit under --installed set to a few seconds and go answering at once: the group, not closed, 0", got, 0,
+               "issue: 22", "kind: class", "closed: no")
+        open(os.path.join(S, "go.hang"), "w").close()
+        got, hung = loaded("INSTALLED_SECONDS=%d" % longer, "")
+        expect("the tool state program does not answer within its limit under --installed: not decided, the command, no answer within the seconds, the group not printed, 2", got, 2,
+               "issues: not decided",
+               "command: bin/devloop-tool-state --installed 'go install example.invalid/x/cmd/devloop-selftest-infolder@latest' devloop-selftest-infolder",
+               "message: no answer within %d seconds" % longer, absent=("issue: 22",))
+        standing_still("the tool state program does not answer under --installed: its bound, go and the process go started ended, none standing once the program has returned",
+                       "marks.go", "marks.started")
+        in_time("the tool state program does not answer under --installed: back no later than the limit and two seconds after a call answered at once", hung, at_once, longer)
+        # no gh on PATH: nothing started, the system's message for a file that is not there
+        fresh()
+        got, _ = loaded("SECONDS=%d" % short, "gh")
+        expect("no gh on PATH: not decided, the command and the system's message naming gh, 2", got, 2,
+               "issues: not decided", listing, "message: %s" % FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "gh"))
+        called("no gh on PATH: nothing started")
     finally:
         shutil.rmtree(T, ignore_errors=True)
     if red[0]:

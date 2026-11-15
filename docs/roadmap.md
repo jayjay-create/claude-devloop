@@ -6649,6 +6649,466 @@ and for the proofs of closings.
   0, renamed 0, Should changed 2, added 1, with two lines of the fixed forms;
   every other figure as after the third commit.
 
+- **A gh that does not answer ends with all it started, two ends split**
+
+  14 November 2026, version 0.186.0: `bin/devloop-auto-mode-question`,
+  `bin/devloop-install-issues` and one sentence in the head of
+  `scripts/devloop-stock-take` change; nothing under `skills/`, `shared/`,
+  `hooks/` or `output-styles/` changes, and `.github/workflows/stock-take.yml`
+  and `README.md` do not. On `task/gh-bound-two-ends`, off `origin/main` at
+  `21fa71f`, in four commits: the code of the two programs and the sentence,
+  with the version, raised once, `74d9d42`; this entry, the blocks, the plan
+  and the table, the renamings with their runs among them; the runs, at the
+  third; and, after the checks, the corrections of the merge of 15 November
+  2026, which change no code. The order, of this day: the first part of the
+  second of the two orders before (2) of milestone 12, the decision of 12
+  November 2026 in `docs/plan.md`. Its subject: gh in
+  `bin/devloop-auto-mode-question` and in `bin/devloop-install-issues`, the
+  two blocks of 11 November 2026 on them under "## Milestone 12" of
+  `docs/defects.md`, and the things of `docs/stock-take.tsv` whose name names
+  a green and a red end at once, by the decision of 13 November 2026. The
+  three open blocks of `scripts/devloop-run-workflow` are a later order's and
+  no part of this one. The second order is parted because its reading list
+  does not fit one session: 393181 bytes by `wc -c` over the ranges of this
+  part and, beside them, `scripts/devloop-run-workflow` whole, lines 1395 to
+  1410, 1427 to 1434 and 1451 to 1458 of `docs/defects.md` and the 29 other
+  rows of that program's things and runs in the table; this part read 304568
+  bytes, the two programs whole, lines 1 to 60 of `bin/devloop-bounded`, 36 to
+  46 and 290 to 345 of `bin/devloop-arm`, 120 to 130 and 430 to 500 of
+  `bin/devloop-tool-state`, lines 1 to 86, 1371 to 1378 and 1411 to 1426 of
+  `docs/defects.md`, 83 to 149 and 1043 to 1181 of `docs/plan.md`, 1445 to
+  1456 of `skills/build-work/SKILL.md`, 1 to 12 of
+  `shared/install-issues-read.md`, 4907 to 5323, 5417 to 5560, 6089 to 6124
+  and 6586 to 6598 of this file, 1 to 139, 238 to 587 and 676 to 934 of
+  `scripts/devloop-stock-take`, 1730 to 1961 and 3949 to 4446 of
+  `docs/skill-conventions.md`, 378 to 440 of the workflow file, and 60 rows of
+  the table, every line number at `21fa71f`; both figures are the order's and
+  were counted again here over those ranges with `git show`. Written by Claude
+  Code from the person's order of this day. No session log was read. Nothing
+  was installed outside throwaway containers of `alpine:3.22`, which got bash,
+  git and python3 with apk. The two programs ran against a stand-in for gh
+  first on PATH and in throwaway repositories alone, no call reached GitHub,
+  and the settings of this machine were not touched. What is measured under
+  Windows is measured by the job hooks on every system and by nothing here,
+  this machine running macOS.
+
+  Read before the build, at `21fa71f`. `Lib/subprocess.py` of CPython at the
+  tags v3.14.7, the Python of the person's Mac, and v3.12.16, that of
+  `alpine:3.22`, each tag checked with git ls-remote: at a timeout
+  `subprocess.run` ends the one process it started, lines 555 to 571 and 548
+  to 564, by SIGKILL to its one number on macOS and under Linux, lines 2244
+  and 2203, and by TerminateProcess under Windows, lines 1707 and 1673, where
+  it then reads the output to its end without a limit, lines 566 and 559; so
+  the Wrong of the two blocks holds in both versions. `bin/devloop-tool-state`
+  asks under --build with one TOOL one query at most under its bound of sixty
+  seconds and under --installed two of go, GOBIN and then GOPATH where GOBIN
+  is empty, its line 560, so that a caller that is not to end it before its
+  own bound has needs more than 62 seconds for the first and more than 124 for
+  the second. The texts call both programs once, with the shell, and name no
+  limit of their own, `shared/install-issues-read.md` line 4,
+  `skills/build-work/SKILL.md` lines 567, 1449 and 1452,
+  `skills/plan-work/SKILL.md` line 531, `skills/setup-checks/SKILL.md` line
+  1094 and `shared/install-tool.md` line 80, so that the 120 seconds of a Bash
+  call hold for them; the install guard calls the first with record, which
+  asks gh nothing. `bin/devloop-arm` runs gh under `bin/devloop-bounded` with
+  its output in two files and its input empty, line 328, and reads no 124 by
+  its number: the bound's line goes through as its message. Neither self-test
+  had a case in which a command does not answer, the cases named so letting
+  the stand-in end at once with 1.
+
+  Measured before the build, at `21fa71f`, on the person's Mac, Python 3.14.7
+  and bash 3.2.57, from 21:29 UTC, and in a container of `alpine:3.22`, Python
+  3.12.16 and bash 5.2.37, kept by `tail -f /dev/null` and entered with docker
+  exec, from 21:34 UTC: each program loaded in an interpreter of its own, its
+  limit set to one second and its main called, gh a stand-in that starts
+  `sleep 7383 &` and waits in `sleep 7385`. `bin/devloop-auto-mode-question`
+  was back after 1.047 and 1.032 seconds and `bin/devloop-install-issues`
+  after 1.004 and 1.005, each with "no answer within 1 seconds" and exit 2,
+  both sleeps found by pgrep at the return and three seconds later: the
+  measurement of 11 November 2026 in the two blocks holds. And what the Wrong
+  of the block on `bin/devloop-install-issues` had read and not measured, gh
+  answering and the query under `bin/devloop-tool-state --build
+  playwright:webkit` a stand-in that starts `sleep 7387 &` and waits in `sleep
+  7389`: with this program's limit at one second it was back after 1.270 and
+  1.008 seconds with "no answer within 1 seconds", the bound of the tool state
+  program with its watchdog and both sleeps found at the return and three
+  seconds later, and none of them 64 seconds later, that bound having fired;
+  and with every limit as the program carried it, sixty and sixty, it was back
+  after 60.011 and 60.025 seconds with "issues: not decided", "no answer
+  within 60 seconds" and exit 2, its own limit having fired before that
+  program's bound, which would have left the tool's line not read and the
+  issue with closed: no.
+
+  Built, of the two ways the notes of the blocks name the second, on every
+  system: each command runs under `bin/devloop-bounded`, as `bin/devloop-arm`
+  and `bin/devloop-start-conditions` run gh. The bound ends a command that has
+  not ended at its limit with its process group, by SIGTERM and a second later
+  by SIGKILL, and is back at most two seconds after the limit with exit 124
+  and its line; the two programs read that exit with that line as "no answer
+  within N seconds", the wording they had, N the limit that held for the call,
+  and print nothing they did not print before, but under Windows where PATH
+  holds no gh, below. The output of a command goes to two files and through no
+  pipe, and its input is empty, so that the call is back with the bound on
+  every system, whatever a process that outlived the bound holds: that answers
+  the second half of both blocks' titles, the wait under Windows for the
+  output to close, without the bound. gh has sixty seconds a call.
+  `bin/devloop-tool-state` has 72 under --build and 134 under --installed, the
+  62 and the 124 seconds of its own bounds and ten for the program itself, so
+  that a query that does not answer in sixty seconds is ended by that
+  program's bound and comes back as a line not read, as before the two limits
+  were made the same number; where this program's limit fires all the same,
+  the bound of that program stands in the group it ends and ends its own
+  command first. Where PATH holds no gh, or no bash for the second program,
+  nothing is started and the message is the system's for a file that is not
+  there, naming it; until this day the name went through to subprocess, whose
+  error read the same on macOS and Linux and under Windows was `[WinError 2]`
+  with the text of Windows, naming nothing, so that the message reads
+  otherwise there since this day; and under the bound it would have been a
+  line of bash with the path of the bound in it. Under Windows that does not
+  hold for a PATH without bash: in both programs every call of gh is started
+  all the same, through the bare name bash, and the message names nothing, the
+  block written at the merge, below. Not the first way, the command in a
+  session of its own and every process tied to it ended at the timeout, as
+  `scripts/devloop-run-workflow` ends a step: on macOS and under Linux it
+  would have put that program's listings of ps and its taking of SIGINT,
+  SIGTERM and SIGHUP in hand into two more programs that share no code, where
+  a signal to the program's group reaches the bound, which then ends its
+  command first; and under Windows Python has no session to start a command
+  in, `Lib/subprocess.py` line 795 of 3.14.7, "start_new_session (POSIX
+  only)". Under Windows with Git Bash the second way is the one the note of
+  the block on `bin/devloop-auto-mode-question` names first: a process started
+  from Python runs no script by its first line there, so bash, found on PATH,
+  runs the bound, the call one command line with every word in double quotes
+  and the command's own path with forward slashes. The quotes are there for a
+  reading made from memory of the runtime of Git Bash and found in no source
+  this order allowed, not measured: that it takes a command line coming from a
+  Windows program apart itself and expands a pattern in a word without quotes,
+  braces among them, where gh api is handed {owner} and {repo}, and
+  `subprocess.list2cmdline` quotes a word only where it holds a blank. The job
+  object of Windows that the same note names is not built and not tried.
+
+  The self-tests. A case in which a command does not answer needs a limit of
+  seconds: the self-test loads the program in an interpreter of its own, sets
+  the limit there and calls its main, so that no setting of the environment
+  moves a limit in operation. The stand-in that does not answer starts a
+  second process and stands with it, each writing a mark into a file of its
+  own twenty times a second, thirty seconds at most; the case holds the
+  message with the seconds, both files written and neither longer half a
+  second after the program has returned, and the call back no later than the
+  limit and two seconds after a call that is answered at once, measured beside
+  it. `bin/devloop-auto-mode-question` has 45 cases where it had 39: the limit
+  set and gh answering at once, gh not answering, three lines, and no gh on
+  PATH, two. `bin/devloop-install-issues` has 39 where it had 25: the same for
+  gh, and for `bin/devloop-tool-state` under --build with a stand-in for the
+  project's Playwright and under --installed with the stand-in for go, each
+  answering at once and not answering, and no gh on PATH. The limits of those
+  cases are three seconds, and under Windows five for gh and ten for the tool
+  state program, whose processes take longer to start there. The query that
+  program's own bound ends after sixty seconds has no case, that bound being
+  sixty seconds whatever this program sets; it is measured below. Both
+  self-tests passed on the person's Mac and in a container of `alpine:3.22`
+  kept by `tail -f /dev/null` before the first commit, and no process of a
+  stand-in stood afterwards.
+
+  What the build does not reach. Under Windows with Git Bash nothing of it is
+  measured: that bash there starts a file gh.cmd, which the self-tests'
+  stand-in is on that system, that every argument reaches gh as it was given,
+  and that the bound ends a gh.cmd with what it started as it ends a gh.exe,
+  cmd.exe and the processes under it being native programs without a Cygwin
+  pid, which the runtime's walk lists by their Windows parent numbers, the
+  head of `bin/devloop-bounded`; the job hooks on every system measures all
+  three with the two self-tests, and the report of this day says what its log
+  must show. A process of Git Bash under gh that the runtime's walk does not
+  look for is not ended there, the block of this milestone on that limit, Fix
+  none; and on every system a process that leaves the command's process group
+  on purpose is beyond the bound, as its head says. Two findings of the check
+  before the build are blocks of this day under "## Milestone 12" with Fix
+  none, nothing built for either. The first: neither program holds a limit
+  over its whole call, so that several slow queries one after another run past
+  the 120 seconds of the Bash call the texts start them in, at `21fa71f` as
+  now; a limit over the call inside the two programs needs a line a user reads
+  for the queries not started, which this order does not let the build write,
+  and the report lays its wording and the two ways before the person. The
+  second: the head of `bin/devloop-tool-state` says the program ends inside
+  those 120 seconds, where it asks two queries one after another, each under a
+  bound of sixty seconds.
+
+  The two ends, by the decision of 13 November 2026. The names of the 1869
+  things of the table were searched with fourteen patterns, among them a name
+  that holds PASSED and FAILED, green and red, "otherwise", an exit code
+  beside "or" and a second one, "red where", "exit 1 on the first" or "at the
+  first", and every name that holds "self-test", and every hit was read. Eight
+  things name a green and a red end at once: the seven the order names, the
+  self-tests of `bin/devloop-command-reader`, `bin/devloop-missing-tool`,
+  `bin/devloop-install-note`, `bin/devloop-auto-mode-question` and
+  `scripts/devloop-run-workflow` and two things of the hooks steps of the
+  workflow, the step on the reader and the step that runs every self-test
+  under `bin/`; and an eighth this search found, the step that runs the
+  self-test of `scripts/devloop-run-workflow` on three systems, "the step red
+  where it fails", which carries no run and which neither the audit of 12
+  November 2026 nor the order names. Each is split in two. The thing that
+  stood is renamed to its green end, with every run keyed to it and every
+  record that names it after "part of:", in this commit: ten runs on six of
+  the eight, and 426 records, 402 on those six and 24 on the self-test of
+  `scripts/devloop-run-workflow`; its note names the old name. The red end
+  stands as a thing of its own, eight of them, Built, never walked. The
+  sentence of the head of `scripts/devloop-stock-take` says since the first
+  commit that a thing with runs keeps its name unless it is renamed with all
+  its runs in the same commit, and that such a thing is split. No other hit
+  was split: a thing that names two values of one line, the kind task or
+  class, a record yes or no, is no green and red end; a check command's second
+  thing, "any other" answer than the green one, names red ends alone, as the
+  head has it under "WHAT GOES IN"; and the self-tests of
+  `bin/devloop-bounded`, `bin/devloop-setup-state`, `bin/devloop-arm`,
+  `bin/devloop-start-conditions`, `bin/devloop-tool-state`,
+  `bin/devloop-install-issues`, `bin/devloop-auto-mode-rule` and the tool
+  stood in two things or more already.
+
+  The table beside the renamings. Nine things for what is new in the two
+  programs, each Built, never walked until its run: in
+  `bin/devloop-auto-mode-question` a gh that does not answer within its sixty
+  seconds, a PATH that holds no gh, and gh under the bound under Windows; in
+  `bin/devloop-install-issues` a gh that does not answer, the tool state
+  program not answering within 72 seconds under --build and within 134 under
+  --installed, a query that program's own bound ends before this program's
+  limit, a PATH that holds no gh or no bash, and every command under the bound
+  under Windows. Thirty records for lines of the two programs that entered the
+  search set, each part of one of those things or of the self-test of its
+  program, and the two records on the line "except
+  subprocess.TimeoutExpired:", which is gone from both programs, moved to the
+  line that reads the bound's 124. The things on a query that did not answer
+  keep their names, runs hanging on one of them, and their notes say what they
+  hold since this day.
+
+  The blocks. The two of 11 November 2026 carry the line of the build as their
+  Fix, the call of `subprocess.run` over `under_bound` in each program, and
+  read Built, never walked, which the tool computes, until the runs at the
+  last commit; their notes say the way, the limits, what is read and not
+  measured under Windows and what the measurement before the build added.
+  Their titles, their Wrong and their Should stand as written, the Wrong the
+  record of that day with the line numbers of `46030ab`. Two blocks are new,
+  the two findings above.
+
+  The documents against the build, searched with `/usr/bin/grep -rn -E` for
+  `SECONDS|TimeoutExpired|no answer
+  within|devloop-auto-mode-question|devloop-install-issues|keeps its
+  name|names both|red end` over this file (35 lines),
+  `docs/roadmap-archive-1.md` (95), `docs/defects.md` (32), `docs/plan.md`
+  (9), `docs/rationale.md` (4), `docs/skill-conventions.md` (3) and
+  `README.md` (none), as these stood at `74d9d42`, and over `skills`,
+  `shared`, `bin`, `hooks`, `.github` and `scripts/devloop-stock-take` before
+  the first commit, every line read. No sentence of a loaded text, of a hook,
+  of another program or of the workflow stopped holding: the texts say that
+  the two programs are run once, with the shell, and what a run does with
+  their lines, and nothing of how they end a command. In `docs/plan.md` the
+  paragraph on the second piece of milestone 12 says what this order built and
+  what of the second order before (2) is not built yet. The dated entries of
+  this file and of the archive stand as written; what they say of the two
+  programs, "bound a command through `subprocess.run` with sixty seconds" in
+  the entry of 11 November 2026, held until this day, and the names they give
+  the eight things are the names until this day.
+  **The runs at the last commit**, the third, which changes no code: every run
+  below ran the code of the first commit, `74d9d42`, the second and this one
+  changing documents alone, under 0.186.0, at the second commit, `242afad`,
+  the tree clean, and is of 14 November 2026. On the person's Mac, bash 3.2.57
+  and Python 3.14.7, in a bash started with `--noprofile --norc`. Run S1, at
+  22:11:34 UTC, `bin/devloop-auto-mode-question --self-test`: exit 0, 45 lines
+  ok and none red, "SELF-TEST PASSED: 45 cases", in 7.095 seconds, the lines
+  "gh does not answer within the limit: not decided, the command, no answer
+  within the seconds, exit 2", "ended with the process it started, neither
+  standing once the program has returned", "back no later than the limit and
+  two seconds after a call answered at once" and "no gh on PATH: not decided,
+  the command and the system's message naming gh, exit 2" among them. Run S2,
+  at 22:11:41 UTC, `bin/devloop-install-issues --self-test`: exit 0, 39 lines
+  ok and none red, "SELF-TEST PASSED: 39 cases", in 14.249 seconds, the same
+  four lines for gh among them and, for the tool state program under --build
+  and under --installed, each "not decided, the command, no answer within the
+  seconds, the group not printed, 2", "none standing once the program has
+  returned" and "back no later than the limit and two seconds after a call
+  answered at once"; no process of a stand-in stood after either.
+
+  The red ends, each on a copy under a throwaway directory, the expectation of
+  one case changed there and the repository's program passing beside it, as
+  the entry of 13 November 2026 on the look under hidepid brought about that
+  of `bin/devloop-bounded`; the two programs in a copy of the whole of `bin/`,
+  since they call `bin/devloop-auto-mode-rule` and `bin/devloop-tool-state`
+  beside them. Run R1, at 22:11:56 UTC, the copy of
+  `bin/devloop-auto-mode-question`, `expect("two directories: exit 2",
+  run("a", "b"), 2,` changed to 3: 44 lines ok, "FAIL two directories: exit 2:
+  exit 2, expected 3" with what the program printed under it, indented,
+  "SELF-TEST FAILED" and exit 1. Run R2, at 22:12:03 UTC, the copy of
+  `bin/devloop-install-issues`, `expect("two directories: 2", go("a", "b"),
+  2,` changed to 3: 38 lines ok, "FAIL two directories: 2: exit 2, expected 3"
+  with the program's output under it, "SELF-TEST FAILED: 1 of 39 cases red"
+  and exit 1. Run R3, at 22:12:18 UTC, the copy of
+  `scripts/devloop-stock-take`, in the case "anchor found twice" the lines "2,
+  5" of the expected message changed to "2, 4": 158 lines ok, "BAD  anchor
+  found twice: red MISSING, green seen", "SELF-TEST FAILED: anchor found
+  twice" and exit 2; the note of that thing said until this commit that it is
+  producible only by breaking the tool, which a copy does without the tool in
+  the repository carrying a fault. At 22:12:27 UTC the repository's two
+  programs passed beside them with 45 and 39 cases, and the tree was clean.
+
+  The measurement of before the build again, from 22:12:58 UTC, each program
+  loaded in an interpreter of its own with its limit at one second and gh the
+  stand-in that starts `sleep 7383 &` and waits in `sleep 7385`. Run M1,
+  `bin/devloop-auto-mode-question`: back after 1.061 seconds with "no answer
+  within 1 seconds" and exit 2, neither sleep found by pgrep at the return or
+  three seconds later, where both stood at `21fa71f`. Run M2,
+  `bin/devloop-install-issues`: back after 1.021 seconds with the same line
+  and exit 2, neither sleep found. Run M3, gh answering and the query under
+  `bin/devloop-tool-state --build playwright:webkit` the stand-in that starts
+  `sleep 7387 &` and waits in `sleep 7389`, the limit for that call at one
+  second: back after 1.147 seconds with "command: bin/devloop-tool-state
+  --build playwright:webkit", "no answer within 1 seconds" and exit 2, and at
+  the return, three seconds and 64 seconds later no sleep, no process of the
+  bound and none of the tool state program found, where the bound and both
+  sleeps stood for the rest of its sixty seconds at `21fa71f`. Run M4, the
+  same with every limit as the program carries it, sixty for the bound of the
+  tool state program and 72 for its call: back after 60.134 seconds with the
+  group of the issue, its tool line "playwright:webkit: not read, because the
+  project's Playwright did not say which version of webkit it needs:
+  node_modules/.bin/playwright install --dry-run webkit did not answer: no
+  answer within 60 seconds: node_modules/.bin/playwright install --dry-run
+  webkit", "closed: no" and exit 0, nothing found afterwards, where the
+  program ended with "issues: not decided" and exit 2 after 60.011 seconds at
+  `21fa71f`.
+
+  The same in a throwaway container of `alpine:3.22` on that Mac, from
+  22:15:37 UTC, bash 5.2.37, Python 3.12.16 and git 2.49.1, the repository
+  mounted read-only, started with docker run --rm, kept by `tail -f /dev/null`
+  as its process 1, as GitHub keeps the container of a job, and entered with
+  docker exec: the two self-tests passed with 45 and 39 cases and left no
+  process of a stand-in; the four measurements came out as on the Mac, back
+  after 1.044, 1.021 and 1.131 seconds with "no answer within 1 seconds" and
+  exit 2 and nothing found afterwards, and after 60.061 seconds with the line
+  not read, "closed: no" and exit 0; 23 zombies stood in the container at its
+  end, which nothing reaps there. The red ends were brought about on the Mac
+  alone.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  thirteen of them, each under 0.186.0. On seven of the nine things this
+  branch added: a gh that does not answer in `bin/devloop-auto-mode-question`,
+  run M1, and in `bin/devloop-install-issues`, run M2; the tool state program
+  not answering within its limit under --build, run M3, and under --installed,
+  run S2; the query that program's own bound ends before this program's limit,
+  run M4; and a PATH that holds no gh, runs S1 and S2. On the green end of the
+  self-test of `bin/devloop-auto-mode-question`, run S1, whose two runs of 22
+  and 23 October 2026 stopped counting with the lines the first commit added
+  to that self-test. On three red ends: that of the same self-test, a thing
+  this branch split off, run R1; that of the self-test of
+  `bin/devloop-install-issues`, run R2; and that of the tool's own self-test,
+  run R3, two things that stood without a run. And on the two blocks of 11
+  November 2026, runs M1 and M2, whose Status reads Walked since this commit,
+  which the tool asks for: the version came with the first commit, which is
+  the last change to the two lines their Fix names. Two of the nine new things
+  get no run and stay Built, never walked, the two on Windows, which nothing
+  here measures; and so do the seven other red ends this branch split off,
+  those of the self-tests of `bin/devloop-command-reader`,
+  `bin/devloop-missing-tool`, `bin/devloop-install-note` and
+  `scripts/devloop-run-workflow` and of the three things of the hooks steps,
+  which no run of this day brought about: this order brings about the red end
+  of the programs it changes and of no other. No row stands for the self-test
+  of `bin/devloop-install-issues` passing, a thing that stood before this
+  branch without a counting run and is none of those the order gives a row.
+
+  The tool, before, on `21fa71f`: broken records 0, uncovered lines 0 of 4612;
+  Undetermined 24, Recorded, not built 261, Built, never walked 1505, Walked
+  725, Closed 72; milestone 12 111 blocks, Recorded, not built 44, Built,
+  never walked 46, Walked 15, Closed 6; blocks with "not stated" 345. After
+  the first commit: exit 2, broken records 2, the two records on the line
+  "except subprocess.TimeoutExpired:", gone from both programs, and uncovered
+  lines 36 of 4646, the lines of the two programs that hold a search word;
+  every state as before. After the second commit: broken records 0, uncovered
+  lines 0 of 4646; Recorded, not built 261, the two blocks built and two
+  written; Built, never walked 1525 and Walked 724, seventeen things new, the
+  two blocks built and the green end of the self-test of
+  `bin/devloop-auto-mode-question` having lost its counting run; Closed 72;
+  milestone 12 113 blocks, Recorded, not built 44, Built, never walked 48,
+  Walked 15, Closed 6. After this commit: Built, never walked 1512 and Walked
+  737, the thirteen rows above; milestone 12 Built, never walked 46 and Walked
+  17; every other figure as after the second; blocks with "not stated" 345
+  throughout; blocks held against the branch point: removed 0, renamed 0,
+  Should changed 0, added 2, no line of the fixed forms; Walked on this branch
+  without a run the branch adds: 0, the renamed things that read Walked
+  carrying runs whose name changed with theirs, which the tool reads as runs
+  the branch adds, its head under "LIMITS". The self-test of the tool: 159
+  cases, 148 of 148 messages asserted by a case, before and after. Before this
+  commit, with its documents in the tree, nineteen of the twenty checks before
+  a handover printed what they printed on `21fa71f`, line for line, and the
+  sixteenth, the run of the workflow's steps, was green before and after, 8
+  steps run: the self-tests of the two programs passed in it with 45 and 39
+  cases where they had 39 and 25, and its title step read one new head, this
+  entry's, 65 characters, and passed it.
+
+  **The runs of the job under Windows**, of 15 November 2026: the job hooks on
+  every system on windows-latest, in run 43697662878 of the checks of pull
+  request #245, on the merge ref of `229c1e5` into `21fa71f`, whose tree is
+  that of `229c1e5`, main not having moved since the branch point, version
+  0.186.0, green, read off the job's log at the merge. Its step that runs
+  every self-test under `bin/` printed under "== devloop-auto-mode-question
+  --self-test" 45 lines ok and "SELF-TEST PASSED: 45 cases", among them "gh
+  does not answer within the limit: not decided, the command, no answer within
+  the seconds, exit 2", "gh does not answer within the limit: ended with the
+  process it started, neither standing once the program has returned" and "gh
+  does not answer within the limit: back no later than the limit and two
+  seconds after a call answered at once", whose limit is five seconds there:
+  run W1; and under "== devloop-install-issues --self-test" 39 lines ok and
+  "SELF-TEST PASSED: 39 cases", the same three for gh with "within its limit",
+  and for the tool state program under --build and under --installed, with ten
+  seconds there, "not decided, the command, no answer within the seconds, the
+  group not printed, 2", "none standing once the program has returned" and
+  "back no later than the limit and two seconds after a call answered at
+  once": run W2; so under Windows with Git Bash, bash started the stand-in for
+  gh, a gh.cmd on that system, under the bound; every argument reached it as
+  given, the cases on the blocking relation among them, whose stand-in finds
+  its scripted answer only where the word after api reads
+  `repos/{owner}/{repo}/issues/N/dependencies/blocking`, the braces as
+  written; and the bound ended the gh.cmd and the tool state program with what
+  they had started. W1 stands on the thing on gh under the bound under Windows
+  in `bin/devloop-auto-mode-question` and on the block of 11 November 2026 on
+  that program, W2 on the thing on every command under the bound under Windows
+  in `bin/devloop-install-issues` and on the block of that day on it.
+
+  **The corrections of the merge**, of 15 November 2026, the fourth commit,
+  which changes no code. The Should of the block on a limit over the whole
+  call says the goal alone, "each of the two programs ends inside the limit of
+  the call that starts it, also where several queries are slow one after
+  another", where the report had added "and says which queries it did not
+  start any more", which belongs to one of the two ways the person decides
+  between. The Should of the block on the head of `bin/devloop-tool-state`
+  reads "the program ends inside the limit of the call that starts it, also
+  where several queries are slow one after another, and its head says what it
+  holds", where it read "the program ends inside the 120 seconds of a Bash
+  call whatever its queries do, or its head says what it holds, sixty seconds
+  and two for every query and how many queries a call asks at most": the texts
+  call that program with the shell themselves, five times, none with a limit
+  of its own for the call, so that the sentence of its head set right alone
+  would leave such a call running past the 120 seconds; the way is decided
+  with the first block. Both blocks are new on this branch, so no line of the
+  fixed forms. A third block of this day, written at the merge: under Windows
+  the two programs start gh through bash where PATH holds none and name
+  nothing, and the head of `bin/devloop-auto-mode-question` says that a
+  missing gh was named there until 14 November 2026, which under Windows it
+  was not, `Modules/_winapi.c` lines 1418 to 1421 of CPython 3.14.7; Fix none,
+  built with the next change to the two programs. The notes of the two things
+  on a PATH that holds no gh said "until then the name went through to
+  subprocess and the error of the start named it" and say now "until then the
+  name went through to subprocess and the error of the start named it on macOS
+  and Linux and named nothing under Windows", the one of
+  `bin/devloop-install-issues` naming the third block. The notes of the two
+  blocks of 11 November 2026 name the runs W1 and W2. In `docs/plan.md` the
+  paragraph on the second piece of milestone 12 says the job measured under
+  Windows and three blocks. In this entry the number of commits, the sentence
+  on what the two programs print, the one on the message where PATH holds no
+  gh or no bash, and what a limit over the whole call needs. After them the
+  tool shows: Recorded, not built 262, the third block; Built, never walked
+  1510 and Walked 739, the two things on Windows walked by W1 and W2;
+  milestone 12 114 blocks, Recorded, not built 45, Built, never walked 46,
+  Walked 17, Closed 6; blocks held against the branch point: removed 0,
+  renamed 0, Should changed 0, added 3, no line of the fixed forms; every
+  other figure as after the third commit.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
