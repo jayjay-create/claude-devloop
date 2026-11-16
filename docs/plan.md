@@ -1173,8 +1173,8 @@ its second after the SIGTERM, and the watchdog waits out its second there
 again for a process that has ended and that nobody reaps; the program's
 head gives the figure of the build's report and says what the job measured
 under Windows with Git Bash, the block on it closed as corrected; and what
-that order found, the self-test red under hidepid where nobody reaps,
-stands in a block of this milestone with Fix none. Since 14 November 2026,
+that order found, the self-test red under hidepid where nobody reaps, is
+built since 16 November 2026, below. Since 14 November 2026,
 the first part of the second order before (2), the roadmap entry of that
 date on gh under the bound: `bin/devloop-auto-mode-question` and
 `bin/devloop-install-issues` run gh under `bin/devloop-bounded` with sixty
@@ -1189,11 +1189,11 @@ a red end at once is split in two, eight of them, the head of
 `scripts/devloop-stock-take` saying the rule of the decision of 13 November
 2026, and the red end of the self-test of each program that part changed
 brought about once on purpose. That order was parted because its reading
-list did not fit one session. Of it the three open blocks of
-`scripts/devloop-run-workflow` are not built yet, the process that leaves
-the step's session, Windows, and the step that ends in time and leaves a
-process behind, and the red end of that program's self-test is not brought
-about. What the first part found and did not build, and what its merge
+list did not fit one session. What stood over of it, the three open blocks
+of `scripts/devloop-run-workflow`, the process that leaves the step's
+session, Windows, and the step that ends in time and leaves a process
+behind, and the red end of that program's self-test, is the order of 16
+November 2026, below. What the first part found and did not build, and what its merge
 found, three blocks of this milestone, is built since 15 November 2026 by an
 order of its own, the roadmap entry of that date on a limit over the whole
 call: `bin/devloop-tool-state`, `bin/devloop-auto-mode-question` and
@@ -1206,18 +1206,39 @@ many queries it asks, measured on macOS and in Alpine; a query not started
 answers in the words those two programs have for it; and under Windows,
 where PATH holds no bash to run the bound, the two programs that start gh
 start nothing and name bash, measured under Windows with Git Bash by the job
-hooks on every system of its pull request. Of the orders before (2) this is
-not built yet: the three open blocks of `scripts/devloop-run-workflow` with
-the red end of that program's self-test, and the block on the self-test of
-`bin/devloop-bounded` under hidepid, built with the next change to that
-program; the block on the limit of the runtime's walk under Windows with Git
-Bash stands with Fix none. And one block of this milestone the consistency
-audit of 15 November 2026 wrote, the roadmap entry of that date on the three
-entries held: a paragraph of the head of `bin/devloop-auto-mode-question`
-still gives every call of gh sixty seconds, where a call has what is left of
-the ninety-five since the build of that day; Fix none, built by the order on
-`scripts/devloop-run-workflow`. Of (2) to (7) nothing is built yet, `shell:
-bash` in every skill and the guard for PowerShell among them. Until 15
+hooks on every system of its pull request. Since 16 November 2026, the rest
+of the second order before (2), the roadmap entry of that date on a step's
+own exit: on macOS, Linux and Alpine a step of
+`scripts/devloop-run-workflow` that ends in time counts with its own exit
+code, five seconds after its own end at most where a process it left holds
+its output, and what the steps of a job left behind is ended at the job's
+end, each step under a holder of the program that leads its session; the
+self-test of `bin/devloop-bounded` passes where `/proc` is mounted with
+hidepid, its case of a command that ends on the SIGTERM with all it started
+held there to the two seconds the head allows after the bound; the paragraph
+of the head of `bin/devloop-auto-mode-question` on a gh that does not answer
+says what a call has since 15 November 2026, the block the consistency audit
+of that day wrote on it closed as corrected; and the red end of the
+self-test of `scripts/devloop-run-workflow` is brought about once on
+purpose. Of the orders before (2) this is not built: the process that left
+the step's session and its parent, since the mark in its environment that
+would tie it to the step is not to be read on macOS for a program of the
+system, measured on 15 November 2026, its block with Fix none and two ways
+put to the person; Windows, the block of 11 November 2026 and one of 16
+November 2026 on a step that ends in time there, both with Fix none and put
+to the person as one question; and the block on the limit of the runtime's
+walk under Windows with Git Bash stands with Fix none. What that order found
+beside its blocks: the numbers `scripts/devloop-run-workflow` kept from one
+listing to the next while it ended a step, built with it and never walked,
+and a sentence of the head of `bin/devloop-bounded` on what its self-test
+needs, corrected. Of (2) to (7) nothing is built yet, `shell:
+bash` in every skill and the guard for PowerShell among them. Until 16
+November 2026 this paragraph said that the three open blocks of
+`scripts/devloop-run-workflow` with the red end of that program's self-test,
+the block on the self-test of `bin/devloop-bounded` under hidepid and the
+paragraph of the head of `bin/devloop-auto-mode-question` were not built
+yet, and that what the order on the look under hidepid found stood in a
+block with Fix none; until 15
 November 2026 this paragraph said that what the first part found and what
 its merge found stand in three blocks of this milestone with Fix none; until
 14 November 2026, that of the rest nothing was built, the second order

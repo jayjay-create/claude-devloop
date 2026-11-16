@@ -7879,6 +7879,411 @@ and for the proofs of closings.
   before it, 65 characters and no find, and the report says what the step
   printed after it. No run is recorded.
 
+- **A step counts by its own exit, what it left ends with its job**
+
+  16 November 2026, version 0.188.0: `scripts/devloop-run-workflow`,
+  `bin/devloop-bounded` and `bin/devloop-auto-mode-question` change; nothing
+  under `skills/`, `shared/`, `hooks/` or `output-styles/` changes, and
+  `.github/workflows/stock-take.yml` and `README.md` do not. On
+  `task/run-workflow-leftovers`, off `origin/main` at `2107e12`, in three
+  commits: the code of the three programs with the version, raised once,
+  `d32b780`; this entry, the blocks, the plan and the table; and the runs,
+  measured at the second. The order, of 15 November 2026: the rest of the
+  second of the two orders before (2) under milestone 12, the decision of 12
+  November 2026 in `docs/plan.md`. Its subject, five blocks under "##
+  Milestone 12" of `docs/defects.md`: the process that left the step's
+  session and its parent, built if a measurement finds a mark in its
+  environment on macOS and in Alpine; the step that ends in time and leaves a
+  process behind, built; Windows, not built and put to the person as a
+  question of its own; the paragraph of the head of
+  `bin/devloop-auto-mode-question`, built; and the self-test of
+  `bin/devloop-bounded` under hidepid, built; and the red end of the
+  self-test of `scripts/devloop-run-workflow` brought about once on purpose.
+  The block on the limit of the runtime's walk under Windows with Git Bash
+  stays with Fix none. Its reading list: 324652 bytes by `wc -c`, the order's
+  figure, counted again here with `git show` over its ranges at `2107e12`:
+  `scripts/devloop-run-workflow` whole, lines 1 to 213 and 360 to 395 of
+  `bin/devloop-auto-mode-question`, 95 to 120 of `bin/devloop-install-issues`,
+  1 to 60, 175 to 310, 380 to 420 and 430 to 530 of `bin/devloop-bounded`, 1
+  to 86, 1371 to 1378, 1395 to 1410, 1427 to 1434, 1451 to 1466, 1483 to 1490
+  and 1515 to 1522 of `docs/defects.md`, 83 to 149 and 1043 to 1225 of
+  `docs/plan.md`, 1761 to 1962 and 3949 to 4446 of
+  `docs/skill-conventions.md`, 1141 to 1169, 4995 to 5124, 5405 to 5470, 6400
+  to 6480, 6630 to 6651, 6930 to 6945, 7112 to 7158 and 7836 to 7862 of this
+  file, 1 to 139, 238 to 600 and 676 to 934 of `scripts/devloop-stock-take`, 1
+  to 40 and 360 to 440 of the workflow file, and the 41 lines of
+  `docs/stock-take.tsv` that are a thing or a run of
+  `scripts/devloop-run-workflow` or of the self-test of `bin/devloop-bounded`,
+  without the line numbers grep puts before them. The rest of
+  `bin/devloop-bounded` was read as well, the program changing. Written by
+  Claude Code from the order of 15 November 2026. No session log was read.
+  Nothing was installed outside throwaway containers of `alpine:3.22`, which
+  got bash, git, python3 and, for unshare and nsenter, util-linux-misc with
+  apk, and a user that is not root. The program ran over throwaway workflows
+  in throwaway directories alone and over `.github/workflows/stock-take.yml`
+  as the sixteenth check runs it; nothing reached GitHub, and the settings of
+  this machine were not touched. Sources outside the repository were read raw
+  at a tag checked with git ls-remote: actions/runner at v2.338.2, CPython at
+  v3.14.7, apple-oss-distributions/xnu at xnu-12377.121.6, the nearest
+  published tag to the kernel of the person's Mac, xnu-12377.161.14, and
+  gregkh/linux at v7.0.14, the kernel of the containers. What holds under
+  Windows is read and not measured, this machine running macOS. The session
+  opened on 15 November 2026 and ran past midnight: the code and the
+  documents are of 16 November 2026, and a run of this entry carries 15
+  November 2026 as its date in the table, the day the session opened, as
+  `docs/skill-conventions.md` has a run's date, with its time in UTC here.
+
+  The branch stood already. The order's first step asks that no branch
+  `task/run-workflow-leftovers` stands, here or on origin, and to halt
+  otherwise. One stood here: git reflog shows it "Created from origin/main" at
+  22:46:03 UTC on 15 November 2026, three minutes before the session, at
+  `2107e12` and without a commit of its own; origin held none. It is the
+  branch the order's third step makes, so the work went on on it, said first
+  in the report.
+
+  **Measured before anything was built for the process that left the step's
+  session**, as the order asks: a process started through python3 after a
+  fork, setsid and a second fork with a mark in its environment, and another
+  process of the same user reading whether the mark stands in that
+  environment, nothing printed but found or not found and counts. On the
+  person's Mac, macOS 26.6.2 with System Integrity Protection on, Python
+  3.14.7, at 23:06:25 UTC on 15 November 2026: for `sleep 7391`, the sleep of
+  the system, not found, by sysctl with KERN_PROCARGS2, which answered with
+  the two arguments and no string behind them, by `ps e -p PID -o command`
+  and by `ps -E -ww -o command= -p PID`; for a bash of the system the same;
+  for a python3 that is no program of the system found by all three, 72
+  strings behind its arguments. In `alpine:3.22`, Python 3.12.16, read off
+  `/proc/PID/environ`: found for the sleep, the bash and the python3. The
+  order expects found on both and says to build nothing for the block, on any
+  system, where one of the two does not find it: nothing is built for it. Why
+  macOS does not show it, read in `bsd/kern/kern_sysctl.c` of xnu at
+  xnu-12377.121.6, lines 1480 to 1499: the kernel leaves the environment out
+  of its answer unless the process read is the reader itself, is not
+  restricted by its code signature, System Integrity Protection is off or the
+  reader carries the entitlement com.apple.private.read-environment-variables,
+  line 1346; restricted is the flag CS_RESTRICT, `bsd/kern/kern_cs.c` lines
+  1738 to 1742, and csops showed it set for the sleep and the bash and not
+  set for the python3. A step starts both kinds. How GitHub's runner reads
+  the environment of another process, `src/Runner.Common/ProcessExtensions.cs`
+  at v2.338.2: `/proc/PID/environ` where `/proc` is a directory, lines 296 to
+  316, and otherwise the output of `ps e -p PID -o command`, searched for the
+  one variable, lines 319 to 354, the call that found nothing here for a
+  program of the system; under Windows the block of the process's memory,
+  lines 22 to 167. What else macOS offers to tie such a process to a step,
+  read in the same tag and not measured: a process is told of another's fork
+  and not of the child, NOTE_TRACK being "no longer supported as of 10.5",
+  `bsd/sys/event.h` lines 362 to 369 and `bsd/kern/kern_event.c` lines 1101
+  to 1103; a coalition of its own takes a privilege, `bsd/kern/sys_coalition.c`
+  lines 232 to 234; and the files another process holds open would find the
+  one that still holds the step's output and no other. The two ways are put
+  to the person by the report: built by a mark in the step's environment,
+  read off `/proc` under Linux and by sysctl on macOS, with what macOS keeps
+  back said as a limit; or left on purpose.
+
+  **The cross-check before the build**, every situation of the order held
+  against the code at `2107e12` and measured there on the person's Mac from
+  23:09:59 UTC on 15 November 2026, workflows of one job and one step with
+  shell bash where nothing else is said, the time around the one call. The
+  program read a step's output to its end before it counted the step, line
+  605, `raw, _ = p.communicate(timeout=limit)`, and did nothing at its end
+  about processes, lines 714 to 715. A step that starts `sleep 7401 >
+  /dev/null 2>&1 &` and ends: back after 0.041 seconds, green, the sleep
+  found afterwards. `sleep 7402 &` under a timeout of 0.05 minutes, the sleep
+  holding the output: red after 3.071 seconds, "stopped at the job's timeout
+  of 0.05 minutes, as GitHub stops the job", the sleep ended; the same with
+  `exit 3`: the same line after 3.075 seconds, the 3 lost. A process that
+  lets go of the output after a second, `( sleep 1; exec sleep 7404 >
+  /dev/null 2>&1 ) &`: green after 1.055 seconds, the sleep found afterwards.
+  `sleep 7405 &` without a timeout-minutes: not back after twelve seconds. A
+  sleep started after a fork, setsid and a second fork that holds the output:
+  not back after twelve seconds; with its output on /dev/null, green after
+  0.067 seconds and found afterwards; under a step past the timeout, found
+  afterwards. A step that leaves `sleep 7408` and a later step of the job
+  that looks for it: found by that step, and found after the program had
+  returned; a step of a second job: found there too. The program sent SIGTERM
+  while its second step runs: exit 143, the sleep of that step gone, the one
+  the first step had left and one started after a fork, setsid and a second
+  fork found afterwards. With a ps first on PATH that ends with 1 nothing
+  changed, the program listing no process where it returns. The number of the
+  shell of a step that has ended was read by nothing, so that the situation
+  of that number given to another process comes with a build that looks at
+  the end. And beside the order's situations: the function that ends a step
+  kept the numbers it had found from one listing to the next, lines 561 to
+  588, a block of this day.
+
+  **Built, in `scripts/devloop-run-workflow`**, on macOS, Linux and Alpine;
+  the branch for Windows, `if os.name != "posix":`, stands line for line.
+  Every step runs under a holder: a process forked off the program, the
+  function hold, that leads a session of its own, starts the step's shell as
+  its child, waits for it, lets go of the step's output and writes the
+  shell's exit code to a pipe of its own, or E with the error where the shell
+  cannot be started; then it stands, reading a second pipe, until the program
+  closes that or is gone. The program reads the step's output and that pipe
+  with select, the function run_bounded: once the exit code is in, the step's
+  own process has ended, and the output is read for five seconds more at
+  most, `OUTPUT_SECONDS`, the five of GitHub's runner; the step counts with
+  its own exit code, and where the output was still held then a line under it
+  says so, "-- a process the step left behind still held its output 5 seconds
+  after the step's own end, and the step counts with its exit code all the
+  same, as GitHub counts it". The five seconds are not held against the
+  job's timeout-minutes, the step having ended in time. The program closes
+  its end of the output then, so that a process left behind that writes
+  there later is sent SIGPIPE. What a step left behind is ended at the end of
+  its job, the function end_left: when the next job begins, when the last
+  step is done and, without a line, where the program is ended by a signal,
+  the program ends for every step of the job what the holder's session, its
+  process group or a parent ties to the step, with the function that ends a
+  step at the timeout, and prints for every step that had left something "==
+  JOB / STEP: N processes it had left behind ended at the job's end, as
+  GitHub ends them there"; where ps does not answer or something still
+  stands after five seconds, "== JOB / STEP: at the job's end" with the
+  sentence. At the job's end and not when the program returns: a later step
+  of the job finds the process, as on GitHub, where it lives until the job's
+  end, and the next job does not, as on GitHub, where every job has a runner
+  of its own; ended at the job's end, it is ended when the program returns,
+  and the should of the block stands as written. The holder is there for its
+  number: the program does not wait for it until what the step left is
+  ended, and a number is given to no other process while a process that
+  carries it stands or has ended and is not waited for, or while a session
+  or a process group carries it, `bsd/kern/kern_fork.c` lines 957 to 974 of
+  xnu-12377.121.6, the loop that looks for a free number with the comment "if
+  the pid stays in hash both for zombie and runniing state", and
+  `kernel/pid.c` lines 393 to 413 with `kernel/exit.c` lines 134 to 147 of
+  Linux at v7.0.14. So the program looks at the job's end by a number that
+  is the step's still, the holder's, which is the session's and the group's,
+  and the number of the step's shell is read by nothing. The function that
+  ends a step, end_family, stops before it ends: SIGSTOP to the holder's
+  process group and, listing after listing, to every process that has not
+  ended and whose parent, session or process group is a process already
+  known as the step's, until a listing shows none that was not known, then
+  SIGKILL to all of them; a stopped process neither ends nor starts another,
+  so that its number stays its own until then; after the SIGKILL the
+  function signals only what a listing shows in the holder's session or
+  process group. Ended by SIGINT, SIGTERM or SIGHUP the program ends the
+  step that runs and what the steps before it left behind, and ignores the
+  three from the first on. A step that ends its holder before its own shell
+  has ended, `kill -9 $PPID`, is red with a line that says so, and is ended
+  with everything it started. One fork more for every step, and one listing
+  of ps at the job's end for every step that left nothing; no waiting but the
+  five seconds a process left behind takes by holding the output. The head
+  says all of it in its paragraph "The end of a step", rewritten, with the
+  measurement on the environment, until when a step that ends in time was
+  not touched, what the program needs ps for, and the new cases of the
+  self-test.
+
+  Its self-test, 45 cases on macOS, Linux and Alpine where it had 37, the
+  eight more left out under Windows with two lines: the program ended by
+  SIGTERM in the second step of a workflow whose first step has left a sleep
+  behind, that one gone as well; a job of four steps under a timeout of 0.05
+  minutes, a step that leaves a sleep holding nothing and counts at once, the
+  step after it finding that sleep, a step that ends with 3 and leaves a
+  sleep behind a second in which its output is held, counted with 3 and
+  nothing said of its output, a step that ends with 0 and leaves a sleep in a
+  process group of its own holding its output, counted with 0 after the five
+  seconds with its line and not stopped at the timeout, a line at the job's
+  end for each of the three and a second job that finds none of them; ps not
+  answering at the job's end, the line, the sleep of the holder's process
+  group gone and one in a group of its own left running, the unwanted side;
+  a shell that cannot be started; and a step that ends its holder. The sweep
+  at the self-test's end ends fourteen sleeps where it ended six.
+
+  **Built, in `bin/devloop-bounded`**, its self-test and its head; the
+  program itself does not change. Under Linux the self-test asks the look
+  before the case of a command that ends on the SIGTERM with all it started:
+  it runs the function stands over a sleep 7377 in a process group of its
+  own and takes what that leaves in hid, the variable in which stands keeps
+  what the table of mounts said. Where it is not n, the look is kill with
+  the signal 0 alone: with hidepid on the proc mounted on `/proc`, no such
+  mount in the table or a table that cannot be read, hid y, or with a `/proc`
+  that does not name the shell by its number, hid empty. The case is held
+  there to 3000 milliseconds, the bound of one second and the two seconds the
+  head allows after it, and one of two lines says so and why, "held to 3000
+  milliseconds and not to 1900 here: …"; elsewhere to 1900 as before. The
+  table is read by the look's own function and by no second reading of it.
+  Nothing of this runs on macOS or under Windows with Git Bash, where
+  `OSTYPE` does not open with linux. The should of the block names hidepid;
+  the build holds the case the same way where the look is kill alone for the
+  other reason, since the should asks for what the head says of the look,
+  and the head says the same wait of both. Where `/proc` is not there at all
+  the self-test does not reach the case: its probe is a process substitution
+  of bash, which stands on `/dev/fd` and so on `/proc/self/fd` under Linux,
+  and the first case is red; the head named what the self-test needs and not
+  that, a block of this day closed as corrected, the head saying it now. The
+  head's paragraph on the case says where the 1900 hold and until when the
+  case was red there.
+
+  **Built, in `bin/devloop-auto-mode-question`**, one paragraph of its head,
+  "How a gh that does not answer is ended": a call of gh runs under the bound
+  with its sixty seconds, or with what is left of the ninety-five seconds of
+  the whole call where that is less, the bound is back at most two seconds
+  after those seconds, and its exit 124 with its line is read as no answer
+  within the seconds the call had; and until when the paragraph gave every
+  call the 60 seconds. The head searched whole, lines 1 to 212 at `2107e12`,
+  with `/usr/bin/grep -n -i -E` for `60|sixty|second|ninety|95|124|minute|
+  limit|no answer|bound`, every hit read: lines 81 to 82, 84 to 104, 128 to
+  136 and 191 to 211 say what the code does, the sixty seconds of line 129
+  being those of before 14 November 2026, and lines 107 to 114 alone did
+  not. Beside it `bin/devloop-install-issues` lines 100 to 101 and 113 to
+  116, "read here as no answer within the seconds of that limit" and "a
+  command has its own limit, or what is left of the call's ninety-five
+  seconds where that is less": the two heads say the same now.
+
+  **What the build does not reach.** The process that left the step's
+  session and its parent, at the timeout and at the job's end: measured
+  after the build, such a sleep found after the program had returned in
+  every situation that starts one; its block stays with Fix none. Where the
+  sleep holds the step's output the step now counts after five seconds with
+  its own exit code, where the program did not come back before. Windows:
+  nothing built, the block of 11 November 2026 as it stood and a block of
+  this day for what the block on a step that ends in time asks there. Where
+  ps does not answer at the job's end the holder's process group alone is
+  ended and a line says that what else the step left was not looked for; a
+  process in a group of its own stays, as at the timeout since 11 November
+  2026, an outcome that is said and no block; the exit code stays that of the
+  steps, GitHub's runner counting no job red for a clean-up that failed,
+  `src/Runner.Worker/JobExtension.cs` lines 927 to 935 at v2.338.2. A process
+  left behind that writes to the step's output after the program has closed
+  its end is sent SIGPIPE; what the runner's end of that pipe does after the
+  step is read as far as `_proc.Dispose()`, `ProcessInvoker.cs` lines 386 to
+  393, and no further. And where `/proc` is not there the self-test of
+  `bin/devloop-bounded` is red at its first case, as said.
+
+  **Read in the sources.** actions/runner at v2.338.2, the tag the program's
+  head names, every place the head and the blocks name:
+  `src/Runner.Sdk/ProcessInvoker.cs` lines 32 to 33, the 7500 and 2500
+  milliseconds of SIGINT and SIGTERM, 377, `return _proc.ExitCode;`, 443 to
+  465, 485 to 505 with the delay of five seconds at line 494 and
+  `KillProcessTree()` at line 495, 523 to 527, 667 to 774, the walk under
+  Windows over the parent numbers, and 855 to 869 with `_proc?.HasExited ==
+  false` at line 859; `src/Runner.Worker/JobExtension.cs` lines 588 to 603
+  and 891 to 939. The block on a step that ends in time read them at
+  `8cfa104`, main on 11 November 2026: each stands at the same lines at the
+  tag. CPython at v3.14.7, `Lib/subprocess.py`: lines 555 to 571, `run`
+  ending the one process at the timeout and, under Windows, reading its
+  output to the end after that, line 566, and lines 1701 to 1716, `terminate`
+  with `_winapi.TerminateProcess(self._handle, 1)` at line 1707, as the
+  block on Windows names them.
+
+  **The blocks.** Five of the order and three this branch adds, all under
+  "## Milestone 12". The block on a step that ends in time carries as its
+  Fix the line that gives the output its five seconds, `until =
+  time.monotonic() + OUTPUT_SECONDS`, and reads Built, never walked, which
+  the tool computes, until the runs at the third commit. The block on the
+  self-test under hidepid carries the line that sets the 3000 milliseconds,
+  `[ "$hid" = n ] || { most=3000;`, and reads the same until its run. The
+  block on the paragraph of the head of `bin/devloop-auto-mode-question` is
+  closed as corrected in the document, its proof the line "seconds with exit
+  124 and its line, which this program reads as no answer", its Fix none as
+  the blocks closed so carry it. The block on the process that left the
+  step's session stays with Fix none, Recorded, not built: its Wrong says
+  that such a process runs on at the job's end as well, and its note that
+  the sentence on who decides stood before the decision of 12 November 2026,
+  what was measured, and that two ways are put to the person. The block on
+  Windows stays with Fix none: its note says that it is put to the person as
+  a question of its own; and its Wrong said that the self-test runs the
+  program seven times through `subprocess.run`, which are ten since this
+  day, six of them under Windows, a finding in a field of a block that this
+  branch mends. The block of 11 November 2026 on what a step had started
+  named as its Fix `left = end_family(p.pid)`, a line the build rewrote: it
+  names `left = end_family(pid)` now, its runs of that day count no more, and
+  it reads Built, never walked until the runs at the third commit walk it
+  again, its note saying so. Added: "scripts/devloop-run-workflow kept the
+  numbers of a step's processes from one listing to the next while it ended
+  them, so that a number given to another process in between would have been
+  sent SIGKILL", built with this order, its Fix the line that stops the
+  holder's process group, Built, never walked, no run having brought the
+  case about, which is put to the person; "the head of bin/devloop-bounded
+  names what the self-test needs and not a /proc under Linux, without which
+  the self-test is red at its first case", closed as corrected in the
+  document, its proof the line "Under Linux it needs a /proc as well, which
+  this header says since 16"; and "under Windows
+  scripts/devloop-run-workflow counts a step that ended in time only once
+  its output has closed and ends nothing a step left behind", Fix none,
+  Recorded, not built, the should that of the block on such a step, said of
+  Windows. No should of a block that stood at the branch point changes, no
+  block is removed or renamed, and no line of the fixed forms stands here.
+
+  **The table.** Eight things for what is new, seven of
+  `scripts/devloop-run-workflow`: a step that ends in time counted with its
+  own exit code, on the line that gives the output its five seconds; a
+  process left behind that still holds the output five seconds on, said under
+  the output; what the steps of a job left behind ended at the job's end; ps
+  not answering there; processes still standing there after five seconds of
+  SIGKILL; a step that ends its holder; and, where the program is ended by a
+  signal, what the steps before had left behind ended as well; and one of
+  `bin/devloop-bounded`, the self-test under Linux where the look is kill
+  alone, the case held to 3000 milliseconds with its line. No name of them
+  names a green and a red end at once. Four anchors follow a line the build
+  rewrote: the thing on a step past the job's timeout stands on `left =
+  end_family(pid)`, its evidence the line that ties a process to the step,
+  and two records that are part of a thing follow their lines, the list of
+  what still stands and the line of the self-test of `bin/devloop-bounded`
+  that holds the case to its milliseconds. Thirty-two lines that entered the
+  search set are recorded as part of their things: the lines of the holder
+  and of the reading with the step that ends in time, those of the function
+  that ends a step with the step past the timeout, those of the job's end
+  with what a step left behind, the line that reads a signal's handler with
+  the program ended by a signal, and thirteen of the self-test with its green
+  end; among them `except subprocess.TimeoutExpired as e:` and `except
+  subprocess.TimeoutExpired:`, which stood twice each until this day and
+  could carry no anchor. The notes of the things the build changed say what
+  holds now: the green end of the program's self-test 45 cases, the step
+  past the timeout the holder and the stop before the end, the things on ps
+  and on a signal that the job's end and what steps left behind are things
+  of their own, the thing on Windows what a step that ends in time does
+  there, and the green end of the self-test of `bin/devloop-bounded` where
+  the case is held to 3000.
+
+  **The documents against the build**, searched with `/usr/bin/grep -n -E`
+  for `devloop-run-workflow|leaves a process|not touched|left behind|session
+  of its own|hidepid|1900|process group|timeout-minutes|stopped at` over
+  `docs/plan.md`, `docs/skill-conventions.md`, `docs/rationale.md` and
+  `README.md`, and with `/usr/bin/grep -rn -l -E` for
+  `devloop-run-workflow|hidepid` over `skills`, `shared`, `output-styles`,
+  `hooks` and `.github`, every hit read. No loaded text, no hook and no
+  skill names either program; the workflow file names the self-test of
+  `scripts/devloop-run-workflow` and says nothing the build ends.
+  `docs/skill-conventions.md` says of the sixteenth check what the program
+  does at its end, green or red and the last line, which holds; the lines
+  the program prints at a job's end stand in the program's head. In
+  `docs/plan.md` the paragraph on the second piece of milestone 12 said in
+  three places what this order ends: that what the order on the look under
+  hidepid found "stands in a block of this milestone with Fix none", that
+  of the second order before (2) "the three open blocks of
+  `scripts/devloop-run-workflow` are not built yet" and its red end not
+  brought about, and that of the orders before (2) those three, the block on
+  the self-test under hidepid and the paragraph of the head were not built
+  yet; it says now what stands since this day and what is not built, and
+  ends, in the form of its sentences, on what it said until this day. The
+  dated entries of this file stand as written; what they say of the program
+  held until this day: "A step that ends in time and leaves a process behind
+  is not touched, now as before", in the entry of 11 November 2026 on the
+  bound and SIGKILL and in the entry of 12 November 2026 on the three
+  entries held, holds no more since this day on macOS, Linux and Alpine.
+
+  **The tool.** Before, at `2107e12`: exit 0, no broken record, 0 of 4670
+  lines of the search set uncovered; Undetermined 24, Recorded, not built
+  260, Built, never walked 1507, Walked 753, Closed 72; milestone 12 115
+  blocks, Recorded, not built 43, Built, never walked 46, Walked 20, Closed
+  6; its self-test 159 cases. After the second commit: exit 0, no broken
+  record, 0 of 4708 lines uncovered, the search set 38 lines longer by the
+  lines of the build; Undetermined 24; Recorded, not built 258, the two
+  blocks built and the one closed fewer and the block on Windows written
+  here more; Built, never walked 1524, seventeen more: the eight new things,
+  the two blocks built, the block on the numbers kept between two listings,
+  and six that were Walked and stand on a line of this build until the runs,
+  five things, the green end of the self-test of `bin/devloop-bounded`, the
+  step stopped at the job's timeout, the step past the timeout ended with
+  what is tied to it, the process that still holds the step's output after
+  the timeout and the program ended by a signal, and the block of 11
+  November 2026 on what a step had started; Walked 747, those six fewer;
+  Closed 74, the block on the paragraph of the head and the block on what
+  the self-test of `bin/devloop-bounded` needs; milestone 12 118 blocks,
+  Recorded, not built 41, Built, never walked 50, Walked 19, Closed 8;
+  blocks held against the branch point: removed 0, renamed 0, Should changed
+  0, added 3, no line of the fixed forms; nothing Walked on the branch
+  without a run the branch adds.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
