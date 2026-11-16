@@ -1192,7 +1192,7 @@ brought about once on purpose. That order was parted because its reading
 list did not fit one session. What stood over of it, the three open blocks
 of `scripts/devloop-run-workflow`, the process that leaves the step's
 session, Windows, and the step that ends in time and leaves a process
-behind, and the red end of that program's self-test, is the order of 16
+behind, and the red end of that program's self-test, is the order of 15
 November 2026, below. What the first part found and did not build, and what its merge
 found, three blocks of this milestone, is built since 15 November 2026 by an
 order of its own, the roadmap entry of that date on a limit over the whole

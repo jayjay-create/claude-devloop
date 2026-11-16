@@ -7885,10 +7885,10 @@ and for the proofs of closings.
   `bin/devloop-bounded` and `bin/devloop-auto-mode-question` change; nothing
   under `skills/`, `shared/`, `hooks/` or `output-styles/` changes, and
   `.github/workflows/stock-take.yml` and `README.md` do not. On
-  `task/run-workflow-leftovers`, off `origin/main` at `2107e12`, in three
+  `task/run-workflow-leftovers`, off `origin/main` at `2107e12`, in four
   commits: the code of the three programs with the version, raised once,
-  `d32b780`; this entry, the blocks, the plan and the table; and the runs,
-  measured at the second. The order, of 15 November 2026: the rest of the
+  `d32b780`; this entry, the blocks, the plan and the table; the runs,
+  measured at the second; and the corrections of the merge. The order, of 15 November 2026: the rest of the
   second of the two orders before (2) under milestone 12, the decision of 12
   November 2026 in `docs/plan.md`. Its subject, five blocks under "##
   Milestone 12" of `docs/defects.md`: the process that left the step's
@@ -8057,7 +8057,8 @@ and for the proofs of closings.
   ended and whose parent, session or process group is a process already
   known as the step's, until a listing shows none that was not known, then
   SIGKILL to all of them; a stopped process neither ends nor starts another,
-  so that its number stays its own until then; after the SIGKILL the
+  so that its number stays its own until then, unless the kernel lets it go
+  on, the corrections of the merge below; after the SIGKILL the
   function signals only what a listing shows in the holder's session or
   process group. Ended by SIGINT, SIGTERM or SIGHUP the program ends the
   step that runs and what the steps before it left behind, and ignores the
@@ -8288,7 +8289,7 @@ and for the proofs of closings.
   0, added 3, no line of the fixed forms; nothing Walked on the branch
   without a run the branch adds.
 
-  **The runs at the last commit**, the third, which changes no code: every
+  **The runs at the third commit**, which changes no code: every
   run below ran the code of the first commit, `d32b780`, under 0.188.0, at
   the second commit, `e61ddb3`, the tree clean, on 16 November 2026, the
   times in UTC, in the session that opened on 15 November 2026, the date the
@@ -8467,6 +8468,42 @@ and for the proofs of closings.
   out again between two listings or the block takes the form for a case
   that cannot be forced; and whether the self-test of `bin/devloop-bounded`
   is to run without a `/proc`.
+
+  **The corrections of the merge**, of 16 November 2026, the fourth commit,
+  which changes two places of `scripts/devloop-run-workflow` that no thing
+  stands on and no run counts by: the line of `EXCLUDED`, whose space before
+  the bracket the first commit had dropped, given back; and the sentence of
+  the head and of the docstring of `end_family` that a stopped process keeps
+  its number until the SIGKILL, which holds unless the kernel lets the process
+  go on: where an exit leaves a process group orphaned that holds a stopped
+  process, the kernel sends that group SIGHUP and SIGCONT, `kernel/exit.c`
+  lines 398 to 422 of Linux at v7.0.14, the signals at lines 419 and 420, and
+  `bsd/kern/kern_proc.c` lines 3320 to 3382 of xnu-12377.121.6, the signals at
+  lines 3375 and 3376, read at the merge and not measured. A process of the
+  step that is not stopped yet and ends in the meantime brings that about
+  where it was the last tie of such a group to its session; the build does not
+  reach that case, and the note of the block on the numbers kept between two
+  listings says so, as does this entry above. In `docs/plan.md` the paragraph
+  on the second piece of milestone 12 named the order of 15 November 2026 the
+  order of 16 November 2026. In this entry the number of commits and the head
+  of the runs, the third commit being the last no more. Decided at the merge,
+  the points of the report with one way that holds: the three blocks this
+  branch adds stay under milestone 12 beside the blocks on the same two
+  programs, as the decision of 13 November 2026 kept the block on the head of
+  `bin/devloop-bounded` there and the merge of 15 November 2026 the block on
+  the head of `bin/devloop-auto-mode-question`; the head of
+  `bin/devloop-bounded` keeps its sentence that the self-test needs a `/proc`
+  under Linux, and no probe without one is built, since no should asks for a
+  self-test without `/proc`; and the holder stays, the way by which the number
+  the program looks by at the job's end is the step's still, where the other
+  way loses what a step left once every process that tied it to the step has
+  ended. No run of the job under Windows is added: no thing or block this
+  branch walks is one that Windows alone reaches, the self-test of
+  `bin/devloop-bounded` there, green in run 43833504485 of the checks of pull
+  request #248, standing on a thing walked on the Mac and in the container.
+  Put to the person after the merge: Windows, the process that left the step's
+  session, and the block on the numbers. After them the tool shows every
+  figure as after the third commit.
 
 ## Decisions taken against
 

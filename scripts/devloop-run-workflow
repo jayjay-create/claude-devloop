@@ -161,6 +161,13 @@ at the timeout it then reads the step's output to its end. A stopped process
 neither ends nor starts another, so that its number stays its own until the
 SIGKILL, and a process one level down in a session of its own, which hangs
 on the step by its parent alone, still has that parent at the next listing.
+That holds unless the kernel lets a stopped process go on: where an exit
+leaves a process group orphaned that holds a stopped process, the kernel
+sends that group SIGHUP and SIGCONT, kernel/exit.c lines 398 to 422 of
+Linux at v7.0.14 and bsd/kern/kern_proc.c lines 3320 to 3382 of
+xnu-12377.121.6, read on 16 November 2026 and not measured, so that a
+process of the step that ends before it is stopped can set others going
+again before the SIGKILL, the block on the numbers below.
 From 11 November 2026 until that day SIGKILL went out listing after listing
 and the numbers found were kept from one listing to the next: a number whose
 process had ended and been waited for between two listings and had been
@@ -293,7 +300,7 @@ import time
 
 # the seconds a step that has ended is given for output that a process it left still holds, the five of GitHub's runner
 OUTPUT_SECONDS = 5
-EXCLUDED =("what the checkout holds", "what the container needs, under Alpine alone")
+EXCLUDED = ("what the checkout holds", "what the container needs, under Alpine alone")
 DEFAULT_WORKFLOW = ".github/workflows/stock-take.yml"
 # the commands of the docs, {0} the file; "none" the row for a step without a shell on Linux and macOS
 SHELLS = {
@@ -667,7 +674,9 @@ def end_family(root, found=None):
     SIGKILL. A stopped process neither ends nor starts another, so that
     its number stays its own until the SIGKILL, and a process started one
     level down in a session of its own, which hangs on the step by its
-    parent alone, still has that parent when the next listing is taken.
+    parent alone, still has that parent when the next listing is taken,
+    unless the kernel lets it go on, as it does with SIGHUP and SIGCONT
+    for a process group that an exit leaves orphaned, the head.
     What appears after the SIGKILL in the session or the process group of
     root, whose number no other process has while root is not waited for,
     is sent SIGKILL as it is found, and the function looks until a listing
