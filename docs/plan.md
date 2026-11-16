@@ -1223,14 +1223,16 @@ self-test of `scripts/devloop-run-workflow` is brought about once on
 purpose. Of the orders before (2) this is not built: the process that left
 the step's session and its parent, since the mark in its environment that
 would tie it to the step is not to be read on macOS for a program of the
-system, measured on 15 November 2026, its block with Fix none and two ways
-put to the person; Windows, the block of 11 November 2026 and one of 16
-November 2026 on a step that ends in time there, both with Fix none and put
-to the person as one question; and the block on the limit of the runtime's
+system, measured on 15 November 2026, its block closed as left on purpose
+by the person's decision of 16 November 2026 below; Windows, the block of
+11 November 2026 and one of 16 November 2026 on a step that ends in time
+there, both closed as left on purpose by the decision of that day below; and
+the block on the limit of the runtime's
 walk under Windows with Git Bash stands with Fix none. What that order found
 beside its blocks: the numbers `scripts/devloop-run-workflow` kept from one
 listing to the next while it ended a step, built with it and never walked,
-and a sentence of the head of `bin/devloop-bounded` on what its self-test
+its case one that cannot be forced by the decision of that day below, and a
+sentence of the head of `bin/devloop-bounded` on what its self-test
 needs, corrected. Of (2) to (7) nothing is built yet, `shell:
 bash` in every skill and the guard for PowerShell among them. Until 16
 November 2026 this paragraph said that the three open blocks of
@@ -1244,6 +1246,48 @@ its merge found stand in three blocks of this milestone with Fix none; until
 14 November 2026, that of the rest nothing was built, the second order
 before (2) among it; until 13 November 2026, that nothing of the orders
 before (2) was built.
+
+Decided on 16 November 2026 by the person, the roadmap entry of that date on
+three blocks of `scripts/devloop-run-workflow` decided: the program is
+left on purpose under Windows with both its blocks, the block of 11 November
+2026 on a step past the job's timeout and the block of 16 November 2026 on a
+step that ends in time, and runs there as it runs. Reason: no skill, hook,
+program under `bin/` or `README.md` starts the program; it is the sixteenth
+check before a handover and runs under Windows by hand alone, over a step
+with shell bash, and the job hooks on every system leaves its self-test out
+there; a build would take a job object of Windows over ctypes that the job
+or the virtual machine of the closing runs alone could measure, for a case
+that has not occurred. Not chosen: a job object of Windows that holds the
+step's shell and everything it starts and is ended at the timeout and at the
+job's end.
+
+Decided on 16 November 2026 by the person, the same entry: a process that
+detaches from its step is left on purpose by `scripts/devloop-run-workflow`,
+a process that left the step's session and its parent by a fork, a session
+of its own and a second fork, at the job's timeout and at the job's end, as
+the program's head says and as `bin/devloop-bounded` leaves a daemon beyond
+the bound. Reason: on macOS the kernel gives another process of the same
+user the environment of no program of the system while System Integrity
+Protection is on, measured on 15 November 2026 on the person's Mac, so that
+a mark in the step's environment would miss, on the Mac where the check
+runs, the plainest case, a sleep or a bash of the system; no step of the
+workflow detaches anything. Not chosen: a mark in every step's environment,
+read off /proc under Linux and Alpine and by sysctl on macOS, with what
+macOS keeps back said as a limit.
+
+Decided on 16 November 2026 by the person, the same entry: the case of the
+block on the numbers `scripts/devloop-run-workflow` kept from one listing to
+the next, a number given out again between two listings, is one that
+cannot be forced and does not hold milestone 12 up, and the block carries the
+form for a built defect whose case cannot be forced. Reason: a number comes
+back on macOS only once the counter has run through 99999 numbers,
+`bsd/sys/proc_internal.h` line 767 of xnu-12377.121.6, and under Linux
+through 32768 at least by default, `include/linux/threads.h` line 28 at
+v7.0.14, so that no run of the milestone meets the case between two listings
+0.05 seconds apart; a forced run would take a small limit of numbers in a
+namespace of its own under Linux and cannot be made on macOS. Not chosen:
+such a run, with a listing before the last SIGKILL so that it goes only to
+what is still stopped and tied to the step.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
