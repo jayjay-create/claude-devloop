@@ -267,6 +267,12 @@
 # one line per case and exits 1 on the first that does not come out as this
 # header says. It needs bash, sh, sleep, cat, uname and git, and no GNU tool
 # and no pgrep: it runs on macOS, Linux, Alpine and Windows with Git Bash.
+# Under Linux it needs a /proc as well, which this header says since 16
+# November 2026: the pipe of the next sentence is a process substitution of
+# bash, which stands on /dev/fd and so on /proc/self/fd there, and with /proc
+# covered by an empty file system the first case is red, "/dev/fd/63: No
+# such file or directory", measured on 15 November 2026 in a container of
+# alpine:3.22.
 # That nothing of the bound runs on it reads off a pipe: every run gets the
 # write end of one on file descriptor 3, which everything the bound starts
 # inherits, and the case is red where the read end is not released within
@@ -291,18 +297,31 @@
 # sleep has lost its parent once the shell has ended; the case asks for the
 # line, for 124, for the pipe released and for the whole call back within
 # 1900 milliseconds by the same time of bash, the bound of one second and
-# nine tenths. It is red where the watchdog waits out its second for a
-# process that has ended: such a call is not back before 2000, and a copy of
+# nine tenths. Held to that, it is red where the watchdog waits out its second
+# for a process that has ended: such a call is not back before 2000, and a copy of
 # this program with the look of before failed the case with 2056 in a
 # container of alpine:3.22 kept by tail -f /dev/null, as the job hooks on
 # every system (alpine) runs the self-test, and passed it in one started with
-# docker run --init. Where /proc is mounted with hidepid in a container whose
-# process 1 does not reap, the case is red as well, the watchdog waiting out
-# its second there since 0.185.0 as decided, the paragraph on the look above:
-# 2080 milliseconds measured on 13 November 2026 in such a container of
-# alpine:3.22, the case green there without hidepid and in one started with
-# --init under it; the block of milestone 12 on it holds that, and nothing is
-# built for it. Why 1900: under Windows with Git Bash, where a process
+# docker run --init. Under Linux the case is held to 1900 only where the look
+# reads /proc, since 16 November 2026: where the look is kill with 0 alone
+# there, with /proc mounted with hidepid, with no proc on /proc in the table
+# of mounts or a table that cannot be read, or with a /proc that does not
+# name the shell by its number, the watchdog waits out its second for a
+# process that has ended and that nobody reaps, as the paragraphs on the look
+# above say and as decided for hidepid, and the case is held there to 3000
+# milliseconds, the bound of one second and the two seconds this header
+# allows after it, with a line that says so and why. The self-test does not
+# read the table itself: it asks the function stands, over a sleep 7377 in a
+# process group of its own, and takes what that leaves in hid, n where the
+# look reads /proc. Until that day the case was held to 1900 on every system
+# and was red where the look is kill alone and nobody reaps: 2080
+# milliseconds measured on 13 November 2026 in a container of alpine:3.22
+# kept by tail -f /dev/null with /proc mounted with hidepid=invisible, 2065
+# to 2079 on 15 November 2026 there under each of the three values, for root
+# as well, and 2021 in a namespace of process numbers whose process 1 does
+# not reap and whose /proc is the container's, the case green there without
+# hidepid and in a container started with --init under it. Why 1900: under
+# Windows with Git Bash, where a process
 # start costs most, the cases in which the bound fires on a command that
 # takes SIGTERM stood 1.16 and 1.29 seconds after the line before them in run
 # 43017830242, the end of the case before and the case's own checks lying in
@@ -495,9 +514,18 @@ selftest() {
   within "does not end: back at the bound" 3
   released "does not end: what the command started is ended too"
   # does not end, and what it started ends on the SIGTERM with it, a sleep that has lost its parent by then: the whole call back within 1900 milliseconds, the bound of one second and nine tenths, short of the second the watchdog allows what ignores the signal; red where the watchdog waits that second out for a process that has ended and that nobody reaps, as in a container whose process 1 does not
+  # under Linux that holds where the look reads /proc and nowhere else, so that the self-test asks the look first, the function stands over a sleep in a process group of its own, which leaves in hid what the table of mounts said, n where the look reads /proc, and leaves it empty where /proc does not name this shell by its number; where the look is kill with the signal 0 alone the watchdog waits that second out as the header says, and the case is held to the two seconds the header allows after the bound, with a line that says so
+  local alive= hid= g= most=1900 why="the bound of one second and nine tenths: the watchdog waited for a process that had ended"
+  case ${OSTYPE:-} in linux*)
+    { set -o monitor; sleep 7377 & g=$!; set +o monitor; } 2>/dev/null
+    stands "$g"; kill -KILL -- "-$g" "$g" 2>/dev/null; wait "$g" 2>/dev/null
+    [ "$hid" = n ] || { most=3000; why="the bound of one second and the two seconds the header allows after it"; }
+    [ "$hid" != y ] || echo "held to 3000 milliseconds and not to 1900 here: does not end, all of it ended on the SIGTERM, since the table of mounts shows /proc mounted with hidepid, shows no proc on /proc or cannot be read, so that the look of this program is kill with the signal 0 alone and the watchdog waits out its second for a process that has ended where nobody reaps it, as the header says of the look under hidepid"
+    [ -n "$hid" ] || echo "held to 3000 milliseconds and not to 1900 here: does not end, all of it ended on the SIGTERM, since /proc does not name this shell by the number bash knows it by, so that the look of this program is kill with the signal 0 alone and the watchdog waits out its second for a process that has ended where nobody reaps it, as the header says of the look without such a /proc" ;;
+  esac
   timed 1 sh -c 'sleep 7373 & sleep 7375'
   expect "does not end, all of it ended on the SIGTERM: the line, exit 124" 124 "no answer within 1 seconds: sh -c sleep 7373 & sleep 7375"
-  [ "$ms" -le 1900 ] || fail "does not end, all of it ended on the SIGTERM: back after $ms milliseconds, expected at most 1900, the bound of one second and nine tenths: the watchdog waited for a process that had ended"
+  [ "$ms" -le "$most" ] || fail "does not end, all of it ended on the SIGTERM: back after $ms milliseconds, expected at most $most, $why"
   released "does not end, all of it ended on the SIGTERM: nothing of it runs on"
   # does not end and ignores SIGTERM, a shell and the two sleeps it starts: ended by SIGKILL a second after the bound, the line, 124, the whole call back within 3000 milliseconds, the bound of one second and the two seconds the header allows after it
   timed 1 sh -c 'trap "" TERM; sleep 7353 & sleep 7355'
