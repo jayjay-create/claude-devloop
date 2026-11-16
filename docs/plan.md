@@ -1233,7 +1233,13 @@ beside its blocks: the numbers `scripts/devloop-run-workflow` kept from one
 listing to the next while it ended a step, built with it and never walked,
 its case one that cannot be forced by the decision of that day below, and a
 sentence of the head of `bin/devloop-bounded` on what its self-test
-needs, corrected. Of (2) to (7) nothing is built yet, `shell:
+needs, corrected. And one block of this milestone the consistency audit of
+16 November 2026 wrote, the roadmap entry of that date on the two entries
+held: a sentence of the head of `scripts/devloop-run-workflow` names one
+block of this milestone on Windows where two hold what it says, the block of
+11 November 2026 and the block of 16 November 2026; Fix none, no order names
+it, and which order builds it is put to the person by the report of that
+audit. Of (2) to (7) nothing is built yet, `shell:
 bash` in every skill and the guard for PowerShell among them. Until 16
 November 2026 this paragraph said that the three open blocks of
 `scripts/devloop-run-workflow` with the red end of that program's self-test,
@@ -1248,7 +1254,7 @@ before (2) among it; until 13 November 2026, that nothing of the orders
 before (2) was built.
 
 Decided on 16 November 2026 by the person, the roadmap entry of that date on
-three blocks of `scripts/devloop-run-workflow` decided: the program is
+four blocks of `scripts/devloop-run-workflow` decided: the program is
 left on purpose under Windows with both its blocks, the block of 11 November
 2026 on a step past the job's timeout and the block of 16 November 2026 on a
 step that ends in time, and runs there as it runs. Reason: no skill, hook,
