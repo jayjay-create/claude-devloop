@@ -1233,7 +1233,13 @@ beside its blocks: the numbers `scripts/devloop-run-workflow` kept from one
 listing to the next while it ended a step, built with it and never walked,
 its case one that cannot be forced by the decision of that day below, and a
 sentence of the head of `bin/devloop-bounded` on what its self-test
-needs, corrected. Of (2) to (7) nothing is built yet, `shell:
+needs, corrected. And one block of this milestone the consistency audit of
+16 November 2026 wrote, the roadmap entry of that date on the two entries
+held: a sentence of the head of `scripts/devloop-run-workflow` names one
+block of this milestone on Windows where two hold what it says, the block of
+11 November 2026 and the block of 16 November 2026; Fix none, built with
+(2) by the decision at the merge of that audit below. Of (2) to (7) nothing
+is built yet, `shell:
 bash` in every skill and the guard for PowerShell among them. Until 16
 November 2026 this paragraph said that the three open blocks of
 `scripts/devloop-run-workflow` with the red end of that program's self-test,
@@ -1248,7 +1254,7 @@ before (2) among it; until 13 November 2026, that nothing of the orders
 before (2) was built.
 
 Decided on 16 November 2026 by the person, the roadmap entry of that date on
-three blocks of `scripts/devloop-run-workflow` decided: the program is
+four blocks of `scripts/devloop-run-workflow` decided: the program is
 left on purpose under Windows with both its blocks, the block of 11 November
 2026 on a step past the job's timeout and the block of 16 November 2026 on a
 step that ends in time, and runs there as it runs. Reason: no skill, hook,
@@ -1288,6 +1294,27 @@ v7.0.14, so that no run of the milestone meets the case between two listings
 namespace of its own under Linux and cannot be made on macOS. Not chosen:
 such a run, with a listing before the last SIGKILL so that it goes only to
 what is still stopped and tied to the step.
+
+Decided on 16 November 2026 at the merge of the consistency audit of that
+day, the roadmap entry of that date on the two entries held, on three points
+its report put to the person: order (2), the next order of this milestone,
+builds the block that audit wrote on the sentence of the head of
+`scripts/devloop-run-workflow` on Windows, so that a sentence of a head
+rides along with the next order that raises the version; order (7) has the
+virtual machine under Windows measure the case of the block on the limit of
+the runtime's walk under Windows with Git Bash first, and then that block is
+built or put to the person as left on purpose; and order (7) holds first the
+blocks of this milestone that are built and never walked and carry no form
+against the closing runs, names for each the run that meets its case, and
+puts the form for a case that cannot be forced to the person for each that
+no run of the milestone meets. Reason: no order named these three, and the
+milestone is reached only once none of its blocks is open; the cases of the
+runtime's walk are read and not measured under Git Bash, the head of
+`bin/devloop-bounded` line 71, and the skills start the bound,
+`skills/build-work/SKILL.md` among them, so that a measurement decides there
+and not a reading. Not chosen: closing the block on the runtime's walk as
+left on purpose now, unmeasured, and leaving the built blocks to (7)
+unnamed.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
