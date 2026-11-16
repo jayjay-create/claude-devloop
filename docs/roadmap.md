@@ -8566,11 +8566,13 @@ and for the proofs of closings.
   16 November 2026, version 0.188.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` does not. On `task/audit-2026-11-16`, off
-  `origin/main` at `d68cf15`, in one commit: `docs/defects.md`,
-  `docs/plan.md`, `docs/stock-take.tsv` and this entry. The order: the
-  consistency audit before the handover, in the form of the audits of 1, 3, 4,
-  6, 9, 12, 13 and 15 November 2026 — the two entries since the last audit, on
-  a step's own exit and on Windows, a detached process and the kept numbers,
+  `origin/main` at `d68cf15`, in two commits: `docs/defects.md`,
+  `docs/plan.md`, `docs/stock-take.tsv` and this entry; and, after the checks,
+  the decisions of the merge of 16 November 2026, which change no figure of
+  the tool. The order: the consistency audit before the handover, in the form
+  of the audits of 1, 3, 4, 6, 9, 12, 13 and 15 November 2026 — the two
+  entries since the last audit, on a step's own exit and on Windows, a
+  detached process and the kept numbers,
   held statement by statement against the code, the documents, the table, the
   commits of pull requests #248 and #249 and the logs of their checks, the
   paragraphs written at the two merges among them; the heads of the three
@@ -8827,6 +8829,37 @@ and for the proofs of closings.
   of milestone 3's subject run again, lines 1298 to 1303, or the form, block
   by block, where no run of the milestone can meet the case. The report puts
   to the person the two blocks no order names and whether the 42 stand so.
+
+  **Decided at the merge**, of 16 November 2026, the six points the report put
+  to the person, each with one way that holds. The block on the sentence of
+  the head of `scripts/devloop-run-workflow` stays under milestone 12 beside
+  the two blocks on Windows of the same program and is built with (2), the
+  next order of that milestone, which raises the version all the same, as the
+  merge of 15 November 2026 decided for a paragraph of a head, lines 7838 to
+  7840; read as enough, the sentence would point to one block where two stand,
+  and a finding in a program is to have a block. The block on the limit of the
+  runtime's walk under Windows with Git Bash is measured first by the virtual
+  machine under Windows of (7) and then built or put to the person as left on
+  purpose: its cases are read and not measured under Git Bash, the head of
+  `bin/devloop-bounded` line 71, and the skills start the bound,
+  `skills/build-work/SKILL.md` among them, so that closing it now would rest
+  on a reading. The 42 blocks built and never walked without a form are held
+  by (7) against the closing runs first, each named with the run that meets
+  its case or put to the person for the form where none can, since the form is
+  given block by block by the order of a milestone, `docs/plan.md` decision
+  (10) of 5 November 2026, and otherwise no document says who takes them.
+  `docs/plan.md` says the three since this commit, in a dated paragraph after
+  the three decisions of 16 November 2026 and in the sentence on the block
+  written here, and the notes of the block written here and of the block on
+  the runtime's walk name the order that takes each; the 42 notes stay as they
+  are, (7) writing to each block what its run or the form gives it. "four
+  blocks" stays at its five places: the entry of pull request #249 gives four
+  blocks a Status and a note. "the sixteenth check" stays in the eighteen
+  notes of the table: the audit of 12 November 2026 set the same word right in
+  `docs/skill-conventions.md`, as its entry says at lines 5405 to 5410. The
+  eleven figures the report of the build does not carry stand as this entry
+  names them, the outputs of its probes having lain in a throwaway directory
+  of that session.
 
   The tool, before, on `d68cf15`: exit 0, broken records 0, uncovered lines 0
   of 4708; Undetermined 24, Recorded, not built 255, Built, never walked 1508,
