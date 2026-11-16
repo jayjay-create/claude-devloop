@@ -8505,6 +8505,62 @@ and for the proofs of closings.
   session, and the block on the numbers. After them the tool shows every
   figure as after the third commit.
 
+- **Windows, a detached process and the kept numbers decided**
+
+  16 November 2026, version 0.188.0: `docs/plan.md`, `docs/defects.md` and
+  this file change, nothing under the shipped directories, so that the version
+  stays. On `task/run-workflow-decisions`, off `origin/main` at `14f07cd`, in
+  one commit, from a patch written after the merge of the entry above, with
+  the person's three answers, and applied in the person's terminal.
+
+  **Decided on 16 November 2026**, the three questions the report of the order
+  on a step's own exit put to the person, the entry above, each recorded as a
+  dated sentence under milestone 12 in `docs/plan.md`. (1) Windows:
+  `scripts/devloop-run-workflow` is left on purpose under Windows, and the
+  block of 11 November 2026 on a step past the job's timeout and the block of
+  16 November 2026 on a step that ends in time are closed as left on purpose.
+  Reason: no skill, hook, program under `bin/` or `README.md` starts the
+  program, which runs under Windows by hand alone, and a build would take a
+  job object of Windows that the job or the virtual machine of the closing
+  runs alone could measure, for a case that has not occurred. Not chosen: a
+  job object of Windows that holds the step's shell and everything it starts.
+  (2) The process that left the step's session and its parent: left on
+  purpose, its block closed so. Reason: on the Mac, where the check runs, the
+  environment of a program of the system is not to be read by another process
+  while System Integrity Protection is on, measured on 15 November 2026, so
+  that a mark in the step's environment would miss the plainest case there; no
+  step of the workflow detaches anything. Not chosen: a mark in every step's
+  environment, read off /proc under Linux and Alpine and by sysctl on macOS.
+  (3) The block on the numbers kept from one listing to the next: the form for
+  a built defect whose case cannot be forced, so that it does not hold
+  milestone 12 up. Reason: on macOS a number comes back only once the counter
+  has run through 99999 numbers, under Linux through 32768 at least by
+  default, so that no run of the milestone meets the case between two listings
+  0.05 seconds apart. Not chosen: a forced run under Linux with a small limit
+  of numbers in a namespace of its own, with a listing before the last SIGKILL
+  so that it goes only to what is still stopped and tied to the step.
+
+  **What changes.** In `docs/plan.md` the paragraph on the second piece of
+  milestone 12 says that the three blocks are decided, and the three dated
+  sentences stand after it. In `docs/defects.md` the two blocks on Windows and
+  the block on the process that left the step's session read Closed, left on
+  purpose, each decided in `docs/plan.md`, and the block on the numbers reads
+  Built, never walked, cannot be forced; their notes name the decision. The
+  note of the block on the numbers names besides, read and not measured, that
+  the function sends its last SIGKILL to every number it found without a
+  listing before it, `scripts/devloop-run-workflow` line 713 at `14f07cd`, so
+  that the gap the merge of the entry above found, a stopped process the
+  kernel lets go on with SIGHUP and SIGCONT, reaches a number given out again
+  between the last listing and that SIGKILL.
+
+  **The tool** after this commit: exit 0, no broken record, 0 of 4708 lines of
+  the search set uncovered; Undetermined 24, Recorded, not built 255, Built,
+  never walked 1508, Walked 763, Closed 77; milestone 12 118 blocks, Recorded,
+  not built 38, Built, never walked 47, five of them with the form for a case
+  that cannot be forced, Walked 22, Closed 11; blocks held against the branch
+  point: removed 0, renamed 0, Should changed 0, added 0; no milestone reached
+  on this branch.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
