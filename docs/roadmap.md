@@ -8165,7 +8165,11 @@ and for the proofs of closings.
   block on Windows names them.
 
   **The blocks.** Five of the order and three this branch adds, all under
-  "## Milestone 12". The block on a step that ends in time carries as its
+  "## Milestone 12", the three added there with the blocks on the two
+  programs they are found in, as the decision of 13 November 2026 kept the
+  block on the head of `bin/devloop-bounded` there, where the groups of the
+  sorting name the bound under milestone 13 as well, which the report
+  names. The block on a step that ends in time carries as its
   Fix the line that gives the output its five seconds, `until =
   time.monotonic() + OUTPUT_SECONDS`, and reads Built, never walked, which
   the tool computes, until the runs at the third commit. The block on the
@@ -8283,6 +8287,186 @@ and for the proofs of closings.
   blocks held against the branch point: removed 0, renamed 0, Should changed
   0, added 3, no line of the fixed forms; nothing Walked on the branch
   without a run the branch adds.
+
+  **The runs at the last commit**, the third, which changes no code: every
+  run below ran the code of the first commit, `d32b780`, under 0.188.0, at
+  the second commit, `e61ddb3`, the tree clean, on 16 November 2026, the
+  times in UTC, in the session that opened on 15 November 2026, the date the
+  table carries. On the person's Mac: macOS 26.6.2, bash 3.2.57 and Python
+  3.14.7, in a bash started with `--noprofile --norc`. In the container: a
+  privileged container of `alpine:3.22` kept by `tail -f /dev/null` as its
+  process 1, which reaps nothing, the repository mounted read-only, bash
+  5.2.37, busybox 1.37.0 and Python 3.12.16, every run there by a user that
+  is not root where nothing else is said. A measurement is a workflow of one
+  job and one step with shell bash where nothing else is said, the program
+  run over it in a throwaway directory, the seconds taken around the one
+  call, those of the Mac first, and pgrep -f asked for the step's sleeps
+  once the program had returned; what it still found was ended by hand.
+  Run S1, on the Mac at 07:51:58 and in the container at 07:53:37,
+  `bin/devloop-bounded --self-test`: exit 0 on both, 19 lines ok and none
+  red, "SELF-TEST PASSED: 19 cases", in 6.353 seconds on the Mac, the case
+  of a command that ends on the SIGTERM with all it started held to 1900
+  milliseconds on both, no line on 3000.
+  Run S2, on the Mac at 07:52:04 and in the container at 07:53:44, `python3
+  scripts/devloop-run-workflow --self-test`: exit 0 on both, 45 lines ok and
+  none red, "SELF-TEST PASSED: 45 cases", in 11.833 seconds on the Mac, no
+  sleep of it found afterwards.
+  Run R1, on the Mac at 07:53:07, the red end of that self-test, which no
+  run had brought about, on a copy of the program under a throwaway
+  directory with `.github/workflows/stock-take.yml` beside it at its place,
+  `case("two arguments: usage, exit 2", p.returncode == 2` changed to 3
+  there: 44 lines ok, "FAIL two arguments: usage, exit 2: usage:
+  devloop-run-workflow [--list] [WORKFLOW] | --self-test", "SELF-TEST
+  FAILED" and exit 1; at 07:53:19 the repository's program passed beside it
+  with 45 cases.
+  Run H1, in the container from 07:54:36, `/proc` remounted with
+  hidepid=invisible, `bin/devloop-bounded --self-test` by the user that is
+  not root: the line "held to 3000 milliseconds and not to 1900 here: does
+  not end, all of it ended on the SIGTERM, since the table of mounts shows
+  /proc mounted with hidepid, …", 19 lines ok, "SELF-TEST PASSED: 19 cases",
+  exit 0, where it was red at `2107e12` with 2065 milliseconds; the same
+  under hidepid=noaccess and hidepid=ptraceable and, under invisible, for
+  root; without hidepid 19 cases and no such line; and in a second
+  privileged container started with `docker run --init` 19 cases under each
+  value, with the line, and without hidepid, without it. The call of that
+  case alone, `bin/devloop-bounded 1 sh -c 'sleep 7373 & sleep 7375'`, three
+  times each at 07:56:28: back with 124 after 2.098 to 2.112 seconds under
+  hidepid=invisible and after 1.030 to 1.048 without.
+  Run M1, on the Mac at 07:52:16 and in the container at 07:53:54, a step
+  that starts `sleep 7401 > /dev/null 2>&1 &` and ends: back after 0.072 and
+  0.032 seconds, "-- exit 0", "== g / leaves: 1 processes it had left behind
+  ended at the job's end, as GitHub ends them there", green, exit 0, the
+  sleep not found afterwards; at `2107e12` it was found.
+  Run M2, on the Mac at 07:52:16 and in the container at 07:53:54, `sleep
+  7402 &` under a timeout of 0.05 minutes, the sleep holding the step's
+  output: back after 5.111 and 5.061 seconds, "-- a process the step left
+  behind still held its output 5 seconds after the step's own end, and the
+  step counts with its exit code all the same, as GitHub counts it", "--
+  exit 0", the line at the job's end, green, exit 0, the sleep not found;
+  at `2107e12` red after 3.071 seconds as stopped at the timeout. The same
+  step without a timeout-minutes, at 07:52:28 and 07:54:06: back after 5.113
+  and 5.067 seconds with the same lines, where it did not come back.
+  Run M3, on the Mac at 07:52:21 and in the container at 07:54:00, the step
+  of M2 ending with `exit 3`: back after 5.122 and 5.081 seconds, "-- exit
+  3", the last line "red: 1 of 1 steps run did not end with 0 or did not run
+  here (g / leaves: exit 3)", exit 1; and at 07:52:27 and 07:54:05 a step
+  whose process lets go of the output after a second, `( sleep 1; exec sleep
+  7404 > /dev/null 2>&1 ) &`: back after 1.138 and 1.061 seconds, "-- exit
+  0", nothing said of its output, that sleep ended at the job's end.
+  Run M4, on the Mac at 07:52:41 and in the container at 07:54:19, two
+  steps of one job, the first leaving `sleep 7408`, the second asking pgrep
+  for it: "still-there-in-the-next-step", then the line at the job's end for
+  the first step, green; and two jobs, the step of the first leaving `sleep
+  7409`: the line at that job's end before the second job's step, which
+  prints "gone-in-the-second-job"; neither sleep found afterwards.
+  Run M5, on the Mac at 07:52:42 and in the container at 07:54:19, the
+  program sent SIGTERM in its second step, `sleep 7430`, its first step
+  having left `sleep 7410`: exit 143 after 0.204 and 0.080 seconds, both
+  found before and neither afterwards, no line printed for the first.
+  Run M6, on the Mac at 07:52:42 and in the container at 07:54:19, a ps
+  first on PATH that ends with 1, a step that leaves `sleep 7413` and, in a
+  process group of its own, `sleep 7423`: "== g / leaves: at the job's end
+  ps did not answer with pid, ppid and stat, so that the step's own process
+  group alone was ended", green, exit 0, the first sleep not found and the
+  second found, the limit that line states.
+  Run M7, on the Mac at 07:52:42 and in the container at 07:54:19, a step
+  that runs `bin/devloop-bounded 7339 sh -c 'sleep 7431 & sleep 7433'` under
+  a timeout of 0.03 minutes: back after 1.910 and 1.859 seconds with exit 1,
+  "-- not finished: stopped at the job's timeout of 0.03 minutes, as GitHub
+  stops the job" and the last line opening with "red:" and naming the step,
+  neither sleep found; and at 07:52:44 and 07:54:21 a step that runs the
+  program one level down over a step that never ends, `sleep 7435 &` and
+  `sleep 7437`: the same line after 1.914 and 1.867 seconds, neither found.
+  Run M8, on the Mac at 07:52:46 and in the container at 07:54:23, a step
+  under that timeout that starts `sleep 7479` after a fork, setsid and a
+  second fork, the sleep keeping the step's output, and waits in `sleep
+  7477`: back after 6.919 and 6.877 seconds, the line of the step ending "a
+  process it started that this program did not find still holds its
+  output", the second sleep gone and the first found, the block on it.
+  Run M9, on the Mac at 07:52:53 and in the container at 07:54:30, a step
+  that starts `sleep 7473` in a process group of its own and waits in `sleep
+  7475`, the program sent SIGINT, SIGTERM and SIGHUP in three runs: both
+  found before, exit 130, 143 and 129, neither found afterwards.
+  Run M10, on the Mac at 07:52:54 and in the container at 07:54:30, a step
+  that leaves `sleep 7481`, runs `kill -9 $PPID` and waits in `sleep 7483`:
+  "-- not finished: the process of this program that holds the step was
+  ended before the step's shell had ended, so that the step was ended with
+  everything it started", exit 1 after 0.072 and 0.030 seconds, neither
+  sleep found; and a step whose shell is `devloop-no-such-shell {0}`: "--
+  not finished: the shell could not be started: [Errno 2] No such file or
+  directory: 'devloop-no-such-shell'", exit 1.
+  What stays, measured in the same two series: a sleep started after a fork,
+  setsid and a second fork was found after the program had returned, under a
+  step that ends in time, where it holds the output the step counted after
+  5.108 and 5.070 seconds, under a step past the timeout, beside the program
+  ended by SIGTERM, and under the program one level down, which ended the
+  ordinary sleep its step had left and not that one.
+
+  What the runs stand on. S1 on the green end of the self-test of
+  `bin/devloop-bounded`; H1 on the thing on that self-test where the look is
+  kill alone and on the block on the self-test under hidepid; R1 on the red
+  end of the self-test of `scripts/devloop-run-workflow`. M1 on what the
+  steps of a job left behind, with M4, and, with M2, on the block on a step
+  that ends in time, its two situations; M2 on the process that still holds
+  the output five seconds on; M3 on a step that ends in time counted with
+  its own exit code; M5 on what the steps before had left behind where the
+  program is ended by a signal; M6 on ps not answering at the job's end; M7
+  on the step stopped at the job's timeout, on the step past the timeout
+  ended with what is tied to it and on the block of 11 November 2026 on
+  what a step had started; M8 on the process that still holds the step's
+  output after the timeout; M9 on the program ended by a signal; M10 on a
+  step that ends its holder. S2 is recorded on nothing, the green end of
+  that self-test having had no run and the order recording a run for what
+  is new and for what lost its run; no run stands on the processes still
+  standing at the job's end after five seconds of SIGKILL, which no run
+  brought about, or on the block on the numbers kept between two listings.
+  The Status of the three blocks reads Walked, their notes naming the runs.
+  After the runs the tool shows: exit 0, no broken record, 0 of 4708 lines
+  uncovered; Undetermined 24, Recorded, not built 258, Built, never walked
+  1508, Walked 763, Closed 74, sixteen walked by these runs, thirteen things
+  and three blocks; milestone 12 118 blocks, Recorded, not built 41, Built,
+  never walked 47, Walked 22, Closed 8; blocks held against the branch
+  point: removed 0, renamed 0, Should changed 0, added 3, no line of the
+  fixed forms; nothing Walked on the branch without a run the branch adds;
+  and every run of this entry counts. Against the tool before the build:
+  Recorded, not built two fewer; Built, never walked one more, the thing on
+  processes still standing at the job's end and the block on the numbers
+  kept more and the red end of the self-test fewer; Walked ten more, seven
+  of the eight new things, that red end and two blocks, the five things and
+  the block that stood on a line of this build walked again; Closed two
+  more.
+
+  The checks, run before this commit with its documents in the tree. The
+  tool's self-test: 159 cases, 148 of 148 messages asserted by a case, as at
+  `2107e12`. Nineteen of the twenty checks before a handover printed what
+  they printed at `2107e12`, line for line. The sixteenth, the run of the
+  workflow's steps here: green before and after, the same 8 steps run and
+  each ended with 0, no line on a process left behind and none on output
+  still held, no step of the workflow leaving one; its second line reads the
+  head of this entry, 61 characters, which its title step passed; it took
+  209.8 seconds where it took 168.7 at `2107e12`, the tool reading the
+  branch point as well on a branch, 106.3 seconds for the tool alone where
+  it took 64.5 there, and the self-test of `scripts/devloop-run-workflow` in
+  the hooks step taking 11.8 seconds where it took 5.2, five of them the
+  wait that its case on output still held asks for. The three self-tests
+  alone: 45, 19 and 53 cases where they had 37, 19 and 53.
+
+  **For the handover.** What the job hooks on every system measures first,
+  nothing here running Windows: under Windows with Git Bash the self-test of
+  `bin/devloop-bounded` as it stands since this day, eighteen cases
+  expected, its case "does not end, all of it ended on the SIGTERM: the
+  line, exit 124" held to 1900 milliseconds as before, the new lines under
+  `case ${OSTYPE:-} in linux*)` not running there; the thing is the green
+  end of that self-test. The self-test of `scripts/devloop-run-workflow`
+  does not run under Windows in the job. On ubuntu-latest, on macos-latest
+  and in the container of alpine the job runs both self-tests, 19 and 45
+  cases expected, on machines this branch did not measure. The questions
+  put to the person by the report: Windows, the two blocks on it; the
+  process that left the step's session, built by a mark with a limit on
+  macOS or left on purpose; whether a run is to bring about a number given
+  out again between two listings or the block takes the form for a case
+  that cannot be forced; and whether the self-test of `bin/devloop-bounded`
+  is to run without a `/proc`.
 
 ## Decisions taken against
 
