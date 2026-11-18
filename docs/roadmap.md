@@ -9907,6 +9907,73 @@ and for the proofs of closings.
   unset; for "block" it gives another, and which one shows there is left to
   (7), the paragraph on the vendor's pages above.
 
+  **The runs**, at the second commit of the branch, `8e3db5f`, under 0.191.0,
+  the tree clean, on 18 November 2026 in UTC, on the person's Mac, macOS
+  26.6.2 with bash 3.2.57 started with --noprofile --norc, git 2.50.1, Python
+  3.14.7 and Claude Code 2.1.327, in throwaway directories.
+
+  Run P1, on the Mac from 15:49:18 to 15:49:21: the hooks fed their JSON in
+  the projects of the counter-check. The guard on the PowerShell tool at `git
+  push origin main`: in the project set up 2, the message on stderr, nothing
+  on stdout; in the repository with no setup 0 and nothing printed; fed a JSON
+  that ends inside an object in the project set up, 1, the reader's line "the
+  JSON ends inside an object". The session start: 750 bytes, four lines, the
+  fourth `[Shell]`, in the project set up, and the three lines of 503 bytes in
+  the project whose branch took `docs/agents/` out. The start of a subagent:
+  1394 bytes with the line `[Shell]` the third of the context in the first,
+  1146 bytes without it in the second.
+
+  Run G1, on the Mac from 15:51:21 to 15:55:06, among the twenty checks:
+  `scripts/devloop-run-workflow` over the whole workflow, green, 10 steps run
+  and every one ended with 0; in the hooks step "PreToolUse PowerShell
+  pre-tool-use-powershell-guard.sh: exit 2" in the loop, 21 handlers started,
+  L1 2 with the message and L2 0; in the step on line endings the standards
+  file and the four cargo configurations "6 2 2 3 3", no line RED, the trees
+  of both origins printed, and the walk "[0]" at `D:/a/proj`, `D:\a\proj` and
+  `proj` with its ok line; the title of the pull request and the head of this
+  entry passing.
+
+  Run R1, on the Mac from 15:55:22 to 15:57:38: the job hooks on every system
+  read out of the workflow at `8e3db5f` byte for byte into a workflow of that
+  one job, run by `scripts/devloop-run-workflow` in a throwaway clone at the
+  same commit with three faults: the guard ending with 2 and no message before
+  it reads the directory; the history of the standards file written as
+  windows-latest wrote it, `grep -v` with every carriage return taken off and
+  `sed` giving one back to every line but the empty one; and the walk of
+  `0c09c2c`. Red, both steps ended with 1: in the hooks step the two lines of
+  the guard, "did not turn the call down with its message" and "did not let
+  the call through with nothing said"; in the step on line endings "5 2 2 3 3"
+  and the line RED on the standards file, and "[124] no answer within 10
+  seconds" at each of the three paths with the line RED on the walk; no other
+  line RED.
+
+  Run L1, on the Mac from 15:57:48 to 15:57:56, the load run: in a fresh
+  repository made with `git init` and no remote, `claude -p
+  '/devloop:start-work' --plugin-dir ~/claude-devloop --max-turns 1
+  --output-format stream-json --verbose`, the output read with `grep -c`
+  alone: `plugins/cache/jayjay-create/devloop` 0 times, "Shell command failed"
+  0 times, the init line listing `devloop:start-work`, and the model's one
+  call the command of step 1 of `start-work`, `bin/devloop-setup-state
+  --fetch` under the directory of the branch, whose permission `-p` did not
+  give; the run ended at its one turn, exit 1 with `error_max_turns`. The
+  skill loaded from the branch with `shell: bash` in its frontmatter, and the
+  model had its text. The sentence of the new paragraph of
+  `shared/command-does-not-answer.md` does not stand in the output, which
+  carries the skill's text nowhere.
+
+  P1 stands on the three outcomes of the guard on the PowerShell tool and on
+  the two of each start hook on the line `[Shell]`; G1 on the green things of
+  the hooks step on that guard, of the step on line endings on its inputs and
+  on the walk; R1 on the four red things beside them; L1 on the straight path
+  of the first unit of `start-work`, whose counting run the line `shell:
+  bash` took. No run stands on a block: the case of each is under Windows,
+  with real input, without Git Bash or on windows-latest. The thing on the red
+  end of the job hooks on every system, which named a handler answering
+  otherwise than 0, is renamed so that it names the guard on the PowerShell
+  tool answering otherwise than 2, no run hanging on it, its seven records
+  "part of" following; the green thing, with a run, keeps its name and says so
+  in its note.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
