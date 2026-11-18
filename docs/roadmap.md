@@ -9664,6 +9664,249 @@ and for the proofs of closings.
   blocks, Recorded, not built 29, Built, never walked 47, Walked 42, Closed
   12. No run is recorded.
 
+- **A guard turns down the PowerShell tool, every skill declares shell bash**
+
+  18 November 2026, version 0.191.0: under `hooks/` a new guard,
+  `hooks/pre-tool-use-powershell-guard.sh`, its registration and description
+  in `hooks/hooks.json`, a line in `hooks/session-start.sh` and in
+  `hooks/subagent-start-install.sh`, and the walk of
+  `hooks/pre-tool-use-install-guard.sh` for a cargo configuration; one line in
+  the frontmatter of every `skills/*/SKILL.md`; a paragraph of
+  `shared/command-does-not-answer.md`; two steps of the job hooks on every
+  system in `.github/workflows/stock-take.yml`; and a sentence of `README.md`.
+  Nothing under `bin/`, `scripts/` or `output-styles/` changes. On
+  `task/powershell-guard`, off `origin/main` at `0c09c2c`, in three commits:
+  the code with the version, raised once, `2ac012f`; this entry, the plan, the
+  conventions, the reasons, the blocks and the table; and the runs, measured
+  at the second. The order: (3) of milestone 12 in `docs/plan.md`, the guard
+  for the PowerShell tool and `shell: bash` in the frontmatter of every skill,
+  with the two blocks on them and the three the decisions of this day give
+  (3), on the install guard's walk at a path in the form of Windows, on the
+  history of the standards file under Windows and on the comment that quotes
+  the documentation of open(). Its reading list: 255220 bytes by `wc -c` over
+  its ranges at `0c09c2c`, the order's figure, and the vendor's pages below.
+  No subagent. Written by Claude Code from the order of this day; no session
+  log was read; nothing was installed outside throwaway directories.
+
+  **Decided on 18 November 2026** by the person, before the order, how the
+  guard for the PowerShell tool treats a command of that tool, which no
+  document said: in a project where devloop is set up, `docs/agents/` standing
+  as for every other guard, a guard under PreToolUse turns down every call of
+  the PowerShell tool on every system, and its message says to run the same
+  command unchanged with the Bash tool; the six guards on commands stay on the
+  tool `Bash` as they are, and through the Bash tool every shell command
+  passes them as on the Mac. The session start and the start of every subagent
+  tell the model in such a project that every shell command goes through the
+  Bash tool. The loaded texts name the Bash tool as the channel decided once
+  for every shell command, as `shared/command-does-not-answer.md` knows a
+  channel decided once for a text; the refusal is answered by the same
+  command, unchanged, through the Bash tool, and is no block the run reports
+  and, with nobody there, files as an issue. `README.md` takes the sentence
+  the person approved that day, word for word. Reason: the protection holds
+  whole wherever the hooks of devloop load, without devloop writing a setting,
+  and no guard exists twice. Not chosen: (a) besides the guard,
+  "CLAUDE_CODE_USE_POWERSHELL_TOOL": "0" written into the env block of the
+  project's `.claude/settings.local.json` after a question at setup, so that
+  the model does not see the tool: a question more at setup with a wording to
+  approve, a file more that devloop writes and checks, and the tool off in the
+  project for the person's own work too, for a problem not measured, that the
+  model tries PowerShell despite the rule at the session's start; where the
+  closing run under Windows in (7) counts such calls, that becomes a block.
+  (b) the commands of the PowerShell tool taken apart so that the six guards
+  read them: every guard twice, for bash and for PowerShell, the reason the
+  person turned that way down on 9 November 2026. The decision stands in
+  `docs/plan.md` under milestone 12 with two consequences: the block on the
+  walk stays with (3), the reason the decision of this day on the order of the
+  blocks gave for it holding no more, and under Windows without Git Bash the
+  guard can block every call of the PowerShell tool in every project while
+  devloop is enabled, below.
+
+  **The vendor's pages, read raw** on this day into a throwaway directory from
+  code.claude.com/docs/en/: `tools-reference.md`, `hooks.md`, `skills.md`,
+  `permissions.md`, `plugins/loading.md` and `cli-reference.md`, and
+  `CHANGELOG.md` of anthropics/claude-code at v2.1.327, the highest tag `git
+  ls-remote --tags` showed; Claude Code 2.1.327 on the Mac. The five points
+  the order held them to stand as the order wrote them: under "PowerShell
+  tool", "**Windows with Git Bash installed**: the tool is on by default for
+  claude.ai and Console accounts" and "The Bash tool remains available for
+  POSIX scripts when Git Bash is installed"; under the PowerShell input of
+  PreToolUse, "The fields match the Bash tool, with the command string in
+  `command`", the matcher read against `tool_name`; under "Exit code 2", a
+  PreToolUse hook "blocks the tool call", and "Claude receives the hook's
+  stderr as the tool's error"; under "Block the action when a hook fails",
+  "Add `"onFailure": "block"` so a failure or a timeout blocks the call with
+  or without Git Bash", and without Git Bash "a shell-form hook with no
+  `shell` set runs in PowerShell, where it can fail"; under "How injected
+  commands run", with `shell: bash` "when bash isn't available: the invocation
+  fails before any command runs", the message naming bash, and otherwise the
+  commands run through the Bash tool. The skills page names no version from
+  which the field `shell` holds, and the changelog to 2.1.327 carries no entry
+  on it. Which message a hook with "onFailure": "block" shows that fails
+  without Git Bash the page does not say: it gives "blocking because Git Bash
+  wasn't found, so only exit code 0 or 2 counts as this hook's verdict." for a
+  hook with `onFailure` unset, and "failed; blocking because onFailure is
+  "block"" for a hook with it; the commands of `hooks/hooks.json` are of the
+  shell form, a path to a file ending in `.sh`, which PowerShell would have to
+  start there. The run on Windows without Git Bash in (7) is the run that
+  shows what the guard does there. Read beside them: a `Bash` matcher on
+  PreToolUse also runs on a command the Monitor tool starts, and "the hook
+  gets a Bash call", so that the six guards read such a command as they read
+  every Bash call; and under Windows with Git Bash a deny rule on Bash turns
+  the PowerShell tool off for the session. `plugins/loading.md`: a plugin
+  loaded with `--plugin-dir` replaces an installed one of the same name
+  "silently"; `cli-reference.md` names `-p`, `--plugin-dir`, `--max-turns`,
+  `--output-format` and `--verbose` as the load run below uses them.
+
+  **The counter-check before the build**, at `0c09c2c` on the Mac, the hooks
+  fed their JSON as Claude Code feeds them, in throwaway projects: one set up,
+  `docs/agents/` with its five files on `origin/main` and in the tree; one
+  whose branch took `docs/agents/` out while `origin/main` carries all five;
+  one with `docs/agents/checks.md` alone; one with a record that says yes and
+  names cargo as a route; and a repository with no setup. L1, a call of the
+  PowerShell tool, `git push origin main`, in the project set up: no handler
+  of `hooks/hooks.json` matched it under the vendor's rules for a matcher, its
+  lines 8 to 14 naming `Bash`; the six guards fed it by hand answered 0 each,
+  every one passing a tool that is not `Bash`. L3, the same command through
+  `Bash` on `main`: the branch guard answered 2 with "Blocked: pushing to
+  main.", the five others 0. L4, the session start: in the project set up
+  three lines, the status "set up", the install record and the language; in
+  the project whose branch took `docs/agents/` out the same three, the status
+  "set up" too, where every guard is inert; in the repository with no setup
+  "[ProjectStatus] devloop: not set up here". L5, the start of a subagent:
+  1146 bytes of context in the first two, nothing in the third. L7, the
+  install guard under the record of yes with cargo, no cargo configuration on
+  the way, `cargo install devloop-probe-does-not-exist`, under
+  `bin/devloop-bounded` with 5 seconds: at the project's own directory 0 after
+  0.15 seconds; at `D:/a/proj`, `D:\a\proj` and `proj` 124 after 5.03, 5.04
+  and 5.03 seconds, the walk never ending. L8, read off the log of run
+  44259689177 of pull request #251: the line on the standards file and the
+  four cargo configurations counted "5 2 2 3 3" on windows-latest and "6 2 2 3
+  3" on macos-latest and in alpine, and the note on the package of Cypress "4
+  carriage returns counted over its bytes, 0 by grep -c" on windows-latest, 4
+  and 4 on the two others; read at the code, the command that drops the
+  carriage return is `grep -v` at line 756, since grep there takes the
+  carriage return off before it matches, as that count shows, and writes its
+  lines without it, after which the `sed` of line 759 gives one back to every
+  line that ends in another character, five, and none to the empty line; not
+  measured under Windows. L9, read raw at docs.python.org: `/3/` is 3.15.2;
+  open() carries "Files opened in binary mode (including 'b' in the mode
+  argument) return contents as bytes objects without any decoding." from 3.8
+  to 3.15.2, "newline controls how universal newlines mode works (it only
+  applies to text mode)." at 3.8 and 3.9 alone, and from 3.10 "newline
+  determines how to parse newline characters from the stream."; the
+  documentation of io carries at 3.15.2 under "Binary I/O" "No encoding,
+  decoding, or newline translation is performed.". L10: no frontmatter of the
+  twelve carried `shell`, `grep -c '^shell:'` counting one line in
+  `setup-checks`, its line 1096, of the body. L11:
+  `bin/devloop-command-reader` fed a call of the PowerShell tool exits 0,
+  prints `tool: PowerShell` and takes `tool_input.command` apart as bash text,
+  as it does for every input that carries a command, `git push origin main`
+  into one line and a pipe into `Where-Object { ... }` into two; its head says
+  it takes the command of a Bash call apart, which holds, and nothing in it
+  changed, no hook reading those lines of a call of that tool.
+
+  **L6, every place of the loaded texts that treats the block of a guard**,
+  found at `0c09c2c` with `grep -n -i -E` for a guard's block or refusal, "a refusal",
+  "refusals" and `guard-block-intro` over `skills/`, `shared/` and
+  `output-styles/`: `shared/command-does-not-answer.md`, its lines 70 to 73,
+  75 to 97, 99 to 112 and 119 to 122;
+  `shared/guard-block-intro.md`, inserted under "A guard's block is not a
+  decline" of `setup-checks` and `setup-project`; `build-work` under "A
+  guard's block, with nobody there", its lines 55 to 120 with the exception of
+  the guard on the check table, and its lines 136, 286, 415, 490, 1127, 1466,
+  1475, 1530 and 1539, which point there; `build-prototype` lines 47 and 48;
+  `cut-into-tasks` lines 51 and 52; `plan-work` lines 217, 229 and 615;
+  `setup-checks` lines 85, 174 to 179, 245 and 604; `setup-project` line 40;
+  `diagnose-bug` line 96, "A refusal is not a red signal";
+  `shared/install-not-through.md` and `shared/install-tool.md` on the install
+  guard's block alone; nothing under `output-styles/`. Every one of them
+  speaks of a guard's block, and each of the twelve skills inserts
+  `shared/command-does-not-answer.md` under "When a command does not answer",
+  before any of them; so the one paragraph that file now carries, that the
+  refusal of the guard on the PowerShell tool is no block and is answered by
+  the same command through the Bash tool, takes that refusal out of every one,
+  and no other place changed. Its lines 70 and 71, "A guard's refusal is one
+  of these, and its message says what to do; doing that is the report", stand
+  unchanged: the new refusal is a case of them.
+
+  **What is built.** `hooks/pre-tool-use-powershell-guard.sh`: where
+  `docs/agents/` stands under the project directory it reads its input through
+  `bin/devloop-command-reader` with the one line, ends with 1 where the reader
+  does not answer, and otherwise turns the call down with 2 and the message
+  "Turned down by devloop: in this project every shell command goes through
+  the Bash tool, where devloop's guards read it, and none through the
+  PowerShell tool. Run the same command, unchanged, with the Bash tool. This
+  is no block: running it there is the whole answer, and nothing about this
+  refusal is said, reported or filed."; where `docs/agents/` does not stand it
+  answers 0 and prints nothing. It tests the directory under the project
+  directory without changing into it, the same condition as the six, and reads
+  no field of its input, being registered under PreToolUse with the matcher
+  `PowerShell` alone and "onFailure": "block", before the group of `Bash`, so
+  that no line of `hooks/hooks.json` but its description changed.
+  `hooks/session-start.sh` prints a fourth line, opening `[Shell]`, and
+  `hooks/subagent-start-install.sh` gives the same line as the third of its
+  context, both where `docs/agents/` stands under the project directory and
+  nowhere else. Every `skills/*/SKILL.md` carries `shell: bash` as the last
+  line of its frontmatter. `shared/command-does-not-answer.md` carries a
+  paragraph of its own after the one on a guard's block. `README.md` carries
+  the sentence the person approved, word for word, between the guard on the
+  identity of a commit and the turn-end hook. The walk of the install guard
+  reads a backslash as a slash and ends where taking the last part off changes
+  nothing. In the last step of the job hooks on every system every input is
+  written by Python in binary mode, the carriage returns of `crlf()`, the line
+  of rule A taken out and a carriage return given to every line without one;
+  the step holds every line of the standards file in the blob with CRLF to its
+  carriage return, prints the tree of every commit of both origins, and runs
+  the walk at `D:/a/proj`, `D:\a\proj` and `proj` under `bin/devloop-bounded`
+  with ten seconds; its comment over `crs` quotes the documentation of open()
+  and of io at 3.15.2. The step before it gives the guard a harmless input as
+  every handler gets one, answered with 2 in its project set up, and then
+  holds L1 and L2. The version goes to 0.191.0.
+
+  **Measured after the build**, on the Mac at `2ac012f`. L1: exit 2, the
+  message on stderr, nothing on stdout. L2: exit 0, nothing printed. L3: the
+  vendor's rules for a matcher start the six guards for `Bash` and the new one
+  alone for `PowerShell`. L4: the project set up gets the fourth line
+  `[Shell]`, the project whose branch took `docs/agents/` out the three lines
+  it got before and the repository with no setup its one line. L5: 1394 bytes
+  in the project set up, the line `[Shell]` the third of the context; in the
+  project whose branch took `docs/agents/` out the 1146 bytes of `0c09c2c`,
+  byte for byte; nothing in the third. L7: 0 at each of the three paths within
+  0.14 seconds; with a cargo configuration in a directory named `D:` in the
+  project, which the relative path `D:/a/proj` reaches on the Mac, both paths
+  in the form of Windows blocked with 2 by the configuration, the drive's root
+  being read, and read last. The history of the standards file built by Python
+  gives on the Mac the trees the commands of `grep` and `sed` gave, every
+  commit of both origins, `diff` of the two lists silent. The job hooks on
+  every system, both steps read out of the workflow byte for byte into a
+  workflow of that one job and run by `scripts/devloop-run-workflow` in a
+  throwaway clone of the work: green, 21 handlers started, L1 2 with the
+  message, L2 0, the standards file 6 2 2 3 3, the walk 0 at each path.
+
+  **The blocks.** The block on every command guard matching the tool `Bash`
+  alone carries its Fix on the registration in `hooks/hooks.json`, Built,
+  never walked; its Should stands, every shell command the model runs passing
+  the guards through the Bash tool, measured by (7) on Windows with Git Bash
+  under a claude.ai account. The block on `shell: bash` carries its Fix on the
+  line in `start-work`, Built, never walked, walked by (7) on Windows without
+  Git Bash. The block on the walk carries its Fix on the line that ends it,
+  Built, never walked, measured with real input under Windows by (7). The
+  block on the history of the standards file carries its Fix on the line of
+  Python that gives the carriage return back, Built, never walked, measured on
+  windows-latest by the job of this pull request. The block on the comment
+  over `crs` is closed, corrected in the document, the wrong quote having been
+  the defect. No Should changed.
+
+  **Put right here**, a finding in a document: `docs/plan.md` said under
+  milestone 12 that (3) takes the block on the walk "since (3) registers every
+  guard of commands for the PowerShell tool as well"; that reason holds no
+  more, and the paragraph says so with the reason that holds, as the decision
+  of this day there says. And a point of the order that does not hold as it
+  stands: it named for the run without Git Bash "the vendor's message that Git
+  Bash was not found", which the hooks page gives for a hook with `onFailure`
+  unset; for "block" it gives another, and which one shows there is left to
+  (7), the paragraph on the vendor's pages above.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
