@@ -2264,6 +2264,60 @@ place because the cost of acting on it is nil, and the rule about behaviour
 outside this repository holds against it like anything else: run two build agents
 in one working directory, with a date, and this either gets its evidence or goes.
 
+**A file of the project is read with CRLF as with LF, at every place that
+takes one apart by machine.** Decided and measured by order (2) of milestone
+12, the roadmap entry of 17 November 2026 on a project's files read with CRLF
+as with LF. What arrives, after git's own documentation at `v2.56.0` as the
+entry of 15 October 2026 in `docs/roadmap-archive-1.md` quotes it: under
+`core.autocrlf=true`, which Git for Windows sets in its system configuration
+and the runner `windows-latest` carries, a text file git checks out stands in
+the working tree with CRLF, a file a program wrote stands as written, and a
+blob read with `git show` or `git log -p` arrives as it is stored, with LF
+where it was added under the setting and with CRLF where a file with CRLF was
+committed without conversion; devloop keeps its own files at LF by
+`.gitattributes`, and a project's files carry no such line. Measured on 17
+November 2026 on macOS 26.6.2 with bash 3.2.57, awk version 20200816 and git
+2.50.1, and in a container of alpine:3.22 with bash 5.2.37, BusyBox 1.37.0
+and git 2.49.1, over a project at LF, the same project checked out under
+`core.autocrlf=true` and one whose files were committed at CRLF under
+`core.autocrlf=false`: at `784dc38` four places read CRLF otherwise than LF,
+the install record off the main branch, the runner off the check table in
+both hooks, the line of an install written into the record's file, and the
+commands with `git show` and `git log -p` that two loaded texts prescribe,
+and every other place read it as LF. The rule: a place that takes a file of
+the project apart reads it with CRLF as the same file with LF, the carriage
+return at a line's end taken off before the line is compared or falling into
+a field that is read over, a carriage return elsewhere in a line left as it
+stands; what devloop itself writes into the project and reads again is read
+as it was written. The places that stand on it, each with a block of
+milestone 12 in `docs/defects.md`: `bin/devloop-install-record` in every
+form; `bin/devloop-setup-state`, the markers; `bin/devloop-check-table`;
+`bin/devloop-start-conditions`, condition 1; `bin/devloop-install-note`,
+put; `bin/devloop-tool-state`, the version of the project's Cypress;
+`hooks/stop-checks.sh`, the runner, the rows and the file of attempts;
+`hooks/post-tool-use-checks.sh`, the runner and the rows;
+`hooks/permission-request-unattended.sh`, the mark;
+`hooks/pre-tool-use-install-guard.sh`, a cargo configuration;
+`skills/setup-checks/SKILL.md` step 3 and `shared/mode-set-up.md`, the
+command with `git show`; `shared/rule-not-written-down.md`, the commands
+with `git log -S` and `git log -p`. The last step of the job hooks on every
+system in `.github/workflows/stock-take.yml` reads each of them in the three
+forms on every pull request, on all four systems, and is red where one reads
+CRLF otherwise than LF; since 18 November 2026 it counts the carriage returns
+of every input over the file's bytes with Python in binary mode, after
+`grep -c` with a carriage return as its pattern counted none in the four
+inputs on `windows-latest`, one of them a file the step writes itself with a
+carriage return before every line feed, and it shows before the first place
+that its way of comparing a reading tells CRLF from LF, red where an input
+carries none or the comparison does not tell them apart; a place added later
+is held to the rule by that step
+only where the step is given a case for it, and no check finds a place
+without one. Not places, read and decided on that day: the record of the
+refusals of auto mode, which Python writes and reads in text mode and the
+step before reads through `tr -d`; the stash message and the lists git forms
+itself, `git status --short` among them; and the output of a tool a hook or
+a program starts.
+
 **A hook reads its input through one program, and the command as the shell
 runs it.** Since 12 October 2026, version 0.137.0, every hook under `hooks/`
 that reads its input reads it through `bin/devloop-command-reader`, with the
