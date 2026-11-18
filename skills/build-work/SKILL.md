@@ -2,6 +2,7 @@
 name: build-work
 description: Build the open tasks and merge them
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Build the open tasks

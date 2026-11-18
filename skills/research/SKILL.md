@@ -2,6 +2,7 @@
 name: research
 description: Answer a question from primary sources
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 **If `[shell command execution disabled by policy]` stands anywhere in this

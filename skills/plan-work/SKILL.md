@@ -2,6 +2,7 @@
 name: plan-work
 description: Turn an idea into a specced piece of work
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Plan a piece of work

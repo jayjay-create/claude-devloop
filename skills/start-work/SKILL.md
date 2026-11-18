@@ -3,6 +3,7 @@ name: start-work
 description: Take a piece of work from idea to merged
 disable-model-invocation: true
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Start a piece of work

@@ -89,4 +89,18 @@ echo "[ProjectStatus] branch: $BRANCH | uncommitted changes: $DIRTY | devloop: $
 # the line with the language and the date, and the none line with the
 # reader's cause, a value that is no name of a language among the causes.
 "$HERE/../bin/devloop-install-record" --language --line "$PROJECT_DIR"
+
+# The rule on the shell, since 18 November 2026, decided by the person that
+# day, order (3) of milestone 12 in docs/plan.md: where docs/agents/ stands,
+# the condition on which hooks/pre-tool-use-powershell-guard.sh turns down
+# every call of the PowerShell tool, the session is told at its start that
+# every shell command goes through the Bash tool, so that the model seldom
+# tries the other tool at all. In the hook's own words - "A hook cannot force
+# wording" in docs/skill-conventions.md. Where the setup stands on the
+# default branch and docs/agents/ not in the tree, the status above says set
+# up or set up in part and the guard turns nothing down, so the line is not
+# printed there: it would say what does not hold.
+if [ -d "$PROJECT_DIR/docs/agents" ]; then
+  echo "[Shell] every shell command in this project goes through the Bash tool, where devloop's guards read it: a call of the PowerShell tool is turned down here, and the same command then runs unchanged through the Bash tool, which is no block to report"
+fi
 exit 0

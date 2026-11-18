@@ -1071,12 +1071,20 @@ $2"; fi
         ir=$(var CARGO_INSTALL_ROOT); ch=$(var CARGO_HOME)
         [ -n "$ir" ] && { r=$(expand "$ir"); [ -n "$r" ] || { echo UNREAD; return; }; }
         if [ -z "$r" ]; then
-          d="${CWD:-$PROJECT_DIR}"
+          # The walk ends at the top of any path, since 18 November 2026,
+          # order (3) of milestone 12: a backslash is read as a slash, and
+          # where taking the last part off changes nothing the walk ends, so
+          # that D:/a/proj and D:\a\proj end at D:, the drive's root, read
+          # last, and a path without a slash at itself; until that day it
+          # ended at / alone, which a path in the form of Windows never
+          # reaches, and the loop did not end.
+          d="${CWD:-$PROJECT_DIR}"; d="${d//\\//}"
           while [ -n "$d" ]; do
             for f in "$d/.cargo/config.toml" "$d/.cargo/config"; do
               [ -f "$f" ] && grep -qE '^[[:space:]]*(\[install\]|install\.root[[:space:]]*=)' "$f" && { echo CONFIG; return; }
             done
             [ "$d" = "/" ] && break
+            [ "${d%/*}" != "$d" ] || break
             d="${d%/*}"; [ -n "$d" ] || d="/"
           done
           [ -n "$ch" ] && { ch=$(expand "$ch"); [ -n "$ch" ] || { echo UNREAD; return; }; }

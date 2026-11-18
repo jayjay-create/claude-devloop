@@ -3,6 +3,7 @@ name: record-lessons
 description: Write down what went wrong so it does not repeat
 disable-model-invocation: true
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Record what went wrong

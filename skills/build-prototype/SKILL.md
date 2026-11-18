@@ -2,6 +2,7 @@
 name: build-prototype
 description: Build something throwaway to settle a design question
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Build a throwaway prototype

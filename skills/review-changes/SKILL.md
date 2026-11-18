@@ -2,6 +2,7 @@
 name: review-changes
 description: Review a change from several angles at once
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Review a change
