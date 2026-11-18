@@ -1267,7 +1267,15 @@ form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
 fewer. Of (3) to (7) nothing is built yet, `shell: bash` in every skill
-and the guard for PowerShell among them. Until 17 November 2026 this
+and the guard for PowerShell among them. Since 18 November 2026, by the
+order before (3) the person decided on that day, below, the job stock-take
+holds every line of the hooks, the programs and the loaded texts that reads
+a file of the project to a case of the last step of the job hooks on every
+system or to the places that step names as none; what that order found and
+did not build stands in three more blocks of this milestone with Fix none,
+on the line endings put writes, on a recorded command over several lines in
+an issue with CRLF and on the folder an installer prints under Windows.
+Until 17 November 2026 this
 paragraph said that of (2) to (7) nothing was built yet and that the block
 on the sentence of that head stood with Fix none; until 16
 November 2026 this paragraph said that the three open blocks of
@@ -1344,6 +1352,50 @@ runtime's walk are read and not measured under Git Bash, the head of
 and not a reading. Not chosen: closing the block on the runtime's walk as
 left on purpose now, unmeasured, and leaving the built blocks to (7)
 unnamed.
+
+Decided on 18 November 2026 by the person, the roadmap entry of that date on
+a place without a case found by the merge gate: the blocks of this milestone
+with Fix none that order (2) wrote are built by the order that touches the
+same place. (3) takes the block on the install guard's walk for a cargo
+configuration at a path in the form of Windows, since (3) registers every
+guard of commands for the PowerShell tool as well, the block of this
+milestone on every command guard matching the tool Bash alone, whose
+commands come with paths in the form of Windows; whether a hook's input
+carries its cwd in that form is not measured, the block on the walk says;
+and the block on the history of the standards file in the step on line
+endings under Windows, since that is a few lines and every later pull
+request then measures the same input on the four systems. (5) takes the
+block on the line of an install handed to awk through -v in put and the
+three blocks that order of 18 November 2026 wrote, on the line endings put
+writes, on a recorded command over several lines in an issue with CRLF and
+on the folder an installer prints under Windows, since they are questions of
+the installation and two of them concern the same place of put. Not chosen:
+an order of their own for these blocks; the milestone is reached only once
+its blocks are closed, so that it would come no earlier, and it would cost
+one pull request more.
+
+Decided on 18 November 2026 by the person, the same entry: an order before
+(3) builds a check that finds a place without a case, a line of the hooks,
+the programs or the loaded texts that reads a file of the project and that
+the last step of the job hooks on every system holds to no case, since after
+the search of 15 October 2026 three places came in within two weeks, on 24,
+25 and 28 October 2026, one of which read CRLF otherwise than LF, and (3)
+and (5) change such code next; that order found a fourth, from 22 October
+2026, the place of put before it moved out of a hook. Built on that day,
+form C of that entry, held line by line: a step of the job stock-take finds
+every line that reads a blob of git or a path of the project, written on the
+line or held by a variable of the same file, and is red where it carries no
+anchor over the call of hold of a case of the step on line endings and
+stands among none of the not places listed at the head of that step;
+measured over the 77 commits from `919c9de` to `b77e3bc`, red at the four
+places and at no other line, and naming the fourteen of 15 October 2026 at
+`919c9de`. Not chosen: leaving the gap documented; form A, a path written on
+the line alone, which did not find put and named 7 of the 14; form B, every
+reading of a file, for its 22 false alarms in those 77 commits, eight pull
+requests red by them alone; a case held by the file its hold names, under
+which a new reading in one of the 15 files the step holds would go unseen;
+and the anchors in `docs/skill-conventions.md`, where anchor and case would
+stand in two files.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
