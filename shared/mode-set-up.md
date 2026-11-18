@@ -9,9 +9,10 @@ mode", and the gate, its binding and auto-merge are read off the platform as
 that list spells out. The three records are sections of
 `docs/agents/environment.md`, one key and one value per line, read off the
 main branch as last fetched and never off the working tree, which a run may
-have written a moment ago:
+have written a moment ago, the carriage returns taken off, so that a file
+committed with CRLF reads as the same file with LF:
 
-    git fetch -q origin main && git show origin/main:docs/agents/environment.md
+    git fetch -q origin main && git show origin/main:docs/agents/environment.md | tr -d '\r'
 
 `unattended-mode:` under `## Unattended mode`, `install-tools:` under
 `## Install permission`, `dependency-tools:` under `## Dependency

@@ -228,7 +228,12 @@ Under Windows none of this is built and a step runs as before: no holder,
 at the timeout its one process is ended and nothing it started, the program
 then waits for the step's output to close, a step that has ended is counted
 once its output has closed, and nothing a step left behind is looked for;
-the block of milestone 12 in docs/defects.md on Windows holds that.
+two blocks of milestone 12 in docs/defects.md hold that, the block on a step
+past the job's timeout under Windows the one process ended at the timeout
+and the wait for the step's output, and the block on a step that ended in
+time under Windows the count once its output has closed and what a step
+left behind, both closed as left on purpose. Until 17 November 2026 this
+sentence named one block on Windows where the two hold what it says.
 
 The file is read by this program's own reader of the YAML the workflows of
 this repository are written in: mappings and sequences by indentation, a

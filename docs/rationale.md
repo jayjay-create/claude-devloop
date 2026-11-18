@@ -1336,6 +1336,15 @@ loaded text no longer carries stands here at its rule.
   stands, from wherever the person is". See docs/skill-conventions.md under
   "Every skill carries these two", the paragraph "Where the person types a
   command devloop hands them while Claude Code runs".
+- **The record on the dependency file is read off the main branch through
+  `tr -d '\r'`.** A record committed with CRLF arrives from `git show` as it
+  is stored, every line ending on a carriage return, and a value read off
+  such a line is no yes; without the carriage returns it reads as the same
+  record with LF. Entry "A project's files read with CRLF as with LF, every place measured"; the case is the block "setup-checks line 346
+  prescribes git show of the environment record, not measured with CRLF on
+  Windows" of `docs/defects.md`, found 15 October 2026 and measured on 17
+  November 2026.
+
 ### Step 4 — Put each class in place: its tool, its target, its findings in stages
 
 - **The hook writes the install line from the guard's reading, without the
@@ -4713,6 +4722,12 @@ Nothing in this file stood as history; its rules carry their own reasons.
   mode's refusal as the refusal it is. Entry "Conditions 6 and 7 at the mark,
   the rule asked after a refusal, titles.".
 
+- **The three records are read with the carriage returns taken off.** A
+  file committed with CRLF arrives from `git show` as it is stored, and a
+  value read off a line that ends on a carriage return is no yes. Entry "A project's files read with CRLF as with LF, every place measured"; the
+  case is the block "shared/mode-set-up.md line 14 prescribes git show of the
+  environment record, not measured with CRLF on Windows" of `docs/defects.md`.
+
 ## `shared/project-language.md`
 
 Nothing in this file stood as history; its rules carry their own reasons.
@@ -4768,6 +4783,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
   and two places where the wording is the user's to settle before anything is
   built."; see docs/skill-conventions.md under "A project's rules are written at
   the review's close".
+
+- **The lines the standards file has lost are listed with
+  `--ignore-cr-at-eol` and without the carriage returns.** A history with
+  CRLF lists every line it lost with a carriage return at its end, and a
+  commit that changed the line endings alone lists every line of the file as
+  lost and as added, which the new sentence would be held against for
+  nothing; `--ignore-cr-at-eol` shows no line of such a commit and needs git
+  2.16 or later. Entry "A project's files read with CRLF as with LF, every place measured"; the case is the block "shared/rule-not-written-down.md
+  line 73 prescribes git log -p over the standards file, not measured with
+  CRLF on Windows" of `docs/defects.md`.
 
 ## `shared/seam-and-condition.md`
 

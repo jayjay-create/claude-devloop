@@ -35,7 +35,14 @@
 # adds to docs/roadmap.md against the rule on titles, the last step of the
 # job, and the event fires with the type edited as well, so that a title
 # changed on an open pull request is read before it can be merged; the three
-# default types stand beside it, since naming one type names them all.
+# default types stand beside it, since naming one type names them all. Since
+# 17 November 2026 the job hooks on every system ends on a step that reads
+# every place of the hooks, the programs and the loaded texts that takes a
+# file of the project apart with the file at LF, with CRLF from a checkout
+# under core.autocrlf=true and with CRLF committed as it stands, and reaches
+# the three calls of awk the step before it does not reach, order (2) of
+# milestone 12; the line .gitattributes keeps devloop's own files at LF by,
+# above, says nothing of a project's files, which carry no such line.
 name: merge gate
 
 on:
@@ -522,3 +529,260 @@ jobs:
           [ "$RC" -eq 2 ] && [ "$ok" = yes ] || { echo "the guard on the mark did not block the write of the mark as its message says"; red=1; }
           rm -rf "$T"
           exit "$red"
+
+      - name: every place that reads a file of the project, with the file at LF, with CRLF from a checkout under core.autocrlf=true and with CRLF committed, and the three calls of awk with input that reaches them
+        run: |
+          # since 17 November 2026, order (2) of milestone 12: the hooks and the programs started by their first line and the commands the texts prescribe read out of the texts, each place once per form of the file, red where CRLF reads otherwise than LF or awk gives another text than expected, a line per place in both outcomes; the throwaway projects set core.autocrlf themselves, Git for Windows bringing true from its system configuration and the three other systems leaving it unset, and every input is read for its carriage return before a place reads it, since 18 November 2026 counted over its bytes, and the way a reading is taken up and compared shown on the system to tell CRLF from LF before the first place is read
+          set -u
+          # every reading stands behind ||, as in the step above: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}
+          ROOT=$(pwd)
+          red=0
+          PY=$(command -v python3 || command -v python || true)
+          [ -n "$PY" ] || { echo "no python on PATH for the step on line endings"; false; }
+          T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-crlf.XXXXXX")
+          # under Windows the directory in the form of Git Bash, /d/a/..., and handed to python unconverted below: the install guard walks up from the command's directory to / for a cargo configuration, and a path in the form of Windows never reaches /, a block of milestone 12 in docs/defects.md
+          ! command -v cygpath >/dev/null 2>&1 || T=$(cygpath -u "$T")
+          export TMPDIR="$T/tmp"
+          mkdir -p "$TMPDIR" "$T/home" "$T/gh" "$T/cy"
+          CR=$(printf '\r')
+          GIT="git -c user.name=hooks -c user.email=hooks@example.invalid -c commit.gpgsign=false"
+          printf '#!/bin/sh\necho "stand-in for gh in the step on line endings: GitHub is not reached here" >&2\nfalse\n' > "$T/gh/gh"
+          chmod +x "$T/gh/gh"
+          # the throwaway projects, built here so that every system measures the same input, Git for Windows bringing core.autocrlf=true from its system configuration and the three other systems leaving it unset: two origins, each written under core.autocrlf=false - one with LF throughout, one whose commit "line endings alone" turns the files devloop reads to CRLF, committed as they stand - and three clones: lf and blob under core.autocrlf=false, co of the origin with LF under core.autocrlf=true, which checks every text file out with CRLF. The runner of the checks stays at LF by the project's own .gitattributes, since a shell reads it and not devloop
+          crlf() { local f; for f in "$@"; do sed "s/\$/$CR/" "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done; }
+          commit() { $GIT add -A && $GIT commit -q -m "$1"; }
+          seed() {
+            local way=$1 d
+            $GIT init -q --bare -b main "$T/o-$way.git"
+            $GIT init -q -b work "$T/seed-$way"
+            cd "$T/seed-$way"
+            git config core.autocrlf false
+            mkdir -p docs/agents src c0 c1/.cargo c2/.cargo c2/deeper c3/.cargo c4/.cargo c4/deeper
+            printf 'run-checks.sh text eol=lf\n' > .gitattributes
+            printf '#!/bin/sh\n[ "$1" != lint ] || echo "lint: src/a.py:1: line too long"\n[ "$1" != lint-file ] || echo "lint-file: $2: line too long"\nfalse\n' > run-checks.sh
+            printf 'x = 1\n' > src/a.py
+            for d in c0 c2/deeper c4/deeper; do printf 'keep\n' > "$d/keep"; done
+            for d in c1 c2; do printf '[install]\nroot = "/opt/devloop-probe"\n' > "$d/.cargo/config.toml"; done
+            for d in c3 c4; do printf '[build]\njobs = 2\ninstall.root = "/opt/devloop-probe"\n' > "$d/.cargo/config.toml"; done
+            # the record: a line of the install section's key before the section and one after it, which awk must leave out, the section of the installs with one line, and the language last, its date the last line of the file
+            printf '%s\n' '<!-- devloop: 0.188.0 -->' '# Environment' '' 'install-place: /opt/devloop-before-the-section/bin' '' '## Install permission' '' 'install-tools: yes' 'install-place: /opt/devloop-probe/bin' 'install-route: cargo' 'install-answered: 2026-11-17' '' '## Dependency permission' '' 'dependency-tools: yes' 'install-place: /opt/devloop-after-the-section/bin' 'dependency-answered: 2026-11-16' '' '## Unattended mode' '' 'unattended-mode: yes' 'unattended-answered: 2026-11-15' '' '## Installed outside the project' '' '- `cargo install alpha` installed into /opt/devloop-probe/bin' '' '## Language' '' 'language: German' 'language-recorded: 2026-11-14' > docs/agents/environment.md
+            printf '%s\n' '<!-- devloop: 0.188.0 -->' '---' 'runner: sh run-checks.sh' 'all: check' '---' '' '# Checks' '' '| Class | Per-file | Whole | Files | Duration | Blocking | Status |' '|---|---|---|---|---|---|---|' '| format | - | - | - | - | - | Filled |' '| lint | lint-file | lint | src/*.py | fast | yes | filled |' '| types | - | - | - | - | - | done |' '| unit | - | - | - | - | - | empty |' > docs/agents/checks.md
+            printf '<!-- devloop: 0.187.0 -->\n# Issue tracker\n' > docs/agents/issue-tracker.md
+            printf '# Domain\n\nno marker here\n' > docs/agents/domain.md
+            printf '%s\n' '<!-- devloop: 0.188.0 -->' '# Standards' '' '- Rule A: a handler never swallows an error of the queue.' '- Rule B: every public function of the parser carries a test.' > docs/agents/standards.md
+            commit "setup"
+            printf '%s\n' '- Rule C: a migration is written with its way back.' >> docs/agents/standards.md
+            commit "rule C introduced"
+            [ "$way" != crlf ] || { crlf docs/agents/*.md c1/.cargo/config.toml c2/.cargo/config.toml c3/.cargo/config.toml c4/.cargo/config.toml; commit "line endings alone"; }
+            grep -v 'Rule A' docs/agents/standards.md > s.tmp && mv s.tmp docs/agents/standards.md
+            commit "rule A removed"
+            printf '%s\n' '- Rule D: a job names the queue it reads.' >> docs/agents/standards.md
+            [ "$way" != crlf ] || { sed "s/\([^$CR]\)\$/\1$CR/" docs/agents/standards.md > s.tmp && mv s.tmp docs/agents/standards.md; }
+            commit "rule D introduced"
+            $GIT remote add origin "$T/o-$way.git"
+            $GIT push -q origin work:main
+            cd "$ROOT"
+          }
+          clone() {
+            $GIT clone -q --config core.autocrlf="$3" "$T/o-$2.git" "$T/$1/p"
+            $GIT -C "$T/$1/p" checkout -q -b work
+            mkdir -p "$T/$1/p/node_modules/cypress"
+          }
+          seed lf && seed crlf && clone lf lf false && clone co lf true && clone blob crlf false || { echo "the throwaway projects could not be built"; false; }
+          # the package of a test tool, which no git checks out: as its installer wrote it, with LF in the one clone and with CRLF in the two others
+          printf '{\n  "name": "cypress",\n  "version": "13.6.0"\n}\n' > "$T/lf/p/node_modules/cypress/package.json"
+          for c in co blob; do printf '{\r\n  "name": "cypress",\r\n  "version": "13.6.0"\r\n}\r\n' > "$T/$c/p/node_modules/cypress/package.json"; done
+          PROG=$(cat <<'PYEOF'
+          import json, sys
+          p, kind, a = sys.argv[1], sys.argv[2], sys.argv[3:]
+          base = {"session_id": "s1", "cwd": p, "permission_mode": "default", "tool_use_id": "toolu_crlf1"}
+          make = {
+              "bash": lambda: dict(base, hook_event_name="PreToolUse", tool_name="Bash", cwd=p + a[1], tool_input={"command": a[0], "description": "x"}),
+              "edit": lambda: dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/" + a[0], "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/" + a[0]}),
+              "perm": lambda: dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}, session_id=a[0]),
+              "stop": lambda: dict(base, hook_event_name="Stop", stop_hook_active=False),
+          }
+          sys.stdout.write(json.dumps(make[kind]()))
+          PYEOF
+          )
+          # clean TEXT DIRECTORY: the text with the directory written as <T>, taken apart by hand, since bash 3.2 ends the pattern of a substitution at a slash inside quotes
+          clean() { local s=$1 out=""; while [ "${s#*"$2"}" != "$s" ]; do out="$out${s%%"$2"*}<T>"; s=${s#*"$2"}; done; printf '%s' "$out$s"; }
+          # hook CLONE HOOK KIND ARGUMENT...: the hook started by its first line with an input of its event in the clone, what it printed on both streams and its answer in brackets, the clone's own directory written as <T>
+          hook() {
+            local c=$1 h=$2 p="$T/$1/p" out rc=0; shift 2
+            out=$(cd "$p" && MSYS2_ARG_CONV_EXCL='*' "$PY" -c "$PROG" "$p" "$@" | env -u CARGO_HOME -u CARGO_INSTALL_ROOT -u CLAUDE_ENV_FILE CLAUDE_PROJECT_DIR="$p" HOME="$T/home" "$ROOT/hooks/$h" 2>&1) || rc=$?
+            printf '%s\n[%s]' "$(clean "$out" "$T/$c")" "$rc"
+          }
+          # prog CLONE COMMAND...: a program or a command in the clone's directory, read the same way
+          prog() {
+            local c=$1 p="$T/$1/p" out rc=0; shift
+            out=$(cd "$p" && CLAUDE_PROJECT_DIR="$p" HOME="$T/home" PATH="$T/gh:$PATH" "$@" 2>&1) || rc=$?
+            printf '%s\n[%s]' "$(clean "$out" "$T/$c")" "$rc"
+          }
+          show() { printf '       %s:\n' "$1"; printf '%s\n' "$(clean "$2" "$T")" | tr -d '\r' | sed 's/^/         /'; }
+          # hold PLACE RESULT WANT LF CO BLOB: green where CRLF from a checkout and CRLF in the blob read as LF reads and the reading with LF carries WANT; a line in both outcomes, the place and the result in it and no path
+          hold() {
+            local r=""
+            [ "$5" = "$4" ] || r="$r CRLF from a checkout under core.autocrlf=true reads otherwise than LF;"
+            [ "$6" = "$4" ] || r="$r CRLF committed under core.autocrlf=false reads otherwise than LF;"
+            [ "${4#*"$3"}" != "$4" ] || r="$r the reading with LF does not carry what is expected;"
+            [ -n "$r" ] || { echo "ok   $1: $2"; return 0; }
+            echo "RED  $1:$r"; show "expected in the reading with LF" "$3"; show "with LF" "$4"; show "with CRLF from a checkout" "$5"; show "with CRLF committed" "$6"; red=1
+          }
+          # three COMMAND...: the same reading in the three clones, into LF, CO and BLOB
+          three() { LF=$("$@" lf) || true; CO=$("$@" co) || true; BLOB=$("$@" blob) || true; }
+          # carries WHAT COUNT...: the input carries the carriage return, read before the place reads it, so that nothing is measured with LF without a word
+          carries() {
+            local what=$1 n; shift
+            for n in "$@"; do [ "$n" -gt 0 ] || { echo "RED  $what: the input carries no carriage return, so nothing here was measured with CRLF"; red=1; return 0; }; done
+            echo "ok   $what: carriage returns counted over its bytes: $*"
+          }
+          # crs FILE: the carriage returns of the file counted over its bytes, since 18 November 2026: Python opens it in binary mode, which returns its contents "as bytes objects without any decoding", universal newlines applying "to text mode" only, as the documentation of open() says, and the blob is written to a file by git and counted there. Every count of a carriage return in this step is this one; grep -c "$CR" counted none in the four inputs on windows-latest in run 44203370512, and the line "note" below sets its count beside this one on every system
+          crs() { "$PY" -c 'import sys; print(open(sys.argv[1], "rb").read().count(b"\r"))' "$1"; }
+          tree() { crs "$T/$1/p/$2"; }
+          blob() { git -C "$T/$1/p" cat-file -p "origin/main:$2" > "$T/blob-read" && crs "$T/blob-read"; }
+          carries "the input, docs/agents/environment.md in the working tree of the checkout under core.autocrlf=true and of the clone with CRLF committed, and in the blob of that clone" "$(tree co docs/agents/environment.md)" "$(tree blob docs/agents/environment.md)" "$(blob blob docs/agents/environment.md)"
+          carries "the input, docs/agents/checks.md in both working trees and in the blob" "$(tree co docs/agents/checks.md)" "$(tree blob docs/agents/checks.md)" "$(blob blob docs/agents/checks.md)"
+          carries "the input, docs/agents/standards.md in the blob and the four cargo configurations in both working trees" "$(blob blob docs/agents/standards.md)" "$(tree co c1/.cargo/config.toml)" "$(tree blob c2/.cargo/config.toml)" "$(tree co c3/.cargo/config.toml)" "$(tree blob c4/.cargo/config.toml)"
+          carries "the input, node_modules/cypress/package.json as an installer with CRLF wrote it" "$(tree co node_modules/cypress/package.json)" "$(tree blob node_modules/cypress/package.json)"
+          [ "$(blob co docs/agents/environment.md)" -eq 0 ] && [ "$(tree lf docs/agents/environment.md)" -eq 0 ] || { echo "RED  the input: the clone with LF or the blob of the checkout carries a carriage return"; red=1; }
+          # a line that decides nothing, printed on every system since 18 November 2026: the package of Cypress as the printf above writes it, a carriage return before each of its four line feeds and no git between, its carriage returns counted over its bytes beside the count grep -c "$CR" gives for it, so that the log shows what the system's grep counts
+          echo "note node_modules/cypress/package.json as this step writes it, a carriage return before each of four line feeds: $(crs "$T/co/p/node_modules/cypress/package.json") carriage returns counted over its bytes, $(grep -c "$CR" "$T/co/p/node_modules/cypress/package.json" || true) by grep -c; this line decides nothing"
+          # the way a reading is taken up and compared, shown on this system before the first place is read, since 18 November 2026: two lines with LF in the clones lf and co and the same two lines with CRLF in the clone blob, taken up through prog and three as the places are and compared as hold compares; red where the carriage return makes no difference, since the reading of a command with git show differs between CRLF and LF by that carriage return alone, and a comparison that loses it measures nothing there
+          probe() { local t='a\nb\n'; [ "$1" != blob ] || t='a\r\nb\r\n'; prog "$1" printf "$t"; }
+          three probe
+          pr=""
+          [ "$BLOB" != "$LF" ] || pr="$pr the two lines with CRLF read as the same lines with LF;"
+          [ "$CO" = "$LF" ] || pr="$pr the same two lines with LF read otherwise in two clones;"
+          [ -n "$pr" ] || echo "ok   the way a reading is taken up and compared: two lines with CRLF read otherwise than the same lines with LF, and the same lines with LF alike"
+          [ -z "$pr" ] || { echo "RED  the way a reading is taken up and compared:$pr so no comparison of this step sees a carriage return"; red=1; }
+
+          # bin/devloop-install-record, the four sections and the two lines; with it the first of the three calls of awk, the section before the next one and the section that stands last
+          rec() { local c=$1; shift; prog "$c" "$ROOT/bin/devloop-install-record" "$@" "$T/$c/p"; }
+          all() { local o; for o in "" --dependency --unattended --language --line "--language --line"; do rec "$1" $o; echo; done; }
+          three all
+          hold "bin/devloop-install-record, the record off the default branch in six forms" "tools yes, the place and the route, the three other sections and both lines, the same with LF and with CRLF" "[InstallRecord] tools: yes | places: /opt/devloop-probe/bin | routes: cargo | answered: 2026-11-17 | read off origin/main as last fetched, not off the working tree" "$LF" "$CO" "$BLOB"
+          WANT=$(printf '%s\n' 'ref: origin/main' 'tools: yes' 'place: /opt/devloop-probe/bin' 'route: cargo' 'answered: 2026-11-17' '[0]')
+          three rec
+          hold "bin/devloop-install-record, awk cutting the section before the next one" "the section's own lines and neither the line before it nor the line after it" "$WANT" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$WANT" ] || { echo "RED  bin/devloop-install-record, awk cutting the section before the next one: awk gives another text than expected"; show "expected" "$WANT"; show "read" "$LF"; red=1; }
+          WANT=$(printf '%s\n' 'ref: origin/main' 'language: German' 'recorded: 2026-11-14' '[0]')
+          lang() { rec "$1" --language; }
+          three lang
+          hold "bin/devloop-install-record, awk cutting the section that stands last" "the section to the end of the file, its last line among it" "$WANT" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$WANT" ] || { echo "RED  bin/devloop-install-record, awk cutting the section that stands last: awk gives another text than expected"; show "expected" "$WANT"; show "read" "$LF"; red=1; }
+          # the install guard, which reads the record through that program: a command the record opens by its route, and a cargo configuration of the project in the command's directory and in one above it
+          open() { hook "$1" pre-tool-use-install-guard.sh bash "cargo install devloop-probe-does-not-exist" /c0; }
+          three open
+          hold "hooks/pre-tool-use-install-guard.sh at a command the record opens" "let through with nothing said, the record read with CRLF as with LF" "[0]" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$(printf '\n[0]')" ] || { echo "RED  hooks/pre-tool-use-install-guard.sh at a command the record opens: not let through with LF"; show "read" "$LF"; red=1; }
+          cargo() { local d; for d in /c1 /c2/deeper /c3 /c4/deeper; do hook "$1" pre-tool-use-install-guard.sh bash "cargo install devloop-probe-does-not-exist" "$d"; echo; done; }
+          three cargo
+          hold "hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml" "blocked four times, [install] and install.root = in the command's directory and in one above it" "cargo (a config file on cargo's search path sets install.root, which this guard does not read)" "$LF" "$CO" "$BLOB"
+          [ "$(printf '%s\n' "$LF" | grep -c '^\[2\]$')" -eq 4 ] || { echo "RED  hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml: not blocked four times with LF"; show "read" "$LF"; red=1; }
+
+          # bin/devloop-setup-state, the markers of the five files off the default branch
+          state() { prog "$1" "$ROOT/bin/devloop-setup-state" "$T/$1/p"; }
+          three state
+          hold "bin/devloop-setup-state, the markers off the default branch" "three versions and none for the file without a marker" "$(printf '%s\n' 'marker: docs/agents/checks.md 0.188.0' 'marker: docs/agents/issue-tracker.md 0.187.0' 'marker: docs/agents/domain.md none' 'marker: docs/agents/standards.md 0.188.0' 'marker: docs/agents/environment.md 0.188.0')" "$LF" "$CO" "$BLOB"
+
+          # the commands the texts prescribe, read out of the texts: found by the words they open with, so that no copy of a command stands here
+          text() { local n; n=$(grep -c -e "$2" "$1") || true; [ "$n" -eq 1 ] || { echo "RED  $1: $n lines carry a command opening with $3, expected one"; red=1; }; }
+          C1=$(grep -o '`git show origin/main:[^`]*`' skills/setup-checks/SKILL.md | tr -d '`') || true
+          C2=$(sed -n 's/^    \(git fetch -q origin main && git show .*\)$/\1/p' shared/mode-set-up.md) || true
+          C3=$(grep -o '`git log -1 [^`]*`' shared/rule-not-written-down.md | tr -d '`') || true
+          C4=$(grep -o '`git log -p [^`]*`' shared/rule-not-written-down.md | tr -d '`') || true
+          text skills/setup-checks/SKILL.md '`git show origin/main:[^`]*`' "git show origin/main:"
+          text shared/mode-set-up.md '^    git fetch -q origin main && git show ' "git fetch -q origin main && git show"
+          text shared/rule-not-written-down.md '`git log -1 [^`]*`' "git log -1"
+          text shared/rule-not-written-down.md '`git log -p [^`]*`' "git log -p"
+          show1() { prog "$1" bash -c "git fetch -q origin main && $C1"; }
+          three show1
+          hold "skills/setup-checks/SKILL.md, the command with git show after a fetch" "the lines of the record, the same with LF and with CRLF" "$(printf '%s\n' '## Dependency permission' '' 'dependency-tools: yes')" "$LF" "$CO" "$BLOB"
+          show2() { prog "$1" bash -c "$C2"; }
+          three show2
+          hold "shared/mode-set-up.md, the command with git fetch and git show" "the lines of the three records, the same with LF and with CRLF" "$(printf '%s\n' 'unattended-mode: yes' 'unattended-answered: 2026-11-15')" "$LF" "$CO" "$BLOB"
+          # git log -S: the commit named by its subject, since the two origins carry other commits; each rule's line as the text has it searched
+          named() {
+            local l h
+            for l in '- Rule C: a migration is written with its way back.' '- Rule B: every public function of the parser carries a test.' '- Rule A: a handler never swallows an error of the queue.' '- Rule D: a job names the queue it reads.'; do
+              h=$(cd "$T/$1/p" && bash -c "${C3/<the line>/$l}" 2>&1) || true
+              printf '%s -> %s\n' "$l" "$(git -C "$T/$1/p" log -1 --format=%s "$h" 2>&1 | head -1)"
+            done
+          }
+          three named
+          hold "shared/rule-not-written-down.md, the command with git log -S" "each rule's line names the commit that brought it in or took it out, the same over a history with CRLF and a commit of line endings alone" "$(printf '%s\n' '- Rule C: a migration is written with its way back. -> rule C introduced' '- Rule B: every public function of the parser carries a test. -> setup' '- Rule A: a handler never swallows an error of the queue. -> rule A removed' '- Rule D: a job names the queue it reads. -> rule D introduced')" "$LF" "$CO" "$BLOB"
+          # git log -p: the lines it shows as lost and as added, the file headers left out; a commit of line endings alone adds none to either, so the lists are the lists of the history with LF
+          lost() { (cd "$T/$1/p" && bash -c "$C4" 2>&1 | grep -e '^[-+]' | grep -v -e '^--- ' -e '^+++ ') || true; }
+          three lost
+          hold "shared/rule-not-written-down.md, the command with git log -p" "one line lost, the lines added as with LF, and none named by the commit that changed the line endings alone" "-- Rule A: a handler never swallows an error of the queue." "$LF" "$CO" "$BLOB"
+          [ "$(printf '%s\n' "$LF" | grep -c '^-')" -eq 1 ] || { echo "RED  shared/rule-not-written-down.md, the command with git log -p: not one line lost with LF"; show "read" "$LF"; red=1; }
+          [ "$(cd "$T/blob/p" && bash -c "$C4" 2>&1 | grep -c 'line endings alone')" -eq 1 ] || { echo "RED  shared/rule-not-written-down.md, the command with git log -p: the history with CRLF does not list its commit of line endings alone"; red=1; }
+
+          # hooks/stop-checks.sh four times, a blocking filled class whose check is red: the runner, the rows, and the file of attempts the hook writes and reads again
+          stops() { local i; rm -f "$T/$1/p/.claude/check-attempts.local"; for i in 1 2 3 4; do hook "$1" stop-checks.sh stop; echo; sed 's/^[0-9][0-9]* /attempts: /' "$T/$1/p/.claude/check-attempts.local" 2>&1; done; }
+          three stops
+          hold "hooks/stop-checks.sh, the runner off the check table" "the check ran and its own output stands in the message, the runner's name without a carriage return" "$(printf '%s\n' '--- lint (sh run-checks.sh lint) ---' 'lint: src/a.py:1: line too long')" "$LF" "$CO" "$BLOB"
+          hold "hooks/stop-checks.sh, the rows of the check table" "the one blocking filled class ran and no other" "$(printf '%s\n' 'it into the repository, as that line says, and run it again.' '--- lint (sh run-checks.sh lint) ---' 'lint: src/a.py:1: line too long' '[2]')" "$LF" "$CO" "$BLOB"
+          [ "$(printf '%s\n' "$LF" | grep -c '^--- ')" -eq 3 ] || { echo "RED  hooks/stop-checks.sh, the rows of the check table: not one class in each of the three messages with LF"; show "read" "$LF"; red=1; }
+          hold "hooks/stop-checks.sh, the file of attempts it writes and reads again" "attempt 1 of 3, attempt 2 of 3, still failing after 3, then nothing said and 0, the count read as written: 1, 2, 3, 4" "$(printf '%s\n' 'attempts: 3' '' '[0]' 'attempts: 4')" "$LF" "$CO" "$BLOB"
+          for w in 'Checks are failing (attempt 1 of 3)' 'Checks are failing (attempt 2 of 3)' 'Still failing after 3 attempts'; do [ "${LF#*"$w"}" != "$LF" ] || { echo "RED  hooks/stop-checks.sh, the file of attempts it writes and reads again: the reading with LF does not carry $w"; red=1; }; done
+          [ "$(crs "$T/co/p/.claude/check-attempts.local")" -eq 0 ] || { echo "RED  hooks/stop-checks.sh, the file of attempts it writes and reads again: the file carries a carriage return"; red=1; }
+          for c in lf co blob; do rm -f "$T/$c/p/.claude/check-attempts.local"; done
+          # hooks/post-tool-use-checks.sh after an Edit of a file the patterns of a class match
+          edited() { hook "$1" post-tool-use-checks.sh edit src/a.py; }
+          three edited
+          hold "hooks/post-tool-use-checks.sh, the runner off the check table" "the check of the class ran for the file, the runner's name without a carriage return" "$(printf '%s\n' '--- lint (sh run-checks.sh lint-file FILE=src/a.py) ---' 'lint-file: FILE=src/a.py: line too long' '[2]')" "$LF" "$CO" "$BLOB"
+          hold "hooks/post-tool-use-checks.sh, the rows of the check table" "the class whose patterns match the file and no other" "--- lint (sh run-checks.sh lint-file FILE=src/a.py) ---" "$LF" "$CO" "$BLOB"
+          [ "$(printf '%s\n' "$LF" | grep -c '^--- ')" -eq 1 ] || { echo "RED  hooks/post-tool-use-checks.sh, the rows of the check table: not one class in the message with LF"; show "read" "$LF"; red=1; }
+
+          # bin/devloop-check-table and the two table guards over a table with two cells in no form; with them the two other calls of awk, the cells joined with "; "
+          cells() { prog "$1" "$ROOT/bin/devloop-check-table" "$T/$1/p/docs/agents/checks.md"; }
+          three cells
+          WANT=$(printf '%s\n' 'format: Filled' 'types: done' '[1]')
+          hold "bin/devloop-check-table, the status cells of the check table" "the two cells in no form named, the two in a form not" "$WANT" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$WANT" ] || { echo "RED  bin/devloop-check-table, the status cells of the check table: another text than expected with LF"; show "read" "$LF"; red=1; }
+          before() { hook "$1" pre-tool-use-table-guard.sh bash "git commit -m x" ""; }
+          three before
+          WANT='Commit refused: docs/agents/checks.md has a status in no allowed form: format: Filled; types: done. A status is `filled`, `empty`, `skipped (state): <the state that keeps the class off>` or `skipped (user): <the user'"'"'s reason>`. The check setup writes this table, so hand the change to it rather than editing the cell.'
+          hold "hooks/pre-tool-use-table-guard.sh, awk joining the cells it names" "the commit refused, the two cells joined with a semicolon and a blank" "$WANT" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$(printf '%s\n[2]' "$WANT")" ] || { echo "RED  hooks/pre-tool-use-table-guard.sh, awk joining the cells it names: awk gives another text than expected"; show "expected" "$WANT"; show "read" "$LF"; red=1; }
+          after() { hook "$1" post-tool-use-table-guard.sh edit docs/agents/checks.md; }
+          three after
+          WANT='docs/agents/checks.md now has a status in no allowed form: format: Filled; types: done. A status is `filled`, `empty`, `skipped (state): <the state that keeps the class off>` or `skipped (user): <the user'"'"'s reason>`. The check setup writes this table, so hand the change to it rather than editing the cell. No commit goes through until it is fixed.'
+          hold "hooks/post-tool-use-table-guard.sh, awk joining the cells it names" "the write reported, the two cells joined with a semicolon and a blank" "$WANT" "$LF" "$CO" "$BLOB"
+          [ "$LF" = "$(printf '%s\n[2]' "$WANT")" ] || { echo "RED  hooks/post-tool-use-table-guard.sh, awk joining the cells it names: awk gives another text than expected"; show "expected" "$WANT"; show "read" "$LF"; red=1; }
+          # bin/devloop-start-conditions, condition 1 over the same table off the default branch, GitHub answered by the stand-in
+          first() { prog "$1" "$ROOT/bin/devloop-start-conditions" | grep '^condition 1 ' || true; }
+          three first
+          hold "bin/devloop-start-conditions, the check table off the default branch" "condition 1 names the empty class and the two cells in no form" 'condition 1 does not hold, because the class unit is empty on origin/main, the status of format reads "Filled" on origin/main, none of the four forms a status takes and the status of types reads "done" on origin/main, none of the four forms a status takes' "$LF" "$CO" "$BLOB"
+
+          # the mark, written by the command of shared/mark-command.md as the text has it, read by hooks/permission-request-unattended.sh for the session that wrote it and for another
+          MC=$(sed 's/^    //' shared/mark-command.md)
+          marked() {
+            local p="$T/$1/p"
+            (cd "$p" && DEVLOOP_SESSION_ID=s1 bash -c "$MC") || true
+            printf 'lines %s, with a carriage return %s, the second %s, the third %s\n' "$(grep -c '' "$p/.claude/unattended.local")" "$(crs "$p/.claude/unattended.local")" "$(sed -n 2p "$p/.claude/unattended.local")" "$(sed -n 3p "$p/.claude/unattended.local")"
+            hook "$1" permission-request-unattended.sh perm s1 | sed 's/,"message":.*$//'; echo
+            hook "$1" permission-request-unattended.sh perm s2
+            rm -f "$p/.claude/unattended.local"
+          }
+          three marked
+          hold "hooks/permission-request-unattended.sh, the third line of the mark" "the mark as the command of shared/mark-command.md wrote it, three lines and no carriage return; a no for the session that wrote it, and the prompt passed on unanswered for another" "$(printf '%s\n' 'lines 3, with a carriage return 0, the second build, the third s1' '{"hookSpecificOutput":{"hookEventName":"PermissionRequest","decision":{"behavior":"deny"' '[0]' '' '[0]')" "$LF" "$CO" "$BLOB"
+
+          # bin/devloop-tool-state, the version of the project's Cypress off its package
+          cypress() { prog "$1" env CYPRESS_CACHE_FOLDER="$T/cy" "$ROOT/bin/devloop-tool-state" --planning cypress:binary | head -1 | sed 's/ (on [0-9-]*)$//'; }
+          three cypress
+          hold "bin/devloop-tool-state, the version off node_modules/cypress/package.json" "the version read without the comma and the carriage return behind it" "the folder of Cypress 13.6.0 as the project's Cypress needs it" "$LF" "$CO" "$BLOB"
+
+          # bin/devloop-install-note put, last, since it writes into the working tree: a line that stands already, then a new one at the end of its section, and the file afterwards read without its carriage returns
+          put() {
+            local p="$T/$1/p"
+            prog "$1" "$ROOT/bin/devloop-install-note" put /opt/devloop-probe/bin "cargo install alpha"; echo
+            prog "$1" "$ROOT/bin/devloop-install-note" put /opt/devloop-probe/bin "cargo install beta"; echo
+            sed "s/$CR\$//" "$p/docs/agents/environment.md" | sed -n '/^## Installed outside the project$/,$p'
+          }
+          three put
+          hold "bin/devloop-install-note put, docs/agents/environment.md in the working tree" "the line that stands is found, the heading is found, and the new line goes to the end of its section before the next heading" "$(printf '%s\n' 'stands already: - `cargo install alpha` installed into /opt/devloop-probe/bin' '[0]' 'written: - `cargo install beta` installed into /opt/devloop-probe/bin' '[0]' '## Installed outside the project' '' '- `cargo install alpha` installed into /opt/devloop-probe/bin' '- `cargo install beta` installed into /opt/devloop-probe/bin' '' '## Language' '' 'language: German' 'language-recorded: 2026-11-14')" "$LF" "$CO" "$BLOB"
+          rm -rf "$T"
+          [ "$red" -eq 0 ]

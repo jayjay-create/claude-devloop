@@ -1237,10 +1237,39 @@ needs, corrected. And one block of this milestone the consistency audit of
 16 November 2026 wrote, the roadmap entry of that date on the two entries
 held: a sentence of the head of `scripts/devloop-run-workflow` names one
 block of this milestone on Windows where two hold what it says, the block of
-11 November 2026 and the block of 16 November 2026; Fix none, built with
-(2) by the decision at the merge of that audit below. Of (2) to (7) nothing
-is built yet, `shell:
-bash` in every skill and the guard for PowerShell among them. Until 16
+11 November 2026 and the block of 16 November 2026, built with (2) by the
+decision at the merge of that audit below. Since 17 November 2026 (2) is
+built, the roadmap entry of that date on a project's files read with CRLF
+as with LF: every place of the hooks, the programs and the loaded texts that
+takes a file of the project apart reads it with CRLF, from a checkout under
+`core.autocrlf=true` or committed so, as the same file with LF, the install
+record off the main branch, the runner of the check table in both hooks, the
+line of an install written into the record's file and the commands with
+`git show` and `git log -p` of two loaded texts changed for it and every
+other place measured as reading it so; the seventeen blocks of 15 October
+2026 carry their Fix, and three blocks that order wrote with theirs; the
+last step of the job hooks on every system reads every such place in the
+three forms on all four systems and reaches the three calls of `awk` the
+check under Alpine did not reach, busybox `awk` giving there what `awk`
+gives on macOS; and the sentence of the head of
+`scripts/devloop-run-workflow` names both blocks on Windows, its block
+closed as corrected. The runs under Windows of the blocks on line endings
+came from the job's log at the merge, run W1 of that entry, green on 18
+November 2026. The first run of that step on
+`windows-latest`, on 18 November 2026, was red at the four inputs, where
+`grep -c` counted no carriage return; since that day the step counts them
+over the bytes with Python and shows before the first place that its way
+of comparing a reading tells CRLF from LF, red where either does not hold.
+What that order found and did not
+build stands in three blocks of this milestone with Fix none: the walk of
+the install guard for a cargo configuration does not end at a path in the
+form of Windows; the line of an install is handed to `awk` through `-v`,
+which turns a backslash sequence into another character; and under Windows
+the step builds its history of the standards file with one carriage return
+fewer. Of (3) to (7) nothing is built yet, `shell: bash` in every skill
+and the guard for PowerShell among them. Until 17 November 2026 this
+paragraph said that of (2) to (7) nothing was built yet and that the block
+on the sentence of that head stood with Fix none; until 16
 November 2026 this paragraph said that the three open blocks of
 `scripts/devloop-run-workflow` with the red end of that program's self-test,
 the block on the self-test of `bin/devloop-bounded` under hidepid and the

@@ -8880,6 +8880,284 @@ and for the proofs of closings.
   before it, 67 characters and no find, and the report says what the step
   printed after it. No run is recorded.
 
+- **A project's files read with CRLF as with LF, every place measured**
+
+  17 November 2026, version 0.189.0: `bin/devloop-install-record`,
+  `bin/devloop-install-note`, `hooks/stop-checks.sh`,
+  `hooks/post-tool-use-checks.sh`, `skills/setup-checks/SKILL.md`,
+  `shared/mode-set-up.md`, `shared/rule-not-written-down.md`, the head of
+  `scripts/devloop-run-workflow` and `.github/workflows/stock-take.yml`
+  change; nothing under `output-styles/` changes, and `README.md` does not. On
+  `task/line-endings-and-awk`, off `origin/main` at `784dc38`, in three
+  commits: the code with the version, raised once, `d442889`; this entry, the
+  blocks, the plan, the conventions, `docs/rationale.md` and the table; and
+  the runs, measured at the second. The order: (2) of milestone 12 in
+  `docs/plan.md`, the programs that read files under Windows and under
+  Alpine, with the block of 16 November 2026 on the sentence of the head of
+  `scripts/devloop-run-workflow` by the decision at the merge of that day.
+  Its subject, eighteen blocks under "## Milestone 12" of `docs/defects.md`:
+  the fourteen places of 15 October 2026 that read a file of the project and
+  were never measured with CRLF or under Windows, the three calls of `awk` the
+  check "hooks on every system (alpine)" did not reach, and that sentence. Its
+  reading list: 311276 bytes by `wc -c`, the order's figure, counted again
+  with `git show` over its ranges at `784dc38`, the same; and, read whole as
+  a program the build changed, `bin/devloop-install-note`, 28334 bytes, so
+  339610 in all. Four subagents searched `hooks/`, `bin/`, `skills/` and
+  `shared/` and gave findings with file, line and text, each held at its
+  place before it was used. Written by Claude Code from the order of this
+  day; no session log was read; nothing was installed outside throwaway
+  directories and containers.
+
+  **The places at `784dc38`**, against the lines the titles carry from 15
+  October 2026: `bin/devloop-install-record` lines 185, 190 and 192, the git
+  show and the two comparisons of the heading, and line 194, the call of
+  `awk`, where the order named lines 195 to 204 and line 204;
+  `bin/devloop-setup-state` line 229; `skills/setup-checks/SKILL.md` line 378;
+  `shared/mode-set-up.md` line 14; `shared/rule-not-written-down.md` lines 43
+  and 71; `hooks/stop-checks.sh` line 12, lines 16 to 39 and line 48, written
+  at line 51; `hooks/post-tool-use-checks.sh` line 19 and lines 23 to 50;
+  `bin/devloop-check-table` lines 43 to 50;
+  `hooks/permission-request-unattended.sh` line 30;
+  `hooks/pre-tool-use-install-guard.sh` lines 1076 and 1077, where the
+  archived entry of 15 October 2026 named line 826, and line 1085 for the
+  file under `CARGO_HOME`, where it named line 834; and the two calls of
+  `awk` in the table guards, lines 64 and 27. Every Wrong held at
+  `784dc38` but one: the Wrong of the block on line 194 says the check under
+  Alpine does not reach it, which held on 15 October 2026 and not since 23
+  October 2026, when the job came to run every self-test under `bin/`: the
+  self-tests of `bin/devloop-start-conditions` and `bin/devloop-tool-state`
+  put a record with a section on their project's main branch and read it
+  through that program, read here and not measured; the block keeps its
+  Wrong and says so in its note.
+
+  **The search again**, the search of 15 October 2026 over `hooks/`, `bin/`,
+  `skills/` and `shared/`, for `git show`, `git cat-file`, `git ls-files`,
+  `git grep`, `git check-ignore`, `git log`, `git diff`, `git stash`, `git
+  config`, every `grep`, `sed`, `awk`, `cat`, `head`, `tail`, `cut`, `tr` and
+  `wc` beside a file, every read behind a redirection, the files devloop
+  writes into the project or under `.git` and reads again, and in the Python
+  programs every `open`. Every hit decided. Places the seventeen blocks do
+  not name, each a block of milestone 12 since this entry:
+  `bin/devloop-start-conditions` lines 374 and 378, the check table off the
+  main branch for condition 1, the place the order named;
+  `bin/devloop-install-note` lines 315, 318, 321 and 327 to 339, put, which
+  reads `docs/agents/environment.md` in the working tree; and
+  `bin/devloop-tool-state` line 589, the version off
+  `node_modules/cypress/package.json`. Not places: the record of the refusals
+  of auto mode, `bin/devloop-auto-mode-question` lines 297 and 312, written
+  and read by Python in text mode, which reads CRLF as LF, and read by the
+  hooks step of the job through `tr -d '\r'`, so already read on
+  `windows-latest`; the stash message, `bin/devloop-setup-state` line 241,
+  and the lists git forms itself, `git status --short` in
+  `shared/cut-branch.md` lines 58 and 80, in `shared/set-aside-back.md`
+  line 22 and in `build-work`, `git ls-files --stage` and `git diff` in
+  `setup-checks` and `build-work`; `hooks/session-start.sh` line 59, which
+  counts lines; the output of the tools the hooks and the programs start,
+  gh, brew, npm and the runner of the checks among them, the definition of
+  15 October 2026 leaving the runner out; files under the home directory;
+  and the tests of whether a file stands. No skill and no shared text
+  prescribes `grep`, `sed`, `awk`, `cat`, `head`, `tail`, `cut`, `wc`,
+  `diff` or Python over a file of the project. `bin/devloop-command-reader`
+  reads stdin alone. Found beside the search, while the step below was
+  written, and measured on macOS at `d442889`: the install guard's walk for a
+  cargo configuration, lines 1074 to 1081, does not end where the command's
+  directory is a path in the form of Windows, the guard ended by the bound
+  after 5 seconds with 124 for `D:/a/proj/c0` and for `D:\a\proj\c0` where it
+  answered 0 within a second for a Unix path; a block of milestone 12 with
+  Fix none.
+
+  **The counter-check before the build**, on macOS 26.6.2 with bash 3.2.57,
+  awk version 20200816 and git 2.50.1, and in a container of alpine:3.22 with
+  bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and Python 3.12.16, every hook and
+  program started by its first line, over six throwaway projects: LF; LF
+  checked out under `core.autocrlf=true`; the files of `docs/agents/`
+  committed at CRLF under `core.autocrlf=false`; the cargo configurations
+  committed so; a history of `docs/agents/standards.md` with a commit that
+  changes the line endings alone; and a main branch without the files. The
+  record carries all four sections, the table a red blocking class and two
+  cells in no form. At `784dc38`, with CRLF committed: every form of
+  `bin/devloop-install-record` answered "has no section", the session start
+  printed `[InstallRecord] none` and `[Language] none`, the install guard
+  blocked a command the record opens, and the commands with `git show`
+  printed every line with a carriage return. With CRLF in either form: both
+  hooks of the checks ran `sh run-checks.sh^M`, no check ran, on macOS with
+  "This check did not run" and under Alpine with "sh: can't open". With
+  CRLF committed `git log -p` gave its lost line with a carriage return, and
+  a commit of line endings alone listed every line as lost and as added.
+  `bin/devloop-install-note put` wrote a line that stood already again,
+  under a second heading. Every other place read CRLF as LF in both forms:
+  the markers, `git log -S`, the rows of the table, `bin/devloop-check-table`,
+  both table guards, condition 1, the mark, the file of attempts, the cargo
+  configurations and the version of Cypress. macOS and Alpine gave the same
+  output byte for byte, but for the wording of `sh` that does not find the
+  runner; busybox `awk` gave at the three calls what `awk` gave on macOS.
+  Without the files on the main branch, `git show` printed "fatal: path
+  'docs/agents/environment.md' does not exist in 'origin/main'" and both
+  `git log` commands printed nothing.
+
+  **What is built.** `bin/devloop-install-record` takes the carriage return
+  off every line's end of the record after the `git show`, in every form.
+  Both hooks of the checks take it off the runner. `bin/devloop-install-note
+  put` reads the line that stands, the heading and a blank last line without
+  it, and its `awk` keeps each line's carriage return and writes it back.
+  The texts prescribe `git show origin/main:docs/agents/environment.md | tr
+  -d '\r'` and `git log -p --ignore-cr-at-eol origin/main --
+  docs/agents/standards.md | tr -d '\r'`. After the build, over the same six
+  projects on both systems: every place gives with CRLF from a checkout and
+  with CRLF committed what it gives with LF, byte for byte; the history with
+  a commit of line endings alone lists that commit and no line under it; and
+  with LF every place gives what it gave at `784dc38`, but for the commands
+  of the texts, which print the same lines. Without the files on the main
+  branch git's message stands as before, and the pipeline ends with `tr`'s 0
+  where `git show` ended with 128. The sentence of the head of
+  `scripts/devloop-run-workflow` names both blocks on Windows, and that block
+  is closed as corrected in the document.
+
+  **The step on line endings**, the last step of the job hooks on every
+  system: three throwaway projects built in the step, one at LF, one checked
+  out under `core.autocrlf=true` and one with its files committed at CRLF,
+  each setting `core.autocrlf` itself, so that the four systems measure the
+  same input; every input's carriage returns counted over its bytes before a
+  place reads it, and the way a reading is taken up and compared shown to
+  tell CRLF from LF before the first place, each red where it does not hold;
+  every hook and program of the places above started by its first line,
+  a hook with an input of its event, and every command of a text read out of
+  that text; the three calls of `awk` reached with input that gets to them,
+  their output held against the expected text, the section of the record
+  before the next one and the section that stands last; one line per place,
+  "ok" or "RED", without a path, and one line "note" that decides nothing.
+  Under Windows its paths are put in the form of Git Bash and handed to
+  Python unconverted where it writes a hook's input, since the walk above
+  would not end otherwise. On macOS and in Alpine at `d442889`: 27 lines
+  "ok" and the line "note", the same lines on both, 10 seconds on macOS. Over
+  the hooks, programs and texts of `784dc38`: 14 lines "RED", every place
+  that reads CRLF otherwise, and 13 "ok".
+
+  **The first run on `windows-latest`**, run 44203370512 of the checks of
+  pull request #251, at `6a006be`, on 18 November 2026 in UTC: the job hooks
+  on every system (windows-latest) red, the four other checks green. Its
+  last step printed four lines "RED  the input, …: the input carries no
+  carriage return, so nothing here was measured with CRLF", for
+  `docs/agents/environment.md`, for `docs/agents/checks.md`, for
+  `docs/agents/standards.md` with the four cargo configurations, and for
+  `node_modules/cypress/package.json`, the last a file the step writes
+  itself with `printf`, a carriage return before every line feed and no git
+  between; then 22 lines "ok" for the places and the three calls of `awk`;
+  and it ended with 1. Each of the four counts was `grep -c` with a carriage
+  return as its pattern. Why `grep` counted none there is not measured; the
+  22 lines "ok" showed nothing about CRLF, since nothing showed that the
+  input carried it.
+
+  **What the addendum of 18 November 2026 changed**, in the first commit, so
+  that the runs on the step count: every count of a carriage return in the
+  step counts the file's bytes, Python opening the file in binary mode, which
+  by the documentation of `open()` returns "contents as bytes objects without
+  any decoding", universal newlines applying "to text mode" only, and by that
+  of `io` on binary I/O performs "No encoding, decoding, or newline
+  translation"; a blob is written to a file by git and counted there. Before
+  the first place the step takes up two lines with LF and the same two lines
+  with CRLF through `prog` and `three`, as it takes up every reading,
+  compares them as `hold` does, and is red where the carriage return makes
+  no difference, since the reading of a command with `git show` differs
+  between CRLF and LF by that carriage return alone. A line "note" sets, for
+  the package the step writes with `printf`, the count over its bytes beside
+  the count `grep -c` gives, on every system and deciding nothing, so that
+  the next run's log shows what `grep` counts under Git Bash. The line "ok"
+  of an input names the carriage returns counted, where it named lines.
+  Nothing else changes: the same places, inputs and expectations. Measured
+  before the build on macOS and in the container, over the inputs as the step
+  builds them: 31, 31 and 31 carriage returns in the record, 14, 14 and 14 in
+  the table, 6 in the blob of the standards, 2, 2, 3 and 3 in the cargo
+  configurations, 4 and 4 in the package, and 0 in the blob of the checkout,
+  in the record with LF and in the package with LF, `od` and `grep -c`
+  giving the same counts there. After the build, at `d442889`: the step
+  green on both, and red on both with the package written without its
+  carriage returns, "RED  the input, node_modules/cypress/package.json as an
+  installer with CRLF wrote it: the input carries no carriage return", and
+  with the two lines of the proof written without them, "RED  the way a
+  reading is taken up and compared: the two lines with CRLF read as the same
+  lines with LF". The three commits of the branch were written anew that
+  day, this change in the first, since the head of
+  `scripts/devloop-stock-take` counts a run only where the commit that
+  raises the version contains the last change to every line it stands on.
+  Written by Claude Code from the order of the addendum; no session log was
+  read; its reading list 99259 bytes by `wc -c`; nothing was installed
+  outside throwaway directories and containers.
+
+  **The runs**, at the second commit of the branch, `dc29960`, under
+  0.189.0, the tree clean, on 18 November 2026 in UTC, after the addendum,
+  on the person's Mac, macOS 26.6.2 with bash 3.2.57 started with
+  --noprofile --norc and -eo pipefail as GitHub starts the step, and in a
+  container of alpine:3.22 on that Mac with bash 5.2.37, BusyBox 1.37.0, git
+  2.49.1 and Python 3.12.16, the step read out of the committed
+  `.github/workflows/stock-take.yml` by the YAML reader of
+  `scripts/devloop-run-workflow`. Run L1, on the Mac at 00:46:54 and in the
+  container at 00:47:22: the step over this tree, 27 lines "ok", none
+  "RED", exit 0, the same lines on both, 10 seconds on the Mac and 2 in the
+  container; among them the four inputs with 31 31 31, 14 14 14, 6 2 2 3 3
+  and 4 4 carriage returns counted over their bytes, the way a reading is
+  taken up and compared telling CRLF from LF, and the three calls of `awk`
+  under busybox `awk`, the section before the next one, "the section's own
+  lines and neither the line before it nor the line after it", the section
+  that stands last, "the section to the end of the file, its last line among
+  it", and in both table guards "the two cells joined with a semicolon and a
+  blank", each held against the whole expected text; and the line "note"
+  with 4 carriage returns over the bytes and 4 by `grep -c` on both.
+  Run L2, on the Mac at 00:47:04 and in the container at 00:47:24: the same step
+  over the hooks, programs and texts of `784dc38`, 14 lines "RED" and 13
+  "ok", exit 1, the same lines on both. Run L3, on the Mac at 00:47:13 and
+  in the container at 00:47:26: the self-test of `bin/devloop-install-note`,
+  "SELF-TEST PASSED: 46 cases" and exit 0 on both, its case "put of a line
+  that stands already: not written again" among them. L1 stands on the thing
+  on the step green and on the three blocks on `awk`, L2 on the thing on the
+  step red, L3 on the thing on put where a line stands already, whose
+  counting run of 30 October 2026 the change of its line took. No run is
+  recorded on the blocks on line endings: their should asks for Windows, and
+  the job's run on `windows-latest` is entered from its log at the merge.
+
+  **Found after the runs**, a reading of the search held at its place and
+  measured on macOS at `dc29960`: `bin/devloop-install-note put` hands the
+  line to `awk` with `-v`, which reads escape sequences, so that `cargo
+  install --path tools\new` was written as two lines and written again on a
+  second call; a block of milestone 12 with Fix none.
+
+  **The runs of the job under Windows**, of 18 November 2026: the job hooks on
+  every system on windows-latest, in run 44259689177 of the checks of pull
+  request #251, on the merge ref of `1978671` into `784dc38`, whose tree is
+  that of `1978671`, main not having moved since the branch point, version
+  0.189.0, green, read off the job's log at the merge. Its last step printed
+  the four lines on the inputs ok, their carriage returns counted over the
+  bytes "31 31 31", "14 14 14", "5 2 2 3 3" and "4 4"; the line "note" with
+  "4 carriage returns counted over its bytes, 0 by grep -c"; "ok   the way a
+  reading is taken up and compared: two lines with CRLF read otherwise than
+  the same lines with LF, and the same lines with LF alike"; and the 22 lines
+  "ok" of the places and the three calls of `awk`, from
+  "bin/devloop-install-record, the record off the default branch in six
+  forms" to "bin/devloop-install-note put, docs/agents/environment.md in the
+  working tree", none "RED": run W1 of the step on line endings, which stands
+  on the fourteen blocks of 15 October 2026 on line endings and on the three
+  blocks this entry wrote with theirs. So under Windows with Git Bash a
+  reading taken up as the step takes up every reading kept its carriage
+  return, and every place read CRLF as LF there.
+
+  **The corrections of the merge**, of 18 November 2026, the fourth commit,
+  which changes no code. The seventeen blocks on line endings stand Walked,
+  their notes naming run W1. Read off the same log: under Git Bash on
+  windows-latest `grep -c` with a carriage return as its pattern counted 0 in
+  a file whose bytes carry 4, where macOS and Alpine count 4; and the blob of
+  the standards carried 5 carriage returns there where macOS and Alpine count
+  6. The step builds that history with `grep -v` at line 577 of the workflow
+  and `sed` at line 580, which gives a carriage return only to a line that
+  ends in another character, so that an empty line one of the two writes
+  without its carriage return keeps none; which of the two drops it is read
+  at the code and not measured. A block of milestone 12 with Fix none, since
+  the step means the four systems to measure the same input; the two places
+  over the standards were held ok there all the same, over a blob with 5
+  carriage returns. `docs/plan.md` names the three blocks with Fix none of
+  this order where it named one, and its sentence on the runs under Windows
+  names run W1; `docs/skill-conventions.md` sets what that run measured
+  beside its rule on line endings.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
