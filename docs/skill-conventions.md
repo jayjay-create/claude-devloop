@@ -2290,36 +2290,47 @@ return at a line's end taken off before the line is compared or falling into
 a field that is read over, a carriage return elsewhere in a line left as it
 stands; what devloop itself writes into the project and reads again is read
 as it was written. The places that stand on it, each with a block of
-milestone 12 in `docs/defects.md`: `bin/devloop-install-record` in every
-form; `bin/devloop-setup-state`, the markers; `bin/devloop-check-table`;
-`bin/devloop-start-conditions`, condition 1; `bin/devloop-install-note`,
-put; `bin/devloop-tool-state`, the version of the project's Cypress;
-`hooks/stop-checks.sh`, the runner, the rows and the file of attempts;
-`hooks/post-tool-use-checks.sh`, the runner and the rows;
-`hooks/permission-request-unattended.sh`, the mark;
-`hooks/pre-tool-use-install-guard.sh`, a cargo configuration;
-`skills/setup-checks/SKILL.md` step 3 and `shared/mode-set-up.md`, the
-command with `git show`; `shared/rule-not-written-down.md`, the commands
-with `git log -S` and `git log -p`. The last step of the job hooks on every
+milestone 12 in `docs/defects.md`, are named one by one in one place, so that
+they are kept there alone: the last step of the job hooks on every system in
+`.github/workflows/stock-take.yml`, where every line of a place carries its
+anchor, a line `` # reads: `FILE` "TEXT" `` over the call of hold of the case
+that reads it, and every line that reads a file of the project and is no
+place stands at the head of the step with its reason; a step of the job
+`stock-take` holds both, below. The last step of the job hooks on every
 system in `.github/workflows/stock-take.yml` reads each of them in the three
 forms on every pull request, on all four systems, and is red where one reads
 CRLF otherwise than LF; since 18 November 2026 it counts the carriage returns
-of every input over the file's bytes with Python in binary mode, after
-`grep -c` with a carriage return as its pattern counted none in the four
-inputs on `windows-latest`, one of them a file the step writes itself with a
-carriage return before every line feed, and it shows before the first place
-that its way of comparing a reading tells CRLF from LF, red where an input
-carries none or the comparison does not tell them apart; a place added later
-is held to the rule by that step
-only where the step is given a case for it, and no check finds a place
-without one. Not places, read and decided on that day: the record of the
-refusals of auto mode, which Python writes and reads in text mode and the
-step before reads through `tr -d`; the stash message and the lists git forms
-itself, `git status --short` among them; and the output of a tool a hook or
-a program starts. Measured on `windows-latest` on 18 November 2026, in the
-green run of that step: under Git Bash `grep -c` with a carriage return as
-its pattern counted 0 in a file whose bytes carry 4, and a reading taken up
-as the step takes up every reading kept its carriage return.
+of every input over the file's bytes with Python in binary mode, after `grep
+-c` with a carriage return as its pattern counted none in the four inputs on
+`windows-latest`, one of them a file the step writes itself with a carriage
+return before every line feed, and it shows before the first place that its
+way of comparing a reading tells CRLF from LF, red where an input carries
+none or the comparison does not tell them apart; a place added later is held
+to the rule by that step only where the step is given a case for it, and
+since 18 November 2026 a step of the job `stock-take`, the check `main`
+requires, finds a place without one: every line under `hooks/`, `bin/`,
+`skills/` and `shared/` that reads a blob of git, or reads with a command of
+the search, a redirection or an open() of Python a path of the project
+written on the line or held by a variable of the same file set from such a
+path, a blob or the project's root, is red unless it carries its anchor over
+the call of hold of a case or stands among the not places, every such line
+printed with its file, its number and its text, a line whose text stands in
+another line of its file too named by the nearest line above it that can
+carry an anchor. Measured over the 77 commits of the first parent from
+`919c9de` to `b77e3bc`: red at the four places that came in after the search
+of 15 October 2026 and at no other line, the roadmap entry of 18 November
+2026 on a place without a case found by the merge gate. It does not see a
+path of the project that reaches a program from another file, as an argument
+without a default or what a function returns, nor a reading that none of the
+words of the search names. Not places, read and decided on 17 November 2026:
+the record of the refusals of auto mode, which Python writes and reads in
+text mode and the step before reads through `tr -d`; the stash message and
+the lists git forms itself, `git status --short` among them; the output of a
+tool a hook or a program starts; and a file under the home directory, the one
+under `CARGO_HOME` among them. Measured on `windows-latest` on 18 November
+2026, in the green run of that step: under Git Bash `grep -c` with a carriage
+return as its pattern counted 0 in a file whose bytes carry 4, and a reading
+taken up as the step takes up every reading kept its carriage return.
 
 **A hook reads its input through one program, and the command as the shell
 runs it.** Since 12 October 2026, version 0.137.0, every hook under `hooks/`

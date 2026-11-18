@@ -9158,6 +9158,129 @@ and for the proofs of closings.
   names run W1; `docs/skill-conventions.md` sets what that run measured
   beside its rule on line endings.
 
+- **A place without a case found by the merge gate, every read anchored**
+
+  18 November 2026, version 0.190.0: `.github/workflows/stock-take.yml`
+  changes, in the job stock-take a step and in the last step of the job hooks
+  on every system its anchors; nothing under `skills/`, `shared/`,
+  `output-styles/`, `hooks/`, `bin/` or `scripts/` changes, and `README.md`
+  does not. On `task/line-endings-check`, off `origin/main` at `b77e3bc`, in
+  three commits: the code with the version, raised once, `0b757e6`; this
+  entry, the blocks, the plan, the conventions and the table; and the runs,
+  measured at the second. The order: before (3) of milestone 12 in
+  `docs/plan.md`, by the decision of this day there. Its subject, the gap the
+  rule on line endings named in `docs/skill-conventions.md` at `b77e3bc`,
+  lines 2312 to 2315: "a place added later is held to the rule by that step
+  only where the step is given a case for it, and no check finds a place
+  without one". Its reading list: 229485 bytes by `wc -c` over its ranges at
+  `b77e3bc`, the order's figure; no file under `bin/` or `hooks/` changed, so
+  none was read whole beyond it. No subagent. Written by Claude Code from the
+  order of this day and its addendum; no session log was read; nothing was
+  installed outside throwaway directories and containers.
+
+  **The counter-check before the build**, in a throwaway clone, a prototype of
+  three forms run as if it had stood in every pull request since `919c9de`,
+  the commit of pull request #174 that landed the search of 15 October 2026.
+  Every form reads `hooks/`, `bin/`, `skills/` and `shared/`, leaves out
+  comments, docstrings, heredocs no interpreter reads, the lines of a
+  multi-line awk program and the function of a self-test, and in a text reads
+  the code spans and the indented and fenced lines alone; a reading is a blob
+  of git, a command of the search of 17 November 2026 at the place of a
+  command fed by no pipe, a redirection from a path, or an open() for reading
+  in Python. Form A counts a reading whose line carries a path of the project;
+  form B every reading; form C a reading whose line carries such a path or a
+  variable of the same file set from one, from a blob or from the project's
+  root. Test 1, red at the commits that brought the three places of 17
+  November 2026 against their first parents, the fourteen of 15 October 2026
+  known: `8958afe`, `bin/devloop-install-note` put, red under B and C and
+  green under A, whose line reads "$FILE"; `b74c86f`, condition 1 of
+  `bin/devloop-start-conditions`, and `f183050`, the version of Cypress in
+  `bin/devloop-tool-state`, red under all three. Test 2, at `919c9de` with no
+  case: A named 7 of the 14, every one that reads through a variable missed; B
+  and C named 14 of 14, B with 17 lines in all and C with 15. Test 3, every
+  red over the 77 commits of the first parent from `919c9de` to `b77e3bc`,
+  once at the commit that brought the line: C 10, all at four places, none a
+  false alarm; B 36, 13 of them at the same four places, one the record of the
+  refusals of auto mode, which the rule names as no place, and 22 false
+  alarms, the session log, the clocks and the stand-ins of self-tests, the
+  output of gh under a temporary directory, `/proc`, devloop's own files,
+  eight pull requests red by false alarm alone; A 2. Test 4, at `b77e3bc`: C
+  finds 21 lines and, holding a case by the file the call of hold names,
+  needed nothing; held line by line it needs 21 anchors; B needs 19 or 48
+  entries. Each form took under 0.1 seconds on the Mac.
+
+  **The fourth place**, found by that counter-check: from `4fe6374`, pull
+  request #196, to `8958afe`, `hooks/post-tool-use-install-fact.sh` read
+  `docs/agents/environment.md` in the working tree at its lines 71 to 97, the
+  line that stands, the heading and the last line, the reading `8958afe` moved
+  into `bin/devloop-install-note` put; form C was red at `4fe6374` on lines
+  71, 73, 74 and 84 of that hook. Neither the search of 15 October 2026,
+  before it, nor that of 17 November 2026, after the move, names it; nothing
+  is built for it, since the place stands in put, which the step on line
+  endings holds.
+
+  **Decided on 18 November 2026** by the person, after the report of the
+  counter-check: form C is built, held line by line, every line that reads a
+  file of the project carrying an anchor `FILE` "TEXT" at a case of the step
+  on line endings or standing among the not places; the anchors stand in that
+  step, a comment line over the call of hold of the case that reads the line,
+  the not places as a list with their reasons at its head;
+  `docs/skill-conventions.md` names no place one by one any more and says
+  where they stand; line 1085 of `hooks/pre-tool-use-install-guard.sh`, the
+  file under `CARGO_HOME`, is no place and stands among the not places, a file
+  under the home directory being none. Not chosen: form A, which did not find
+  put and named 7 of the 14; form B, for its 22 false alarms in 77 commits,
+  eight pull requests red by them alone; a case held by its file, under which
+  a new reading in one of the 15 files the step holds would go unseen; and the
+  anchors in `docs/skill-conventions.md`, where anchor and case would stand in
+  two files. The two decisions on the order of the blocks and of this order
+  stand in `docs/plan.md` under milestone 12.
+
+  **Put right here**, a finding in a document, by the rule in
+  `docs/skill-conventions.md` on a finding the same branch puts right in its
+  own entry: the entry of 17 November 2026 above, "The places at `784dc38`",
+  reads "and line 1085 for the file under `CARGO_HOME`, where it named line
+  834", among the places; right is that line 1085 reads a file under the home
+  directory and is no place, as the archived entry of 15 October 2026 named
+  line 834 and as "Not places" of the same entry names "files under the home
+  directory".
+
+  **Found before the build**: line 1085 of
+  `hooks/pre-tool-use-install-guard.sh` stands whole in line 1077, which
+  carries two blanks more, so that no anchor found once can stand on it, and
+  on 1077 only one with its leading blanks. A line that reads, whose text, its
+  leading blanks aside, stands in another line of its file too, is named by
+  the nearest line above it that can carry an anchor, as the head of
+  `scripts/devloop-stock-take` anchors a line that can carry no unique anchor
+  and as the block on that cargo configuration carries its Fix: 1077 by line
+  1076, `for f in "$d/.cargo/config.toml" "$d/.cargo/config"; do`, and 1085 by
+  line 1084, `for f in "$ch/config.toml" "$ch/config"; do`, each the line that
+  names the files read.
+
+  **What is built.** A step of the job stock-take, before the step on titles:
+  it finds every line that reads a file of the project by form C and is red
+  where one carries no anchor, every such line printed with its file, its
+  number and its text, and a last line that says what makes the pull request
+  green; red as well where an anchor stands over no call of hold of its file,
+  is not 20 to 80 characters found once in its file, names a line that reads
+  nothing by the step, or names a line as a case and as a not place at once,
+  and where the step on line endings does not stand once in the file. In the
+  step on line endings, 20 lines "# reads:" over 17 calls of hold, a line "#
+  not a place" for line 1085, and a comment at its head that says both forms.
+  The production step gives, over the 78 trees from `919c9de` to `b77e3bc`,
+  the lines the prototype of form C gives, and reads the same lines of every
+  file at `919c9de` and at `b77e3bc`. At `0b757e6` it finds 21 lines in 13
+  files, every one with its anchor, and the one not place.
+
+  **Found beside the build**, read at the code and measured on the Mac at
+  `0b757e6`, three blocks of milestone 12 with Fix none:
+  `bin/devloop-install-note` put writes the lines it adds with LF into a file
+  at CRLF; `bin/devloop-auto-mode-question` finds a recorded command over
+  several lines in no issue whose text carries CRLF; and
+  `bin/devloop-tool-state` keeps a carriage return at the end of a folder an
+  installer prints, a fault of the output of a tool under Windows and no place
+  of the rule.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

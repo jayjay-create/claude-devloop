@@ -1600,6 +1600,30 @@ their section.
 - Status: Recorded, not built
 - Note: found 18 November 2026 at the merge of order (2) of milestone 12, read off the job's log on windows-latest and at the code of the step, the roadmap entry of 17 November 2026 on a project's files read with CRLF as with LF, its corrections of the merge; a block by the rule of docs/skill-conventions.md that a finding in the workflow gets one in every case; nothing built, the merge changing no code; which order builds it is put to the person by the report of that order
 
+### bin/devloop-install-note put writes the lines it adds with LF into a file at CRLF
+- Wrong: `bin/devloop-install-note` put writes into a `docs/agents/environment.md` at CRLF the line end that completes a last line, the blank line before the heading and the heading with printf at its lines 333, 334 and 336 at `b77e3bc`, and its awk prints the blank line of an empty section and the line of the install at lines 349 and 350 without a carriage return, while it writes the carriage return of every standing line back at lines 348 and 351; built so with version 0.189.0 by order (2) of milestone 12. Measured on 18 November 2026 on macOS at `0b757e6`, the program unchanged since `b77e3bc`, in a throwaway repository: into a file at CRLF without the heading, the blank line, the heading, the blank line and the line of the install came with LF and the five standing lines kept CRLF; into one with the heading, the new line came with LF between lines with CRLF; not measured on Windows
+- Should: put writes every line it adds with the line ending the file carries, measured with the file at LF and at CRLF on all four systems.
+- Found: A place without a case found by the merge gate, every read anchored
+- Fix: none
+- Status: Recorded, not built
+- Note: found 18 November 2026 by the order on a check for a place without a case, from the note of the block on put reading the record's file, which says that what put writes ends on LF in such a file and that the report of order (2) put it to the person; a block by the rule of docs/skill-conventions.md that a finding in a program gets one in every case; nothing built, that order building the check alone; built by order (5) of milestone 12 with the block on awk -v in put, the same place, by the decision of 18 November 2026 in docs/plan.md
+
+### bin/devloop-auto-mode-question finds a recorded command over several lines in no issue whose text carries CRLF
+- Wrong: `bin/devloop-auto-mode-question` looks for a recorded command in the title and the body of each open issue with `cmd in text` at its lines 455 to 457 at `b77e3bc`, the text joined with a line feed and no carriage return taken out of it; a command over several lines carries line feeds, as its self-test records one at line 893, `cargo install \` and `  ripgrep` on two lines, and so stands in no body whose lines end with CRLF, where `bin/devloop-install-issues` takes CRLF out of a body at its line 369. Measured on 18 November 2026 on macOS, the expression alone with Python: the command of line 893 stands in the body of line 894 with LF and not in the same body with CRLF; whether gh hands over a body with CRLF is not measured
+- Should: a recorded command is found in an issue whose text carries CRLF as in one with LF, measured with such a text.
+- Found: A place without a case found by the merge gate, every read anchored
+- Fix: none
+- Status: Recorded, not built
+- Note: found 18 November 2026 by the order on a check for a place without a case, read at the code beside the counter-check, the text of an issue being the output of gh and no file of the project; a block by the rule of docs/skill-conventions.md that a finding in a program gets one in every case; nothing built, that order building the check alone; built by order (5) of milestone 12 by the decision of 18 November 2026 in docs/plan.md
+
+### bin/devloop-tool-state keeps a carriage return at the end of a folder an installer prints under Windows
+- Wrong: `bin/devloop-tool-state` takes the folder of an installer out of its output, the query run in a command substitution at its line 546 at `b77e3bc` and the folder read off its output at lines 619 to 627, brew, npm, pnpm, yarn, bun, go, pipx, uv and gem; a command substitution takes off the line feed at the end and leaves a carriage return, measured under Git Bash on windows-latest on 18 November 2026 in run W1 of the roadmap entry of 17 November 2026 on a project's files read with CRLF as with LF, so that a folder an installer prints with CRLF ends in a carriage return and the tool is looked for under that folder, read at the code. This is the output of a tool the program starts, which the rule on line endings in docs/skill-conventions.md names under "Not places", lines 2318 and 2319 at `b77e3bc`: no place of that rule, and a fault of its own under Windows; which installer prints CRLF under Windows is not measured
+- Should: the folder is read without a carriage return at its end, measured under Windows with the installers the program names.
+- Found: A place without a case found by the merge gate, every read anchored
+- Fix: none
+- Status: Recorded, not built
+- Note: found 18 November 2026 by the order on a check for a place without a case, read at the code beside the counter-check; a block by the rule of docs/skill-conventions.md that a finding in a program gets one in every case; nothing built, that order building the check alone; built by order (5) of milestone 12 by the decision of 18 November 2026 in docs/plan.md
+
 ## Milestone 13
 
 ### a rule in the run's own memory closes the arming route the skills allow
