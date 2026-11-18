@@ -1280,8 +1280,12 @@ wrote, the roadmap entry of that date on the two entries held: a sentence of
 the head of `bin/devloop-install-note` says that git converts a file put
 wrote both line endings into, which git does not for a file committed with
 CRLF; and a comment of the step on line endings quotes words of the
-documentation of open() that it carries up to Python 3.9 alone; no order of
-this milestone names them.
+documentation of open() that it carries up to Python 3.9 alone. Order (5)
+builds the first, beside the block on the lines put writes with LF, and
+order (3) the second, beside the block on the history of the standards file
+in the same step, decided on 18 November 2026 by the person after the
+report of that audit, by the decision of that day that the order touching
+the same place builds such a block.
 Until 17 November 2026 this
 paragraph said that of (2) to (7) nothing was built yet and that the block
 on the sentence of that head stood with Fix none; until 16

@@ -9614,6 +9614,56 @@ and for the proofs of closings.
   hand before it, 70 characters and no find, and the report says what the
   step printed after it. No run is recorded.
 
+- **The README asks for git 2.31, the audit's two blocks given their orders**
+
+  18 November 2026, version 0.190.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/after-audit-2026-11-18`, off `origin/main` at `e1fbc69`,
+  in one commit: `README.md`, `docs/defects.md`, `docs/plan.md`,
+  `docs/skill-conventions.md` and this entry. The decisions of the person on
+  the report of the consistency audit of this day, the entry above, which was
+  merged before them. Written as a patch outside this machine and applied by
+  the person; no session log was read; nothing was installed.
+
+  - `README.md` asks for git 2.31 or later where it asked for git, in the
+    wording the person approved: `bin/devloop-auto-mode-question` line 262
+    calls `git rev-parse --path-format=absolute`, which git 2.31.0 brought,
+    the highest any command of devloop needs as the audit read it off the
+    release notes of git. What an older git does there is not measured. The
+    Fix of the closed block on the two git config commands of `README.md`
+    names the line by the words that stand on it now.
+  - The rule on line endings in `docs/skill-conventions.md` names the form the
+    three loaded texts prescribe, `tr -d '\r'`, which takes every carriage
+    return off, where the rule said that a carriage return elsewhere in a line
+    is left as it stands. The texts stay as they are: POSIX defines `\r` for
+    `tr` and not for `sed`, and the step on line endings measures them on all
+    four systems; changing them to take the carriage return at a line's end
+    alone would have changed three measured texts for no case.
+  - The two blocks the audit wrote are built by order (5), the sentence of the
+    head of `bin/devloop-install-note`, and by order (3), the comment of the
+    step on line endings, each beside the block of the same place, by the
+    decision of 18 November 2026 that the order touching the same place builds
+    such a block. Their notes and the sentence of `docs/plan.md` that named no
+    order say so.
+  - What the entry above gives as neither confirmed nor refuted was held after
+    it against copies of the reports it lacked, kept outside this machine: the
+    two reports of order (2) and sections 1 to 5 of the report of the order
+    after it. The times of day of the runs L1 to L3, the 10 seconds on the Mac
+    and 2 in the container, the 14 lines "RED" and 13 "ok" at `784dc38`, the
+    outputs of the counter-check before the build, the 5 seconds and the exit
+    124 of the walk of the install guard, what put wrote of `cargo install
+    --path tools\new`, the four tests of the counter-check from 7 of 14 to
+    under 0.1 seconds and the reading list of 229485 bytes stand in them as
+    the two entries give them. The 78 trees on which the step gives what the
+    prototype gave stand in none of the three and stay neither confirmed nor
+    refuted.
+
+  The tool on `e1fbc69` and after this commit, the same: exit 0, broken
+  records 0, uncovered lines 0 of 4739; Undetermined 24, Recorded, not built
+  246, Built, never walked 1508, Walked 794, Closed 78; milestone 12 130
+  blocks, Recorded, not built 29, Built, never walked 47, Walked 42, Closed
+  12. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

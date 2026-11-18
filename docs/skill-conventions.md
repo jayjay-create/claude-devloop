@@ -2288,8 +2288,12 @@ and every other place read it as LF. The rule: a place that takes a file of
 the project apart reads it with CRLF as the same file with LF, the carriage
 return at a line's end taken off before the line is compared or falling into
 a field that is read over, a carriage return elsewhere in a line left as it
-stands; what devloop itself writes into the project and reads again is read
-as it was written. The places that stand on it, each with a block of
+stands, except in a command a loaded text prescribes, where `tr -d '\r'`
+takes every carriage return off, which POSIX defines for `tr` and not for
+`sed`, and the step on line endings measures on all four systems, decided
+on 18 November 2026 after the consistency audit of that day; what devloop
+itself writes into the project and reads again is read as it was written.
+The places that stand on it, each with a block of
 milestone 12 in `docs/defects.md`, are named one by one in one place, so that
 they are kept there alone: the last step of the job hooks on every system in
 `.github/workflows/stock-take.yml`, where every line of a place carries its
