@@ -9084,6 +9084,43 @@ and for the proofs of closings.
   read; its reading list 99259 bytes by `wc -c`; nothing was installed
   outside throwaway directories and containers.
 
+  **The runs**, at the second commit of the branch, `dc29960`, under
+  0.189.0, the tree clean, on 18 November 2026 in UTC, after the addendum,
+  on the person's Mac, macOS 26.6.2 with bash 3.2.57 started with
+  --noprofile --norc and -eo pipefail as GitHub starts the step, and in a
+  container of alpine:3.22 on that Mac with bash 5.2.37, BusyBox 1.37.0, git
+  2.49.1 and Python 3.12.16, the step read out of the committed
+  `.github/workflows/stock-take.yml` by the YAML reader of
+  `scripts/devloop-run-workflow`. Run L1, on the Mac at 00:46:54 and in the
+  container at 00:47:22: the step over this tree, 27 lines "ok", none
+  "RED", exit 0, the same lines on both, 10 seconds on the Mac and 2 in the
+  container; among them the four inputs with 31 31 31, 14 14 14, 6 2 2 3 3
+  and 4 4 carriage returns counted over their bytes, the way a reading is
+  taken up and compared telling CRLF from LF, and the three calls of `awk`
+  under busybox `awk`, the section before the next one, "the section's own
+  lines and neither the line before it nor the line after it", the section
+  that stands last, "the section to the end of the file, its last line among
+  it", and in both table guards "the two cells joined with a semicolon and a
+  blank", each held against the whole expected text; and the line "note"
+  with 4 carriage returns over the bytes and 4 by `grep -c` on both.
+  Run L2, on the Mac at 00:47:04 and in the container at 00:47:24: the same step
+  over the hooks, programs and texts of `784dc38`, 14 lines "RED" and 13
+  "ok", exit 1, the same lines on both. Run L3, on the Mac at 00:47:13 and
+  in the container at 00:47:26: the self-test of `bin/devloop-install-note`,
+  "SELF-TEST PASSED: 46 cases" and exit 0 on both, its case "put of a line
+  that stands already: not written again" among them. L1 stands on the thing
+  on the step green and on the three blocks on `awk`, L2 on the thing on the
+  step red, L3 on the thing on put where a line stands already, whose
+  counting run of 30 October 2026 the change of its line took. No run is
+  recorded on the blocks on line endings: their should asks for Windows, and
+  the job's run on `windows-latest` is entered from its log at the merge.
+
+  **Found after the runs**, a reading of the search held at its place and
+  measured on macOS at `dc29960`: `bin/devloop-install-note put` hands the
+  line to `awk` with `-v`, which reads escape sequences, so that `cargo
+  install --path tools\new` was written as two lines and written again on a
+  second call; a block of milestone 12 with Fix none.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
