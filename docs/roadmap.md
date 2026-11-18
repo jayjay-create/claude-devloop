@@ -9281,6 +9281,40 @@ and for the proofs of closings.
   installer prints, a fault of the output of a tool under Windows and no place
   of the rule.
 
+  **The runs**, at the second commit of the branch, `5781277`, under 0.190.0,
+  the tree clean, on 18 November 2026 in UTC, on the person's Mac, macOS
+  26.6.2 with bash 3.2.57 started with --noprofile --norc, git 2.50.1 and
+  Python 3.14.7, and in a container of alpine:3.22 on that Mac with bash
+  5.2.37, git 2.49.1 and Python 3.12.16, bash, git and python3 installed with
+  apk. Run G1, on the Mac from 11:02:11 to 11:06:03:
+  `scripts/devloop-run-workflow` over the whole workflow, green, 10 steps run
+  and every one ended with 0, the new step among them with "every line that
+  reads a file of the project, 21 in 13 files, has its anchor at a case of the
+  step on line endings or stands among its 1 not places", the title of the
+  pull request and the head of this entry passing. Run G2, in the container
+  from 11:06:15 to 11:08:23: the same over a clone of the branch at the same
+  commit, green with the same 10 steps and the same line. For the red end the
+  step was read out of `.github/workflows/stock-take.yml` at `5781277` byte
+  for byte into a workflow of one job and that one step, run by
+  `scripts/devloop-run-workflow` with its root a throwaway clone at the same
+  commit, the step as it stands and the files of the clone its input. Run R1,
+  on the Mac at 11:04:28 and in the container at 11:05:20: a clone with five
+  faults, a new read of `docs/agents/standards.md` in `hooks/stop-checks.sh`,
+  the anchor of the runner of that hook naming
+  `hooks/post-tool-use-checks.sh`, the anchor of the mark with a text that
+  stands nowhere, the anchor of `bin/devloop-check-table` on a line that reads
+  nothing, and the file of attempts named as a not place beside its case: 8
+  lines RED, each kind once, the same lines on both, exit 1. Run R2, on the
+  Mac at 11:04:29 and in the container at 11:05:24: a clone in which the step
+  on line endings carries another name, the line that the file carries it 0
+  times and the 21 lines without their anchors, 22 lines RED, the same on
+  both, exit 1. G1 and G2 stand on the green thing of the step, on the thing
+  on what it reads and on the thing on a line named by the line above it; R1
+  on the five red things of a line without its case, an anchor over no hold of
+  its file, an anchor not found once, an anchor on a line that reads nothing
+  and a line named as a case and as a not place; R2 on the red thing of the
+  step on line endings not found once.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
