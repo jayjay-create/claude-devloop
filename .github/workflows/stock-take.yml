@@ -43,6 +43,10 @@
 # the three calls of awk the step before it does not reach, order (2) of
 # milestone 12; the line .gitattributes keeps devloop's own files at LF by,
 # above, says nothing of a project's files, which carry no such line.
+# Since 18 November 2026 the job stock-take holds every line of the hooks,
+# the programs and the loaded texts that reads a file of the project to a
+# case of that last step or to the places it names as none, the roadmap
+# entry of that date on the check for a place without a case.
 name: merge gate
 
 on:
@@ -193,6 +197,179 @@ jobs:
               finds += ["%s:%d: %s" % (path.as_posix(), text.count("\n", 0, m.start()) + 1, " ".join(m.group(0).split())) for m in DATE.finditer(flat)]
           if not finds: print("skills/, shared/ and output-styles/ carry no date"); sys.exit(0)
           print("skills/, shared/ and output-styles/ must carry no date, and they carry:"); print("\n".join(finds)); sys.exit(1)
+          PY
+
+      # Since 18 November 2026: every line under hooks/, bin/, skills/ and
+      # shared/ that reads a file of the project carries an anchor in the last
+      # step of the job hooks on every system - a line "# reads: `FILE`
+      # "TEXT"" over the call of hold of the case that reads it, or a line
+      # "# not a place (the reason): `FILE` "TEXT"" at the head of that step -,
+      # decided on 18 November 2026, the roadmap entry of that date on the
+      # check for a place without a case. A line reads a file of the project
+      # where it reads a blob of git, or where a command of the search of 17
+      # November 2026 at the place of a command and fed by no pipe, a
+      # redirection from a path or an open() for reading in Python reads a
+      # path of the project: one a project carries, written on the line and
+      # not under the home directory, or a variable of the same file set from
+      # such a path, from a blob, from the project's root or from such a
+      # variable. Comments, docstrings, heredocs no interpreter reads, the
+      # lines of a multi-line awk program and the function of a self-test are
+      # not read, nor in skills/ and shared/ anything but the code spans and
+      # the indented and fenced lines. TEXT is 20 to 80 characters of the line
+      # found once in its file, of the nearest line above it where the line's
+      # text stands in another line of the file too, as the head of
+      # scripts/devloop-stock-take anchors a line that can carry no unique
+      # anchor. Red where such a line has no anchor, where an anchor stands
+      # over no hold of its file, is not found once, names a line that reads
+      # nothing by this step, or names a line as a case and as a not place at
+      # once, and where the step on line endings is not found once; every find
+      # printed, a line with its file, its number and its text, and what makes
+      # the pull request green. That entry measured the form over the 77
+      # commits of the first parent from 919c9de to b77e3bc: red at the four
+      # places that came in after the search of 15 October 2026 and at no
+      # other line, and the fourteen of that search named at 919c9de. This
+      # step is no check of "Before a handover, run these" either.
+      - name: every line that reads a file of the project has its case in the step on line endings, or stands among the not places there
+        run: |
+          python3 - <<'PY'
+          import os, re, sys
+          WF = ".github/workflows/stock-take.yml"
+          STEP = "      - name: every place that reads a file of the project"
+          # a reading: a blob of git; a command of the search of 17 November 2026 at the place of a command, fed by no pipe and no here-string; a redirection from a path; in Python an open() for reading
+          BLOB = re.compile(r"\bgit\b(\s+-[Cc]\s+\S+)*\s+(show\b[^|;&]*:|cat-file\s+(?!-e)|log\b[^|;&]*\s(-p|-S|-G|--patch)|grep\b|blame\b)|[\"']git[\"'],\s*[\"'](show|cat-file|log|grep)[\"']")
+          WORDS = r"(grep|egrep|fgrep|sed|awk|cat|head|tail|cut|tr|wc|read)"
+          CMD = re.compile(r"(?:^|[;&|({!`]|\$\(|<\(|\bthen\b|\bdo\b|\belse\b|\bif\b|\belif\b|\bwhile\b|\buntil\b)\s*(?:[A-Za-z_][A-Za-z0-9_]*=\S*\s+)*" + WORDS + r"\b(?![|)])")
+          REDIR = re.compile(r"(?<![<0-9&=])<(?![<(&=])\s*(?!\"?/dev/)(\"?\$|\"?/|\"?\./|\"?~|[\w.-]*/)[^\s;|&)]*")
+          # a path of the project: one a project of the person carries and not under the home directory; or a variable of the same file set from such a path, from a blob, from the project's root or from such a variable
+          PATH = re.compile(r"(?<![\w.-])(\./)?(docs/agents/[\w./-]*|node_modules/[\w./@-]*|\.cargo/config(\.toml)?|\.claude/[\w.-]+\.local|\.git/devloop[\w.-]*|package\.json|pyproject\.toml|Makefile|CLAUDE\.md|\.gitignore|Cargo\.toml|go\.mod|requirements\.txt)")
+          HOME = re.compile(r"(~|\$HOME|\$\{HOME\}|HOME|\$CARGO_HOME|\$\{CARGO_HOME[^}]*\})/$")
+          ROOT = re.compile(r"--show-toplevel|--git-dir|--git-common-dir|\bCLAUDE_PROJECT_DIR\b|\bPROJECT_DIR\b")
+          SET = (re.compile(r"(?:^|[;&|({\s])(?:local\s+|export\s+|readonly\s+)?([A-Za-z_]\w*)\s*=(?!=)(.*)"), re.compile(r"\bfor\s+([A-Za-z_]\w*)\s+in\s+([^;]*)"))
+          SELFTEST_SH = re.compile(r"(function\s+)?(self_?test|selftest)\w*\s*\(\)")
+          SELFTEST_PY = re.compile(r"def (self_?test|selftest)\w*\(")
+
+          def project(t):
+              return any(not HOME.search(t[:m.start()]) for m in PATH.finditer(t))
+
+          def kind_of(path, lines):
+              first = (lines or [""])[0]
+              return next(k for k, hit in (("text", path.endswith(".md")), ("skip", path.endswith(".json")), ("py", "python" in first), ("sh", path.endswith(".sh") or "sh" in first), ("skip", True)) if hit)
+
+          def text_code(lines):
+              # in a text: the code spans, and the indented or fenced lines whole
+              out, fence = [], False
+              for i, l in enumerate(lines, 1):
+                  mark = l.strip().startswith("```")
+                  fence = fence != mark
+                  spans = re.findall(r"`([^`]+)`", l)
+                  out += [] if mark else [(i, l)] if fence or l.startswith("    ") else [(i, " ;; ".join(spans))] if spans else []
+              return out
+
+          def py_code(lines):
+              # in Python: no comment, no docstring, nothing of the self-test, which never runs in a project
+              out, st, doc = [], False, None
+              for i, l in enumerate(lines, 1):
+                  s = l.strip()
+                  st = st and not (l and not l[0].isspace() and not l.startswith("#"))
+                  skip = bool(doc) or st or bool(SELFTEST_PY.match(l))
+                  st = st or bool(SELFTEST_PY.match(l)) and not doc
+                  q = re.match(r"[rRbBuU]?(\"\"\"|''')", s)
+                  out += [] if skip or q or not s or s.startswith("#") else [(i, l)]
+                  doc = (None if doc in l else doc) if doc else (q.group(1) if q and not skip and s.count(q.group(1)) == 1 else None)
+              return out
+
+          def sh_code(lines):
+              # in a shell program: no comment, no heredoc no interpreter reads, no line of a multi-line awk program, nothing of the self-test
+              out, hd, hd_code, st, aw = [], None, False, False, False
+              for i, l in enumerate(lines, 1):
+                  s = l.strip()
+                  inside = hd is not None
+                  out += [(i, l)] if inside and hd_code and s != hd and not s.startswith("#") else []
+                  hd = (None if s == hd else hd) if inside else hd
+                  skip = inside or st or aw or bool(SELFTEST_SH.match(l))
+                  st, aw = ((st or not aw) and l != "}", aw and l.count("'") % 2 == 0) if skip and not inside else (st, aw)
+                  m = None if skip or s.startswith("#") or not s else re.search(r"<<-?\s*['\"]?([A-Za-z_][A-Za-z0-9_]*)['\"]?", l)
+                  opens = m and "<<<" not in l[max(0, m.start() - 1):m.start() + 3]
+                  hd, hd_code = (m.group(1), bool(re.search(r"python|\$PY\b|\"\$PY\"|awk|\bbash\b|\bsh\b", l[:m.start()]))) if opens else (hd, hd_code)
+                  aw = aw or not skip and bool(re.search(r"\bawk\b", l)) and l.count("'") % 2 == 1
+                  out += [] if skip or s.startswith("#") or not s else [(i, l)]
+              return out
+
+          def reads(kind, t):
+              py = kind == "py" and bool(re.search(r"\bopen\(", t) and not re.search(r"\bopen\(.*,\s*[\"'][wax]", t) or re.search(r"\.read_text\(|\.read_bytes\(", t))
+              for m in (CMD.finditer(t) if kind != "py" else ()):
+                  pre = re.sub(r"(?:[A-Za-z_][A-Za-z0-9_]*=\S*\s+)*$", "", t[:m.start(1)]).rstrip()
+                  rest = t[m.end(1):]
+                  seg = re.split(r"\|\||&&|[|;]", rest, maxsplit=1)[0]
+                  fed = pre.endswith("|") and not pre.endswith("||") or "<<<" in seg or re.search(r"<<-?\s*['\"]?\w", rest)
+                  bare = {"cat": re.match(r"\s*($|[)|;&`>])", rest), "read": not REDIR.search(seg) and not re.search(r"\bdone\s*<(?!<)", t), "tr": not REDIR.search(seg)}.get(m.group(1))
+                  py = py or not fed and not bare
+              return py or kind != "py" and bool(REDIR.search(t))
+
+          def places(path, lines):
+              # the lines of a file that read a file of the project
+              kind = kind_of(path, lines)
+              code = {"text": text_code, "py": py_code, "sh": sh_code, "skip": lambda lines: []}[kind](lines)
+              held = set()
+              for _ in range(4):
+                  held |= {m.group(1) for _, l in code for rx in SET for m in rx.finditer(l) if project(m.group(2)) or BLOB.search(m.group(2)) or ROOT.search(m.group(2)) or any(re.search(r"\$\{?" + v + r"\b", m.group(2)) for v in held)}
+              var = (lambda v: r"\$\{?" + v + r"\b|\b" + v + r"\b") if kind == "py" else (lambda v: r"\$\{?" + v + r"\b")
+              in_text = lambda t: re.search(r"(^|[\s;(])" + WORDS + r"\s", t) and project(t)
+              in_code = lambda t: reads(kind, t) and (project(t) or any(re.search(var(v), t) for v in held))
+              return [(i, t) for i, t in code if BLOB.search(t) or (in_text if kind == "text" else in_code)(t)]
+
+          def own(lines, i):
+              # whether line i can carry an anchor of its own: its text, its leading blanks aside, stands in no other line of its file
+              s = lines[i - 1].strip()
+              return not any(s in l for j, l in enumerate(lines, 1) if j != i)
+
+          def anchor_line(lines, i):
+              # the line that carries the anchor of line i: line i, or the nearest line above it that can carry one
+              while i > 1 and not own(lines, i):
+                  i -= 1
+              return i
+
+          def read_file(f):
+              try:
+                  return open(f, encoding="utf-8").read().split("\n")
+              except (OSError, UnicodeDecodeError):
+                  return []
+
+          wf = read_file(WF)
+          start = [n for n, l in enumerate(wf) if l.startswith(STEP)]
+          step = wf[start[0]:] if len(start) == 1 else []
+          step = step[:1 + next((n for n, l in enumerate(step[1:]) if re.match(r"      - |  \S", l)), len(step))]
+          red = [] if step else ["RED  %s carries the step on line endings %d times, where it must carry it once" % (WF, len(start))]
+          files, anchors = {}, []
+          for k, l in enumerate(step):
+              a = re.match(r'\s*# reads: `([^`]+)` "(.*)"$', l)
+              n = re.match(r'\s*# not a place \((.+)\): `([^`]+)` "(.*)"$', l)
+              f, text = (a or n or re.match("()()", "")).groups()[-2:]
+              hold = next((h for h in step[k + 1:] if not re.match(r"\s*# reads: ", h)), "")
+              under = re.match(r'\s*hold "([^",\s]+)', hold)
+              red += ["RED  the anchor `%s` \"%s\" stands over no hold of that file in the step on line endings: put it over the hold of the case that reads it" % (f, text)] if a and not (under and under.group(1) == f) else []
+              found = [j for j, x in enumerate(files.setdefault(f, read_file(f)), 1) if text in x] if a or n else []
+              ok = 20 <= len(text) <= 80 and len(found) == 1
+              red += ["RED  the anchor `%s` \"%s\" in the step on line endings is not found once in that file, as 20 to 80 characters of one line: it is found on %d lines" % (f, text, len(found))] if (a or n) and not ok else []
+              anchors += [(f, found[0], "case" if a else "not a place")] if (a or n) and ok else []
+          found_places = []
+          for d in ("hooks", "bin", "skills", "shared"):
+              for dp, _, fs in sorted(os.walk(d)):
+                  for p in sorted(os.path.join(dp, fn).replace(os.sep, "/") for fn in fs):
+                      L = files.setdefault(p, read_file(p))
+                      found_places += [(p, i, anchor_line(L, i)) for i, _ in places(p, L)]
+          at = {}
+          for f, j, what in anchors:
+              at.setdefault((f, j), set()).add(what)
+          missing = [(f, i) for f, i, a in found_places if (f, a) not in at]
+          both = sorted({(f, a) for f, i, a in found_places if len(at.get((f, a), ())) == 2})
+          idle = sorted(set(at) - {(f, a) for f, i, a in found_places})
+          red += ["RED  %s:%d: %s" % (f, i, files[f][i - 1].strip()) for f, i in missing]
+          red += ["RED  %s:%d: an anchor at a case and one among the not places name the same line" % fa for fa in both]
+          red += ["RED  %s:%d: an anchor of the step on line endings names this line, and it reads no file of the project, by this check: take the anchor out" % fa for fa in idle]
+          red += ["%d lines read a file of the project, and the last step of the job hooks on every system names no case for them. Give that step a case for each, which reads with CRLF what it reads with LF, and over the case's call of hold a line # reads: `FILE` \"TEXT\", TEXT 20 to 80 characters of the line found once in the file, of the nearest line above it where its text stands in another line of the file too. Or, where the line reads no file of the project, a line # not a place (the reason): `FILE` \"TEXT\" at the head of that step." % len(missing)] if missing else []
+          print("\n".join(red) or "every line that reads a file of the project, %d in %d files, has its anchor at a case of the step on line endings or stands among its %d not places" % (len(found_places), len({f for f, i, a in found_places}), sum(1 for a in anchors if a[2] == "not a place")))
+          sys.exit(1 if red else 0)
           PY
 
       # Since 22 October 2026: a title says what changed and nothing else -
@@ -533,6 +710,8 @@ jobs:
       - name: every place that reads a file of the project, with the file at LF, with CRLF from a checkout under core.autocrlf=true and with CRLF committed, and the three calls of awk with input that reaches them
         run: |
           # since 17 November 2026, order (2) of milestone 12: the hooks and the programs started by their first line and the commands the texts prescribe read out of the texts, each place once per form of the file, red where CRLF reads otherwise than LF or awk gives another text than expected, a line per place in both outcomes; the throwaway projects set core.autocrlf themselves, Git for Windows bringing true from its system configuration and the three other systems leaving it unset, and every input is read for its carriage return before a place reads it, since 18 November 2026 counted over its bytes, and the way a reading is taken up and compared shown on the system to tell CRLF from LF before the first place is read
+          # since 18 November 2026: every line under hooks/, bin/, skills/ and shared/ that reads a file of the project stands under a case of this step, a line "# reads:" over the case's call of hold naming the file and 20 to 80 characters found once in it, or among the not places below, each with its reason; a line whose text stands in another line of its file too is named by the nearest line above it that can carry such an anchor, as the head of scripts/devloop-stock-take anchors such a line; the step "every line that reads a file of the project has its case" of the job stock-take holds both
+          # not a place (a file under the home directory, CARGO_HOME or ~/.cargo, which no project carries; named by the line above the read, whose text stands in the read of the project's own configuration too): `hooks/pre-tool-use-install-guard.sh` "for f in "$ch/config.toml" "$ch/config"; do"
           set -u
           # every reading stands behind ||, as in the step above: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}
           ROOT=$(pwd)
@@ -661,6 +840,7 @@ jobs:
           rec() { local c=$1; shift; prog "$c" "$ROOT/bin/devloop-install-record" "$@" "$T/$c/p"; }
           all() { local o; for o in "" --dependency --unattended --language --line "--language --line"; do rec "$1" $o; echo; done; }
           three all
+          # reads: `bin/devloop-install-record` "CONTENT=$(git show "$REF:$FILE" 2>/dev/null)"
           hold "bin/devloop-install-record, the record off the default branch in six forms" "tools yes, the place and the route, the three other sections and both lines, the same with LF and with CRLF" "[InstallRecord] tools: yes | places: /opt/devloop-probe/bin | routes: cargo | answered: 2026-11-17 | read off origin/main as last fetched, not off the working tree" "$LF" "$CO" "$BLOB"
           WANT=$(printf '%s\n' 'ref: origin/main' 'tools: yes' 'place: /opt/devloop-probe/bin' 'route: cargo' 'answered: 2026-11-17' '[0]')
           three rec
@@ -678,12 +858,14 @@ jobs:
           [ "$LF" = "$(printf '\n[0]')" ] || { echo "RED  hooks/pre-tool-use-install-guard.sh at a command the record opens: not let through with LF"; show "read" "$LF"; red=1; }
           cargo() { local d; for d in /c1 /c2/deeper /c3 /c4/deeper; do hook "$1" pre-tool-use-install-guard.sh bash "cargo install devloop-probe-does-not-exist" "$d"; echo; done; }
           three cargo
+          # reads: `hooks/pre-tool-use-install-guard.sh` "for f in "$d/.cargo/config.toml" "$d/.cargo/config"; do"
           hold "hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml" "blocked four times, [install] and install.root = in the command's directory and in one above it" "cargo (a config file on cargo's search path sets install.root, which this guard does not read)" "$LF" "$CO" "$BLOB"
           [ "$(printf '%s\n' "$LF" | grep -c '^\[2\]$')" -eq 4 ] || { echo "RED  hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml: not blocked four times with LF"; show "read" "$LF"; red=1; }
 
           # bin/devloop-setup-state, the markers of the five files off the default branch
           state() { prog "$1" "$ROOT/bin/devloop-setup-state" "$T/$1/p"; }
           three state
+          # reads: `bin/devloop-setup-state` "M=$(git show "$REF:$p" 2>/dev/null | grep -m1 -o"
           hold "bin/devloop-setup-state, the markers off the default branch" "three versions and none for the file without a marker" "$(printf '%s\n' 'marker: docs/agents/checks.md 0.188.0' 'marker: docs/agents/issue-tracker.md 0.187.0' 'marker: docs/agents/domain.md none' 'marker: docs/agents/standards.md 0.188.0' 'marker: docs/agents/environment.md 0.188.0')" "$LF" "$CO" "$BLOB"
 
           # the commands the texts prescribe, read out of the texts: found by the words they open with, so that no copy of a command stands here
@@ -698,9 +880,11 @@ jobs:
           text shared/rule-not-written-down.md '`git log -p [^`]*`' "git log -p"
           show1() { prog "$1" bash -c "git fetch -q origin main && $C1"; }
           three show1
+          # reads: `skills/setup-checks/SKILL.md` "git show origin/main:docs/agents/environment.md | tr -d '\r'"
           hold "skills/setup-checks/SKILL.md, the command with git show after a fetch" "the lines of the record, the same with LF and with CRLF" "$(printf '%s\n' '## Dependency permission' '' 'dependency-tools: yes')" "$LF" "$CO" "$BLOB"
           show2() { prog "$1" bash -c "$C2"; }
           three show2
+          # reads: `shared/mode-set-up.md` "git fetch -q origin main && git show origin/main:docs/agents/environment.md"
           hold "shared/mode-set-up.md, the command with git fetch and git show" "the lines of the three records, the same with LF and with CRLF" "$(printf '%s\n' 'unattended-mode: yes' 'unattended-answered: 2026-11-15')" "$LF" "$CO" "$BLOB"
           # git log -S: the commit named by its subject, since the two origins carry other commits; each rule's line as the text has it searched
           named() {
@@ -711,10 +895,12 @@ jobs:
             done
           }
           three named
+          # reads: `shared/rule-not-written-down.md` "git log -1 --format=%H -S'<the line>' origin/main -- docs/agents/standards.md"
           hold "shared/rule-not-written-down.md, the command with git log -S" "each rule's line names the commit that brought it in or took it out, the same over a history with CRLF and a commit of line endings alone" "$(printf '%s\n' '- Rule C: a migration is written with its way back. -> rule C introduced' '- Rule B: every public function of the parser carries a test. -> setup' '- Rule A: a handler never swallows an error of the queue. -> rule A removed' '- Rule D: a job names the queue it reads. -> rule D introduced')" "$LF" "$CO" "$BLOB"
           # git log -p: the lines it shows as lost and as added, the file headers left out; a commit of line endings alone adds none to either, so the lists are the lists of the history with LF
           lost() { (cd "$T/$1/p" && bash -c "$C4" 2>&1 | grep -e '^[-+]' | grep -v -e '^--- ' -e '^+++ ') || true; }
           three lost
+          # reads: `shared/rule-not-written-down.md` "git log -p --ignore-cr-at-eol origin/main -- docs/agents/standards.md"
           hold "shared/rule-not-written-down.md, the command with git log -p" "one line lost, the lines added as with LF, and none named by the commit that changed the line endings alone" "-- Rule A: a handler never swallows an error of the queue." "$LF" "$CO" "$BLOB"
           [ "$(printf '%s\n' "$LF" | grep -c '^-')" -eq 1 ] || { echo "RED  shared/rule-not-written-down.md, the command with git log -p: not one line lost with LF"; show "read" "$LF"; red=1; }
           [ "$(cd "$T/blob/p" && bash -c "$C4" 2>&1 | grep -c 'line endings alone')" -eq 1 ] || { echo "RED  shared/rule-not-written-down.md, the command with git log -p: the history with CRLF does not list its commit of line endings alone"; red=1; }
@@ -722,9 +908,12 @@ jobs:
           # hooks/stop-checks.sh four times, a blocking filled class whose check is red: the runner, the rows, and the file of attempts the hook writes and reads again
           stops() { local i; rm -f "$T/$1/p/.claude/check-attempts.local"; for i in 1 2 3 4; do hook "$1" stop-checks.sh stop; echo; sed 's/^[0-9][0-9]* /attempts: /' "$T/$1/p/.claude/check-attempts.local" 2>&1; done; }
           three stops
+          # reads: `hooks/stop-checks.sh` "RUNNER=$(grep -m1 '^runner:' "$CHECKS""
           hold "hooks/stop-checks.sh, the runner off the check table" "the check ran and its own output stands in the message, the runner's name without a carriage return" "$(printf '%s\n' '--- lint (sh run-checks.sh lint) ---' 'lint: src/a.py:1: line too long')" "$LF" "$CO" "$BLOB"
+          # reads: `hooks/stop-checks.sh` "done < <(grep '^|' "$CHECKS" | grep -v '^|[[:space:]]*-' | tail -n +2)"
           hold "hooks/stop-checks.sh, the rows of the check table" "the one blocking filled class ran and no other" "$(printf '%s\n' 'it into the repository, as that line says, and run it again.' '--- lint (sh run-checks.sh lint) ---' 'lint: src/a.py:1: line too long' '[2]')" "$LF" "$CO" "$BLOB"
           [ "$(printf '%s\n' "$LF" | grep -c '^--- ')" -eq 3 ] || { echo "RED  hooks/stop-checks.sh, the rows of the check table: not one class in each of the three messages with LF"; show "read" "$LF"; red=1; }
+          # reads: `hooks/stop-checks.sh` "PREV=$(cut -d' ' -f1 "$STATE"); COUNT=$(cut -d' ' -f2 "$STATE")"
           hold "hooks/stop-checks.sh, the file of attempts it writes and reads again" "attempt 1 of 3, attempt 2 of 3, still failing after 3, then nothing said and 0, the count read as written: 1, 2, 3, 4" "$(printf '%s\n' 'attempts: 3' '' '[0]' 'attempts: 4')" "$LF" "$CO" "$BLOB"
           for w in 'Checks are failing (attempt 1 of 3)' 'Checks are failing (attempt 2 of 3)' 'Still failing after 3 attempts'; do [ "${LF#*"$w"}" != "$LF" ] || { echo "RED  hooks/stop-checks.sh, the file of attempts it writes and reads again: the reading with LF does not carry $w"; red=1; }; done
           [ "$(crs "$T/co/p/.claude/check-attempts.local")" -eq 0 ] || { echo "RED  hooks/stop-checks.sh, the file of attempts it writes and reads again: the file carries a carriage return"; red=1; }
@@ -732,7 +921,9 @@ jobs:
           # hooks/post-tool-use-checks.sh after an Edit of a file the patterns of a class match
           edited() { hook "$1" post-tool-use-checks.sh edit src/a.py; }
           three edited
+          # reads: `hooks/post-tool-use-checks.sh` "RUNNER=$(grep -m1 '^runner:' "$CHECKS""
           hold "hooks/post-tool-use-checks.sh, the runner off the check table" "the check of the class ran for the file, the runner's name without a carriage return" "$(printf '%s\n' '--- lint (sh run-checks.sh lint-file FILE=src/a.py) ---' 'lint-file: FILE=src/a.py: line too long' '[2]')" "$LF" "$CO" "$BLOB"
+          # reads: `hooks/post-tool-use-checks.sh` "done < <(grep '^|' "$CHECKS" | grep -v '^|[[:space:]]*-' | tail -n +2)"
           hold "hooks/post-tool-use-checks.sh, the rows of the check table" "the class whose patterns match the file and no other" "--- lint (sh run-checks.sh lint-file FILE=src/a.py) ---" "$LF" "$CO" "$BLOB"
           [ "$(printf '%s\n' "$LF" | grep -c '^--- ')" -eq 1 ] || { echo "RED  hooks/post-tool-use-checks.sh, the rows of the check table: not one class in the message with LF"; show "read" "$LF"; red=1; }
 
@@ -740,6 +931,7 @@ jobs:
           cells() { prog "$1" "$ROOT/bin/devloop-check-table" "$T/$1/p/docs/agents/checks.md"; }
           three cells
           WANT=$(printf '%s\n' 'format: Filled' 'types: done' '[1]')
+          # reads: `bin/devloop-check-table` "done < <(grep '^|' "$FILE" | grep -v '^|[[:space:]]*-' | tail -n +2)"
           hold "bin/devloop-check-table, the status cells of the check table" "the two cells in no form named, the two in a form not" "$WANT" "$LF" "$CO" "$BLOB"
           [ "$LF" = "$WANT" ] || { echo "RED  bin/devloop-check-table, the status cells of the check table: another text than expected with LF"; show "read" "$LF"; red=1; }
           before() { hook "$1" pre-tool-use-table-guard.sh bash "git commit -m x" ""; }
@@ -755,6 +947,7 @@ jobs:
           # bin/devloop-start-conditions, condition 1 over the same table off the default branch, GitHub answered by the stand-in
           first() { prog "$1" "$ROOT/bin/devloop-start-conditions" | grep '^condition 1 ' || true; }
           three first
+          # reads: `bin/devloop-start-conditions` "elif ! git show "$REF:docs/agents/checks.md" >"$T/checks.md""
           hold "bin/devloop-start-conditions, the check table off the default branch" "condition 1 names the empty class and the two cells in no form" 'condition 1 does not hold, because the class unit is empty on origin/main, the status of format reads "Filled" on origin/main, none of the four forms a status takes and the status of types reads "done" on origin/main, none of the four forms a status takes' "$LF" "$CO" "$BLOB"
 
           # the mark, written by the command of shared/mark-command.md as the text has it, read by hooks/permission-request-unattended.sh for the session that wrote it and for another
@@ -768,11 +961,13 @@ jobs:
             rm -f "$p/.claude/unattended.local"
           }
           three marked
+          # reads: `hooks/permission-request-unattended.sh` "THIRD=$(sed -n '3p' .claude/unattended.local 2>/dev/null)"
           hold "hooks/permission-request-unattended.sh, the third line of the mark" "the mark as the command of shared/mark-command.md wrote it, three lines and no carriage return; a no for the session that wrote it, and the prompt passed on unanswered for another" "$(printf '%s\n' 'lines 3, with a carriage return 0, the second build, the third s1' '{"hookSpecificOutput":{"hookEventName":"PermissionRequest","decision":{"behavior":"deny"' '[0]' '' '[0]')" "$LF" "$CO" "$BLOB"
 
           # bin/devloop-tool-state, the version of the project's Cypress off its package
           cypress() { prog "$1" env CYPRESS_CACHE_FOLDER="$T/cy" "$ROOT/bin/devloop-tool-state" --planning cypress:binary | head -1 | sed 's/ (on [0-9-]*)$//'; }
           three cypress
+          # reads: `bin/devloop-tool-state` "version=$(sed -n 's/^ *"version": *"\([^"]*\)".*/\1/p'"
           hold "bin/devloop-tool-state, the version off node_modules/cypress/package.json" "the version read without the comma and the carriage return behind it" "the folder of Cypress 13.6.0 as the project's Cypress needs it" "$LF" "$CO" "$BLOB"
 
           # bin/devloop-install-note put, last, since it writes into the working tree: a line that stands already, then a new one at the end of its section, and the file afterwards read without its carriage returns
@@ -783,6 +978,10 @@ jobs:
             sed "s/$CR\$//" "$p/docs/agents/environment.md" | sed -n '/^## Installed outside the project$/,$p'
           }
           three put
+          # reads: `bin/devloop-install-note` "if sed $'s/\r$//' "$FILE" | grep -qxF -- "$LINE"; then"
+          # reads: `bin/devloop-install-note` "if ! sed $'s/\r$//' "$FILE" | grep -qxF "$HEADING"; then"
+          # reads: `bin/devloop-install-note` "[ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ]"
+          # reads: `bin/devloop-install-note` "[ -z "$(tail -n 1 "$FILE" | sed $'s/\r$//')" ]"
           hold "bin/devloop-install-note put, docs/agents/environment.md in the working tree" "the line that stands is found, the heading is found, and the new line goes to the end of its section before the next heading" "$(printf '%s\n' 'stands already: - `cargo install alpha` installed into /opt/devloop-probe/bin' '[0]' 'written: - `cargo install beta` installed into /opt/devloop-probe/bin' '[0]' '## Installed outside the project' '' '- `cargo install alpha` installed into /opt/devloop-probe/bin' '- `cargo install beta` installed into /opt/devloop-probe/bin' '' '## Language' '' 'language: German' 'language-recorded: 2026-11-14')" "$LF" "$CO" "$BLOB"
           rm -rf "$T"
           [ "$red" -eq 0 ]
