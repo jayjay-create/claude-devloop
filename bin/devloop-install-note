@@ -58,6 +58,16 @@
 #   ref line, which resolves it as the branch guard does - where nothing of a
 #   run may change, or where docs/agents/environment.md is missing in the
 #   working tree. Until 24 October 2026 the fact hook wrote the line itself.
+#   A file with CRLF line endings is read as the same file with LF, since 17
+#   November 2026, order (2) of milestone 12: the line that stands already,
+#   the heading and a blank line are each compared without the carriage
+#   return at their end, where git checked the file out with CRLF or it was
+#   committed so. Until then such a file got the heading a second time, at
+#   its end, and a line that stood already again, measured that day on macOS
+#   and under Alpine. What put writes ends on LF in such a file as well, the
+#   heading, the blank line before it and the line: the file then carries
+#   both endings until git converts it, which the report of that order puts
+#   to the person as a question of its own.
 # Exit 2 with one line on stderr: an action it does not know, not exactly the
 # two ids behind write, take or drop, or not a folder and a command behind put.
 # --self-test runs every outcome under a temporary directory of its own as
@@ -312,30 +322,33 @@ if [ "$ACTION" = put ]; then
     echo "Not written: $FILE is missing in the working tree, so the line has no file to stand in. Put it there once the file stands, under \"$HEADING\", as it stands here: $LINE" >&2
     exit 1
   fi
-  if grep -qxF -- "$LINE" "$FILE"; then echo "stands already: $LINE"; exit 0; fi
+  # A file with CRLF line endings is read as the same file with LF: every
+  # line is compared without the carriage return at its end, the line that
+  # stands already, the heading, a blank line; the head says since when.
+  if sed $'s/\r$//' "$FILE" | grep -qxF -- "$LINE"; then echo "stands already: $LINE"; exit 0; fi
   # The heading where it does not stand yet: at the end of the file, a blank
   # line before it, the file's last line given its newline where it has none.
-  if ! grep -qxF "$HEADING" "$FILE"; then
+  if ! sed $'s/\r$//' "$FILE" | grep -qxF "$HEADING"; then
     if [ -s "$FILE" ]; then
       [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '\n' >> "$FILE"
-      [ -z "$(tail -n 1 "$FILE")" ] || printf '\n' >> "$FILE"
+      [ -z "$(tail -n 1 "$FILE" | sed $'s/\r$//')" ] || printf '\n' >> "$FILE"
     fi
     printf '%s\n' "$HEADING" >> "$FILE"
   fi
   # The line at the end of the section, after its last line that is not
   # blank, and before the next heading where one follows.
   awk -v h="$HEADING" -v l="$LINE" '
-    { lines[NR] = $0 }
+    { cr[NR] = sub(/\r$/, ""); lines[NR] = $0 }
     END {
       s = 0
       for (i = 1; i <= NR; i++) if (lines[i] == h) { s = i; break }
       e = NR
       for (i = s + 1; i <= NR; i++) if (lines[i] ~ /^## /) { e = i - 1; break }
       while (e > s && lines[e] == "") e--
-      for (i = 1; i <= e; i++) print lines[i]
+      for (i = 1; i <= e; i++) print lines[i] (cr[i] ? "\r" : "")
       if (e == s) print ""
       print l
-      for (i = e + 1; i <= NR; i++) print lines[i]
+      for (i = e + 1; i <= NR; i++) print lines[i] (cr[i] ? "\r" : "")
     }' "$FILE" > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
   echo "written: $LINE"
   exit 0

@@ -10,6 +10,10 @@ MAX=3
 
 [ -f "$CHECKS" ] || exit 0
 RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
+# A carriage return at the line's end is taken off, since 17 November 2026,
+# order (2) of milestone 12: where git checked the table out with CRLF, or
+# it was committed so, the runner's last word carried it and no check ran.
+RUNNER="${RUNNER%$'\r'}"
 [ -n "$RUNNER" ] || exit 0
 
 FAILED=""

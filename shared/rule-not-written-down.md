@@ -68,7 +68,8 @@ when a rule is first written — whether it needs a command is answered by a
 breach, not judged at the writing.
 
 **A rule written a second time is a breach that went unseen.** Before a rule is
-written, `git log -p origin/main -- docs/agents/standards.md` lists every line
+written, `git log -p --ignore-cr-at-eol origin/main -- docs/agents/standards.md | tr -d '\r'`,
+which reads a file with CRLF as the same file with LF, lists every line
 the file has lost, and the new sentence is held against them. Where a removed
 line said the same thing, say so at the close and file the issue for the check
 as for a breach, quoting the rule: the situation came back while nothing

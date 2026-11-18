@@ -101,6 +101,17 @@
 #   [Language] none: <the cause> | no language is recorded for this project
 # --language beside --dependency or --unattended is refused with 2, as the
 # two are beside each other.
+#
+# A record with CRLF line endings is read as the same record with LF, since
+# 17 November 2026, order (2) of milestone 12: git show gives the blob as it
+# is stored, and where the file was committed with CRLF and without
+# conversion every line of it ends on a carriage return, a heading among
+# them, which is compared as a whole line. So the carriage return is taken
+# off the end of each line before the section is looked for, in every form
+# of the call; a carriage return anywhere else in a line stays. Until then
+# such a record read as a file without its section, measured that day on
+# macOS and under Alpine: every form answered with the cause on the section,
+# and the install guard blocked under a record that says yes.
 set -u
 SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 HEADING='## Install permission'
@@ -183,6 +194,10 @@ fi
 REF="refs/remotes/origin/$DEFAULT"
 git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the default branch $DEFAULT has not been fetched, so $REF cannot be read"; exit 1; }
 CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: there is no $FILE on origin/$DEFAULT as last fetched"; exit 1; }
+# A carriage return at a line's end is taken off before anything is compared,
+# so that a record committed with CRLF reads as the same record with LF; the
+# head says why and since when.
+CONTENT=$(printf '%s\n' "$CONTENT" | sed $'s/\r$//')
 # The language's section missing: its own cause, since the setup writes the
 # record without a question where something shows the language; the line
 # below, shared with the three records, never fires for it then.

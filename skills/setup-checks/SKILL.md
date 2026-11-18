@@ -375,7 +375,8 @@ where the record on it says yes.** The dependency file is whatever this
 stack declares its packages in — `pyproject.toml`, `package.json`,
 `Cargo.toml` and the like — and the record is the section `## Dependency
 permission` of `docs/agents/environment.md`, read off the main branch as last
-fetched, `git show origin/main:docs/agents/environment.md` after a fetch,
+fetched, `git show origin/main:docs/agents/environment.md | tr -d '\r'` after
+a fetch, which reads a record committed with CRLF as the same record with LF,
 except in the session in which the question was answered, where the answer
 is known before it has landed. The permission covers the tools this workflow
 enters for its own checks and nothing else: what a task enters for the thing

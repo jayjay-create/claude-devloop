@@ -17,6 +17,10 @@ FILE=$(printf '%s\n' "$INPUT" | sed -n 's/^file: //p' | head -1)
 REL="${FILE#$PROJECT_DIR/}"
 
 RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
+# A carriage return at the line's end is taken off, since 17 November 2026,
+# order (2) of milestone 12, as hooks/stop-checks.sh takes it off: where the
+# table stands with CRLF, the runner's last word carried it and no check ran.
+RUNNER="${RUNNER%$'\r'}"
 [ -n "$RUNNER" ] || exit 0
 
 FAILED=""
