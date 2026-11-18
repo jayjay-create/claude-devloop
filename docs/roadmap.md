@@ -9121,6 +9121,43 @@ and for the proofs of closings.
   install --path tools\new` was written as two lines and written again on a
   second call; a block of milestone 12 with Fix none.
 
+  **The runs of the job under Windows**, of 18 November 2026: the job hooks on
+  every system on windows-latest, in run 44259689177 of the checks of pull
+  request #251, on the merge ref of `1978671` into `784dc38`, whose tree is
+  that of `1978671`, main not having moved since the branch point, version
+  0.189.0, green, read off the job's log at the merge. Its last step printed
+  the four lines on the inputs ok, their carriage returns counted over the
+  bytes "31 31 31", "14 14 14", "5 2 2 3 3" and "4 4"; the line "note" with
+  "4 carriage returns counted over its bytes, 0 by grep -c"; "ok   the way a
+  reading is taken up and compared: two lines with CRLF read otherwise than
+  the same lines with LF, and the same lines with LF alike"; and the 22 lines
+  "ok" of the places and the three calls of `awk`, from
+  "bin/devloop-install-record, the record off the default branch in six
+  forms" to "bin/devloop-install-note put, docs/agents/environment.md in the
+  working tree", none "RED": run W1 of the step on line endings, which stands
+  on the fourteen blocks of 15 October 2026 on line endings and on the three
+  blocks this entry wrote with theirs. So under Windows with Git Bash a
+  reading taken up as the step takes up every reading kept its carriage
+  return, and every place read CRLF as LF there.
+
+  **The corrections of the merge**, of 18 November 2026, the fourth commit,
+  which changes no code. The seventeen blocks on line endings stand Walked,
+  their notes naming run W1. Read off the same log: under Git Bash on
+  windows-latest `grep -c` with a carriage return as its pattern counted 0 in
+  a file whose bytes carry 4, where macOS and Alpine count 4; and the blob of
+  the standards carried 5 carriage returns there where macOS and Alpine count
+  6. The step builds that history with `grep -v` at line 577 of the workflow
+  and `sed` at line 580, which gives a carriage return only to a line that
+  ends in another character, so that an empty line one of the two writes
+  without its carriage return keeps none; which of the two drops it is read
+  at the code and not measured. A block of milestone 12 with Fix none, since
+  the step means the four systems to measure the same input; the two places
+  over the standards were held ok there all the same, over a blob with 5
+  carriage returns. `docs/plan.md` names the three blocks with Fix none of
+  this order where it named one, and its sentence on the runs under Windows
+  names run W1; `docs/skill-conventions.md` sets what that run measured
+  beside its rule on line endings.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

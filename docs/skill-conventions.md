@@ -2316,7 +2316,10 @@ without one. Not places, read and decided on that day: the record of the
 refusals of auto mode, which Python writes and reads in text mode and the
 step before reads through `tr -d`; the stash message and the lists git forms
 itself, `git status --short` among them; and the output of a tool a hook or
-a program starts.
+a program starts. Measured on `windows-latest` on 18 November 2026, in the
+green run of that step: under Git Bash `grep -c` with a carriage return as
+its pattern counted 0 in a file whose bytes carry 4, and a reading taken up
+as the step takes up every reading kept its carriage return.
 
 **A hook reads its input through one program, and the command as the shell
 runs it.** Since 12 October 2026, version 0.137.0, every hook under `hooks/`

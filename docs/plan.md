@@ -1254,15 +1254,19 @@ check under Alpine did not reach, busybox `awk` giving there what `awk`
 gives on macOS; and the sentence of the head of
 `scripts/devloop-run-workflow` names both blocks on Windows, its block
 closed as corrected. The runs under Windows of the blocks on line endings
-come from the job's log at the merge. The first run of that step on
+came from the job's log at the merge, run W1 of that entry, green on 18
+November 2026. The first run of that step on
 `windows-latest`, on 18 November 2026, was red at the four inputs, where
 `grep -c` counted no carriage return; since that day the step counts them
 over the bytes with Python and shows before the first place that its way
 of comparing a reading tells CRLF from LF, red where either does not hold.
 What that order found and did not
-build stands in a block of this milestone with Fix none: the walk of the
-install guard for a cargo configuration does not end at a path in the form
-of Windows. Of (3) to (7) nothing is built yet, `shell: bash` in every skill
+build stands in three blocks of this milestone with Fix none: the walk of
+the install guard for a cargo configuration does not end at a path in the
+form of Windows; the line of an install is handed to `awk` through `-v`,
+which turns a backslash sequence into another character; and under Windows
+the step builds its history of the standards file with one carriage return
+fewer. Of (3) to (7) nothing is built yet, `shell: bash` in every skill
 and the guard for PowerShell among them. Until 17 November 2026 this
 paragraph said that of (2) to (7) nothing was built yet and that the block
 on the sentence of that head stood with Fix none; until 16
