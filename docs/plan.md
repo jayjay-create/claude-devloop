@@ -1275,6 +1275,13 @@ system or to the places that step names as none; what that order found and
 did not build stands in three more blocks of this milestone with Fix none,
 on the line endings put writes, on a recorded command over several lines in
 an issue with CRLF and on the folder an installer prints under Windows.
+And two blocks of this milestone the consistency audit of 18 November 2026
+wrote, the roadmap entry of that date on the two entries held: a sentence of
+the head of `bin/devloop-install-note` says that git converts a file put
+wrote both line endings into, which git does not for a file committed with
+CRLF; and a comment of the step on line endings quotes words of the
+documentation of open() that it carries up to Python 3.9 alone; no order of
+this milestone names them.
 Until 17 November 2026 this
 paragraph said that of (2) to (7) nothing was built yet and that the block
 on the sentence of that head stood with Fix none; until 16

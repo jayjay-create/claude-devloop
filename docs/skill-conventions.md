@@ -4326,8 +4326,11 @@ describe the runner, "what the checkout holds" and the Alpine step, a step
 with `uses:` and no `run:`, and runs a step under an `if:` not at all and
 says so, red. So the tool, its self-test, the hooks step with every self-test
 under `bin/`, since 31 October 2026 the self-test of this program among
-them, and every handler, the two README steps, since 1 November 2026 the step on
-the dates of the loaded texts, and the title step run here before the pull
+them, and every handler, since 17 November 2026 the step on line endings, the
+two README steps, since 1 November 2026 the step on the dates of the loaded
+texts, since 18 November 2026 the step that holds every line that reads a
+file of the project to a case of the step on line endings or to its not
+places, and the title step run here before the pull
 request shows them, on this one system, a job with a matrix once; a step added
 to the file runs without a change to the program. It ends with 0 where every
 step did, and its last line opens with `green:`, the count of the steps run and
