@@ -9315,6 +9315,305 @@ and for the proofs of closings.
   and a line named as a case and as a not place; R2 on the red thing of the
   step on line endings not found once.
 
+- **Two entries held, two blocks on a head and a quote, three orders named**
+
+  18 November 2026, version 0.190.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-18`, off
+  `origin/main` at `20c965b`, in one commit: `docs/defects.md`,
+  `docs/plan.md`, `docs/skill-conventions.md` and this entry. The order: the
+  consistency audit before the handover, in the form of the audits of 1, 3,
+  4, 6, 9, 12, 13, 15 and 16 November 2026 — the two entries since the last
+  audit, on a project's files read with CRLF as with LF and on a place
+  without a case found by the merge gate, held statement by statement
+  against the code, the documents, the table, the commits of pull requests
+  #251 and #252 and the logs of their checks, the paragraphs written at the
+  merge of the first among them; the heads of the five programs the two
+  change, the head of `.github/workflows/stock-take.yml`, `docs/plan.md`,
+  `docs/skill-conventions.md` and the section "## Milestone 12" of
+  `docs/defects.md` searched for sentences the two made false; `README.md`
+  held against them; `docs/rationale.md` held against the three loaded texts
+  the first of the two changes; the blocks under "## Milestone 12" listed and
+  held against the orders (2) to (7) and the decisions of 18 November 2026 in
+  `docs/plan.md`; the version of git devloop needs read off its commands;
+  what has one right answer and touches `docs/` alone mended here, a finding
+  in a shipped directory written as a block, and the rest put to the person
+  in the report. Its reading list: 388882 bytes by `wc -c`, the order's
+  figure, counted again with `git show` over its ranges at `20c965b`, the
+  same — this file lines 8564 to 9317, `docs/plan.md` lines 83 to 149 and
+  1043 to 1429, `docs/defects.md` lines 1 to 86, 844 to 979 and 1555 to 1626
+  with the title, the Fix and the Status of the 128 blocks of milestone 12,
+  `docs/skill-conventions.md` lines 1730 to 1962, 2267 to 2334 and 4017 to
+  4514, `scripts/devloop-stock-take` lines 1 to 139 and 538 to 700,
+  `.github/workflows/stock-take.yml` lines 1 to 64, 202 to 393, 562 to 604
+  and 709 to 987, `README.md` whole, the changes of the two pull requests
+  outside `docs/` and `.github/` and the 71 lines they added to
+  `docs/stock-take.tsv`. Written by Claude Code from the order of this day;
+  no session log was read; nothing was installed; GitHub was read with `gh pr
+  checks`, `gh run list` over the two branches and `gh run view` for the runs
+  44203370512, 44259689177, 44268964551 and 44295213844, the log of each of
+  their twenty jobs fetched into a file under a throwaway directory, and the
+  commits of the two pull requests were fetched by their references; read
+  from outside, without a sign-in: the release notes of git 2.13.0, 2.15.0,
+  2.16.0, 2.17.0, 2.18.0, 2.22.0, 2.23.0, 2.27.0, 2.28.0 and 2.31.0 off the
+  master branch of git/git, and the documentation of open() at
+  docs.python.org for 3.8, 3.9, 3.10, 3.11, 3.12, 3.14 and 3.15.2, that of
+  io and the glossary for 3.15.2; nothing beyond. The identity under which
+  git commits here was not set, its name and its address taken as `git
+  config` gives them and neither shown; no subagent was used. The report
+  stands on this machine as `~/devloop-audit-2026-11-18.md`, in German, and
+  is not in the repository. Every line number of a file in this entry holds
+  at `20c965b` unless it says otherwise.
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  every range of the order's reading list. At the places a statement names
+  and at search hits: the programs and texts the two entries name, at
+  `784dc38`, `b77e3bc`, `4fe6374` and `20c965b`, the archive, the table, and
+  of the three reports the order names on this machine the one that stands
+  there, `~/devloop-line-endings-check-report.md`, which opens at its section
+  8; `~/devloop-line-endings-report.md` and
+  `~/devloop-line-endings-nachtrag.md` stand nowhere under the home directory
+  to a depth of three, `.claude`, `Library` and the trash left out. The
+  branches of the two pull requests were fetched by their references, four
+  commits and three, the tree of each head equal to
+  its squash commit on main, `git diff --stat` empty: `e549869` and
+  `b77e3bc`, `8b1d1c8` and `20c965b`; the first writing of the branch of
+  pull request #251, `b78c969`, `a9c337f` and `6a006be` of 17 November 2026,
+  stands in the local repository. The tool ran in two clones, `origin/main`
+  standing at the branch point in each, at `784dc38` and at each of the four
+  commits of the first branch, and at `b77e3bc` and at each of the three of
+  the second, nine runs; the self-test of `bin/devloop-install-note` ran
+  there at `dc29960`. What the two entries measured on the Mac or in a
+  container was not measured again. The logs of the twenty jobs were each
+  read in their file.
+
+  **The two entries against the code, the documents, the table, their commits
+  and the logs.** Held: what the entries say of their commits and of the
+  files and the version of each, the commit times framing the runs L1 to L3
+  and G1 to R2; every line of a file of this repository at the commit each
+  names, the places at `784dc38`, lines 185 to 194 of
+  `bin/devloop-install-record` and the rest, the places of the search again
+  and its not places, the walk of the install guard at lines 1074 to 1081
+  there, the lines of `docs/skill-conventions.md` at `b77e3bc` that the
+  second entry and its blocks quote, lines 2312 to 2315 and 2318 to 2319, the
+  lines of the
+  three blocks of the second entry at `b77e3bc` and the lines of
+  `hooks/post-tool-use-install-fact.sh` at `4fe6374`; the commits `919c9de`,
+  `4fe6374`, `8958afe`, `b74c86f` and `f183050` with their pull requests and
+  dates, and the 77 commits of the first parent from `919c9de` to `b77e3bc`;
+  the archive naming line 834 among the not places, line 24564 of
+  `docs/roadmap-archive-1.md`, as the correction of the second entry has it;
+  the 20 lines "# reads:" over 17 calls of hold and the one line "# not a
+  place" of the step, at `0b757e6` as at `20c965b`, and the step's 21 lines in
+  13 files; the 71 lines the two added to the table, 23 runs and 12, each on
+  the thing or the block its entry names; the self-test of
+  `bin/devloop-install-note` at `dc29960`, 46 cases with the case on a line
+  that stands already; and the versions of the Mac, macOS 26.6.2, bash
+  3.2.57, awk version 20200816, git 2.50.1 and Python 3.14.7. The entries
+  name no figure of the tool. It printed in the clones, at `784dc38`, broken
+  records 0, uncovered lines 0 of 4708, Recorded, not built 256, Built, never
+  walked 1508, Walked 763, Closed 77, milestone 12 119 blocks; at `d442889`,
+  the code without its records, exit 2, 6 broken records and 3 uncovered
+  lines; at `dc29960` Recorded, not built 239, Built, never walked 1531,
+  Walked 762, Closed 78; at `1978671` 240, 1525, 768 and 78; at `e549869`
+  and at `b77e3bc` 241, 1508, 785 and 78, milestone 12 125 blocks, Recorded,
+  not built 24, Built, never walked 47, Walked 42, Closed 12; at `0b757e6`,
+  the code without its records, exit 1, 31 uncovered lines of 4739; at
+  `5781277` 244, 1517, 785 and 78; and at `8b1d1c8` 244, 1508, 794 and 78,
+  milestone 12 128 blocks, Recorded, not built 27, uncovered lines 0 of 4739;
+  Undetermined 24 at every commit, and at both heads nothing Walked without a
+  run the branch adds. The job stock-take printed the same figures in the
+  runs 44268964551 and 44295213844, on the merge refs of `e549869` into
+  `784dc38` and of `8b1d1c8` into `b77e3bc`, and the figures of `1978671` in
+  44259689177 and 44203370512; the report of the second build gives the
+  figures of `5781277` and `8b1d1c8` as the tool printed them. Off the logs:
+  in run 44203370512 the job hooks on every system (windows-latest) began on
+  17 November 2026 at 23:54:21 UTC and its last step printed its lines from
+  00:01:56 UTC on 18 November 2026, four lines "RED" on the inputs and 22
+  lines "ok", and ended with 1, the four other jobs green, the step counting
+  with `grep -c` at lines 640 and 641 of the workflow at `6a006be`; in run
+  44259689177, on the merge of `1978671` into `784dc38`, the same step under
+  Windows printed "31 31 31", "14 14 14", "5 2 2 3 3" and "4 4", the line
+  "note" with "4 carriage returns counted over its bytes, 0 by grep -c", the
+  line on the way a reading is compared "ok" and 22 lines "ok", none "RED",
+  and on ubuntu-latest, macos-latest and in the container of alpine "6 2 2 3
+  3" and "4 by grep -c", 27 lines "ok" each; lines 577 and 580 of the
+  workflow at `1978671` are the `grep -v` and the `sed` of the history of the
+  standards file, as the corrections of the merge say. The entries hold in
+  what was held but for one sentence, said right here, the entries standing
+  as written:
+  - "by the documentation of `open()` returns "contents as bytes objects
+    without any decoding", universal newlines applying "to text mode" only",
+    lines 9054 and 9055, in the entry on a project's files read with CRLF as
+    with LF: the documentation of open() carries the first words at 3.15.2
+    and the second in the versions 3.8 and 3.9 alone, "newline controls how
+    universal newlines mode works (it only applies to text mode).", and not
+    in 3.10, 3.11, 3.12, 3.14 or 3.15, read on 18 November 2026. Right is
+    that the documentation of io says what the sentence means, "No encoding,
+    decoding, or newline translation is performed", which the same sentence
+    quotes beside it. The same words stand in a comment of the workflow, the
+    block below.
+  No line number held is wrong, and nothing in the two entries is corrected
+  in place. Neither confirmed nor refuted here, the reports that carried them
+  not standing on this machine: of the first entry the times of day of the
+  runs L1 to L3, which lie between the commits `dc29960`, 00:46:36 UTC, and
+  `1978671`, 00:47:43 UTC, "10 seconds on the Mac and 2 in the container",
+  "14 lines "RED" and 13 "ok"" at `784dc38`, the outputs of its
+  counter-check before the build, the 5 seconds and the exit 124 of the walk
+  of the install guard and what put wrote of `cargo install --path
+  tools\new`, each mechanism held at the code; and of the second entry the
+  four tests of its counter-check, its figures from 7 of 14 to under 0.1
+  seconds, the 78 trees on which the step gives what the prototype gave, and
+  its reading list of 229485 bytes, the report of that build opening at its
+  section 8.
+
+  **The control documents against the two builds.** Searched with
+  `/usr/bin/grep -E` for one pattern on the subjects of the two, the carriage
+  return, CRLF and the line ending, Windows, Alpine and `awk`, the orders of
+  milestone 12, Fix none, the not places, line 1085 and `CARGO_HOME`, the
+  steps of the workflow and `grep -c`, over the heads of
+  `bin/devloop-install-record`, lines 1 to 114, and
+  `bin/devloop-install-note`, lines 1 to 80, the comments of
+  `hooks/stop-checks.sh` and `hooks/post-tool-use-checks.sh`, the head of
+  `scripts/devloop-run-workflow`, lines 2 to 293, and that of the workflow,
+  lines 1 to 49, 56 lines; and for one pattern on the same subjects and the
+  files the two change over `docs/plan.md`, 28 lines,
+  `docs/skill-conventions.md`, 56, and the section "## Milestone 12" of
+  `docs/defects.md`, lines 601 to 1626, 151: every line decided in the
+  report. One sentence of a head does not hold, the first block below; a
+  list of the conventions was short of the two, and three notes did not name
+  the order the decision of 18 November 2026 gives them, both mended:
+  - `docs/skill-conventions.md` lines 4327 to 4331, the sixteenth check
+    before a handover, names the steps that run here, "the hooks step …, and
+    every handler, the two README steps, since 1 November 2026 the step on
+    the dates of the loaded texts, and the title step", and not the step on
+    line endings of 17 November 2026 or the step of 18 November 2026 that
+    holds every line that reads a file of the project to a case of it; the
+    run of that check printed both among its "10 steps run". The list names
+    both since this commit, each with the date it came in; the command and
+    the line the table anchors on, "it with 1 and a last line opening with",
+    stand as they stood.
+  - The notes of the three blocks with Fix none of the first entry, the walk
+    of the install guard for a cargo configuration at line 1579 of
+    `docs/defects.md`, the line of an install handed to `awk` through `-v` at
+    line 1587 and the history of the standards file under Windows at line
+    1595, ended on "which order builds it is put to the person by the report
+    of that order", where `docs/plan.md` names the order of each since the
+    decision of 18 November 2026, (3), (5) and (3), and where the three blocks
+    of the second entry name theirs. Each note names its order since this
+    commit, in the words of those three; no Should, no Fix and no Status is
+    touched.
+  No other sentence read stopped holding. The head of
+  `scripts/devloop-run-workflow` names both blocks on Windows, lines 227 to
+  236; the head of `bin/devloop-install-record` says of the carriage return
+  what its line 200 does, lines 105 to 114; the two hooks say at their lines
+  13 to 15 and 20 to 22 what the line under each does; the head of the
+  workflow says at lines 38 to 49 what the two steps do. In `docs/plan.md` the
+  paragraph on the second piece of milestone 12 says of (2), of the first
+  run under Windows, of the three blocks with Fix none of each order and of
+  the check of 18 November 2026 what stands since those days, and what it
+  says it said until 17 November 2026 holds against the plan at `784dc38`,
+  lines 1240 to 1241 there; the two decisions of 18 November 2026 hold at
+  every place they name.
+
+  **A block on a sentence of a program's head**, written here with Fix none,
+  Recorded, not built, at line 1627 of `docs/defects.md` since this commit:
+  "the head of bin/devloop-install-note says git converts a file put wrote
+  both line endings into, which git never does for a file committed with
+  CRLF". The head says at its lines 67 to 70, written by the first of the two
+  builds, "the file then carries both endings until git converts it", of a
+  file put writes into at CRLF, "where git checked the file out with CRLF or
+  it was committed so". Measured on 18 November 2026 on macOS with git
+  2.50.1 in a throwaway repository: a file added with CRLF under
+  `core.autocrlf=false`, a line with LF appended and `git add` run under
+  `core.autocrlf=true`, `git ls-files --eol` gives `i/mixed w/mixed`; a file
+  added at LF and checked out under `core.autocrlf=true`, the same line
+  appended, `i/lf w/mixed`. Its Should: the head says of such a file only
+  what holds in both forms.
+
+  **A block on a comment of the workflow**, written here with Fix none,
+  Recorded, not built, at line 1635 since this commit: "a comment of the
+  step on line endings quotes words of the documentation of open() that it
+  carries up to Python 3.9 alone". The comment over the function crs, line
+  819 of `.github/workflows/stock-take.yml`, carries the words the sentence
+  above names in the first entry. Its Should: the comment quotes only words the
+  documentation it names carries, with the version it was read at. Both
+  blocks stand under milestone 12 beside the blocks of the same place, the
+  lines put writes with LF, which (5) builds, and the history of the
+  standards file in the same step, which (3) builds; no order names them,
+  and which order builds each the report puts to the person. `docs/plan.md`
+  names both since this commit, in a sentence after the one on the three
+  blocks of the second entry.
+
+  **`docs/rationale.md` against the loaded texts.** `git diff --stat 784dc38
+  20c965b -- skills shared output-styles hooks` names five files, the three
+  loaded texts among them. The first build wrote one point for each, at
+  lines 1339, 4725 and 4787 of `docs/rationale.md`, under the file and the
+  heading its text stands under, `setup-checks` "Step 3 — Prefer tools that
+  live inside the project", `shared/mode-set-up.md` and
+  `shared/rule-not-written-down.md`, each saying what its text does and the
+  entry and the block of its case; `--ignore-cr-at-eol` needing git 2.16 or
+  later holds by the release notes of 2.16.0, lines 71 and 72, "The "diff"
+  family of commands learned to ignore differences in carriage return at the
+  end of line". No other point names the commands. Held. Put to the person
+  in the report: the rule on line endings, `docs/skill-conventions.md` lines
+  2288 to 2291, leaves "a carriage return elsewhere in a line" as it stands,
+  where the three texts read through `tr -d '\r'`, which takes every
+  carriage return off.
+
+  **`README.md` against the two.** It says nothing of CRLF, of the line
+  endings, of Windows or of `awk`, searched for those words; its sentences on
+  the line an install writes into `docs/agents/environment.md` and on the
+  record on the main branch, lines 229 to 231 and 249, hold: no deviation.
+  It names git, lines 36 and 37, without a version. The highest version a
+  command devloop runs on the person's machine needs is 2.31, `git rev-parse
+  --path-format=absolute --git-common-dir` at line 262 of
+  `bin/devloop-auto-mode-question`, the release notes of 2.31.0, lines 38 and
+  39, ""git rev-parse" can be explicitly told to give output as absolute or
+  relative path with the `--path-format=(absolute|relative)` option"; below
+  it `git switch` and `git restore`, 2.23, `shared/cut-branch.md` line 24 and
+  `shared/set-aside-back.md` lines 19 and 20, `git branch --show-current`,
+  2.22, `hooks/pre-tool-use-branch-guard.sh` line 10, `--ignore-cr-at-eol`,
+  2.16, and `git stash push` with a path, 2.13,
+  `shared/fetch-three-times.md` line 77; `git init -b`, 2.28, stands in the
+  self-tests under `bin/` and in the workflow alone, and `git rev-parse
+  --is-shallow-repository`, 2.15, in `scripts/devloop-stock-take`. Whether
+  `README.md` names a version, and which, the report puts to the person as a
+  question with a wording.
+
+  **For the handover.** The 130 blocks under "## Milestone 12" of
+  `docs/defects.md`, lines 601 to 1641 since this commit, listed with line,
+  title, Fix and
+  Status in the report: 42 read Walked, 12 are closed, 5 carry the form for a
+  case that cannot be forced, and 71 are open, 29 Recorded, not built and 42
+  Built, never walked. Of the 29 the orders and the decisions of
+  `docs/plan.md` name 27: (3) four, lines 1332, 1340, 1579 and 1595; (4)
+  five, lines 1220, 1228, 1236, 1284 and 1348; (5) thirteen, lines 731, 755,
+  836, 988, 1084, 1124, 1156, 1164, 1276, 1587, 1603, 1611 and 1619; (6)
+  three, lines 780, 1356 and 1364; (7) two, line 739 and line 1371, the walk
+  of the runtime under Windows with Git Bash, which (7) measures first by the
+  decision at the merge of 16 November 2026. The two written here no order
+  names. The 42 built and never walked are held by (7) against the closing
+  runs first, by that decision.
+
+  The tool, before, on `20c965b`: exit 0, broken records 0, uncovered lines 0
+  of 4739; Undetermined 24, Recorded, not built 244, Built, never walked
+  1508, Walked 794, Closed 78; milestone 12 128 blocks, Recorded, not built
+  27, Built, never walked 47, Walked 42, Closed 12; blocks with "not stated"
+  345. After: Recorded, not built 246 and milestone 12 130 blocks, Recorded,
+  not built 29, the two blocks written here; every other figure as before;
+  blocks held against the branch point: removed 0, renamed 0, Should changed
+  0, added 2, no line of the fixed forms; Walked on this branch without a run
+  the branch adds: 0. The self-test of the tool: 159 cases, 148 of 148
+  messages asserted by a case, before and after. Nineteen of the twenty
+  checks before a handover print after what they printed on `20c965b`, line
+  for line, and the sixteenth, the run of the workflow's steps, green before
+  and after, 10 steps run. Its title step reads the head of a new entry off
+  the commits of the branch and so read none before the one commit of this
+  branch; the head this branch adds was held to the step's three rules by
+  hand before it, 70 characters and no find, and the report says what the
+  step printed after it. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
