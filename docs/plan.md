@@ -1477,6 +1477,20 @@ devloop is enabled, with a message of the vendor's on the failed hook whose
 wording for that case the page does not give; the run on Windows without Git
 Bash in (7) is the run that shows it. Built on that day by (3), above.
 
+Decided on 19 November 2026 by the person, the roadmap entry of that date on
+the lowest version of Claude Code: devloop names as the lowest version of
+Claude Code it supports the version its closing runs of this milestone ran
+on, the highest where they ran on more than one, and (6) names it in
+`README.md`. Reason: only that number is measured. `"onFailure": "block"`
+needs 2.1.295, but neither the skills page nor the changelog to 2.1.327 says
+from which version the field `shell` of a skill holds, or how an older
+version runs the inline commands of a skill under Windows with Git Bash,
+where PowerShell is the primary shell wherever its tool is on since 2.1.126;
+a lower number would rest on every fix after 2.1.295 that devloop builds on,
+each to be shown. Not chosen: 2.1.295, the lowest version the documented
+fields give, the field `shell` without a version of its own, a number no run
+stands on.
+
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
 elsewhere before any later milestone measures there; milestones 4 to 11 are

@@ -779,7 +779,7 @@ their section.
 
 ### devloop names nowhere the version of Claude Code it needs, while onFailure block needs 2.1.295
 - Wrong: devloop names nowhere the version of Claude Code it needs, searched with the commands above, while `"onFailure": "block"` needs 2.1.295 and what an older version does with the field is documented nowhere
-- Should: devloop names the lowest version it needs, and a session on an older one learns that before the first command.
+- Should: devloop names as the lowest version of Claude Code it supports the version its closing runs of milestone 12 ran on, the highest where they ran on more than one, and a session on an older one learns that before the first command.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: none
 - Status: Recorded, not built

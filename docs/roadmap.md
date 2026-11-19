@@ -10013,6 +10013,42 @@ and for the proofs of closings.
   the default branch and the guards off the folder in the tree, and no
   finding.
 
+- **The lowest version of Claude Code devloop names decided**
+
+  19 November 2026, version 0.191.0: `docs/plan.md`, `docs/defects.md` and
+  this file change, nothing under the shipped directories, so that the version
+  stays. On `task/lowest-version-decision`, off `origin/main` at `415610a`, in
+  one commit, from a patch written after the merge of the entry above, with
+  the person's answer, and applied in the person's terminal.
+
+  **Decided on 19 November 2026**, the question the report of the order on
+  the guard for the PowerShell tool put to the person, the entry above, from
+  which version of Claude Code the field `shell` of a skill holds, recorded as
+  a dated sentence under milestone 12 in `docs/plan.md`: devloop names as the
+  lowest version of Claude Code it supports the version its closing runs of
+  milestone 12 ran on, the highest where they ran on more than one, and order
+  (6) names it in `README.md`. Reason: only that number is measured.
+  `"onFailure": "block"` needs 2.1.295, the hooks reference under "Block the
+  action when a hook fails", read raw on 9 November 2026, the entry of that
+  date on the blocks on systems and surfaces; but neither the skills page nor
+  the changelog to 2.1.327 says from which version the field `shell` holds, or
+  how an older version runs the inline commands of a skill under Windows with
+  Git Bash, where PowerShell is the primary shell wherever its tool is on, the
+  changelog at `v2.1.327`, section `## 2.1.126`: "Windows: when the PowerShell
+  tool is enabled, Claude now treats PowerShell as the primary shell instead
+  of defaulting to Bash"; a lower number would rest on every fix after 2.1.295
+  that devloop builds on, each to be shown. Not chosen: 2.1.295, the lowest
+  version the documented fields give, the field `shell` without a version of
+  its own, a number no run stands on. The block on the version devloop needs
+  changes its should from "devloop names the lowest version it needs, and a
+  session on an older one learns that before the first command." to "devloop
+  names as the lowest version of Claude Code it supports the version its
+  closing runs of milestone 12 ran on, the highest where they ran on more than
+  one, and a session on an older one learns that before the first command."
+  The line of the fixed form, the title as the tool reads it:
+
+  Should changed: devloop names nowhere the version of Claude Code it needs, while onFailure block needs 2.1.295
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
