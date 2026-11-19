@@ -1133,7 +1133,7 @@ systems, and a workflow job runs its self-test and every hook on
 `ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash,
 on every pull request, and since the fifth addendum of that day under Alpine
 3.22 with busybox awk as well, in a container on `ubuntu-latest`; the guard
-for PowerShell and the rest of this milestone stand as before. What devloop
+for PowerShell and the rest of this milestone were not built then. What devloop
 does on a system without bash belongs here too: the hooks and the programs
 are scripts for bash, and Claude Code's system requirements, read raw at
 code.claude.com/docs/en/setup on 14 October 2026, name "Alpine Linux 3.19+"
@@ -1261,13 +1261,13 @@ November 2026. The first run of that step on
 over the bytes with Python and shows before the first place that its way
 of comparing a reading tells CRLF from LF, red where either does not hold.
 What that order found and did not
-build stands in three blocks of this milestone with Fix none: the walk of
+build stood in three blocks of this milestone with Fix none: the walk of
 the install guard for a cargo configuration does not end at a path in the
 form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
-fewer; the first and the third are built by (3), below. Of (4) to (7)
-nothing is built yet. Since 18 November 2026, by the
+fewer; the first and the third carry their Fix since (3) built them, below.
+Of (4) to (7) nothing is built yet. Since 18 November 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
 a file of the project to a case of the last step of the job hooks on every
@@ -1286,6 +1286,20 @@ order (3) the second, beside the block on the history of the standards file
 in the same step, decided on 18 November 2026 by the person after the
 report of that audit, by the decision of that day that the order touching
 the same place builds such a block.
+And three blocks of this milestone the consistency audit of 19 November 2026
+wrote, the roadmap entry of that date on the three entries held: a comment of
+`hooks/subagent-start-install.sh` speaks of two lines where the line below it
+joins two or three; devloop reads neither the version of git nor the name and
+the address `git config` gives before the first commit, while `README.md` says
+it says so; and step 8 of `setup-checks` names the command that keeps a
+machine awake for macOS alone, which no block of this milestone carried. Order
+(4) builds the first, the next order that changes shipped code, since none of
+the orders still to build touches that hook and an order of its own for it
+would cost one pull request more, the reason of the decision of 18 November
+2026 below against an order of their own for such blocks; order (5) the
+second, with the prerequisites of the installation; and order (6) the third,
+which it names above; decided on 19 November 2026 by the person after the
+report of that audit.
 Since 18 November 2026 (3) is built, the roadmap entry of that date on the
 guard for the PowerShell tool, by the decision of that day below: where
 `docs/agents/` stands, `hooks/pre-tool-use-powershell-guard.sh` turns down
@@ -1306,7 +1320,14 @@ of io carries at 3.15.2. The job hooks on every system runs the guard where
 `docs/agents/` stands and where it does not, and the walk at D:/a/proj,
 D:\a\proj and proj, on all four systems; under Windows its first run is the
 pull request of that order. The block on the line of an install handed to
-awk through -v and the three of the order before (3) stay with (5). Until 18
+awk through -v and the three of the order before (3) stay with (5).
+Until 19 November 2026 this paragraph said of the state of 14 October 2026
+that "the guard for PowerShell and the rest of this milestone stand as
+before", which holds no more since (1), (2) and (3) are built, and of what (2)
+found and did not build that it "stands in three blocks of this milestone with
+Fix none", "the first and the third are built by (3), below", where those two
+carry their Fix since (3); both mended by the consistency audit of 19 November
+2026, the roadmap entry of that date on the three entries held. Until 18
 November 2026 this paragraph said that of (3) to (7) nothing was built yet,
 `shell: bash` in every skill and the guard for PowerShell among them.
 Until 17 November 2026 this
@@ -1490,6 +1511,38 @@ a lower number would rest on every fix after 2.1.295 that devloop builds on,
 each to be shown. Not chosen: 2.1.295, the lowest version the documented
 fields give, the field `shell` without a version of its own, a number no run
 stands on.
+
+Decided on 19 November 2026 by the person, the roadmap entry of that date on
+the three entries held: where git is missing or older than 2.31, or where
+`git config` gives no `user.name` or no `user.email`, devloop says so when a
+project is set up and when a piece of work is started, before the first
+commit, and gives the steps, as for `gh`; (5) builds it, the block of this
+milestone on it. Reason: without `user.email` and `EMAIL` git 2.50.1 does not
+refuse but guesses an address from the machine's name, with a warning,
+measured on 9 October 2026, `docs/roadmap-archive-1.md` lines 15614 to 15618,
+and the push makes that address public for good; and `README.md` says that
+devloop says so. Not chosen: narrowing the sentence of the README to `gh`; the
+README would hold then, and the way to the machine's address made public would
+stay open.
+
+Decided on 19 November 2026 by the person, the same entry: the version of
+Claude Code that (6) names is the one installed when (6) is built; (7)
+installs exactly that version on the person's Mac and in every virtual
+machine, with the vendor's installer and the version number, and turns the
+automatic updates off for the time of the closing runs, so that every closing
+run runs on it and the number is the version they ran on, as the decision of
+the same day above on the lowest version asks. The closing runs so walk the
+check at the start of a session on all four systems in the case that the
+version is not older; the case of an older version is walked on a bench on
+which an older version is installed the same way. Reason: otherwise the number
+and the check would exist only after (7), and no closing run would walk a case
+of the check. Not chosen: building the block only after the closing runs, with
+a pass of its own on the four systems and a version of devloop after them.
+Where a closing run needs a later version, the number and the check change,
+and the runs on them count no more. The vendor's page on the setup,
+code.claude.com/docs/en/setup, read raw on 19 November 2026, names both: under
+"Install a specific version" the install script with a version number, and
+under "Disable auto-updates" `DISABLE_AUTOUPDATER`.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
