@@ -10054,9 +10054,10 @@ and for the proofs of closings.
   19 November 2026, version 0.191.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` does not. On `task/audit-2026-11-19`, off
-  `origin/main` at `8853914`, in one commit: `docs/defects.md`,
+  `origin/main` at `8853914`, in two commits: `docs/defects.md`,
   `docs/plan.md`, `docs/rationale.md`, `docs/skill-conventions.md`,
-  `docs/stock-take.tsv` and this entry. The order: the consistency audit
+  `docs/stock-take.tsv` and this entry; and the corrections of the merge, in
+  this entry alone. The order: the consistency audit
   before the handover, in three parts in three sessions. The first held the
   entry on the guard for the PowerShell tool, pull request #255, paragraph by
   paragraph against the code, the documents, the table, its four commits, the
@@ -10457,8 +10458,23 @@ and for the proofs of closings.
   0, added 3, no line of the fixed forms; Walked on this branch without a run
   the branch adds: 0. The head this branch adds was held by hand to the three
   rules of the workflow's step on titles, 66 characters and no find. The
-  twenty checks before a handover were no part of the order and were not run.
-  No run is recorded.
+  twenty checks before a handover were no part of the order; they ran at the
+  merge, below. No run is recorded.
+
+  **The corrections of the merge**, of 19 November 2026, the second commit,
+  which changes no code. The twenty checks before a handover, run at the
+  check of the code on `8853914` and on the first commit of this branch,
+  `450dd8a`: the nineteen besides the sixteenth print the same on both, line
+  for line; the sixteenth, the run of the workflow's steps, is what the check
+  `main` requires runs, green on the pull request at `450dd8a` in run
+  44527700395, its five jobs passing. The self-test of the tool: 159 cases,
+  148 of 148 messages asserted by a case. The tool on the tree of `450dd8a`
+  set on `8853914` as one commit gives the figures above. Decided at the
+  check of the code from the points of the report: the third sentence of the
+  entry on the guard for the PowerShell tool stands above as holding and is
+  not said right, which is right, since the note under "Block the action when
+  a hook fails" sends a shell-form hook that fails with `onFailure` unset to
+  the message of a missing Git Bash.
 
 ## Decisions taken against
 
