@@ -2,6 +2,7 @@
 name: diagnose-bug
 description: Find what actually causes a bug
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Diagnose a bug

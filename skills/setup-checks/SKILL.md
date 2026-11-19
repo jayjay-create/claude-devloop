@@ -2,6 +2,7 @@
 name: setup-checks
 description: Build out this project's check suite
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Build out the check suite

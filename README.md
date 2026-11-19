@@ -276,7 +276,11 @@ those keys — so that every commit carries the identity your git
 configuration gives and no address taken from a session's context, which
 the push would make public; a configuration file written another way, an
 include, a variable that points git at another file and an alias are not
-read. The turn-end hook
+read. And a guard that turns down every command the agent sends to Claude
+Code's PowerShell tool and has the agent run the same command through bash,
+so that the guards above read it: on Windows, Claude Code sends shell
+commands to PowerShell by default for a claude.ai or Console account, where
+none of these guards would see them. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces

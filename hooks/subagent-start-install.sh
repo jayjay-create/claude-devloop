@@ -56,7 +56,16 @@ LINE=$("$HERE/../bin/devloop-install-record" --line "$PROJECT_DIR" 2>&1)
 # the plugin's directory, resolved here: the subagent's prompt knows no path of the plugin
 ROOT=$(cd "$HERE/.." && pwd)
 RULE="devloop: this rule outranks the prompt on installing. A tool outside the repository that this task needs is installed only where that record says yes, by you, backed, alone in its call, with 600000 milliseconds on the call, as build-work step 3 point 7 says, which you read before you install anything, with the four texts under it, by running: for n in install-tool backed-command install-alone fetch-and-run install-not-through; do \"$ROOT/bin/devloop-text\" \"\$n\"; done; under no or none it is not installed and not replaced by a stand-in or a stub, and you need none of those texts: name the tool, the backed command and that it is missing in your report, and stop with the task. A check class's tool is not yours to install under either answer; name it in the report."
+# The rule on the shell, since 18 November 2026, order (3) of milestone 12 in
+# docs/plan.md: the line hooks/session-start.sh prints, in the same words and
+# on the same condition, docs/agents/ in the tree, where the guard on the
+# PowerShell tool turns that tool down; set up on the default branch alone,
+# the subagent gets the two lines above and not this one.
+SHELL_RULE=""
+if [ -d "$PROJECT_DIR/docs/agents" ]; then
+  SHELL_RULE="[Shell] every shell command in this project goes through the Bash tool, where devloop's guards read it: a call of the PowerShell tool is turned down here, and the same command then runs unchanged through the Bash tool, which is no block to report"
+fi
 # the two lines as one JSON string: backslash and double quote escaped, the line break written as \n
-ESC=$(printf '%s\n%s\n' "$LINE" "$RULE" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk 'NR > 1 { printf "\\n" } { printf "%s", $0 }')
+ESC=$(printf '%s\n%s\n%s' "$LINE" "$RULE" "$SHELL_RULE" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk 'NR > 1 { printf "\\n" } { printf "%s", $0 }')
 printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"%s"}}\n' "$ESC"
 exit 0

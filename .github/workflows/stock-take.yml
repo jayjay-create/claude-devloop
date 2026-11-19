@@ -602,7 +602,7 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, and the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in
+      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in, and the guard on the PowerShell tool turning a call down where docs/agents/ stands and letting it through where none stands
         run: |
           set -u
           # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
@@ -649,6 +649,7 @@ jobs:
                     "tool_name": "Bash", "tool_use_id": "toolu_hooksdenied", "transcript_path": p + "/transcript.jsonl"}
           inputs = {
               ("PreToolUse", "Bash"): dict(base, hook_event_name="PreToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}),
+              ("PreToolUse", "PowerShell"): dict(base, hook_event_name="PreToolUse", tool_name="PowerShell", tool_input={"command": "ls", "description": "list"}),
               ("PreToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PreToolUse", tool_name="Write", tool_input={"file_path": p + "/README.md", "content": "# project\n"}),
               ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
               ("PermissionDenied", "Bash"): [dict(base, hook_event_name="PermissionDenied", permission_mode="auto", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, reason="[Test]"), denied],
@@ -679,8 +680,10 @@ jobs:
             HOOK="${CMD/\$\{CLAUDE_PLUGIN_ROOT\}/$ROOT}"
             RC=0; OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1) || RC=$?
             n=$((n + 1))
+            # the guard on the PowerShell tool turns every call down where docs/agents/ stands, as it does in this project, so its answer to the harmless input is 2, since 18 November 2026; its message is read below
+            WANT=0; [ "$EVENT $MATCHER" != "PreToolUse PowerShell" ] || WANT=2
             echo "$EVENT $MATCHER $(basename "$HOOK"): exit $RC"
-            [ "$RC" -eq 0 ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
+            [ "$RC" -eq "$WANT" ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
           done <<< "$LIST"
           echo "$n handlers started"
           # the record of the counted refusal, which the install guard wrote under PermissionDenied through bin/devloop-auto-mode-question record: one line, the time, the way, the call's id and the command, tab-separated; a carriage return is read over, since Python writes the line of the system
@@ -704,6 +707,17 @@ jobs:
             case "$OUT" in *"$s"*) ;; *) ok=no; echo "    the block does not carry: $s" ;; esac
           done
           [ "$RC" -eq 2 ] && [ "$ok" = yes ] || { echo "the guard on the mark did not block the write of the mark as its message says"; red=1; }
+          # the guard on the PowerShell tool, since 18 November 2026, order (3) of milestone 12 in docs/plan.md: git push origin main sent to the PowerShell tool is turned down with 2 and the message that has the model run the same command with the Bash tool where docs/agents/ stands, as in the project here, and let through with 0 and nothing said in a directory where none stands
+          PS=$("$PY" -c 'import json, sys; print(json.dumps({"session_id": "s1", "cwd": sys.argv[1], "permission_mode": "default", "tool_use_id": "toolu_hooksps", "hook_event_name": "PreToolUse", "tool_name": "PowerShell", "tool_input": {"command": "git push origin main", "description": "push"}}))' "$P")
+          RC=0; OUT=$(cd "$P" && printf '%s' "$PS" | "$ROOT/hooks/pre-tool-use-powershell-guard.sh" 2>&1) || RC=$?
+          echo "PreToolUse PowerShell pre-tool-use-powershell-guard.sh, git push origin main where docs/agents/ stands: exit $RC"
+          printf '%s\n' "$OUT" | sed 's/^/    /'
+          case "$OUT" in *"Run the same command, unchanged, with the Bash tool."*) ok=yes ;; *) ok=no ;; esac
+          [ "$RC" -eq 2 ] && [ "$ok" = yes ] || { echo "the guard on the PowerShell tool did not turn the call down with its message where docs/agents/ stands"; red=1; }
+          mkdir "$T/none"
+          RC=0; OUT=$(cd "$T/none" && printf '%s' "$PS" | CLAUDE_PROJECT_DIR="$T/none" "$ROOT/hooks/pre-tool-use-powershell-guard.sh" 2>&1) || RC=$?
+          echo "PreToolUse PowerShell pre-tool-use-powershell-guard.sh, the same call where no docs/agents/ stands: exit $RC"
+          [ "$RC" -eq 0 ] && [ -z "$OUT" ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; echo "the guard on the PowerShell tool did not let the call through with nothing said where no docs/agents/ stands"; red=1; }
           rm -rf "$T"
           exit "$red"
 
@@ -719,7 +733,7 @@ jobs:
           PY=$(command -v python3 || command -v python || true)
           [ -n "$PY" ] || { echo "no python on PATH for the step on line endings"; false; }
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-crlf.XXXXXX")
-          # under Windows the directory in the form of Git Bash, /d/a/..., and handed to python unconverted below: the install guard walks up from the command's directory to / for a cargo configuration, and a path in the form of Windows never reaches /, a block of milestone 12 in docs/defects.md
+          # under Windows the directory in the form of Git Bash, /d/a/..., and handed to python unconverted below, so that every place reads its clone at the path the three other systems give it; until 18 November 2026 also because the install guard's walk for a cargo configuration did not end at a path in the form of Windows, which since that day it does, the case of the walk below
           ! command -v cygpath >/dev/null 2>&1 || T=$(cygpath -u "$T")
           export TMPDIR="$T/tmp"
           mkdir -p "$TMPDIR" "$T/home" "$T/gh" "$T/cy"
@@ -728,7 +742,8 @@ jobs:
           printf '#!/bin/sh\necho "stand-in for gh in the step on line endings: GitHub is not reached here" >&2\nfalse\n' > "$T/gh/gh"
           chmod +x "$T/gh/gh"
           # the throwaway projects, built here so that every system measures the same input, Git for Windows bringing core.autocrlf=true from its system configuration and the three other systems leaving it unset: two origins, each written under core.autocrlf=false - one with LF throughout, one whose commit "line endings alone" turns the files devloop reads to CRLF, committed as they stand - and three clones: lf and blob under core.autocrlf=false, co of the origin with LF under core.autocrlf=true, which checks every text file out with CRLF. The runner of the checks stays at LF by the project's own .gitattributes, since a shell reads it and not devloop
-          crlf() { local f; for f in "$@"; do sed "s/\$/$CR/" "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done; }
+          # crlf FILE...: a carriage return before every line feed, and the two edits of the history of docs/agents/standards.md below, written by Python in binary mode since 18 November 2026, so that every system builds every input with the same bytes: until that day grep -v and sed wrote that history, and under Windows its blob carried five carriage returns where macOS and Alpine counted six, in run 44259689177 of pull request #251; read at the code, grep takes the carriage return off there before it matches, as grep -c with a carriage return as its pattern counted none in the same run, and writes the lines without it, and sed then gave it back to every line but the empty one, a block of milestone 12 in docs/defects.md
+          crlf() { "$PY" -c 'import sys; d = {f: open(f, "rb").read() for f in sys.argv[1:]}; [open(f, "wb").write(b.replace(b"\n", b"\r\n")) for f, b in d.items()]' "$@"; }
           commit() { $GIT add -A && $GIT commit -q -m "$1"; }
           seed() {
             local way=$1 d
@@ -753,10 +768,10 @@ jobs:
             printf '%s\n' '- Rule C: a migration is written with its way back.' >> docs/agents/standards.md
             commit "rule C introduced"
             [ "$way" != crlf ] || { crlf docs/agents/*.md c1/.cargo/config.toml c2/.cargo/config.toml c3/.cargo/config.toml c4/.cargo/config.toml; commit "line endings alone"; }
-            grep -v 'Rule A' docs/agents/standards.md > s.tmp && mv s.tmp docs/agents/standards.md
+            "$PY" -c 'import sys; f = sys.argv[1]; b = open(f, "rb").read(); open(f, "wb").write(b"\n".join(l for l in b.split(b"\n") if b"Rule A" not in l))' docs/agents/standards.md
             commit "rule A removed"
             printf '%s\n' '- Rule D: a job names the queue it reads.' >> docs/agents/standards.md
-            [ "$way" != crlf ] || { sed "s/\([^$CR]\)\$/\1$CR/" docs/agents/standards.md > s.tmp && mv s.tmp docs/agents/standards.md; }
+            [ "$way" != crlf ] || "$PY" -c 'import sys; f = sys.argv[1]; l = open(f, "rb").read().split(b"\n"); open(f, "wb").write(b"\n".join(x if x.endswith(b"\r") or i == len(l) - 1 else x + b"\r" for i, x in enumerate(l)))' docs/agents/standards.md
             commit "rule D introduced"
             $GIT remote add origin "$T/o-$way.git"
             $GIT push -q origin work:main
@@ -777,6 +792,7 @@ jobs:
           base = {"session_id": "s1", "cwd": p, "permission_mode": "default", "tool_use_id": "toolu_crlf1"}
           make = {
               "bash": lambda: dict(base, hook_event_name="PreToolUse", tool_name="Bash", cwd=p + a[1], tool_input={"command": a[0], "description": "x"}),
+              "at": lambda: dict(base, hook_event_name="PreToolUse", tool_name="Bash", cwd=a[1], tool_input={"command": a[0], "description": "x"}),
               "edit": lambda: dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/" + a[0], "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/" + a[0]}),
               "perm": lambda: dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}, session_id=a[0]),
               "stop": lambda: dict(base, hook_event_name="Stop", stop_hook_active=False),
@@ -816,7 +832,7 @@ jobs:
             for n in "$@"; do [ "$n" -gt 0 ] || { echo "RED  $what: the input carries no carriage return, so nothing here was measured with CRLF"; red=1; return 0; }; done
             echo "ok   $what: carriage returns counted over its bytes: $*"
           }
-          # crs FILE: the carriage returns of the file counted over its bytes, since 18 November 2026: Python opens it in binary mode, which returns its contents "as bytes objects without any decoding", universal newlines applying "to text mode" only, as the documentation of open() says, and the blob is written to a file by git and counted there. Every count of a carriage return in this step is this one; grep -c "$CR" counted none in the four inputs on windows-latest in run 44203370512, and the line "note" below sets its count beside this one on every system
+          # crs FILE: the carriage returns of the file counted over its bytes, since 18 November 2026: Python opens it in binary mode, whose contents come "as bytes objects without any decoding", as the documentation of open() says, and in which "No encoding, decoding, or newline translation is performed", as the documentation of io says of binary I/O, both read at docs.python.org at 3.15.2, and the blob is written to a file by git and counted there. Every count of a carriage return in this step is this one; grep -c "$CR" counted none in the four inputs on windows-latest in run 44203370512, and the line "note" below sets its count beside this one on every system
           crs() { "$PY" -c 'import sys; print(open(sys.argv[1], "rb").read().count(b"\r"))' "$1"; }
           tree() { crs "$T/$1/p/$2"; }
           blob() { git -C "$T/$1/p" cat-file -p "origin/main:$2" > "$T/blob-read" && crs "$T/blob-read"; }
@@ -825,6 +841,9 @@ jobs:
           carries "the input, docs/agents/standards.md in the blob and the four cargo configurations in both working trees" "$(blob blob docs/agents/standards.md)" "$(tree co c1/.cargo/config.toml)" "$(tree blob c2/.cargo/config.toml)" "$(tree co c3/.cargo/config.toml)" "$(tree blob c4/.cargo/config.toml)"
           carries "the input, node_modules/cypress/package.json as an installer with CRLF wrote it" "$(tree co node_modules/cypress/package.json)" "$(tree blob node_modules/cypress/package.json)"
           [ "$(blob co docs/agents/environment.md)" -eq 0 ] && [ "$(tree lf docs/agents/environment.md)" -eq 0 ] || { echo "RED  the input: the clone with LF or the blob of the checkout carries a carriage return"; red=1; }
+          # since 18 November 2026: every line of docs/agents/standards.md in the blob of the clone with CRLF ends with CRLF, the history built by Python in binary mode; and the tree of every commit of the two origins printed, the same ids on every system being the same bytes of every input that git holds
+          git -C "$T/blob/p" cat-file -p "origin/main:docs/agents/standards.md" > "$T/blob-read" && "$PY" -c 'import sys; b = open(sys.argv[1], "rb").read(); sys.exit(0 if b.count(b"\n") == b.count(b"\r\n") > 0 else 1)' "$T/blob-read" || { echo "RED  the input: docs/agents/standards.md in the blob of the clone with CRLF carries a line without its carriage return"; red=1; }
+          echo "note the inputs git holds as built on this system, the tree of every commit of the origin with LF: $(git --git-dir="$T/o-lf.git" log --format=%T main | tr '\n' ' ')and of the origin with CRLF: $(git --git-dir="$T/o-crlf.git" log --format=%T main | tr '\n' ' ')- the same on every system; this line decides nothing"
           # a line that decides nothing, printed on every system since 18 November 2026: the package of Cypress as the printf above writes it, a carriage return before each of its four line feeds and no git between, its carriage returns counted over its bytes beside the count grep -c "$CR" gives for it, so that the log shows what the system's grep counts
           echo "note node_modules/cypress/package.json as this step writes it, a carriage return before each of four line feeds: $(crs "$T/co/p/node_modules/cypress/package.json") carriage returns counted over its bytes, $(grep -c "$CR" "$T/co/p/node_modules/cypress/package.json" || true) by grep -c; this line decides nothing"
           # the way a reading is taken up and compared, shown on this system before the first place is read, since 18 November 2026: two lines with LF in the clones lf and co and the same two lines with CRLF in the clone blob, taken up through prog and three as the places are and compared as hold compares; red where the carriage return makes no difference, since the reading of a command with git show differs between CRLF and LF by that carriage return alone, and a comparison that loses it measures nothing there
@@ -861,6 +880,11 @@ jobs:
           # reads: `hooks/pre-tool-use-install-guard.sh` "for f in "$d/.cargo/config.toml" "$d/.cargo/config"; do"
           hold "hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml" "blocked four times, [install] and install.root = in the command's directory and in one above it" "cargo (a config file on cargo's search path sets install.root, which this guard does not read)" "$LF" "$CO" "$BLOB"
           [ "$(printf '%s\n' "$LF" | grep -c '^\[2\]$')" -eq 4 ] || { echo "RED  hooks/pre-tool-use-install-guard.sh reading .cargo/config.toml: not blocked four times with LF"; show "read" "$LF"; red=1; }
+          # the walk for a cargo configuration where the command's directory is D:/a/proj, D:\a\proj or proj, since 18 November 2026, order (3) of milestone 12: the guard under bin/devloop-bounded with ten seconds in the clone with LF, let through with nothing said as at /c0 above, every walk ended at the top of its path, the drive's root or the path itself; until that day the walk never ended there, a block of milestone 12 in docs/defects.md
+          walk() { local d out rc; for d in 'D:/a/proj' 'D:\a\proj' proj; do rc=0; out=$(cd "$T/lf/p" && MSYS2_ARG_CONV_EXCL='*' "$PY" -c "$PROG" "$T/lf/p" at "cargo install devloop-probe-does-not-exist" "$d" | env -u CARGO_HOME -u CARGO_INSTALL_ROOT -u CLAUDE_ENV_FILE CLAUDE_PROJECT_DIR="$T/lf/p" HOME="$T/home" "$ROOT/bin/devloop-bounded" 10 "$ROOT/hooks/pre-tool-use-install-guard.sh" 2>&1) || rc=$?; printf '%s [%s] %s\n' "$d" "$rc" "$(clean "$out" "$T/lf")"; done; }
+          WALK=$(walk)
+          printf '%s\n' "$WALK" | sed 's/^/     /'
+          [ "$WALK" = "$(printf '%s\n' 'D:/a/proj [0] ' 'D:\a\proj [0] ' 'proj [0] ')" ] && echo "ok   hooks/pre-tool-use-install-guard.sh, the walk for a cargo configuration at D:/a/proj, D:\a\proj and proj: each let through with nothing said within its ten seconds" || { echo "RED  hooks/pre-tool-use-install-guard.sh, the walk for a cargo configuration at a path in the form of Windows or without a slash: not let through with nothing said within ten seconds"; red=1; }
 
           # bin/devloop-setup-state, the markers of the five files off the default branch
           state() { prog "$1" "$ROOT/bin/devloop-setup-state" "$T/$1/p"; }

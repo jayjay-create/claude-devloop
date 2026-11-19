@@ -3665,6 +3665,22 @@ Nothing in this file stood as history; its rules carry their own reasons.
   among the refusals devloop names, a refusal a subagent names in its report the
   main run's own; defects 9 and 12 of the entry of 16 October 2026 on the runs
   of that day; 18 October 2026, version 0.147.0.".
+- **The refusal of the guard on the PowerShell tool is no block: the same
+  command runs unchanged through the Bash tool, and nothing of it is said,
+  reported or filed, with the person there or with nobody there.** The Bash
+  tool is the channel decided once for every shell command, where the six
+  guards of devloop on commands read it, as the editing tool is the channel
+  for `environment.md`. On Windows with Git Bash the PowerShell tool is on by
+  default for claude.ai and Console accounts and Claude treats PowerShell as
+  the primary shell, and a hook on the matcher `Bash` never fires for that
+  tool, the tools reference under "PowerShell tool" and the hooks reference
+  under the PowerShell input of PreToolUse, so that a command sent there would
+  pass no guard; a refusal answered by doing what its message says leaves
+  nothing for the person to decide, and a report or an issue on it would be
+  noise. Decided by the person, entry "A guard turns down the PowerShell tool,
+  every skill declares shell bash"; not chosen there: the tool switched off in
+  the project's settings after a question at setup, and the six guards taught
+  to read PowerShell, each guard then standing twice.
 
 ## `shared/criterion.md`
 

@@ -1266,8 +1266,8 @@ the install guard for a cargo configuration does not end at a path in the
 form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
-fewer. Of (3) to (7) nothing is built yet, `shell: bash` in every skill
-and the guard for PowerShell among them. Since 18 November 2026, by the
+fewer; the first and the third are built by (3), below. Of (4) to (7)
+nothing is built yet. Since 18 November 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
 a file of the project to a case of the last step of the job hooks on every
@@ -1286,6 +1286,29 @@ order (3) the second, beside the block on the history of the standards file
 in the same step, decided on 18 November 2026 by the person after the
 report of that audit, by the decision of that day that the order touching
 the same place builds such a block.
+Since 18 November 2026 (3) is built, the roadmap entry of that date on the
+guard for the PowerShell tool, by the decision of that day below: where
+`docs/agents/` stands, `hooks/pre-tool-use-powershell-guard.sh` turns down
+every call of the PowerShell tool on every system and has the model run the
+same command unchanged with the Bash tool, where the six guards on commands
+read it; the session start and the start of every subagent say so on the
+same condition; `shared/command-does-not-answer.md` says that this refusal
+is answered by the same command through the Bash tool and is no block; every
+skill carries `shell: bash` in its frontmatter; `README.md` names the guard
+in the wording the person approved; the install guard's walk for a cargo
+configuration ends at the top of any path, a drive's root under Windows and
+a path without a slash included; the last step of the job hooks on every
+system builds every input with Python in binary mode, the history of the
+standards file among them, and holds every line of that file in the blob
+with CRLF to its carriage return; and the comment of that step over the
+count of carriage returns quotes only what the documentation of open() and
+of io carries at 3.15.2. The job hooks on every system runs the guard where
+`docs/agents/` stands and where it does not, and the walk at D:/a/proj,
+D:\a\proj and proj, on all four systems; under Windows its first run is the
+pull request of that order. The block on the line of an install handed to
+awk through -v and the three of the order before (3) stay with (5). Until 18
+November 2026 this paragraph said that of (3) to (7) nothing was built yet,
+`shell: bash` in every skill and the guard for PowerShell among them.
 Until 17 November 2026 this
 paragraph said that of (2) to (7) nothing was built yet and that the block
 on the sentence of that head stood with Fix none; until 16
@@ -1368,10 +1391,14 @@ Decided on 18 November 2026 by the person, the roadmap entry of that date on
 a place without a case found by the merge gate: the blocks of this milestone
 with Fix none that order (2) wrote are built by the order that touches the
 same place. (3) takes the block on the install guard's walk for a cargo
-configuration at a path in the form of Windows, since (3) registers every
-guard of commands for the PowerShell tool as well, the block of this
-milestone on every command guard matching the tool Bash alone, whose
-commands come with paths in the form of Windows; whether a hook's input
+configuration at a path in the form of Windows, since the walk starts from
+the cwd of the hook's input and not from the tool, and the repair is small;
+until the decision of the same day on the guard for the PowerShell tool,
+below, the reason here read "since (3) registers every guard of commands for
+the PowerShell tool as well, the block of this milestone on every command
+guard matching the tool Bash alone, whose commands come with paths in the
+form of Windows", which holds no more, since (3) registers no guard of
+commands for that tool; whether a hook's input
 carries its cwd in that form is not measured, the block on the walk says;
 and the block on the history of the standards file in the step on line
 endings under Windows, since that is a few lines and every later pull
@@ -1407,6 +1434,48 @@ requests red by them alone; a case held by the file its hold names, under
 which a new reading in one of the 15 files the step holds would go unseen;
 and the anchors in `docs/skill-conventions.md`, where anchor and case would
 stand in two files.
+
+Decided on 18 November 2026 by the person, the roadmap entry of that date on
+the guard for the PowerShell tool, how that guard, part of this milestone by
+the decision of 9 November 2026 above, treats a command of the tool, which
+no document said: in a project where devloop is set up, `docs/agents/`
+standing as for every other guard, a guard under PreToolUse turns down every
+call of the PowerShell tool, on every system, and its message says to run
+the same command unchanged with the Bash tool; the six guards on commands
+stay on the tool `Bash` as they are, and through the Bash tool every shell
+command passes them as on the Mac. The session start and the start of every
+subagent tell the model in such a project that every shell command goes
+through the Bash tool, so that it seldom tries PowerShell at all. The loaded
+texts name the Bash tool as the channel decided once for every shell
+command, as `shared/command-does-not-answer.md` knows a channel decided once
+for a text; the refusal is answered by running the same command unchanged
+through the Bash tool, and it is no block that the run reports and, with
+nobody there, files as an issue. `README.md` names the guard in the sentence
+the person approved that day. Reason: the protection holds whole wherever
+the hooks of devloop load, without devloop writing a setting, and no guard
+exists twice. Not chosen: (a) besides the guard, writing
+"CLAUDE_CODE_USE_POWERSHELL_TOOL": "0" into the env block of the project's
+`.claude/settings.local.json` after a question at setup, so that the model
+does not see the tool: one question more at setup with a wording to approve,
+one file more that devloop writes and checks, and the tool off in the
+project for the person's own work too, for a problem that is not measured,
+that the model tries PowerShell despite the rule at the session's start;
+where the closing run under Windows in (7) counts such calls, that becomes a
+block. (b) taking the commands of the PowerShell tool apart so that the six
+guards read them: every guard twice, for bash and for PowerShell, for the
+reason the person turned that way down on 9 November 2026 above. Two
+consequences. The block on the install guard's walk for a cargo
+configuration stays with (3) though the reason the decision of the same day
+above gave for it holds no more, since the walk starts from the cwd of the
+hook's input and not from the tool, and the repair is small. And under
+Windows without Git Bash a hook written for bash runs in PowerShell, where
+it can fail, and a hook with "onFailure": "block" that fails blocks the
+call, the hooks reference under "Block the action when a hook fails" and
+"Failed hooks on Windows without Git Bash", read raw on that day: so there
+the guard can block every call of the PowerShell tool in every project while
+devloop is enabled, with a message of the vendor's on the failed hook whose
+wording for that case the page does not give; the run on Windows without Git
+Bash in (7) is the run that shows it. Built on that day by (3), above.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

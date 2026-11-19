@@ -20,11 +20,25 @@ reason stops holding, because the reason is the point and not the verdict.
     name: <directory name, exactly>
     description: <menu entry: verb first, under ten words, no trigger conditions>
     allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+    shell: bash
     ---
 
 The third line is the grant that lets the program under `bin/` run while the
 skill loads, without a prompt; every skill carries it, because every skill
 inserts text that way — see "Text shared between skills".
+
+The fourth line has those insert lines run through bash and through nothing
+else: on a system without bash the load fails before any command runs, with
+the vendor's message that names bash as what is missing, ``Skill <name>
+requires bash (`shell: bash` in frontmatter) but Git Bash was not found``,
+where without the line the commands would go to the PowerShell tool and the
+load would fail on the program with PowerShell's own error. Every skill
+carries it since 18 November 2026, order (3) of milestone 12, by the
+person's decision of 9 November 2026 in `docs/plan.md` under that milestone
+that Windows without Git Bash is no system devloop runs on; the skills page
+of the vendor, "How injected commands run", read raw on 18 November 2026 at
+Claude Code 2.1.327, which names no version from which the field holds, and
+the vendor's changelog to that version carries no entry on it.
 
 The description is what a person reads while browsing commands, so it reads like
 a menu entry: "Cut a spec into single tasks". Not the long "Use this when the
@@ -651,6 +665,21 @@ right to say it, not to act on it — a refusal held to be a false positive is s
 a refusal. Where a person is there the decision is theirs, and where nobody is the
 run stops rather than carrying on past a block. That last part is what no hook can
 enforce, which is why it belongs here and not only in the guard's own message.
+
+**The refusal of the guard on the PowerShell tool is no block, and the run
+goes on through the Bash tool.** Since 18 November 2026, decided by the
+person that day, the roadmap entry of that date on the guard for the
+PowerShell tool: the Bash tool is the channel decided once for every shell
+command, as a rule of this set names a channel for a text, and where devloop
+is set up, `docs/agents/` standing, `hooks/pre-tool-use-powershell-guard.sh`
+turns down every call of the PowerShell tool on every system, its message
+having the model run the same command unchanged with the Bash tool, where
+the six guards on commands read it. Running it there is the whole answer:
+nothing is said, reported or filed, with a person there or with nobody
+there, `shared/command-does-not-answer.md` says so in the loaded texts, and
+no run stops on it. That is not the same act under another command name: the
+refusal is of the tool and not of the act, and the act then passes every
+guard that would have read it on the Mac.
 
 **Narrowing what a guard ever sees is a different act, and it stays allowed.** A
 body passed to `gh` through a file rather than as a string on the command line
@@ -3828,6 +3857,23 @@ context at its start, from that hook; since 30 October 2026 the rule names
 the command that prints point 7 of `build-work` step 3, `shared/install-tool.md`,
 with the four texts under it, and the fifth rule of `build-work` step 3
 hands point 7 in the prompt no more, by the person's decision of that day.
+
+**The rule on the shell reaches the model the same two ways**, since 18
+November 2026, decided by the person that day, the roadmap entry of that
+date on the guard for the PowerShell tool: `hooks/session-start.sh` prints a
+line of its own, opening `[Shell]`, and `hooks/subagent-start-install.sh`
+gives the same line as the third line of its `additionalContext`, in the
+hooks' own words: every shell command in the project goes through the Bash
+tool, where devloop's guards read it, a call of the PowerShell tool is
+turned down there, and the same command then runs unchanged through the Bash
+tool, no block to report. Both print it only where `docs/agents/` stands in
+the working tree, the condition on which the guard turns that tool down, so
+that a project set up on the default branch alone gets the status and the
+record and not this line, which would say there what does not hold. It is
+there so that the model seldom tries the PowerShell tool at all; the guard
+turns the tool down whether or not the model read the line, and whether the
+model tries it despite the line is not measured, the closing run under
+Windows in order (7) of milestone 12 counting it.
 
 **A hook cannot see consent.** It gets the command and the branch, never the
 conversation, so "the user just said yes" and "the agent decided this itself"

@@ -96,6 +96,14 @@ is put down with the block in the run's final report. A block stepped around
 leaves a run looking clean over an act nobody agreed to, which is the whole
 reason this is written down.
 
+**The refusal of the guard on the PowerShell tool is no block.** The Bash
+tool is the channel for every shell command, decided once, as the editing
+tool is for `environment.md`: where devloop is set up, its guard turns down
+every call of the PowerShell tool, and that refusal is answered by running
+the same command, unchanged, with the Bash tool, where the guards read it.
+Nothing of it is said, reported or filed, with the person there or with
+nobody there, and it is neither a second attempt nor a way around a guard.
+
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a refusal or a silence to, so the command and the
 message go into its own report. Four cases part there.

@@ -2,6 +2,7 @@
 name: setup-project
 description: Set up this repository for devloop
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Set up a project

@@ -2,6 +2,7 @@
 name: untangle-idea
 description: Map the open decisions in something too big
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Untangle an idea that is too big to build

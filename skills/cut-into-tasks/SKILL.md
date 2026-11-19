@@ -2,6 +2,7 @@
 name: cut-into-tasks
 description: Cut a spec into single tasks
 allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
+shell: bash
 ---
 
 # Cut a spec into tasks
