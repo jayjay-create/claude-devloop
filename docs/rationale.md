@@ -15,7 +15,13 @@ the order of `.claude-plugin/plugin.json`, each skill's `SKILL.md` before its
 other files, then `shared/`, then `output-styles/`; inside a file the points
 follow its headings as the file writes them, and a file with no heading of its
 own has its points directly under its path. Where a rule of a loaded text is
-written or changed, its point here is written or changed with it; a reference
+written or changed, its point here is written or changed with it; the
+frontmatter of a skill sets the skill up and is no rule of its text, as the
+vendor's skills page says under "Frontmatter reference", read raw on 19
+November 2026, "Configure a skill with YAML" frontmatter "between `---`
+markers at the top of `SKILL.md`, and write the skill's instructions as
+Markdown after the closing `---`", and the reasons of its lines stand in
+`docs/skill-conventions.md` under "## Frontmatter" and not here; a reference
 from a loaded text to `docs/skill-conventions.md` or `docs/plan.md` that the
 loaded text no longer carries stands here at its rule.
 

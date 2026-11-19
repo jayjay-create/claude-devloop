@@ -10049,6 +10049,417 @@ and for the proofs of closings.
 
   Should changed: devloop names nowhere the version of Claude Code it needs, while onFailure block needs 2.1.295
 
+- **Three entries held, three blocks, a git check and a pinned version**
+
+  19 November 2026, version 0.191.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-19`, off
+  `origin/main` at `8853914`, in one commit: `docs/defects.md`,
+  `docs/plan.md`, `docs/rationale.md`, `docs/skill-conventions.md`,
+  `docs/stock-take.tsv` and this entry. The order: the consistency audit
+  before the handover, in three parts in three sessions. The first held the
+  entry on the guard for the PowerShell tool, pull request #255, paragraph by
+  paragraph against the code, the documents, the table, its four commits, the
+  logs of its checks and the pages it quotes, with its runs and its five
+  blocks, searched the shipped directories, the workflow, `README.md`,
+  `docs/skill-conventions.md`, `docs/plan.md` and `docs/defects.md` for
+  sentences it made false, and held `docs/rationale.md` against the loaded
+  text it changes. The second held the entry on the README asking for git
+  2.31, pull request #254, and the entry on the lowest version of Claude Code,
+  pull request #256, the same way, searched the same files, `scripts/` and
+  `docs/rationale.md` for sentences the two made false, held `README.md`
+  against them and the open blocks under "## Milestone 12" of
+  `docs/defects.md` against the orders and the dated decisions of
+  `docs/plan.md`. Neither changed a file; each reported, and what needs a
+  decision the report put to the person. The third, after the person's
+  answers, mends what has one right answer in `docs/` and in the table, writes
+  three blocks, the dated sentences of `docs/plan.md` and this entry. The
+  reading lists: of the second part 83205 bytes and of the third 123887 bytes
+  by `wc -c`, each the order's figure, the third counted again with `git show`
+  over its ranges at `8853914` and the report as it stood, 72208 bytes, the
+  same; of the first the ranges its report names, this file lines 9667 to
+  10015, the changes of pull request #255 from `git diff 0c09c2c 415610a` and
+  the places of the documents, the hooks, the programs and the workflow the
+  entry names. Written by Claude Code from the three orders of this day; no
+  session log was read; nothing was installed; GitHub was read by the first
+  part with `gh pr view` for pull request #255, `gh run view` for the runs
+  44374171395, 44482585122, 44259689177 and 44203370512, the log of the job
+  hooks on every system of each of their four systems fetched into a file
+  under a throwaway directory, and `gh api` for the dates of two releases of
+  anthropics/claude-code, and the commits of the pull request were fetched by
+  their reference; read from outside, without a sign-in: of
+  code.claude.com/docs/en/ the pages `tools-reference.md`, `hooks.md`,
+  `skills.md`, `permissions.md`, `plugins/loading.md`, `cli-reference.md` and
+  `setup.md`, `CHANGELOG.md` of anthropics/claude-code at `v2.1.327` and the
+  tags of that repository, the documentation of open() at docs.python.org for
+  3.8, 3.9, 3.10 and 3.15.2 and that of io, the release notes of git 2.31.0 at
+  the tag `v2.31.0` of git/git, and the pages of POSIX on `tr` and on `sed` at
+  pubs.opengroup.org; nothing beyond. The identity under which git commits
+  here was not set, its name and its address taken as `git config` gives them
+  and neither shown; no subagent was used. The report stands on this machine
+  as `~/devloop-audit-2026-11-19.md`, in German, and is not in the repository.
+  Every line number of a file in this entry holds at `8853914` unless it says
+  otherwise.
+
+  **What was read, and how.** Whole, with the text in front of the session: by
+  the first part the entry of pull request #255, the changes of that pull
+  request to the shipped directories, the workflow, `README.md`,
+  `docs/plan.md` and `docs/rationale.md`, and of the table the lines it adds
+  and takes away; by the second the messages of the commits `0c09c2c` and
+  `8853914` with their entries, `docs/plan.md` lines 1043 to 1494, the head of
+  `docs/defects.md` and the title and the Status of every block under
+  "## Milestone 12"; by the third the report of the two parts before it and
+  every range of its order's reading list. At the places a statement names and
+  at search hits: the hooks, the programs, the skills, the shared texts, the
+  workflow, the table and the archive. The branch of pull request #255 was
+  fetched by its reference, four commits, `2ac012f`, `8e3db5f`, `8058137` and
+  `333f8f2`, the tree of its head equal to that of its squash commit
+  `415610a`. The tool ran at `8853914` in each part and, in the second, in
+  fresh clones at `e1fbc69` and at `0c09c2c`; `bin/devloop-command-reader` was
+  run by the first part with two inputs on stdin. What the entries measured on
+  the Mac was not measured again. The pages of the vendor were read raw into a
+  throwaway directory and there with `grep` and `sed -n`, `hooks.md` and
+  `skills.md` in each part, 294342 and 119799 bytes each time. The release
+  notes of git 2.31.0 were read at the tag: the path on the master branch of
+  git/git, which the audit of 18 November 2026 read them off, answers 404 on
+  19 November 2026, and the tag carries the lines 38 and 39 that entry quotes.
+
+  **The three entries against the code, the documents, the table, their
+  commits and the pages they quote.** Held of the entry on the README asking
+  for git 2.31: its commit `0c09c2c`, its five files and the version; line 262
+  of `bin/devloop-auto-mode-question` and the release notes of git 2.31.0; the
+  sentence of `README.md` and the Fix of the closed block that names its line;
+  the rule on line endings of `docs/skill-conventions.md` against the three
+  loaded texts, each carrying `| tr -d '\r'` and no other form, and against
+  POSIX, which defines `\r` as an escape in the operands of `tr` and for a
+  pattern of `sed` `\n` alone; the notes of the two blocks and the sentence of
+  `docs/plan.md` on their orders; and the figures of the tool, the same at
+  `e1fbc69` and at `0c09c2c`. Held of the entry on the guard for the
+  PowerShell tool: its 27 files, its four commits and the version; the
+  decision of 18 November 2026 in `docs/plan.md`; the quotes of the vendor's
+  pages but for the two sentences below; the points of the counter-check
+  before the build as far as the code, the logs and the pages carry them, L6
+  line by line at `0c09c2c`; what is built, the message of the guard character
+  for character; the five blocks, each with its Fix, its Status and its note;
+  the sixteen lines of runs the entry adds to the table, P1 seven, G1 three,
+  R1 four, L1 one and W1 one, every one counting; and run W1 against the log
+  of the job on windows-latest of run 44374171395, the run 44482585122 at
+  `333f8f2` printing the same lines. Held of the entry on the lowest version
+  of Claude Code: its commit `8853914`, its three files and the version; the
+  dated sentence of `docs/plan.md`; "Requires Claude Code v2.1.295 or later"
+  under "Block the action when a hook fails"; the line of the changelog under
+  `## 2.1.126`, word for word; that neither the skills page nor the changelog
+  names a version for the field `shell`; both wordings of the Should; and the
+  line of the fixed form against the title of the block. The entries hold in
+  what was held but for two sentences of the entry on the guard for the
+  PowerShell tool, said right here, the entries standing as written:
+  - Line 10001, "**The corrections of the merge**, of 18 November 2026, the
+    fourth commit,": the fourth commit, `333f8f2`, is of 19 November 2026, its
+    author date and its commit date 08:49:23 +01:00 by `git show -s
+    --format='%h %aI %cI'`; the run of the checks on it, 44482585122, was
+    created at 07:49:31 UTC of that day and the pull request merged at
+    07:59:37 UTC, as the first part read them with `gh`. Right is "of 19
+    November 2026".
+  - Lines 9737 to 9741, "under "Block the action when a hook fails", "Add
+    `"onFailure": "block"` so a failure or a timeout blocks the call with or
+    without Git Bash", and without Git Bash "a shell-form hook with no `shell`
+    set runs in PowerShell, where it can fail"": both quotes stand in
+    `hooks.md` under "Failed hooks on Windows without Git Bash", a heading of
+    the same level, at its lines 1011 and 1009 as read raw on 19 November
+    2026, that heading at line 995; under "Block the action when a hook
+    fails", line 937, stands of the quotes of the entry "failed; blocking
+    because onFailure is "block"" alone, lines 967 and 970. Right is "under
+    "Failed hooks on Windows without Git Bash"" for the two; `docs/plan.md`
+    names both headings for 18 November 2026, lines 1473 and 1474.
+  A third sentence the report of the first part took for wrong, and the order
+  of the third part asked for it to be said right here; held again against the
+  page by the third part, it holds:
+  - Lines 9745 to 9750, "it gives "blocking because Git Bash wasn't found, so
+    only exit code 0 or 2 counts as this hook's verdict." for a hook with
+    `onFailure` unset, and "failed; blocking because onFailure is "block"" for
+    a hook with it". The sentence of the page that gives the first message,
+    lines 997 to 1000 under "Failed hooks on Windows without Git Bash", names
+    no `onFailure`, "a `PreToolUse` or `PermissionRequest` command hook failed
+    or timed out and blocked the call", which is what the first part read; but
+    the note under "Block the action when a hook fails", line 943, sends to
+    that heading "a shell-form `PreToolUse` or `PermissionRequest` command
+    hook that fails with `onFailure` unset", and the last fix under the
+    heading, line 1011, says of a hook "with `onFailure` unset, it stops doing
+    so once Git for Windows is installed and Claude Code finds Git Bash". The
+    second message stands in the page's example of a hook with `"onFailure":
+    "block"`, lines 945 to 970, a hook of the exec form that starts `node`, of
+    which the page does not say whether Git Bash is found. So the page gives
+    the one for a hook without the field and the other for a hook with it, as
+    the entry says; which of the two a hook with the field shows that fails
+    without Git Bash it does not say, and the entry leaves that to the run in
+    (7).
+  No line number held is wrong, and nothing in the three entries is corrected
+  in place. Neither confirmed nor refuted here: of the entry on the guard for
+  the PowerShell tool the bytes and the times its runs P1, G1, R1 and L1
+  measured on the Mac, the figures of L5 and L7 of its counter-check and what
+  it measured after the build, each held against the code and the arithmetic
+  alone, Claude Code 2.1.327 on the Mac on that day, where `claude --version`
+  gives 2.1.328 on 19 November 2026, and its reading list of 255220 bytes,
+  that it used no subagent and read no session log and what it says of its
+  order, that order not standing in the repository; of the entry on the README
+  asking for git 2.31 its paragraph on the reports kept outside this machine,
+  lines 9648 to 9659, and that it was written as a patch outside this machine
+  with no session log read and nothing installed; of the entry on the lowest
+  version of Claude Code the name of its branch, that its patch was written
+  after the merge and applied in the person's terminal, and that the report of
+  the order on the guard put the question of the version to the person, what
+  the question is about standing in that entry at lines 9743 to 9745.
+
+  **The control documents against the three.** Searched by the first two parts
+  with `/usr/bin/grep -r -n -i -E` over `skills`, `shared`, `output-styles`,
+  `hooks`, `bin`, the workflow, `README.md`, `docs/skill-conventions.md`,
+  `docs/plan.md` and `docs/defects.md`, by the second over `scripts` and
+  `docs/rationale.md` too, for the subjects of the three: the guards and their
+  number, the hooks registered, the PowerShell tool and Git Bash, the lines of
+  the two start hooks, the walk for a cargo configuration, the frontmatter and
+  `shell: bash`; the version of git, the rule on line endings, the version of
+  Claude Code and the orders of the two blocks of the audit of 18 November
+  2026; every hit decided in the report. One sentence of a hook does not hold,
+  the first block below. What did not hold in the documents and in the table
+  is mended here, each place with its old wording and its new, and the note of
+  one block takes what the second decision below gives it:
+  - `docs/plan.md` lines 1135 and 1136, of the state of 14 October 2026: "the
+    guard for PowerShell and the rest of this milestone stand as before", in
+    the present, where (1), (2) and (3) are built since. It reads "were not
+    built then" since this commit.
+  - `docs/plan.md` lines 1263 to 1269, for which the report of the second part
+    names lines 1244 to 1248, where they do not stand: "What that order found
+    and did not build stands in three blocks of this milestone with Fix none",
+    ending "the first and the third are built by (3), below", where since (3)
+    the first and the third carry their Fix, `docs/defects.md` lines 1583 and
+    1599, and the second alone reads Fix none, line 1591. It reads "stood in
+    three blocks" and "the first and the third carry their Fix since (3) built
+    them, below" since this commit.
+  - The same paragraph says at its end what it said until a day, the newest
+    first: a sentence for 19 November 2026 stands there since this commit
+    before the one for 18 November 2026, line 1324 at this commit, and quotes
+    both wordings.
+  - `docs/skill-conventions.md` lines 26 and 30, under "## Frontmatter": "The
+    third line is the grant" and "The fourth line has those insert lines run
+    through bash", where `skills/start-work/SKILL.md` and
+    `skills/record-lessons/SKILL.md` carry `disable-model-invocation: true` as
+    the third line of their frontmatter, the grant as the fourth and `shell:
+    bash` as the fifth. The two sentences name each line by its key since this
+    commit: "The `allowed-tools` line is the grant" and "The line `shell:
+    bash` has those insert lines run through bash".
+  - `docs/stock-take.tsv` line 1333, the note of the thing "hooks/hooks.json /
+    whole file / the eleven hooks registered: …": it gives the number of
+    scripts at every addition and ended, without one, "since 18 November 2026
+    a guard on the PowerShell tool stands under PreToolUse beside the six, a
+    thing of its own, the roadmap entry of that date on the guard for the
+    PowerShell tool"; `git show 415610a:hooks/hooks.json | grep -o
+    'hooks/[a-z-]*\.sh' | sort -u | wc -l` gives 15, and 14 at `0c09c2c`. It
+    ends since this commit "fifteen since 18 November 2026, version 0.191.0: a
+    guard on the PowerShell tool under PreToolUse beside the six, a thing of
+    its own, the roadmap entry of that date on the guard for the PowerShell
+    tool", and says after it, as it does for 31 October 2026, that until 19
+    November 2026 it gave no figure for that day. The name of the thing stays,
+    one run hanging on it.
+  - `docs/defects.md` line 786, the note of the block "devloop names nowhere
+    the version of Claude Code it needs, while onFailure block needs 2.1.295":
+    it ended "and what an older version does with it is documented nowhere"
+    and says after it since this commit that the version (6) names is the one
+    installed when (6) is built and that (7) installs it for every closing run
+    with the automatic updates turned off. Its Should stays as it stands:
+    where every closing run runs on one version, that version is "the version
+    its closing runs of milestone 12 ran on".
+  No other sentence read stopped holding: "the six guards" in
+  `hooks/pre-tool-use-powershell-guard.sh`, `docs/skill-conventions.md`,
+  `docs/plan.md` and the block on the matcher are the six guards on commands,
+  beside which the new guard reads no command; the status line "has three
+  states" in `skills/start-work/SKILL.md`, not three lines; and the sentence
+  of line 63 of `hooks/subagent-start-install.sh`, that the subagent gets the
+  two lines above, holds.
+
+  **A block on a comment of a hook**, written here with Fix none, Recorded,
+  not built, at line 1643 of `docs/defects.md` since this commit: "a comment
+  of hooks/subagent-start-install.sh speaks of two lines where the line below
+  it joins two or three". Line 68 of the hook reads "# the two lines as one
+  JSON string: backslash and double quote escaped, the line break written as
+  \n"; line 69 below it joins three values since the order on the guard for
+  the PowerShell tool, `printf '%s\n%s\n%s' "$LINE" "$RULE" "$SHELL_RULE"`,
+  three lines where `docs/agents/` stands in the tree and two where it does
+  not, the pipeline of that line run by hand on 19 November 2026 with the
+  third value empty and with it set. Its Should: the comment names as many
+  lines as the line below it joins. A block by the rule that a finding in a
+  hook gets one in every case; the audit changes no file under `hooks/`.
+
+  **A block on what devloop says of git**, written here with Fix none,
+  Recorded, not built, at line 1651 since this commit: "devloop reads neither
+  the version of git nor the name and address git config gives before the
+  first commit, while README.md says it says so". What it stands on is the
+  paragraph on `README.md` below. Its Should: where git is missing or older
+  than 2.31, or where git config gives no user.name or no user.email, devloop
+  says so when a project is set up and when a piece of work is started, before
+  the first commit, and gives the steps, as for gh.
+
+  **A block on the commands that keep a machine awake**, written here with Fix
+  none, Recorded, not built, at line 1659 since this commit: "setup-checks
+  step 8 names the command that keeps a machine awake for macOS alone, none
+  for Linux or Windows". Step 8 of `skills/setup-checks/SKILL.md` says at
+  lines 1029 and 1030 "On macOS alone, where `uname -s` answers `Darwin`, the
+  same line goes on: under which conditions `caffeinate` keeps it awake", and
+  at lines 1034 to 1036 that every other system gets the first sentence alone
+  and no command; `docs/plan.md` says at lines 920 to 924 that this milestone
+  brings the commands for Linux and for Windows and gives them to order (6) at
+  line 1066; and under "## Milestone 12" no block carried them, `awk
+  'NR>=601 && NR<1643' docs/defects.md | grep -c -i -E 'awake|caffeinate'`
+  giving 0, so that the tool would not have held the milestone to them. Its
+  Should: step 8 of setup-checks names the command that keeps the machine
+  awake under Linux and under Windows too, as it names caffeinate under macOS.
+  Order (6) builds it, as the plan says, after the person has approved the
+  wordings; the block under "## Milestone 13" on the machine that stays
+  awake stays as it stands. `docs/plan.md` names the three blocks since this
+  commit, in a sentence after the one on the two blocks of the audit of 18
+  November 2026, line 1289 at this commit.
+
+  **`docs/rationale.md` against the loaded text.** Of the three entries the
+  one on the guard for the PowerShell tool alone changes a loaded text: a
+  paragraph of `shared/command-does-not-answer.md` and one line of the
+  frontmatter of each of the twelve skills. The section of `docs/rationale.md`
+  on that shared text, lines 3589 to 3684, has seven points, the seventh
+  written by that order; each was held against the paragraph of the text it
+  stands on, and the seventh says what the paragraph on the refusal of the
+  guard says, with its two sources, the head of its entry and both ways not
+  chosen. Held. The line `shell: bash` has no point there, as the line
+  `allowed-tools` has none, `grep -c -E 'allowed-tools|shell:
+  bash|frontmatter' docs/rationale.md` giving 0, where the conventions have a
+  point written or changed with every rule of a loaded text: put to the person
+  in the report, the fourth decision below.
+
+  **`README.md` against the three.** Its sentence on the guard for the
+  PowerShell tool, lines 279 to 283, stands between the identity guard and the
+  hook at the turn's end, as that entry says. Lines 37 to 39 read since the
+  entry on git 2.31 "and git 2.31 or later with your name and email address
+  set. If any of it is missing when you start, devloop says so and gives you
+  the steps." The second sentence holds for `gh`, which step 1 of
+  `skills/setup-project/SKILL.md` reads, "Whether `gh` is installed and signed
+  in (`gh auth status`)", lines 270 to 319, and for neither the version of git
+  nor the name and the address: of git that step reads "remote, branch,
+  whether there is any commit at all", line 269; `grep -rn -E 'git
+  --version|git version' skills shared hooks bin scripts` gives 0 lines and
+  `grep -rn -E 'user\.name|user\.email' skills shared` 0, and under `hooks/`,
+  `bin/` and `scripts/` the two keys stand in the self-tests and in the
+  identity guard alone, which blocks a command that sets them and reads
+  nothing of what is set. With a git before 2.31 `git rev-parse
+  --path-format=absolute` fails at line 262 of
+  `bin/devloop-auto-mode-question`, read at the code and not measured. The
+  second sentence stood before that entry, at `e1fbc69` behind "and git with
+  your name and email address set.", and takes in the version of git since it.
+  Put to the person in the report, the first decision below; `README.md` stays
+  as it stands, and the second block above carries what is to build.
+
+  **Decided on 19 November 2026**, the question the report put on that
+  sentence of `README.md`, recorded as a dated sentence under milestone 12 in
+  `docs/plan.md`: where git is missing or older than 2.31, or where `git
+  config` gives no `user.name` or no `user.email`, devloop says so when a
+  project is set up and when a piece of work is started, before the first
+  commit, and gives the steps, as for `gh`; order (5) builds it, the second
+  block above. Reason: without `user.email` and `EMAIL` git 2.50.1 does not
+  refuse but guesses an address from the machine's name, with a warning,
+  measured on 9 October 2026, `docs/roadmap-archive-1.md` lines 15614 to
+  15618, and the push makes that address public for good; and `README.md` says
+  that devloop says so. Not chosen: narrowing the sentence of the README to
+  `gh`; the README would hold then, and the way to the machine's address made
+  public would stay open.
+
+  **Decided on 19 November 2026**, the question the report put on the entry
+  above: its dated sentence has order (6) name in `README.md` the version of
+  Claude Code the closing runs of milestone 12 ran on, and the orders of that
+  milestone build (6) before (7), the closing runs, so that (6) would have to
+  name a number no run has given yet. Recorded as a second dated sentence in
+  `docs/plan.md`: the version (6) names is the one installed when (6) is
+  built; (7) installs exactly that version on the person's Mac and in every
+  virtual machine, with the vendor's installer and the version number, and
+  turns the automatic updates off for the time of the closing runs, so that
+  every closing run runs on it and the number is the version they ran on, as
+  the sentence of the entry above asks. The closing runs so walk the check at
+  the start of a session on all four systems in the case that the version is
+  not older; the case of an older version is walked on a bench on which an
+  older version is installed the same way. Reason: otherwise the number and
+  the check would exist only after (7), and no closing run would walk a case
+  of the check. Not chosen: building the block only after the closing runs,
+  with a pass of its own on the four systems and a version of devloop after
+  them. Where a closing run needs a later version, the number and the check
+  change, and the runs on them count no more. The vendor's page on the setup,
+  `setup.md`, 36021 bytes, read raw on 19 November 2026, names both: under
+  "Install a specific version", line 289, "The native installer accepts either
+  a specific version number or a release channel (`latest` or `stable`).",
+  with the install script and a number behind it under "To install a specific
+  version number:", line 333; and under "Disable auto-updates", line 259, "Set
+  `DISABLE_AUTOUPDATER` to `"1"` in the `env` key of your" settings file, of
+  which it says at line 273 "`DISABLE_AUTOUPDATER` only stops the background
+  check; `claude update` and `claude install` still work." The note of the
+  block on the version says what (6) names and what (7) installs; its Should
+  stays as the entry above wrote it.
+
+  **Decided on 19 November 2026**, which order builds each of the three
+  blocks, recorded in `docs/plan.md` in the sentence on them: order (4) the
+  comment of the hook, the next order that changes shipped code, since none of
+  the orders still to build touches `hooks/subagent-start-install.sh` and an
+  order of its own for it would cost one pull request more, the reason of the
+  decision of 18 November 2026 against an order of their own for such blocks,
+  `docs/plan.md` lines 1410 to 1413; order (5) the block on git, with the
+  prerequisites of the installation; and order (6) the block on the commands
+  that keep a machine awake, which the plan gives it already. The note of each
+  block names its order.
+
+  **Decided on 19 November 2026**, the question the report put on
+  `docs/rationale.md`: no point there for `shell: bash` or for
+  `allowed-tools`, but a sentence at the rule, in both places the rule stands,
+  `docs/skill-conventions.md` behind "where a rule of a loaded text is written
+  or changed, its point there is written or changed with it.", lines 1776 and
+  1777, and the head of `docs/rationale.md` behind "Where a rule of a loaded
+  text is written or changed, its point here is written or changed with it;",
+  lines 17 and 18. It says that the frontmatter of a skill sets the skill up
+  and is no rule of its text, and that the reasons of its lines stand in
+  `docs/skill-conventions.md` under "## Frontmatter" and not in
+  `docs/rationale.md`. The vendor's skills page says so under "Frontmatter
+  reference", line 384 of `skills.md` as read raw on 19 November 2026:
+  "Configure a skill with YAML" frontmatter "between `---` markers at the top
+  of `SKILL.md`, and write the skill's instructions as Markdown after the
+  closing `---`", the word frontmatter standing there as a link into the
+  glossary of the pages, so that both places quote the sentence in its two
+  pieces around it. Not chosen: a point in `docs/rationale.md` for the two
+  lines, of which the report said that it would hold the rule to the letter in
+  a file ordered by the loaded texts and their headings, where the frontmatter
+  is none, and that `allowed-tools` would have needed it since that line came.
+
+  **For the handover.** The 133 blocks under "## Milestone 12" of
+  `docs/defects.md`, lines 601 to 1665 since this commit, the open ones listed
+  with line, Status, order and title in the report: 43 read Walked, 13 are
+  closed, 5 carry the form for a case that cannot be forced, lines 611, 715,
+  772, 1004 and 1523, and 72 are open, 27 Recorded, not built and 45 Built,
+  never walked. Each of the 27 has its order in `docs/plan.md`: (4) six, lines
+  1220, 1228, 1236, 1284, 1348 and 1643; (5) fifteen, lines 731, 755, 836,
+  988, 1084, 1124, 1156, 1164, 1276, 1587, 1603, 1611, 1619, 1627 and 1651;
+  (6) four, lines 780, 1356, 1364 and 1659; (7) two, lines 739 and 1371. The
+  45 built and never walked, three of them built by (3), lines 1332, 1340 and
+  1579, and 42 before it, lines 603, 619, 627, 635, 643, 651, 659, 667, 675,
+  691, 699, 707, 723, 747, 763, 788, 980, 1020, 1028, 1036, 1060, 1068, 1076,
+  1092, 1100, 1108, 1116, 1132, 1140, 1148, 1172, 1180, 1188, 1196, 1204,
+  1212, 1244, 1252, 1260, 1268, 1308 and 1316, are held by (7) against the
+  closing runs first, as decided at the merge of the audit of 16 November 2026
+  in `docs/plan.md`.
+
+  The tool, before, on `8853914`: exit 0, broken records 0, uncovered lines 0
+  of 4753; Undetermined 24, Recorded, not built 241, Built, never walked 1513,
+  Walked 809, Closed 79; milestone 12 130 blocks, Recorded, not built 24,
+  Built, never walked 50, Walked 43, Closed 13; blocks with "not stated" 345.
+  After: Recorded, not built 244 and milestone 12 133 blocks, Recorded, not
+  built 27, the three blocks written here; every other figure as before;
+  blocks held against the branch point: removed 0, renamed 0, Should changed
+  0, added 3, no line of the fixed forms; Walked on this branch without a run
+  the branch adds: 0. The head this branch adds was held by hand to the three
+  rules of the workflow's step on titles, 66 characters and no find. The
+  twenty checks before a handover were no part of the order and were not run.
+  No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

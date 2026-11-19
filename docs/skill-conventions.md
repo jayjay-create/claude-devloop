@@ -23,13 +23,13 @@ reason stops holding, because the reason is the point and not the verdict.
     shell: bash
     ---
 
-The third line is the grant that lets the program under `bin/` run while the
-skill loads, without a prompt; every skill carries it, because every skill
-inserts text that way — see "Text shared between skills".
+The `allowed-tools` line is the grant that lets the program under `bin/` run
+while the skill loads, without a prompt; every skill carries it, because every
+skill inserts text that way — see "Text shared between skills".
 
-The fourth line has those insert lines run through bash and through nothing
-else: on a system without bash the load fails before any command runs, with
-the vendor's message that names bash as what is missing, ``Skill <name>
+The line `shell: bash` has those insert lines run through bash and through
+nothing else: on a system without bash the load fails before any command runs,
+with the vendor's message that names bash as what is missing, ``Skill <name>
 requires bash (`shell: bash` in frontmatter) but Git Bash was not found``,
 where without the line the commands would go to the PowerShell tool and the
 load would fail on the program with PowerShell's own error. Every skill
@@ -1775,6 +1775,13 @@ the person approved for texts a user sees, word for word in the language they
 were approved in, stand in `docs/rationale.md`, ordered by the loaded file and
 its headings, the state of today without history; where a rule of a loaded text
 is written or changed, its point there is written or changed with it. The
+frontmatter of a skill sets the skill up and is no rule of its text, as the
+vendor's skills page says under "Frontmatter reference", read raw on 19
+November 2026: "Configure a skill with YAML" frontmatter "between `---`
+markers at the top of `SKILL.md`, and write the skill's instructions as
+Markdown after the closing `---`"; the reasons of its lines stand in this
+file under "## Frontmatter" and not in `docs/rationale.md`. Decided on 19
+November 2026, the roadmap entry of that date on the three entries held. The
 history stands in the commits and in `docs/roadmap.md`. Decided on 1 November
 2026, the roadmap entry of that date on the history in the loaded texts; until
 then the rule above, to write the date, held for the skills and the shared texts
