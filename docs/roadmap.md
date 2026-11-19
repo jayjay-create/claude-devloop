@@ -9675,10 +9675,11 @@ and for the proofs of closings.
   `shared/command-does-not-answer.md`; two steps of the job hooks on every
   system in `.github/workflows/stock-take.yml`; and a sentence of `README.md`.
   Nothing under `bin/`, `scripts/` or `output-styles/` changes. On
-  `task/powershell-guard`, off `origin/main` at `0c09c2c`, in three commits:
+  `task/powershell-guard`, off `origin/main` at `0c09c2c`, in four commits:
   the code with the version, raised once, `2ac012f`; this entry, the plan, the
-  conventions, the reasons, the blocks and the table; and the runs, measured
-  at the second. The order: (3) of milestone 12 in `docs/plan.md`, the guard
+  conventions, the reasons, the blocks and the table; the runs, measured at
+  the second; and the corrections of the merge, which change no code. The
+  order: (3) of milestone 12 in `docs/plan.md`, the guard
   for the PowerShell tool and `shell: bash` in the frontmatter of every skill,
   with the two blocks on them and the three the decisions of this day give
   (3), on the install guard's walk at a path in the form of Windows, on the
@@ -9892,8 +9893,8 @@ and for the proofs of closings.
   Git Bash. The block on the walk carries its Fix on the line that ends it,
   Built, never walked, measured with real input under Windows by (7). The
   block on the history of the standards file carries its Fix on the line of
-  Python that gives the carriage return back, Built, never walked, measured on
-  windows-latest by the job of this pull request. The block on the comment
+  Python that gives the carriage return back, Walked by run W1 below, measured
+  on windows-latest by the job of this pull request. The block on the comment
   over `crs` is closed, corrected in the document, the wrong quote having been
   the defect. No Should changed.
 
@@ -9966,13 +9967,51 @@ and for the proofs of closings.
   the hooks step on that guard, of the step on line endings on its inputs and
   on the walk; R1 on the four red things beside them; L1 on the straight path
   of the first unit of `start-work`, whose counting run the line `shell:
-  bash` took. No run stands on a block: the case of each is under Windows,
-  with real input, without Git Bash or on windows-latest. The thing on the red
-  end of the job hooks on every system, which named a handler answering
-  otherwise than 0, is renamed so that it names the guard on the PowerShell
-  tool answering otherwise than 2, no run hanging on it, its seven records
-  "part of" following; the green thing, with a run, keeps its name and says so
-  in its note.
+  bash` took. No run of the Mac stands on a block: the case of each is under
+  Windows, with real input, without Git Bash or on windows-latest, and run W1
+  below stands on the block on the history of the standards file. The thing
+  on the red end of the job hooks on every system, which named a handler
+  answering otherwise than 0, is renamed so that it names the guard on the
+  PowerShell tool answering otherwise than 2, no run hanging on it, its seven
+  records "part of" following; the green thing, with a run, keeps its name
+  and says so in its note.
+
+  **The runs of the job under Windows**, of 18 November 2026: the job hooks on
+  every system on windows-latest, job 135048731975 in run 44374171395 of the
+  checks of pull request #255, on the merge ref of `8058137` into `0c09c2c`,
+  whose tree is that of `8058137`, main not having moved since the branch
+  point, version 0.191.0, green, read off the job's log at the merge without
+  its carriage returns and without the time before each line. Its last step
+  printed for the standards file in the blob and the four cargo
+  configurations "carriage returns counted over its bytes: 6 2 2 3 3", where
+  run 44259689177 of pull request #251 counted 5 2 2 3 3 there, and the line
+  "note the inputs git holds" with the trees of the two origins, `49c3106`
+  `4e6e22a` `8977cbc` `5c7e862` with LF and `cb32cd7` `92d74a3` `13c97e9`
+  `8977cbc` `5c7e862` with CRLF, the same as on ubuntu-latest, macos-latest
+  and alpine in the same run and as in run G1 on the Mac; the walk "[0]" at
+  `D:/a/proj`, `D:\a\proj` and `proj` with its line ok; and in the step
+  before, the guard on the PowerShell tool answered 2 in the loop of the
+  handlers, 21 handlers started, L1 2 and L2 0. That is run W1 of this entry
+  on windows-latest, which stands on the block on the history of the
+  standards file: under Windows with Git Bash the step built every input with
+  the bytes it builds on the three other systems. The walk ran there with a
+  cwd given by hand; the block on it waits for real input under Windows in
+  (7).
+
+  **The corrections of the merge**, of 18 November 2026, the fourth commit,
+  which changes no code. The block on the history of the standards file
+  stands Walked, its note naming run W1 of this entry. Decided at the check
+  of the code from the points of the report: the message of the guard on the
+  PowerShell tool, the line `[Shell]` and the paragraph of
+  `shared/command-does-not-answer.md` are read by the model and were not put
+  to the person, which is right, since the wordings the person approves are
+  those of texts put to the person, the questions with their buttons,
+  `README.md` and the rule devloop writes into the settings, and
+  `docs/rationale.md` holds none for a message of a guard; and the status line
+  that says set up in a project whose branch took `docs/agents/` out, where
+  every guard is silent, is the reading the conventions fix, the status off
+  the default branch and the guards off the folder in the tree, and no
+  finding.
 
 ## Decisions taken against
 
