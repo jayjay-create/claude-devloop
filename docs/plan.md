@@ -1594,17 +1594,17 @@ the extension for VS Code under macOS and Linux a terminal, for instance the
 terminal of VS Code; under Windows, on every surface, Git Bash, the terminal
 that comes with Git for Windows; in the desktop app under macOS and Linux, for
 a command that asks something, a terminal, for instance the terminal of the
-app with the key that opens it; and where the system or the surface is
-unknown, a terminal and nothing more; each followed by the command without
-`!`, by what it asks where it asks, by the request to say here once the
-command has run through, and by the last sentence of the wording. In the
-terminal under macOS and Linux the wording of 28 October 2026 for a command
-that asks stays, a second terminal window that is not the one Claude Code runs
-in. It rests on this: in the panel and in the desktop app Claude Code runs in
-no terminal window, so that the wording of 28 October 2026 meets nothing
-there. This takes the place, for the panel, of "as `shared/install-tool.md`
-describes it under the way of the yes" in the decision of 9 November 2026
-above, where that text names a second terminal window.
+app; and where the system or the surface is unknown, a terminal and nothing
+more; each followed by the command without `!`, by what it asks where it asks,
+by the request to say here once the command has run through, and by the last
+sentence of the wording. In the terminal under macOS and Linux the wording of
+28 October 2026 for a command that asks stays, a second terminal window that
+is not the one Claude Code runs in. It rests on this: in the panel and in the
+desktop app Claude Code runs in no terminal window, so that the wording of
+28 October 2026 meets nothing there. This takes the place, for the panel, of
+"as `shared/install-tool.md` describes it under the way of the yes" in the
+decision of 9 November 2026 above, where that text names a second terminal
+window.
 
 Decided on 19 November 2026 by the person, the same entry, (5): one program
 reads `CLAUDE_CODE_ENTRYPOINT` and `uname -s`; `bin/devloop-text` puts its

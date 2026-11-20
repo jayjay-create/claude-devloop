@@ -10481,8 +10481,8 @@ and for the proofs of closings.
   20 November 2026, version 0.191.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md`, `docs/rationale.md` and `docs/stock-take.tsv` do
-  not. On `task/handover-by-surface`, off `origin/main` at `82e4196`, in one
-  commit: `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and
+  not. On `task/handover-by-surface`, off `origin/main` at `82e4196`, in two
+  commits: `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and
   this entry, with the two entries it adds under "## Decisions taken against".
   The order: the first of the three parts of order (4) of milestone 12, the
   handover by surface. It records the decisions of 19 and 20 November 2026,
@@ -10644,9 +10644,9 @@ and for the proofs of closings.
   `2.1.328 (Claude Code)`. (3) A session in the terminal of VS Code, with `!`
   the command
   `p=$$; for i in 1 2 3 4 5; do p=$(ps -o ppid= -p "$p" | tr -d ' '); basename -- "$(ps -o comm= -p "$p")"; done`:
-  claude, zsh, Code Helper, Code, launchd. It shows that a `claude` typed in
-  the terminal of VS Code is the child of that terminal's shell, which stands
-  again after `/exit` and takes the steps for the PATH. (4) The graphical
+  claude, zsh, Code Helper, Code, launchd. It shows that the `claude` of that
+  session is the child of a zsh the terminal of VS Code started; whether the
+  session ran under Use Terminal is not noted. (4) The graphical
   panel, opened with "Claude Code: Open in New Tab", the same command through
   the Bash tool: claude, Code Helper (Plugin), Code, launchd. It shows that no
   shell stands between the panel's Claude Code and the extension host, so that
@@ -10690,10 +10690,8 @@ and for the proofs of closings.
   surface: „Öffne Git Bash, das Terminal, das mit Git für Windows kommt, und
   gib den Befehl dort ein:“ The desktop app, macOS and Linux, for a command
   that asks something: „Gib den Befehl in einem Terminal ein, etwa im Terminal
-  dieser App, das du mit Ctrl+` öffnest:“ The system or the surface unknown:
-  „Gib den Befehl in einem Terminal ein:“ In the third the backtick after
-  Ctrl+ is the key itself and opens no code span, as in (8) and in two steps
-  of (11).
+  dieser App:“ The system or the surface unknown: „Gib den Befehl in einem
+  Terminal ein:“
 
   (5) One program reads `CLAUDE_CODE_ENTRYPOINT` and `uname -s`;
   `bin/devloop-text` puts its line into the rule on the forms when a skill
@@ -10733,7 +10731,7 @@ and for the proofs of closings.
   für Windows kommt“; the system or the surface unknown, „in einem Terminal“.
   A command that asks something: the terminal, macOS and Linux, the second
   terminal window as before; the desktop app, „in einem Terminal, etwa im
-  Terminal dieser App, das du mit Ctrl+` öffnest“; the others as above. 2.
+  Terminal dieser App“; the others as above. 2.
   Form A in the terminal: directly before the last sentence, „Gib gleich nach
   dem Befehl „fertig“ ein.“; in the desktop app not. 3. Outside form A: the
   command line without `!` and with `cd <directory> &&` where the command
@@ -10787,14 +10785,15 @@ and for the proofs of closings.
   `source ~/.zshrc`“ — „4. Gib im Terminal ein, um Claude Code wieder im
   Projekt zu starten: `cd ~/mein-projekt && claude`“ — „5. Gib in Claude Code
   `/devloop:start-work` ein.“ In the terminal of VS Code: „1. Beende Claude
-  Code: `/exit`“ — „2. Öffne in VS Code ein neues Terminal: Ctrl+Shift+`“ —
+  Code: `/exit`“ — „2. Öffne in VS Code über das Menü **Terminal** ein neues
+  Terminal.“ —
   „3. Gib im neuen Terminal ein:
   `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation —
   „4. Gib im neuen Terminal ein, damit es die Datei neu liest:
   `source ~/.zshrc`“ — „5. Gib im neuen Terminal ein, um Claude Code wieder im
   Projekt zu starten: `cd ~/mein-projekt && claude`“ — „6. Gib in Claude Code
   `/devloop:start-work` ein.“ In the graphical panel of VS Code: „1. Öffne in
-  VS Code ein Terminal: Ctrl+Shift+`“ — „2. Gib dort ein:
+  VS Code über das Menü **Terminal** ein neues Terminal.“ — „2. Gib dort ein:
   `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation —
   „3. Beende VS Code ganz mit Cmd+Q und öffne es über sein Programmsymbol
   wieder.“ — „4. Öffne Claude Code wieder und gib dort `/devloop:start-work`
@@ -11069,6 +11068,30 @@ and for the proofs of closings.
   carries this branch as one commit, green, and held there the three heads
   this branch adds, this entry's and the two under "## Decisions taken
   against", to the rules on titles. No run is recorded.
+
+  **The corrections of the merge**, of 20 November 2026, the second commit,
+  which changes no code. Decided by the person at the check of the code: the
+  three approved wordings that named a key carrying a backtick name none. In
+  a message that Claude Code shows as Markdown a single backtick opens a code
+  span that ends at the next one, and the key that carries it lies elsewhere
+  on a keyboard that is not the American one. Before, (4) and (8) named the
+  key Ctrl with the backtick for the terminal of the desktop app, and two
+  steps of (11) the keys Ctrl and Shift with the backtick for a new terminal
+  in VS Code. Now (4) and (8) read „etwa im Terminal dieser App“, and both
+  steps of (11) read „Öffne in VS Code über das Menü **Terminal** ein neues
+  Terminal.“ The wordings above, the dated sentence (4) in `docs/plan.md` and
+  the Should of the block on the wording of form B are changed in place; the
+  reading of the key on the desktop page above stands as a reading. Corrected
+  at the check of the code, with one right answer: what measurement (3) shows
+  said that the shell of that terminal stands again after `/exit`; the
+  measurement did not show it, and under Use Terminal the extension closes
+  that terminal after `/exit` wherever the shell integration runs, as read
+  above. The tool on the tree of this branch set on `82e4196` as one commit:
+  exit 0, BROKEN RECORDS: 0, UNCOVERED LINES OF THE SEARCH SET: 0 of 4753,
+  Recorded, not built 256, every other figure as above; its self-test passed,
+  159 cases. The nineteen checks before a handover other than the run of the
+  workflow's steps print on that tree what they print on `c63acfe`, line for
+  line, each in a bash started with `--noprofile --norc`.
 
 ## Decisions taken against
 
