@@ -11099,8 +11099,9 @@ and for the proofs of closings.
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md`, `docs/rationale.md`, `docs/skill-conventions.md`
   and `docs/stock-take.tsv` do not. On `task/audit-2026-11-20`, off
-  `origin/main` at `2cdf412`, in one commit: `docs/defects.md`, `docs/plan.md`
-  and this entry. The order: the consistency audit before the handover, for
+  `origin/main` at `2cdf412`, in two commits: `docs/defects.md`,
+  `docs/plan.md` and this entry; and the corrections of the merge, in the same
+  three. The order: the consistency audit before the handover, for
   one entry, the entry on the handover by surface, pull request #258, in three
   parts. The first held that entry and its two entries under "## Decisions
   taken against" statement by statement against the repository, the vendor's
@@ -11373,6 +11374,62 @@ and for the proofs of closings.
   hand to the three rules of the workflow's step on titles, 71 characters and
   no find. The twenty checks before a handover were no part of the order; they
   run at the merge. No run is recorded.
+
+  **The corrections of the merge**, of 20 November 2026, the second commit,
+  which changes no code. Decided at the merge without a question, by the rule
+  that nothing is asked where one way carries a great disadvantage and the
+  other none, and confirmed by the person, the six questions of the report.
+  First, the second part of order (4) builds the six places of the block
+  written here, line 1763 of `docs/defects.md`, so that it builds ten of the
+  nineteen: else, between the merges of the second and the third part, the
+  rule on the forms names two signs and those places one. Second, a block both
+  parts build takes its Fix with the third, lines 1228, 1348, 1667 and 1723,
+  and line 1220 with them, whose sentence on „fertig“ at every handover the
+  third part writes as point 2 of the pattern: a run counts from the last
+  change to the line of its Fix, and Built before the wordings would not hold
+  for the panel and for Windows. Third, the Should of the block of milestone 6
+  on `LOGIC.md` of `build-prototype`, line 4751, changes, since it and the
+  block of milestone 12 on PowerShell under Windows, which names line 54 of
+  that file, said different things for the panel and for Windows; its Fix and
+  its Status stay. Until now: "the handover of LOGIC.md under "4. Hand it
+  over" is the one action of SKILL.md under "Hand it over so it gets looked
+  at", the command that opens the file typed in Claude Code with ! in front,
+  form A: the rule of 28 October 2026 under "Where the person types a command
+  devloop hands them" in docs/skill-conventions.md, applied to SKILL.md that
+  day and to LOGIC.md now". Now: "the handover of LOGIC.md under "4. Hand it
+  over" is the one action of SKILL.md under "Hand it over so it gets looked
+  at", the command that opens the file handed over in the form that holds for
+  the surface and the system: typed in Claude Code with ! in front, form A, in
+  the terminal and in the desktop app under macOS and Linux, and in form B in
+  the graphical panel of the extension for VS Code, under Windows and where
+  the surface or the system is unknown, decisions (3), (4) and (12) of the
+  roadmap entry of 20 November 2026 on the handover by surface; the rule of
+  28 October 2026 under "Where the person types a command devloop hands them"
+  in docs/skill-conventions.md, applied to SKILL.md that day and to LOGIC.md
+  now". Fourth, before it builds, the third part puts to the person the
+  opening and the close of the steps for the PATH for a check class's tool and
+  for the folder line read at a start, taken over from (11) of the entry on
+  the handover by surface, since the wordings of 28 October 2026 there do not
+  explain the PATH either. Fifth, measurements (3), (4) and (5) of that entry
+  were made on 19 November 2026, after (1) and before decision (12) of that
+  day, so that `docs/plan.md` line 1693 and line 11390 of this file hold.
+  Sixth, the places added to the Wrongs of four blocks stay there and take no
+  block of their own: one defect, one block, a title standing once,
+  `docs/skill-conventions.md` lines 1844 to 1845. The first, the second and
+  the fourth stand as a dated sentence of `docs/plan.md` under milestone 12,
+  and the Note of the block written here names the first. The twenty checks
+  before a handover, run at the check of the code on `2cdf412` and on the tree
+  of this branch with these corrections, each in a bash started with
+  `--noprofile --norc`: the nineteen besides the sixteenth print the same on
+  both, line for line; the sixteenth, the run of the workflow's steps, is what
+  the check `main` requires runs, green on the pull request at `bbf57d4`. The
+  self-test of the tool: 159 cases, 148 of 148 messages asserted by a case.
+  After them the tool shows: blocks held against the branch point: removed 0,
+  renamed 0, Should changed 1, added 1, its one line of the fixed forms; every
+  other figure as after the first commit. The line of the fixed form, the
+  title as the tool reads it:
+
+  Should changed: build-prototype LOGIC.md hands the file over by sending or opening it where SKILL.md gives one action
 
 ## Decisions taken against
 

@@ -1760,6 +1760,24 @@ and once with the setting as it stands by default; and the steps for the PATH
 in the graphical panel and in the desktop app. By the third of the five
 sentences.
 
+Decided on 20 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the roadmap entry of that date on the one entry held,
+the questions its report put: the second part of order (4) builds the six
+places the block on the signal of form A names, line 1763 of
+`docs/defects.md`. Reason: else, between the merges of the second and the
+third part, the rule on the forms names two signs and those six places one. A
+block both parts build, lines 1228, 1348, 1667 and 1723, and line 1220, whose
+sentence on „fertig“ at every handover the third part writes as point 2 of the
+pattern, takes its Fix with the third part, its Note saying after the second
+what stands. Reason: a run counts from the last change to the line of its Fix,
+and Built before the wordings would not hold for the panel and for Windows.
+And before it builds, the third part puts to the person the opening and the
+close of the steps for the PATH for a check class's tool and for the folder
+line read at a start, taken over from (11) of the entry on the handover by
+surface. Reason: the wordings of 28 October 2026 there do not explain the PATH
+either, which is why (11) was worded anew.
+
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
 elsewhere before any later milestone measures there; milestones 4 to 11 are
