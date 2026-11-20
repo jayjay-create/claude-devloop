@@ -11093,6 +11093,287 @@ and for the proofs of closings.
   workflow's steps print on that tree what they print on `c63acfe`, line for
   line, each in a bash started with `--noprofile --norc`.
 
+- **One entry held, places added to four blocks, a block on form A's signal**
+
+  20 November 2026, version 0.191.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md`, `docs/rationale.md`, `docs/skill-conventions.md`
+  and `docs/stock-take.tsv` do not. On `task/audit-2026-11-20`, off
+  `origin/main` at `2cdf412`, in one commit: `docs/defects.md`, `docs/plan.md`
+  and this entry. The order: the consistency audit before the handover, for
+  one entry, the entry on the handover by surface, pull request #258, in three
+  parts. The first held that entry and its two entries under "## Decisions
+  taken against" statement by statement against the repository, the vendor's
+  pages and the tool. The second searched the shipped directories,
+  `README.md`, `docs/rationale.md`, `docs/skill-conventions.md`,
+  `docs/plan.md` and `docs/defects.md` for every place a decision of 19 or 20
+  November 2026 changes and held each against the blocks of milestone 12 and
+  against the entry's paragraph on the sentences those decisions make false.
+  The third counted the blocks of milestone 12 by status for the handover. A
+  check of `docs/rationale.md` against the loaded texts was no part of it:
+  `git diff --stat 82e4196 2cdf412 -- skills shared output-styles` prints
+  nothing. The reading list: 134459 bytes by `wc -c`, the order's figure —
+  this file lines 10479 to 11094 and 11368 to 11401, the output of `git diff
+  82e4196 2cdf412 -- docs/plan.md docs/defects.md docs/skill-conventions.md`,
+  this file lines 10052 to 10104 and 10434 to 10463, and
+  `docs/skill-conventions.md` lines 1997 to 2026; everything else at the
+  places the entry names and at the finds of the searches. Written by Claude
+  Code from the order of this day; no session log was read; nothing was
+  installed; no subagent was used; the identity under which git commits here
+  was not set, its name and its address taken as `git config` gives them and
+  neither shown. GitHub was read with `gh pr view` for pull request #258,
+  whose two commits, `c63acfe` and `ad517b3`, were fetched by the pull
+  request's reference; read from outside, without a sign-in: of
+  code.claude.com/docs/en/ the pages `settings-reference.md`,
+  `interactive-mode.md`, `vs-code.md` and `desktop.md`, raw as Markdown with
+  `curl`, and GitHub's email addresses reference at docs.github.com; nothing
+  beyond. The report stands on this machine as
+  `~/devloop-audit-2026-11-20.md`, in German, and is not in the repository.
+  Every line number of a file in this entry holds at `2cdf412` unless it says
+  otherwise; for the files under `skills/`, `shared/`, `hooks/` and `bin/` and
+  for `docs/rationale.md` that is the number at `82e4196` as well, pull
+  request #258 having changed none of them.
+
+  **The order held against the rules, before anything changed.** The order had
+  what has one right answer in the entry mended as `docs/skill-conventions.md`
+  lines 1997 to 2026 allow for a dated entry. The rule there, lines 2011 to
+  2015, allows a wrong line number alone, and no line number of the entry is
+  wrong: the entry of pull request #258 stands as it stood, and what is to be
+  said of it is said here. And for a place missing in the shipped directories
+  the order named two ways, a block with Fix none or the question to the
+  person. Where a block of milestone 12 already holds the defect and its list
+  of places leaves one out, this audit added the place to the Wrong of that
+  block instead, its Note saying so: by the rule of
+  `docs/skill-conventions.md` lines 1908 to 1919 a finding in a field of a
+  block that the same branch corrects gets no block, and a second block on one
+  defect would be a second thing for a run to walk. The report says so to the
+  person, who can make blocks of them. A block was written where no block
+  holds the defect without doubt.
+
+  **Part A, the entry held.** Read at `82e4196`, each at its place: every line
+  number and every quote of a file of the repository in the entry, in its two
+  entries under "## Decisions taken against", in the Wrong and the Note of the
+  twelve blocks and in the dated sentences (1) to (18) of `docs/plan.md` —
+  `hooks/session-start.sh`, `shared/install-tool.md`, `shared/skill-name.md`,
+  `shared/merge-handover.md`, `shared/install-issue.md`,
+  `shared/install-issues-read.md`, `shared/fetch-three-times.md`, the five
+  skills and `LOGIC.md` the blocks name, the four hooks that hand a command
+  over, `bin/devloop-install-issues`, `scripts/devloop-stock-take`,
+  `docs/plan.md`, `docs/skill-conventions.md` and the 26 ranges of
+  `docs/rationale.md`; the line of the install guard's message, 1281 there and
+  1273 at `0c3eb24`, the same text at both; the decision of 10 November 2026
+  on the order of the orders, 36 lines, the same at `46030ab`, at `82e4196`
+  and at `2cdf412`, where it stands in lines 1049 to 1084. All of them hold.
+  Held at `2cdf412`, what the pull request changed: four files under `docs/`
+  and no other; its two commits, `c63acfe` on `82e4196` and `ad517b3` on it,
+  the tree of the second the tree of `2cdf412`; twelve blocks added, each with
+  Fix none, Recorded, not built and the entry's head whole under Found, their
+  titles as the entry quotes them; six Shoulds changed, Fix and Status kept,
+  five of the old Shoulds quoted whole in the entry and the sixth in its last
+  clause, as the entry says; no block removed and none renamed — counted by a
+  script over `docs/defects.md` at the two commits, the lines on the branch
+  point being printed by the tool on a branch alone. The corrections of the
+  merge, held against `git diff c63acfe ad517b3`: as the entry says, but for
+  the first finding below.
+
+  The vendor's pages, loaded on 20 November 2026, `settings-reference.md`
+  459338 bytes, `interactive-mode.md` 78865, `vs-code.md` 106647 and
+  `desktop.md` 229225: each of the sentences and headings the entry, the
+  blocks and `docs/plan.md` quote stands in its page word for word, and
+  nothing quoted has changed. Six quotes leave the page's markup out and no
+  word: in the settings reference the two descriptions of the index, whose `!`
+  shell command and `!` prefix are links, the default of `defaultShell`,
+  written there as a list item with the values in backticks, and the sentence
+  on the PowerShell tool, a link; in the desktop page "PATH not updated after
+  install", bold there, and the sentence under "Run commands in the terminal",
+  which reads today as the entry gives it for 20 November 2026, its "select
+  **Terminal**" a link. That a message is queued while a `!` command runs and
+  Claude does not work, the page on the interactive mode still does not say.
+  GitHub's email addresses reference, the link of decision (9), answers and
+  carries "July 18, 2017". The tool's figures in the entry are those of this
+  audit's run at `2cdf412`, below, and its self-test, run here, passes with
+  159 cases and 148 of 148 messages asserted.
+
+  Not held, by the order: the readings in the program of Claude Code, in
+  `extension.js` of the extension for VS Code and in the source of VS Code;
+  and the person's measurements, which stand as the entry gives them. Not held
+  because nothing in the repository gives them: the 171 lines of the search of
+  19 November 2026, whose pattern the entry does not print; what the twenty
+  checks printed; and of the report `~/devloop-handover-by-surface.md` only
+  that it stands.
+
+  Three findings and one note. (1) `docs/plan.md` lines 1650 to 1651, the
+  dated sentence (8): "in the desktop app a terminal, for instance the
+  terminal of the app with the key that opens it". The second commit of pull
+  request #258 took the key out of the approved wordings of (4) and (8), lines
+  11080 to 11083 of this file, and changed the dated sentence (4) and not (8).
+  Right: "in the desktop app a terminal, for instance the terminal of the
+  app". Corrected in place, the file keeping its count of lines. (2) Line
+  10710 of this file, decision (6), quotes the fixed step as „Öffne in VS Code
+  ein neues Terminal“; since the same commit the approved step reads „Öffne in
+  VS Code über das Menü **Terminal** ein neues Terminal.“, in (11), lines
+  10788 to 10789 for the terminal of VS Code and 10795 to 10796 for the panel.
+  The entry is not changed, no line number in it being wrong; the build takes
+  the wording of (11). (3) Measurements (3), (4) and (5) carry no date in the
+  entry, lines 10644 to 10660; (1) is dated 19 November 2026 and (2) is "the
+  same situation". `docs/plan.md` line 1693 says of (5) "measured by the
+  person on that day" and line 11390 of this file "measured that day". What
+  the entry gives is that decision (12) of 19 November 2026 rests on (5), so
+  that (5) was not later; the day itself only the person can say. Nothing
+  changed; put to the person. The note: decision (6), line 10709, and the
+  Should of the block on the five steps under Use Terminal say "where
+  `TERM_PROGRAM` reads `vscode`", and by the measurement of 9 November 2026
+  the graphical panel carries `TERM_PROGRAM=vscode` as well, lines 4005 to
+  4010 and 4044 to 4045 of this file. The six steps are those of the surface
+  `cli`; the panel has its four by `CLAUDE_CODE_ENTRYPOINT`, which the program
+  of (5) reads. Nothing changed.
+
+  **Part B, the places the decisions change.** Searched with eight patterns,
+  one for each thing a decision changes — the command typed with `!` and form
+  A; the second window, a terminal and form B; the signal, their word and the
+  output answered; the steps for the PATH; the comment at the closing; the
+  identity; the surfaces, the systems and the two settings; a command in the
+  background or interrupted — over every file `git ls-files` gives for the
+  scope, each find read at its place where it stood in no line a block or the
+  paragraph names. In `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`,
+  `output-styles/` and `README.md`: 468 finds, 74 of them in lines the blocks
+  or the paragraph name. In `docs/rationale.md` 121, in
+  `docs/skill-conventions.md` 125 and in `docs/plan.md` 281, of which 46, 48
+  and 130 in the lines the paragraph names or pull request #258 wrote. In
+  `docs/defects.md` the Should of every block: beside the eighteen blocks the
+  entry wrote or changed and the block on the comment of
+  `hooks/subagent-start-install.sh`, 28 speak of a handover, a form, a window
+  or a surface, each read. The report gives every search with its command and
+  its count. Of the hooks only the four the entry names hand a command over,
+  and of the programs only `bin/devloop-install-issues` says where a command
+  is typed. `README.md`: no sentence, as the entry says; its steps are typed
+  before devloop starts, and the two blocks of order (6) hold what it says of
+  Windows and of where devloop runs.
+
+  Places in the shipped directories that a decision changes and no block
+  named, each read at `82e4196`. Added to the Wrong of the block that holds
+  their defect, in `docs/defects.md`: to the block on PowerShell under
+  Windows, line 1667, four places that take a command typed with `!` as given
+  on every system — `shared/install-tool.md` lines 76 to 77 and 150 to 151,
+  `shared/install-issue.md` lines 18 to 19 and `skills/build-work/SKILL.md`
+  lines 577 to 578, where the message after a no gives "the line with the `!`
+  to type here"; the block named two places of that kind,
+  `shared/install-issues-read.md` line 55 and `skills/build-work/SKILL.md`
+  line 565. To the block on the steps for the PATH in the panel and in the
+  desktop app, line 1675, three places that follow or count the five steps:
+  `shared/install-tool.md` lines 63 to 65, "the search path Claude Code took
+  over from that terminal", and lines 83 to 84, "the five steps above", and
+  `shared/install-issues-read.md` lines 61 to 62, "the five steps where a
+  folder line stands". To the block on the wording of form B, line 1723, the
+  head of `bin/devloop-install-issues` lines 59 to 61, "said that they ran it
+  in a second terminal window". To the block on the comment at the closing,
+  line 1739, four places of the same program that carry the words of that
+  comment, the comment of line 484 and in its self-test lines 797, 801 and
+  804, the last the text a case expects, so that the self-test is red until it
+  follows the comment; and its Note names a third text that says of the
+  comment that it names an install typed in the session,
+  `shared/install-tool.md` lines 80 to 81. Before, each of the four fields
+  ended where its list ended; now each carries the places after it, introduced
+  as not named until this audit.
+
+  One block written, the last of "## Milestone 12", line 1763, with Fix none,
+  Recorded, not built: "six places name the command's output in the
+  conversation as the one signal of form A, the person saying nothing, where
+  the first of two signs counts" — `shared/skill-name.md` lines 54 to 56, the
+  sentence of the rule on the forms itself, `shared/install-tool.md` lines 22
+  to 23, 142 to 145 and 154 to 160, `skills/setup-checks/SKILL.md` lines 523
+  to 524 and `skills/setup-project/SKILL.md` lines 301 to 302. Its Should is
+  that of decisions (2), (12) and (14), as the block on
+  `respondToBashCommands` has it. A block of its own, since two blocks could
+  hold these places, the one on `respondToBashCommands` and the one on what
+  the run says where the command did not run to its end, and neither names a
+  place of this kind; the entry's paragraph names the same sentence in
+  `docs/skill-conventions.md`, lines 163 to 181 at `82e4196`, and in
+  `docs/rationale.md`, and no block named it in the loaded texts. The same
+  sentence of the merge handover and of the messages of the merge guard and
+  the install guard stands in lines the blocks on them name. Named by a block
+  already: the sentence of `skills/setup-checks/SKILL.md` lines 1158 to 1162
+  on what fits the widget, which point 7 of the pattern counts anew, is the
+  Fix of the block on two issues in form B, line 1308.
+
+  In the documents. `docs/defects.md`: the Should of one block outside
+  milestone 12 carries a clause the decisions change, the block of milestone 6
+  on `LOGIC.md` of `build-prototype`, line 4751, "the command that opens the
+  file typed in Claude Code with ! in front, form A"; line 54 of that file is
+  among the places the block on PowerShell under Windows names, so that the
+  two Shoulds say different things for the panel and for Windows. Not changed:
+  a new Should has more than one wording, and the report puts one to the
+  person. `docs/rationale.md`, not changed, as the entry has it; four points
+  change with the rule they belong to and stand in no line the paragraph
+  names: "No wording of the issue is approved: the skills say what it
+  carries", lines 4080 to 4081, whose first half (10) ends; the point on the
+  folder line read at a start, lines 4112 to 4127, with its two wordings and
+  "the five steps"; the point on the steps for the PATH, lines 4366 to 4385,
+  with the opening, the five steps and the close as approved on 28 October
+  2026, which (11) rewords; and the wording of the refused sign-in in the
+  point on steps, lines 4958 to 4965, a second terminal window. Four more
+  places stand in points the paragraph names by other lines: the five steps
+  for a check class, lines 1333 to 1337, the line under the no in both forms,
+  lines 1766 to 1773, the message after a no under form B, lines 2833 to 2836,
+  and the approved wording of the merge, lines 4690 to 4698.
+  `docs/skill-conventions.md`, not changed: "Their word is always what
+  releases the run — nothing else can say they are done", lines 4479 to 4480,
+  is of the kind the paragraph names in the bullet below it and holds no more
+  than that one; "or the command did not do what it was handed over for",
+  lines 4498 to 4500, is narrowed by (14); and "the wording built in its
+  place, five steps from `/exit` to `/devloop:start-work`", lines 146 to 148,
+  holds of what was built on 28 October 2026 until the third part builds.
+  `docs/plan.md`: "as in the terminal" of the desktop app under macOS and
+  Linux, lines 983 to 986 and 1006 to 1008, stands as the decision of 9
+  November 2026 and as its case of the closing runs, and (4) and (12) below it
+  say what differs since, no sentence on „fertig“ and a terminal, for instance
+  that of the app, in the place of the second window. One question follows
+  from these and goes to the person: (11) approves one opening and one close
+  for the tool of a task on every surface, and whether the two other cases of
+  the same steps, a check class's tool and the folder line read at a start,
+  keep their openings and closes of 28 October 2026 or take the new ones, the
+  entry does not say.
+
+  **For the handover.** The 146 blocks under "## Milestone 12" of
+  `docs/defects.md`, lines 603 to 1769 since this commit, the open ones listed
+  with line, Status, order and title in the report: 43 read Walked, 13 are
+  closed, 5 carry the form for a case that cannot be forced, lines 611, 715,
+  772, 1004 and 1523, and 85 are open, 40 Recorded, not built and 45 Built,
+  never walked. Each of the 40 has its order in `docs/plan.md`: (4) nineteen;
+  (5) fifteen, lines 731, 755, 836, 988, 1084, 1124, 1156, 1164, 1276, 1587,
+  1603, 1611, 1619, 1627 and 1651; (6) four, lines 780, 1356, 1364 and 1659;
+  (7) two, lines 739 and 1371. The nineteen of (4) by the part that builds
+  each, after the sentence of `docs/plan.md` lines 1738 to 1752: the second
+  part nine, lines 1220, 1643, 1691, 1699, 1707, 1715, 1739, 1747 and 1755 —
+  the rule on the forms with „fertig“, the comment in
+  `hooks/subagent-start-install.sh`, the three hooks, the merge, the comment
+  at the closing, the identity and what the run says where the command did not
+  run to its end; the third part five, lines 1236, 1284, 1675, 1683 and 1731 —
+  the steps for the PATH, step 4 of `setup-checks` and the issue; both parts
+  four, lines 1228, 1348, 1667 and 1723, the reading of the surface and the
+  system and the hooks by the second and the wordings at every place by the
+  third, as their Notes say; and one the sentence gives to neither without
+  doubt, line 1763, the block written here. The report puts to the person
+  which part builds that one, and in which part a block built by both takes
+  its Fix, a block carrying one. The 45 built and never walked stand at the
+  lines the audit of 19 November 2026 names, lines 10443 to 10447 of this
+  file, three built by (3) and 42 before it, and are held by (7) against the
+  closing runs first.
+
+  The tool, before, on `2cdf412`: exit 0, broken records 0, uncovered lines 0
+  of 4753; Undetermined 24, Recorded, not built 256, Built, never walked 1513,
+  Walked 809, Closed 79; milestone 12 145 blocks, Recorded, not built 39,
+  Built, never walked 50, Walked 43, Closed 13; blocks with "not stated" 345.
+  After: Recorded, not built 257 and milestone 12 146 blocks, Recorded, not
+  built 40, the block written here; every other figure as before; blocks held
+  against the branch point: removed 0, renamed 0, Should changed 0, added 1,
+  no line of the fixed forms; Walked on this branch without a run the branch
+  adds: 0. The places added to four Wrongs change no figure, the tool holding
+  a block by its title and its Should. The head this branch adds was held by
+  hand to the three rules of the workflow's step on titles, 71 characters and
+  no find. The twenty checks before a handover were no part of the order; they
+  run at the merge. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

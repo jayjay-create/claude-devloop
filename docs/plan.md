@@ -1647,8 +1647,8 @@ same; in the graphical panel under macOS and Linux, in a terminal, for
 instance the terminal of VS Code; under Windows, Git Bash; where the system or
 the surface is unknown, in a terminal. For a command that asks something: in
 the terminal under macOS and Linux the second terminal window as before; in
-the desktop app a terminal, for instance the terminal of the app with the key
-that opens it; the others as for a command that asks nothing. Second, form A
+the desktop app a terminal, for instance the terminal of the app; the others
+as for a command that asks nothing. Second, form A
 in the terminal carries the sentence on „fertig“ directly before its last
 sentence, and in the desktop app it does not. Third, outside form A the
 command line stands without `!` and with `cd <directory> &&` where the command
