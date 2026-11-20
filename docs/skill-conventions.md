@@ -159,7 +159,8 @@ the handover steps, where the wordings stand.
 
 **Where the person types a command devloop hands them while Claude Code
 runs, the text says, and which of two forms holds follows from what the
-command does and, since 9 November 2026, from the surface it runs on.**
+command does, since 9 November 2026 from the surface it runs on and,
+since 19 November 2026, from the system.**
 Decided by the person on 28 October 2026. Form A, a
 command that asks nothing — `brew install`, `git config`, the merge: it
 is typed in Claude Code with `!` in front, the text
@@ -216,10 +217,38 @@ since a `!` command runs there in the login shell and Claude answers its
 output, the desktop page under "Claude Code settings that behave
 differently in the Code tab". The texts say form A on every surface today,
 and the blocks of milestone 12 in `docs/defects.md` hold them to the
-decision; `docs/plan.md` carries the decisions under milestone 12. The
-wordings the person approved for the handovers stand in the roadmap entry
-of 28 October 2026 on the handover steps; a skill says what is said, not
-the words. Until 28 October 2026 the rule on a command handed over read
+decision; `docs/plan.md` carries the decisions under milestone 12.
+Decided by the person on 19 and 20 November 2026, the roadmap entry of 20
+November 2026 on the handover by surface: devloop reads no setting of Claude
+Code to choose the form. Form A in the terminal under macOS and Linux
+carries a sentence that has the person type „fertig“ right after the
+command, so that their word arrives once the command is through, also where
+the run does not answer the output by itself; of the two signs, the answered
+output and their word, the first counts, and what the run then reads it
+reads as before; in the desktop app under macOS and Linux form A stays
+without that sentence. Under Windows form B holds for every command on every
+surface, typed in Git Bash, since the setting `defaultShell` can have a `!`
+command run in PowerShell there. The place form B names follows the surface
+and the system: a second terminal window that is not the one Claude Code
+runs in, in the terminal under macOS and Linux; a terminal, for instance
+that of VS Code, in the panel; a terminal, for instance that of the app, in
+the desktop app; Git Bash under Windows; and a terminal and nothing more
+where the surface or the system is unknown. One program reads the surface
+off `CLAUDE_CODE_ENTRYPOINT` and the system off `uname -s`;
+`bin/devloop-text` puts its line into this rule when a skill loads, the four
+hooks that hand a command over call it, and the run runs it once more before
+a handover. Every approved wording changes by the pattern of those
+decisions: it keeps what it says, and the sentence that says where the
+command is typed is exchanged by the situation. None of this is built: the
+texts say today what the sentences above say of form A and of form B, on
+every surface and every system, the person saying nothing under A, and the
+blocks of milestone 12 in `docs/defects.md` hold them to these decisions;
+`docs/plan.md` carries them under milestone 12, (1) to (18). The wordings
+the person approved for the handovers stand in the roadmap entry of 28
+October 2026 on the handover steps and, those of 19 and 20 November 2026, in
+the entry of 20 November 2026 on the handover by surface; a skill says what
+is said, not the words. Until 28 October 2026 the rule on a command handed
+over read
 that the line is copied whole into whatever terminal is open, point 18 of
 part B of 12 October 2026, whose rest stands.
 

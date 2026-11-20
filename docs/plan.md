@@ -1021,7 +1021,13 @@ auto-merge off, a planning in German with a browser the program does not
 read and with one in the wrong version, a start with `--auto` after a
 refused install and one after two refused installs whose commands ask; and
 the inputs the job hooks on every system gives the install guard, a line
-with two destinations of one install and the updates of `brew` and `pipx`.
+with two destinations of one install and the updates of `brew` and `pipx`;
+and, since 19 November 2026, by decision (18) of that day below, the cases the
+handover by surface adds: in the run under Windows with Git Bash in the
+terminal a command handed over in form B, in Git Bash; on the person's Mac in
+the terminal form A once with `respondToBashCommands` set to `false` and once
+with the setting as it stands by default; and the steps for the PATH once in
+the graphical panel and once in the desktop app.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1543,6 +1549,216 @@ and the runs on them count no more. The vendor's page on the setup,
 code.claude.com/docs/en/setup, read raw on 19 November 2026, names both: under
 "Install a specific version" the install script with a version number, and
 under "Disable auto-updates" `DISABLE_AUTOUPDATER`.
+
+Decided on 19 November 2026 by the person, the roadmap entry of 20 November
+2026 on the handover by surface, (1): devloop reads no setting of Claude Code
+to choose the form of a handover. Reason: `respondToBashCommands` holds in any
+settings file; over the user's file stand the two files of the project,
+`--settings` and the managed settings, and of these a program can read neither
+`--settings` nor the settings from the server nor the policies of the system;
+a reading would be wrong there without a sound, and every change of the order
+of precedence would have to be followed. Not chosen: reading the files a
+program can read, in their order of precedence, and taking form B under
+`false`, for that reason. The numbers (1) to (18) are those of that entry,
+where the measurements, the readings and every approved wording stand, word
+for word; `docs/rationale.md` takes the wordings with the order that builds
+the rule each belongs to.
+
+Decided on 19 November 2026 by the person, the same entry, (2): form A in the
+terminal under macOS and under Linux carries a sentence that has the person
+type „fertig“ right after the command, approved by the example of a check's
+tool. It rests on two measurements of the person of that day in the terminal,
+with `respondToBashCommands` set to `false` through `--settings`: after the
+command's output nothing more appeared; and a „fertig“ typed while the command
+ran was shown as queued and sent once the command was through, and Claude
+answered and named the output. So their word arrives when the command is
+through, whatever the setting says. This takes the place, for the terminal, of
+"the run reads the result itself instead of the person's word" in the decision
+of 9 November 2026 above on the desktop handover: the run reads the result
+itself as before, and their word is one of the two signs on which it reads, by
+(14) below.
+
+Decided on 19 November 2026 by the person, the same entry, (3): under Windows
+every command is handed over in form B, on every surface, typed in Git Bash.
+Reason: the setting `defaultShell` can have a command typed with `!` run in
+PowerShell wherever somebody set it so; under Windows with Git Bash the
+default is bash, the vendor's settings reference, "Default: "bash", or
+"powershell" on Windows when Bash isn't available"; and devloop does not read
+the setting, by (1). This widens the decision of 9 November 2026 above, which
+gave form B for every command to the desktop app under Windows and to the
+graphical panel alone.
+
+Decided on 19 November 2026 by the person, the same entry, (4): the wordings
+of form B by the surface and the system, approved: in the graphical panel of
+the extension for VS Code under macOS and Linux a terminal, for instance the
+terminal of VS Code; under Windows, on every surface, Git Bash, the terminal
+that comes with Git for Windows; in the desktop app under macOS and Linux, for
+a command that asks something, a terminal, for instance the terminal of the
+app with the key that opens it; and where the system or the surface is
+unknown, a terminal and nothing more; each followed by the command without
+`!`, by what it asks where it asks, by the request to say here once the
+command has run through, and by the last sentence of the wording. In the
+terminal under macOS and Linux the wording of 28 October 2026 for a command
+that asks stays, a second terminal window that is not the one Claude Code runs
+in. It rests on this: in the panel and in the desktop app Claude Code runs in
+no terminal window, so that the wording of 28 October 2026 meets nothing
+there. This takes the place, for the panel, of "as `shared/install-tool.md`
+describes it under the way of the yes" in the decision of 9 November 2026
+above, where that text names a second terminal window.
+
+Decided on 19 November 2026 by the person, the same entry, (5): one program
+reads `CLAUDE_CODE_ENTRYPOINT` and `uname -s`; `bin/devloop-text` puts its
+line into the rule on the forms when a skill loads; the four hooks that hand a
+command over, the install guard, the merge guard, the identity guard and the
+Stop hook, call the same program; and before a handover the run runs it once
+more, since a conversation can change its surface: the VS Code page says that
+`claude --resume` continues in the terminal a conversation of the extension.
+Not chosen: a line of `hooks/session-start.sh` at the start of the session,
+since that hook writes nothing where no repository stands, line 22, and one
+line alone in a project that is not set up, lines 52 to 55, where
+`setup-project` hands over, and since after a compaction the line stands in
+the summary alone.
+
+Decided on 19 November 2026 by the person, the same entry, (6): where
+`TERM_PROGRAM` reads `vscode`, one step of the steps for the PATH reads,
+fixed, that the person opens a new terminal in VS Code. Reason: under Use
+Terminal the extension closes its terminal when Claude Code ends with `/exit`,
+the code of the extension 2.1.327 quoted in that entry, and devloop cannot
+tell Use Terminal from a `claude` the person typed themselves. Not chosen: a
+sentence saying that where the terminal closes after `/exit` they open a new
+one, since the reader has to watch first; and telling Use Terminal by the
+variable `NoDefaultCurrentDirectoryInExePath`, since the vendor promises it
+nowhere.
+
+Decided on 19 November 2026 by the person, the same entry, (7): the issue for
+a missing tool always names a terminal, under Windows Git Bash, never `!`, and
+after it `/devloop:start-work`. Reason: it is read later, perhaps on another
+surface. Not chosen: the form of the surface that wrote it, which is wrong as
+soon as the person works on elsewhere; and no place at all, against the rule
+of `shared/skill-name.md` that a text says where a command is typed.
+
+Decided on 19 November 2026 by the person, the same entry, (8): the pattern by
+which every approved wording of a handover changes. First, every approved
+wording keeps what it says; the sentence that says where the command is typed
+is exchanged by the situation, and the system goes before the surface. For a
+command that asks nothing: in the terminal under macOS and Linux, here in
+Claude Code with `!` in front; in the desktop app under macOS and Linux the
+same; in the graphical panel under macOS and Linux, in a terminal, for
+instance the terminal of VS Code; under Windows, Git Bash; where the system or
+the surface is unknown, in a terminal. For a command that asks something: in
+the terminal under macOS and Linux the second terminal window as before; in
+the desktop app a terminal, for instance the terminal of the app with the key
+that opens it; the others as for a command that asks nothing. Second, form A
+in the terminal carries the sentence on „fertig“ directly before its last
+sentence, and in the desktop app it does not. Third, outside form A the
+command line stands without `!` and with `cd <directory> &&` where the command
+needs the project; where it asks, what it asks stands under it; then the
+request to say here once the command has run through, and the last sentence of
+the wording. Fourth, where a pronoun can point at two things, the noun stands.
+Fifth, several commands of one handover stand as one line, joined by `&&`.
+Sixth, the handover with nobody there and the line under the no in step 8 of
+`setup-checks` stay without „fertig“ and without that request. Seventh, a
+sentence in a question field of fixed length is counted anew, and where it
+does not fit it goes back to the person.
+
+Decided on 19 November 2026 by the person, the same entry, (9): the identity
+is handed over as one line, both `git config --global` commands joined by
+`&&`, in the wording approved for the terminal on the Mac, with the sentence
+for an account older than 18 July 2017, after GitHub's page, which the run
+reads every time. It rests on this: handed over as two commands, each with
+`!`, Claude answers after the first and the run can commit before the address
+is set, the block of this milestone on it.
+
+Decided on 19 November 2026 by the person, the same entry, (10): the issue for
+a missing tool, in the wording approved for the Mac: how they install the tool
+themselves, the command in a terminal, `/devloop:start-work` in Claude Code,
+and that devloop then closes the issue itself and takes the task up again;
+behind a command that asks, what it asks; under Windows the first step with
+Git Bash; and where a check belongs to the issue, that devloop sets the check
+up. By (7).
+
+Decided on 19 November 2026 by the person, the same entry, (11): the steps for
+the PATH under macOS and Linux, approved: one opening and one closing sentence
+on every surface, a sentence after every export line on what the line does,
+five steps in a terminal that is not VS Code's, six in the terminal of VS
+Code, by (6), and four in the graphical panel, where VS Code is quit entirely
+and opened again from its program symbol. devloop puts in the folder, the file
+of the shell and the project's folder itself, as `shared/install-tool.md`
+reads them, lines 44 to 53. What the steps in the panel rest on, read at the
+code of the extension 2.1.327 and of VS Code 1.145.2 and not measured, stands
+in that entry.
+
+Decided on 19 November 2026 by the person, the same entry, (12): in the
+desktop app under macOS and under Linux form A stays without „fertig“, the
+wording as it stood. Reason, measured by the person on that day in a local
+session of the desktop app, Claude Code 2.1.326: the app sends a „fertig“
+typed early at once, and Claude answers by itself as soon as a command typed
+with `!` ends, as the desktop page says. Not chosen: the sentence on „fertig“
+in the desktop app too, one wording of form A everywhere, since the run would
+read too early there.
+
+Decided on 20 November 2026 by the person, the same entry, (13): the steps for
+the PATH in the desktop app, under Windows and on a surface devloop does not
+know, approved. Under Windows one line typed in Git Bash enters the folder
+into the `PATH` of the Windows account through `powershell.exe`, and it takes
+the place of the reading of a command in the maker's guide,
+`shared/install-tool.md` lines 53 to 63, which stays for another shell, fish
+say. Not chosen: the ways by clicks through the settings of Windows and of the
+app, since they change with updates. Not measured: that line under Windows, of
+which only this is checked, that bash hands the text between its single quotes
+to `powershell.exe` unchanged; how the desktop app is ended entirely under
+Windows; and whether the steps under Windows bring the new `PATH`. Order (7)
+measures the three.
+
+Decided on 20 November 2026 by the person, the same entry, (14): what the run
+says on „fertig“ where the command did not run to its end, approved in four
+sentences. The rule: of each handover the first sign counts; where the run
+finds the tool, it goes on; that the command did not do what it was handed
+over for it says only where the conversation shows that the command ran to its
+end, and else it says what it sees — the command still running in the
+background, the command interrupted, nothing of the command in the
+conversation, and a „fertig“ after the run has gone on already. It rests on
+this: by the rule the texts carry today the run names a failure in the first
+three, the block of this milestone on it.
+
+Decided on 20 November 2026 by the person, the same entry, (15): the comment
+with which `bin/devloop-install-issues` closes an issue after an install
+during a session reads "devloop closed this issue after an install during a
+session, the tool standing on this machine now: <the line>"; the comment at a
+start stays. It rests on this: the comment of today names an install typed in
+the session, also where the command ran in another terminal.
+
+Decided on 19 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (16): a command typed with `!` under
+macOS or Linux that Claude Code runs in PowerShell, which takes
+`CLAUDE_CODE_USE_POWERSHELL_TOOL=1` and `defaultShell` set to "powershell",
+does not count. Reason: the other way would do away with form A everywhere.
+
+Decided on 19 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (17): order (4) of the decision of 10
+November 2026 above builds every place that hands a command over, the three
+hooks no block held until then, the merge, the issue and the comment at the
+closing among them, and not the six blocks alone. Reason: else the hooks would
+contradict the skills in the graphical panel and under Windows. And it is
+parted in three, since it does not fit one session. The first records, and is
+that entry. The second builds the program that reads the surface and the
+system, the rule on the forms with „fertig“ and with what the run says where
+the command did not run to its end, the four hooks, the merge, the identity,
+the comment in `hooks/subagent-start-install.sh` and the comment at the
+closing. The third builds the wordings by the pattern at every place, the
+steps for the PATH, the issue and step 4 of `setup-checks`. The order of the
+orders above stands as decided on 10 November 2026, (4) in these three parts.
+
+Decided on 19 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (18): the closing runs of this
+milestone gain these cases, named above where the milestone ends: form B under
+Windows in the terminal; form A with `respondToBashCommands` set to `false`
+and once with the setting as it stands by default; and the steps for the PATH
+in the graphical panel and in the desktop app. By the third of the five
+sentences.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
