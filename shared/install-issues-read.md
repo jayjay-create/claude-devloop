@@ -55,7 +55,7 @@ found again, and the second read costs nothing but the listing. And run with
 tool, typed the command here with `!` in the same session or said under form B
 that they ran it, after the read of both lines with `--installed` that
 `build-work` step 3 point 7 asks for: the program closes the issue where the
-search path finds the tool now, with a comment naming an install typed in the
+search path finds the tool now, with a comment naming an install during a
 session and no start, prints the `folder:` line where the command installed and
 the search path does not reach the tool, and the run goes by its lines as at a
 start — the task freed goes to step 2 of `build-work`, and the five steps where

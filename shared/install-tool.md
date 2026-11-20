@@ -20,7 +20,8 @@
    stand-in without them. A task built against stand-ins lands with the real
    tool never run.
    Read the result, after the signal of the handover's form — under form A
-   the command's output in the conversation, under form B their word — with
+   the first of the two signs, the answered output or their word, under form
+   B their word — with
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the command as it
    was handed over and the tool: its first line reads the folder the installer
    writes to, never `command -v` alone, as "Whether it worked is read off the
@@ -71,18 +72,30 @@
    the readiness query lists the task, open, with no blocker and no pull
    request, no subagent having started for it; and the read before the
    subagent starts, above, finds the tool on the search path. Where the
-   first line says not found, the command did not do what it was handed over
-   for, whatever came back: say so with the line and hand over again. The
+   first line says not found and the conversation shows that the command ran
+   to its end, or their word under form B says that it did, the command did
+   not do what it was handed over for, whatever came back: say so with the
+   line and hand over again. Where the first line says not found under form
+   A and the conversation does not show that — the command runs in the
+   background, was interrupted before it ended, or stands nowhere in the
+   conversation —, say what the conversation shows and that the tool is not
+   there yet, as "Where the person types a command devloop hands them" has
+   it for each of the three, and not that the command failed. The
    same read, with both lines, after a no: where they type the command here with
    `!` in this session after declining, or say under form B that they ran it in
    the second window, the two lines are read as above, and where both say found
    the run closes the issue itself, with
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues --after-install`, whose
-   comment names an install typed in the session and no start, and builds
+   comment names an install during a session and no start, and builds
    the task by the rules of step 2, to which it goes back, "The task itself"
    below; where the first line says found and the second not found, the five
-   steps above, the issue staying open; where the first says not found, said
-   with the line, the issue staying, and the command handed over again.
+   steps above, the issue staying open; where the first says not found, the
+   issue staying, by the two sentences on not found above: said with the line
+   and the command handed over again where the conversation shows that the
+   command ran to its end or their word under form B says that it did, and
+   where a command typed with `!` did not run to its end, what the
+   conversation shows and that the tool is not there yet, and not that the
+   command failed.
    Where they installed it another way, in another window say, nothing of
    it is seen here, and the next start reads it and closes the issue, as
    "The task itself" says. Report
@@ -141,8 +154,9 @@
    and asking them to say here once it is through; in doubt B, with what it may
    ask —, and the build picks up once the tool is where that command puts it and
    the search path finds it, read by the paragraph on reading the result above
-   after the form's signal, the command's output in the conversation under A and
-   their word under B. The way of the no, which comes second and
+   after the form's signal, the first of the two signs under A, the answered
+   output or their word, and their word under B. The way of the no, which
+   comes second and
    **a decline is an answer too, not a wall**: on a no the install becomes an
    issue carrying the command that blocks this task, as "The task itself"
    below says, written on the no and never before the answer; the run goes
@@ -152,14 +166,15 @@
    it, the run reading both lines and closing the issue itself, as the
    paragraph on reading the result above and "The task itself" say; else at
    a later start, which devloop reads itself and closes the issue on. Before
-   a no the form's signal releases the run — the output under A, their word
-   under B —, and after a no the same signal does in this session, the tool
+   a no the form's signal releases the run — the first of the two signs under
+   A, the answered output or their word, and their word under B —, and
+   after a no the same signal does in this session, the tool
    read at the next start where they install it another way: who installs with
    `!` after a no has changed their mind, and making them type
-   `/devloop:start-work` on top gains them nothing; it fits form A, whose signal
-   is the output. Then the question, last: whether they type the command, under
-   A, or run it, under B, or decline. A message that says only "let me know once
-   it is through" leaves no way to say no.
+   `/devloop:start-work` on top gains them nothing; it fits form A, whose first
+   sign releases the run. Then the question, last: whether they type the
+   command, under A, or run it, under B, or decline. A message that says only
+   "let me know once it is through" leaves no way to say no.
    With nobody there the record says yes, since the mode does not start
    under a no or with no record — start condition 6 under "Unattended mode" —
    so nothing is declined; what the guard blocks under that yes is a block and

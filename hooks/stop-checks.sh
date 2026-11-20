@@ -59,10 +59,28 @@ if [ "$COUNT" -gt "$MAX" ]; then
 fi
 
 if [ "$COUNT" -eq "$MAX" ]; then
+  # Where a command is typed follows the surface and the system, since 20
+  # November 2026, the second part of order (4) of milestone 12, decisions
+  # (2), (4), (5), (8) and (12) of the roadmap entry of 20 November 2026 on
+  # the handover by surface: bin/devloop-surface is called here, at the last
+  # attempt, where the message hands over, and on no other path of this hook,
+  # and its field handover: decides; a line that does not come, or one of
+  # another form, is read as unknown. Until that day the message named
+  # Claude Code with ! in front and a second terminal window on every surface
+  # and every system.
+  HANDOVER=$("$HERE/../bin/devloop-surface" 2>/dev/null | sed -n 's/^surface: [a-z-]* | system: [a-z]* | handover: \([a-z]*\)$/\1/p') || HANDOVER=""
+  ELSE="the line without a !, with what it asks named and the request to say here once it is through"
+  case "$HANDOVER" in
+    terminal) WHERE="in Claude Code with ! in front where it asks nothing and ends by itself, with the sentence that has them type „fertig“, the word as their language has it, right after the command, else in a second terminal window, not the one Claude Code runs in, $ELSE; with nobody there neither that sentence nor that request" ;;
+    desktop) WHERE="in Claude Code with ! in front where it asks nothing and ends by itself, with no sentence that has them type a word after it, else in a terminal, for instance the terminal of this app, $ELSE; with nobody there without that request" ;;
+    panel) WHERE="in a terminal, for instance the terminal of VS Code, and not in Claude Code, whatever the command asks, $ELSE; with nobody there without that request" ;;
+    windows) WHERE="in Git Bash, the terminal that comes with Git for Windows, which they open, and not in Claude Code, whatever the command asks, $ELSE; with nobody there without that request" ;;
+    *) WHERE="in a terminal and not in Claude Code, whatever the command asks, $ELSE; with nobody there without that request" ;;
+  esac
   echo "Still failing after $MAX attempts. Stop trying. Do not run another variation of what already failed.
 
 Hand this to the human in a form they can act on in one step. Pick whichever fits:
-  - a command, as it runs from wherever they are, with where they type it: in Claude Code with ! in front where it asks nothing and ends by itself, else in a second terminal window, not the one Claude Code runs in, with what it asks named - and what to look for in the output
+  - a command, as it runs from wherever they are, with where they type it: $WHERE - and what to look for in the output
   - a small script that gathers the versions, paths and environment this needs, ready to run
   - a smaller case that reproduces the failure away from the rest of the project
   - a named question only they can answer, with what each answer would change

@@ -1278,5 +1278,41 @@ $D" ;;
   fi
 fi
 
-echo "Blocked: this installs outside the repository. The install record, read off the default branch as last fetched and never off the working tree, does not open it, because $CAUSE. The install is the user's to run, not yours to run for them, and a yes said here does not change that: only the record does. Say in one line what it installs and what it unblocks, and hand them the exact command, backed — by the vendor's own installation line, or by the path in it resolving — and say both ways it can go at once. Hand it over so that it runs from wherever they are, with the change into the project's directory in front of it where it needs one, and say where they type it: in Claude Code with ! in front where it asks nothing, form A, the line given with the !; in a second terminal window, not the one Claude Code runs in, where it asks something, a password for sudo say, form B, naming what it asks and asking them to say here once it is through; in doubt B. What releases you is the command's output in the conversation under A and their word under B, never the output alone: then read with bin/devloop-tool-state --installed, the command and the tool, both its lines - the folder that command writes to says whether it installed, never command -v, and the search path whether the build can use it; where the first says found and the second not found, say the steps that put the folder on their search path as build-work step 3 point 7 has them, and nothing is built with the tool until the search path reaches it. Nothing moves here until the signal. A decline is an answer too: say what it costs this work, in the next message with which you end your turn with text, and carry on. A block is not a decline: with nobody there, the issue or the skip reason carries the cause above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide; a pip or an interpreter named by a path inside the project passes here without the record." >&2
+# Where the command is typed and what releases the run follow the surface
+# and the system, since 20 November 2026, the second part of order (4) of
+# milestone 12, decisions (2), (4), (5), (8), (12) and (14) of the roadmap
+# entry of 20 November 2026 on the handover by surface: bin/devloop-surface is
+# called here, on the path that blocks and hands over, and at no other command
+# this guard reads, and its field handover: decides - terminal, form A with
+# the sentence that has them type their word right after the command, form B
+# in a second terminal window; desktop, form A without that sentence, form B
+# in a terminal, the app's for instance; panel, windows and unknown, form B
+# for every command, in a terminal, that of VS Code for instance, in Git
+# Bash, or in a terminal and nothing more; a line that does not come, or one
+# of another form, is read as unknown. Under form A the run goes on from the
+# first of two signs, the answered output or their word, and says that the
+# command did not install only where the conversation shows that it ran to
+# its end. The message is the wording approved on 29 September 2026 and, for
+# where the command is typed and what releases the run, on 28 October 2026;
+# of it the sentence on where the command is typed and the one on what
+# releases the run change by the situation, the sentence on a command that
+# did not run to its end comes in under form A, and every other sentence
+# stands word for word. Until that day the message said form A with ! in
+# front and a second terminal window on every surface and every system, the
+# command's output in the conversation the one signal under A.
+HANDOVER=$("$HERE/../bin/devloop-surface" 2>/dev/null | sed -n 's/^surface: [a-z-]* | system: [a-z]* | handover: \([a-z]*\)$/\1/p') || HANDOVER=""
+ASKS="where it asks something, a password for sudo say, form B, naming what it asks and asking them to say here once it is through; in doubt B."
+EVERY="and not in Claude Code, form B for every command here, the line without a !, naming what it asks where it asks, a password for sudo say, and asking them to say here once it is through."
+RELEASE="What releases you is the first of two signs under A, the command's output once you are given it to answer or their word, and their word under B, never the output alone:"
+# What the run asks for where the command still runs in the background: under terminal their word once more, under desktop, where the handover had them type no word, decision (12), the request to say here once the command is through, point 3 of decision (8); the command is handed over once more where it ran to its end and did not install, was interrupted or stands nowhere, not where it still runs in the background, decision (14)
+case "$HANDOVER" in desktop) AGAIN="that they say here once the command is through" ;; *) AGAIN="that they type „fertig“ once more as soon as it is through" ;; esac
+NOTRUN=" Where the first says not found after a command typed under A, say that the command did not install it only where the conversation shows that the command ran to its end, and hand it over once more; else say what you see, each with the tool not there yet - that the command still runs in the background, and $AGAIN, or that it was interrupted before it was through, or that no command and no output stands here, and after either of these two hand it over once more."
+case "$HANDOVER" in
+  terminal) WHERE="in Claude Code with ! in front where it asks nothing, form A, the line given with the ! and, in a sentence of its own directly before the last one, that they type „fertig“, the word as their language has it, right after the command; in a second terminal window, not the one Claude Code runs in, $ASKS" ;;
+  desktop) WHERE="in Claude Code with ! in front where it asks nothing, form A, the line given with the ! and no sentence that has them type a word after it; in a terminal, for instance the terminal of this app, $ASKS" ;;
+  panel) WHERE="in a terminal, for instance the terminal of VS Code, $EVERY"; RELEASE="What releases you is their word:"; NOTRUN="" ;;
+  windows) WHERE="in Git Bash, the terminal that comes with Git for Windows, which the text has them open, $EVERY"; RELEASE="What releases you is their word:"; NOTRUN="" ;;
+  *) WHERE="in a terminal $EVERY"; RELEASE="What releases you is their word:"; NOTRUN="" ;;
+esac
+echo "Blocked: this installs outside the repository. The install record, read off the default branch as last fetched and never off the working tree, does not open it, because $CAUSE. The install is the user's to run, not yours to run for them, and a yes said here does not change that: only the record does. Say in one line what it installs and what it unblocks, and hand them the exact command, backed — by the vendor's own installation line, or by the path in it resolving — and say both ways it can go at once. Hand it over so that it runs from wherever they are, with the change into the project's directory in front of it where it needs one, and say where they type it: $WHERE $RELEASE then read with bin/devloop-tool-state --installed, the command and the tool, both its lines - the folder that command writes to says whether it installed, never command -v, and the search path whether the build can use it; where the first says found and the second not found, say the steps that put the folder on their search path as build-work step 3 point 7 has them, and nothing is built with the tool until the search path reaches it.$NOTRUN Nothing moves here until the signal. A decline is an answer too: say what it costs this work, in the next message with which you end your turn with text, and carry on. A block is not a decline: with nobody there, the issue or the skip reason carries the cause above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide; a pip or an interpreter named by a path inside the project passes here without the record." >&2
 exit 2

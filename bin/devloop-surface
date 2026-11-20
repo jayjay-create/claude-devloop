@@ -1,0 +1,199 @@
+#!/bin/bash
+# Prints one line that says on which surface of Claude Code this call runs,
+# on which system, and by which situation a command is handed over to the
+# person there, since 20 November 2026, the second part of order (4) of
+# milestone 12: decision (5) of the roadmap entry of 20 November 2026 on the
+# handover by surface, and decisions (3), (4), (8) and (12) of that entry for
+# the third field. Until that day every text and every hook handed a command
+# that asks nothing over as typed in Claude Code with ! in front, on every
+# surface and every system, and nothing read where the session runs.
+#
+# Usage: devloop-surface
+#        devloop-surface --self-test
+#
+# The line, on stdout, exit 0 in every case:
+#   surface: SURFACE | system: SYSTEM | handover: HANDOVER
+#
+# SURFACE, read off the environment variable CLAUDE_CODE_ENTRYPOINT, the same
+# on a hook, on an insert line and in the Bash tool, measured on 9 November
+# 2026, the roadmap entry of that date on the surface reading. Claude Code
+# keeps a value its environment carries, claude-vscode and claude-desktop
+# among them, but for two: a cli becomes sdk-cli on the condition on which
+# Claude Code sets sdk-cli and not cli where no value stands, and local_agent
+# is written local-agent; without a value it sets mcp,
+# claude-code-github-action, sdk-cli or cli. Read in the program of Claude
+# Code 2.1.329 on 20 November 2026, the function unchanged against 2.1.328.
+#   terminal         cli: Claude Code in a terminal
+#   terminal-vscode  cli, and TERM_PROGRAM reads vscode: the terminal of VS
+#                    Code, a claude typed there and the extension's setting
+#                    Use Terminal alike, which nothing tells apart; the
+#                    graphical panel carries TERM_PROGRAM=vscode as well, so
+#                    that variable is read for cli alone
+#   panel-vscode     claude-vscode: the graphical panel of the extension for
+#                    VS Code
+#   desktop          claude-desktop: a local session of the desktop app
+#   unknown          any other value, sdk-cli among them, an empty one, or
+#                    the variable not set
+# SYSTEM, read off uname -s:
+#   macos            Darwin
+#   linux            Linux
+#   windows          MINGW*, MSYS*, CYGWIN* or Windows*, as
+#                    bin/devloop-tool-state tells Windows with Git Bash
+#   unknown          any other answer, none, or no uname on the search path
+# HANDOVER, the situation the rule on the two forms of a handover goes by,
+# "Where the person types a command devloop hands them" in
+# shared/skill-name.md, the system before the surface:
+#   windows          the system reads windows, whatever the surface: every
+#                    command in form B, typed in Git Bash
+#   unknown          the surface or the system reads unknown, the system not
+#                    windows: every command in form B, typed in a terminal
+#   terminal         terminal or terminal-vscode under macos or linux: form A
+#                    with the sentence on the word typed after the command,
+#                    form B in a second terminal window
+#   desktop          desktop under macos or linux: form A without that
+#                    sentence, form B in a terminal, the app's for instance
+#   panel            panel-vscode under macos or linux: every command in form
+#                    B, in a terminal, that of VS Code for instance
+#
+# Who reads the line: bin/devloop-text puts it into that rule when a skill
+# loads; the four hooks that hand a command over call this program on the
+# path on which they hand over and nowhere else -
+# hooks/pre-tool-use-merge-guard.sh, hooks/pre-tool-use-identity-guard.sh,
+# hooks/pre-tool-use-install-guard.sh and hooks/stop-checks.sh; and the run
+# runs it once more before a handover, since a conversation can change its
+# surface, claude --resume continuing in the terminal a conversation of the
+# panel. Each of them takes a line that does not come, or one of another
+# form, as unknown.
+#
+# The line carries the words above and nothing read: a value of the variable
+# that is none of the three is not printed, since the line lands in the text
+# of every skill and in the messages of four hooks. No setting of Claude Code
+# is read, decision (1) of that entry: respondToBashCommands and defaultShell
+# hold in files and sources a program cannot read. TERM_PROGRAM is read for
+# the third part of the order, whose steps for the search path differ in the
+# terminal of VS Code, decision (6); for the forms that terminal is a
+# terminal.
+#
+# Exit 2 with one line on stderr on an argument. It needs bash and uname and
+# nothing else.
+# --self-test runs every situation once, uname answered by a stand-in that
+# stands first on the search path of the self-test's own calls and nowhere
+# else, and one case without the stand-in, which names the system the
+# self-test runs on as bash's OSTYPE has it; it prints one line per case and
+# exits 1 at the first that does not come out as this head says.
+set -u
+
+selftest() {
+  local me T out rc n=0 here goes
+  me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-surface.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  mkdir "$T/bin" "$T/none"
+  # answers TEXT: uname -s answers TEXT from here on, through the stand-in; any other call of it is a call the program does not make, exit 64
+  answers() { printf '#!/bin/sh\n[ "$#" -eq 1 ] && [ "$1" = -s ] || exit 64\nprintf "%%s\\n" "%s"\n' "$1" > "$T/bin/uname"; chmod +x "$T/bin/uname"; }
+  # silent CODE: uname -s prints nothing and ends with CODE
+  silent() { printf '#!/bin/sh\nexit %s\n' "$1" > "$T/bin/uname"; chmod +x "$T/bin/uname"; }
+  # run PATH ENTRYPOINT TERM_PROGRAM [ARGUMENT...]: the program once, - for a variable that is not set, PATH the search path of the call
+  run() {
+    local p=$1 e=$2 t=$3; shift 3
+    out=$(
+      unset CLAUDE_CODE_ENTRYPOINT TERM_PROGRAM
+      [ "$e" = - ] || export CLAUDE_CODE_ENTRYPOINT="$e"
+      [ "$t" = - ] || export TERM_PROGRAM="$t"
+      PATH="$p" "$me" "$@" 2>&1
+    ); rc=$?
+  }
+  with() { run "$T/bin:$PATH" "$@"; }
+  expect() {
+    local name="$1" want="$2" text="$3"; n=$((n+1))
+    [ "$rc" -eq "$want" ] || { echo "FAIL $name: exit $rc, expected $want"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+    [ "$out" = "$text" ] || { echo "FAIL $name: printed '$out', expected '$text'"; exit 1; }
+    echo "ok   $name"
+  }
+  answers Darwin
+  with cli Apple_Terminal;         expect "a terminal under macOS" 0 "surface: terminal | system: macos | handover: terminal"
+  with cli -;                      expect "a terminal under macOS, TERM_PROGRAM not set" 0 "surface: terminal | system: macos | handover: terminal"
+  with claude-vscode vscode;       expect "the graphical panel of the extension for VS Code under macOS" 0 "surface: panel-vscode | system: macos | handover: panel"
+  with claude-desktop -;           expect "the desktop app under macOS" 0 "surface: desktop | system: macos | handover: desktop"
+  with claude-desktop vscode;      expect "the desktop app with TERM_PROGRAM reading vscode: the variable counts for cli alone" 0 "surface: desktop | system: macos | handover: desktop"
+  with - Apple_Terminal;           expect "the variable not set: the surface unknown" 0 "surface: unknown | system: macos | handover: unknown"
+  with - vscode;                   expect "the variable not set and TERM_PROGRAM reading vscode: the surface unknown" 0 "surface: unknown | system: macos | handover: unknown"
+  with "" -;                       expect "the variable empty: the surface unknown" 0 "surface: unknown | system: macos | handover: unknown"
+  with sdk-cli -;                  expect "sdk-cli: the surface unknown" 0 "surface: unknown | system: macos | handover: unknown"
+  with claude-desktop-3p -;        expect "a value that begins as one of the three: the surface unknown" 0 "surface: unknown | system: macos | handover: unknown"
+  with "cli
+claude-desktop" -;                 expect "a value of two lines: the surface unknown, the value not printed" 0 "surface: unknown | system: macos | handover: unknown"
+  with 'x | system: windows' -;    expect "a value shaped as a part of the line: the surface unknown, the value not printed" 0 "surface: unknown | system: macos | handover: unknown"
+  answers Linux
+  with cli vscode;                 expect "the terminal of VS Code under Linux: for the forms a terminal" 0 "surface: terminal-vscode | system: linux | handover: terminal"
+  with claude-desktop -;           expect "the desktop app under Linux" 0 "surface: desktop | system: linux | handover: desktop"
+  with claude-vscode vscode;       expect "the graphical panel under Linux" 0 "surface: panel-vscode | system: linux | handover: panel"
+  answers MINGW64_NT-10.0-26100
+  with cli -;                      expect "Windows with Git Bash, a terminal: the system windows" 0 "surface: terminal | system: windows | handover: windows"
+  with cli vscode;                 expect "Windows with Git Bash, the terminal of VS Code" 0 "surface: terminal-vscode | system: windows | handover: windows"
+  with claude-vscode vscode;       expect "Windows with Git Bash, the graphical panel: the system before the surface" 0 "surface: panel-vscode | system: windows | handover: windows"
+  with claude-desktop -;           expect "Windows with Git Bash, the desktop app" 0 "surface: desktop | system: windows | handover: windows"
+  with - -;                        expect "Windows with Git Bash, the surface unknown: windows all the same" 0 "surface: unknown | system: windows | handover: windows"
+  answers MSYS_NT-10.0-26100
+  with cli -;                      expect "MSYS: windows" 0 "surface: terminal | system: windows | handover: windows"
+  answers CYGWIN_NT-10.0-26100
+  with cli -;                      expect "CYGWIN: windows" 0 "surface: terminal | system: windows | handover: windows"
+  answers Windows_NT
+  with cli -;                      expect "Windows_NT: windows" 0 "surface: terminal | system: windows | handover: windows"
+  answers FreeBSD
+  with cli -;                      expect "a system that is none of the three: the system unknown" 0 "surface: terminal | system: unknown | handover: unknown"
+  with claude-desktop -;           expect "the desktop app on a system that is none of the three" 0 "surface: desktop | system: unknown | handover: unknown"
+  with - -;                        expect "the surface and the system unknown" 0 "surface: unknown | system: unknown | handover: unknown"
+  answers linux
+  with cli -;                      expect "an answer in other letters than uname gives: the system unknown" 0 "surface: terminal | system: unknown | handover: unknown"
+  silent 1
+  with cli -;                      expect "uname answers nothing and fails: the system unknown" 0 "surface: terminal | system: unknown | handover: unknown"
+  silent 0
+  with cli -;                      expect "uname answers nothing: the system unknown" 0 "surface: terminal | system: unknown | handover: unknown"
+  run "$T/none" cli -;             expect "no uname on the search path: the system unknown" 0 "surface: terminal | system: unknown | handover: unknown"
+  answers Darwin
+  with cli - --nope;               expect "an argument it does not know: exit 2" 2 "devloop-surface: expected no argument, or --self-test, got --nope"
+  with cli - a b;                  expect "two arguments: exit 2" 2 "devloop-surface: expected no argument, or --self-test, got 2 arguments"
+  with cli - "";                   expect "an empty argument: exit 2" 2 "devloop-surface: expected no argument, or --self-test, got an empty one"
+  # without the stand-in: the system this self-test runs on, named as bash's OSTYPE has it, a second source beside uname
+  case "${OSTYPE:-}" in
+    darwin*) here=macos ;;
+    linux*) here=linux ;;
+    msys*|cygwin*) here=windows ;;
+    *) here=unknown ;;
+  esac
+  case "$here" in windows) goes=windows ;; unknown) goes=unknown ;; *) goes=terminal ;; esac
+  run "$PATH" cli -;               expect "no stand-in: the system this self-test runs on, $here" 0 "surface: terminal | system: $here | handover: $goes"
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+
+[ $# -le 1 ] || { echo "devloop-surface: expected no argument, or --self-test, got $# arguments" >&2; exit 2; }
+case "${1:-}" in
+  --self-test) selftest ;;
+  '') [ $# -eq 0 ] || { echo "devloop-surface: expected no argument, or --self-test, got an empty one" >&2; exit 2; } ;;
+  *) echo "devloop-surface: expected no argument, or --self-test, got $1" >&2; exit 2 ;;
+esac
+
+case "${CLAUDE_CODE_ENTRYPOINT:-}" in
+  cli) SURFACE=terminal; [ "${TERM_PROGRAM:-}" != vscode ] || SURFACE=terminal-vscode ;;
+  claude-vscode) SURFACE=panel-vscode ;;
+  claude-desktop) SURFACE=desktop ;;
+  *) SURFACE=unknown ;;
+esac
+case "$(uname -s 2>/dev/null)" in
+  Darwin) SYSTEM=macos ;;
+  Linux) SYSTEM=linux ;;
+  MINGW*|MSYS*|CYGWIN*|Windows*) SYSTEM=windows ;;
+  *) SYSTEM=unknown ;;
+esac
+# the system before the surface, point 1 of decision (8)
+case "$SYSTEM/$SURFACE" in
+  windows/*) HANDOVER=windows ;;
+  unknown/*|*/unknown) HANDOVER=unknown ;;
+  */terminal|*/terminal-vscode) HANDOVER=terminal ;;
+  */desktop) HANDOVER=desktop ;;
+  */panel-vscode) HANDOVER=panel ;;
+esac
+printf 'surface: %s | system: %s | handover: %s\n' "$SURFACE" "$SYSTEM" "$HANDOVER"
+exit 0

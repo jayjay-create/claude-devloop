@@ -6,6 +6,17 @@
 # measured, and a shared text naming a program of the plugin by it has to
 # reach the model as a path either way. Since 7 October 2026.
 # See docs/skill-conventions.md, "Text shared between skills".
+#
+# And, since 20 November 2026, with every ${DEVLOOP_SURFACE} in it replaced
+# by the line of bin/devloop-surface, the program beside this one, which
+# reads the surface of Claude Code and the system this load runs on:
+# decision (5) of the roadmap entry of 20 November 2026 on the handover by
+# surface. One text carries that word, shared/skill-name.md in its rule on
+# the two forms of a handover, and the program is started for a text that
+# carries it and for no other, so that every other text comes out as it did.
+# Where the program prints no line, more than one, a line of another form or
+# ends with an error, the line that stands there says that the surface and
+# the system are unknown, which the rule reads as form B in a terminal.
 set -u
 if [ $# -ne 1 ]; then
   echo "devloop-text: expected exactly one name, got $#" >&2
@@ -27,4 +38,15 @@ root=$(cd "$(dirname "$0")/.." && pwd) || exit 2
 # The directory escaped for sed's replacement: a backslash, an ampersand and
 # the delimiter would otherwise be read as sed reads them.
 esc=$(printf '%s\n' "$root" | sed 's/[\&|]/\\&/g')
-sed "s|\${CLAUDE_PLUGIN_ROOT}|$esc|g" "$file" || exit 2
+if ! grep -qF '${DEVLOOP_SURFACE}' "$file"; then
+  sed "s|\${CLAUDE_PLUGIN_ROOT}|$esc|g" "$file" || exit 2
+  exit 0
+fi
+# The line of bin/devloop-surface, taken only in its own form, whole and
+# alone: what else the program printed would land in the text of a skill.
+line=$("$root/bin/devloop-surface" 2>/dev/null) || line=""
+printf '%s\n' "$line" | LC_ALL=C grep -qxE 'surface: [a-z-]+ \| system: [a-z]+ \| handover: [a-z]+' || line=""
+[ "$(printf '%s\n' "$line" | grep -c '')" -eq 1 ] || line=""
+[ -n "$line" ] || line="surface: unknown | system: unknown | handover: unknown"
+lesc=$(printf '%s\n' "$line" | sed 's/[\&|]/\\&/g')
+sed -e "s|\${CLAUDE_PLUGIN_ROOT}|$esc|g" -e "s|\${DEVLOOP_SURFACE}|$lesc|g" "$file" || exit 2

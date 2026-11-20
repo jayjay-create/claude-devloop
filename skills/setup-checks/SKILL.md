@@ -520,8 +520,8 @@ terminal window, not the one Claude Code runs in, where it asks something,
 `sudo apt install` say, form B, the text naming what it asks and asking them to
 say here once it is through; in doubt B, with what it may ask —, and that
 once it has run the run reads that the tool is there and sets the check up;
-wait for the form's signal, the command's output in the conversation under A
-and their word under B; then
+wait for the form's signal, the first of the two signs under A, the answered
+output or their word, and their word under B; then
 read with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
 command as handed over and the tool, both its lines, never `command -v`:
 the first reads the folder the installer writes to, the second whether the
