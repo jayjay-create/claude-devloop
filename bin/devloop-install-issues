@@ -56,17 +56,24 @@ skills run it at every start, before the first thing that reads an open
 issue: the readiness query of build-work step 2, and the question on the
 rule for the classifier of auto mode in build-work and in plan-work. And
 since 30 October 2026, with --after-install, inside a session: where the
-person, after their no to the handover of a task's tool, typed the command
-in Claude Code with ! in the same session, or said that they ran it in a
-second terminal window, build-work step 3 point 7 and "The task itself",
-the run reads the result with bin/devloop-tool-state --installed and then
-runs this program, which closes the issue as at a start where the search
-path finds the tool; the one difference is the comment, which then says
-that the closing followed an install typed in the session and names no
-start. Decided by the person on 30 October 2026, the roadmap entry of that
-date on the install: the run of 29 October 2026 closed the issue in the
-session through this program, whose comment named a start that did not
-happen. The comment is text for the tracker and has no approved wording.
+person, after their no to the handover of a task's tool, ran the command
+in the same session after all - typed in Claude Code with ! where the
+handover gave it so, or typed in the terminal the handover named for the
+surface and the system, with their word here that it ran -, build-work
+step 3 point 7 and "The task itself", the run reads the result with
+bin/devloop-tool-state --installed and then runs this program, which
+closes the issue as at a start where the search path finds the tool; the
+one difference is the comment, which then says that the closing followed
+an install during a session and names no start. Decided by the person on
+30 October 2026, the roadmap entry of that date on the install: the run of
+29 October 2026 closed the issue in the session through this program,
+whose comment named a start that did not happen. The comment is text for
+the tracker; the one under --after-install stands in the words the person
+approved on 20 November 2026, decision (15) of the roadmap entry of that
+date on the handover by surface, and until that day it read "after an
+install typed in the session", which did not hold where the command ran in
+a terminal outside Claude Code, the usual case in the graphical panel and
+under Windows; the comment at a start has no approved wording.
 
 Which issues. The open issues of the project labelled raised-here and
 needs-human, read with gh issue list, whose body carries the two lines every
@@ -160,7 +167,7 @@ tool's: found, not found, or not read. Found: the issue is closed with gh
 issue close N --comment, the comment naming the line:
     devloop closed this issue at the start of a session, the tool standing on this machine now: <the line>
 or, with --after-install:
-    devloop closed this issue after an install typed in the session, the tool standing on this machine now: <the line>
+    devloop closed this issue after an install during a session, the tool standing on this machine now: <the line>
 Not found, or not read: nothing is done, and the issue stays open with the
 task it holds. A TOOL the program refuses - not a bare word and not
 VENDOR:NAME of one of its vendors, which the program alone judges, so that
@@ -481,9 +488,9 @@ def read(d, after_install=False):
         if not stands:
             print("closed: no")
             continue
-        # the comment names when devloop closed: at a start, or after an install the person typed in the session, --after-install, since 30 October 2026
+        # the comment names when devloop closed: at a start, or after an install during a session, --after-install, since 30 October 2026, in the words approved on 20 November 2026
         comment = ("devloop closed this issue %s, the tool standing on this machine now: %s"
-                   % ("after an install typed in the session" if after_install else "at the start of a session", line))
+                   % ("after an install during a session" if after_install else "at the start of a session", line))
         out, shown, err, _ = run(["gh", "issue", "close", str(number), "--comment", comment], d)
         if out is None:
             print("closed: no")
@@ -794,14 +801,14 @@ def selftest():
                "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
                "api repos/{owner}/{repo}/issues/7/dependencies/blocking",
                "issue close 7 --comment " + comment + present_line)
-        # after an install typed in the session, --after-install: closed as at a start, the comment naming the install in the session and no start
+        # after an install during a session, --after-install: closed as at a start, the comment naming the install during a session and no start
         fresh(); issues((18, "Install devloop-selftest-present for task #5", body_present)); blocking(18, "open"); close(18)
         expect("--after-install, the tool standing: closed, 0", go("--after-install"), 0,
                "issue: 18", "kind: task", "tool: " + present_line, "closed: yes")
-        called("--after-install: the closing with the comment naming an install typed in the session",
+        called("--after-install: the closing with the comment naming an install during a session",
                "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
                "api repos/{owner}/{repo}/issues/18/dependencies/blocking",
-               "issue close 18 --comment devloop closed this issue after an install typed in the session, the tool standing on this machine now: " + present_line)
+               "issue close 18 --comment devloop closed this issue after an install during a session, the tool standing on this machine now: " + present_line)
         # the tool not standing: nothing done
         fresh(); issues((8, "Install devloop-selftest-absent", body_absent)); blocking(8)
         expect("the tool does not stand: not closed, the class's issue, the values trimmed, 0", go(), 0,

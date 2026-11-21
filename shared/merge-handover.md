@@ -13,22 +13,33 @@ and does not understand it; where a gate stands and auto-merge is switched off,
 that auto-merge is off in this repository; where a gate stands, auto-merge is on
 and the pull request is already past the gate, that the checks are through
 already and GitHub therefore accepts no auto-merge any more; then that they
-merge it here in Claude Code, with `!` in front, with the command, which stands
-in a code block of its own with the `!` and the repository named on it — in
-Claude Code, as the command asks nothing; the repository named since `gh`
-resolves it from the directory it runs in and the vendor's page says nothing of
-the folder a `!` command runs in:
+merge it with the command, handed over as "Where the person types a command
+devloop hands them" above hands over every command that asks nothing, by the
+line `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints before this handover:
+under `terminal` and under `desktop` typed here in Claude Code with `!` in
+front, form A, the command in a code block of its own with the `!`; under
+`panel`, `windows` and `unknown` typed in the terminal that rule names for the
+situation, form B, the command in a code block of its own without the `!`; and
+with the repository named on it either way, since `gh` resolves it from the
+directory it runs in and the vendor's page says nothing of the folder a `!`
+command runs in:
 
     ! gh pr merge <number> --squash --repo OWNER/REPO
 
-— and that as soon as it is in, this goes on, and that nothing happens here
-until then: this picks up as soon as the command's output stands in the
-conversation, the person saying nothing. No `--delete-branch`: the run deletes
-the branch itself once the merge is proven, by "The branch on GitHub is deleted
-only after the run has read that it still stands there". No sentence on what
-comes after the merge, since the step that resumes says that then. And not
-presented as something having gone wrong: none of the three cases is a fault.
-The command's output in the conversation is what releases the run, and whether
-the merge landed is then read off the platform as the step says — `gh pr view
+— then, under form B, that they say here once the command is through, and,
+under `terminal`, in a sentence of its own, that they type „fertig“ right
+after the command; and last that as soon as it is in, this goes on, and that
+nothing happens here until then: this picks up as soon as the form's signal
+comes, under A the first of the two signs, the answered output or their word,
+and under B their word. With nobody there the text carries neither the
+sentence on „fertig“ nor the request to say here. No `--delete-branch`: the
+run deletes the branch itself once the merge is proven, by "The branch on
+GitHub is deleted only after the run has read that it still stands there". No
+sentence on what comes after the merge, since the step that resumes says that
+then. And not presented as something having gone wrong: none of the three
+cases is a fault. The form's signal is what releases the run, and whether the
+merge landed is then read off the platform as the step says — `gh pr view
 <number> --json state,mergedAt`, `MERGED` with a time in it — never off the
-output alone and never off their word.
+output alone and never off their word. Where it has not landed then, under
+form A, the run says what the conversation shows, as that rule has it for a
+command that did not run to its end, with the merge in the place of the tool.

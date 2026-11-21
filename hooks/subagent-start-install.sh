@@ -65,7 +65,7 @@ SHELL_RULE=""
 if [ -d "$PROJECT_DIR/docs/agents" ]; then
   SHELL_RULE="[Shell] every shell command in this project goes through the Bash tool, where devloop's guards read it: a call of the PowerShell tool is turned down here, and the same command then runs unchanged through the Bash tool, which is no block to report"
 fi
-# the two lines as one JSON string: backslash and double quote escaped, the line break written as \n
+# the three lines as one JSON string, two where the rule on the shell is empty: backslash and double quote escaped, the line break written as \n
 ESC=$(printf '%s\n%s\n%s' "$LINE" "$RULE" "$SHELL_RULE" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk 'NR > 1 { printf "\\n" } { printf "%s", $0 }')
 printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"%s"}}\n' "$ESC"
 exit 0

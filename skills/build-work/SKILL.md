@@ -566,7 +566,7 @@ was for:
   under form B, say that they ran it in the second window — the run reads
   both lines with `--installed` as point 7 says, runs
   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues --after-install`, which
-  closes the issue with a comment naming an install typed in the session and
+  closes the issue with a comment naming an install during a session and
   no start, and goes back to step 2, whose readiness query lists the task
   free; nothing is built before the program has closed the issue, and where
   its lines say the issue stays — a folder line, the tool not found — the

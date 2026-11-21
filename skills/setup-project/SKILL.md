@@ -298,8 +298,9 @@ which field.
   the same with that system's name. Say: that for the work with GitHub devloop
   needs the program `gh` of GitHub and that on this machine it is not installed
   yet; where they type it; the command; the backing or the source; and that the
-  run then reads that `gh` is there and says how they sign in — under A once the
-  output stands in the conversation, under B once they say here that it has run.
+  run then reads that `gh` is there and says how they sign in — under A at the
+  first of the two signs, the answered output or their word, under B once they
+  say here that it has run.
   Only where the page cannot be read, where it does not name their system, or
   where its guide needs a program this machine lacks — Homebrew on a Mac —, say
   that they install it as `cli.github.com` describes for their system and say

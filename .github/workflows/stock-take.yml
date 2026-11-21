@@ -18,9 +18,13 @@
 # under Alpine 3.22 with busybox awk in a container on ubuntu-latest, the
 # reader's self-test and every handler of hooks/hooks.json once with a
 # harmless input of its event in a throwaway project, and is red where the
-# self-test or a handler answers otherwise than 0: devloop runs on every
-# system, the person's decision of that day, and until then nothing showed
-# that the reader ran under Linux at all, where it did not. Its four checks
+# self-test or a handler answers otherwise than 0 - since 21 November 2026
+# also each of the four hooks that hand a command over, with an input on the
+# path on which it hands over, twice, without CLAUDE_CODE_ENTRYPOINT and with
+# it on cli, red where one of the eight ends otherwise than with 2 and the
+# place its system has -: devloop runs on every
+# system, the person's decision of 14 October 2026, and until then nothing
+# showed that the reader ran under Linux at all, where it did not. Its four checks
 # carry the job's name with the system in brackets; making them required on
 # main is the owner's setting, as for stock-take, and the fifth addendum
 # carries the command. .gitattributes keeps every text file at LF on every
@@ -559,6 +563,39 @@ jobs:
   # ran on no system of GitHub, the job stock-take running the tool's and
   # this step those under bin/; the roadmap entry of 31 October 2026 on the
   # follow-up after milestone 3.
+  # Since 21 November 2026, decided that day, the roadmap entry on the
+  # handover that follows the surface and the system: the four hooks that
+  # hand a command over - hooks/pre-tool-use-merge-guard.sh,
+  # hooks/pre-tool-use-identity-guard.sh, hooks/pre-tool-use-install-guard.sh
+  # and hooks/stop-checks.sh - call bin/devloop-surface on the path on which
+  # they hand over and on no other, and the harmless inputs above reach that
+  # path of none of them, as they never reach the guard on the mark's; the
+  # step on line endings below runs the install guard at a block and the Stop
+  # hook at its last attempt, with CLAUDE_CODE_ENTRYPOINT as the system has it,
+  # and reads of their messages the cause and the check's own output, never
+  # the words on where a command is typed, and nothing ran the merge guard or
+  # the identity guard on that path. So the step feeds each of the four an
+  # input of its own after the handlers, in the throwaway project, prepared as
+  # the hook needs it: the merge guard gh pr merge 7 --squash; the identity
+  # guard a commit with git -c user.email, a command that stands in the JSON
+  # the hook reads and is run by nobody; the install guard an install no
+  # record opens, origin/main there carrying none; the Stop hook the third
+  # attempt at a blocking filled class whose check is red, the table and its
+  # runner written into the working tree. Each input runs twice: without
+  # CLAUDE_CODE_ENTRYPOINT, which the case takes out with env -u, since the
+  # variable reads cli where scripts/devloop-run-workflow runs the step in a
+  # session of Claude Code; and with it on cli. The step is red unless every
+  # one of the eight ends with 2 and its message carries the words on the
+  # place its situation has - under windows-latest Git Bash in both, the
+  # system going before the surface; on ubuntu-latest, macos-latest and alpine
+  # a terminal and not Claude Code without the variable, and with cli Claude
+  # Code with ! in front and the sentence that has the person type their word
+  # right after the command, a word no other situation's message carries. The
+  # merge guard and the identity guard print a command line, read too, with
+  # the ! under cli and without it elsewhere; the install guard and the Stop
+  # hook name the place alone. A case that comes out otherwise prints the
+  # message. What bin/devloop-surface reads under Windows its self-test shows
+  # in the loop above; what the four messages say there, these cases.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -602,7 +639,7 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in, and the guard on the PowerShell tool turning a call down where docs/agents/ stands and letting it through where none stands
+      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in, the guard on the PowerShell tool turning a call down where docs/agents/ stands and letting it through where none stands, and each of the four hooks that hand a command over on the path on which it hands over, without CLAUDE_CODE_ENTRYPOINT and with it on cli
         run: |
           set -u
           # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
@@ -718,6 +755,70 @@ jobs:
           RC=0; OUT=$(cd "$T/none" && printf '%s' "$PS" | CLAUDE_PROJECT_DIR="$T/none" "$ROOT/hooks/pre-tool-use-powershell-guard.sh" 2>&1) || RC=$?
           echo "PreToolUse PowerShell pre-tool-use-powershell-guard.sh, the same call where no docs/agents/ stands: exit $RC"
           [ "$RC" -eq 0 ] && [ -z "$OUT" ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; echo "the guard on the PowerShell tool did not let the call through with nothing said where no docs/agents/ stands"; red=1; }
+          # the four hooks that hand a command over, each on the path on which it hands over, since 21 November 2026, decided that day, the roadmap entry on the handover that follows the surface and the system: the harmless inputs above reach that path of none of them, and the step on line endings below runs the install guard at a block and the Stop hook at its last attempt without setting the surface, reading of their messages the cause and the check's output alone. Each of the four gets one input on that path in the throwaway project - the merge guard gh pr merge 7 --squash; the identity guard a commit with git -c user.email, a command that stands in the JSON alone and is run by nobody; the install guard pipx install devloop-probe-does-not-exist, which no record opens, origin/main here carrying none; the Stop hook a blocking filled class whose check is red, three times, the third its last attempt, the table and its runner written into the working tree here - and each input twice: without CLAUDE_CODE_ENTRYPOINT, which env -u takes out of the environment, since the variable reads cli where scripts/devloop-run-workflow runs the step inside a session of Claude Code, and with it on cli
+          # wanted, 2 in all eight and of the message the words that carry the place: under Windows Git Bash in both, the system going before the surface, the line without the !; on the three other systems without the variable a terminal and not Claude Code, the line without the !, and with cli Claude Code with ! in front, the line with the !, and the sentence that has them type their word right after the command, a word no message of the other situations carries. The merge guard and the identity guard print a command line, which is read too; the install guard and the Stop hook name the place alone. A case that comes out otherwise turns the step red and prints the message; the word itself is written by its bytes, so that this file stays ASCII
+          F=$'\342\200\236fertig\342\200\234'
+          printf '%s\n' '#!/bin/sh' 'echo "lint: probe.txt:1: trailing whitespace"' 'false' > "$P/run-checks.sh"
+          printf '%s\n' '---' 'runner: sh run-checks.sh' 'all: check' '---' '' '# Checks' '' '| Class | Per-file | Whole | Files | Duration | Blocking | Status |' '|---|---|---|---|---|---|---|' '| lint | - | lint | - | fast | yes | filled |' > "$P/docs/agents/checks.md"
+          # bash_call COMMAND: the input of PreToolUse for a call of the Bash tool with that command, which nothing here runs
+          bash_call() { "$PY" -c 'import json, sys; print(json.dumps({"session_id": "s1", "cwd": sys.argv[1], "permission_mode": "default", "tool_use_id": "toolu_hookshand", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"command": sys.argv[2], "description": "probe"}}))' "$P" "$1"; }
+          STOP=$("$PY" -c 'import json, sys; print(json.dumps({"session_id": "s1", "cwd": sys.argv[1], "permission_mode": "default", "hook_event_name": "Stop", "stop_hook_active": False}))' "$P")
+          # handed HOOK WHAT INPUT TIMES: the hook TIMES times with INPUT, the file of the Stop hook's attempts cleared before, once without CLAUDE_CODE_ENTRYPOINT and once with it on cli; read of the last answer its exit code, the words on the place, the command line where the hook prints one, and the word typed after the command, which stands under cli outside Windows and in no other situation
+          handed() {
+            local hook=$1 what=$2 input=$3 times=$4 ep sit says with place line i rc out r
+            for ep in none cli; do
+              sit=unknown; says="a terminal and not Claude Code"; with="without CLAUDE_CODE_ENTRYPOINT"
+              [ "$ep" = none ] || { sit=terminal; says="Claude Code with ! in front, and the word typed right after the command"; with="with CLAUDE_CODE_ENTRYPOINT=cli"; }
+              [ "${RUNNER_OS:-}" != Windows ] || { sit=windows; says="Git Bash, the system going before the surface"; }
+              line=""
+              case "$hook $sit" in
+                "pre-tool-use-merge-guard.sh terminal") place="hand them the merge command, to type here in Claude Code with ! in front, in a code block of its own with the !"; line="! gh pr merge <number> --squash --repo OWNER/REPO" ;;
+                "pre-tool-use-merge-guard.sh unknown") place="hand them the merge command, to type in a terminal and not here in Claude Code, in a code block of its own without a !"; line="gh pr merge <number> --squash --repo OWNER/REPO" ;;
+                "pre-tool-use-merge-guard.sh windows") place="hand them the merge command, to type in Git Bash, the terminal that comes with Git for Windows, which the text has them open, and not here in Claude Code, in a code block of its own without a !"; line="gh pr merge <number> --squash --repo OWNER/REPO" ;;
+                "pre-tool-use-identity-guard.sh terminal") place='the two commands joined by &&, to type here in Claude Code with ! in front: ! git config --global user.name "NAME" && git config --global user.email "ADDRESS",' ;;
+                "pre-tool-use-identity-guard.sh unknown") place='the two commands joined by &&, to type in a terminal and not here in Claude Code, without a ! in front: git config --global user.name "NAME" && git config --global user.email "ADDRESS",' ;;
+                "pre-tool-use-identity-guard.sh windows") place='the two commands joined by &&, to type in Git Bash, the terminal that comes with Git for Windows, which the text has them open, and not here in Claude Code, without a ! in front: git config --global user.name "NAME" && git config --global user.email "ADDRESS",' ;;
+                "pre-tool-use-install-guard.sh terminal") place="and say where they type it: in Claude Code with ! in front where it asks nothing, form A, the line given with the !" ;;
+                "pre-tool-use-install-guard.sh unknown") place="and say where they type it: in a terminal and not in Claude Code, form B for every command here, the line without a !" ;;
+                "pre-tool-use-install-guard.sh windows") place="and say where they type it: in Git Bash, the terminal that comes with Git for Windows, which the text has them open, and not in Claude Code, form B for every command here, the line without a !" ;;
+                "stop-checks.sh terminal") place="with where they type it: in Claude Code with ! in front where it asks nothing and ends by itself, with the sentence that has them type" ;;
+                "stop-checks.sh unknown") place="with where they type it: in a terminal and not in Claude Code, whatever the command asks, the line without a !" ;;
+                "stop-checks.sh windows") place="with where they type it: in Git Bash, the terminal that comes with Git for Windows, which they open, and not in Claude Code, whatever the command asks, the line without a !" ;;
+                *) place="no place is known to this step for $hook under $sit" ;;
+              esac
+              rm -f "$P/.claude/check-attempts.local"
+              i=0; rc=0; out=""
+              while [ "$i" -lt "$times" ]; do
+                i=$((i + 1)); rc=0
+                if [ "$ep" = cli ]; then
+                  out=$(cd "$P" && printf '%s' "$input" | env CLAUDE_CODE_ENTRYPOINT=cli "$ROOT/hooks/$hook" 2>&1) || rc=$?
+                else
+                  out=$(cd "$P" && printf '%s' "$input" | env -u CLAUDE_CODE_ENTRYPOINT "$ROOT/hooks/$hook" 2>&1) || rc=$?
+                fi
+              done
+              r=""
+              [ "$rc" -eq 2 ] || r="$r it ended with $rc and not with 2;"
+              case "$out" in *"$place"*) ;; *) r="$r its message does not carry the words on the place, $place;" ;; esac
+              [ -z "$line" ] || grep -qxF -e "$line" <<< "$out" || r="$r its message does not carry the command line $line on a line of its own;"
+              if [ "$sit" = terminal ]; then
+                case "$out" in *"type $F, the word as their language has it, right after the command"*) ;; *) r="$r its message does not carry the sentence on the word typed right after the command;" ;; esac
+              else
+                case "$out" in *"$F"*) r="$r its message carries the word typed after the command, which this situation does not have;" ;; esac
+              fi
+              if [ -z "$r" ]; then
+                echo "$what, $with: exit $rc, the place $says"
+              else
+                echo "$what, $with, did not hand over as its situation has it:$r"; printf '%s\n' "$out" | sed 's/^/    /'; red=1
+              fi
+            done
+            rm -f "$P/.claude/check-attempts.local"
+          }
+          S=$SECONDS
+          handed pre-tool-use-merge-guard.sh "PreToolUse Bash pre-tool-use-merge-guard.sh, gh pr merge 7 --squash" "$(bash_call "gh pr merge 7 --squash")" 1
+          handed pre-tool-use-identity-guard.sh "PreToolUse Bash pre-tool-use-identity-guard.sh, a commit with git -c user.email, read in the JSON alone" "$(bash_call "git -c user.email=probe@example.invalid commit -m probe")" 1
+          handed pre-tool-use-install-guard.sh "PreToolUse Bash pre-tool-use-install-guard.sh, pipx install devloop-probe-does-not-exist where origin/main carries no record" "$(bash_call "pipx install devloop-probe-does-not-exist")" 1
+          handed stop-checks.sh "Stop stop-checks.sh, the third attempt at a blocking filled class whose check is red" "$STOP" 3
+          echo "note the eight cases of the four hooks that hand a command over took $((SECONDS - S)) seconds on this system; this line decides nothing"
           rm -rf "$T"
           exit "$red"
 

@@ -590,7 +590,11 @@ loaded text no longer carries stands here at its rule.
   GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem Rechner
   ist es noch nicht installiert. Installiere es, wie cli.github.com es für dein
   System beschreibt, und sag mir hier Bescheid, sobald das erledigt ist. Dann
-  sage ich dir, wie du dich bei GitHub anmeldest.“ See docs/skill-conventions.md
+  sage ich dir, wie du dich bei GitHub anmeldest.“ That `gh` is there the run
+  reads at the form's signal, under form A the first of two signs, the answered
+  output or their word, and under form B their word, as the point on form A
+  under `shared/skill-name.md` has it; built in entry "A handover follows the
+  surface and the system, read by one program". See docs/skill-conventions.md
   under "Every skill carries these two", the paragraph "Where the person types a
   command devloop hands them while Claude Code runs", and, for a command the
   guide itself warns against, the paragraph "Where a text to the person says
@@ -1321,7 +1325,11 @@ loaded text no longer carries stands here at its rule.
 - **After "they install it themselves" the command is handed over in the form
   for where it is typed, and both lines of the tool state are read.** The folder
   alone does not show whether the chain can call the tool: `go install` puts a
-  tool into `~/go/bin`, which often stands on no search path. Approved wordings,
+  tool into `~/go/bin`, which often stands on no search path. The run reads
+  them at the form's signal, under form A the first of two signs, the answered
+  output or their word, and under form B their word, as the point on form A
+  under `shared/skill-name.md` has it; built in entry "A handover follows the
+  surface and the system, read by one program". Approved wordings,
   entry "Handovers say where the command is typed, sign-in and identity in
   steps.": form A, (7): „Gib den Befehl hier in Claude Code ein, mit `!` davor:“
   — „`! brew install gitleaks`“ — „Sobald er durchgelaufen ist, prüfe ich, dass
@@ -2836,6 +2844,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   Claude Code läuft, und sag mir hier Bescheid.“, in doubt with „kann etwas von
   dir abfragen, etwa dein Passwort“ in place of „fragt nach deinem Passwort“,
   entry "Four entries held, rationale points completed, two questions answered."
+  The comment at that closing names an install during a session and no start,
+  as the point on `--after-install` under `shared/install-issues-read.md` has
+  it.
 ### Proving a check guards its condition
 
 - **A condition that cannot be captured as a check is named as that, in the task
@@ -4134,11 +4145,22 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **The program runs again at the start of a build after a planning, and in
   `build-work` and `plan-work` after `start-work`, in the same session; after a
   no it runs with `--after-install` where the person typed the command with `!`
-  or said it ran under form B.** An issue closed is not found again and the
+  or said it ran under form B, and its comment then names an install during a
+  session and no start.** An issue closed is not found again and the
   second read costs nothing but the listing; who installs with `!` after a no
   has changed their mind. Entries "start-work runs the install-issues program
   before it reads an issue." and "The ! after a no taken up in the session,
-  point 7 read by the subagent.".
+  point 7 read by the subagent.". The comment names no start, since none
+  happened, and no install typed in the session, since under form B the command
+  ran in a terminal and was typed in no session. Cases: in the run of 29
+  October 2026 under a no the run closed the issue with a comment naming a
+  start that had not happened, entry "Run under a no read off its log, the !
+  after the no taken up at once."; and the block "the comment that closes an
+  install issue inside a session says the install was typed in the session,
+  where the command may have run in another terminal" of `docs/defects.md`,
+  decision (15) of entry "Handover by surface decided, its wordings and blocks
+  recorded", built in entry "A handover follows the surface and the system,
+  read by one program".
 
 ## `shared/install-not-through.md`
 
@@ -4354,15 +4376,26 @@ Nothing in this file stood as history; its rules carry their own reasons.
   defect 2 of entry "Six closing runs read off their logs, each on the defects
   it met."; built in entry "Install rules reach the build subagent, backed by
   kind, run alone.".
-- **The result of a handed-over install is read after the form's signal, with
-  both lines of `devloop-tool-state --installed`.** The folder line says whether
+- **The result of a handed-over install is read after the form's signal — under
+  form A the first of two signs, the answered output or their word, under form
+  B their word — with both lines of `devloop-tool-state --installed`.** The
+  folder line says whether
   the command installed; the search-path line says whether the build and the
   checks can call the tool, since `go install` puts a tool into `~/go/bin`,
   which often stands on no search path. Entry "Every subagent gets the install
   record, the build reads its tools first."; the forms A and B of
   docs/skill-conventions.md under "Every skill carries these two", decided in
   entry "Handovers say where the command is typed, sign-in and identity in
-  steps.".
+  steps.". Why two signs count under form A the point on form A under
+  `shared/skill-name.md` says. This text names the signal at three places,
+  here, at the way of the yes and before a no, three of the six of the block
+  "six places name the command's output in the conversation as the one signal
+  of form A, the person saying nothing, where the first of two signs counts" of
+  `docs/defects.md`; they are built with the rule, since else the rule would
+  name two signs and those places one, decided on 20 November 2026, entry "One
+  entry held, places added to four blocks, a block on form A's signal"; built
+  in entry "A handover follows the surface and the system, read by one
+  program".
 - **Where the folder is off the search path, the run says how to put it there,
   in numbered steps in the order the person can take them.** A text that says
   what to do and not how leaves the person without the way; the person can type
@@ -4388,6 +4421,22 @@ Nothing in this file stood as history; its rules carry their own reasons.
   step name no command.** The person gets the maker's own command, and none the
   guide warns against. Decided as the addition to the rule above in entry
   "Handovers say where the command is typed, sign-in and identity in steps.".
+- **Where the first line says not found, the run says that the command did not
+  do what it was handed over for only where the conversation shows that the
+  command ran to its end, or their word under form B says that it did; where a
+  command typed with `!` did not run to its end, it says what the conversation
+  shows and that the tool is not there yet, and not that the command failed; the
+  same after a no.** Under form A their word can come while the command still
+  runs, after it was interrupted, or with no command typed at all, and a tool
+  that does not stand there then is no failed install; under form B nothing of
+  the command stands in the conversation, and their word says that it ran. Case:
+  the block "under form A the run names a failed install where the command still
+  runs in the background, was interrupted or was never typed" of
+  `docs/defects.md`. Decision (14) of entry "Handover by surface decided, its
+  wordings and blocks recorded", whose four sentences are quoted under
+  `shared/skill-name.md`; built in entry "A handover follows the surface and the
+  system, read by one program", the case after a no and the words on form B with
+  it.
 - **The standing fact of an install is written into `environment.md` by the
   hook, from what the guard read; the run writes no second line.** The guard's
   reading is the one reading. Entry "Milestone 3, part 4, built as the person
@@ -4441,11 +4490,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **After a no, the form's signal in this session releases the run as well; an
   install made another way is read at the next start.** Who installs with `!`
   after a no has changed their mind, and making them type `/devloop:start-work`
-  on top gains them nothing; it fits form A, whose signal is the output. Case:
+  on top gains them nothing; it fits form A, whose first sign releases the run,
+  the answered output or their word, as before a no. Case:
   in the run of 29 October 2026 under a no the person typed `! brew install yq`
   after declining, entry "Run under a no read off its log, the ! after the no
   taken up at once."; decided in entry "The ! after a no taken up in the
-  session, point 7 read by the subagent.".
+  session, point 7 read by the subagent."; the two signs built in entry "A
+  handover follows the surface and the system, read by one program". The
+  comment at the closing after a no names an install during a session and no
+  start, as the point on `--after-install` under
+  `shared/install-issues-read.md` has it.
 - **The handover gives both ways in one message, the yes first, the no second,
   the question last; the issue is written on the no alone.** After a no the
   issue stands until devloop closes it, at once on the command typed with `!`
@@ -4672,11 +4726,27 @@ Nothing in this file stood as history; its rules carry their own reasons.
   who changed the check targets in the second closing run; 12 October 2026, the
   version stays 0.135.0.": „Auto-Merge ist in diesem Repository aus." and „Die
   Prüfungen sind schon durch, deshalb nimmt GitHub keinen Auto-Merge mehr an."
-- **The merge command is typed here in Claude Code with `!` in front, in a code
-  block of its own with the repository named on it; its output in the
-  conversation releases the run, and the landing is read off the platform, never
-  off the output alone.** The command asks nothing, so it needs no second window
-  and the person need say nothing; `gh` resolves the repository from the
+- **The merge command is handed over as every command that asks nothing, by
+  the line `bin/devloop-surface` prints before that handover: typed here in
+  Claude Code with `!` in front under `terminal` and under `desktop`, in the
+  terminal the rule on the forms names under `panel`, `windows` and `unknown`,
+  in a code block of its own with the repository named on it; the form's signal
+  releases the run, and the landing is read off the platform, never off the
+  output alone and never off their word.** The command asks nothing, so where
+  form A holds it needs no second window; where `!` is not there or can run in
+  PowerShell the merge is typed in a terminal as every other command is, since
+  a handover with `!` alone names a way that does not exist there, the block
+  "the merge has no form B: shared/merge-handover.md hands the merge command
+  over with ! alone" of `docs/defects.md`. Under `terminal` the text has them
+  type „fertig“ as at every handover in form A, and where the merge has not
+  landed after the sign the run says what the conversation shows, since their
+  word can come before the command is through; with nobody there the text
+  carries neither that sentence nor the request to say here. The reasons of
+  the forms, of the two signs and of what the run says stand at the points
+  under `shared/skill-name.md`; decisions (8) and (14) of entry "Handover by
+  surface decided, its wordings and blocks recorded", built in entry "A
+  handover follows the surface and the system, read by one program". `gh`
+  resolves the repository from the
   directory it runs in, and nothing says which folder a `!` command runs in.
   Case: in the second closing run of milestone 3, 11 October 2026, the merge
   commands carried nothing that made them run from the person's terminal;
@@ -4695,7 +4765,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
   devloop nur ein, wenn du ihm erlaubst, ohne dich zu arbeiten. Merge ihn hier
   in Claude Code, mit `!` davor:“ — „`! gh pr merge 1 --squash --repo
   jayjay-create/devloop-test-w`“ — „Sobald er drin ist, geht es weiter. Bis
-  dahin passiert hier nichts.“ See docs/skill-conventions.md under "Every skill
+  dahin passiert hier nichts.“ That wording is form A's; by the pattern of
+  decision (8) of entry "Handover by surface decided, its wordings and blocks
+  recorded" it keeps what it says, the sentence that says where the command is
+  typed is exchanged by the situation, under `terminal` „Gib gleich nach dem
+  Befehl „fertig“ ein.“ stands directly before its last sentence, and outside
+  form A the command line stands without `!`, followed by „Sag mir hier
+  Bescheid, sobald der Befehl durchgelaufen ist.“ and the last sentence of the
+  wording; the sentences of the pattern are quoted under
+  `shared/skill-name.md`. See docs/skill-conventions.md under "Every skill
   carries these two".
 - **The merge is handed over in one text, inserted wherever a merge is handed
   over.** Places that each said it in their own words lost what the handover
@@ -4963,24 +5041,201 @@ Nothing in this file stood as history; its rules carry their own reasons.
   `gh auth login --web --git-protocol https`“ — „3. Folge den Anweisungen im
   Terminal und im Browser.“ — „4. Sag mir hier Bescheid, sobald das erledigt
   ist.“ See docs/skill-conventions.md under "Every skill carries these two".
-- **A command the person types while Claude Code runs goes into Claude Code with
-  `!` where it asks nothing, form A, and into a second terminal window where it
-  asks something or does not end by itself, form B; in doubt B; the hooks of
-  devloop do not fire on a `!` command.** Under A the command and its output
-  land in the conversation and the run answers it; a command that asks, or runs
-  until they end it, would hold Claude Code. Decided on 28 October 2026, rule
-  (b) of entry "Handovers say where the command is typed, sign-in and identity
-  in steps."; measured that day on the person's Mac, Claude Code 2.1.312, in
-  `devloop-test-aa` with devloop 0.164.0: `! git -c
+- **Which of the two forms holds for a command the person types while Claude
+  Code runs, and where it is typed, follows from the situation one program
+  reads, the system before the surface: the line of `bin/devloop-surface` stands
+  in the rule from the load of the skill, the run runs the program once more
+  before every handover, and no setting of Claude Code is read for the form.**
+  What works differs by where Claude Code runs: in the graphical panel of the
+  extension for VS Code `!` is not there; under Windows the setting
+  `defaultShell` can have a command typed with `!` run in PowerShell wherever
+  somebody set it so; and in the panel and in the desktop app Claude Code runs
+  in no terminal window. The system goes before the surface, since under Windows
+  one form holds on every surface. The program is run again before a handover,
+  since a conversation can change its surface, `claude --resume` continuing in
+  the terminal a conversation of the panel, as the vendor's VS Code page says; a
+  line at the start of the session alone would be missing where no repository
+  stands, and after a compaction it stands in the summary alone. No setting is
+  read, since `respondToBashCommands` holds in any settings file and of those
+  that stand over the user's file a program can read neither `--settings` nor
+  the settings from the server nor the policies of the system: a reading would
+  be wrong there without a sound. The line carries a third field, `handover:`,
+  with the situation, `windows`, `unknown`, `terminal`, `desktop` or `panel`, so
+  that the derivation stands in one program and not in the rule and in every
+  hook that hands a command over. Cases: the blocks "in the graphical chat panel
+  the extension for VS Code opens with, the ! shortcut is not there, so form A
+  has no place there", "in the local sessions of the desktop app under Windows,
+  where ! runs in PowerShell, the texts hand a command that asks nothing over as
+  form A and nothing reads that the session runs there, where form B holds for
+  every command" and "under Windows a command typed with ! can run in PowerShell
+  in the terminal too, where the texts hand a command that asks nothing over as
+  form A" of `docs/defects.md`. Decisions (1), (3), (5) and point 1 of (8) of
+  entry "Handover by surface decided, its wordings and blocks recorded"; built
+  in entry "A handover follows the surface and the system, read by one program",
+  where the third field and the call through the Bash tool before a handover are
+  decided without a question on 21 November 2026.
+- **Form A, typed in Claude Code with `!` in front, holds for a command that
+  asks nothing under `terminal` and under `desktop` and nowhere else; under
+  `terminal` the text has the person type „fertig“, the word as their language
+  has it, right after the command, in a sentence of its own directly before the
+  last sentence of the handover, and the run goes on from the first of two
+  signs, the answered output or their word; under `desktop` the text carries no
+  such sentence; what the run then reads it reads as before, never off the
+  output alone and never off their word.** Under A the command and its output
+  land in the conversation and Claude Code gives the output to the run to
+  answer, but not on every machine: with `respondToBashCommands` set to `false`
+  the run is not asked, and that setting can come from a source no program
+  reads. A word typed right after the command Claude Code holds until the
+  command is through, so it arrives then with the output in the conversation,
+  whatever the setting says; of the two signs the first counts, and neither is
+  the evidence that the command did what it was handed over for. Cases, measured
+  by the person on 19 November 2026 on their Mac in the terminal, the version of
+  the two not noted and `claude --version` giving 2.1.328 on that Mac that day:
+  under `claude --settings '{"respondToBashCommands": false}'`, after `! sleep
+  2; echo probe` nothing more appeared; and in the same situation, with `! sleep
+  20; echo probe` and „fertig“ typed while the command ran, Claude Code showed
+  „fertig“ as queued and sent it when the command was through, and Claude
+  answered and named the output; measurements (1) and (2) and decision (2) of
+  entry "Handover by surface decided, its wordings and blocks recorded", and the
+  block "with respondToBashCommands set to false the run does not answer the
+  output of a command typed with ! by itself, so the signal of form A does not
+  come" of `docs/defects.md`. In the desktop app the sentence would have the run
+  read too early: measured by the person that day in a local session of the
+  desktop app, Claude Code 2.1.326, a „fertig“ typed while `! sleep 20; echo
+  probe` ran went to Claude at once, Claude read the output file, still empty,
+  and answered „Noch nicht“, and when the command was through Claude spoke a
+  second time by itself, with the output; the desktop page says under "Claude
+  Code settings that behave differently in the Code tab" that Claude responds to
+  the output of such a command "whatever the value"; measurement (5) and
+  decision (12) of that entry. The word is typed as their language has it, since
+  the German word in every language would mix two languages in one message,
+  against `shared/language-opening.md`, "never mix two inside one message";
+  decided without a question on 21 November 2026, entry "A handover follows the
+  surface and the system, read by one program", where the rule is built.
+  Approved wording, (2) of entry "Handover by surface decided, its wordings and
+  blocks recorded", by the example of a check's tool: „Gib den Befehl hier in
+  Claude Code ein, mit `!` davor:“ — „`! brew install gitleaks`“ — „Gib gleich
+  nach dem Befehl „fertig“ ein. Sobald der Befehl durch ist, prüfe ich, dass
+  `gitleaks` da ist, und richte die Prüfung ein.“; and point 2 of the pattern,
+  (8) of that entry: directly before the last sentence, „Gib gleich nach dem
+  Befehl „fertig“ ein.“; in the desktop app not. The approved handover of form A
+  as the places of the skills say it is quoted under `shared/install-tool.md`.
+- **Where what the command was handed over for is not there after the sign, the
+  run says that the command did not do it only where the conversation shows that
+  the command ran to its end; else it says what it sees — the command still in
+  the background, the command interrupted before it ended, no command and no
+  output in the conversation — and a „fertig“ that comes after the run has gone
+  on is answered in one sentence.** Their word can come before the command is
+  through, or with no command typed, and Claude Code does not ask the run to
+  answer a command that was interrupted or sent to the background; a run that
+  named a failure there would claim what it does not know and send the person
+  after a fault that is none. Case: the block "under form A the run names a
+  failed install where the command still runs in the background, was interrupted
+  or was never typed" of `docs/defects.md`. Read in the program of Claude Code
+  2.1.328 on 19 November 2026, entry "Handover by surface decided, its wordings
+  and blocks recorded": Claude is asked to answer only where the setting allows
+  it and the command was neither interrupted nor sent to the background. Read at
+  2.1.329 on 20 November 2026, entry "A handover follows the surface and the
+  system, read by one program": the program has five texts for a command in the
+  background, and which of them a `!` command carries after Ctrl+B is not
+  measured, so the rule quotes none and has the run tell the background by what
+  stands in the place of the output. Under `desktop`, where the handover had
+  them type no word, the run asks them to say here once the command is through,
+  the request of point 3 of the pattern, in the place of the sentence on
+  „fertig“. A `!` command that Claude Code does not start at all has no sentence
+  of its own: the case has never come up and falls under the run saying what it
+  sees, decided without a question on 21 November 2026, the same entry, where
+  the rule is built. Approved wordings, (14) of entry "Handover by surface
+  decided, its wordings and blocks recorded", with what the command was handed
+  over for in the place of the tool: the command in the background, „Der Befehl
+  läuft noch im Hintergrund, `yq` ist noch nicht da. Gib noch einmal „fertig“
+  ein, sobald er durch ist.“; the command interrupted, „Der Befehl wurde
+  abgebrochen, bevor er durch war, und `yq` ist noch nicht da.“, then the same
+  handover once more; nothing of the command in the conversation, „Ich sehe hier
+  keinen Befehl und keine Ausgabe, und `yq` ist noch nicht da.“, then the same
+  handover once more; „fertig“ after the run has gone on already, „`yq` war
+  schon da, ich mache weiter.“
+- **Form B, typed in a terminal and not in Claude Code, holds for a command that
+  asks something under `terminal` and under `desktop` and for every command
+  under `panel`, `windows` and `unknown`, and the place the text names follows
+  the situation: a second terminal window that is not the one Claude Code runs
+  in under `terminal`, a terminal, that of the app for instance, under
+  `desktop`, a terminal, that of VS Code for instance, under `panel`, Git Bash,
+  which the text has them open, under `windows`, and a terminal and nothing more
+  under `unknown`; in doubt B, and B for a command that does not end by
+  itself.** A command that asks, or runs until they end it, would hold Claude
+  Code under A. In the panel `!` is not there, and under Windows a command typed
+  with `!` can run in PowerShell, so every command goes in form B there; and so
+  it does where the surface or the system is unknown, which is every value the
+  program does not know, none of them measured, the place named as a terminal
+  and nothing more. A second terminal window that is not the one Claude Code
+  runs in is the place in a terminal alone: in the panel and in the desktop app
+  Claude Code runs in no terminal window, so that wording meets nothing there.
+  Cases: measured by the person on 19 November 2026 in the graphical panel,
+  opened with "Claude Code: Open in New Tab", the chain of parent processes of a
+  command run there read claude, Code Helper (Plugin), Code, launchd, no shell
+  standing between the panel's Claude Code and the extension host, so that there
+  is no terminal to go back to, measurement (4) of entry "Handover by surface
+  decided, its wordings and blocks recorded"; and the block "the wording of form
+  B, a second terminal window that is not the one Claude Code runs in, stands
+  where Claude Code runs in no terminal too" of `docs/defects.md`. The two forms
+  were decided on 28 October 2026, rule (b) of entry "Handovers say where the
+  command is typed, sign-in and identity in steps."; the place by the situation
+  is decisions (3) and (4) and point 1 of (8) of entry "Handover by surface
+  decided, its wordings and blocks recorded", built in entry "A handover follows
+  the surface and the system, read by one program". In doubt the text names what
+  the command may ask: a reason saying that it asks would claim what the run
+  does not know. The wordings of form B then carry „kann etwas von dir abfragen,
+  etwa dein Passwort“ in place of „fragt nach deinem Passwort“, decided by the
+  person on 1 November 2026, entry "The loaded texts lose their history, reasons
+  move to docs/rationale.md." Approved wordings, (4) of entry "Handover by
+  surface decided, its wordings and blocks recorded", each followed by the
+  command without `!`; where the command asks something, by „Er fragt nach
+  deinem Passwort.“ or by what it asks; then by „Sag mir hier Bescheid, sobald
+  der Befehl durchgelaufen ist.“ and by the last sentence of the wording: the
+  graphical panel of the extension for VS Code, macOS and Linux, „Gib den Befehl
+  in einem Terminal ein, etwa im Terminal von VS Code:“; Windows, every surface,
+  „Öffne Git Bash, das Terminal, das mit Git für Windows kommt, und gib den
+  Befehl dort ein:“; the desktop app, macOS and Linux, for a command that asks
+  something, „Gib den Befehl in einem Terminal ein, etwa im Terminal dieser
+  App:“; the system or the surface unknown, „Gib den Befehl in einem Terminal
+  ein:“. Point 1 of the pattern, (8) of that entry, names the place inside a
+  sentence of an approved wording: for a command that asks nothing, in the
+  terminal and in the desktop app under macOS and Linux, „hier in Claude Code
+  ein, mit `!` davor“; in the graphical panel, „in einem Terminal, etwa im
+  Terminal von VS Code“; under Windows, „Öffne Git Bash, das Terminal, das mit
+  Git für Windows kommt“; the system or the surface unknown, „in einem
+  Terminal“; for a command that asks something, in the desktop app, „in einem
+  Terminal, etwa im Terminal dieser App“, in the terminal the second terminal
+  window as before, the others as for a command that asks nothing. Point 3:
+  outside form A the command line stands without `!` and with `cd <directory>
+  &&` where the command needs the project; where it asks something, under it „Er
+  fragt nach …“; then „Sag mir hier Bescheid, sobald der Befehl durchgelaufen
+  ist.“ and the last sentence of the wording. The approved handover with the
+  second terminal window is quoted under `shared/install-tool.md`.
+- **Several commands of one handover stand as one line, joined by `&&`; where a
+  pronoun could point at two things, the noun stands; with nobody there a
+  handover carries neither the sentence on „fertig“ nor the request to say here
+  once the command is through, and neither does the line under the no in step 8
+  of `setup-checks`; that Claude Code can be set to run a `!` command in
+  PowerShell under macOS or Linux does not count; and the hooks of devloop do
+  not fire on a `!` command.** Handed over as two commands, each with `!`,
+  Claude answers after the first and the run goes on before the second is typed:
+  the block "the identity is handed over as two commands, each with ! in front,
+  so that the run answers after the first and can commit before the address is
+  set" of `docs/defects.md`. A `!` command runs in PowerShell under macOS and
+  Linux only where somebody set the PowerShell tool on and `defaultShell` to
+  "powershell", and counting that would do away with form A everywhere. Points
+  4, 5 and 6 of the pattern, (8), and decision (16), taken without a question,
+  of entry "Handover by surface decided, its wordings and blocks recorded",
+  which gives no reason in words for points 4 and 6; built in entry "A handover
+  follows the surface and the system, read by one program". That the hooks do
+  not fire was measured on 28 October 2026 on the person's Mac, Claude Code
+  2.1.312, in `devloop-test-aa` with devloop 0.164.0: `! git -c
   user.email=probe@example.invalid status` ran and showed git's state, a command
   the identity guard blocks when the run calls it, and Claude answered the
-  output by itself. The approved handover in both forms is quoted under
-  `shared/install-tool.md`. In doubt the text names what the command may ask: a
-  reason saying that it asks would claim what the run does not know. The
-  wordings of form B then carry „kann etwas von dir abfragen, etwa dein
-  Passwort“ in place of „fragt nach deinem Passwort“, decided by the person on 1
-  November 2026, entry "The loaded texts lose their history, reasons move to
-  docs/rationale.md."
+  output by itself; rule (b) of entry "Handovers say where the command is typed,
+  sign-in and identity in steps.".
 
 ## `shared/status-forms.md`
 

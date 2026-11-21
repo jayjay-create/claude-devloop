@@ -964,8 +964,10 @@ app and `cli` in the terminal, in the terminal of VS Code and in the
 extension with "Use Terminal", on every way a text of devloop reaches the
 model, a hook, an insert line, a command run with `Bash`; the variable is
 the vendor's, undocumented, and compared in the program of Claude Code
-2.1.319 and 2.1.321; nothing is built on it yet, and the desktop app under
-Windows is not measured.
+2.1.319 and 2.1.321; since 21 November 2026 `bin/devloop-surface` reads it,
+the second part of (4), below, where until that day this sentence said that
+nothing was built on it yet; and the desktop app under Windows is not
+measured.
 Decided on 9 November 2026 by the person, the same entry: devloop does not
 reach cloud sessions, the cloud threads of a project included; `README.md`
 says that devloop runs where Claude Code runs on the person's own computer —
@@ -1027,7 +1029,32 @@ handover by surface adds: in the run under Windows with Git Bash in the
 terminal a command handed over in form B, in Git Bash; on the person's Mac in
 the terminal form A once with `respondToBashCommands` set to `false` and once
 with the setting as it stands by default; and the steps for the PATH once in
-the graphical panel and once in the desktop app.
+the graphical panel and once in the desktop app;
+and, since 21 November 2026, by the roadmap entry of that date on the program
+that reads the surface and the system, what the second part of (4) built and
+only a session with the model on its surface shows: the rule on the forms as
+the loaded texts carry it — the form and the place by the line
+`bin/devloop-surface` prints before a handover, the word typed right after a
+command in form A in the terminal and no such word in the desktop app, the
+first of the two signs, what the run says where the command did not run to its
+end, the merge handed over by the situation —, the things of
+`shared/skill-name.md`, `shared/merge-handover.md` and `shared/install-tool.md`
+that no run of that part counts for, and with them the four blocks of this
+milestone on the merge without form B, on the failed install under form A, on
+the six places of the signal of form A and on the identity handed over as two
+commands; and whether Claude Code asks for permission where the run calls
+`bin/devloop-surface` before a handover outside auto mode, which is not
+measured;
+and, since the corrections of the merge of that part, of the same day and in
+the same entry, what the job hooks on every system does not show under
+Windows: in the run under Windows with Git Bash the messages of the merge
+guard, the identity guard, the install guard and the Stop hook, each on the
+path on which it hands over and read whole — the request to say here once
+the command is through and their word as what releases, which the eight
+cases of the job do not read, a case reading the exit, the place, the command
+line and the word typed after the command —, the four things on those
+messages under `windows`; and the line `bin/devloop-text` puts into the rule
+there, which no step of the job runs.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1273,7 +1300,9 @@ form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
 fewer; the first and the third carry their Fix since (3) built them, below.
-Of (4) to (7) nothing is built yet. Since 18 November 2026, by the
+Of (4) the second of its three parts is built, since 21 November 2026, below,
+and the third is not; of (5) to (7) nothing is built yet. Since 18 November
+2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
 a file of the project to a case of the last step of the job hooks on every
@@ -1327,6 +1356,47 @@ of io carries at 3.15.2. The job hooks on every system runs the guard where
 D:\a\proj and proj, on all four systems; under Windows its first run is the
 pull request of that order. The block on the line of an install handed to
 awk through -v and the three of the order before (3) stay with (5).
+Since 21 November 2026 the second of the three parts of (4) is built, the
+roadmap entry of that date on the program that reads the surface and the
+system, by the decisions of 19, 20 and 21 November 2026 below:
+`bin/devloop-surface` reads the surface off `CLAUDE_CODE_ENTRYPOINT` and the
+system off `uname -s` and prints one line that names both and the situation
+the forms go by, the system before the surface; `bin/devloop-text` puts that
+line into the rule on the two forms of a handover in `shared/skill-name.md`
+when a skill loads, and the rule has the run run the program once more before
+every handover and reads no setting of Claude Code; the rule gives form A
+under macOS and Linux in the terminal and in the desktop app and nowhere else,
+in the terminal with the sentence that has the person type „fertig“ right
+after the command, the first of two signs counting, and form B with the place
+the situation has everywhere else; it says what the run says where the command
+did not run to its end, by (14); `shared/merge-handover.md` hands the merge
+over by that line; the four hooks that hand a command over call the program on
+the path on which they hand over and name the form, the place and the signs of
+the situation in their messages, the identity guard handing the identity over
+as one line, by (9); `bin/devloop-install-issues` closes an issue after an
+install during a session with the comment of (15); the comment of
+`hooks/subagent-start-install.sh` names three lines; and the six places of the
+block on the signal of form A name the two signs. The job hooks on every
+system runs the self-test of `bin/devloop-surface` with the others and, by the
+decision of 21 November 2026 below, each of the four hooks on the path on
+which it hands over, twice, on all four systems; under Windows its first run
+was at the pull request of that part, run W1 of that entry, read off the
+job's log at the merge, green on 21 November 2026, all eight ending with 2
+and naming Git Bash. Of the nine blocks of this milestone that
+part builds, four are walked by its runs, on the messages of the merge guard,
+the identity guard and the Stop hook and on the comment at the closing, the
+one on the comment of `hooks/subagent-start-install.sh` is closed as corrected
+in the document, and four wait for the closing runs, named above where the
+milestone ends. The five blocks both parts build keep Fix none, by the
+decision of 20 November 2026 below: on `respondToBashCommands`, on the
+graphical panel, on the desktop app under Windows, on PowerShell under Windows
+and on the wording of form B. The third part is not built: the wordings by the
+pattern at every other place that hands a command over, the steps for the
+PATH, the issue and step 4 of `setup-checks`; until it is, the rule names the
+place by the situation and those places name the one of 28 October 2026, on
+every surface, the rule standing over them in every skill.
+Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
+built yet.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
 that "the guard for PowerShell and the rest of this milestone stand as
 before", which holds no more since (1), (2) and (3) are built, and of what (2)
@@ -1684,7 +1754,8 @@ five steps in a terminal that is not VS Code's, six in the terminal of VS
 Code, by (6), and four in the graphical panel, where VS Code is quit entirely
 and opened again from its program symbol. devloop puts in the folder, the file
 of the shell and the project's folder itself, as `shared/install-tool.md`
-reads them, lines 44 to 53. What the steps in the panel rest on, read at the
+reads them, from its sentence that opens "The shell is read off" on. What the
+steps in the panel rest on, read at the
 code of the extension 2.1.327 and of VS Code 1.145.2 and not measured, stands
 in that entry.
 
@@ -1702,7 +1773,8 @@ the PATH in the desktop app, under Windows and on a surface devloop does not
 know, approved. Under Windows one line typed in Git Bash enters the folder
 into the `PATH` of the Windows account through `powershell.exe`, and it takes
 the place of the reading of a command in the maker's guide,
-`shared/install-tool.md` lines 53 to 63, which stays for another shell, fish
+`shared/install-tool.md` in its sentence that opens "For a shell the run has no
+sure form for", which stays for another shell, fish
 say. Not chosen: the ways by clicks through the settings of Windows and of the
 app, since they change with updates. Not measured: that line under Windows, of
 which only this is checked, that bash hands the text between its single quotes
@@ -1718,15 +1790,16 @@ over for it says only where the conversation shows that the command ran to its
 end, and else it says what it sees — the command still running in the
 background, the command interrupted, nothing of the command in the
 conversation, and a „fertig“ after the run has gone on already. It rests on
-this: by the rule the texts carry today the run names a failure in the first
-three, the block of this milestone on it.
+this: by the rule the texts carried until the second part of (4) the run named
+a failure in the first three, the block of this milestone on it.
 
 Decided on 20 November 2026 by the person, the same entry, (15): the comment
 with which `bin/devloop-install-issues` closes an issue after an install
 during a session reads "devloop closed this issue after an install during a
 session, the tool standing on this machine now: <the line>"; the comment at a
-start stays. It rests on this: the comment of today names an install typed in
-the session, also where the command ran in another terminal.
+start stays. It rests on this: until the second part of (4) the comment named
+an install typed in the session, also where the command ran in another
+terminal.
 
 Decided on 19 November 2026 without a question, by the rule that nothing is
 asked where one way carries a great disadvantage and the other none, and
@@ -1777,6 +1850,26 @@ close of the steps for the PATH for a check class's tool and for the folder
 line read at a start, taken over from (11) of the entry on the handover by
 surface. Reason: the wordings of 28 October 2026 there do not explain the PATH
 either, which is why (11) was worded anew.
+
+Decided on 21 November 2026 by the person, the roadmap entry of that date on
+the program that reads the surface and the system: the step of the job hooks
+on every system that starts the handlers runs each of the four hooks that hand
+a command over on the path on which it hands over, twice, without
+`CLAUDE_CODE_ENTRYPOINT` and with it set to `cli`, on all four systems. Reason:
+the hooks change with the second part of (4); what their messages say of where
+a command is typed was read on no system of the job until then, and under
+Windows the job showed of it the self-test of `bin/devloop-surface` alone; and
+the step feeds the guard on the mark so already, with an input of its own
+after the handlers. Not chosen: a block for it alone, the closing runs of
+order (7) walking the paths under Windows. Built with the second part of (4),
+the block of this milestone on that step walked by a run of that part on the
+person's Mac; under Windows the job ran the eight cases first at the pull
+request of that part, run W1 of that entry, green on 21 November 2026. A case
+reads of a message the exit, the words on the place, the command line and
+the word typed after the command, so that the four things on the messages
+under Windows, whose names name the request to say here or their word as
+well, wait for the closing runs of order (7) all the same, above where the
+milestone ends.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
