@@ -166,19 +166,25 @@ command that asks nothing — `brew install`, `git config`, the merge: it
 is typed in Claude Code with `!` in front, the text
 says so and gives the line with the `!`, `! brew install yq`. Claude Code
 runs it and puts the command and its output into the conversation, and the
-run answers that output: the person says nothing, the output in the
-conversation is the signal the run goes on from, and what the run then
+run answers that output; as decided that day the person said nothing and
+the output in the conversation was the one signal the run went on from,
+and since 21 November 2026 the run goes on from the first of two signs,
+below; what the run then
 reads — the folder the installer writes to and the search path, the pull
 request's state — it reads as before, never off the output alone. Form B,
 a command that asks something — a sign-in, a password for `sudo`: it is
-typed in a second terminal window, the text says expressly that it is not
-the window in which Claude Code runs, names what the command asks, and
+typed in a terminal and not in Claude Code — as decided that day in a
+second terminal window, the text saying expressly that it is not the
+window in which Claude Code runs, which since 21 November 2026 is the
+place in the terminal under macOS and Linux alone, below —, the text
+names what the command asks, and
 asks them to say here once it is through; their word is the signal, and
 what the run reads after it, it reads as before. Where the run does not
 know for certain whether a command asks, B holds, and the text names what
 it may ask, decided by the person on 1 November 2026. A command that does
 not end by itself — a server a prototype needs — would hold Claude Code
-under A and goes to the second window as B, the reason named being that it
+under A and goes as B, to the second window until 21 November 2026 and
+since then to the place form B names, the reason named being that it
 runs until they end it. Under either form the command carries everything
 it needs, `--repo OWNER/REPO` and `cd <directory> &&`, by the rule on a
 command handed over, since the vendor's page says nothing of the folder a
@@ -197,7 +203,9 @@ it; so the hooks of devloop do not fire on a `!` command, and Claude
 answered the output by itself. A hook that is to see a command of the
 person sees it under A as little as in their own terminal. Two limits,
 recorded in the roadmap entry of 28 October 2026 on the handover steps and
-not built: with `respondToBashCommands` set to `false` in `settings.json`
+not built until 21 November 2026, when the rule came to answer the first
+with the sentence on „fertig“ and the second with form B in the panel,
+below: with `respondToBashCommands` set to `false` in `settings.json`
 the run does not answer by itself under A, the same page; and in the
 graphical chat panel the extension for VS Code opens with, `!` is not
 there — the page `code.claude.com/docs/en/vs-code`, table "VS Code
@@ -215,9 +223,9 @@ a `!` command runs in PowerShell, form B holds for every command; in the
 desktop app under macOS and Linux both forms hold as in the terminal,
 since a `!` command runs there in the login shell and Claude answers its
 output, the desktop page under "Claude Code settings that behave
-differently in the Code tab". The texts say form A on every surface today,
-and the blocks of milestone 12 in `docs/defects.md` hold them to the
-decision; `docs/plan.md` carries the decisions under milestone 12.
+differently in the Code tab". Until 21 November 2026 the texts said form A
+on every surface, and the blocks of milestone 12 in `docs/defects.md` held
+them to the decision; `docs/plan.md` carries the decisions under milestone 12.
 Decided by the person on 19 and 20 November 2026, the roadmap entry of 20
 November 2026 on the handover by surface: devloop reads no setting of Claude
 Code to choose the form. Form A in the terminal under macOS and Linux
@@ -239,11 +247,46 @@ off `CLAUDE_CODE_ENTRYPOINT` and the system off `uname -s`;
 hooks that hand a command over call it, and the run runs it once more before
 a handover. Every approved wording changes by the pattern of those
 decisions: it keeps what it says, and the sentence that says where the
-command is typed is exchanged by the situation. None of this is built: the
-texts say today what the sentences above say of form A and of form B, on
-every surface and every system, the person saying nothing under A, and the
-blocks of milestone 12 in `docs/defects.md` hold them to these decisions;
-`docs/plan.md` carries them under milestone 12, (1) to (18). The wordings
+command is typed is exchanged by the situation. Built since 21 November
+2026, the roadmap entry of that date on the program that reads the surface
+and the system, the second of the three parts of order (4) of milestone 12
+in `docs/plan.md`: the program is `bin/devloop-surface`, and it prints one
+line, `surface: SURFACE | system: SYSTEM | handover: HANDOVER`, whose third
+field names the situation the forms go by, the system before the surface —
+`windows`, `unknown`, `terminal`, `desktop` or `panel`; the rule in
+`shared/skill-name.md` carries that line from the load of the skill, has
+the run run the program once more before every handover, and says the two
+forms and the place of form B by the situation, the sentence on „fertig“
+under `terminal`, the word as their language has it, decided without a
+question on that day, the two signs, and what the run says where the
+command did not run to its end: that the command did not do what it was
+handed over for only where the conversation shows that it ran to its end,
+and else what it sees, the command still in the background, interrupted,
+or nowhere in the conversation; `shared/merge-handover.md` hands the merge
+over by the same line, in form B under `panel`, `windows` and `unknown`;
+the six places that named the output as the one signal of form A name the
+two signs, `shared/skill-name.md`, `shared/install-tool.md` at three
+places, `skills/setup-checks/SKILL.md` and `skills/setup-project/SKILL.md`;
+and the four hooks that hand a command over, the install guard, the merge
+guard, the identity guard and the Stop hook, call the program on the path
+on which they hand over and name the form, the place and the signs of the
+situation in their messages, a line that does not come or has another form
+read as `unknown`. Not built, the third part of that order building it:
+the wordings by the pattern at every other place that hands a command over
+— the way of the yes in `shared/install-tool.md` and its sentences after a
+no, `skills/build-work/SKILL.md` step 3, `skills/setup-checks/SKILL.md`
+steps 3 and 8, `skills/setup-project/SKILL.md` step 1,
+`skills/diagnose-bug/SKILL.md`, `skills/build-prototype/SKILL.md` with its
+`LOGIC.md`, `shared/fetch-three-times.md`, `shared/install-issue.md` and
+`shared/install-issues-read.md` —, the steps for the PATH, the issue and
+step 4 of `setup-checks`. Between the two parts those places say what the
+sentences above say of form A and of form B as decided on 28 October 2026,
+with `!` where the command asks nothing and in a second terminal window
+where it asks, on every surface and every system; the rule stands over
+them in every skill, and the blocks of milestone 12 in `docs/defects.md`
+hold them to these decisions; `docs/plan.md` carries the decisions under
+milestone 12, (1) to (18). Until 21 November 2026 this paragraph said that
+none of this was built. The wordings
 the person approved for the handovers stand in the roadmap entry of 28
 October 2026 on the handover steps and, those of 19 and 20 November 2026, in
 the entry of 20 November 2026 on the handover by surface; a skill says what
@@ -280,7 +323,8 @@ program's output in its place, so the text is in the skill on every route the
 skill is loaded by — typed, through the Skill tool, from a subagent — and is
 never fetched by the model. `bin/devloop-text` is a POSIX sh program in this
 plugin: it takes one name made of lower-case letters, digits and hyphens,
-prints `shared/<name>.md` found relative to its own location, and exits 2 on
+prints `shared/<name>.md` found relative to its own location, with the two
+replacements the next two paragraphs name, and exits 2 on
 any other name and on a missing file, which aborts the load out loud rather
 than leaving a rule out quietly. The measurement this rests on is under
 "Environment constraints, measured", and with its runs in
@@ -297,6 +341,21 @@ plugin — `shared/fetch-three-times.md` names `bin/devloop-bounded` — writes
 the model either way. `scripts/devloop-expand` prints the path as a session
 receives it; the check over copies under "Before a handover, run these" reads
 the files under `shared/` as they stand, so nothing there changes.
+
+**The program replaces `${DEVLOOP_SURFACE}` in what it prints** by the line
+of `bin/devloop-surface`, the program beside it, which reads the surface of
+Claude Code and the system the load runs on: since 20 November 2026, as its
+head has it, the roadmap entry of 21 November 2026 on the program that reads
+the surface and the system, by decision (5) of the roadmap entry of 20
+November 2026 on the handover by surface. One text carries the word,
+`shared/skill-name.md` in its rule on the two forms of a handover, and
+`bin/devloop-surface` is started for a text that carries it and for no
+other, so that every other text comes out as it did. Where that program
+prints no line, more than one, a line of another form or ends with an error,
+the line that stands there reads `surface: unknown | system: unknown |
+handover: unknown`, which the rule reads as form B in a terminal, and the
+load is not aborted for it. `scripts/devloop-expand` prints the line for the
+surface and the system it runs on.
 
 **A shared file is a body, not a section.** Headings, and the `---` before the
 closing language block, stay in the skill; the file holds what stood under
@@ -4476,16 +4535,28 @@ get added as they are coined, and a line disappearing from this output is read a
 a question rather than as progress.
 
 **Two forms now come out of this check, and the boundary between them is what a
-reader has to see, or they will rewrite one into the other.** Their word is
-always what releases the run — nothing else can say they are done — so a line
-resuming on it is not by itself the defect. **What their word may not be is the
+reader has to see, or they will rewrite one into the other.** What releases
+the run is the signal of the handover's form: their word, and since 21 November
+2026, for a command typed with `!` under form A, the first of two signs, the
+answered output of the command or their word, as "Where the person types a
+command devloop hands them" above has it — so a line
+resuming on it is not by itself the defect. Until that day this sentence read
+that their word is always what releases the run, nothing else being able to say
+they are done. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
-the word releases it and the outcome decides; where what is being waited for is a
+the signal releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
 and resuming on it is the only possible form rather than a defect. Today's seven
 lines fall out like this — seven lines over six sites since 28 October 2026,
 when `setup-checks` step 3 came to say, beside its handover, what the run
-reads once a form A command has run, and matches on two lines; six over six
+reads once a form A command has run, and matches on two lines, counted again
+on 21 November 2026 after the second part of order (4) of milestone 12, the
+roadmap entry of that date on the program that reads the surface and the
+system, which left the count as it was, the line of `shared/merge-handover.md`
+reading since then that this picks up as soon as the form's signal comes, and
+to be counted anew with the third part of that order, which writes the wordings
+by the pattern at `setup-checks` step 3, at the way of the yes in
+`shared/install-tool.md` and in `shared/fetch-three-times.md`; six over six
 from 16 to 28 October 2026, nine over eight until 16
 October 2026, when the three merge handovers became the one text of
 `shared/merge-handover.md`, which this check reads once, in the shared file,
@@ -4497,15 +4568,25 @@ where the main branch cannot be fetched or fast-forwarded:
 
 - **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
   install: the tool is at the path that installer writes to, or the command did
-  not do what it was handed over for. This is the only line phrased "picks up
+  not do what it was handed over for — which the run says, since 21 November
+  2026, only where the conversation shows that the command ran to its end or
+  their word under form B says that it did; where a command typed with `!` did
+  not run to its end, it says what the conversation shows and that the tool is
+  not there yet. This is the only line phrased "picks up
   once", and it is the one the rewrite was for.
 - **The outcome is read, elsewhere.** The merge handover, the one line
   `shared/merge-handover.md` carries into `build-work` step 6, `setup-checks`
   step 7 and `setup-project` step 8 since 16 October 2026, and the
-  diverged-base handover in `build-work` step 1. Their word releases the run;
+  diverged-base handover in `build-work` step 1. The form's signal releases
+  the run — for the diverged base their word; for the merge, since 21 November
+  2026, under form A the first of two signs, the answered output or their
+  word, and under form B their word, where from 28 October 2026 the shared
+  text had the output in the conversation release it and this sentence read
+  "Their word releases the run" —;
   whether the merge landed is then a query like any other under "Never assert
   state — query it", which the shared text says outright — `MERGED` with a
-  time in it, read off the platform and never off their word — and
+  time in it, read off the platform, never off the output alone and never off
+  their word — and
   `setup-checks` says in the clause before its insert line, "do not go on to
   the next step on top of an unmerged suite". **These stay exactly as they
   are.** Rewriting them into the install's form would put the reading in the
@@ -4514,8 +4595,10 @@ where the main branch cannot be fetched or fast-forwarded:
   step 3 hands over under a record that says no or was never written — since
   21 October 2026 on the first answer of the question it puts there, that
   they install it themselves — whose
-  outcome its step 3 reads off the path the installer writes to after their
-  word, a tool standing there taking the class into step 4 and one not
+  outcome its step 3 reads off the path the installer writes to after the
+  form's signal — their word, and since 21 November 2026 under form A the
+  first of two signs, the answered output or their word —, a tool standing
+  there taking the class into step 4 and one not
   standing there putting the same question again, until the check is chosen
   off or the tool stands there, since the check of the branch of 21 October
   2026; until then the text of that day left the class `skipped (user)` on
