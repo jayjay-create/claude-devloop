@@ -275,11 +275,16 @@ read as `unknown`. Not built, the third part of that order building it:
 the wordings by the pattern at every other place that hands a command over
 — the way of the yes in `shared/install-tool.md` and its sentences after a
 no, `skills/build-work/SKILL.md` step 3, `skills/setup-checks/SKILL.md`
-steps 3 and 8, `skills/setup-project/SKILL.md` step 1,
+steps 3 and 8 and its section "A guard's block is not a decline",
+`skills/setup-project/SKILL.md` step 1,
 `skills/diagnose-bug/SKILL.md`, `skills/build-prototype/SKILL.md` with its
 `LOGIC.md`, `shared/fetch-three-times.md`, `shared/install-issue.md` and
-`shared/install-issues-read.md` —, the steps for the PATH, the issue and
-step 4 of `setup-checks`. Between the two parts those places say what the
+`shared/install-issues-read.md` —, the steps for the PATH, the issue,
+step 4 of `setup-checks` and, decided on 21 November 2026 by the person, the
+roadmap entry of 22 November 2026 on the one entry held, a case of the job
+hooks on every system that runs `bin/devloop-text skill-name` on all four
+systems and holds the line the program puts into the text.
+Between the two parts those places say what the
 sentences above say of form A and of form B as decided on 28 October 2026,
 with `!` where the command asks nothing and in a second terminal window
 where it asks, on every surface and every system; the rule stands over
@@ -1000,7 +1005,9 @@ and why, in the person's language, and hands nothing over on a thing
 nobody read. The planning
 calls it before it says anything of a tool, `plan-work` Stage 1; the build
 calls it with `--build` before the build subagent starts, `build-work` step
-3, and after the person's word on a handed-over command with `--installed`,
+3, and after the signal of the handover's form on a handed-over command,
+under form A the first of two signs, the answered output or their word, and
+under form B their word, with `--installed`,
 which since 28 October 2026 prints the folder line and then the search-path
 line, since a command can have installed into a folder the search path does
 not reach; and at every start `bin/devloop-install-issues` reads, for every
@@ -1566,7 +1573,21 @@ the question after a refusal feeds the install guard a counted refusal under
 25 October 2026 feeds the guard on the mark a write of the mark in auto mode,
 `gh` a stand-in that refuses every call at once, and is red unless the guard
 blocks it naming conditions 1, 2, 5, 6 and 7, since 5 November 2026 the record
-of the answer to whether work may run there with nobody there before them — the
+of the answer to whether work may run there with nobody there before them,
+since 18 November 2026 feeds the guard on the PowerShell tool a call as well,
+the roadmap entry of that date on the guard for the PowerShell tool, and is
+red unless the guard turns it down where `docs/agents/` stands and lets it
+through where none stands, and since 21 November 2026 runs each of the four
+hooks that hand a command over on the path on which it hands over, twice,
+without `CLAUDE_CODE_ENTRYPOINT` and with it on `cli`, the roadmap entry of
+that date on the program that reads the surface and the system, and is red
+where one of the eight does not end with 2 or its message does not name the
+place its situation has; and since 17 November 2026 the job ends on a second
+step, the roadmap entry of that date on a project's files read with CRLF as
+with LF, which reads every place of the hooks, the programs and the loaded
+texts that takes a file of the project apart with the file at LF, with CRLF
+from a checkout under `core.autocrlf=true` and with CRLF committed, and
+reaches the three calls of awk the step before it does not reach — the
 fourth and fifth addenda of the entry on the command reader carry the
 command, and the audit of 14 October 2026 read the setting off the
 platform.
@@ -4469,9 +4490,19 @@ adds to `docs/roadmap.md`, and `GITHUB_WORKSPACE`, `RUNNER_OS` and
 `RUNNER_TEMP` as the runner sets them; it leaves out the two steps that
 describe the runner, "what the checkout holds" and the Alpine step, a step
 with `uses:` and no `run:`, and runs a step under an `if:` not at all and
-says so, red. So the tool, its self-test, the hooks step with every self-test
+says so, red. So the tool, its self-test, the step that holds the hooks to
+reading their input through the reader and the handlers to blocking on
+failure and to carrying no `if` field, with the reader's
+self-test, the hooks step with every self-test
 under `bin/`, since 31 October 2026 the self-test of this program among
-them, and every handler, since 17 November 2026 the step on line endings, the
+them, every handler once with a harmless input of its event, the install
+guard under `PermissionDenied` with a counted refusal, the guard on the mark
+blocking a write of the mark in auto mode, GitHub answered by a stand-in,
+since 18 November 2026 the guard on the PowerShell tool turning a call down
+where `docs/agents/` stands and letting it through where none stands, and
+since 21 November 2026 each of the four hooks that hand a command over on the
+path on which it hands over, without `CLAUDE_CODE_ENTRYPOINT` and with it on
+`cli`, since 17 November 2026 the step on line endings, the
 two README steps, since 1 November 2026 the step on the dates of the loaded
 texts, since 18 November 2026 the step that holds every line that reads a
 file of the project to a case of the step on line endings or to its not
