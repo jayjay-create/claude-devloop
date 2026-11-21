@@ -11446,12 +11446,15 @@ and for the proofs of closings.
   `skills/setup-project/SKILL.md`; and a step of the job hooks on every system
   in `.github/workflows/stock-take.yml`. Nothing under `scripts/` or
   `output-styles/` changes, and `README.md` does not. On `task/handover-forms`,
-  off `origin/main` at `d459ec9`, in three commits: the code with the version,
+  off `origin/main` at `d459ec9`, in four commits: the code with the version,
   raised once, `5b9c822`, built on 20 November 2026 and corrected on 21
   November 2026 before the second commit; the blocks, the table and this entry
-  as far as the build goes; and the runs, measured at the second, with
+  as far as the build goes; the runs, measured at the second, with
   `docs/rationale.md`, `docs/skill-conventions.md`, `docs/plan.md` and the rest
-  of this entry. The order: the second of the three parts of order (4) of
+  of this entry; and the corrections of the merge, which change no code, the
+  runs of the job read off its log and written into the table, the blocks,
+  this entry and `docs/plan.md`. The order: the second of the three parts of
+  order (4) of
   milestone 12 in `docs/plan.md`, the handover by surface — the program that
   reads the surface and the system, the rule on the forms with „fertig“ and
   with what the run says where the command did not run to its end, the four
@@ -11465,11 +11468,17 @@ and for the proofs of closings.
   one thing with its runs, closed one block and wrote the runs into the table,
   the blocks and this entry; the fourth brought `docs/rationale.md`,
   `docs/skill-conventions.md` and `docs/plan.md` in line with the build, wrote
-  the last paragraph of this entry and took both into the third commit. The
+  the paragraph of this entry on the other documents and took both into the
+  third commit. An order at the merge, given once the checks of the pull
+  request had run, read the log of the job, wrote its runs into the table and
+  the blocks and the two last paragraphs of this entry, and made the fourth
+  commit. The
   reading list of the second of them: 220769 bytes by `wc -c` over its ranges,
   the order's figure, counted again; of the third: 176163 bytes, the order's
   figure, counted again; of the fourth: 142249 bytes, the order's figure,
-  counted again. In the second, the third and the fourth no subagent was used
+  counted again; of the order at the merge: 50105 bytes, the order's figure,
+  counted again. In the second, the third and the fourth and in the order at
+  the merge no subagent was used
   and no session log was read; nothing was installed outside throwaway
   directories,
   and in a throwaway container of alpine:3.22 bash, git and python3 alone; the
@@ -11629,9 +11638,12 @@ and for the proofs of closings.
   alpine:3.22, bash 5.2.37 and BusyBox 1.37.0, the program, its self-test,
   `bin/devloop-text` and the whole step of the job with its eight cases: green.
   On macOS the eight cases take under a second; with the expectation for
-  Windows set there, all eight are red and each prints its message. Open, since
-  only the job shows it: the self-test of `bin/devloop-surface`,
-  `bin/devloop-text` and the eight cases under Windows with Git Bash. The runs
+  Windows set there, all eight are red and each prints its message. Open at
+  that point, under Windows with Git Bash: the self-test of
+  `bin/devloop-surface` and the eight cases, which the job showed at the merge,
+  run W1 below, and `bin/devloop-text`, which no step of the job runs on any
+  system, so that the closing runs of order (7) show it there; until the merge
+  this sentence named all three as what the job alone shows. The runs
   below, of 21 November 2026 at the second commit, measure again what the Mac
   and that container show without a stand-in for `uname`: the program,
   `bin/devloop-text`, the four hooks in four situations and the eight cases.
@@ -11833,7 +11845,9 @@ and for the proofs of closings.
   situation; the message of each of the four hooks in each of the five
   situations; and the eight cases of the job, on three systems, under Windows
   and red. With the second commit none had a run; since the third, 38 of them
-  have one that counts and 30 wait, the paragraphs on the runs below.
+  have one that counts and 30 wait, the paragraphs on the runs below; since the
+  fourth, 39 and 29, the thing on the eight cases under windows-latest walked
+  by run W1 of the job.
 
   **The runs**, at the second commit of the branch, `07aec33`, under 0.192.0,
   the tree clean, on 21 November 2026 in UTC, before the third commit changed a
@@ -11996,7 +12010,8 @@ and for the proofs of closings.
   2026 on the guard for the PowerShell tool counted, on the Mac, for the thing
   on the install guard's walk at a path in the form of Windows; what such a
   case does not show is the program under Git Bash itself, where the job on
-  windows-latest runs the self-test. S2 stands on the red self-test. A1 stands
+  windows-latest runs the self-test, run W1 below. S2 stands on the red
+  self-test. A1 stands
   on five of those things too, under Linux with the system's own `uname`: the
   one line, the surface `terminal`, `system: linux`, the handover `terminal`
   and the green self-test. T1 stands on the two new things of
@@ -12010,8 +12025,9 @@ and for the proofs of closings.
   reads in it, and on the two older blocks on the install guard's message, D6,
   and on the identity guard's, D3, the second by the "should:" of its Note. Of
   the five situations the Should of the first three names, H1 shows four; the
-  situation under Windows it does not show, and the job on windows-latest runs
-  it at the merge. M1 stands on the green thing of the eight cases and on the
+  situation under Windows it does not show, and the job on windows-latest ran
+  it at the merge, run W1 below, which stands on those three blocks for it. M1
+  stands on the green thing of the eight cases and on the
   block on the step that ran none of the four hooks on the path on which it
   hands over; A1 on that green thing too; M2 on the red thing. No run under a
   stand-in for `uname` stands on a thing of a hook or on a block: the names of
@@ -12021,8 +12037,17 @@ and for the proofs of closings.
   much.
 
   **Without a run**, and why. The four things on the hooks' messages under
-  `windows` and the thing on the eight cases under windows-latest: the job on
-  windows-latest runs them at the merge. The things of the loaded texts —
+  `windows`: the job on windows-latest ran the four messages at the merge, run
+  W1 below, and a case of it reads of a message the exit, the words on the
+  place, the command line and the word typed after the command, and prints the
+  message only where the case is red; the names of the four things name
+  besides what a case does not read, the request to say here once the command
+  is through or their word as what releases, so that the run counts for none
+  of them, and they wait for the closing runs of order (7) under Windows with
+  Git Bash. Until the merge this paragraph named with them the thing on the
+  eight cases under windows-latest, which W1 walks, and said of the five that
+  the job on windows-latest runs them at the merge. The things of the loaded
+  texts —
   nineteen of `shared/skill-name.md`, five of `shared/merge-handover.md`, one
   of `shared/install-tool.md` and the three renamed — and the three blocks
   whose Fix stands in a loaded text, on the merge without form B, on the failed
@@ -12138,6 +12163,116 @@ and for the proofs of closings.
   what the third leaves to the closing runs alone. Left as the decisions they
   are: lines 948 to 950 and 986 to 988, of 9 November 2026, and (17), lines 1738
   to 1752, with the three parts. `README.md`: no sentence.
+
+  **The runs of the job**, of 21 November 2026 in UTC: run 44905139091 of the
+  checks of pull request #260, on the merge ref of `a2f42db` into `d459ec9`,
+  `e295e87`, whose tree is that of `a2f42db`, main not having moved since the
+  branch point, version 0.192.0, green in all five jobs, read off the log at
+  the merge without its carriage returns and without the time before each
+  line. Two jobs of hooks on every system are entered as runs.
+
+  Run W1, the job on windows-latest, job 136848988008: in the step "what the
+  checkout holds" `uname -a` opened with MINGW64_NT-10.0-26100, the runtime
+  3.6.10-5a1665c8, with bash 5.3.15, GNU Awk 5.4.1, git 2.56.1.windows.1 and
+  Python 3.12.10, no pgrep on PATH, `core.autocrlf` true, and the reader and
+  the install guard with LF in the index and in the working tree. In the hooks
+  step, under "== devloop-surface --self-test", 34 lines ok and "SELF-TEST
+  PASSED: 34 cases": the 32 cases in which a stand-in answers `uname -s`,
+  among them the five "Windows with Git Bash", one for each surface, "MSYS:
+  windows", "CYGWIN: windows" and "Windows_NT: windows"; the one with an empty
+  directory as the search path; and the last, "no stand-in: the system this
+  self-test runs on, windows". Then "21 handlers started", and the eight
+  cases, for the merge guard, the identity guard, the install guard and the
+  Stop hook without `CLAUDE_CODE_ENTRYPOINT` and with it on `cli` alike: "exit
+  2, the place Git Bash, the system going before the surface". No message was
+  printed, none of the eight being red, and the line that decides nothing gave
+  10 seconds for the eight.
+
+  Run U1, the job on ubuntu-latest, job 136848988007: in the hooks step the
+  eight cases, each "exit 2", without the variable "the place a terminal and
+  not Claude Code" and with it on `cli` "the place Claude Code with ! in
+  front, and the word typed right after the command", word for word the lines
+  of M1; the line that decides nothing gave 1 second. The jobs on macos-latest
+  and alpine of the same run, 136848987818 and 136848987958, printed the same
+  eight lines and are entered as no runs of their own.
+
+  What a case of the eight reads, and so what the two runs show of a message:
+  that the hook ended with 2; that its message carries the words on the place
+  its situation has; for the merge guard the command line on a line of its
+  own; and that the word typed after the command stands in it under `terminal`
+  and in no other situation. The step prints a message only where a case is
+  red, and none was. Under Windows the words on the place are, for the merge
+  guard, "to type in Git Bash, the terminal that comes with Git for Windows,
+  which the text has them open, and not here in Claude Code, in a code block
+  of its own without a !", with the line "gh pr merge <number> --squash --repo
+  OWNER/REPO"; for the identity guard the same place, "without a ! in front",
+  and the one line that sets both; for the install guard "in Git Bash, the
+  terminal that comes with Git for Windows, which the text has them open, and
+  not in Claude Code, form B for every command here, the line without a !";
+  and for the Stop hook "in Git Bash, the terminal that comes with Git for
+  Windows, which they open, and not in Claude Code, whatever the command asks,
+  the line without a !".
+
+  W1 stands on the thing on the eight cases under windows-latest, which reads
+  Walked with it: each of the four hooks on the path on which it hands over, 2
+  and Git Bash without the variable and with it on `cli`, the line without the
+  `!`, a line for each of the eight, the step going on. W1 stands on the block
+  on the step that ran none of the four hooks on that path, for windows-latest,
+  and U1 for ubuntu-latest; U1 stands on the green thing of the eight cases on
+  the three other systems, for ubuntu-latest too. The red end neither shows;
+  M2 does. W1 stands on the blocks on the merge guard's, the identity guard's
+  and the Stop hook's message for what the Should of each says under Windows,
+  the fifth situation, which H1 did not show: form B, the command without the
+  `!` and the place by the pattern, for the Stop hook a terminal named as the
+  system has it for every command. What the Should of the merge guard's block
+  says of every situation after that, what the stage goes on from and that the
+  landing is read off the platform, H1 read in four situations and no case
+  reads under Windows. And W1 stands on three things of `bin/devloop-surface`
+  for what the cases of its self-test show under Git Bash. Without a stand-in,
+  by the last case alone, the program called with `cli` and the system's own
+  `uname`, whose answer the step before printed as MINGW64_NT-10.0-26100: on
+  `system: windows` for an answer that opens with MINGW, on `handover:
+  windows` for the surface `terminal`, and on the green self-test, whose case
+  without a stand-in names windows there. With a stand-in, as in S1 on the Mac
+  and with the bash of Git Bash running the program: on `system: windows` for
+  the answers MSYS, CYGWIN and Windows_NT, and on `handover: windows` for the
+  four other surfaces. U1 is entered for the eight cases alone, the program
+  under Linux standing on A1.
+
+  No run of the job stands on the four things on the hooks' messages under
+  `windows`. The names of the Stop hook's, the merge guard's and the identity
+  guard's thing name besides the place the request to say here once the
+  command is through, the merge guard's their word as what the stage goes on
+  from as well, and the install guard's that their word releases; no case
+  reads any of that, the step printing no message of a green case, and the
+  rule of the tool may count too little and never too much. The four wait for
+  the closing runs of order (7) under Windows with Git Bash, where
+  `docs/plan.md` names them since the fourth commit. And `bin/devloop-text` is
+  run by no step of the job, on no system: the line it puts into the rule
+  under Git Bash waits for those runs with them.
+
+  **The corrections of the merge**, of 21 November 2026, the fourth commit,
+  which changes no code. The thing on the eight cases under windows-latest
+  stands Walked, its note naming run W1. Ten run records are new in
+  `docs/stock-take.tsv`, eight of W1 and two of U1, each under version 0.192.0
+  and anchored on the line of this entry that names its run. The notes of the
+  three things of `bin/devloop-surface`, of the green thing of the eight cases
+  and of the four blocks name the run where they said that the job shows or
+  runs it at the merge; the notes of the four things under `windows` say why
+  no run of the job counts for them and what they wait for. No block changes
+  its Status. In this entry: the head says four commits and names the order at
+  the merge with its reading list; the paragraph on what was measured by hand
+  says of `bin/devloop-text` that no step of the job runs it; the sentence
+  that counts the new things with a run says 39 and 29; the paragraph on what
+  the runs stand on names W1 where it said that the job runs the self-test and
+  the situation under Windows at the merge; and the paragraph "Without a run"
+  says why the four things stay without one. `docs/plan.md`, under milestone
+  12: the two sentences on the first run of the eight cases under Windows name
+  run W1 and what it read, and the sentence on how the milestone ends gains
+  the four messages under Windows and the line of `bin/devloop-text` there.
+  `docs/skill-conventions.md` and `docs/rationale.md`, searched for
+  windows-latest, "at the merge", "only the job" and the eight cases: no
+  sentence.
 
 ## Decisions taken against
 

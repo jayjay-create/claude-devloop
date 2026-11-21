@@ -1044,7 +1044,17 @@ milestone on the merge without form B, on the failed install under form A, on
 the six places of the signal of form A and on the identity handed over as two
 commands; and whether Claude Code asks for permission where the run calls
 `bin/devloop-surface` before a handover outside auto mode, which is not
-measured.
+measured;
+and, since the corrections of the merge of that part, of the same day and in
+the same entry, what the job hooks on every system does not show under
+Windows: in the run under Windows with Git Bash the messages of the merge
+guard, the identity guard, the install guard and the Stop hook, each on the
+path on which it hands over and read whole — the request to say here once
+the command is through and their word as what releases, which the eight
+cases of the job do not read, a case reading the exit, the place, the command
+line and the word typed after the command —, the four things on those
+messages under `windows`; and the line `bin/devloop-text` puts into the rule
+there, which no step of the job runs.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1370,7 +1380,9 @@ block on the signal of form A name the two signs. The job hooks on every
 system runs the self-test of `bin/devloop-surface` with the others and, by the
 decision of 21 November 2026 below, each of the four hooks on the path on
 which it hands over, twice, on all four systems; under Windows its first run
-is the pull request of that part. Of the nine blocks of this milestone that
+was at the pull request of that part, run W1 of that entry, read off the
+job's log at the merge, green on 21 November 2026, all eight ending with 2
+and naming Git Bash. Of the nine blocks of this milestone that
 part builds, four are walked by its runs, on the messages of the merge guard,
 the identity guard and the Stop hook and on the comment at the closing, the
 one on the comment of `hooks/subagent-start-install.sh` is closed as corrected
@@ -1851,8 +1863,13 @@ the step feeds the guard on the mark so already, with an input of its own
 after the handlers. Not chosen: a block for it alone, the closing runs of
 order (7) walking the paths under Windows. Built with the second part of (4),
 the block of this milestone on that step walked by a run of that part on the
-person's Mac; under Windows the job runs the eight cases first at the pull
-request of that part.
+person's Mac; under Windows the job ran the eight cases first at the pull
+request of that part, run W1 of that entry, green on 21 November 2026. A case
+reads of a message the exit, the words on the place, the command line and
+the word typed after the command, so that the four things on the messages
+under Windows, whose names name the request to say here or their word as
+well, wait for the closing runs of order (7) all the same, above where the
+milestone ends.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
