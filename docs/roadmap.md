@@ -11431,6 +11431,376 @@ and for the proofs of closings.
 
   Should changed: build-prototype LOGIC.md hands the file over by sending or opening it where SKILL.md gives one action
 
+- **A handover follows the surface and the system, read by one program**
+
+  21 November 2026, version 0.192.0: under `bin/` a new program,
+  `bin/devloop-surface`, and changes to `bin/devloop-text` and
+  `bin/devloop-install-issues`; under `hooks/` the messages of
+  `hooks/pre-tool-use-merge-guard.sh`, `hooks/pre-tool-use-identity-guard.sh`,
+  `hooks/pre-tool-use-install-guard.sh` and `hooks/stop-checks.sh` and a
+  comment of `hooks/subagent-start-install.sh`; under `shared/` the rule on the
+  two forms of a handover in `shared/skill-name.md`,
+  `shared/merge-handover.md`, `shared/install-tool.md` and a sentence of
+  `shared/install-issues-read.md`; a sentence each in
+  `skills/build-work/SKILL.md`, `skills/setup-checks/SKILL.md` and
+  `skills/setup-project/SKILL.md`; and a step of the job hooks on every system
+  in `.github/workflows/stock-take.yml`. Nothing under `scripts/` or
+  `output-styles/` changes, and `README.md` does not. On `task/handover-forms`,
+  off `origin/main` at `d459ec9`, in three commits: the code with the version,
+  raised once, `5b9c822`, built on 20 November 2026 and corrected on 21
+  November 2026 before the second commit; the blocks, the table and this entry
+  as far as the build goes; and the runs, measured at the second, with
+  `docs/rationale.md`, `docs/skill-conventions.md`, `docs/plan.md` and the rest
+  of this entry. The order: the second of the three parts of order (4) of
+  milestone 12 in `docs/plan.md`, the handover by surface — the program that
+  reads the surface and the system, the rule on the forms with „fertig“ and
+  with what the run says where the command did not run to its end, the four
+  hooks, the merge, the identity, the comment in
+  `hooks/subagent-start-install.sh` and the comment at the closing — and with
+  them the six places of the block on the signal of form A, by the decision at
+  the merge of the audit of 20 November 2026. It was given in three parts of
+  its own: the first read, measured and built; the second corrected the build,
+  gave the job its eight cases and wrote the blocks, the table and this entry
+  so far; the third measures the runs and writes the other documents. The
+  reading list of the second of them: 220769 bytes by `wc -c` over its ranges,
+  the order's figure, counted again. In the second no subagent was used and no
+  session log was read; nothing was installed outside throwaway directories,
+  and in a throwaway container of alpine:3.22 bash, git and python3 alone; the
+  identity under which git commits here was not set, its name and its address
+  taken as `git config` gives them and neither shown. Written by Claude Code
+  from the orders of 20 and 21 November 2026. The report stands on this machine
+  as `~/devloop-handover-forms.md`, in German, and is not in the repository. A
+  line number in this entry holds at `d459ec9` for a file under `docs/` and for
+  `scripts/devloop-stock-take`, and in the tree of version 0.192.0, the first
+  commit of the branch, for every other file, where nothing else is said. The
+  entry on the handover by surface is the roadmap entry of 20 November 2026
+  under that head, and a decision named by its number alone is one of its
+  decisions. A wording between „ and “ is approved as it stands, in German.
+
+  **The program.** `bin/devloop-surface`, new, prints one line on stdout and
+  ends with 0 in every case: `surface: SURFACE | system: SYSTEM | handover:
+  HANDOVER`. The surface is read off `CLAUDE_CODE_ENTRYPOINT`: `terminal` for
+  `cli`, `terminal-vscode` for `cli` where `TERM_PROGRAM` reads `vscode`,
+  `panel-vscode` for `claude-vscode`, `desktop` for `claude-desktop`, and
+  `unknown` for every other value, an empty one and none; `TERM_PROGRAM` counts
+  for `cli` alone, since the graphical panel carries it too. The system is read
+  off `uname -s`: `macos` for `Darwin`, `linux` for `Linux`, `windows` for an
+  answer that opens with `MINGW`, `MSYS`, `CYGWIN` or `Windows`, the pattern of
+  `bin/devloop-tool-state`, and `unknown` for every other answer, for none and
+  for no `uname` on the search path. The third field is the situation the forms
+  go by, the system before the surface, point 1 of decision (8): `windows`,
+  `unknown`, `terminal`, `desktop`, `panel`. The line carries these fixed words
+  and nothing read, since it lands in the text of every skill and in the
+  messages of four hooks. With an argument other than `--self-test` the program
+  ends with 2 and one line on stderr. `--self-test` runs 34 cases, every
+  situation once with `uname` answered by a stand-in that stands first on the
+  search path of the self-test's own calls and nowhere else, and one case
+  without the stand-in, which names the system it runs on as bash's `OSTYPE`
+  has it; the job hooks on every system runs it with every self-test under
+  `bin/`, on all four systems.
+
+  **The line in the rule.** `bin/devloop-text` replaces `${DEVLOOP_SURFACE}` in
+  a shared text by that line and starts the program only for a text that
+  carries the word, which is `shared/skill-name.md` alone, so that every other
+  text comes out as it did; where the program gives no line, more than one, a
+  line of another form or ends with an error, the line that stands there reads
+  `surface: unknown | system: unknown | handover: unknown`.
+
+  **The rule on the forms**, `shared/skill-name.md` under "Where the person
+  types a command devloop hands them", lines 50 to 123: the line the program
+  printed when the skill loaded; the program run once more before every
+  handover, since a conversation can change its surface, and no setting of
+  Claude Code read; the five situations. Form A, typed in Claude Code with `!`
+  in front, holds for a command that asks nothing under `terminal` and under
+  `desktop` and nowhere else; under `terminal` the text has the person type
+  „fertig“, the word as their language has it, right after the command, in a
+  sentence of its own directly before the last sentence of the handover, and
+  under `desktop` it carries no such sentence. The run goes on from the first
+  of two signs, the command's output once Claude Code gives it to the run to
+  answer, or their word, and what it then reads it reads as before. Where what
+  the command was handed over for is not there then, the run says that the
+  command did not do it only where the conversation shows that the command ran
+  to its end; else it says what it sees, by the four sentences of decision
+  (14), with what the command was handed over for in the place of the tool.
+  Form B, typed in a terminal and not in Claude Code, holds for a command that
+  asks something under `terminal` and under `desktop` and for every command
+  under `panel`, `windows` and `unknown`, the place said by the situation: a
+  second terminal window that is not the one Claude Code runs in; a terminal,
+  the terminal of the app for instance; a terminal, the terminal of VS Code for
+  instance; Git Bash, which the text has them open; a terminal and nothing
+  more. Points 4 to 6 of decision (8) and decision (16) stand in its last
+  paragraph.
+
+  **The places that follow the rule.** The six places of the block on the
+  signal of form A name the two signs: `shared/skill-name.md`,
+  `shared/install-tool.md` at three places, `skills/setup-checks/SKILL.md` and
+  `skills/setup-project/SKILL.md`. `shared/install-tool.md` says of a first
+  line that reads not found what the rule says, lines 74 to 83, and for the
+  case after a no, lines 91 to 98. `shared/merge-handover.md` hands the merge
+  over by the line the program prints before that handover, as every command
+  that asks nothing, lines 15 to 45: under `terminal` and under `desktop` with
+  `!`, under `panel`, `windows` and `unknown` in the terminal the rule names,
+  without it; whether the merge landed is read off the platform as before,
+  never off the output alone and never off their word.
+
+  **The four hooks** that hand a command over call the program on the path on
+  which they hand over and on no other — `hooks/pre-tool-use-merge-guard.sh`
+  once the command is read as `gh pr merge`,
+  `hooks/pre-tool-use-identity-guard.sh` once an identity is read,
+  `hooks/pre-tool-use-install-guard.sh` before its one message,
+  `hooks/stop-checks.sh` at its last attempt — and take a line that does not
+  come, or one of another form, as `unknown`. Each message names the form, the
+  place and the signs of the situation. The identity guard hands the identity
+  over as one line, the two `git config --global` commands joined by `&&`, and
+  has the run say with it what the wording of decision (9) says. Of the two
+  approved messages: in the identity guard's the three sentences before the
+  last stand word for word and the last is new, by decisions (2), (8), (9),
+  (12) and (14); in the install guard's the sentence on where the command is
+  typed and the one on what releases the run change by the situation, a
+  sentence on a command that did not run to its end comes in under form A, and
+  every other sentence stands word for word.
+
+  **Two comments.** `bin/devloop-install-issues` closes an issue under
+  `--after-install` with "devloop closed this issue after an install during a
+  session, the tool standing on this machine now: <the line>", decision (15),
+  its head and its self-test with it, and the three texts that speak of that
+  comment say so, `skills/build-work/SKILL.md`, `shared/install-issues-read.md`
+  and `shared/install-tool.md`; the comment at a start stays. The comment of
+  `hooks/subagent-start-install.sh` over the line that builds the hook's output
+  names three lines, two where the rule on the shell is empty.
+
+  **The job.** After the handlers, the step of the job hooks on every system
+  that starts them gives each of the four hooks an input on the path on which
+  it hands over, in its throwaway project: the merge guard `gh pr merge 7
+  --squash`; the identity guard a commit with `git -c user.email`, a command
+  that stands in the JSON the hook reads and is run by nobody; the install
+  guard `pipx install devloop-probe-does-not-exist`, which no record opens,
+  `origin/main` there carrying none; the Stop hook the third attempt at a
+  blocking filled class whose check is red, the table and its runner written
+  into the working tree. Each input runs twice: without
+  `CLAUDE_CODE_ENTRYPOINT`, which the case takes out with `env -u`, since the
+  variable reads `cli` where `scripts/devloop-run-workflow` runs the step in a
+  session of Claude Code, and with it on `cli`. The step is red unless each of
+  the eight ends with 2 and its message carries the words on the place its
+  situation has: under windows-latest Git Bash in both, the system going before
+  the surface; on ubuntu-latest, macos-latest and alpine a terminal and not
+  Claude Code without the variable, and with `cli` Claude Code with `!` in
+  front and the sentence on „fertig“, a word no message of another situation
+  carries. The merge guard and the identity guard print a command line, which
+  is read too, the install guard and the Stop hook the place alone; a case that
+  comes out otherwise prints the message. The name of the step and the head of
+  the workflow name the eight cases, and a line that decides nothing prints how
+  long they took.
+
+  **Not built here, the third part of order (4) building it:** the wordings by
+  the pattern at every other place that hands a command over — the way of the
+  yes in `shared/install-tool.md` and its sentences after a no,
+  `skills/build-work/SKILL.md` step 3, `skills/setup-checks/SKILL.md` steps 3
+  and 8, `skills/setup-project/SKILL.md` step 1,
+  `skills/diagnose-bug/SKILL.md`, `skills/build-prototype/SKILL.md` with its
+  `LOGIC.md`, `shared/fetch-three-times.md`, `shared/install-issue.md` and
+  `shared/install-issues-read.md` —, the steps for the PATH, the issue and step
+  4 of `setup-checks`. Between the two parts the rule names the place by the
+  situation and those places name the old one, on every surface, the division
+  `docs/plan.md` decides under milestone 12, lines 1738 to 1752; the rule
+  stands over them in every skill and has the run run the program before every
+  handover.
+
+  **Measured, by hand and in no run.** With the JSON Claude Code gives each
+  hook, in two throwaway projects, one set up and one never set up: the four
+  hooks and `bin/devloop-text skill-name` in nine situations, `uname -s`
+  answered by a stand-in where the situation is another system than macOS.
+  Every exit as before the build, 2 for the four messages and 0 with nothing
+  said for the merge guard where nothing is set up, and each message naming the
+  place of its situation; where the program is missing, fails, or prints two
+  lines or a line of another form, the rule carries the line with three times
+  `unknown` and the messages name a terminal. The stand-in answers `uname -s`
+  alone: `bin/devloop-command-reader`, through which three of the four hooks
+  read their input, reads the system off bash's `OSTYPE`, so that these
+  measurements show what a message says once the hook has read the command, not
+  the reading on that system. In a container of alpine:3.22, bash 5.2.37 and
+  BusyBox 1.37.0, the program, its self-test, `bin/devloop-text` and the whole
+  step of the job with its eight cases: green. On macOS the eight cases take
+  under a second; with the expectation for Windows set there, all eight are red
+  and each prints its message. Open, since only the job shows it: the self-test
+  of `bin/devloop-surface`, `bin/devloop-text` and the eight cases under
+  Windows with Git Bash.
+
+  **Decided on 21 November 2026.** The step of the job hooks on every system
+  that starts the handlers runs each of the four hooks that hand a command over
+  on the path on which it hands over, twice, without `CLAUDE_CODE_ENTRYPOINT`
+  and with it on `cli`, on all four systems. Reason: the hooks change on this
+  branch; what their messages say of where a command is typed was read on no
+  system of the job until then, and under Windows the job showed of it the
+  self-test of `bin/devloop-surface` alone; and the step feeds the guard on the
+  mark so already, with an input of its own after the handlers. Held against
+  the workflow at `d459ec9`: the step that starts the handlers ran none of the
+  four on that path, line 605; the last step of the job, on line endings, ran
+  the install guard at a blocked `cargo install`, line 878, and the Stop hook
+  through its third attempt, line 933, on all four systems, with the variable
+  as the system has it, and read of their messages the cause and the check's
+  own output alone, lines 881 and 936 to 942; no step ran the merge guard or
+  the identity guard on it. Not chosen: a block for it alone, the closing runs
+  of order (7) walking the paths under Windows.
+
+  **Decided on 21 November 2026 without a question**, by the rule that nothing
+  is asked where one way carries a great disadvantage and the other none, and
+  confirmed by the person. First, the line of `bin/devloop-surface` carries a
+  third field, `handover:`, beside the surface and the system decision (5)
+  names: else the derivation, the system before the surface, would stand in
+  four hooks and in the rule, and a sixth time in the third part of order (4).
+  Second, the sentence of form A in the terminal has the person type „fertig“
+  as their language has the word: the other way, the German word in every
+  language, mixes two languages in one message, against
+  `shared/language-opening.md` line 18, "never mix two inside one message".
+  Third, the run runs `bin/devloop-surface` before every handover through the
+  Bash tool, as it runs `bin/devloop-tool-state` and
+  `bin/devloop-install-issues`, and the frontmatter of the skills stays as it
+  is: decision (5) asks for the call before every handover, and a line under
+  `allowed-tools` would not carry it there, the vendor's skills page under
+  "Pre-approve tools for a skill", read raw on 21 November 2026 from
+  `code.claude.com/docs/en/skills.md`: "The `allowed-tools` field grants
+  permission for the listed tools during the turn that invokes the skill, so
+  Claude can use them without prompting you for approval. The grant clears when
+  you send your next message, even though the skill content stays in context;
+  invoking the skill again re-applies it for that turn." The other way, a
+  shared text of one line printed through `bin/devloop-text`, stands on that
+  same grant and adds a detour. Whether Claude Code asks for permission at that
+  call outside auto mode is not measured. Fourth, a `!` command that Claude
+  Code 2.1.329 does not start at all gets no sentence of its own beside the
+  four of decision (14): the case has never come up, and it falls under what
+  the rule says of every case beside them, that the run says what it sees.
+
+  **Read in the program of Claude Code 2.1.329** on 20 November 2026, `claude
+  --version` giving `2.1.329 (Claude Code)`, and held against 2.1.328 where
+  that is said. Two sentences of the entry on the handover by surface are
+  shortened; that entry stands on `main` and stays as it is, and this one says
+  them exactly. Of `CLAUDE_CODE_ENTRYPOINT`, lines 10625 to 10627: "the program
+  keeps a value that stands in its environment already and else sets `cli` or
+  `sdk-cli`". The function, the same in 2.1.328 but for its name, writes a
+  `local_agent` that stands in the environment as `local-agent`; turns a `cli`
+  that stands there into `sdk-cli` on the condition on which it sets `sdk-cli`
+  and not `cli` where no value stands; and without a value sets `mcp` where its
+  arguments carry `mcp serve` and `claude-code-github-action` under
+  `CLAUDE_CODE_ACTION`, before it sets `sdk-cli` or `cli`. `claude-vscode` and
+  `claude-desktop` stay as the environment has them, which is what decisions
+  (4) and (5) stand on, and `sdk-cli` is an unknown surface for them. Of a
+  command in the background, lines 10617 to 10620 name one text, "Command was
+  moved to the background (ID: ${e}) after running for ${we}s. Output is being
+  written to: ${o}." The function has five, the same word for word in 2.1.328,
+  each ending on the sentence that names the file: that one, under
+  `timedOutAfterMs` with `subagentCapApplied` alone; "Command was manually
+  backgrounded by user with ID: ${e}.", under `backgroundedByUser`, for a
+  command the person sends there; "Command was moved to the background (ID:
+  ${e}) so that a message that arrived while it was running can reach you; it
+  was not interrupted.", under `backgroundedToDeliverMessage`; "Command did not
+  complete within its ${ke}s timeout and was moved to the background (ID:
+  ${e})."; and "Command running in background with ID: ${e}." Which of them a
+  `!` command carries after Ctrl+B is not measured; by the code it is the
+  second. So the rule quotes none of them and has the run tell the background
+  by what stands in the place of the output, that the command runs in the
+  background or was sent there. An interrupted `!` command leaves "Command was
+  aborted before completion" in its output or "[Request interrupted by user]"
+  after it, read and not measured. New in 2.1.329 against 2.1.328: a `!`
+  command can fail to start, and then "Not run: this command was stopped before
+  it started. Send it again if you still want it." stands in the place of its
+  output and Claude is not asked, the fourth point above.
+
+  **The findings of the build**, eight, none of which blocks the milestone,
+  each with what becomes of it. The first and the second, the two shortened
+  sentences of the entry on the handover by surface: said exactly in the
+  paragraph above. The third, the `!` command that does not start in 2.1.329:
+  no sentence of its own, the fourth point decided without a question. The
+  fourth, a place of the one sign that no block named with its line,
+  `shared/merge-handover.md` lines 31 to 32 at `d459ec9`, "The command's output
+  in the conversation is what releases the run": built with the merge, now "The
+  form's signal is what releases the run", line 40, and added to the Wrong of
+  the block "the merge has no form B: shared/merge-handover.md hands the merge
+  command over with ! alone", which named of that file lines 15 to 18 and 24 to
+  26 and whose Should asked for the first of the two signs for the merge
+  already; no block of its own, one defect, one block. The fifth, that the call
+  of the program before every handover may ask the person for permission where
+  no rule allows it: the third point decided without a question. The sixth,
+  that between the second and the third part of order (4) the rule and the
+  places of the third part say different things of the place: the division as
+  `docs/plan.md` decides it, said in the Notes of the five blocks both parts
+  build. The seventh, the case after a no in `shared/install-tool.md`, which
+  the first commit left as it stood: corrected, below. The eighth, that the
+  step of the job ran none of the four hooks on the path on which it hands
+  over: the decision of 21 November 2026 above, built, with a block.
+
+  **Corrected in the first commit before the second**, on 21 November 2026,
+  with `git commit --amend`. The first commit as it stood on 20 November 2026
+  was never pushed, so that these faults stood in no state `main` ever carried
+  and get no block: a block would say of `main` what never stood there. Each
+  with its place, the wrong text and the right one. (a) `shared/skill-name.md`
+  lines 85 to 88 had the run say of a command still in the background, under
+  `desktop` as under `terminal`, "and that they type „fertig“ once more as soon
+  as it is through", though the handover in the desktop app has the person type
+  no word, decision (12); now "under `terminal`, that they type „fertig“ once
+  more as soon as it is through, under `desktop`, where the handover had them
+  type no word, that they say here once the command is through", the request of
+  point 3 of decision (8). The messages of the merge guard, the identity guard
+  and the install guard carried the same sentence for both situations and set
+  it by the situation now. With it, lines 93 to 96: "A „fertig“ that comes
+  after the run has gone on is answered in one sentence" names "under `desktop`
+  their word on that request" beside it. (b) `shared/install-tool.md` lines 91
+  to 98, the case after a no, read "where the first says not found, said with
+  the line, the issue staying, and the command handed over again" and so did
+  not follow the two sentences on not found above it; now "where the first says
+  not found, the issue staying, by the two sentences on not found above: said
+  with the line and the command handed over again where the conversation shows
+  that the command ran to its end or their word under form B says that it did,
+  and where a command typed with `!` did not run to its end, what the
+  conversation shows and that the tool is not there yet, and not that the
+  command failed". With it, lines 75 to 79: those two sentences did not say
+  that what the conversation shows decides under form A alone, so that under
+  form B, where no command ever stands in the conversation, the run would have
+  said that it sees none; now "or their word under form B says that it did" and
+  "not found under form A". (c) The messages of
+  `hooks/pre-tool-use-install-guard.sh` and
+  `hooks/pre-tool-use-identity-guard.sh` gave the second handover to a command
+  in the background too, "each with the tool not there yet - and hand it over
+  once more" and "and then the same handover once more" behind all three cases,
+  where decision (14) gives it to a command that was interrupted and to one
+  that stands nowhere in the conversation; now "and after either of these two
+  hand it over once more" and "and after either of these two the same handover
+  once more", the install guard keeping the second handover where the command
+  ran to its end and did not install.
+
+  **The blocks and the table.** In `docs/defects.md` the nine blocks of
+  milestone 12 that this part of order (4) builds take their Fix and read
+  Built, never walked: on the comment of `hooks/subagent-start-install.sh`, on
+  the merge guard's, the identity guard's and the Stop hook's message, on the
+  merge without form B, on the comment at the closing, on the identity as two
+  commands, on the failed install under form A and on the six places. The five
+  that the second and the third part build keep Fix none and say in their Note
+  what stands after this part and what the third builds: on
+  `respondToBashCommands`, on the graphical panel, on the desktop app under
+  Windows, on PowerShell under Windows and on the wording of form B. The Fix of
+  two older blocks moves onto the line its repair stands on now, the anchors
+  the build changed: of the block on the install guard's message, D6, from "and
+  say where they type it: in Claude Code with ! in front where it asks" to "and
+  say where they type it: $WHERE $RELEASE then read with"; of the block on the
+  identity guard's message, D3, from "then hand the user the two commands to
+  type here in Claude Code, each with" to "$WHERE: $LINE, with NAME theirs to
+  fill in and ADDRESS the noreply address". The Wrong of the block on the merge
+  gains the place of the fourth finding, and no Should changes. One block is
+  new, last under "## Milestone 12": "the step hooks on every system ran none
+  of the four hooks that hand a command over on the path on which it hands
+  over". In `docs/stock-take.tsv` the records the build broke stand at their
+  new places. Three things are renamed, no run hanging on any, each note naming
+  the old name: the thing on the rule on the forms in `shared/skill-name.md`,
+  and in `shared/install-tool.md` the thing on a command that did not install
+  and the thing on the first line not found after a no. The thing on the
+  comment at the closing in `bin/devloop-install-issues` keeps its name, two
+  runs hanging on it, and its note says what holds now. 68 things are new, none
+  with a run yet: the outcomes of `bin/devloop-surface`; the line
+  `bin/devloop-text` puts in and what it puts in without one; the forms, the
+  signs, the four cases and the places of the rule; the merge by the situation;
+  the message of each of the four hooks in each of the five situations; and the
+  eight cases of the job, on three systems, under Windows and red.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
