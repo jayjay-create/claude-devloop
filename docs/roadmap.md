@@ -12639,18 +12639,20 @@ and for the proofs of closings.
 
   22 November 2026, version 0.193.0, raised once from 0.192.0 by the first
   commit. On `task/handover-every-place`, off `origin/main` at `12cc12a`, in
-  five commits: `883bd51`, "Every handover and the steps for the PATH follow
+  six commits: `883bd51`, "Every handover and the steps for the PATH follow
   surface and system", the code; `faad2e4`, "Blocks take their Fix lines, the
   table follows the handover by surface"; `e3d61f1`, "Reasons, conventions and
   plan follow the handover and the PATH steps"; `7929365`, the commit that
   writes this entry, "An entry, five blocks and a behavior per form at every
   handover", with the shoulds below, the blocks of (j) and (m), the behaviors
   of (o) in `docs/stock-take.tsv` and two sentences of
-  `docs/skill-conventions.md` by (n); and the commit after it, "Every branch
-  by surface, system or shell gets a behavior of its own", with the behaviors
-  of (q), the finding of (r) and two sentences of `docs/plan.md` on the blocks
-  that wait for the closing runs of order (7). The order: the third of the
-  three parts of order (4) of milestone 12 in `docs/plan.md`.
+  `docs/skill-conventions.md` by (n); the commit after it, `becef75`, "Every
+  branch by surface, system or shell gets a behavior of its own", with the
+  behaviors of (q), the finding of (r) and two sentences of `docs/plan.md` on
+  the blocks that wait for the closing runs of order (7); and the sixth, "Runs
+  on the Mac and in Alpine walk the job's case of bin/devloop-text", with the
+  runs below that need no model. The order: the third of the three parts of
+  order (4) of milestone 12 in `docs/plan.md`.
 
   **What changed, and where it stands.** What the third part built, place by
   place, `docs/skill-conventions.md` names in its paragraph "Where the person
@@ -12967,16 +12969,96 @@ and for the proofs of closings.
   Should changed: the five steps for the PATH have no way for the graphical panel of the extension for VS Code and none for the desktop app
   Should changed: under Windows the steps for the PATH keep the source of a shell file and the start of Claude Code in the same terminal, which does not get the new PATH
 
+  **The runs that need no model**, at the fifth commit of the branch,
+  `becef75`, under 0.193.0, the tree clean, on 22 November 2026 in UTC, before
+  the sixth commit changed a file: on the person's Mac, macOS 26.6.2 with bash
+  3.2.57, git 2.50.1, Python 3.14.7 and Claude Code 2.1.330, the cuts out of
+  the workflow in a throwaway directory, and in a throwaway container of
+  alpine:3.22, Alpine 3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and
+  Python 3.12.16, the repository mounted read-only. No run goes through Claude
+  Code: every call on the Mac takes `CLAUDE_CODE_ENTRYPOINT` and `TERM_PROGRAM`
+  out of its environment with `env -u`, and the container sets neither, so that
+  no value of the session, which carried `cli` and `vscode`, decides what a run
+  shows. A run's date is the day in UTC at the run, read off `date -u` in the
+  call that runs it.
+
+  Run M1, on the Mac from 16:02:51 to 16:07:07: `scripts/devloop-run-workflow`
+  over the whole workflow, both variables taken out, green, 10 steps run and
+  every one ended with 0. In the hooks step the thirteen self-tests passed,
+  those under `bin/` and that of `scripts/devloop-run-workflow`, among them
+  `bin/devloop-install-issues` with "SELF-TEST PASSED: 49 cases" and
+  `bin/devloop-surface` with the case "no stand-in: the system this self-test
+  runs on, macos" and "SELF-TEST PASSED: 34 cases"; 21 handlers started; the
+  eight cases of the four hooks that hand a command over each "exit 2", without
+  `CLAUDE_CODE_ENTRYPOINT` "the place a terminal and not Claude Code" and with
+  it on `cli` "the place Claude Code with ! in front, and the word typed right
+  after the command"; and after them the two lines of the case on
+  `bin/devloop-text`, "bin/devloop-text skill-name, without
+  CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface: unknown |
+  system: macos | handover: unknown" and "bin/devloop-text skill-name, with
+  CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the line surface:
+  terminal | system: macos | handover: terminal".
+
+  Run M2, on the Mac at 16:08:02: the red end of that case, brought about on
+  purpose and with no stand-in for `uname`: the function `texted` and what it
+  takes from its step, cut out of the workflow as it stands at `becef75`, the
+  step's `set -u`, `ROOT=$(pwd)` and `red=0`, the two lines of comment over the
+  function, the function and its call, and `exit "$red"`, without the
+  self-tests, the handlers, the eight cases and the removal of the step's
+  temporary directory, which the cut does not make; run as the job runs a step,
+  bash --noprofile --norc -eo pipefail, with `RUNNER_OS` set to Windows, so
+  that the function expects `system: windows` and `handover: windows` where the
+  program answers for macOS. Exit 1; both cases "did not put the line of its
+  situation into the rule", each with "what it printed does not carry the line"
+  and the line it expected, "surface: unknown | system: windows | handover:
+  windows" without the variable and "surface: terminal | system: windows |
+  handover: windows" with it on `cli`, neither with an exit other than 0 or
+  with `${DEVLOOP_SURFACE}` left standing; under each line what the program
+  printed, 125 lines indented by four blanks, its line 56 "surface: unknown |
+  system: macos | handover: unknown" and "surface: terminal | system: macos |
+  handover: terminal".
+
+  Run A1, in a container of alpine:3.22 from 16:08:38 to 16:09:39: the whole
+  `run:` block of the hooks step, cut out of the workflow as it stands at
+  `becef75`, as the job runs it, bash --noprofile --norc -eo pipefail with
+  `RUNNER_OS` set to Linux, after `apk add` of bash, git and python3 and the
+  checkout marked a safe directory for git, as the job's first step under
+  Alpine does it, neither variable set: exit 0 after 57 seconds; the thirteen
+  self-tests passed with the counts of M1, `bin/devloop-surface` with the case
+  "no stand-in: the system this self-test runs on, linux"; 21 handlers started;
+  the eight cases word for word as in M1; and the two lines of the case on
+  `bin/devloop-text` with `system: linux`, "bin/devloop-text skill-name,
+  without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface:
+  unknown | system: linux | handover: unknown" and "bin/devloop-text
+  skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the
+  line surface: terminal | system: linux | handover: terminal".
+
+  M1 stands on the green thing of the case on `bin/devloop-text` on
+  ubuntu-latest, macos-latest and alpine, under macOS, and on the block "no
+  step of the job hooks on every system runs bin/devloop-text, so no system of
+  the job shows the line it puts into the rule on the forms", whose Fix is the
+  line that runs the program twice; A1 on the same thing and the same block,
+  under Linux, in a container of the image the job's entry alpine runs in; M2
+  on the red thing. The green thing under Windows none of the three shows: M2
+  sets `RUNNER_OS` to Windows on macOS and brings about the red end alone, and
+  the job on windows-latest runs the case after the push. No other thing or
+  block of this branch stands on these runs: the branch changes nothing under
+  `bin/`, `hooks/` and `scripts/`, and every other behavior it adds stands in a
+  text the model loads; what else M1 and A1 show, the self-tests and the eight
+  cases among it, stands on things this branch neither adds nor changes.
+
   **What stays open.** The behaviors of the texts the model loads, and the
   blocks whose Fix stands on them, wait for the closing runs of order (7),
   where `docs/plan.md` says milestone 12 ends; the runs of this branch that
-  need no model follow in a later commit of it. Of the new blocks, order (6)
-  builds the two on "Shift+Tab in the terminal" and on "/clear"; the next
-  order that changes `hooks/pre-tool-use-install-guard.sh` builds the one on
-  its message, and the next that changes `bin/devloop-install-issues` or
-  `bin/devloop-tool-state` the one on the self-test, both by the decision of
-  18 November 2026 under milestone 12 of `docs/plan.md`; the one on the
-  references to `build-work` step 3 point 7 is built on this branch.
+  need no model stand above, and those of the job hooks on every system on
+  ubuntu-latest and windows-latest follow in a later commit of it. Of the new
+  blocks, order (6) builds the two on "Shift+Tab in the terminal" and on
+  "/clear"; the next order that changes `hooks/pre-tool-use-install-guard.sh`
+  builds the one on its message, and the next that changes
+  `bin/devloop-install-issues` or `bin/devloop-tool-state` the one on the
+  self-test, both by the decision of 18 November 2026 under milestone 12 of
+  `docs/plan.md`; the one on the references to `build-work` step 3 point 7 is
+  built on this branch.
 
 ## Decisions taken against
 
