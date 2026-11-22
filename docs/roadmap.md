@@ -12635,6 +12635,472 @@ and for the proofs of closings.
   without a day of its own, stays as the second part left it, for the reason
   given above.
 
+- **Every handover and the steps for the PATH follow surface and system**
+
+  22 November 2026, version 0.193.0, raised once from 0.192.0 by the first
+  commit. On `task/handover-every-place`, off `origin/main` at `12cc12a`, in
+  seven commits: `883bd51`, "Every handover and the steps for the PATH follow
+  surface and system", the code; `faad2e4`, "Blocks take their Fix lines, the
+  table follows the handover by surface"; `e3d61f1`, "Reasons, conventions and
+  plan follow the handover and the PATH steps"; `7929365`, the commit that
+  writes this entry, "An entry, five blocks and a behavior per form at every
+  handover", with the shoulds below, the blocks of (j) and (m), the behaviors
+  of (o) in `docs/stock-take.tsv` and two sentences of
+  `docs/skill-conventions.md` by (n); the commit after it, `becef75`, "Every
+  branch by surface, system or shell gets a behavior of its own", with the
+  behaviors of (q), the finding of (r) and two sentences of `docs/plan.md` on
+  the blocks that wait for the closing runs of order (7); the sixth,
+  `442e88c`, "Runs on the Mac and in Alpine walk the job's case of
+  bin/devloop-text", with the runs below that need no model; and the seventh,
+  the corrections of the merge, "The job's runs on Ubuntu and Windows, the
+  recurring checks drawn ahead", with the runs of the job hooks on every
+  system on ubuntu-latest and windows-latest and decision (s). The order: the
+  third of the three parts of order (4) of milestone 12 in `docs/plan.md`.
+
+  **What changed, and where it stands.** What the third part built, place by
+  place, `docs/skill-conventions.md` names in its paragraph "Where the person
+  types a command devloop hands them while Claude Code …", under "Built since
+  22 November 2026", the steps for the PATH standing once, in
+  `shared/path-steps.md`; why each place says what it says,
+  `docs/rationale.md` under the file of the place and under
+  `shared/path-steps.md`; the decisions it rests on, `docs/plan.md` under
+  milestone 12. Of the blocks of `docs/defects.md` whose Note names this
+  entry, eleven of milestone 12 whose Fix was none take their Fix, and four,
+  three of milestone 12 and one of milestone 6, a Fix line built anew; the
+  shoulds that change stand below, and the new blocks are those of (j) and
+  (m). `docs/stock-take.tsv` carries the behaviors of `shared/path-steps.md`
+  and of the case of the job hooks on every system, by (o) one behavior for
+  each form group at eight places that hand a command over, and by (q) one
+  for each branch by the surface, the system or the shell at the places the
+  first commit changes: 54 behaviors new over the branch, every one Built,
+  never walked, ten of them renamed on the branch by (q), and eleven renamed
+  that stood at `12cc12a`, two of them twice, none with a run, each note
+  naming the old name.
+
+  **Decided on 22 November 2026**, (a) to (d) by the person on the questions
+  of the third part, their approved wordings in `docs/rationale.md`, their
+  reasons and what was not chosen in `docs/plan.md` under milestone 12. (a)
+  The opening and the close of the steps for the PATH for a check class's tool
+  and for the folder line read at a start, taken over from (11) of the entry
+  of 20 November 2026 on the handover by surface, are approved. (b) In the
+  desktop app under Linux the step that ends the app names no key. (c) In the
+  terminal of VS Code under Windows the steps for the PATH are seven. (d) In
+  the graphical panel and in the desktop app under macOS and Linux the line
+  for the PATH goes into the file of the login shell, and the sentence after
+  it names VS Code or the app. (e) An entry of the roadmap is short and points
+  at what stands elsewhere, the rule in `docs/skill-conventions.md` with its
+  reason and what was not chosen; this entry is the first to keep it. Without
+  a question, by the rule that nothing is asked where one way carries a great
+  disadvantage and the other none, and confirmed by the person, their reasons
+  and what was not chosen in `docs/plan.md`: (f) the steps for the PATH stand
+  once, in `shared/path-steps.md`, inserted where they are said; (g) the
+  sentence on „fertig“ in the handover under a no stands directly before the
+  sentence on what the run does once the command is through; (h) several
+  issues under the no in step 8 of `setup-checks` stay named one by one, and
+  the sentence on the bound says that two issues in form B can pass it; (j)
+  four findings of the third part get a block each, written with this entry.
+
+  (i), without a question and confirmed by the person, and written down
+  nowhere else: under Windows a folder outside the user folder stands in the
+  step for the folder as Windows writes its path, the drive letter first, and
+  a folder whose name carries `'`, `"`, a backtick or `$` falls under the rule
+  of `shared/skill-name.md` on a step the run has no sure command for. Reason:
+  the approved step of (13) of 20 November 2026 gives no form for a folder
+  outside the user folder, and Windows writes its path in one form alone; such
+  a name breaks the single quotes of bash or is read by PowerShell. Not
+  chosen: a rule for escaping it, which would give a line but is measured
+  under Windows nowhere.
+
+  (k) to (r), on what the documents and the behaviors of the third part left
+  open, without a question, by the rule that nothing is asked where one way
+  carries a great disadvantage and the other none, and confirmed by the
+  person, written down nowhere else. (k) The rule of (e) stays without an
+  addition: the three fixed lines of a changed block are what the tool asks
+  for, and a finding the same branch corrects is what the rule "A defect is a
+  block in `docs/defects.md`; the roadmap reports it" has the entry name. Not
+  chosen: a sentence in the rule of (e) naming what those rules have an entry
+  carry, which would put them at two places. (l) `docs/rationale.md` quotes
+  the steps of the panel and of the desktop app with `~/.zprofile`, as built,
+  where (11) and (13) of 20 November 2026 name `~/.zshrc`. Reason: devloop
+  puts the file in itself, as (11) has it. Not chosen: the steps word for word
+  with `~/.zshrc`, which would show a file the run no longer names there. (m)
+  The red case of the self-test of `bin/devloop-install-issues` gets a block.
+  Reason: a finding in a program gets one in every case. Not chosen: the
+  finding in the report of the order alone, where it would stand nowhere in
+  the repository. (n) The wordings of (a) to (d) stand in `docs/rationale.md`;
+  this entry points there and names the decisions whose reason and what was
+  not chosen `docs/plan.md` carries by their letter and one sentence, and the
+  two sentences of `docs/skill-conventions.md` that named this entry for those
+  wordings name `docs/rationale.md` since its commit. Reason: no list stands
+  at two places, by (e). Not chosen: the wordings here as well, as those of 28
+  October and of 19 and 20 November 2026 stand in their entries. (o) At every
+  place that hands a command over and that the first commit built by the
+  situation, each form group has a behavior of its own in
+  `docs/stock-take.tsv`, as `shared/merge-handover.md` has since 0.192.0.
+  Reason: else a run in one situation at a place counts for its branch in the
+  other situations as well, against the decision of 13 November 2026 under
+  milestone 12 of `docs/plan.md` that every outcome is a thing and the tool's
+  rule never overcounts; a behavior that stands Built, never walked holds no
+  milestone up. Not chosen: the new lines as part of the behavior of the
+  place, as the second commit had them. (p) At the places that name one form
+  for every situation and leave the terminal of the situation to the rule in
+  `shared/skill-name.md` — `shared/fetch-three-times.md` on the sign-in,
+  `skills/setup-project/SKILL.md` on `gh` not signed in and
+  `skills/build-prototype/SKILL.md` on a process — and in step 4 of
+  `skills/build-prototype/LOGIC.md` no behavior stands for each situation.
+  Reason: which terminal form B names in which situation the behaviors of the
+  rule carry, one for each situation, and step 4 of `LOGIC.md` hands over as
+  `SKILL.md` says under "Hand it over so it gets looked at", where the
+  behaviors for each form stand. Not chosen: a behavior at each of these
+  places for the terminal of each situation, which would write the branches of
+  the rule a second time at every place. What the text of such a place says by
+  the situation itself falls under (q). (q) At the places the first commit
+  changes under `shared/` and `skills/`, every branch by the surface, the
+  system, the form or the shell that the text of the place itself names has a
+  behavior of its own, and a behavior whose name names several such branches
+  at once is split, one for each branch. A branch is where the text has the
+  run do or say something else under such a condition: another step, command
+  or sentence, or another way to find a value; a value the same step puts in
+  from its input, the folder, the name of the system in an expected line or
+  the project's folder, is none. Reason: the decision of 13 November 2026
+  under milestone 12 of `docs/plan.md` that every outcome is a thing, the
+  tool's rule may undercount and never overcount, and every branch is walked
+  once on purpose; (o) applies it to the form groups, and for a branch by the
+  system, the surface or the shell the same reason holds. Not chosen: the form
+  groups of (o) alone, under which a run under macOS counts for a branch under
+  Linux or Windows it never shows. Behaviors at other places and branches by
+  other conditions this branch leaves as they stand. (r) A sentence of
+  `docs/rationale.md`, `docs/skill-conventions.md` or `docs/plan.md` that this
+  branch corrected and that did not hold at `12cc12a` already, measured by the
+  code and the entries at `12cc12a`, is a finding by the rule "A defect is a
+  block in `docs/defects.md`; the roadmap reports it", and this entry names it
+  with its place, the wrong text and the right one; a sentence that held at
+  `12cc12a` and that only a commit of this branch made untrue belongs to what
+  changed, and this entry points at the documents for it. Reason: a finding is
+  what was wrong before the branch; a sentence its own build makes untrue the
+  branch carries along with the build, and naming each would write the diff of
+  `e3d61f1` into the entry, against (e). Not chosen: naming none, under which
+  the rule would not hold for real findings, and naming each. And merges run
+  through a script on the person's Mac, outside the repository. Not chosen:
+  the script in the repository, since the search pattern for private details
+  may not go into it, and a new folder would bring rules and work for the
+  checks.
+
+  (s), by the person on that day, on a question put at the runs of this
+  branch: the checks of milestone 15 that come back at every handover, those
+  under "Before a handover, run these" and the references between the
+  documents a script can hold, are built after this part and before order (5)
+  of milestone 12, the rest of milestone 15 staying last. Its reason and what
+  was not chosen `docs/plan.md` carries under milestone 15.
+
+  **A finding in a document, corrected on this branch**, by (r), with its
+  place, the wrong text and the right one. `docs/rationale.md` lines 4091 to
+  4092 at `12cc12a`, under `shared/install-issue.md`, read "No wording of the
+  issue is approved: the skills say what it carries.", though (10) of the
+  entry of 20 November 2026 on the handover by surface had approved the steps
+  of the issue that say how they install the tool themselves; now, lines 4206
+  to 4208, "Of the issue's text the part that says how they install the tool
+  themselves has an approved wording, the third point here; for the rest the
+  skills say what it carries." Every other sentence the branch changed in the
+  three documents held at `12cc12a` and follows the build there.
+
+  **Measured by hand, for (d) and (h).** For (d), which file a login shell and
+  an interactive shell of zsh and of bash read, each shell started under `env
+  -i` with a home of its own, on the person's Mac, macOS Darwin 25.6.0 with
+  zsh 5.9 and bash 3.2.57, and in a container of alpine 3.22.8 with zsh 5.9
+  and bash 5.2.37, line for line alike: `zsh -lc` reads `~/.zprofile` and not
+  `~/.zshrc`, `zsh -lic` both, `zsh -ic` `~/.zshrc` alone; `bash -lic` reads
+  `~/.bashrc` only where `~/.profile` reads it in, `bash -lc` not even then
+  where `~/.bashrc` returns at its start when it is not interactive, and `bash
+  -lc` reads the first of `~/.bash_profile`, `~/.bash_login` and `~/.profile`
+  that is there. For (h), the no line in step 8 of `setup-checks` counted by
+  the situation with textwrap at 73 characters against the bound of
+  `output-styles/devloop.md`, 14 lines with two answers, the question field
+  taking 5 and the yes 3 as measured on 28 October 2026, with `brew install
+  yq`, `sudo apt install yq` and under Windows `go install example.com/yq@v4`
+  and `winget install yq`: with one issue form A takes 4 lines, 12 of 14, and
+  form B 4 to 6, at most 14 of 14 under `terminal` and under `windows` for a
+  command that asks, so every situation fits; with two issues in form B whose
+  commands ask, named one by one, 7 under `terminal`, 15 of 14, and 6, 14 of
+  14, under `desktop`, `panel`, `windows` and `unknown`; with two that ask
+  nothing 5 or 6 under `panel`, `windows` and `unknown`; and joined by `&&` 5
+  in form A and 6 in form B under `terminal`, `panel` and `unknown`.
+
+  **The shoulds (b), (c) and (d) change.** The new should of each block stands
+  in it, in `docs/defects.md`, and here with the old one, as the rule on a
+  should a later decision changes asks.
+
+  "the five steps for the PATH are written for claude started in a terminal,
+  and under Use Terminal of the extension for VS Code whether Claude Code then
+  sees the new PATH is not read", by (c): old "where `TERM_PROGRAM` reads
+  `vscode`, the steps for the PATH carry after `/exit` a step of their own,
+  that the person opens a new terminal in VS Code, and the steps after it name
+  that new terminal, six steps in the wording approved on 19 November 2026; in
+  a terminal that is not VS Code's the five steps stand as they are, in the
+  wording approved the same day; reason: under Use Terminal the extension
+  closes its terminal when Claude Code ends with `/exit`, read at the code of
+  the extension 2.1.327, and devloop cannot tell Use Terminal from a `claude`
+  the person typed in the terminal of VS Code; a Claude Code started again in
+  a new terminal sees the new PATH, the shell of that terminal reading its
+  file before `claude` starts in it; decisions (6) and (11) of the roadmap
+  entry of 20 November 2026 on the handover by surface; not chosen: a sentence
+  saying that the terminal may close after `/exit`, which makes the reader
+  watch first, and telling Use Terminal by the variable
+  `NoDefaultCurrentDirectoryInExePath`, which the vendor promises nowhere;
+  read, not measured under Use Terminal."; new "where `TERM_PROGRAM` reads
+  `vscode`, the steps for the PATH carry after `/exit` a step of their own,
+  that the person opens a new terminal in VS Code, and the steps after it name
+  that new terminal, under macOS and Linux six steps in the wording approved
+  on 19 November 2026, and under Windows seven, out of approved sentences:
+  `/exit`; the line typed in Git Bash that enters the folder into the `PATH`
+  of the Windows account, with its sentence on what the line does; all windows
+  of VS Code closed and VS Code opened again; a new terminal opened in VS Code
+  through its menu Terminal; the change into the project in the new terminal;
+  Claude Code started there; `/devloop:start-work` typed in Claude Code; in a
+  terminal that is not VS Code's under macOS and Linux the five steps stand as
+  they are, in the wording approved on 19 November 2026; reason: under Use
+  Terminal the extension closes its terminal when Claude Code ends with
+  `/exit`, read at the code of the extension 2.1.327, and devloop cannot tell
+  Use Terminal from a `claude` the person typed in the terminal of VS Code; a
+  Claude Code started again in a new terminal sees the new PATH, the shell of
+  that terminal reading its file before `claude` starts in it; under Windows,
+  where no file of a shell sets the `PATH`, the steps start VS Code again, the
+  program that holds the terminal, so that they hold whether VS Code gives a
+  new `PATH` to its terminals or not; decisions (6) and (11) of the roadmap
+  entry of 20 November 2026 on the handover by surface and (c) of the roadmap
+  entry of 22 November 2026 "Every handover and the steps for the PATH follow
+  surface and system"; not chosen: a sentence saying that the terminal may
+  close after `/exit`, which makes the reader watch first, telling Use
+  Terminal by the variable `NoDefaultCurrentDirectoryInExePath`, which the
+  vendor promises nowhere, and under Windows the six steps of the terminal
+  unchanged; read, not measured under Use Terminal."
+
+  "the five steps for the PATH have no way for the graphical panel of the
+  extension for VS Code and none for the desktop app", by (b) and (d): old
+  "the steps are said by the surface, in the wordings approved on 19 and 20
+  November 2026: in the graphical panel under macOS and Linux four steps — a
+  terminal opened in VS Code, the export line typed there, VS Code quit
+  entirely and opened again from its program symbol, Claude Code opened again
+  and `/devloop:start-work` typed there; in the desktop app under macOS and
+  Linux four — the export line typed in Claude Code with `!` in front, the app
+  quit entirely and opened again, the project opened again in the app,
+  `/devloop:start-work` typed there; under Windows the first step in the panel
+  and in the desktop app is the line that enters the folder into the `PATH` of
+  the Windows account, as the block of this milestone on the steps for the
+  PATH under Windows has it; on a surface devloop does not know three — the
+  export line typed in a terminal, Claude Code ended entirely with the program
+  it runs in and started anew, `/devloop:start-work`; the opening sentences,
+  the sentence after every export line and the closing sentence are the same
+  on every surface, and devloop puts in the folder, the file of the shell and
+  the project's folder itself; decisions (11) and (13) of the roadmap entry of
+  20 November 2026 on the handover by surface"; new "the steps are said by the
+  surface, in the wordings approved on 19 and 20 November 2026 and as decided
+  on 22 November 2026: in the graphical panel under macOS and Linux four steps
+  — a terminal opened in VS Code, the export line typed there, VS Code quit
+  entirely and opened again from its program symbol, Claude Code opened again
+  and `/devloop:start-work` typed there; in the desktop app under macOS and
+  Linux four — the export line typed in Claude Code with `!` in front, the app
+  quit entirely and opened again, under macOS with Cmd+Q and under Linux with
+  no key named, the project opened again in the app, `/devloop:start-work`
+  typed there; in the panel and in the desktop app under macOS and Linux the
+  export line goes into the file a login shell reads, `~/.zprofile` for zsh
+  and for bash the first of `~/.bash_profile`, `~/.bash_login` and
+  `~/.profile` that is there, `~/.profile` where none is, and the sentence
+  after it names VS Code in the panel and the app in the desktop app where it
+  names the terminal elsewhere; under Windows the first step in the panel and
+  in the desktop app is the line that enters the folder into the `PATH` of the
+  Windows account, as the block of this milestone on the steps for the PATH
+  under Windows has it; on a surface devloop does not know three — the export
+  line typed in a terminal, Claude Code ended entirely with the program it
+  runs in and started anew, `/devloop:start-work`; the opening sentences and
+  the closing sentence are the same on every surface, and devloop puts in the
+  folder, the file of the shell and the project's folder itself; reason for
+  the file: the panel reads its `PATH` from a login shell, and the app by its
+  page does the same; reason for no key under Linux: there is no Cmd key
+  there, and that Ctrl+Q ends the app there is neither read nor measured;
+  decisions (11) and (13) of the roadmap entry of 20 November 2026 on the
+  handover by surface and (b) and (d) of the roadmap entry of 22 November 2026
+  "Every handover and the steps for the PATH follow surface and system""
+
+  "under Windows the steps for the PATH keep the source of a shell file and
+  the start of Claude Code in the same terminal, which does not get the new
+  PATH", by (c): old "under Windows the steps for the PATH are said in the
+  wordings approved on 20 November 2026, their step for the folder one line
+  typed in Git Bash that enters the folder into the `PATH` of the Windows
+  account through `powershell.exe`, with the sentence on what the line does
+  after it, in place of the command read in the maker's guide, which stays for
+  another shell, fish say; in the terminal six steps — `/exit`, that line, the
+  terminal program closed entirely and opened anew since Windows gives the new
+  `PATH` only to programs started after, the change into the project in the
+  new terminal, `claude` started there, `/devloop:start-work`; in the
+  graphical panel three — that line, every window of VS Code closed and VS
+  Code opened again, Claude Code opened again and `/devloop:start-work` typed
+  there; in the desktop app four — that line, the app ended entirely and
+  opened again, the project opened again in the app, `/devloop:start-work`; on
+  a surface devloop does not know that line is the first of the three steps;
+  decision (13) of the roadmap entry of 20 November 2026 on the handover by
+  surface, where the wordings stand; not chosen: the ways by clicks through
+  the settings of Windows and of the app, which change with updates; not
+  measured, and measured by order (7) in the virtual machine: the line itself
+  under Windows, how the desktop app is ended entirely there, and whether the
+  steps bring the new `PATH`"; new "under Windows the steps for the PATH are
+  said in the wordings approved on 20 November 2026, their step for the folder
+  one line typed in Git Bash that enters the folder into the `PATH` of the
+  Windows account through `powershell.exe`, with the sentence on what the line
+  does after it, in place of the command read in the maker's guide, which
+  stays for another shell, fish say; in the terminal six steps — `/exit`, that
+  line, the terminal program closed entirely and opened anew since Windows
+  gives the new `PATH` only to programs started after, the change into the
+  project in the new terminal, `claude` started there, `/devloop:start-work`;
+  in the terminal of VS Code seven, out of approved sentences — `/exit`, that
+  line, all windows of VS Code closed and VS Code opened again, a new terminal
+  opened in VS Code through its menu Terminal, the change into the project in
+  the new terminal, Claude Code started there, `/devloop:start-work` typed in
+  Claude Code; in the graphical panel three — that line, every window of VS
+  Code closed and VS Code opened again, Claude Code opened again and
+  `/devloop:start-work` typed there; in the desktop app four — that line, the
+  app ended entirely and opened again, the project opened again in the app,
+  `/devloop:start-work`; on a surface devloop does not know that line is the
+  first of the three steps; decision (13) of the roadmap entry of 20 November
+  2026 on the handover by surface, where the wordings stand, and for the
+  terminal of VS Code (c) of the roadmap entry of 22 November 2026 "Every
+  handover and the steps for the PATH follow surface and system", since (6) of
+  20 November 2026 asks for a new terminal in VS Code there and (13) for the
+  start again of the program that holds the terminal; not chosen: the ways by
+  clicks through the settings of Windows and of the app, which change with
+  updates, and in the terminal of VS Code the six steps of the terminal
+  unchanged; not measured, and measured by order (7) in the virtual machine:
+  the line itself under Windows, how the desktop app is ended entirely there,
+  and whether the steps bring the new `PATH`"
+
+  The lines as the tool reads them:
+
+  Should changed: the five steps for the PATH are written for claude started in a terminal, and under Use Terminal of the extension for VS Code whether Claude Code then sees the new PATH is not read
+  Should changed: the five steps for the PATH have no way for the graphical panel of the extension for VS Code and none for the desktop app
+  Should changed: under Windows the steps for the PATH keep the source of a shell file and the start of Claude Code in the same terminal, which does not get the new PATH
+
+  **The runs that need no model**, at the fifth commit of the branch,
+  `becef75`, under 0.193.0, the tree clean, on 22 November 2026 in UTC, before
+  the sixth commit changed a file: on the person's Mac, macOS 26.6.2 with bash
+  3.2.57, git 2.50.1, Python 3.14.7 and Claude Code 2.1.330, the cuts out of
+  the workflow in a throwaway directory, and in a throwaway container of
+  alpine:3.22, Alpine 3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and
+  Python 3.12.16, the repository mounted read-only. No run goes through Claude
+  Code: every call on the Mac takes `CLAUDE_CODE_ENTRYPOINT` and `TERM_PROGRAM`
+  out of its environment with `env -u`, and the container sets neither, so that
+  no value of the session, which carried `cli` and `vscode`, decides what a run
+  shows. A run's date is the day in UTC at the run, read off `date -u` in the
+  call that runs it.
+
+  Run M1, on the Mac from 16:02:51 to 16:07:07: `scripts/devloop-run-workflow`
+  over the whole workflow, both variables taken out, green, 10 steps run and
+  every one ended with 0. In the hooks step the thirteen self-tests passed,
+  those under `bin/` and that of `scripts/devloop-run-workflow`, among them
+  `bin/devloop-install-issues` with "SELF-TEST PASSED: 49 cases" and
+  `bin/devloop-surface` with the case "no stand-in: the system this self-test
+  runs on, macos" and "SELF-TEST PASSED: 34 cases"; 21 handlers started; the
+  eight cases of the four hooks that hand a command over each "exit 2", without
+  `CLAUDE_CODE_ENTRYPOINT` "the place a terminal and not Claude Code" and with
+  it on `cli` "the place Claude Code with ! in front, and the word typed right
+  after the command"; and after them the two lines of the case on
+  `bin/devloop-text`, "bin/devloop-text skill-name, without
+  CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface: unknown |
+  system: macos | handover: unknown" and "bin/devloop-text skill-name, with
+  CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the line surface:
+  terminal | system: macos | handover: terminal".
+
+  Run M2, on the Mac at 16:08:02: the red end of that case, brought about on
+  purpose and with no stand-in for `uname`: the function `texted` and what it
+  takes from its step, cut out of the workflow as it stands at `becef75`, the
+  step's `set -u`, `ROOT=$(pwd)` and `red=0`, the two lines of comment over the
+  function, the function and its call, and `exit "$red"`, without the
+  self-tests, the handlers, the eight cases and the removal of the step's
+  temporary directory, which the cut does not make; run as the job runs a step,
+  bash --noprofile --norc -eo pipefail, with `RUNNER_OS` set to Windows, so
+  that the function expects `system: windows` and `handover: windows` where the
+  program answers for macOS. Exit 1; both cases "did not put the line of its
+  situation into the rule", each with "what it printed does not carry the line"
+  and the line it expected, "surface: unknown | system: windows | handover:
+  windows" without the variable and "surface: terminal | system: windows |
+  handover: windows" with it on `cli`, neither with an exit other than 0 or
+  with `${DEVLOOP_SURFACE}` left standing; under each line what the program
+  printed, 125 lines indented by four blanks, its line 56 "surface: unknown |
+  system: macos | handover: unknown" and "surface: terminal | system: macos |
+  handover: terminal".
+
+  Run A1, in a container of alpine:3.22 from 16:08:38 to 16:09:39: the whole
+  `run:` block of the hooks step, cut out of the workflow as it stands at
+  `becef75`, as the job runs it, bash --noprofile --norc -eo pipefail with
+  `RUNNER_OS` set to Linux, after `apk add` of bash, git and python3 and the
+  checkout marked a safe directory for git, as the job's first step under
+  Alpine does it, neither variable set: exit 0 after 57 seconds; the thirteen
+  self-tests passed with the counts of M1, `bin/devloop-surface` with the case
+  "no stand-in: the system this self-test runs on, linux"; 21 handlers started;
+  the eight cases word for word as in M1; and the two lines of the case on
+  `bin/devloop-text` with `system: linux`, "bin/devloop-text skill-name,
+  without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface:
+  unknown | system: linux | handover: unknown" and "bin/devloop-text
+  skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the
+  line surface: terminal | system: linux | handover: terminal".
+
+  M1 stands on the green thing of the case on `bin/devloop-text` on
+  ubuntu-latest, macos-latest and alpine, under macOS, and on the block "no
+  step of the job hooks on every system runs bin/devloop-text, so no system of
+  the job shows the line it puts into the rule on the forms", whose Fix is the
+  line that runs the program twice; A1 on the same thing and the same block,
+  under Linux, in a container of the image the job's entry alpine runs in; M2
+  on the red thing. The green thing under Windows none of the three shows: M2
+  sets `RUNNER_OS` to Windows on macOS and brings about the red end alone, and
+  the job on windows-latest runs the case after the push. No other thing or
+  block of this branch stands on these runs: the branch changes nothing under
+  `bin/`, `hooks/` and `scripts/`, and every other behavior it adds stands in a
+  text the model loads; what else M1 and A1 show, the self-tests and the eight
+  cases among it, stands on things this branch neither adds nor changes.
+
+  **The runs of the job hooks on every system**, run 45044184852 of the
+  workflow on pull request #262 at the sixth commit, `442e88c`, under 0.193.0,
+  on 22 November 2026 in UTC, read in the log of each job with `gh run view
+  --job` and green in every step.
+
+  Run U1, the job on ubuntu-latest, job 137275051928: Ubuntu 26.04.1 LTS with
+  bash 5.3.9; in the hooks step every self-test passed, 21 handlers started,
+  the eight cases each with exit 2, and the two lines of the case on
+  `bin/devloop-text` with `system: linux`, "bin/devloop-text skill-name,
+  without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface:
+  unknown | system: linux | handover: unknown" and "bin/devloop-text
+  skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the
+  line surface: terminal | system: linux | handover: terminal".
+
+  Run W1, the job on windows-latest, job 137275051873: MINGW64_NT-10.0-26100
+  with bash 5.3.15 under Git Bash; in the hooks step every self-test passed,
+  the one of `scripts/devloop-run-workflow` left out under Windows as the step
+  has it, 21 handlers started, the eight cases each with exit 2 and "the place
+  Git Bash, the system going before the surface", and the two lines of the
+  case with `system: windows` and `handover: windows`, "bin/devloop-text
+  skill-name, without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the
+  line surface: unknown | system: windows | handover: windows" and
+  "bin/devloop-text skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the
+  rule carries the line surface: terminal | system: windows | handover:
+  windows".
+
+  U1 stands on the green thing of the case on ubuntu-latest, macos-latest and
+  alpine, under Ubuntu, and on the block on the step that ran no
+  `bin/devloop-text`; W1 on the green thing under windows-latest and on the
+  same block. The jobs on macos-latest and alpine of the same run are entered
+  as no runs of their own, M1 and A1 standing for those systems.
+
+  **What stays open.** The behaviors of the texts the model loads, and the
+  blocks whose Fix stands on them, wait for the closing runs of order (7),
+  where `docs/plan.md` says milestone 12 ends; the runs of this branch that
+  need no model stand above, those of the job hooks on every system on
+  ubuntu-latest and windows-latest among them. Of the new blocks, order (6)
+  builds the two on "Shift+Tab in the terminal" and on "/clear"; the next
+  order that changes `hooks/pre-tool-use-install-guard.sh` builds the one on
+  its message, and the next that changes `bin/devloop-install-issues` or
+  `bin/devloop-tool-state` the one on the self-test, both by the decision of
+  18 November 2026 under milestone 12 of `docs/plan.md`; the one on the
+  references to `build-work` step 3 point 7 is built on this branch.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

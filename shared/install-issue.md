@@ -16,17 +16,26 @@ a browser, whichever way it got there — and closes the issue itself where it
 does, with a comment naming the line it read; a task the issue held is free
 again, and a check class it concerned goes to `setup-checks`. And after their no
 to the handover of a task's tool, where they type the command here with `!` in
-the same session or say under form B that they ran it, the run closes the issue
+the same session, under form A, or say under form B that they ran it, the run
+closes the issue
 the same way at once, the program run with `--after-install`, `build-work` step
 3 point 7 and "The task itself"; the issue's text stays as it stands here,
 naming the way a later session takes, while the message after the no names both
 ways: the two do not contradict, since the way the issue names stands in the
 message too. So the issue tells the person what is missing and the command, and
 does not tell them to close it: devloop does, and what devloop cannot read it
-does not close. It tells them where they type the command — in Claude Code with
-`!` in front where it asks nothing, else in a second terminal window that is not
-the one Claude Code runs in, where it asks something, with what it asks named —
-and that they type `/devloop:start-work` after it; the line `install-command:`
+does not close. It says how they install the tool themselves, in two numbered
+steps. The first: that they type the command in a terminal, the command as it
+runs from wherever they are and, behind it, what it asks where it asks, in
+doubt what it may ask; the issue names a terminal and never Claude Code with
+`!` in front, whatever the surface this run is on, since an issue is read
+later and perhaps on another surface, and under `windows`, the `system:` of
+the line `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints, the step has them
+open Git Bash, the terminal that comes with Git for Windows, and type the
+command there. The second: that they type `/devloop:start-work` in Claude
+Code. Then that devloop closes this issue itself and takes the task up again,
+or, where the issue concerns a check class, closes it and sets the check up.
+The line `install-command:`
 stays the bare command, since the program reads it. Where the command installs
 into a folder the search path does not reach, the next start says so with the
 steps, the text on that read.

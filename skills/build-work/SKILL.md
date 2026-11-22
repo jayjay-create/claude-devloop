@@ -494,6 +494,8 @@ The subagent:
    task put down; the main run takes the next in step 2.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-tool`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text path-steps`
+
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-alone`
@@ -529,8 +531,8 @@ The subagent:
    **A command the person typed themselves that is an install outside the
    project** — the one point 7 handed over under a record saying no or never
    written, or the one `setup-checks` step 3 put to them as a question,
-   typed in Claude Code with `!` in front or run in a second terminal
-   window, which the hook does not see either way — has its line here
+   typed in Claude Code with `!` in front or run in a terminal outside
+   it, which the hook does not see either way — has its line here
    all the same, under the same heading `Installed outside the project` and
    in the form the hook writes, written by the program the hook writes it
    with: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put` with the folder
@@ -563,7 +565,7 @@ was for:
   `bin/devloop-install-issues` as the text at the start of step 2 says,
   closes the issue itself where it does, and the task is free again. And in
   this session: where they type the command here with `!` after the no — or,
-  under form B, say that they ran it in the second window — the run reads
+  under form B, say that they ran it in the terminal named — the run reads
   both lines with `--installed` as point 7 says, runs
   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues --after-install`, which
   closes the issue with a comment naming an install during a session and
@@ -574,11 +576,14 @@ was for:
   it is said together at the next message that ends a turn with text: that
   nothing was built; the issue by its title; that the task, by its title, is
   not built while the issue is open; the next task by its title where one is
-  free, else that none is; and both ways — the line with the `!` to type
-  here, on which the run closes the issue and builds the task, and that an
+  free, else that none is; and both ways — under form A the line with the
+  `!` to type here, under `terminal` with the sentence on „fertig“ after it,
+  on which the run closes the issue and builds the task, and that an
   install made another way is read at the next start with
-  `/devloop:start-work`, the input named as they type it; under form B the
-  second window instead of the `!`, with what the command asks, in doubt what
+  `/devloop:start-work`, the input named as they type it; under form B, for a
+  command that asks and for every command under `panel`, `windows` and
+  `unknown`, the terminal the rule on the two forms names for the situation
+  instead of the `!`, with what the command asks, in doubt what
   it may ask, and their word here. Go back to step 2 rather than stopping.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issue`

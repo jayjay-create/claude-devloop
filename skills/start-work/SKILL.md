@@ -154,6 +154,8 @@ it held is free.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text path-steps`
+
 Then run the in-flight query from `docs/agents/issue-tracker.md` and say what it
 found, in at most five lines, where a question of this step follows it — whether
 to land a pull request, or the open question — or where the stage it leads to

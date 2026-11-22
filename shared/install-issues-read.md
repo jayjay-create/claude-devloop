@@ -32,17 +32,14 @@ carries a `folder:` line, say, with the person
 there at the next message that ends a turn with text and with nobody there
 in the last message: that the command from the issue, named by its title,
 installed the tool into the folder, both as the line names them; that the
-folder is not in their `PATH`, the term untranslated; that the run
+folder is not in their `PATH`, the term untranslated and said to be the list
+of folders in which their computer looks for programs; that the run
 therefore does not find the tool and the issue stays open; then how they
-put the folder on their search path, step by step, the five steps as
-`build-work` step 3 point 7 has them for the tool of a task — `/exit`, the
-export line into the file of their shell, the `source` of it, `cd
-<directory> && claude`, `/devloop:start-work` — the shell and the system
-read as that point reads them, the command of a step the run has no sure
-form for read first in the maker's guide as that point says, and a step without
-a command only where that yields none; and that the run then finds the tool,
+put the folder on their search path, step by step, the steps by the surface
+and the system as "The steps that put a folder on the search path" has
+them; and that the run then finds the tool,
 closes the issue and builds the task — or, where the issue concerned a check
-class, sets the check up. The issue is not
+class, closes the issue and sets the check up. The issue is not
 closed by that: the next start reads the search path again, after the
 steps. Where it ends with 2, say that the query did not answer, with the
 command and the message it prints, as "When a command does not answer" says,
@@ -52,11 +49,12 @@ planning in the same session, and in `build-work` and `plan-work` at a
 start that followed `start-work` in the same session: an issue closed is not
 found again, and the second read costs nothing but the listing. And run with
 `--after-install`, where the person, after their no to the handover of a task's
-tool, typed the command here with `!` in the same session or said under form B
-that they ran it, after the read of both lines with `--installed` that
+tool, typed the command here with `!` in the same session, under form A, or
+said under form B that they ran it in the terminal the handover named, after
+the read of both lines with `--installed` that
 `build-work` step 3 point 7 asks for: the program closes the issue where the
 search path finds the tool now, with a comment naming an install during a
 session and no start, prints the `folder:` line where the command installed and
 the search path does not reach the tool, and the run goes by its lines as at a
-start — the task freed goes to step 2 of `build-work`, and the five steps where
+start — the task freed goes to step 2 of `build-work`, and the steps where
 a folder line stands.

@@ -32,38 +32,15 @@
    with text, and say how they put the folder on their search path, step by
    step: that the command installed the tool into the folder, both as the first
    line names them; that the folder is not in their `PATH`, the term
-   untranslated as the output style says of a technical term; and that the build
-   therefore does not find the tool.
-   Then the steps, numbered, in the order they can take them, since the
-   terminal takes their typing only once Claude Code is ended: they end
-   Claude Code, `/exit`; they put the folder into their `PATH` in the
-   terminal, with the line that appends the export to the file their shell
-   reads when a terminal opens it; they load that file anew, `source` with
-   the file; they start Claude Code again in the project, `cd <directory>
-   && claude`, the directory written as "A command handed over runs as it
-   stands" writes it; they type `/devloop:start-work` there; and that the
-   run then finds the tool and builds the task. The shell is read off
-   `$SHELL` and the system off `uname -s`, with the shell, beside the call
-   of `--installed`: for zsh the file is `~/.zshrc`; for bash it is the
-   file bash reads on that system when a terminal opens it, `~/.bash_profile`
-   on macOS, where the terminal opens a login shell, and `~/.bashrc` on
-   Linux, where it opens an interactive shell; the export line names the
-   folder as the first line names it, with `~` written `$HOME` inside the
-   single quotes so that the file carries the variable and not the path —
-   `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc` — and the load is
-   `source ~/.zshrc`. For a shell the run has no sure form for — another
-   shell, fish say, or bash on a system other than those two, Windows with
-   Git Bash among them, where the `PATH` Claude Code runs under is Windows'
-   own and no bash file sets it — the run reads the command first in the
-   maker's guide, the shell's or the system's, with its tools for the web,
-   and gives it as it stands there, with the source: for fish the page of fish
-   on `fish_add_path`, which adds a folder once and keeps it; a command the
-   guide itself warns against it does not give. Only where that yields no
-   command — the page cannot be read, or it names neither the shell nor the
-   system — the step says that the folder has to go into their `PATH` and names
-   no command, and the other steps stand as above. In the session the last step
-   opens, the tool stands on the search path Claude Code took over from that
-   terminal, and the build reaches it with
+   untranslated as the output style says of a technical term and said to be the
+   list of folders in which their computer looks for programs; that the build
+   therefore does not find the tool; and that they take the folder up as the
+   steps say.
+   Then the steps, by the surface and the system, as "The steps that put a
+   folder on the search path" below has them; and that the
+   run then finds the tool and builds the task. In the session the last step
+   opens, the tool stands on the search path Claude Code runs under there,
+   and the build reaches it with
    no issue between: step 2 reads the issues, none of which holds this
    task — on the way under a yes none was written, since the issue is written
    on a no alone, "The task itself" below, and after a no the read before the
@@ -82,13 +59,14 @@
    there yet, as "Where the person types a command devloop hands them" has
    it for each of the three, and not that the command failed. The
    same read, with both lines, after a no: where they type the command here with
-   `!` in this session after declining, or say under form B that they ran it in
-   the second window, the two lines are read as above, and where both say found
+   `!` in this session after declining, under form A, or say under form B that
+   they ran it in the terminal the handover named, the two lines are read as
+   above, and where both say found
    the run closes the issue itself, with
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues --after-install`, whose
    comment names an install during a session and no start, and builds
    the task by the rules of step 2, to which it goes back, "The task itself"
-   below; where the first line says found and the second not found, the five
+   below; where the first line says found and the second not found, the
    steps above, the issue staying open; where the first says not found, the
    issue staying, by the two sentences on not found above: said with the line
    and the command handed over again where the conversation shows that the
@@ -147,11 +125,19 @@
    the change into the project's directory before it where it needs one, by "A
    command handed over runs as it stands", and what it is backed by, with the
    version and the folder it lands in — and both ways it can go, in the same
-   breath. The way of the yes: where they type it — in Claude Code with `!` in
-   front where the command asks nothing, form A, the line given with the `!`; in
-   a second terminal window, not the one Claude Code runs in, where it asks
-   something, a password for `sudo` say, form B, the text naming what it asks
-   and asking them to say here once it is through; in doubt B, with what it may
+   breath. The way of the yes: where they type it, by "Where the person types a
+   command devloop hands them" above and the line
+   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints before this handover —
+   under `terminal` and under `desktop`, where the command asks nothing, in
+   Claude Code with `!` in front, form A, the line given with the `!`, and
+   under `terminal`, in a sentence of its own directly before the sentence on
+   what the run does once the command is through, that they type „fertig“
+   right after the command; where it asks something, a password for `sudo`
+   say, and for every command under `panel`, `windows` and `unknown`, in the
+   terminal that rule names for the situation, form B, the line without a `!`,
+   the text naming what it asks where it asks and asking them to say here
+   once it is through, that request directly before the same
+   sentence; in doubt B, with what it may
    ask —, and the build picks up once the tool is where that command puts it and
    the search path finds it, read by the paragraph on reading the result above
    after the form's signal, the first of the two signs under A, the answered
@@ -162,8 +148,8 @@
    below says, written on the no and never before the answer; the run goes
    on with the next task that is ready, where one is, and with this one once
    the tool stands on this machine: at once, where they type the command
-   here with `!` after the no in this session, or under B say that they ran
-   it, the run reading both lines and closing the issue itself, as the
+   here with `!` after the no in this session, under A, or under B say that
+   they ran it, the run reading both lines and closing the issue itself, as the
    paragraph on reading the result above and "The task itself" say; else at
    a later start, which devloop reads itself and closes the issue on. Before
    a no the form's signal releases the run — the first of the two signs under

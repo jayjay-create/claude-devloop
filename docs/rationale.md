@@ -546,10 +546,23 @@ loaded text no longer carries stands here at its rule.
 ### Step 1 — Explore, change nothing
 
 - **`gh` not signed in: the run says how they sign in, step by step, the sign-in
-  in a second terminal window.** The sign-in asks, and its questions go only to
-  the window it runs in. Finding D1 of entry "Handovers say where the command is
-  typed, sign-in and identity in steps.", where until then the step named `gh
-  auth login` and stopped. Approved wording, (3) of that entry: „Für die Arbeit
+  in the terminal form B names for the situation, a second terminal window under
+  `terminal` alone.** The sign-in asks, and its questions go only to the
+  terminal it runs in. Which terminal the first step names follows the line of
+  `bin/devloop-surface`, as the point on form B under `shared/skill-name.md` has
+  it: a second terminal window that is not the one Claude Code runs in meets
+  nothing in the graphical panel and in the desktop app, where Claude Code runs
+  in no terminal window, and under Windows the terminal is Git Bash. Finding D1
+  of entry "Handovers say where the command is typed, sign-in and identity in
+  steps.", where until then the step named `gh auth login` and stopped; for the
+  place by the situation the case is the block "the wording of form B, a second
+  terminal window that is not the one Claude Code runs in, stands where Claude
+  Code runs in no terminal too" of `docs/defects.md`, decisions (4) and (8) of
+  entry "Handover by surface decided, its wordings and blocks recorded", built
+  in entry "Every handover and the steps for the PATH follow surface and
+  system". Approved wording, (3) of entry "Handovers say where the command is
+  typed, sign-in and identity in steps.", its first step as it reads under
+  `terminal`: „Für die Arbeit
   mit GitHub braucht devloop dein GitHub-Konto, und auf diesem Rechner ist es
   noch nicht angemeldet. Hast du noch kein Konto, legst du es zuerst auf
   github.com an. So meldest du dich an:“, then „1. Öffne ein zweites
@@ -561,8 +574,9 @@ loaded text no longer carries stands here at its rule.
   these two", the paragraph "Where a text to the person says they have to do
   something at the computer, it says how, step by step".
 - **`gh` not installed: the run reads GitHub's guide for the system and hands
-  the command over as it stands there, backed, the backing said in the skill's
-  own words.** A command the run does not know for
+  the command over as it stands there, in the form and at the place the
+  situation has, backed, the backing said in the skill's own words.** A command
+  the run does not know for
   certain is read at the maker, not guessed and not left out; the skill does not
   insert `shared/backed-command.md`, whose insert went on 20 October 2026 by
   the person's decision, so step 1 names no text it does not read — "Shared
@@ -573,13 +587,18 @@ loaded text no longer carries stands here at its rule.
   October 2026 after the push, at the person's question why devloop referred to
   `cli.github.com` instead of reading the command there, entry "Handovers say
   where the command is typed, sign-in and identity in steps.". Approved
-  wordings, same entry: on a Mac with Homebrew, form A, „Für die Arbeit mit
+  wordings, same entry: on a Mac with Homebrew, where the command asks nothing,
+  form A, which holds under `terminal` and under `desktop`, „Für die Arbeit mit
   GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem Rechner
   ist es noch nicht installiert. Gib den Befehl dafür hier in Claude Code ein,
   mit `!` davor:“ — „`! brew install gh`“ — „Geprüft mit `brew info gh`:
   Homebrew bietet gh 2.96.0 an, es landet in `/opt/homebrew/bin`.“ — „Sobald er
   durchgelaufen ist, prüfe ich, dass `gh` da ist, und sage dir, wie du dich bei
-  GitHub anmeldest.“; under Debian or Ubuntu, form B, „Für die Arbeit mit GitHub
+  GitHub anmeldest.“, under `terminal` with „Gib gleich nach dem Befehl „fertig“
+  ein.“ directly before that last sentence, and under `panel` and `unknown` the
+  same command in form B, typed in the terminal the rule names, without the `!`;
+  under Debian or Ubuntu, form B, the place as it reads under `terminal`, „Für
+  die Arbeit mit GitHub
   braucht devloop das Programm `gh` von GitHub, und auf diesem Rechner ist es
   noch nicht installiert. Der Befehl dafür fragt nach deinem Passwort, darum gib
   ihn in einem zweiten Terminalfenster ein, nicht in dem, in dem Claude Code
@@ -590,7 +609,13 @@ loaded text no longer carries stands here at its rule.
   GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem Rechner
   ist es noch nicht installiert. Installiere es, wie cli.github.com es für dein
   System beschreibt, und sag mir hier Bescheid, sobald das erledigt ist. Dann
-  sage ich dir, wie du dich bei GitHub anmeldest.“ That `gh` is there the run
+  sage ich dir, wie du dich bei GitHub anmeldest.“ Under `windows` the command
+  goes in form B in Git Bash whatever it asks. The form and the place by the
+  situation and the sentence on „fertig“ are decision (3) and points 1 and 2 of
+  the pattern, (8), of entry "Handover by surface decided, its wordings and
+  blocks recorded", whose wordings of the place are quoted at the point on form
+  B under `shared/skill-name.md`; built in entry "Every handover and the steps
+  for the PATH follow surface and system". That `gh` is there the run
   reads at the form's signal, under form A the first of two signs, the answered
   output or their word, and under form B their word, as the point on form A
   under `shared/skill-name.md` has it; built in entry "A handover follows the
@@ -1045,13 +1070,23 @@ loaded text no longer carries stands here at its rule.
   schalte ich nie von mir aus ab, deshalb schreibe ich ein Issue mit dem Grund
   und mache mit den anderen Aufgaben weiter.“, with the example „Das Werkzeug
   `<Name>` bräuchte Java, und eine Laufzeitumgebung installiere ich nie
-  selbst.“; its end under form A, (8) of entry "Handovers say where the command
-  is typed, sign-in and identity in steps.": „So installierst du das Werkzeug
+  selbst.“; its end follows the situation, form A under `terminal` and under
+  `desktop` where the command asks nothing, form B where it asks, in doubt, and
+  for every command under `panel`, `windows` and `unknown`, and carries neither
+  the sentence on „fertig“ nor the request to say here, nobody being there,
+  points 1 and 6 of the pattern, (8) of entry "Handover by surface decided, its
+  wordings and blocks recorded", built in entry "Every handover and the steps
+  for the PATH follow surface and system"; under form A, (8) of entry "Handovers
+  say where the command is typed, sign-in and identity in steps.": „So
+  installierst du das Werkzeug
   selbst, hier in Claude Code:“ — „1. `! brew install gitleaks`“ — „2.
   `/devloop:start-work`“ — „Dann schließe ich das Issue, richte die Prüfung ein
   und mache mit der Aufgabe weiter. Der Befehl steht auch im Issue.“; under form
-  B, (2) of the decisions after the push in that entry: „So installierst du das
-  Werkzeug selbst:“ — „1. Öffne ein zweites Terminalfenster, nicht das, in dem
+  B, (2) of the decisions after the push in that entry, the first step as it
+  reads under `terminal`, elsewhere with the place form B names for the
+  situation and with the reason only where the command asks: „So installierst du
+  das Werkzeug selbst:“ — „1. Öffne ein zweites Terminalfenster, nicht das, in
+  dem
   Claude Code läuft, denn der Befehl fragt nach deinem Passwort.“ — „2. Gib dort
   ein: `sudo apt install gitleaks`“ — „3. Gib hier in Claude Code
   `/devloop:start-work` ein.“ — „Dann schließe ich das Issue, richte die Prüfung
@@ -1323,26 +1358,44 @@ loaded text no longer carries stands here at its rule.
   es selbst installieren: `brew install gitleaks`. Wie soll es weitergehen?"
   with the answers "Selbst installieren" and "Prüfung abschalten".
 - **After "they install it themselves" the command is handed over in the form
-  for where it is typed, and both lines of the tool state are read.** The folder
+  and at the place the situation has, both lines of the tool state are read, and
+  where the folder is off the search path the steps are said by the surface and
+  the system.** The folder
   alone does not show whether the chain can call the tool: `go install` puts a
   tool into `~/go/bin`, which often stands on no search path. The run reads
   them at the form's signal, under form A the first of two signs, the answered
   output or their word, and under form B their word, as the point on form A
   under `shared/skill-name.md` has it; built in entry "A handover follows the
-  surface and the system, read by one program". Approved wordings,
-  entry "Handovers say where the command is typed, sign-in and identity in
-  steps.": form A, (7): „Gib den Befehl hier in Claude Code ein, mit `!` davor:“
+  surface and the system, read by one program". Form A holds under `terminal`
+  and under `desktop` where the command asks nothing, under `terminal` with the
+  sentence on „fertig“ directly before the last sentence; form B where it asks,
+  in doubt, and for every command under `panel`, `windows` and `unknown`, the
+  line without a `!`; decisions (2), (3) and (4) and the pattern, (8), of entry
+  "Handover by surface decided, its wordings and blocks recorded", built in
+  entry "Every handover and the steps for the PATH follow surface and system".
+  Approved wordings, entry "Handovers say where the command is typed, sign-in
+  and identity in steps.": form A, (7), as it reads under `desktop`, the wording
+  under `terminal` being the one quoted at the point on form A under
+  `shared/skill-name.md`: „Gib den Befehl hier in Claude Code ein, mit `!`
+  davor:“
   — „`! brew install gitleaks`“ — „Sobald er durchgelaufen ist, prüfe ich, dass
-  `gitleaks` da ist, und richte die Prüfung ein.“; form B, (1) after the push:
-  „Der Befehl fragt nach deinem Passwort, darum gib ihn in einem zweiten
+  `gitleaks` da ist, und richte die Prüfung ein.“; form B, (1) after the push,
+  as it reads under `terminal`, the sentence on the place elsewhere being the
+  one quoted at the point on form B under `shared/skill-name.md`: „Der Befehl
+  fragt nach deinem Passwort, darum gib ihn in einem zweiten
   Terminalfenster ein, nicht in dem, in dem Claude Code läuft:“ — „`sudo apt
   install gitleaks`“ — „Sag mir hier Bescheid, sobald er durchgelaufen ist. Dann
   prüfe ich, dass `gitleaks` da ist, und richte die Prüfung ein.“; the folder
-  off the search path, (10): „Der Befehl hat `gitleaks` nach `~/go/bin`
-  installiert, aber dieser Ordner steht nicht in deinem `PATH`, darum findet die
-  Prüfung `gitleaks` nicht. So nimmst du ihn auf:“, the five steps as under
-  `shared/install-tool.md`, then „Dann finde ich `gitleaks` und richte die
-  Prüfung ein.“ In doubt whether the command asks, „kann etwas von dir abfragen,
+  off the search path, the opening and the close taken over from (11) of entry
+  "Handover by surface decided, its wordings and blocks recorded" and approved
+  as (a) of entry "Every handover and the steps for the PATH follow surface and
+  system": „Der Befehl hat `gitleaks` nach `~/go/bin` installiert. Dieser Ordner
+  steht aber nicht in deinem `PATH`, der Liste der Ordner, in denen dein Rechner
+  nach Programmen sucht. Darum findet die Prüfung `gitleaks` nicht. So nimmst du
+  den Ordner auf:“, the steps as under `shared/path-steps.md`, which the skill
+  inserts at the end of this step, then „Dann finde ich `gitleaks` und richte
+  die Prüfung ein.“ In doubt whether the command asks, „kann etwas von dir
+  abfragen,
   etwa dein Passwort“ stands in place of „fragt nach deinem Passwort“, decided
   by the person on 1 November 2026, entry "The loaded texts lose their history,
   reasons move to docs/rationale.md." See docs/skill-conventions.md under "Every
@@ -1400,7 +1453,12 @@ loaded text no longer carries stands here at its rule.
   one program, written where the install stood alone.".
 - **A tool the person installed themselves gets its line from this step, through
   `devloop-install-note put`.** The hook does not see a command the person
-  typed, and one program holds the form of the line. Case: in run 1 of 23
+  typed, in Claude Code with `!` in front as little as in a terminal outside it,
+  the two ways a handover knows, and one program holds the form of the line; the
+  step names both ways, the block "setup-checks step 4 names the terminal alone
+  for an install the person made, where step 3 and build-work say both forms" of
+  `docs/defects.md`, built in entry "Every handover and the steps for the PATH
+  follow surface and system". Case: in run 1 of 23
   October 2026 no line was written for the WebKit download the person ran, and
   the line for `htmlq` carried a remark beyond the hook's form, defect 4 of
   entry "Six closing runs read off their logs, each on the defects it met."; (b)
@@ -1757,7 +1815,22 @@ loaded text no longer carries stands here at its rule.
   fields fifteen, past it, entry "Handovers say where the command is typed,
   sign-in and identity in steps."; two issues in form B whose commands may ask
   pass it as well, the reason in doubt being the longer, entry "Four entries
-  held, rationale points completed, two questions answered.". Approved wording,
+  held, rationale points completed, two questions answered.". The line with the
+  `!` holds under `terminal` and under `desktop` alone; under `panel`, `windows`
+  and `unknown` the line says form B for every command, in the terminal the rule
+  on the two forms names for the situation, which under `terminal` alone is a
+  second terminal window; and no line under this no carries the sentence on
+  „fertig“ or the request to say here; points 1 and 6 of the pattern, (8) of
+  entry "Handover by surface decided, its wordings and blocks recorded". Counted
+  anew by the situation with the build, entry "Every handover and the steps for
+  the PATH follow surface and system": with one issue the fields fit in every
+  situation; with two issues in form B whose commands ask they pass the bound
+  under `terminal` and stand at it in the other situations, so the text says
+  that they can pass it and has two such issues asked as text everywhere. The
+  commands of several issues stay named one by one and are not joined by `&&`,
+  decided without a question and confirmed by the person, (h) of that entry: the
+  approved wording has every command named, and point 5 of the pattern holds for
+  the commands of one handover. Approved wording,
   entry "Conditions 6 and 7 at the mark, the rule asked after a refusal,
   titles.": „Der Auto-Modus hat in einem Lauf ohne dich `<Befehl>` abgelehnt
   (Issue #<Nummer>). Darf ich in deiner Datei `~/.claude/settings.json` eine
@@ -1772,11 +1845,13 @@ loaded text no longer carries stands here at its rule.
   und richte die Prüfung wieder ein. Die Regel erlaubt nur Installationen in
   Projekten, die mit devloop eingerichtet sind.“; no „Nein, nicht eintragen“
   with, (9) of entry "Handovers say where the command is typed, sign-in and
-  identity in steps.", „Dann bleibt das Issue offen. Gibst du hier selbst
+  identity in steps.", the line with the `!`, „Dann bleibt das Issue offen.
+  Gibst du hier selbst
   `! brew install yq` ein und danach `/devloop:start-work`, schließe ich das
   Issue und nehme die Aufgabe wieder auf. Bis dahin frage ich bei jedem Start
   mit `/devloop:start-work --auto` wieder.“, and where the command asks, (3)
-  after the push there: „Dann bleibt das Issue offen. Der Befehl
+  after the push there, as it reads under `terminal`: „Dann bleibt das Issue
+  offen. Der Befehl
   `sudo apt install yq` fragt nach deinem Passwort, darum gib ihn in einem
   zweiten Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du
   danach hier `/devloop:start-work` ein, schließe ich das Issue und nehme die
@@ -2001,30 +2076,44 @@ Nothing in this file stood as history; its rules carry their own reasons.
 ### Hand it over so it gets looked at
 
 - **The prototype is handed over as one action: a single HTML file opened by one
-  line typed in Claude Code with `!` in front, form A; a process started in a
-  second terminal window, form B, with the address and how they end it.** A
-  command that asks nothing and ends by itself runs under form A and its output
-  reaches the run; one that does not end by itself would hold Claude Code under
-  A. The two forms are those of docs/skill-conventions.md under "Every skill
-  carries these two", the paragraph "Where the person types a command devloop
-  hands them while Claude Code runs", inserted into the skill from
-  `shared/skill-name.md`; decided on 28 October 2026, rule (b) of entry
-  "Handovers say where the command is typed, sign-in and identity in steps.",
-  which names these lines among the places brought in line.
+  line, typed in Claude Code with `!` in front, form A, under `terminal` and
+  under `desktop`, under `terminal` with the sentence on „fertig“, and typed in
+  the terminal the rule names for the situation, form B, without the `!`, under
+  `panel`, `windows` and `unknown`; a process started in the terminal form B has
+  for the situation, with the address and how they end it.** A command that asks
+  nothing and ends by itself runs under form A where that form holds, and its
+  output reaches the run; one that does not end by itself would hold Claude Code
+  under A. The two forms and the place by the situation are those of
+  docs/skill-conventions.md under "Every skill carries these two", the paragraph
+  "Where the person types a command devloop hands them while Claude Code runs",
+  inserted into the skill from `shared/skill-name.md`; decided on 28 October
+  2026, rule (b) of entry "Handovers say where the command is typed, sign-in and
+  identity in steps.", which names these lines among the places brought in line,
+  and by the situation in decisions (2), (3), (4) and (8) of entry "Handover by
+  surface decided, its wordings and blocks recorded", built in entry "Every
+  handover and the steps for the PATH follow surface and system".
 
 ## `skills/build-prototype/LOGIC.md`
 
 ### 4. Hand it over
 
 - **A logic demo is handed over as the skill says under "Hand it over so it gets
-  looked at": one action, the command that opens the file, typed with `!` in
-  front, form A.** A handover names where the command is typed and gives the
+  looked at": one action, the command that opens the file, in the form and at
+  the place that section gives for the surface and the system — typed with `!`
+  in front, form A, in a terminal and in the desktop app under macOS or Linux,
+  and typed in a terminal, form B, in the graphical panel of VS Code, under
+  Windows and where the surface or the system is unknown.** A handover names
+  where the command is typed and gives the
   line, the person's rule of 28 October 2026 under "Where the person types a
   command devloop hands them" in docs/skill-conventions.md, applied to the
   skill's own section that day, entry "Handovers say where the command is
   typed, sign-in and identity in steps."; the case is the block
   "build-prototype LOGIC.md hands the file over by sending or opening it where
-  SKILL.md gives one action" of `docs/defects.md`, built in entry "Decided contradictions mended, the mark guard reads the mode's record.".
+  SKILL.md gives one action" of `docs/defects.md`, built in entry "Decided
+  contradictions mended, the mark guard reads the mode's record."; the form by
+  the surface and the system is decisions (3), (4) and (8) of entry "Handover by
+  surface decided, its wordings and blocks recorded", built in entry "Every
+  handover and the steps for the PATH follow surface and system".
 
 ## `skills/build-prototype/UI.md`
 
@@ -2793,7 +2882,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   runs read off their logs, each on the defects it met."
 - **An install the person typed themselves has its line under `Installed outside
   the project`, in the hook's form, written by `devloop-install-note put`, for a
-  browser download as for a tool.** The hook does not see that install. Without
+  browser download as for a tool.** The hook does not see that install, typed in
+  Claude Code with `!` in front or run in a terminal outside it. Without
   the line, nobody who clones the project reads that the tool was installed by
   hand. Case: in run 1 of the six closing runs recorded on 24 October 2026, the
   WebKit download the person ran under the no got no line. Entry "Six closing
@@ -2836,15 +2926,23 @@ Nothing in this file stood as history; its rules carry their own reasons.
   `yq` doch installieren, gib hier ein: `! brew install yq`. Dann schließe ich
   das Issue und baue die Aufgabe. Installierst du es auf anderem Weg, schließe
   ich es beim nächsten Start mit `/devloop:start-work`.“, entry "The ! after a
-  no taken up in the session, point 7 read by the subagent." Under form B, where
-  the command asks something or the run does not know for certain whether it
-  asks, the sentence with „gib hier ein“ reads „Willst du `yq` doch
+  no taken up in the session, point 7 read by the subagent." The line with the
+  `!` is form A, which holds under `terminal` and under `desktop`, under
+  `terminal` with the sentence on „fertig“ after it. Under form B, where the
+  command asks something or the run does not know for certain whether it asks,
+  and for every command under `panel`, `windows` and `unknown`, the sentence
+  with „gib hier ein“ names the terminal the rule on the two forms has for the
+  situation, and under `terminal` it reads „Willst du `yq` doch
   installieren: Der Befehl `sudo apt install yq` fragt nach deinem Passwort,
   darum gib ihn in einem zweiten Terminalfenster ein, nicht in dem, in dem
   Claude Code läuft, und sag mir hier Bescheid.“, in doubt with „kann etwas von
   dir abfragen, etwa dein Passwort“ in place of „fragt nach deinem Passwort“,
   entry "Four entries held, rationale points completed, two questions answered."
-  The comment at that closing names an install during a session and no start,
+  The form and the place by the situation are decisions (2), (3), (4) and (8) of
+  entry "Handover by surface decided, its wordings and blocks recorded", built
+  in entry "Every handover and the steps for the PATH follow surface and
+  system". The comment at that closing names an install during a session and no
+  start,
   as the point on `--after-install` under `shared/install-issues-read.md` has
   it.
 ### Proving a check guards its condition
@@ -3225,9 +3323,13 @@ Nothing in this file stood as history; its rules carry their own reasons.
 ### Step 6 — Clean up, or hand it over
 
 - **A command handed over for a diagnosis carries the change into the project's
-  directory and says where it is typed: in Claude Code with `!` where it asks
-  nothing and ends by itself, form A; in a second terminal window otherwise,
-  form B.** No knowledge of commands in a terminal is assumed of the person, so
+  directory and says where it is typed, by the situation: under `terminal` and
+  under `desktop` in Claude Code with `!` where it asks nothing and ends by
+  itself, form A, under `terminal` with the sentence on „fertig“; in the
+  terminal the rule names for the situation where it asks or does not end by
+  itself, in doubt, and for every command under `panel`, `windows` and
+  `unknown`, form B.** No knowledge of commands in a terminal is assumed of the
+  person, so
   the line runs as it stands wherever it is typed; a command that asks something
   or does not end by itself cannot run under form A. Both rules stand whole in
   `shared/skill-name.md`, which the skill inserts, and in
@@ -3243,7 +3345,10 @@ Nothing in this file stood as history; its rules carry their own reasons.
   everything has to be there for copying; the second on 28 October 2026, entry
   "Handovers say where the command is typed, sign-in and identity in steps.",
   which brought this place in line where the command went "into their own
-  terminal".
+  terminal"; the form and the place by the situation are decisions (2), (3), (4)
+  and (8) of entry "Handover by surface decided, its wordings and blocks
+  recorded", built in entry "Every handover and the steps for the PATH follow
+  surface and system".
 
 ## `skills/review-changes/SKILL.md`
 
@@ -3926,10 +4031,13 @@ Nothing in this file stood as history; its rules carry their own reasons.
   targets in the second closing run; 12 October 2026, the version stays
   0.135.0.": „GitHub war bei drei Versuchen nicht erreichbar. Prüfe deine
   Internetverbindung und sag Bescheid, wenn sie wieder steht."
-- **The refused sign-in is handed over step by step in a second terminal window,
-  as `gh auth login --web --git-protocol https`, and what the program guides is
-  not described after it.** The sign-in puts questions to the person, which go
-  only to the terminal it runs in; `--git-protocol https` keeps `gh` from asking
+- **The refused sign-in is handed over step by step in the terminal form B names
+  for the situation, a second terminal window under `terminal` alone, as `gh
+  auth login --web --git-protocol https`, and what the program guides is not
+  described after it.** The sign-in puts questions to the person, which go only
+  to the terminal it runs in, and which terminal the first step names follows
+  the line of `bin/devloop-surface`, as the point on form B under
+  `shared/skill-name.md` has it; `--git-protocol https` keeps `gh` from asking
   for the protocol and `--web` takes the way through the browser; a description
   of another's flow stops being true once its maker changes it. The manual
   `cli.github.com/manual/gh_auth_login`, read on 28 October 2026: "The git
@@ -3937,7 +4045,14 @@ Nothing in this file stood as history; its rules carry their own reasons.
   --git-protocol, or during the interactive prompting." and "The default
   authentication mode is a web-based browser flow." Entry "Handovers say where
   the command is typed, sign-in and identity in steps.", (2); the approved
-  wording is quoted under `shared/skill-name.md`. See docs/skill-conventions.md
+  wording is quoted under `shared/skill-name.md`, its first step as it reads
+  under `terminal`. For the place by the situation the case is the block "the
+  wording of form B, a second terminal window that is not the one Claude Code
+  runs in, stands where Claude Code runs in no terminal too" of
+  `docs/defects.md`, decisions (4) and (8) of entry "Handover by surface
+  decided, its wordings and blocks recorded", built in entry "Every handover and
+  the steps for the PATH follow surface and system". See
+  docs/skill-conventions.md
   under "Every skill carries these two", the paragraph "Where the person types a
   command devloop hands them while Claude Code runs", form B, and the paragraph
   "Where a text to the person says they have to do something at the computer, it
@@ -4088,8 +4203,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   close it. Decided as (5) of entry "Tool state read by one program, the
   planning saying only what it read.", in place of the person closing the issue;
   built in entry "Every subagent gets the install record, the build reads its
-  tools first.". No wording of the issue is approved: the skills say what it
-  carries.
+  tools first.". Of the issue's text the part that says how they install the
+  tool themselves has an approved wording, the third point here; for the rest
+  the skills say what it carries.
 - **An install typed with `!` after a no, or said done under form B, closes its
   issue at once; the issue's text still names the way a later session takes.**
   The message after the no names both ways, so an issue naming the later one
@@ -4098,13 +4214,32 @@ Nothing in this file stood as history; its rules carry their own reasons.
   with a comment naming a start that had not happened, entry "Run under a no
   read off its log, the ! after the no taken up at once."; decided in entry "The
   ! after a no taken up in the session, point 7 read by the subagent.".
-- **The issue says where the command is typed — with `!` in Claude Code where it
-  asks nothing, else in a second terminal window, what it asks named — and that
-  `/devloop:start-work` follows.** Typed with `!`, the command and its output
-  land in the conversation and the run answers them; a command that asks
-  something can be answered only in a terminal of its own. Entry "Handovers say
-  where the command is typed, sign-in and identity in steps."; the forms of
-  docs/skill-conventions.md under "Every skill carries these two".
+- **The issue says how they install the tool themselves in two numbered steps —
+  the command typed in a terminal, under `windows` in Git Bash, with what it
+  asks behind it, and `/devloop:start-work` typed in Claude Code — and never
+  names Claude Code with `!` in front, whatever the surface of the run that
+  writes it; then that devloop closes the issue itself and takes the task up
+  again, or closes it and sets the check up.** An issue is read later, and
+  perhaps on another surface than the one it was written on: in the graphical
+  panel, say, after a run with nobody there in the terminal, and there `!` is
+  not there. A terminal holds on every surface; the form of the surface that
+  wrote the issue is wrong as soon as the person works on elsewhere, and no
+  place at all would go against the rule that a text says where a command is
+  typed. Case: the block "the issue for a missing tool names Claude Code with !
+  in front as the place of its command, though it is read later and perhaps on
+  another surface" of `docs/defects.md`. Decisions (7) and (10) of entry
+  "Handover by surface decided, its wordings and blocks recorded", built in
+  entry "Every handover and the steps for the PATH follow surface and system".
+  Approved wording, (10), on the Mac: „So installierst du `yq` selbst:“ — „1.
+  Gib in einem Terminal ein: `brew install yq`“ — „2. Gib in Claude Code
+  `/devloop:start-work` ein.“ — „Dann schließt devloop dieses Issue von selbst
+  und nimmt die Aufgabe wieder auf.“ Where the command asks something, behind it
+  „Er fragt nach deinem Passwort.“; under Windows step 1 reads „1. Öffne Git
+  Bash, das Terminal, das mit Git für Windows kommt, und gib dort ein: `…`“;
+  where a check belongs to the issue, it ends „… und richtet die Prüfung ein.“
+  See docs/skill-conventions.md under "Every skill carries these two", the
+  paragraph "Where the person types a command devloop hands them while Claude
+  Code runs".
 
 ## `shared/install-issues-read.md`
 
@@ -4122,19 +4257,23 @@ Nothing in this file stood as history; its rules carry their own reasons.
   reads an issue.".
 - **Where the search path does not reach a command's tool, the program also
   reads the installer's folder with `--installed` and prints a `folder:` line;
-  the issue stays open and the run gives the five steps that put the folder on
-  the search path.** Otherwise a tool installed off the `PATH` leaves the issue
-  open with no word to a person who did what it asked. Finding D5 of entry
-  "Handovers say where the command is typed, sign-in and identity in steps.".
-  Approved wording, same entry, for a task: „Der Befehl aus dem Issue „yq
-  installieren“ hat `yq` nach `~/go/bin` installiert, aber dieser Ordner steht
-  nicht in deinem `PATH`, darum finde ich `yq` nicht, und das Issue bleibt
-  offen. So nimmst du ihn auf:“, the five steps as under
-  `shared/install-tool.md`, then „Dann finde ich `yq`, schließe das Issue und
-  baue die Aufgabe.“; for a check class: „Der Befehl aus dem Issue „gitleaks
-  installieren“ hat `gitleaks` nach `~/go/bin` installiert, aber dieser Ordner
-  steht nicht in deinem `PATH`, darum finde ich `gitleaks` nicht, und das Issue
-  bleibt offen. So nimmst du ihn auf:“, the five steps, then „Dann finde ich
+  the issue stays open, and the run says what the `PATH` is and gives the steps
+  that put the folder on the search path, by the surface and the system.**
+  Otherwise a tool installed off the `PATH` leaves the issue open with no word
+  to a person who did what it asked. Finding D5 of entry "Handovers say where
+  the command is typed, sign-in and identity in steps.". The steps stand in
+  `shared/path-steps.md`, which `start-work` and `plan-work` insert after this
+  text, and the opening says what the `PATH` is, as the opening for the tool of
+  a task does. Approved wording, the opening and the close taken over from (11)
+  of entry "Handover by surface decided, its wordings and blocks recorded" and
+  approved as (a) of entry "Every handover and the steps for the PATH follow
+  surface and system", for a task: „Der Befehl aus dem Issue „yq installieren“
+  hat `yq` nach `~/go/bin` installiert. Dieser Ordner steht aber nicht in deinem
+  `PATH`, der Liste der Ordner, in denen dein Rechner nach Programmen sucht.
+  Darum finde ich `yq` nicht, und das Issue bleibt offen. So nimmst du den
+  Ordner auf:“, the steps as under `shared/path-steps.md`, then „Dann finde ich
+  `yq`, schließe das Issue und baue die Aufgabe.“; for a check class the same
+  opening with „gitleaks installieren“ and `gitleaks`, then „Dann finde ich
   `gitleaks`, schließe das Issue und richte die Prüfung ein.“
 - **An issue devloop closed at a start is said in one line per issue.** Approved
   wording, (5) of entry "Every subagent gets the install record, the build reads
@@ -4396,31 +4535,28 @@ Nothing in this file stood as history; its rules carry their own reasons.
   entry held, places added to four blocks, a block on form A's signal"; built
   in entry "A handover follows the surface and the system, read by one
   program".
-- **Where the folder is off the search path, the run says how to put it there,
-  in numbered steps in the order the person can take them.** A text that says
-  what to do and not how leaves the person without the way; the person can type
-  in the terminal only once Claude Code is ended. Case: on 28 October 2026 the
+- **Where the folder is off the search path, the run says so, says what the
+  `PATH` is, and says how to put the folder there, in the steps of
+  `shared/path-steps.md`, by the surface and the system.** A text that says what
+  to do and not how leaves the person without the way, and how differs by where
+  Claude Code runs, the points under `shared/path-steps.md`. Case: on 28 October
+  2026 the
   first proposal said what is to be done and not how and was not approved,
   against the person's rule of that day: „alles was der Nutzer an befehlen oder
   schritten tun muss am computer sollte beschrieben sein bzw. in gesagt werde
   wie er vorzugehen hat, solange die Schritte dazu klar sind und das LLM weiß.“,
   entry "Every subagent gets the install record, the build reads its tools
-  first.". Approved wording, for the shell zsh, in that entry: „Der Befehl hat
-  `yq` nach `~/go/bin` installiert, aber dieser Ordner steht nicht in deinem
-  `PATH`, darum findet der Bau `yq` nicht. So nimmst du ihn auf:“, then the
-  steps, numbered: „1. Beende Claude Code: `/exit`“, „2. Trag den Ordner im
-  Terminal in deinen `PATH` ein: `echo 'export PATH="$HOME/go/bin:$PATH"' >>
-  ~/.zshrc`“, „3. Lade die Datei neu: `source ~/.zshrc`“, „4. Starte Claude Code
-  wieder im Projekt: `cd ~/mein-projekt && claude`“, „5. Gib dort
-  `/devloop:start-work` ein.“, then „Dann finde ich `yq` und baue die Aufgabe.“
-  See docs/skill-conventions.md under "Every skill carries these two", "Where a
-  text to the person says they have to do something at the computer, it says
-  how, step by step".
-- **For a shell without a sure form, the run reads the command in the maker's
-  guide first and gives it with the source; only where that yields none does the
-  step name no command.** The person gets the maker's own command, and none the
-  guide warns against. Decided as the addition to the rule above in entry
-  "Handovers say where the command is typed, sign-in and identity in steps.".
+  first.". Approved wording, (11) of entry "Handover by surface decided, its
+  wordings and blocks recorded", the opening, on every surface: „Der Befehl hat
+  `yq` nach `~/go/bin` installiert. Dieser Ordner steht aber nicht in deinem
+  `PATH`, der Liste der Ordner, in denen dein Rechner nach Programmen sucht.
+  Darum findet der Bau `yq` nicht. So nimmst du den Ordner auf:“, then the
+  steps, quoted under `shared/path-steps.md`, then the close, on every surface:
+  „Dann finde ich `yq` und baue die Aufgabe.“ Built in entry "Every handover and
+  the steps for the PATH follow surface and system". See
+  docs/skill-conventions.md under "Every skill carries these two", "Where a text
+  to the person says they have to do something at the computer, it says how,
+  step by step".
 - **Where the first line says not found, the run says that the command did not
   do what it was handed over for only where the conversation shows that the
   command ran to its end, or their word under form B says that it did; where a
@@ -4516,8 +4652,23 @@ Nothing in this file stood as history; its rules carry their own reasons.
   off their logs, each on the defects it met."; in run 1 of 26 October 2026 the
   run opened the issue before the answer, offered no no, and named one signal in
   the issue and another in the message, entry "Three closing runs of the pass
-  read off their logs, each on what it met.". Approved wording, form A, entry
-  "Handovers say where the command is typed, sign-in and identity in steps.":
+  read off their logs, each on what it met.". The way of the yes says where the
+  command is typed by the situation: form A under `terminal` and under `desktop`
+  where the command asks nothing, form B where it asks, in doubt, and for every
+  command under `panel`, `windows` and `unknown`, the line without a `!`;
+  decisions (3), (4) and (8) of entry "Handover by surface decided, its wordings
+  and blocks recorded", built in entry "Every handover and the steps for the
+  PATH follow surface and system". Under `terminal` the sentence that has them
+  type „fertig“, „Gib gleich nach dem Befehl „fertig“ ein.“, stands in this
+  handover directly before the sentence on what the run does once the command is
+  through, and so does the request to say here under form B: this wording ends
+  on the way of the no and on the question, and directly before its last
+  sentence the word would stand apart from the command, behind the way of the
+  no. Decided without a question and confirmed by the person, (g) of entry
+  "Every handover and the steps for the PATH follow surface and system", by the
+  place the request to say here has in form B of this wording. Approved wording,
+  form A, as it reads under `desktop`, entry "Handovers say where the command is
+  typed, sign-in and identity in steps.":
   „Die Aufgabe „<Titel der Aufgabe>“ braucht `yq`, und es fehlt auf diesem
   Rechner. Weil deine Antwort zum Installieren für dieses Projekt Nein ist,
   installiere ich es nicht selbst. Gib den Befehl dafür hier in Claude Code ein,
@@ -4531,7 +4682,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   doch hier mit `!` ein, schließe ich das Issue sofort und baue die Aufgabe.
   Installierst du es auf anderem Weg, etwa in einem anderen Fenster, geschieht
   das beim nächsten Start.“ — „Gibst du den Befehl ein oder lehnst du ab?“ Form
-  B, for a command that asks something, here a password: „… installiere ich es
+  B, for a command that asks something, here a password, as it reads under
+  `terminal`, the sentence on the place elsewhere being the one quoted at the
+  point on form B under `shared/skill-name.md`: „… installiere ich es
   nicht selbst. Der Befehl fragt nach deinem Passwort, darum gib ihn in einem
   zweiten Terminalfenster ein, nicht in dem, in dem Claude Code läuft:“, the
   command, the backing as above, „Sag mir hier Bescheid, sobald er durchgelaufen
@@ -4828,6 +4981,231 @@ Nothing in this file stood as history; its rules carry their own reasons.
   case is the block "shared/mode-set-up.md line 14 prescribes git show of the
   environment record, not measured with CRLF on Windows" of `docs/defects.md`.
 
+## `shared/path-steps.md`
+
+- **The steps that put a folder on the search path stand once, in this text,
+  which `build-work`, `setup-checks`, `start-work` and `plan-work` insert; what
+  is said before the steps and after them the place that names the text says.**
+  Text that has to stand in several skills in the same words stands once,
+  docs/skill-conventions.md under "Text shared between skills". The steps are
+  said at three places: after an install in `build-work` step 3 point 7,
+  `shared/install-tool.md`; in `setup-checks` step 3; and at the read of the
+  install issues, `shared/install-issues-read.md`, which `start-work` and
+  `plan-work` insert as well. A reference to `build-work` step 3 point 7 names,
+  in `start-work`, `plan-work` and `setup-checks`, a text the run does not load
+  there. Decided without a question and confirmed by the person, (f) of entry
+  "Every handover and the steps for the PATH follow surface and system"; not
+  chosen: the steps written out at three places.
+- **The steps go by the fields `surface:` and `system:` of the line of
+  `bin/devloop-surface`, the program run once more before the steps are said,
+  and `handover:` decides nothing here.** What takes the new `PATH` differs by
+  where Claude Code runs: a terminal reads the file of its shell when it opens,
+  VS Code and the desktop app keep the `PATH` they started with until they are
+  quit, and under Windows no file of a shell sets it. The field `handover:`
+  reads `terminal` in the terminal of VS Code as in every other terminal and
+  `windows` on every surface, which the forms of a handover go by; the steps
+  differ between those. Cases: the blocks "the five steps for the PATH are
+  written for claude started in a terminal, and under Use Terminal of the
+  extension for VS Code whether Claude Code then sees the new PATH is not read",
+  "the five steps for the PATH have no way for the graphical panel of the
+  extension for VS Code and none for the desktop app" and "under Windows the
+  steps for the PATH keep the source of a shell file and the start of Claude
+  Code in the same terminal, which does not get the new PATH" of
+  `docs/defects.md`. Decisions (6), (11) and (13) of entry "Handover by surface
+  decided, its wordings and blocks recorded", where what the steps rest on
+  stands, read at the code of the extension 2.1.327 and of VS Code 1.145.2 and
+  at the desktop page and not measured; built in entry "Every handover and the
+  steps for the PATH follow surface and system".
+- **Under `macos` and `linux` the step for the folder gives the line that
+  appends the export to a file their shell reads, the folder with `~` written
+  `$HOME` inside the single quotes, and says directly after the line what the
+  line does and that they type it exactly as it stands; the folder, the file and
+  the project's folder the run puts in itself.** With `$HOME` inside the single
+  quotes the file carries the variable and not the path. Approved wording, (11)
+  of entry "Handover by surface decided, its wordings and blocks recorded", the
+  explanation after every line with `echo`: „Die Zeile schreibt in die Datei
+  `~/.zshrc`, dass dein Terminal auch in `~/go/bin` nach Programmen sucht. Gib
+  sie genau so ein, wie sie dasteht.“
+- **Under `terminal`, `terminal-vscode` and `unknown` the line goes into the
+  file their shell reads when a terminal opens it, `~/.zshrc` for zsh and for
+  bash `~/.bash_profile` on macOS and `~/.bashrc` on Linux; under `panel-vscode`
+  and `desktop` it goes into the file a login shell reads, `~/.zprofile` for zsh
+  and for bash the first of `~/.bash_profile`, `~/.bash_login` and `~/.profile`
+  that is there, `~/.profile` where none is, the run reading with `test -f`
+  which is there and never what one holds.** On macOS a terminal opens a login
+  shell and on Linux an interactive one. The graphical panel reads its `PATH`
+  from a login shell, and the desktop app, by its page, reads what the login
+  shell exports; the file of the terminal reaches the panel under Linux with
+  bash only where the login file reads `~/.bashrc` in, and the app only if it
+  reads interactively. Decided on 22 November 2026, (d) of entry "Every handover
+  and the steps for the PATH follow surface and system", which carries the
+  measurement of which file a login shell and an interactive shell of zsh and of
+  bash read; not chosen: the file of the terminal on every surface. Approved
+  wordings, (d): the explanation in the panel, „Die Zeile schreibt in die Datei
+  `~/.zprofile`, dass VS Code auch in `~/go/bin` nach Programmen sucht. Gib sie
+  genau so ein, wie sie dasteht.“, and in the desktop app the same with „dass
+  die App auch in `~/go/bin` nach Programmen sucht“.
+- **`terminal` under `macos` and `linux`, five steps: Claude Code ended, the
+  export line, the file loaded anew, Claude Code started again in the project,
+  the start input.** The terminal takes their typing only once Claude Code is
+  ended, and the Claude Code the fourth step starts runs under the search path
+  that terminal has after the `source`. Approved wording, (11) of entry
+  "Handover by surface decided, its wordings and blocks recorded", in a terminal
+  that is not VS Code's: „1. Beende Claude Code: `/exit`“ — „2. Gib im Terminal
+  ein: `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation
+  — „3. Gib im Terminal ein, damit es die Datei neu liest: `source ~/.zshrc`“ —
+  „4. Gib im Terminal ein, um Claude Code wieder im Projekt zu starten: `cd
+  ~/mein-projekt && claude`“ — „5. Gib in Claude Code `/devloop:start-work`
+  ein.“
+- **`terminal-vscode` under `macos` and `linux`, six steps: after `/exit` a new
+  terminal opened in VS Code through its menu Terminal, in every case and not
+  only where the terminal closed, and the three steps after it typed in the new
+  terminal.** Under Use Terminal the extension closes its terminal when Claude
+  Code ends with `/exit`, read at the code of the extension 2.1.327, and devloop
+  cannot tell Use Terminal from a `claude` the person typed in the terminal of
+  VS Code, both carrying `cli` and `TERM_PROGRAM=vscode`, measured on 9
+  November 2026. Not chosen: a sentence „Schließt sich das Terminal nach /exit,
+  öffne ein neues“, since the reader has to watch first; and telling Use
+  Terminal by the variable `NoDefaultCurrentDirectoryInExePath`, since the
+  vendor promises it nowhere. The step names the menu and no key: in a message
+  Claude Code shows as
+  Markdown a single backtick opens a code span, and the key that carries it lies
+  elsewhere on a keyboard that is not the American one. Case: the block "the
+  five steps for the PATH are written for claude started in a terminal, and
+  under Use Terminal of the extension for VS Code whether Claude Code then sees
+  the new PATH is not read" of `docs/defects.md`. Decision (6) of entry
+  "Handover by surface decided, its wordings and blocks recorded", which names
+  the step as „Öffne in VS Code ein neues Terminal“, and the approved wording,
+  (11) of that entry with the corrections of its merge: „1. Beende Claude Code:
+  `/exit`“ — „2. Öffne in VS Code über das Menü **Terminal** ein neues
+  Terminal.“ — „3. Gib im neuen Terminal ein: `echo 'export
+  PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation — „4. Gib im neuen
+  Terminal ein, damit es die Datei neu liest: `source ~/.zshrc`“ — „5. Gib im
+  neuen Terminal ein, um Claude Code wieder im Projekt zu starten: `cd
+  ~/mein-projekt && claude`“ — „6. Gib in Claude Code `/devloop:start-work`
+  ein.“
+- **`panel-vscode` under `macos` and `linux`, four steps: a new terminal opened
+  in VS Code through its menu Terminal, the export line typed there, VS Code
+  quit entirely, with Cmd+Q under `macos` and Ctrl+Q under `linux`, and opened
+  again from its program symbol, Claude Code opened again and the start input
+  typed there.** In the panel no `/exit` leaves a terminal behind, and the panel
+  keeps the `PATH` of a shell the extension starts once for as long as its
+  extension host lives, so that a `source` in a terminal changes nothing for it
+  and VS Code is quit entirely; read at the code of the extension 2.1.327 and of
+  VS Code 1.145.2 and not measured. Case: the block "the five steps for the PATH
+  have no way for the graphical panel of the extension for VS Code and none for
+  the desktop app" of `docs/defects.md`. Approved wording, (11) of entry
+  "Handover by surface decided, its wordings and blocks recorded" with the
+  corrections of its merge, the file that of (d) of entry "Every handover and
+  the steps for the PATH follow surface and system", where (11) names
+  `~/.zshrc`: „1. Öffne in VS Code über das Menü **Terminal** ein neues
+  Terminal.“ — „2. Gib dort ein: `echo 'export PATH="$HOME/go/bin:$PATH"' >>
+  ~/.zprofile`“ — the explanation of the panel — „3. Beende VS Code ganz mit
+  Cmd+Q und öffne es über sein Programmsymbol wieder.“ — „4. Öffne Claude Code
+  wieder und gib dort `/devloop:start-work` ein.“ Under Linux Ctrl+Q in the
+  place of Cmd+Q.
+- **`desktop` under `macos` and `linux`, four steps: the export line typed in
+  Claude Code with `!` in front, the app quit entirely, with Cmd+Q under `macos`
+  and no key named under `linux`, and opened again, the project opened again in
+  the app the way they opened it before, the start input typed there.** The app
+  reads what the login shell exports and keeps those values until it is quit,
+  the desktop page; the line asks nothing, so it goes in form A, which holds in
+  the desktop app under macOS and Linux. Under Linux there is no Cmd key, and
+  that Ctrl+Q ends the app there is neither read nor measured: decided on 22
+  November 2026, (b) of entry "Every handover and the steps for the PATH follow
+  surface and system"; not chosen: „mit Ctrl+Q“, as (11) of entry "Handover by
+  surface decided, its wordings and blocks recorded" has it for VS Code under
+  Linux. Approved wording, (13) of entry "Handover by surface decided, its
+  wordings and blocks recorded", the file that of (d) of entry "Every handover
+  and the steps for the PATH follow surface and system", where (13) names
+  `~/.zshrc`: „1. Gib hier in Claude Code ein, mit `!` davor: `! echo 'export
+  PATH="$HOME/go/bin:$PATH"' >> ~/.zprofile`“ — the explanation of the desktop
+  app — „2. Beende die App ganz mit Cmd+Q und öffne sie wieder.“ — „3. Öffne in
+  der App wieder dein Projekt, so wie du es vorhin geöffnet hast:
+  `~/mein-projekt`“ — „4. Gib dort `/devloop:start-work` ein.“; under Linux,
+  (b): „2. Beende die App ganz und öffne sie wieder.“
+- **`unknown` under `macos` and `linux`, three steps: the export line typed in a
+  terminal, Claude Code ended entirely, the program it runs in too, and started
+  anew, the start input.** They hold for every value of `surface:` the program
+  does not know and for a line that does not come, none of them measured: the
+  steps name a terminal and nothing more, as form B does there, and no program
+  by its name. Approved wording, (13) of entry "Handover by surface decided,
+  its wordings and blocks recorded": „1. Gib in einem Terminal ein: `echo
+  'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation of (11) —
+  „2. Beende Claude Code ganz, auch das Programm, in dem es läuft, und starte es
+  neu.“ — „3. Gib in Claude Code `/devloop:start-work` ein.“
+- **For a shell without a sure form, another shell, fish say, or a system that
+  reads `unknown`, the run reads the command in the maker's guide first and
+  gives it with the source; only where that yields none does the step name no
+  command.** The person gets the maker's own command, and none the guide warns
+  against. Decided as the addition to the rule on the steps in entry "Handovers
+  say where the command is typed, sign-in and identity in steps.". Windows has a
+  step of its own, the next point, by (13) of entry "Handover by surface
+  decided, its wordings and blocks recorded", so that this reading stays for
+  another shell and for a system the program does not know.
+- **Under `windows` the step for the folder is one line typed in Git Bash that
+  enters the folder into the `PATH` of their Windows account through
+  `powershell.exe`, the user folder written `$env:USERPROFILE` and the parts
+  joined by `\`, with what the line does said directly after it; no step loads a
+  file.** Under Windows no file of a shell sets the `PATH` Claude Code runs
+  under. The line takes the place of the reading of a command in the maker's
+  guide. Not chosen: the ways by clicks through the settings of Windows and of
+  the app, since they change with updates. Not measured: the line under Windows,
+  of which only this is checked, that bash hands the text between the single
+  quotes to `powershell.exe` unchanged. A folder outside the user folder stands
+  as Windows writes its path, the drive letter first, the one form there is; a
+  folder whose name carries `'`, `"`, a backtick or `$` falls under the rule of
+  `shared/skill-name.md` on a step the run has no sure command for, decided
+  without a question and confirmed by the person, (i) of entry "Every handover
+  and the steps for the PATH follow surface and system". Case: the block "under
+  Windows the steps for the PATH keep the source of a shell file and the start
+  of Claude Code in the same terminal, which does not get the new PATH" of
+  `docs/defects.md`. Approved wording, (13) of entry "Handover by surface
+  decided, its wordings and blocks recorded", the Windows step: „Öffne Git Bash,
+  das Terminal, das mit Git für Windows kommt, und gib dort ein:“ —
+  „`powershell.exe -NoProfile -Command '$p =
+  [Environment]::GetEnvironmentVariable("Path", "User");
+  [Environment]::SetEnvironmentVariable("Path", "$p;$env:USERPROFILE\go\bin",
+  "User")'`“ — „Die Zeile trägt den Ordner `go\bin` in deinem Benutzerordner
+  dauerhaft in den `PATH` deines Windows-Kontos ein. Gib sie genau so ein, wie
+  sie dasteht.“
+- **Under `windows` the steps are six in the terminal, seven in the terminal of
+  VS Code, three in the graphical panel, four in the desktop app and three on a
+  surface the program does not know, each with the program that holds Claude
+  Code closed entirely and opened anew.** Windows gives the new `PATH` only to
+  programs that start after the change, the desktop page under "Windows-specific
+  issues", "PATH updates only apply to new terminal sessions". In the terminal
+  of VS Code the steps close VS Code and open a new terminal in it as well: (6)
+  of entry "Handover by surface decided, its wordings and blocks recorded" asks
+  for a new terminal in VS Code there, and (13) for the restart of the program
+  that holds the terminal, so that the steps hold whether or not VS Code gives a
+  new `PATH` to its terminals; decided on 22 November 2026, (c) of entry "Every
+  handover and the steps for the PATH follow surface and system"; not chosen:
+  the six steps of the terminal under Windows unchanged. Not measured: how the
+  desktop app is ended entirely under Windows, and whether the steps under
+  Windows bring the new `PATH`; order (7) of milestone 12 in `docs/plan.md`
+  measures them. Approved wordings, (13) of entry "Handover by surface decided,
+  its wordings and blocks recorded". The terminal: „1. Beende Claude Code:
+  `/exit`“ — „2.“ with the Windows step — „3. Schließe das Terminal-Programm
+  ganz und öffne es neu. Windows gibt den neuen `PATH` nur Programmen, die
+  danach starten.“ — „4. Wechsle im neuen Terminal ins Projekt: `cd
+  "$HOME/mein-projekt"`“ — „5. Starte dort Claude Code: `claude`“ — „6. Gib in
+  Claude Code `/devloop:start-work` ein.“ The terminal of VS Code, (c) of entry
+  "Every handover and the steps for the PATH follow surface and system", seven
+  steps out of approved sentences: „1. Beende Claude Code: `/exit`“ — „2.“ with
+  the Windows step and its explaining sentence — „3. Schließe alle Fenster von
+  VS Code und öffne es wieder.“ — „4. Öffne in VS Code über das Menü
+  **Terminal** ein neues Terminal.“ — „5. Wechsle im neuen Terminal ins Projekt:
+  `cd "$HOME/mein-projekt"`“ — „6. Starte dort Claude Code: `claude`“ — „7. Gib
+  in Claude Code `/devloop:start-work` ein.“ The graphical panel: „1.“ with the
+  Windows step — „2. Schließe alle Fenster von VS Code und öffne es wieder.“ —
+  „3. Öffne Claude Code wieder und gib dort `/devloop:start-work` ein.“ The
+  desktop app: „1.“ with the Windows step — „2. Beende die App ganz und öffne
+  sie wieder.“ — „3. Öffne in der App wieder dein Projekt, so wie du es vorhin
+  geöffnet hast.“ — „4. Gib dort `/devloop:start-work` ein.“ A surface the
+  program does not know: step 1 is the Windows step, the two after it as under
+  macOS and Linux. The opening and the close of (11) hold for all of them.
+
 ## `shared/project-language.md`
 
 Nothing in this file stood as history; its rules carry their own reasons.
@@ -5033,9 +5411,10 @@ Nothing in this file stood as history; its rules carry their own reasons.
   of 28 October 2026, entry "Every subagent gets the install record, the build
   reads its tools first.", and the addition after the push, entry "Handovers say
   where the command is typed, sign-in and identity in steps."; the PATH steps
-  are quoted under `shared/install-tool.md`. Approved wording of the refused
-  sign-in, entry "Handovers say where the command is typed, sign-in and identity
-  in steps.": „GitHub hat die Anmeldung abgelehnt. So meldest du dich neu an:“ —
+  are quoted under `shared/path-steps.md`. Approved wording of the refused
+  sign-in, its first step as it reads under `terminal`, entry "Handovers say
+  where the command is typed, sign-in and identity in steps.": „GitHub hat die
+  Anmeldung abgelehnt. So meldest du dich neu an:“ —
   „1. Öffne ein zweites Terminalfenster, nicht das, in dem Claude Code läuft.
   Die Anmeldung stellt dir Fragen, und die gehen nur dort.“ — „2. Gib dort ein:
   `gh auth login --web --git-protocol https`“ — „3. Folge den Anweisungen im

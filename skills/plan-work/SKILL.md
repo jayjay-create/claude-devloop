@@ -526,6 +526,8 @@ question, and the state read here can change between now and then.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text path-steps`
+
 **Before the mark, on either of the first two answers or on `--auto`, the
 question on the rule for the classifier of auto mode, where the mode is set
 up and `setup-checks` was not called for its step 8 at this start**, after

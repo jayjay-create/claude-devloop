@@ -1054,9 +1054,21 @@ the command is through and their word as what releases, which the eight
 cases of the job do not read, a case reading the exit, the place, the command
 line and the word typed after the command —, the four things on those
 messages under `windows`; and the line `bin/devloop-text` puts into the rule
-there, a program no step of the job runs until the third part of (4) gives the
-job a case that runs it on all four systems and holds that line, by the
-decision of 21 November 2026 below on that case.
+there, which since 22 November 2026 a case of the job runs on all four
+systems and holds, the third part of (4), by the decision of 21 November
+2026 below on that case, where until that day this sentence said that no
+step of the job runs the program;
+and, since 22 November 2026, by the roadmap entry of that date, "Every
+handover and the steps for the PATH follow surface and system", what the
+third part of (4) built and only a session with the model on its surface
+shows: the form and the place by the situation at every other place that
+hands a command over, the steps for the PATH as `shared/path-steps.md` has
+them for the surface and the system, the terminal the issue for a missing
+tool names, and with them fourteen blocks of this milestone: the ten that
+took their Fix on texts the model loads, the three whose Fix line that part
+built anew, and the one on texts loaded in `start-work`, `plan-work` and
+`setup-checks` that pointed at `build-work` step 3 point 7, which that part
+wrote with its Fix.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1302,8 +1314,9 @@ form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
 fewer; the first and the third carry their Fix since (3) built them, below.
-Of (4) the second of its three parts is built, since 21 November 2026, below,
-and the third is not; of (5) to (7) nothing is built yet. Since 18 November
+Of (4) the second of its three parts is built, since 21 November 2026, and
+the third, since 22 November 2026, both below; of (5) to (7) nothing is
+built yet. Since 18 November
 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
@@ -1390,19 +1403,28 @@ part builds, four are walked by its runs, on the messages of the merge guard,
 the identity guard and the Stop hook and on the comment at the closing, the
 one on the comment of `hooks/subagent-start-install.sh` is closed as corrected
 in the document, and four wait for the closing runs, named above where the
-milestone ends. The five blocks both parts build keep Fix none, by the
+milestone ends. The five blocks both parts build kept Fix none until the
+third part, by the
 decision of 20 November 2026 below: on `respondToBashCommands`, on the
 graphical panel, on the desktop app under Windows, on PowerShell under Windows
-and on the wording of form B. The third part is not built: the wordings by the
-pattern at every other place that hands a command over, the steps for the
-PATH, the issue, step 4 of `setup-checks` and, by the decision of 21 November
-2026 below on that case, a case of the job hooks on every system that runs
-`bin/devloop-text skill-name` on all four systems and holds the line the
-program puts into the text; until it is, the rule names the
-place by the situation and those places name the one of 28 October 2026, on
-every surface, the rule standing over them in every skill.
+and on the wording of form B.
+Since 22 November 2026 the third part of (4) is built, the roadmap entry of
+that date, "Every handover and the steps for the PATH follow surface and
+system", by the decisions of 19 to 22 November 2026 below: every other place
+that hands a command over says the form and the place by the situation, the
+steps for the PATH follow the surface and the system, and the job hooks on
+every system runs `bin/devloop-text skill-name` on all four systems; what
+stands where, that entry says. With it eleven blocks of this milestone take
+their Fix, the five both parts build among them. For the closing runs of
+(7), named above where the milestone ends, wait fourteen blocks of this
+milestone: the ten of the eleven that stand on texts the model loads, three
+whose Fix line that part built anew, and the one on texts loaded in
+`start-work`, `plan-work` and `setup-checks` that pointed at `build-work`
+step 3 point 7, which that part wrote with its Fix.
+Before (5) come the checks of milestone 15 that come back at every
+handover, by the decision of 22 November 2026 under milestone 15.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
-built yet.
+built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
 that "the guard for PowerShell and the rest of this milestone stand as
 before", which holds no more since (1), (2) and (3) are built, and of what (2)
@@ -1761,8 +1783,9 @@ on every surface, a sentence after every export line on what the line does,
 five steps in a terminal that is not VS Code's, six in the terminal of VS
 Code, by (6), and four in the graphical panel, where VS Code is quit entirely
 and opened again from its program symbol. devloop puts in the folder, the file
-of the shell and the project's folder itself, as `shared/install-tool.md`
-reads them, from its sentence that opens "The shell is read off" on. What the
+of the shell and the project's folder itself, as `shared/path-steps.md`
+reads them, from its sentence that opens "The shell is read off" on, a
+sentence of `shared/install-tool.md` until 22 November 2026. What the
 steps in the panel rest on, read at the
 code of the extension 2.1.327 and of VS Code 1.145.2 and not measured, stands
 in that entry.
@@ -1781,8 +1804,9 @@ the PATH in the desktop app, under Windows and on a surface devloop does not
 know, approved. Under Windows one line typed in Git Bash enters the folder
 into the `PATH` of the Windows account through `powershell.exe`, and it takes
 the place of the reading of a command in the maker's guide,
-`shared/install-tool.md` in its sentence that opens "For a shell the run has no
-sure form for", which stays for another shell, fish
+`shared/path-steps.md` in its sentence that opens "For a shell the run has no
+sure form for", a sentence of `shared/install-tool.md` until 22 November
+2026, which stays for another shell, fish
 say. Not chosen: the ways by clicks through the settings of Windows and of the
 app, since they change with updates. Not measured: that line under Windows, of
 which only this is checked, that bash hands the text between its single quotes
@@ -1892,8 +1916,98 @@ Mac, and no step of the job runs `bin/devloop-text` on any system. Not chosen:
 an order of its own right after the merge, which takes a pull request and a
 run of the job more for one case; and the closing runs of order (7) alone, in
 which a fault under Windows would show only at the end of the milestone, with
-the person there. Not built: the block of this milestone on that case carries
-Fix none until the third part builds it.
+the person there. Built with the third part of (4), since 22 November 2026,
+the roadmap entry of that date, "Every handover and the steps for the PATH
+follow surface and system": the block of this milestone on that case carries
+its Fix.
+
+Decided on 22 November 2026 by the person, the roadmap entry of that date,
+"Every handover and the steps for the PATH follow surface and system", (a): the
+opening and the close of the steps for the PATH for a check class's tool and for
+the folder line read at a start, taken over from (11) above, approved; with it
+the sentence of the decision of 20 November 2026 above is met, that the third
+part puts them to the person before it builds. For a check class's tool,
+`setup-checks` step 3, the opening says that the command installed the tool into
+the folder, that the folder is not in their `PATH`, the list of folders in which
+their computer looks for programs, and that the check therefore does not find
+the tool, and the close that the run then finds the tool and sets the check up.
+For the folder line read at a start the opening names the command by the title
+of its issue and says besides that the issue stays open, and the close says that
+the run then finds the tool, closes the issue and builds the task, or closes the
+issue and sets the check up where it concerns a check class. Not chosen: the
+wordings of 28 October 2026 there, which do not explain the PATH.
+
+Decided on 22 November 2026 by the person, the same entry, (b): in the desktop
+app under Linux the step that ends the app names no key, as under Windows, that
+they end the app entirely and open it again; under macOS the step keeps Cmd+Q.
+Reason: under Linux there is no Cmd key, and that Ctrl+Q ends the app there is
+neither read nor measured. Not chosen: Ctrl+Q, as (11) above has it for VS Code
+under Linux.
+
+Decided on 22 November 2026 by the person, the same entry, (c): in the terminal
+of VS Code under Windows the steps for the PATH are seven, out of approved
+sentences: Claude Code ended with `/exit`; the Windows step of (13) above with
+its sentence on what the line does; all windows of VS Code closed and VS Code
+opened again; a new terminal opened in VS Code through its menu Terminal; the
+change into the project in the new terminal; Claude Code started there; and
+`/devloop:start-work` typed in Claude Code. Reason: (6) above asks for a new
+terminal in VS Code there, and (13) for the restart of the program that holds
+the terminal, so that the steps hold whether VS Code gives a new `PATH` to its
+terminals or not. Not chosen: the six steps of the terminal under Windows
+unchanged.
+
+Decided on 22 November 2026 by the person, the same entry, (d): in the graphical
+panel and in the desktop app under macOS and Linux the line for the PATH goes
+into the file of the login shell, `~/.zprofile` for zsh and for bash the first
+of `~/.bash_profile`, `~/.bash_login` and `~/.profile` that is there,
+`~/.profile` where none is; in the terminal, in the terminal of VS Code and on a
+surface devloop does not know the file of the terminal stays. The sentence after
+the line names VS Code in the panel and the app in the desktop app where it
+names the terminal elsewhere. Reason: the panel reads its `PATH` from a login
+shell, and the app by its page does the same; measured, in that entry. Not
+chosen: the file of the terminal on every surface, which reaches the panel under
+Linux with bash only where the login file reads `~/.bashrc` in, and the app only
+if it reads interactively.
+
+Decided on 22 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (f): the steps for the PATH stand once,
+in `shared/path-steps.md`, inserted into `build-work`, `setup-checks`,
+`start-work` and `plan-work`, by the rule of `docs/skill-conventions.md` under
+"Text shared between skills". Reason: the reference to `build-work` step 3 point
+7 pointed, in `start-work`, `plan-work` and `setup-checks`, at a text the run
+does not load there. Not chosen: the steps written out at three places.
+
+Decided on 22 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (g): the sentence on „fertig“ in the
+handover under a no stands directly before the sentence on what the run does
+once the command is through, where in form B of wording (1) of 28 October 2026
+the request to say here stands, `docs/roadmap-archive-1.md` lines 41367
+to 41368. Not chosen: before the closing question, parted from the command by
+the way of the no.
+
+Decided on 22 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (h): several issues under the no in
+step 8 of `setup-checks` stay named one by one, as wording (9) of 28 October
+2026 approves it, and the sentence on the bound reads that two issues in form B
+can pass it, where it read that they pass it. Not chosen: one line joined by
+`&&`, since point 5 of the pattern, (8) above, holds for the commands of one
+handover.
+
+Decided on 22 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none, and
+confirmed by the person, the same entry, (j): four findings of the third part of
+(4) get a block each, written with that entry: on "Shift+Tab in the terminal" in
+`build-work` and `plan-work` and on "`/clear` empties it without leaving the
+terminal" in `untangle-idea`, both built by order (6), the texts users read; on
+the message of the install guard that names the steps "as build-work step 3
+point 7 has them", built by the next order that changes
+`hooks/pre-tool-use-install-guard.sh`, by the decision of 18 November 2026 above
+that the order touching the same place builds such a block; and on the
+references to `build-work` step 3 point 7 in texts that are loaded elsewhere,
+built on the branch of that part.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
@@ -2371,6 +2485,31 @@ the rebuilds, over the final text" for the skills. An open block in its
 section holds no other milestone's Done, since the rule under "Five
 sentences" asks only that an open block stand in the section of a milestone
 not yet reached.
+
+Decided on 22 November 2026 by the person, decision (s) of the roadmap entry
+of that date, "Every handover and the steps for the PATH follow surface and
+system": the checks of this milestone that come back at every handover are
+built before the rest of it, after the third part of order (4) of milestone
+12 and before order (5). The checks under "Before a handover, run these"
+that answer with yes or no run as a step of
+`.github/workflows/stock-take.yml` on every pull request, and a program the
+same workflow runs holds the references between the documents a script can
+hold, among them a German wording of `docs/rationale.md` standing word for
+word in the roadmap or its archive, a letter of a decision that a document
+gives an entry standing in that entry, an entry a document names by its head
+standing once, and a line of a file that `docs/plan.md` names against the
+rule at its head. Which checks those are, how the workflow runs them without
+their standing at two places, and how each reports green and red, the person
+decides before the order. Correcting the statements of the documents that no
+branch mended stays here, last. Reason: these checks cost work at every
+handover, ten of the 32 merges from 5 to 22 November 2026 being consistency
+audits, and the orders of the third part of (4) cut the twenty checks out of
+`docs/skill-conventions.md` and held quotes, letters and counts with
+throwaway scripts of their own; the reason for placing this milestone last,
+that the records are brought in line once after the texts they describe have
+stopped moving, holds for that correcting and not for checks that come back.
+Not chosen: this milestone last as a whole, as decided on 5 November 2026,
+under which every audit until then holds these by hand.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A
