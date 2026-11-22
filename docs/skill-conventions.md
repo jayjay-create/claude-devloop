@@ -143,9 +143,15 @@ was der Nutzer an befehlen oder schritten tun muss am computer sollte
 beschrieben sein bzw. in gesagt werde wie er vorzugehen hat, solange die
 Schritte dazu klar sind und das LLM weiß.“ — said of a proposed wording
 that read „Nimm `~/go/bin` in deinen Suchpfad auf“, which says what is to
-be done and not how; the wording built in its place, five steps from
-`/exit` to `/devloop:start-work`, stands in the roadmap entry of that date
-on the hook on SubagentStart, (4). The rule stands here, after the two on a
+be done and not how; the wording built in its place that day, five steps
+from `/exit` to `/devloop:start-work`, stands in the roadmap entry of that
+date on the hook on SubagentStart, (4), and since 22 November 2026 the steps
+follow the surface and the system and stand in `shared/path-steps.md`, five
+of them in a terminal that is not VS Code's under macOS and Linux, their
+wordings in the roadmap entry of 20 November 2026 on the handover by
+surface, (11) and (13), and in the roadmap entry of 22 November 2026, "Every
+handover and the steps for the PATH follow surface and system". The rule
+stands here, after the two on a
 command handed over and on an input typed into Claude Code, because it is
 those two over a sequence: each step is given as they say, whole and as
 typed, and the sequence in the order the person can take it, with nothing
@@ -271,7 +277,9 @@ and the four hooks that hand a command over, the install guard, the merge
 guard, the identity guard and the Stop hook, call the program on the path
 on which they hand over and name the form, the place and the signs of the
 situation in their messages, a line that does not come or has another form
-read as `unknown`. Not built, the third part of that order building it:
+read as `unknown`. Built since 22 November 2026, the roadmap entry of that
+date, "Every handover and the steps for the PATH follow surface and system",
+the third part of that order:
 the wordings by the pattern at every other place that hands a command over
 — the way of the yes in `shared/install-tool.md` and its sentences after a
 no, `skills/build-work/SKILL.md` step 3, `skills/setup-checks/SKILL.md`
@@ -279,22 +287,31 @@ steps 3 and 8 and its section "A guard's block is not a decline",
 `skills/setup-project/SKILL.md` step 1,
 `skills/diagnose-bug/SKILL.md`, `skills/build-prototype/SKILL.md` with its
 `LOGIC.md`, `shared/fetch-three-times.md`, `shared/install-issue.md` and
-`shared/install-issues-read.md` —, the steps for the PATH, the issue,
-step 4 of `setup-checks` and, decided on 21 November 2026 by the person, the
+`shared/install-issues-read.md` —, each by the line `bin/devloop-surface`
+prints; the steps for the PATH, which go by the fields
+`surface:` and `system:` of that line and stand once, in
+`shared/path-steps.md`, inserted into `build-work`, `setup-checks`,
+`start-work` and `plan-work`; the issue, which names a terminal, under
+Windows Git Bash, and never `!`; step 4 of `setup-checks`, which names both
+ways an install the person made was typed; and, decided on 21 November 2026
+by the person, the
 roadmap entry of 22 November 2026 on the one entry held, a case of the job
 hooks on every system that runs `bin/devloop-text skill-name` on all four
 systems and holds the line the program puts into the text.
-Between the two parts those places say what the
+Between the two parts, from 21 to 22 November 2026, those places said what
+the
 sentences above say of form A and of form B as decided on 28 October 2026,
 with `!` where the command asks nothing and in a second terminal window
-where it asks, on every surface and every system; the rule stands over
-them in every skill, and the blocks of milestone 12 in `docs/defects.md`
-hold them to these decisions; `docs/plan.md` carries the decisions under
-milestone 12, (1) to (18). Until 21 November 2026 this paragraph said that
-none of this was built. The wordings
+where it asks, on every surface and every system, the rule standing over
+them in every skill; the blocks of milestone 12 in `docs/defects.md`
+hold them to these decisions, and `docs/plan.md` carries the decisions under
+milestone 12, (1) to (18) and those of 22 November 2026. Until 21 November
+2026 this paragraph said that none of this was built, and until 22 November
+2026 that the third part was not. The wordings
 the person approved for the handovers stand in the roadmap entry of 28
-October 2026 on the handover steps and, those of 19 and 20 November 2026, in
-the entry of 20 November 2026 on the handover by surface; a skill says what
+October 2026 on the handover steps, those of 19 and 20 November 2026 in
+the entry of 20 November 2026 on the handover by surface, and those of 22
+November 2026 in the entry of that date named above; a skill says what
 is said, not the words. Until 28 October 2026 the rule on a command handed
 over read
 that the line is copied whole into whatever terminal is open, point 18 of
@@ -1582,7 +1599,12 @@ hooks that hand a command over on the path on which it hands over, twice,
 without `CLAUDE_CODE_ENTRYPOINT` and with it on `cli`, the roadmap entry of
 that date on the program that reads the surface and the system, and is red
 where one of the eight does not end with 2 or its message does not name the
-place its situation has; and since 17 November 2026 the job ends on a second
+place its situation has, and since 22 November 2026 runs
+`bin/devloop-text skill-name` the same two ways, the roadmap entry of that
+date, "Every handover and the steps for the PATH follow surface and system",
+and is red where the program does not end with 0, leaves
+`${DEVLOOP_SURFACE}` in the text or does not carry the line of its situation
+on a line of its own; and since 17 November 2026 the job ends on a second
 step, the roadmap entry of that date on a project's files read with CRLF as
 with LF, which reads every place of the hooks, the programs and the loaded
 texts that takes a file of the project apart with the file at LF, with CRLF
@@ -1930,6 +1952,22 @@ workflow: a squash merge takes the title of the pull request, so the one
 title that lands is the one read. The check is not one of the twenty
 under "Before a handover, run these", though the sixteenth, since 31 October
 2026, runs it here with the workflow's other steps.
+
+**An entry of the roadmap is short, and what stands elsewhere it points
+at.** A new entry in `docs/roadmap.md` says what changed, the decisions with
+their reasons, the runs with their anchors, and what stays open. What stands
+in the code, in a block of `docs/defects.md`, in `docs/stock-take.tsv` or in
+`docs/plan.md` the entry refers to and does not tell again: it carries no
+reading list and no copy of a list, and no list stands at two places. A
+decision that changes the should of a block is a decision in the sense of
+this rule: the new should stands in the entry that decides it, with the old
+one quoted there, as "A should a later decision changes is written where the
+decision is, and in the block" below asks, and that paragraph stands. Not
+chosen: the entries as they were until then, each readable by itself, since
+from 5 November 2026 on a good four lines of document came on one line of
+code, and every consistency audit holds an entry sentence by sentence.
+Decided by the person on 22 November 2026, the roadmap entry of that date,
+"Every handover and the steps for the PATH follow surface and system".
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -4502,7 +4540,9 @@ since 18 November 2026 the guard on the PowerShell tool turning a call down
 where `docs/agents/` stands and letting it through where none stands, and
 since 21 November 2026 each of the four hooks that hand a command over on the
 path on which it hands over, without `CLAUDE_CODE_ENTRYPOINT` and with it on
-`cli`, since 17 November 2026 the step on line endings, the
+`cli`, and since 22 November 2026 `bin/devloop-text skill-name` the same two
+ways, holding the line the program puts into the rule on the two forms,
+since 17 November 2026 the step on line endings, the
 two README steps, since 1 November 2026 the step on the dates of the loaded
 texts, since 18 November 2026 the step that holds every line that reads a
 file of the project to a case of the step on line endings or to its not
@@ -4585,9 +4625,12 @@ on 21 November 2026 after the second part of order (4) of milestone 12, the
 roadmap entry of that date on the program that reads the surface and the
 system, which left the count as it was, the line of `shared/merge-handover.md`
 reading since then that this picks up as soon as the form's signal comes, and
-to be counted anew with the third part of that order, which writes the wordings
+counted anew on 22 November 2026 after the third part of that order, the
+roadmap entry of that date, "Every handover and the steps for the PATH follow
+surface and system", which wrote the wordings
 by the pattern at `setup-checks` step 3, at the way of the yes in
-`shared/install-tool.md` and in `shared/fetch-three-times.md`; six over six
+`shared/install-tool.md` and in `shared/fetch-three-times.md` and left the
+count as it was too, the text of each of the seven lines unchanged; six over six
 from 16 to 28 October 2026, nine over eight until 16
 October 2026, when the three merge handovers became the one text of
 `shared/merge-handover.md`, which this check reads once, in the shared file,
