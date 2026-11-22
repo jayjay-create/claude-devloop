@@ -12279,9 +12279,10 @@ and for the proofs of closings.
   22 November 2026, version 0.192.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` and `docs/rationale.md` do not. On
-  `task/audit-2026-11-21`, off `origin/main` at `aaab097`, in one commit:
-  `docs/plan.md`, `docs/skill-conventions.md`, `docs/defects.md`,
-  `docs/stock-take.tsv` and this entry. The order: the consistency audit before
+  `task/audit-2026-11-21`, off `origin/main` at `aaab097`, in two commits,
+  the second the corrections of the merge: `docs/plan.md`,
+  `docs/skill-conventions.md`, `docs/defects.md`, `docs/stock-take.tsv` and
+  this entry. The order: the consistency audit before
   the handover, for one entry, the entry on the handover that follows the
   surface and the system, pull request #260, lines 11434 to 12275 of this file,
   in two orders of two days. The first, of 21 November 2026, held and reported
@@ -12342,8 +12343,8 @@ and for the proofs of closings.
   it. One thing the second order does not name follows from what it has
   entered: `docs/plan.md` line 1381 says "by the decision of 21 November 2026
   below", and since this commit two decisions of that day stand below it. The
-  sentence is left: the first of the two is the one it means, and its subject,
-  the four hooks, names it. The report says so to the person.
+  report put it to the person; the corrections of the merge, below, settle
+  it.
 
   **Part A, the entry held.** Read at `aaab097`, each at its place: the head
   against `git diff --stat d459ec9 5b9c822` and the four commits of the branch;
@@ -12612,6 +12613,27 @@ and for the proofs of closings.
   branch adds was held by hand to the three rules of the workflow's step on
   titles, 69 characters and no find. The checks under "Before a handover, run
   these" were no part of the order; they run at the merge. No run is recorded.
+
+  **The corrections of the merge**, of 22 November 2026, the second commit,
+  from the reading of the two reports and of the first commit. First,
+  `docs/plan.md` line 1383 since the first commit, "by the decision of 21
+  November 2026 below", which the report of the second part put to the
+  person: two decisions of that day stand below it since the first commit,
+  and it names its own by its subject now, "below on the eight cases".
+  Decided without a question, by the same rule: four words cost nothing, and
+  left, the reference reads two ways. Second, the sentence of
+  `docs/skill-conventions.md` on what the job hooks on every system runs,
+  lines 1557 to 1593 since the first commit, ended on "— the fourth and fifth
+  addenda of the entry on the command reader carry the command, and the audit
+  of 14 October 2026 read the setting off the platform", which speaks of the
+  four checks required since 14 October 2026 at the sentence's opening and
+  which the completion in the first commit had moved thirty lines away from
+  them; the sentence ends after the second step now, and that tail stands as
+  a sentence of its own that names what the command does, "carry the command
+  that requires the four checks". Neither changes a figure of the tool. The
+  second question of the report of the second part, the step of line 113
+  without a day of its own, stays as the second part left it, for the reason
+  given above.
 
 ## Decisions taken against
 

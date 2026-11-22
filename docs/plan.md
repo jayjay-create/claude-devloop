@@ -1380,8 +1380,9 @@ install during a session with the comment of (15); the comment of
 `hooks/subagent-start-install.sh` names three lines; and the six places of the
 block on the signal of form A name the two signs. The job hooks on every
 system runs the self-test of `bin/devloop-surface` with the others and, by the
-decision of 21 November 2026 below, each of the four hooks on the path on
-which it hands over, twice, on all four systems; under Windows its first run
+decision of 21 November 2026 below on the eight cases, each of the four hooks
+on the path on which it hands over, twice, on all four systems; under Windows
+its first run
 was at the pull request of that part, run W1 of that entry, read off the
 job's log at the merge, green on 21 November 2026, all eight ending with 2
 and naming Git Bash. Of the nine blocks of this milestone that

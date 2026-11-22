@@ -1587,10 +1587,10 @@ step, the roadmap entry of that date on a project's files read with CRLF as
 with LF, which reads every place of the hooks, the programs and the loaded
 texts that takes a file of the project apart with the file at LF, with CRLF
 from a checkout under `core.autocrlf=true` and with CRLF committed, and
-reaches the three calls of awk the step before it does not reach — the
+reaches the three calls of awk the step before it does not reach. The
 fourth and fifth addenda of the entry on the command reader carry the
-command, and the audit of 14 October 2026 read the setting off the
-platform.
+command that requires the four checks, and the audit of 14 October 2026
+read that setting off the platform.
 
 ## Writing long files
 
