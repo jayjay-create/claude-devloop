@@ -2502,7 +2502,7 @@ rule at its head. Which checks those are, how the workflow runs them without
 their standing at two places, and how each reports green and red, the person
 decides before the order. Correcting the statements of the documents that no
 branch mended stays here, last. Reason: these checks cost work at every
-handover, ten of the 32 merges from 5 to 22 November 2026 being consistency
+handover, ten of the 34 merges from 5 to 22 November 2026 being consistency
 audits, and the orders of the third part of (4) cut the twenty checks out of
 `docs/skill-conventions.md` and held quotes, letters and counts with
 throwaway scripts of their own; the reason for placing this milestone last,

@@ -13101,6 +13101,102 @@ and for the proofs of closings.
   18 November 2026 under milestone 12 of `docs/plan.md`; the one on the
   references to `build-work` step 3 point 7 is built on this branch.
 
+- **One entry held, four behaviors split, a count in the plan set right**
+
+  22 November 2026, version 0.193.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/audit-2026-11-22`, off `origin/main` at `1c92a8b`, in one
+  commit: `docs/plan.md`, `docs/stock-take.tsv` and this entry. The order: the
+  consistency audit before the handover, after pull request #262. It held the
+  entry "Every handover and the steps for the PATH follow surface and system"
+  sentence by sentence against the seven commits of that pull request, read
+  with `git fetch origin pull/262/head`, the files at the commit a sentence
+  names and else at `1c92a8b`, the tool's output, the table, the blocks and
+  the logs of jobs 137275051928 and 137275051873, read with `gh run view
+  --job`. Not held: the paragraph measured by hand, the readings of the
+  vendor's pages, and what runs M1, M2 and A1 show beyond what the repository
+  carries, their times, the versions on the Mac and in the container and the
+  count of the steps, since no record here holds them. It searched
+  `docs/plan.md`, `docs/skill-conventions.md`, `docs/rationale.md` and the
+  notes of the blocks and of the table for every old name of a behavior that
+  pull request renamed and for the counts it changed after `e3d61f1`, and the
+  entry of 20 November 2026 on the handover by surface with the dated
+  sentences of 19 and 20 November 2026 in `docs/plan.md` for two reasons
+  `docs/rationale.md` lacks. No session log was read, no subagent used,
+  nothing installed. The report stands on this machine as
+  `~/devloop-audit-2026-11-22.md`, in German, outside the repository.
+
+  **Found in a document, and put right**, each with its place, the wrong text
+  and the right one. First, this file lines 12675 to 12678, in the entry held:
+  "54 behaviors new over the branch, every one Built, never walked"; three of
+  the 54, those of the case of the job hooks on every system on
+  `bin/devloop-text`, stand Walked on the runs that entry records; right: "54
+  behaviors new over the branch, the three of the case of the job hooks on
+  every system Walked by the runs below and the other 51 Built, never walked".
+  Second, lines 12694 to 12701 of the same entry: "their reasons and what was
+  not chosen in `docs/plan.md`: (f) …; (g) …; (h) …; (j) four findings of the
+  third part get a block each, written with this entry."; `docs/plan.md`
+  carries (j) under milestone 12 without a reason and without what was not
+  chosen; right: "their reasons and what was not chosen in `docs/plan.md` for
+  (f) to (h), and (j) there without either, its reason standing in the Note of
+  each of its blocks". Both stand in that entry as written and are put right
+  here. Third, `docs/plan.md` under milestone 15, in the decision of 22
+  November 2026: "ten of the 32 merges from 5 to 22 November 2026"; `git log
+  --first-parent` at `12cc12a` dates 34 merges in those days, #228 to #261; it
+  reads "ten of the 34 merges" now.
+
+  **Decided on 22 November 2026** by the person, in the order of this audit: a
+  behavior outside the places of #262 whose name names several branches by the
+  surface, the system, the form or the shell at once, in the sense of (q) of
+  its entry, is split where it carries no run, one behavior for each branch,
+  by the head of `scripts/devloop-stock-take`. Reason: that of (q), the tool's
+  rule may undercount and never overcount. Four were found, none with a run:
+  two of `shared/merge-handover.md`, whose text says after the command under
+  `terminal` what it does not say under `desktop`, and two of
+  `scripts/devloop-run-workflow`, whose reading of a step's shell takes
+  another way for each shell its name names; they stand as eleven, seven of
+  them new, each note naming the old name. The search, and why each of the
+  other 34 behaviors it found names one branch where it stands, are the
+  report's.
+
+  Without a question, by the rule that nothing is asked where one way carries
+  a great disadvantage and the other none: the behavior of the merge under
+  `desktop` carries that neither a sentence on their word nor the request to
+  say here follows the command, as the behaviors under `desktop` that #262
+  split off carry that no sentence has them type a word; not chosen: a
+  behavior of its own for what does not follow the command there, which would
+  stand on no line that names it. And a not-a-thing record whose line serves
+  several of the new behaviors, since such a record names one, stays part of
+  the one that keeps the old site, or, in `scripts/devloop-run-workflow`, of
+  the shell the table carries, whose name keeps the order of the step's shell
+  over the job's and the workflow's that two of those lines read; not chosen:
+  a behavior of its own for such a line, which decides nothing by the shell.
+
+  **What stays open.** Two points of `docs/rationale.md` under
+  `shared/path-steps.md` give no reason in words for part of what they say:
+  the one opening "Under `macos` and `linux` the step for the folder gives the
+  line" for the sentence after the line, on what it does and that they type it
+  exactly as it stands, and the one opening "`unknown` under `macos` and
+  `linux`, three steps" for the three steps. Neither the entry of 20 November
+  2026 on the handover by surface nor the dated sentences of 19 and 20
+  November 2026 under milestone 12 of `docs/plan.md` carries one; the report
+  puts them to the person, with whether (j) in `docs/plan.md` takes a reason
+  and what was not chosen.
+
+  **The tool and the checks.** Before, on `1c92a8b`: exit 0, broken records 0,
+  uncovered lines 0 of 4889; Undetermined 24, Recorded, not built 242, Built,
+  never walked 1606, Walked 859, Closed 80. After: Built, never walked 1613,
+  of them shared text 271 and program outcome 134, the seven new behaviors;
+  every other figure as before, Walked the same 859. Its self-test: exit 0,
+  159 cases. The twenty checks under "Before a handover, run these" ran in
+  `bash --noprofile --norc` before the commit, each silent or printing as its
+  paragraph says, `scripts/devloop-run-workflow` green with 10 steps run and
+  the title empty, no commit adding the head yet; the head was held by hand to
+  the rules of the title step, 67 characters and no find. The four checks
+  without a fixed answer, on invocability, on a locked skill, on offers and on
+  the sentence of the yes, print the lines they printed at `12cc12a`, the last
+  two at the line numbers the code of #262 moved. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
