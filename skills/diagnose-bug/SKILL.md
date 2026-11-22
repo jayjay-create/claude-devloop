@@ -276,17 +276,23 @@ another variation of what already failed.
 Hand it over in one of these forms, whichever fits:
 
 - A command, as it runs from wherever they are — the change into the project's
-  directory before it — with where they type it: in Claude Code with `!` in
+  directory before it — with where they type it, by "Where the person types a
+  command devloop hands them" above and the line
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints before the handover:
+  under `terminal` and under `desktop`, in Claude Code with `!` in
   front where it asks nothing and ends by itself, form A, its output then
-  standing in the conversation; in a second terminal window, not the one Claude
-  Code runs in, where it asks something or does not end by itself, and in doubt,
+  standing in the conversation, and under `terminal` with the sentence that
+  has them type „fertig“ right after the command, directly before the last
+  sentence; in the terminal that rule names for the situation where it asks
+  something or does not end by itself, in doubt, and for every command under
+  `panel`, `windows` and `unknown`,
   form B, the text naming which, in doubt what it may do, and asking them to say
   here what it showed — and what to look for in the output.
 - A small script that collects the versions, paths and environment this needs,
   ready to run, handed over the same way.
 - A script that walks them through the steps only a person can do — clicking,
   signing in — and reads their answers back, when the failure cannot be reached
-  any other way; it asks, so it runs in the second terminal window, form B.
+  any other way; it asks, so it runs in the terminal of form B.
 - A smaller case that shows the failure away from the rest of the project.
 - A named question only they can answer, with what each answer would change.
 

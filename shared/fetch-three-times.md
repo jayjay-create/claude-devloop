@@ -48,8 +48,11 @@ attempt was ended; and that this picks up as soon as they say it is cleared,
 and that nothing happens until then. GitHub not reached in three attempts: that
 it was not reached in three attempts, and that they check their connection and
 say when it stands again. The sign-in refused: that GitHub refused the sign-in,
-and how they sign in anew, step by step: that they open a second terminal
-window, not the one Claude Code runs in, because the sign-in puts questions to
+and how they sign in anew, step by step: that they open the terminal form B of
+"Where the person types a command devloop hands them" names for the situation
+the line of `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` has then, a second
+terminal window, not the one Claude Code runs in, under `terminal` alone,
+because the sign-in puts questions to
 them, and those go only there; that they type there `gh auth login --web
 --git-protocol https` — `--git-protocol https` so that `gh` does not ask for the
 protocol and `--web` so that it takes the way through the browser; that they

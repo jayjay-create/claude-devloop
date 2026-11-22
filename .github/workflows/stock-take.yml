@@ -22,7 +22,10 @@
 # also each of the four hooks that hand a command over, with an input on the
 # path on which it hands over, twice, without CLAUDE_CODE_ENTRYPOINT and with
 # it on cli, red where one of the eight ends otherwise than with 2 and the
-# place its system has -: devloop runs on every
+# place its system has, and since 22 November 2026 bin/devloop-text
+# skill-name twice the same way, red where it ends otherwise than with 0,
+# leaves ${DEVLOOP_SURFACE} standing or does not carry the line
+# bin/devloop-surface prints for its system and its situation -: devloop runs on every
 # system, the person's decision of 14 October 2026, and until then nothing
 # showed that the reader ran under Linux at all, where it did not. Its four checks
 # carry the job's name with the system in brackets; making them required on
@@ -639,7 +642,7 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in, the guard on the PowerShell tool turning a call down where docs/agents/ stands and letting it through where none stands, and each of the four hooks that hand a command over on the path on which it hands over, without CLAUDE_CODE_ENTRYPOINT and with it on cli
+      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in, the guard on the PowerShell tool turning a call down where docs/agents/ stands and letting it through where none stands, and each of the four hooks that hand a command over on the path on which it hands over, without CLAUDE_CODE_ENTRYPOINT and with it on cli, and bin/devloop-text skill-name carrying the line of bin/devloop-surface in the rule on the two forms, without CLAUDE_CODE_ENTRYPOINT and with it on cli
         run: |
           set -u
           # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
@@ -819,6 +822,33 @@ jobs:
           handed pre-tool-use-install-guard.sh "PreToolUse Bash pre-tool-use-install-guard.sh, pipx install devloop-probe-does-not-exist where origin/main carries no record" "$(bash_call "pipx install devloop-probe-does-not-exist")" 1
           handed stop-checks.sh "Stop stop-checks.sh, the third attempt at a blocking filled class whose check is red" "$STOP" 3
           echo "note the eight cases of the four hooks that hand a command over took $((SECONDS - S)) seconds on this system; this line decides nothing"
+          # bin/devloop-text skill-name, the text every skill loads with the rule on the two forms of a handover, since 22 November 2026, decided on 21 November 2026, docs/plan.md under milestone 12, the third part of order (4): until then no step of this job ran bin/devloop-text on any system, and the line it puts into the rule in the place of ${DEVLOOP_SURFACE} was read in one run on the person's Mac alone. The program runs twice, without CLAUDE_CODE_ENTRYPOINT and with it on cli, as the eight cases above, and both times without TERM_PROGRAM, which reads vscode in the terminal of VS Code and would make the surface terminal-vscode there
+          # wanted, in both: exit 0, ${DEVLOOP_SURFACE} nowhere in what the program printed, and the line bin/devloop-surface prints for this system and this situation, whole, on a line of its own, indented by four blanks as shared/skill-name.md carries the word. Under Windows system windows and handover windows in both, the system going before the surface, surface unknown without the variable and terminal with cli; on the three other systems system macos or linux, surface and handover unknown without the variable and terminal with cli. The system is taken off RUNNER_OS, as the eight cases take Windows off it, and not off uname, which the program under test reads itself. A case that comes out otherwise turns the step red and prints what the program printed
+          texted() {
+            local entry with sur hand sys want code got miss
+            for entry in none cli; do
+              sur=unknown; hand=unknown; with="without CLAUDE_CODE_ENTRYPOINT"
+              [ "$entry" = none ] || { sur=terminal; hand=terminal; with="with CLAUDE_CODE_ENTRYPOINT=cli"; }
+              case "${RUNNER_OS:-}" in Windows) sys=windows; hand=windows ;; macOS) sys=macos ;; Linux) sys=linux ;; *) sys="no system, RUNNER_OS reading ${RUNNER_OS:-nothing}" ;; esac
+              want="    surface: $sur | system: $sys | handover: $hand"
+              code=0
+              if [ "$entry" = cli ]; then
+                got=$(env -u TERM_PROGRAM CLAUDE_CODE_ENTRYPOINT=cli "$ROOT/bin/devloop-text" skill-name 2>&1) || code=$?
+              else
+                got=$(env -u TERM_PROGRAM -u CLAUDE_CODE_ENTRYPOINT "$ROOT/bin/devloop-text" skill-name 2>&1) || code=$?
+              fi
+              miss=""
+              [ "$code" -eq 0 ] || miss="$miss it ended with $code and not with 0;"
+              case "$got" in *'${DEVLOOP_SURFACE}'*) miss="$miss what it printed still carries \${DEVLOOP_SURFACE};" ;; esac
+              grep -qxF -e "$want" <<< "$got" || miss="$miss what it printed does not carry the line$want on a line of its own;"
+              if [ -z "$miss" ]; then
+                echo "bin/devloop-text skill-name, $with: exit $code, the rule carries the line ${want#    }"
+              else
+                echo "bin/devloop-text skill-name, $with, did not put the line of its situation into the rule:$miss"; printf '%s\n' "$got" | sed 's/^/    /'; red=1
+              fi
+            done
+          }
+          texted
           rm -rf "$T"
           exit "$red"
 

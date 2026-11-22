@@ -51,7 +51,7 @@ Keep it beautiful but restrained: clean typography, generous spacing, one accent
 
 ### 4. Hand it over
 
-Hand it over as this skill says under "Hand it over so it gets looked at": one action, the exact command that opens the file in a browser, checkout included, typed in Claude Code with `!` in front, form A. They'll click through the walkthroughs and free-play whenever they get to it; the interesting moments are when they say "wait, that shouldn't be possible" or "huh, I assumed X would be different"; those are the bugs in the _idea_, which is the whole point. If they want new actions or a new scenario, add them. Prototypes evolve.
+Hand it over as this skill says under "Hand it over so it gets looked at": one action, the exact command that opens the file in a browser, checkout included, in the form and at the place that section gives for the surface and the system: typed in Claude Code with `!` in front, form A, in a terminal under macOS or Linux and in the desktop app there, and typed in a terminal, form B, in the graphical panel of VS Code, under Windows and where the surface or the system is unknown. They'll click through the walkthroughs and free-play whenever they get to it; the interesting moments are when they say "wait, that shouldn't be possible" or "huh, I assumed X would be different"; those are the bugs in the _idea_, which is the whole point. If they want new actions or a new scenario, add them. Prototypes evolve.
 
 ### 5. Capture the answer and the prototype
 

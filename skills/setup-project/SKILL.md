@@ -275,8 +275,9 @@ which field.
   and that on this machine it is not signed in yet; that where they have no
   account yet, they create it first on github.com; then the steps of the refused
   sign-in as the text on the fetch tried three times has them, form B of "Where
-  the person types a command devloop hands them", since the sign-in asks — a
-  second terminal window, not the one Claude Code runs in, because the sign-in's
+  the person types a command devloop hands them", since the sign-in asks — the
+  terminal that rule names for the situation opened, a second terminal window,
+  not the one Claude Code runs in, under `terminal` alone, because the sign-in's
   questions go only there; `gh auth login --web --git-protocol https` typed
   there; the instructions in the terminal and in the browser followed, which
   this text does not describe after the program —; and that they say here once
@@ -288,14 +289,21 @@ which field.
   under Linux the page it links for Linux,
   `github.com/cli/cli/blob/trunk/docs/install_linux.md`; and hand the command
   over as it stands there, by "Where the person types a command devloop hands
-  them" — on a Mac with Homebrew `brew install gh`, form A, typed here with `!`,
+  them" and the line `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints before
+  the handover — on a Mac with Homebrew `brew install gh`, which asks nothing:
+  under `terminal` and under `desktop` form A, typed here with `!`, under
+  `terminal` with the sentence on „fertig“ directly before the last sentence,
+  and under `panel` and `unknown` form B, typed in the terminal that rule
+  names, without a `!`;
   backed before it is handed over by the vendor's own line or the path in the
   command resolving, `brew info gh` naming the version and the folder; under
   Debian or Ubuntu the
   block of that page, which runs `sudo` and so asks for their password, form B,
-  in a second terminal window, given whole and as it stands, with its source,
+  in the terminal that rule names for the situation, given whole and as it
+  stands, with its source,
   that it is GitHub's guide for that system; for another system the page names,
-  the same with that system's name. Say: that for the work with GitHub devloop
+  the same with that system's name, under `windows` form B in Git Bash
+  whatever the command asks. Say: that for the work with GitHub devloop
   needs the program `gh` of GitHub and that on this machine it is not installed
   yet; where they type it; the command; the backing or the source; and that the
   run then reads that `gh` is there and says how they sign in — under A at the

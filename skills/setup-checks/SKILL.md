@@ -115,17 +115,22 @@ that called. Everything else below applies unchanged.
   well, as "With nobody there" below says; the runtime is an example and
   not the only cause; that this check is never switched off by the run on
   its own, which is why the run writes an issue with the reason and goes on
-  with the other tasks; how they install the tool themselves, here in Claude
-  Code, step by step: the install command typed with `!` in front, form A
-  of "Where the person types a command devloop hands them" above, backed as
+  with the other tasks; how they install the tool themselves, step by step,
+  by "Where the person types a command devloop hands them" above and the line
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` prints then, with neither the
+  sentence on „fertig“ nor the request to say here, nobody being there: under
+  `terminal` and under `desktop`, where the command asks nothing, here in
+  Claude Code, the install command typed with `!` in front, form A, backed as
   the issue has it, and then `/devloop:start-work`; that the run then closes
   the issue, sets the check up and goes on with the task — the issue
   carrying the two lines of the form below, which that start reads —; and
   that the command stands in the issue as well. Where the command asks
-  something, `sudo apt install` say, and in doubt, form B holds, in three steps:
-  a second terminal window opened, not the one Claude Code runs in, with what
-  the command asks as the reason — a password —, in doubt what it may ask; the
-  command typed there; `/devloop:start-work` typed here in Claude Code; then the
+  something, `sudo apt install` say, and in doubt, and for every command under
+  `panel`, `windows` and `unknown`, form B holds, in three steps: the terminal
+  that rule names for the situation opened, with what the command asks as the
+  reason where it asks — a password —, in doubt what it may ask; the command
+  typed there, without a `!`; `/devloop:start-work` typed here in Claude Code;
+  then the
   same close, the issue closed, the check set up, the task gone on with, the
   command in the issue as well.
 - **The command is not an install and the guard matched on text.** Then nothing
@@ -514,11 +519,16 @@ own, and no recommendation, as every question of this step:
 On the first: hand them the command, backed and as it runs from wherever
 they are, once more as a line of its own, last in the message that ends the
 turn, with where they type it by "Where the person types a command devloop
-hands them" above — in Claude Code with `!` in front where it asks nothing,
-form A, the line given with the `!` and the text saying so; in a second
-terminal window, not the one Claude Code runs in, where it asks something,
-`sudo apt install` say, form B, the text naming what it asks and asking them to
-say here once it is through; in doubt B, with what it may ask —, and that
+hands them" above and the line `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface`
+prints before this handover — under `terminal` and under `desktop`, where the
+command asks nothing, in Claude Code with `!` in front, form A, the line given
+with the `!` and the text saying so, and under `terminal`, in a sentence of
+its own directly before the last sentence, that they type „fertig“ right
+after the command; where it asks something, `sudo apt install` say, and for
+every command under `panel`, `windows` and `unknown`, in the terminal that
+rule names for the situation, form B, the line without a `!`, the text naming
+what it asks where it asks and asking them to say here once it is through;
+in doubt B, with what it may ask —, and that
 once it has run the run reads that the tool is there and sets the check up;
 wait for the form's signal, the first of the two signs under A, the answered
 output or their word, and their word under B; then
@@ -531,19 +541,16 @@ path. Set the class up in step 4 where the second line says found — the
 branch is cut after the signal, as after the last answer — and step 4
 writes the line for that install into `docs/agents/environment.md`, since
 the hook that writes the line for an install the run made does not see one
-the person typed, with `!` as little as in a second window, as step 4 says.
+the person typed, with `!` as little as in a terminal, as step 4 says.
 Where the first line says found and the second not found, say so and say
-how they put the folder on their search path, step by step, as `build-work`
-step 3 point 7 says it for the tool of a task, at the next message that
-ends a turn with text: that the command installed the tool into the folder,
-both as the first line names them; that the folder is not in their `PATH`,
-the term untranslated; that the check therefore does not find the tool;
-then the five steps of that point — `/exit`, the export line into the file
-of their shell, the `source` of it, `cd <directory> && claude`,
-`/devloop:start-work` — the shell and the system read as that point reads
-them, the command of a step the run has no sure form for read first in the
-maker's guide as that point says, and a step without a command only where
-that yields none; and that the run then finds the tool and sets the check
+how they put the folder on their search path, step by step, at the next
+message that ends a turn with text: that the command installed the tool into
+the folder, both as the first line names them; that the folder is not in
+their `PATH`, the term untranslated and said to be the list of folders in
+which their computer looks for programs; that the check therefore does not
+find the tool; then the steps by the surface and the system, as "The steps
+that put a folder on the search path" below has them;
+and that the run then finds the tool and sets the check
 up. The class stays as it stands until then, and the start those steps lead
 to reaches this step again for it through step 4 of the next task, where
 the tool, now on the search path, takes it into step 4 of this skill. Where
@@ -564,6 +571,8 @@ that — the class becomes `skipped (user):` with that reason, naming the tool
 and what was declined, or both tools where the question offered another and
 they chose the check off — not `empty`. With nobody there neither record says
 no: the unattended mode does not start under one.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text path-steps`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-and-run`
 
@@ -628,8 +637,9 @@ the line, and the run puts it there as it stands, through the same program
 once the branch or the file stands.
 
 **A tool the person installed themselves, on the first answer of the
-question step 3 puts, the hook does not see**: the command ran in their
-terminal and in no call of this run. Its line is this step's to write,
+question step 3 puts, the hook does not see**: the command was typed in
+Claude Code with `!` in front or run in a terminal outside it, and in no
+call of this run either way. Its line is this step's to write,
 under the same heading `Installed outside the project` of `environment.md`
 and in the form the hook writes, by the program the hook writes it with:
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put` with the folder step 3
@@ -1152,14 +1162,23 @@ form:
   the issues, the tasks, the checks. Where a command asks something,
   `sudo apt install` say, and in doubt, the line says form B: that the issue
   stays open; that the command, named, asks — a password —, in doubt what it may
-  ask, and is therefore typed in a second terminal window, not the one Claude
-  Code runs in; that `/devloop:start-work` typed here afterwards closes the
+  ask, and is therefore typed in the terminal "Where the person types a
+  command devloop hands them" names for the situation the line of
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-surface` has before the question, a
+  second terminal window, not the one Claude Code runs in, under `terminal`
+  alone; that `/devloop:start-work` typed here afterwards closes the
   issue and takes the task up again, or sets the check up again, or both; and
   the asking again at every start, as above. With one issue the fields stand at
   the bound of `output-styles/devloop.md`; with two issues in form B, whose
-  commands ask or may ask, they pass it, so the question does not fit the widget
-  and is asked as text at the end of the turn, with its text before it in the
-  same message, as the style says.
+  commands ask or may ask, they can pass it, so the question does not fit the
+  widget and is asked as text at the end of the turn, with its text before it in
+  the same message, as the style says. The line with the `!` holds under
+  `terminal` and under `desktop` alone: under `panel`, `windows` and `unknown`
+  the line says form B for a command that asks nothing as well, that they
+  type the command, named, themselves in the terminal that rule names for the
+  situation, without a `!`, and `/devloop:start-work` here afterwards. No
+  line under this no carries the sentence on „fertig“ or the request to say
+  here.
 
 The issue's number in place of its title is an exception to
 `shared/refer-by-name.md`, for this question alone: the reason of that
