@@ -1421,6 +1421,8 @@ milestone: the ten of the eleven that stand on texts the model loads, three
 whose Fix line that part built anew, and the one on texts loaded in
 `start-work`, `plan-work` and `setup-checks` that pointed at `build-work`
 step 3 point 7, which that part wrote with its Fix.
+Before (5) come the checks of milestone 15 that come back at every
+handover, by the decision of 22 November 2026 under milestone 15.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
@@ -2483,6 +2485,31 @@ the rebuilds, over the final text" for the skills. An open block in its
 section holds no other milestone's Done, since the rule under "Five
 sentences" asks only that an open block stand in the section of a milestone
 not yet reached.
+
+Decided on 22 November 2026 by the person, decision (s) of the roadmap entry
+of that date, "Every handover and the steps for the PATH follow surface and
+system": the checks of this milestone that come back at every handover are
+built before the rest of it, after the third part of order (4) of milestone
+12 and before order (5). The checks under "Before a handover, run these"
+that answer with yes or no run as a step of
+`.github/workflows/stock-take.yml` on every pull request, and a program the
+same workflow runs holds the references between the documents a script can
+hold, among them a German wording of `docs/rationale.md` standing word for
+word in the roadmap or its archive, a letter of a decision that a document
+gives an entry standing in that entry, an entry a document names by its head
+standing once, and a line of a file that `docs/plan.md` names against the
+rule at its head. Which checks those are, how the workflow runs them without
+their standing at two places, and how each reports green and red, the person
+decides before the order. Correcting the statements of the documents that no
+branch mended stays here, last. Reason: these checks cost work at every
+handover, ten of the 32 merges from 5 to 22 November 2026 being consistency
+audits, and the orders of the third part of (4) cut the twenty checks out of
+`docs/skill-conventions.md` and held quotes, letters and counts with
+throwaway scripts of their own; the reason for placing this milestone last,
+that the records are brought in line once after the texts they describe have
+stopped moving, holds for that correcting and not for checks that come back.
+Not chosen: this milestone last as a whole, as decided on 5 November 2026,
+under which every audit until then holds these by hand.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A

@@ -12639,7 +12639,7 @@ and for the proofs of closings.
 
   22 November 2026, version 0.193.0, raised once from 0.192.0 by the first
   commit. On `task/handover-every-place`, off `origin/main` at `12cc12a`, in
-  six commits: `883bd51`, "Every handover and the steps for the PATH follow
+  seven commits: `883bd51`, "Every handover and the steps for the PATH follow
   surface and system", the code; `faad2e4`, "Blocks take their Fix lines, the
   table follows the handover by surface"; `e3d61f1`, "Reasons, conventions and
   plan follow the handover and the PATH steps"; `7929365`, the commit that
@@ -12649,10 +12649,13 @@ and for the proofs of closings.
   `docs/skill-conventions.md` by (n); the commit after it, `becef75`, "Every
   branch by surface, system or shell gets a behavior of its own", with the
   behaviors of (q), the finding of (r) and two sentences of `docs/plan.md` on
-  the blocks that wait for the closing runs of order (7); and the sixth, "Runs
-  on the Mac and in Alpine walk the job's case of bin/devloop-text", with the
-  runs below that need no model. The order: the third of the three parts of
-  order (4) of milestone 12 in `docs/plan.md`.
+  the blocks that wait for the closing runs of order (7); the sixth,
+  `442e88c`, "Runs on the Mac and in Alpine walk the job's case of
+  bin/devloop-text", with the runs below that need no model; and the seventh,
+  the corrections of the merge, "The job's runs on Ubuntu and Windows, the
+  recurring checks drawn ahead", with the runs of the job hooks on every
+  system on ubuntu-latest and windows-latest and decision (s). The order: the
+  third of the three parts of order (4) of milestone 12 in `docs/plan.md`.
 
   **What changed, and where it stands.** What the third part built, place by
   place, `docs/skill-conventions.md` names in its paragraph "Where the person
@@ -12782,6 +12785,13 @@ and for the proofs of closings.
   the script in the repository, since the search pattern for private details
   may not go into it, and a new folder would bring rules and work for the
   checks.
+
+  (s), by the person on that day, on a question put at the runs of this
+  branch: the checks of milestone 15 that come back at every handover, those
+  under "Before a handover, run these" and the references between the
+  documents a script can hold, are built after this part and before order (5)
+  of milestone 12, the rest of milestone 15 staying last. Its reason and what
+  was not chosen `docs/plan.md` carries under milestone 15.
 
   **A finding in a document, corrected on this branch**, by (r), with its
   place, the wrong text and the right one. `docs/rationale.md` lines 4091 to
@@ -13047,18 +13057,49 @@ and for the proofs of closings.
   text the model loads; what else M1 and A1 show, the self-tests and the eight
   cases among it, stands on things this branch neither adds nor changes.
 
+  **The runs of the job hooks on every system**, run 45044184852 of the
+  workflow on pull request #262 at the sixth commit, `442e88c`, under 0.193.0,
+  on 22 November 2026 in UTC, read in the log of each job with `gh run view
+  --job` and green in every step.
+
+  Run U1, the job on ubuntu-latest, job 137275051928: Ubuntu 26.04.1 LTS with
+  bash 5.3.9; in the hooks step every self-test passed, 21 handlers started,
+  the eight cases each with exit 2, and the two lines of the case on
+  `bin/devloop-text` with `system: linux`, "bin/devloop-text skill-name,
+  without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the line surface:
+  unknown | system: linux | handover: unknown" and "bin/devloop-text
+  skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the rule carries the
+  line surface: terminal | system: linux | handover: terminal".
+
+  Run W1, the job on windows-latest, job 137275051873: MINGW64_NT-10.0-26100
+  with bash 5.3.15 under Git Bash; in the hooks step every self-test passed,
+  the one of `scripts/devloop-run-workflow` left out under Windows as the step
+  has it, 21 handlers started, the eight cases each with exit 2 and "the place
+  Git Bash, the system going before the surface", and the two lines of the
+  case with `system: windows` and `handover: windows`, "bin/devloop-text
+  skill-name, without CLAUDE_CODE_ENTRYPOINT: exit 0, the rule carries the
+  line surface: unknown | system: windows | handover: windows" and
+  "bin/devloop-text skill-name, with CLAUDE_CODE_ENTRYPOINT=cli: exit 0, the
+  rule carries the line surface: terminal | system: windows | handover:
+  windows".
+
+  U1 stands on the green thing of the case on ubuntu-latest, macos-latest and
+  alpine, under Ubuntu, and on the block on the step that ran no
+  `bin/devloop-text`; W1 on the green thing under windows-latest and on the
+  same block. The jobs on macos-latest and alpine of the same run are entered
+  as no runs of their own, M1 and A1 standing for those systems.
+
   **What stays open.** The behaviors of the texts the model loads, and the
   blocks whose Fix stands on them, wait for the closing runs of order (7),
   where `docs/plan.md` says milestone 12 ends; the runs of this branch that
-  need no model stand above, and those of the job hooks on every system on
-  ubuntu-latest and windows-latest follow in a later commit of it. Of the new
-  blocks, order (6) builds the two on "Shift+Tab in the terminal" and on
-  "/clear"; the next order that changes `hooks/pre-tool-use-install-guard.sh`
-  builds the one on its message, and the next that changes
-  `bin/devloop-install-issues` or `bin/devloop-tool-state` the one on the
-  self-test, both by the decision of 18 November 2026 under milestone 12 of
-  `docs/plan.md`; the one on the references to `build-work` step 3 point 7 is
-  built on this branch.
+  need no model stand above, those of the job hooks on every system on
+  ubuntu-latest and windows-latest among them. Of the new blocks, order (6)
+  builds the two on "Shift+Tab in the terminal" and on "/clear"; the next
+  order that changes `hooks/pre-tool-use-install-guard.sh` builds the one on
+  its message, and the next that changes `bin/devloop-install-issues` or
+  `bin/devloop-tool-state` the one on the self-test, both by the decision of
+  18 November 2026 under milestone 12 of `docs/plan.md`; the one on the
+  references to `build-work` step 3 point 7 is built on this branch.
 
 ## Decisions taken against
 
