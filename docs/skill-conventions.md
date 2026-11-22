@@ -149,8 +149,10 @@ date on the hook on SubagentStart, (4), and since 22 November 2026 the steps
 follow the surface and the system and stand in `shared/path-steps.md`, five
 of them in a terminal that is not VS Code's under macOS and Linux, their
 wordings in the roadmap entry of 20 November 2026 on the handover by
-surface, (11) and (13), and in the roadmap entry of 22 November 2026, "Every
-handover and the steps for the PATH follow surface and system". The rule
+surface, (11) and (13), and those of 22 November 2026 in
+`docs/rationale.md`, the roadmap entry of that date, "Every handover and
+the steps for the PATH follow surface and system", naming the decisions.
+The rule
 stands here, after the two on a
 command handed over and on an input typed into Claude Code, because it is
 those two over a sequence: each step is given as they say, whole and as
@@ -311,9 +313,9 @@ milestone 12, (1) to (18) and those of 22 November 2026. Until 21 November
 the person approved for the handovers stand in the roadmap entry of 28
 October 2026 on the handover steps, those of 19 and 20 November 2026 in
 the entry of 20 November 2026 on the handover by surface, and those of 22
-November 2026 in the entry of that date named above; a skill says what
-is said, not the words. Until 28 October 2026 the rule on a command handed
-over read
+November 2026 in `docs/rationale.md`, the entry of that date named above
+naming the decisions; a skill says what is said, not the words. Until 28
+October 2026 the rule on a command handed over read
 that the line is copied whole into whatever terminal is open, point 18 of
 part B of 12 October 2026, whose rest stands.
 
