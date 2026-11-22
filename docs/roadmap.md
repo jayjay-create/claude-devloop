@@ -12274,6 +12274,367 @@ and for the proofs of closings.
   windows-latest, "at the merge", "only the job" and the eight cases: no
   sentence.
 
+- **One entry held, a place added to a block, a block on bin/devloop-text**
+
+  22 November 2026, version 0.192.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` and `docs/rationale.md` do not. On
+  `task/audit-2026-11-21`, off `origin/main` at `aaab097`, in two commits,
+  the second the corrections of the merge: `docs/plan.md`,
+  `docs/skill-conventions.md`, `docs/defects.md`, `docs/stock-take.tsv` and
+  this entry. The order: the consistency audit before
+  the handover, for one entry, the entry on the handover that follows the
+  surface and the system, pull request #260, lines 11434 to 12275 of this file,
+  in two orders of two days. The first, of 21 November 2026, held and reported
+  and changed no file, in three parts. Part A held that entry statement by
+  statement against the programs, the loaded texts, the hooks, the workflow,
+  the blocks, the table, the tool at `d459ec9` and at `aaab097`, and the log of
+  the job's run. Part B held what the third part of order (4) of milestone 12
+  builds, in the entry, in `docs/plan.md` and in the blocks of milestone 12,
+  one against the other, and searched `docs/skill-conventions.md`,
+  `docs/plan.md`, `docs/defects.md`, `docs/rationale.md`, `README.md`,
+  `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` and
+  `.github/` for every sentence the build of that pull request makes false.
+  Part C held `docs/rationale.md` against the seven loaded texts that pull
+  request changed, the files `git diff --stat d459ec9 aaab097 -- skills shared
+  output-styles` names. The second, of 22 November 2026, mended what the first
+  found, entered a decision of the person, mended three places the first had
+  not found or had read otherwise, counted the blocks of milestone 12 by status
+  for the handover and wrote this entry. The reading lists: of the first, 95163
+  bytes and, for part C, 50768 bytes by `wc -c`, the figures of its order; of
+  the second, 90319 bytes, the figure of its order — the report of the first,
+  this file lines 11096 to 11137 and 11338 to 11377, `docs/defects.md` lines 1
+  to 86, `docs/skill-conventions.md` lines 2016 to 2074,
+  `scripts/devloop-stock-take` lines 379 to 391, and the title and the Status
+  of every open block under "## Milestone 12"; everything else at the places
+  the orders, the entry and the report name and at the finds of the searches.
+  Written by Claude Code from the orders of the two days; no session log was
+  read; nothing was installed; no subagent was used; the identity under which
+  git commits here was not set, its name and its address taken as `git config`
+  gives them and neither shown. GitHub was read by the first part alone, with
+  `git fetch origin pull/260/head`, `gh pr view 260` and `gh run view
+  44905139091`, the log of that run from a copy on this machine and not fetched
+  anew; read from outside, without a sign-in, by the first part alone: of
+  code.claude.com/docs/en/ the page `skills.md`, raw as Markdown with `curl`;
+  nothing beyond. The reports stand on this machine as
+  `~/devloop-audit-2026-11-21.md` and `~/devloop-audit-2026-11-21-teil2.md`, in
+  German, and are not in the repository. Every line number of a file in this
+  entry holds at `aaab097` unless it says otherwise; for a file outside `docs/`
+  that is its number in the tree of version 0.192.0 the entry of pull request
+  #260 counts in, `git diff --stat 5b9c822 aaab097 -- . ':!docs'` printing
+  nothing.
+
+  **The orders held against the rules, before anything changed.** The first
+  order took `git status --short` to print one line, `??
+  .claude/settings.local.json`; it prints nothing here, and `git status --short
+  --ignored` prints `!! .claude/settings.local.json`, the file being ignored by
+  a rule that stands outside the repository, which carries no `.gitignore`. The
+  first part stopped there, and the person decided on 21 November 2026 that the
+  starting state is the one found; the tool had run once on `main` at `aaab097`
+  by then, before the branch stood, over the same tree, and its output was
+  kept. Nothing else in either order went against a rule. Both have what is
+  wrong in the entry of pull request #260 said here and a wrong line number
+  alone mended in place, the rule of `docs/skill-conventions.md` lines 2070 to
+  2074; no line number of that entry is wrong, so it stands as it stood. Every
+  line number the second order names was read at `aaab097` before anything
+  changed, and each holds; the report of the first part has the sentence of
+  `docs/plan.md` on the line `bin/devloop-text` puts into the rule at lines
+  1055 to 1056, and it stands at lines 1056 to 1057, as the second order has
+  it. One thing the second order does not name follows from what it has
+  entered: `docs/plan.md` line 1381 says "by the decision of 21 November 2026
+  below", and since this commit two decisions of that day stand below it. The
+  report put it to the person; the corrections of the merge, below, settle
+  it.
+
+  **Part A, the entry held.** Read at `aaab097`, each at its place: the head
+  against `git diff --stat d459ec9 5b9c822` and the four commits of the branch;
+  `bin/devloop-surface`, `bin/devloop-text`, the rule on the forms, the merge
+  handover, the two places of `shared/install-tool.md`, the four hooks and the
+  two comments against their files; the eight cases of the job against the
+  workflow; the nine blocks of milestone 12 that carry their Fix since that
+  build, the five that keep Fix none, D6, D3 and the block the entry wrote
+  against `docs/defects.md`; the 68 new things, the renamings and every figure
+  of the tool against `docs/stock-take.tsv` and against the tool at `d459ec9`
+  and at `aaab097`; the 63 run records of 21 November 2026 against the ten runs
+  the entry names, every anchor standing once in this file, on the line of its
+  run; the runs of the job and the corrections of the merge against the log of
+  run 44905139091 and against `gh run view`; and the line references of the
+  paragraph on the other documents against `d459ec9`. The entry holds: no line
+  number of it is wrong, no quote from a file of the repository differs, and no
+  figure differs from the table, the tool or the log. One finding, small. Lines
+  11842 to 11847 enumerate the 68 new things in six groups — the outcomes of
+  `bin/devloop-surface`, 18; what `bin/devloop-text` puts in, 2; the forms, the
+  signs, the cases and the places of the rule, 19; the merge by the situation,
+  5; the messages of the four hooks, 20; the cases of the job, 3 — and the six
+  give 67. The 68th is the thing of `shared/install-tool.md` on the first line
+  not found under form A where the conversation does not show that the command
+  ran to its end, which the entry itself names in lines 12050 to 12052, "one of
+  `shared/install-tool.md`". The figure holds, 72 names of things new in the
+  table at `aaab097` against `d459ec9` and 4 gone; the enumeration leaves the
+  one out and reads right with that thing of `shared/install-tool.md` behind
+  the merge by the situation. No line number is wrong there, so nothing is
+  changed there. A note without a finding: the vendor's page on skills carried
+  on 21 November 2026 the sentences lines 11687 to 11691 quote, word for word,
+  the entry leaving out the markup of a link. Not held, by the order: the
+  readings in the program of Claude Code, lines 11712 onward, and what quotes
+  them; the figures of the reading lists in the head; the measurements by hand,
+  lines 11625 onward, and the runs, lines 11852 onward, none measured anew. Not
+  held, since it cannot be: the counts of the two searches of the paragraph on
+  the other documents, 320 and 367 lines, the entry naming no pattern; and the
+  earlier wordings of the first commit as it stood before it was pushed.
+
+  **Part B, what the third part builds and what the build makes false.** Three
+  sources say what the third part of order (4) builds: the entry of pull
+  request #260 in lines 11611 to 11623, the same list standing word for word in
+  `docs/skill-conventions.md` lines 274 to 282; `docs/plan.md` lines 1393 to
+  1397, 1811 to 1825 and 1836 to 1852; and the ten blocks of milestone 12 whose
+  Note names the third part, all with Fix none — lines 1220, 1228, 1348, 1667
+  and 1723, built by the second part and the third and taking their Fix with
+  the third, and lines 1236, 1284, 1675, 1683 and 1731, the three on the steps
+  for the PATH, the one on step 4 of `setup-checks` and the one on the issue,
+  built by the third alone. They agree but for one place.
+  `skills/setup-checks/SKILL.md` lines 118 to 130, under "## A guard's block is
+  not a decline" and so in neither step 3 nor step 8, have the run say "how
+  they install the tool themselves, here in Claude Code, step by step: the
+  install command typed with `!` in front" and, for a command that asks, name
+  "a second terminal window opened, not the one Claude Code runs in". The
+  blocks on PowerShell under Windows and on the wording of form B, lines 1667
+  and 1723, name these lines in their Wrong and give every place their Wrong
+  names to the third part; the entry, lines 11614 to 11615, the list of
+  `docs/skill-conventions.md`, lines 277 to 278, and the Note of the block on
+  the desktop app under Windows, line 1354, in the sentence pull request #260
+  wrote, name of that skill "steps 3 and 8" alone. Right is: steps 3 and 8 and
+  its section "A guard's block is not a decline". Mended in two of the three:
+  the list of `docs/skill-conventions.md` names the section, line 278 since
+  this commit; and the block on the desktop app under Windows, line 1348,
+  carries the place in its Wrong, read at `aaab097` and introduced as not named
+  until this audit, as the audit of 20 November 2026 added places, lines 11254
+  to 11278 of this file, its Note saying so with 21 November 2026, the day the
+  first part found it, and naming the section in its sentence on the places the
+  third part builds. The entry of pull request #260 is not changed, and this
+  paragraph says what is right. No block is written for it: the two blocks hold
+  the defect already, and a finding in a document or in a field of a block that
+  the same branch mends gets none, `docs/skill-conventions.md` lines 1967 to
+  1973.
+
+  The decision of the person of 21 November 2026 on a case of the job for
+  `bin/devloop-text`, below, stood nowhere until this commit. The entry of pull
+  request #260 says of `bin/devloop-text` in lines 11644 to 11646 that no step
+  of the job runs it on any system, "so that the closing runs of order (7) show
+  it there", and in lines 12250 to 12252 that the line it puts into the rule
+  under Git Bash "waits for those runs with them"; since the decision the third
+  part of order (4) builds a case of the job for that line first, and the
+  closing runs show it in a session besides. Entered: in `docs/plan.md` a
+  paragraph of its own after the decision of that day on the eight cases, lines
+  1854 to 1872, in its form, with the reason and what was not chosen; the
+  sentence on what the third part builds, lines 1393 to 1397, and the list of
+  `docs/skill-conventions.md`, lines 274 to 282, gain the case; and the
+  sentence of `docs/plan.md` on what the closing runs show that the job does
+  not, lines 1056 to 1057, "which no step of the job runs", says that the third
+  part builds the case. Decision (17), lines 1811 to 1825, stands as the
+  decision of 19 November 2026 it is, the new paragraph beside it. And one
+  block is written, the last of "## Milestone 12", line 1779 since this commit,
+  with Fix none, Recorded, not built: "no step of the job hooks on every system
+  runs bin/devloop-text, so no system of the job shows the line it puts into
+  the rule on the forms". Its Wrong names the two searches of the first part,
+  `grep -n -E 'devloop-text|devloop-expand' .github/workflows/stock-take.yml`
+  printing nothing and `grep -c 'self-test' bin/devloop-text` giving 0; its
+  Should is the case as the decision says it and settles nothing beyond; its
+  Note names the find, the decision and the part that builds it. A block by the
+  rule of `docs/skill-conventions.md` lines 1976 to 1978, a finding in the
+  workflow getting one in every case, and its Found is this entry, the entry of
+  pull request #260 naming the gap as left to the closing runs and not as a
+  defect.
+
+  A finding beside these, not of pull request #260: `docs/plan.md` named lines
+  of files of the repository at four places, against its head, lines 19 to 24,
+  "A reference below names a file and a section, never a line", an archive of
+  the roadmap the one exception. Line 1481, "`bin/devloop-bounded` line 71", of
+  pull request #250, names the sentence of the program's head now, "Its cases,
+  read and not measured under Git Bash". Lines 1687 to 1688, "line 22" and
+  "lines 52 to 55" of `hooks/session-start.sh`, of pull request #258, name the
+  hook's exit where `git rev-parse --git-dir` fails and its one line
+  "[ProjectStatus] devloop: not set up here". Line 1840, "line 1763 of
+  `docs/defects.md`", of pull request #259, loses the line, the sentence naming
+  the block by its subject already, the block on the signal of form A. And line
+  1843, "lines 1228, 1348, 1667 and 1723, and line 1220", of the same pull
+  request, names the five blocks by their subjects, as lines 1390 to 1393 do:
+  on the graphical panel, on the desktop app under Windows, on PowerShell under
+  Windows, on the wording of form B and on `respondToBashCommands`. Each target
+  was read at `aaab097` at the line named, and each number held there. No other
+  place of that file names a line of a file of the repository outside an
+  archive, `grep -n -E` for a line and a number finding sixteen lines, the
+  others of an archive or of the sources of two kernels.
+
+  The sentences the build makes false, searched by the first part with seven
+  patterns over the twelve paths — the signal of form A, 54 finds in 7 files;
+  the place of the command, 199 in 23; the identity, 54 in 9; the comment at
+  the closing, 45 in 8; `devloop-text`, 237 in 21; the cases of the job, 60 in
+  5; „fertig“ and their word, 189 in 21 —, a first search by lines having
+  missed a sentence that runs over a line break, `shared/fetch-three-times.md`
+  lines 51 to 52, so that every later one read a space of its pattern as any
+  white space. No sentence in the twelve paths says of a subject of pull
+  request #260 what held before it without having been changed by it, given to
+  the third part or left by the entry with its reason; of the 237 finds the 42
+  outside `skills/` were read, the others being insert lines, and of the 217 in
+  `docs/defects.md` the 140 in the 22 blocks that pull request changed or the
+  third part builds, the 77 others by their block and their field. For the
+  third part, no finding: five blocks carry their Fix on a line the third part
+  rewrites, lines 1196, 1244, 1252 and 1316 and, under milestone 6, line 4767,
+  4775 since this commit, and their anchors move with the line then, as those
+  of D6 and D3 did.
+
+  **Part C, the reasons against the loaded texts.** No finding. Every rule pull
+  request #260 wrote or changed in the seven loaded texts —
+  `shared/skill-name.md`, `shared/merge-handover.md`, `shared/install-tool.md`,
+  `shared/install-issues-read.md` and the skills `build-work`, `setup-checks`
+  and `setup-project` — has its point in `docs/rationale.md`, written or
+  changed with it. Of the 24 German wordings that pull request wrote into
+  `docs/rationale.md`, 23 stand word for word in the entry of 20 November 2026
+  on the handover by surface and one in the archive, where it stood before. The
+  135 lines it wrote into the seven texts carry no date, no number of a
+  decision, no reference to a document and no earlier wording. One line of
+  `docs/rationale.md` for these files says what held before, line 2823, "One
+  signal holds per state", under `skills/build-work/SKILL.md`; the entry leaves
+  it to the third part with its reason, the rule of its place being unchanged.
+  Not held: the readings in the program of Claude Code a point names, and the
+  measurements of the person of 19 November 2026 sentence by sentence.
+
+  **Three places the first part did not find or read otherwise**, named by the
+  second order and read anew. First, two sentences of
+  `docs/skill-conventions.md` that enumerate what the job runs: lines 1550 to
+  1572, what the second job, hooks on every system, runs, and lines 4472 to
+  4480, which steps `scripts/devloop-run-workflow` runs here. The entry of pull
+  request #260 leaves both as holding, lines 12143 to 12147, "without the eight
+  cases", and the first part followed it. But both enumerate, and every
+  addition since October 2026 came into them with "since" and its day, so that
+  what they do not name reads as not run. Held against the steps of the
+  workflow at `aaab097` and their names: the first named neither the step on
+  line endings, the last of that job, nor the guard on the PowerShell tool, nor
+  the four hooks on the path on which they hand over; the second named of the
+  hooks step the self-tests and the handlers alone, and it did not name the
+  step of the job stock-take in line 113 of the workflow, "hooks read through
+  the reader, handlers block on failure and carry no if field, the reader's
+  self-test". Both are whole now, each in its own form: the first with the
+  guard on the PowerShell tool since 18 November 2026, the four hooks since 21
+  November 2026 and the step on line endings since 17 November 2026; the second
+  with the step of line 113 and with what the name of the hooks step
+  enumerates, every handler with a harmless input, the install guard under
+  `PermissionDenied`, the guard on the mark, the guard on the PowerShell tool
+  since 18 November 2026 and the four hooks since 21 November 2026. The days
+  are those of the workflow's comments, lines 21, 42 to 43, 720, 747 and 758,
+  and of the entries that built each, of 17, 18 and 21 November 2026 in this
+  file. The step of line 113 stands in the workflow since 12 October 2026, by
+  its comment, and runs here since the program does, 31 October 2026, the day
+  the head of `scripts/devloop-run-workflow` and the paragraph itself name; so
+  it carries no day of its own in that sentence, as the tool and its self-test
+  carry none, and run M1 of the entry of pull request #260 counts ten steps
+  run, the ten of the workflow that carry a `run:` and are not left out, this
+  one among them. The two lines of that paragraph the table names as anchors,
+  4483 and 4487, stand whole on their lines, 4514 and 4518 since this commit,
+  and no line behind the change is wrapped anew. Second,
+  `docs/skill-conventions.md` line 1003 had `bin/devloop-tool-state` called
+  "after the person's word on a handed-over command with `--installed`"; the
+  result is read after the signal of the handover's form, under form A the
+  first of two signs, the answered output or their word, under form B their
+  word, `shared/install-tool.md` lines 22 to 24, and the sentence says that
+  now. Third, the two things of `docs/stock-take.tsv` on the eighteenth check,
+  the one on handovers. The green one, line 1437, "handovers: nine lines over
+  eight sites, as the section lists them", carries 23 runs and keeps its name,
+  by the head of `scripts/devloop-stock-take` lines 379 to 391; its note ended
+  on six lines over six sites since 16 October 2026, where the section,
+  `docs/skill-conventions.md` lines 4549 to 4567, counts seven lines over six
+  sites since 28 October 2026, counted again on 21 November 2026 by the entry
+  of pull request #260 and by the first part, seven both times; the note says
+  what holds now. The red one, line 1438, "handovers: a line more or fewer than
+  the nine, or one whose no is missing, read as a question rather than
+  progress", carries no run and is renamed, "the nine" giving way to "the
+  section counts", a name without a number, which holds at the next counting;
+  its note names the old name and the green answer of today.
+
+  **Decided on 21 November 2026 by the person**, at the merge of pull request
+  #260, and entered by this audit: the third part of order (4) gives the job
+  hooks on every system a case that runs `bin/devloop-text skill-name` on all
+  four systems and holds the line the program puts into the text. Reason: that
+  line was put into the rule in no run but T1 of the entry of pull request
+  #260, on the person's Mac, and no step of the job runs `bin/devloop-text` on
+  any system. Not chosen: an order of its own right after the merge, which
+  takes a pull request and a run of the job more for one case; and the closing
+  runs of order (7) alone, in which a fault under Windows would show only at
+  the end of the milestone, with the person there.
+
+  **Decided on 22 November 2026 without a question**, by the rule that nothing
+  is asked where one way carries a great disadvantage and the other none; the
+  report of the first part had put both to the person. First, the place of
+  `skills/setup-checks/SKILL.md` stands in the Wrong of the block on the
+  desktop app under Windows and not in its Note alone. Reason: the Note alone
+  would leave the Wrong and the Note naming different places. Second, all four
+  places of `docs/plan.md` that named a line name the sentence, the section or
+  the block, and not the two of pull request #259 alone, which the first part
+  recommended. Reason: the head of the file allows a line for an archive alone;
+  the third part moves lines of `docs/defects.md`; pull request #260 mended two
+  references of its own the same way, lines 12157 to 12160; and left standing,
+  the file would go against its head. The decision of each paragraph stands as
+  it stood, and its reference alone changes.
+
+  **For the handover.** The 148 blocks under "## Milestone 12" of
+  `docs/defects.md`, lines 603 to 1785 since this commit, the open ones listed
+  with line, Status, order and title in the report: 49 read Walked, 14 are
+  closed, 5 carry the form for a case that cannot be forced, lines 611, 715,
+  772, 1004 and 1523, and 80 are open, 32 Recorded, not built and 48 Built,
+  never walked. Each of the 32 has its order in `docs/plan.md`: (4) eleven; (5)
+  fifteen, lines 731, 755, 836, 988, 1084, 1124, 1156, 1164, 1276, 1587, 1603,
+  1611, 1619, 1627 and 1651; (6) four, lines 780, 1356, 1364 and 1659; (7) two,
+  lines 739 and 1371. The eleven of (4) are all the third part's, after
+  `docs/plan.md` lines 1393 to 1397, 1811 to 1825 and 1836 to 1852 and the
+  paragraph this audit entered: six it builds alone, lines 1236, 1284, 1675,
+  1683, 1731 and 1779 — the steps for the PATH, step 4 of `setup-checks`, the
+  issue and the case of the job for `bin/devloop-text`; and five take their Fix
+  with it, lines 1220, 1228, 1348, 1667 and 1723, built by the second part and
+  the third, as their Notes say. The 48 built and never walked: 41 built before
+  (3), three built by (3), lines 1332, 1340 and 1579, and four built by the
+  second part of (4), lines 1715, 1747, 1755 and 1763, on the merge without
+  form B, on the identity as two commands, on the failed install under form A
+  and on the six places; (7) holds them against the closing runs first. No open
+  block is without an order, and nothing of this list goes to the person.
+
+  The tool, before, on `aaab097`: exit 0, broken records 0, uncovered lines 0
+  of 4852; Undetermined 24, Recorded, not built 248, Built, never walked 1544,
+  Walked 855, Closed 80; milestone 12 147 blocks, Recorded, not built 31,
+  Built, never walked 53, Walked 49, Closed 14. After: Recorded, not built 249,
+  of them 238 defects, and milestone 12 148 blocks, Recorded, not built 32, the
+  block written here; every other figure as before; blocks held against the
+  branch point `aaab097`: removed 0, renamed 0, Should changed 0, added 1, no
+  line of the fixed forms, and nothing Walked on this branch without a run the
+  branch adds. The renamed thing stands under its new name and in its state,
+  Built, never walked; the place added to one Wrong, the Notes and the
+  sentences of the documents change no figure, and the two anchors of the
+  paragraph on the workflow's steps are found on their new lines. The head this
+  branch adds was held by hand to the three rules of the workflow's step on
+  titles, 69 characters and no find. The checks under "Before a handover, run
+  these" were no part of the order; they run at the merge. No run is recorded.
+
+  **The corrections of the merge**, of 22 November 2026, the second commit,
+  from the reading of the two reports and of the first commit. First,
+  `docs/plan.md` line 1383 since the first commit, "by the decision of 21
+  November 2026 below", which the report of the second part put to the
+  person: two decisions of that day stand below it since the first commit,
+  and it names its own by its subject now, "below on the eight cases".
+  Decided without a question, by the same rule: four words cost nothing, and
+  left, the reference reads two ways. Second, the sentence of
+  `docs/skill-conventions.md` on what the job hooks on every system runs,
+  lines 1557 to 1593 since the first commit, ended on "— the fourth and fifth
+  addenda of the entry on the command reader carry the command, and the audit
+  of 14 October 2026 read the setting off the platform", which speaks of the
+  four checks required since 14 October 2026 at the sentence's opening and
+  which the completion in the first commit had moved thirty lines away from
+  them; the sentence ends after the second step now, and that tail stands as
+  a sentence of its own that names what the command does, "carry the command
+  that requires the four checks". Neither changes a figure of the tool. The
+  second question of the report of the second part, the step of line 113
+  without a day of its own, stays as the second part left it, for the reason
+  given above.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -1054,7 +1054,9 @@ the command is through and their word as what releases, which the eight
 cases of the job do not read, a case reading the exit, the place, the command
 line and the word typed after the command —, the four things on those
 messages under `windows`; and the line `bin/devloop-text` puts into the rule
-there, which no step of the job runs.
+there, a program no step of the job runs until the third part of (4) gives the
+job a case that runs it on all four systems and holds that line, by the
+decision of 21 November 2026 below on that case.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1378,8 +1380,9 @@ install during a session with the comment of (15); the comment of
 `hooks/subagent-start-install.sh` names three lines; and the six places of the
 block on the signal of form A name the two signs. The job hooks on every
 system runs the self-test of `bin/devloop-surface` with the others and, by the
-decision of 21 November 2026 below, each of the four hooks on the path on
-which it hands over, twice, on all four systems; under Windows its first run
+decision of 21 November 2026 below on the eight cases, each of the four hooks
+on the path on which it hands over, twice, on all four systems; under Windows
+its first run
 was at the pull request of that part, run W1 of that entry, read off the
 job's log at the merge, green on 21 November 2026, all eight ending with 2
 and naming Git Bash. Of the nine blocks of this milestone that
@@ -1392,7 +1395,10 @@ decision of 20 November 2026 below: on `respondToBashCommands`, on the
 graphical panel, on the desktop app under Windows, on PowerShell under Windows
 and on the wording of form B. The third part is not built: the wordings by the
 pattern at every other place that hands a command over, the steps for the
-PATH, the issue and step 4 of `setup-checks`; until it is, the rule names the
+PATH, the issue, step 4 of `setup-checks` and, by the decision of 21 November
+2026 below on that case, a case of the job hooks on every system that runs
+`bin/devloop-text skill-name` on all four systems and holds the line the
+program puts into the text; until it is, the rule names the
 place by the situation and those places name the one of 28 October 2026, on
 every surface, the rule standing over them in every skill.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
@@ -1478,7 +1484,8 @@ puts the form for a case that cannot be forced to the person for each that
 no run of the milestone meets. Reason: no order named these three, and the
 milestone is reached only once none of its blocks is open; the cases of the
 runtime's walk are read and not measured under Git Bash, the head of
-`bin/devloop-bounded` line 71, and the skills start the bound,
+`bin/devloop-bounded` in its sentence "Its cases, read and not measured under
+Git Bash", and the skills start the bound,
 `skills/build-work/SKILL.md` among them, so that a measurement decides there
 and not a reading. Not chosen: closing the block on the runtime's walk as
 left on purpose now, unmeasured, and leaving the built blocks to (7)
@@ -1684,8 +1691,9 @@ Stop hook, call the same program; and before a handover the run runs it once
 more, since a conversation can change its surface: the VS Code page says that
 `claude --resume` continues in the terminal a conversation of the extension.
 Not chosen: a line of `hooks/session-start.sh` at the start of the session,
-since that hook writes nothing where no repository stands, line 22, and one
-line alone in a project that is not set up, lines 52 to 55, where
+since that hook writes nothing where no repository stands, its exit where
+`git rev-parse --git-dir` fails, and one line alone in a project that is not
+set up, "[ProjectStatus] devloop: not set up here", where
 `setup-project` hands over, and since after a compaction the line stands in
 the summary alone.
 
@@ -1837,10 +1845,12 @@ Decided on 20 November 2026 without a question, by the rule that nothing is
 asked where one way carries a great disadvantage and the other none, and
 confirmed by the person, the roadmap entry of that date on the one entry held,
 the questions its report put: the second part of order (4) builds the six
-places the block on the signal of form A names, line 1763 of
+places the block on the signal of form A names, a block of this milestone in
 `docs/defects.md`. Reason: else, between the merges of the second and the
 third part, the rule on the forms names two signs and those six places one. A
-block both parts build, lines 1228, 1348, 1667 and 1723, and line 1220, whose
+block both parts build, the blocks of this milestone on the graphical panel,
+on the desktop app under Windows, on PowerShell under Windows and on the
+wording of form B, and the block on `respondToBashCommands`, whose
 sentence on „fertig“ at every handover the third part writes as point 2 of the
 pattern, takes its Fix with the third part, its Note saying after the second
 what stands. Reason: a run counts from the last change to the line of its Fix,
@@ -1870,6 +1880,20 @@ the word typed after the command, so that the four things on the messages
 under Windows, whose names name the request to say here or their word as
 well, wait for the closing runs of order (7) all the same, above where the
 milestone ends.
+
+Decided on 21 November 2026 by the person, at the merge of the second part of
+(4), the roadmap entry of 22 November 2026, "One entry held, a place added to
+a block, a block on bin/devloop-text": the third part of order (4) gives the
+job hooks on every system a case that runs `bin/devloop-text skill-name` on
+all four systems and holds the line the program puts into the text. Reason:
+that line was put into the rule in no run but T1 of the entry of 21 November
+2026 on the program that reads the surface and the system, on the person's
+Mac, and no step of the job runs `bin/devloop-text` on any system. Not chosen:
+an order of its own right after the merge, which takes a pull request and a
+run of the job more for one case; and the closing runs of order (7) alone, in
+which a fault under Windows would show only at the end of the milestone, with
+the person there. Not built: the block of this milestone on that case carries
+Fix none until the third part builds it.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
