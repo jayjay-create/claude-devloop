@@ -12639,15 +12639,18 @@ and for the proofs of closings.
 
   22 November 2026, version 0.193.0, raised once from 0.192.0 by the first
   commit. On `task/handover-every-place`, off `origin/main` at `12cc12a`, in
-  four commits: `883bd51`, "Every handover and the steps for the PATH follow
+  five commits: `883bd51`, "Every handover and the steps for the PATH follow
   surface and system", the code; `faad2e4`, "Blocks take their Fix lines, the
   table follows the handover by surface"; `e3d61f1`, "Reasons, conventions and
-  plan follow the handover and the PATH steps"; and the commit that writes
-  this entry, "An entry, five blocks and a behavior per form at every
+  plan follow the handover and the PATH steps"; `7929365`, the commit that
+  writes this entry, "An entry, five blocks and a behavior per form at every
   handover", with the shoulds below, the blocks of (j) and (m), the behaviors
   of (o) in `docs/stock-take.tsv` and two sentences of
-  `docs/skill-conventions.md` by (n). The order: the third of the three parts
-  of order (4) of milestone 12 in `docs/plan.md`.
+  `docs/skill-conventions.md` by (n); and the commit after it, "Every branch
+  by surface, system or shell gets a behavior of its own", with the behaviors
+  of (q), the finding of (r) and two sentences of `docs/plan.md` on the blocks
+  that wait for the closing runs of order (7). The order: the third of the
+  three parts of order (4) of milestone 12 in `docs/plan.md`.
 
   **What changed, and where it stands.** What the third part built, place by
   place, `docs/skill-conventions.md` names in its paragraph "Where the person
@@ -12661,10 +12664,13 @@ and for the proofs of closings.
   three of milestone 12 and one of milestone 6, a Fix line built anew; the
   shoulds that change stand below, and the new blocks are those of (j) and
   (m). `docs/stock-take.tsv` carries the behaviors of `shared/path-steps.md`
-  and of the case of the job hooks on every system and, by (o), one behavior
-  for each form group at eight places that hand a command over: 39 behaviors
-  new over the branch, every one Built, never walked, and eleven renamed, one
-  of them twice, none with a run, each note naming the old name.
+  and of the case of the job hooks on every system, by (o) one behavior for
+  each form group at eight places that hand a command over, and by (q) one
+  for each branch by the surface, the system or the shell at the places the
+  first commit changes: 54 behaviors new over the branch, every one Built,
+  never walked, ten of them renamed on the branch by (q), and eleven renamed
+  that stood at `12cc12a`, two of them twice, none with a run, each note
+  naming the old name.
 
   **Decided on 22 November 2026**, (a) to (d) by the person on the questions
   of the third part, their approved wordings in `docs/rationale.md`, their
@@ -12700,40 +12706,91 @@ and for the proofs of closings.
   chosen: a rule for escaping it, which would give a line but is measured
   under Windows nowhere.
 
-  (k) to (o), the person's answers on that day to the questions the documents
-  of the third part left, by the rules and without a question, written down
-  nowhere else. (k) The rule of (e) stays without an addition: the three fixed
-  lines of a changed block are what the tool asks for, and a finding the same
-  branch corrects is what the rule "A defect is a block in `docs/defects.md`;
-  the roadmap reports it" has the entry name. Not chosen: a sentence in the
-  rule of (e) naming what those rules have an entry carry, which would put
-  them at two places. (l) `docs/rationale.md` quotes the steps of the panel
-  and of the desktop app with `~/.zprofile`, as built, where (11) and (13) of
-  20 November 2026 name `~/.zshrc`. Reason: devloop puts the file in itself,
-  as (11) has it. Not chosen: the steps word for word with `~/.zshrc`, which
-  would show a file the run no longer names there. (m) The red case of the
-  self-test of `bin/devloop-install-issues` gets a block. Reason: a finding in
-  a program gets one in every case. Not chosen: the finding in the report of
-  the order alone, where it would stand nowhere in the repository. (n) The
-  wordings of (a) to (d) stand in `docs/rationale.md`; this entry points there
-  and names the decisions whose reason and what was not chosen `docs/plan.md`
-  carries by their letter and one sentence, and the two sentences of
-  `docs/skill-conventions.md` that named this entry for those wordings name
-  `docs/rationale.md` since its commit. Reason: no list stands at two places,
-  by (e). Not chosen: the wordings here as well, as those of 28 October and of
-  19 and 20 November 2026 stand in their entries. (o) At every place that
-  hands a command over and that the first commit built by the situation, each
-  form group has a behavior of its own in `docs/stock-take.tsv`, as
-  `shared/merge-handover.md` has since 0.192.0. Reason: else a run in one
-  situation at a place counts for its branch in the other situations as well,
-  against the decision of 13 November 2026 under milestone 12 of
-  `docs/plan.md` that every outcome is a thing and the tool's rule never
-  overcounts; a behavior that stands Built, never walked holds no milestone
-  up. Not chosen: the new lines as part of the behavior of the place, as the
-  second commit had them. And merges run through a script on the person's Mac,
-  outside the repository. Not chosen: the script in the repository, since the
-  search pattern for private details may not go into it, and a new folder
-  would bring rules and work for the checks.
+  (k) to (r), on what the documents and the behaviors of the third part left
+  open, without a question, by the rule that nothing is asked where one way
+  carries a great disadvantage and the other none, and confirmed by the
+  person, written down nowhere else. (k) The rule of (e) stays without an
+  addition: the three fixed lines of a changed block are what the tool asks
+  for, and a finding the same branch corrects is what the rule "A defect is a
+  block in `docs/defects.md`; the roadmap reports it" has the entry name. Not
+  chosen: a sentence in the rule of (e) naming what those rules have an entry
+  carry, which would put them at two places. (l) `docs/rationale.md` quotes
+  the steps of the panel and of the desktop app with `~/.zprofile`, as built,
+  where (11) and (13) of 20 November 2026 name `~/.zshrc`. Reason: devloop
+  puts the file in itself, as (11) has it. Not chosen: the steps word for word
+  with `~/.zshrc`, which would show a file the run no longer names there. (m)
+  The red case of the self-test of `bin/devloop-install-issues` gets a block.
+  Reason: a finding in a program gets one in every case. Not chosen: the
+  finding in the report of the order alone, where it would stand nowhere in
+  the repository. (n) The wordings of (a) to (d) stand in `docs/rationale.md`;
+  this entry points there and names the decisions whose reason and what was
+  not chosen `docs/plan.md` carries by their letter and one sentence, and the
+  two sentences of `docs/skill-conventions.md` that named this entry for those
+  wordings name `docs/rationale.md` since its commit. Reason: no list stands
+  at two places, by (e). Not chosen: the wordings here as well, as those of 28
+  October and of 19 and 20 November 2026 stand in their entries. (o) At every
+  place that hands a command over and that the first commit built by the
+  situation, each form group has a behavior of its own in
+  `docs/stock-take.tsv`, as `shared/merge-handover.md` has since 0.192.0.
+  Reason: else a run in one situation at a place counts for its branch in the
+  other situations as well, against the decision of 13 November 2026 under
+  milestone 12 of `docs/plan.md` that every outcome is a thing and the tool's
+  rule never overcounts; a behavior that stands Built, never walked holds no
+  milestone up. Not chosen: the new lines as part of the behavior of the
+  place, as the second commit had them. (p) At the places that name one form
+  for every situation and leave the terminal of the situation to the rule in
+  `shared/skill-name.md` — `shared/fetch-three-times.md` on the sign-in,
+  `skills/setup-project/SKILL.md` on `gh` not signed in and
+  `skills/build-prototype/SKILL.md` on a process — and in step 4 of
+  `skills/build-prototype/LOGIC.md` no behavior stands for each situation.
+  Reason: which terminal form B names in which situation the behaviors of the
+  rule carry, one for each situation, and step 4 of `LOGIC.md` hands over as
+  `SKILL.md` says under "Hand it over so it gets looked at", where the
+  behaviors for each form stand. Not chosen: a behavior at each of these
+  places for the terminal of each situation, which would write the branches of
+  the rule a second time at every place. What the text of such a place says by
+  the situation itself falls under (q). (q) At the places the first commit
+  changes under `shared/` and `skills/`, every branch by the surface, the
+  system, the form or the shell that the text of the place itself names has a
+  behavior of its own, and a behavior whose name names several such branches
+  at once is split, one for each branch. A branch is where the text has the
+  run do or say something else under such a condition: another step, command
+  or sentence, or another way to find a value; a value the same step puts in
+  from its input, the folder, the name of the system in an expected line or
+  the project's folder, is none. Reason: the decision of 13 November 2026
+  under milestone 12 of `docs/plan.md` that every outcome is a thing, the
+  tool's rule may undercount and never overcount, and every branch is walked
+  once on purpose; (o) applies it to the form groups, and for a branch by the
+  system, the surface or the shell the same reason holds. Not chosen: the form
+  groups of (o) alone, under which a run under macOS counts for a branch under
+  Linux or Windows it never shows. Behaviors at other places and branches by
+  other conditions this branch leaves as they stand. (r) A sentence of
+  `docs/rationale.md`, `docs/skill-conventions.md` or `docs/plan.md` that this
+  branch corrected and that did not hold at `12cc12a` already, measured by the
+  code and the entries at `12cc12a`, is a finding by the rule "A defect is a
+  block in `docs/defects.md`; the roadmap reports it", and this entry names it
+  with its place, the wrong text and the right one; a sentence that held at
+  `12cc12a` and that only a commit of this branch made untrue belongs to what
+  changed, and this entry points at the documents for it. Reason: a finding is
+  what was wrong before the branch; a sentence its own build makes untrue the
+  branch carries along with the build, and naming each would write the diff of
+  `e3d61f1` into the entry, against (e). Not chosen: naming none, under which
+  the rule would not hold for real findings, and naming each. And merges run
+  through a script on the person's Mac, outside the repository. Not chosen:
+  the script in the repository, since the search pattern for private details
+  may not go into it, and a new folder would bring rules and work for the
+  checks.
+
+  **A finding in a document, corrected on this branch**, by (r), with its
+  place, the wrong text and the right one. `docs/rationale.md` lines 4091 to
+  4092 at `12cc12a`, under `shared/install-issue.md`, read "No wording of the
+  issue is approved: the skills say what it carries.", though (10) of the
+  entry of 20 November 2026 on the handover by surface had approved the steps
+  of the issue that say how they install the tool themselves; now, lines 4206
+  to 4208, "Of the issue's text the part that says how they install the tool
+  themselves has an approved wording, the third point here; for the rest the
+  skills say what it carries." Every other sentence the branch changed in the
+  three documents held at `12cc12a` and follows the build there.
 
   **Measured by hand, for (d) and (h).** For (d), which file a login shell and
   an interactive shell of zsh and of bash read, each shell started under `env

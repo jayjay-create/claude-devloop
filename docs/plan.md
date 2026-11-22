@@ -1064,9 +1064,11 @@ third part of (4) built and only a session with the model on its surface
 shows: the form and the place by the situation at every other place that
 hands a command over, the steps for the PATH as `shared/path-steps.md` has
 them for the surface and the system, the terminal the issue for a missing
-tool names, and with them the ten blocks of this milestone that took their
-Fix on texts the model loads and the three whose Fix line that part built
-anew.
+tool names, and with them fourteen blocks of this milestone: the ten that
+took their Fix on texts the model loads, the three whose Fix line that part
+built anew, and the one on texts loaded in `start-work`, `plan-work` and
+`setup-checks` that pointed at `build-work` step 3 point 7, which that part
+wrote with its Fix.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
 Decided on 9 November 2026 by the person, the roadmap entry of that date on
@@ -1414,9 +1416,11 @@ steps for the PATH follow the surface and the system, and the job hooks on
 every system runs `bin/devloop-text skill-name` on all four systems; what
 stands where, that entry says. With it eleven blocks of this milestone take
 their Fix, the five both parts build among them. For the closing runs of
-(7), named above where the milestone ends, wait the ten of the eleven that
-stand on texts the model loads and three blocks whose Fix line that part
-built anew.
+(7), named above where the milestone ends, wait fourteen blocks of this
+milestone: the ten of the eleven that stand on texts the model loads, three
+whose Fix line that part built anew, and the one on texts loaded in
+`start-work`, `plan-work` and `setup-checks` that pointed at `build-work`
+step 3 point 7, which that part wrote with its Fix.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
