@@ -1,0 +1,13 @@
+# The lines the check "locked-skills" of scripts/devloop-handover-checks
+# prints, each read against the paragraph of that check under "Before a
+# handover, run these" in docs/skill-conventions.md and found right. One a
+# line, FILE:TEXT, as the command prints it with the line number taken out.
+# The program is red on a line it prints that does not stand here, and on a
+# line that stands here and that it prints no more.
+skills/build-work/SKILL.md:platform and outlives the session that set it — and `start-work` sends such a
+skills/setup-project/SKILL.md:mended, and `start-work` asks the language where nothing shows it.
+skills/setup-project/SKILL.md:not asked: `start-work` asks the same question where nothing shows it and
+shared/closing.md:`start-work` and `setup-project` ask it first, in English, as each says, and
+shared/install-issues-read.md:in-flight query of `start-work`, the readiness query, or the question on the
+shared/install-issues-read.md:start that followed `start-work` in the same session: an issue closed is not
+shared/language-opening.md:`start-work` and `setup-project` ask it first, in English, as each says, and

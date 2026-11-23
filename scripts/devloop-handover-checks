@@ -1,0 +1,587 @@
+#!/usr/bin/env python3
+"""devloop-handover-checks: the checks under "Before a handover, run these" in
+docs/skill-conventions.md, every one but the run of the workflow's steps, each
+held against the answer it has when it is green.
+
+Usage
+    scripts/devloop-handover-checks              every check, in the
+                                                 repository this file stands in
+    scripts/devloop-handover-checks --self-test  every outcome once, in a
+                                                 throwaway directory outside
+                                                 the repository
+
+Exit 0 where every check is green; 1 where one is red; 2 where the program
+cannot run: an argument it does not take, a directory above it that is not
+devloop's repository, a tool its commands name that the path they run with
+does not hold, a list that cannot be read. The last line says which of the
+first two: it opens with "green:" or with "red:" and carries the count of the
+green checks and of the red ones, the red ones by name. Where it cannot run it
+prints one line on stderr that says why, and no such last line.
+
+What a check is. One call of check() below: a name, the sentence that says
+what it holds, its command and the answer that is green. The command is the
+one of the command block the section carried for the check, word for word
+but for two, decided on 23 November 2026: default-branch counts in a second
+line the files that carry the opening line of the block it checksums, since
+four checksums of nothing are one line too; locked-skills prints every place
+that names a locked skill, grep -n, where the block printed every file,
+grep -l, since a second place in a file its list carries would otherwise go
+unseen. The run of the workflow's steps, scripts/devloop-run-workflow, is
+none of them: it runs the workflow that runs this program.
+
+How a command runs. With bash --noprofile --norc -c, in the root of the
+repository, in the environment env -i PATH=/usr/bin:/bin leaves. So grep, sed
+and awk are the system's programs and no alias or function of a session's
+shell, no locale of a session decides what awk counts or how a list sorts, and
+a check answers in a session of Claude Code what it answers in a terminal and
+in the workflow. The commands need bash, python3 and git and what POSIX gives
+beside them, and no GNU tool: the program runs on macOS as on ubuntu-latest.
+
+What is green. Two kinds of answer.
+- A fixed one: silence, a count, two empty lists, one line per skill. The
+  lines a command prints are held against it with the blanks around them
+  taken off, since wc pads its count on macOS and not under GNU, and in no
+  order. Where an answer depends on the number of the skills, the program
+  counts the files skills/*/SKILL.md, so that this number stands in no
+  second place.
+- A list of lines read. The checks on invocability, on locked skills, on
+  offers, on handovers and on a second statement of the unattended finish
+  print lines somebody has to judge, and a program judges none. Each has a
+  file under docs/handover-checks/, named by the check, that carries the
+  lines the check prints which were read and found right, one a line, as the
+  command prints it with the line number taken out: FILE:TEXT for a line of
+  grep -n, FILE:COUNT for the line of grep -c that invocability prints. Equal
+  is green. A line the command prints that the list does not carry is new, a
+  line of the list that the command prints no more is gone; either is red and
+  printed, and the branch that changed it reads it against the paragraph of
+  its check and brings the list in line. In such a file a line that starts
+  with # and an empty line are no line of the list.
+In both kinds a line on stderr is red: a command that printed an error has
+not answered, and silence behind an error is how a check comes to look as if
+it passed.
+
+What a red find carries: the check's name, the file and the line where the
+command names them, the text, and what makes it green.
+
+What the program does not hold: that a line of a list is right. Whoever wrote
+it there read it.
+"""
+
+import collections
+import contextlib
+import glob
+import io
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+
+PATH = "/usr/bin:/bin"
+TOOLS = ("bash", "python3", "git", "grep", "sed", "awk", "cat", "cksum", "sort", "wc", "tail", "find")
+LISTS = "docs/handover-checks"
+PARAGRAPH = 'the paragraph of this check under "Before a handover, run these" in docs/skill-conventions.md'
+STDERR = "the command wrote this to stderr, and a command that printed an error has not answered. Green: it runs without one and prints what is green"
+NEW = 'new, the list %s does not carry it. Green: the line is read against %s; where it holds, it goes into the list as "%s", and where it does not, the file is mended'
+GONE = "gone, the list %s carries it and the check prints it no more. Green: the change that took it is read against %s, and the line leaves the list"
+NUMBER = re.compile(r"^([^:]+):[0-9]+:")
+PLACE = re.compile(r"^((?:skills|shared|bin|scripts|hooks|docs)/[^:\s]*)(?::([0-9]+)(?=:))?(?::\s*(.*))?$")
+CHECKS = []
+
+
+class CannotRun(Exception):
+    pass
+
+
+def skills(root):
+    return sorted(os.path.relpath(p, root).replace(os.sep, "/") for p in glob.glob(os.path.join(root, "skills", "*", "SKILL.md")))
+
+
+def nothing(root, got):
+    return []
+
+
+def openings(root, got):
+    # one line per skill: the opening before any heading, in start-work under the heading on how to talk
+    return ["%s: opening %s" % (f, 'under "## How to talk while doing all this"' if f == "skills/start-work/SKILL.md" else "before any heading") for f in skills(root)]
+
+
+def one_notice(root, got):
+    # one line of cksum, whatever its number, and the count of the skills
+    one = len(got) == 2 and re.match(r"^[0-9]+ [0-9]+$", got[0])
+    return [got[0] if one else "one line of cksum", str(len(skills(root)))]
+
+
+def check(key, says, where, command, kind, green=None, want=nothing, read=PARAGRAPH):
+    CHECKS.append({"key": key, "says": says, "where": where, "command": command.strip("\n"), "kind": kind, "green": green, "want": want, "read": read})
+
+
+check("registered",
+      "Every skill on disk is registered, and every registered skill exists",
+      ".claude-plugin/plugin.json and skills/",
+      r'''
+python3 -c "
+import json,pathlib
+m=[p.split('/')[-1] for p in json.load(open('.claude-plugin/plugin.json'))['skills']]
+d=sorted(p.name for p in pathlib.Path('skills').iterdir())
+print('registered but missing:', sorted(set(m)-set(d)))
+print('present but unregistered:', sorted(set(d)-set(m)))"
+''',
+      "answer",
+      'both lists empty: every directory under skills/ stands under "skills" in .claude-plugin/plugin.json, and every entry there has its directory',
+      want=lambda root, got: ["registered but missing: []", "present but unregistered: []"])
+
+check("roadmap-names",
+      "No name in the roadmap resembles a real one without being one",
+      "docs/roadmap.md",
+      r'''
+python3 -c "
+import re,pathlib,functools
+t=open('docs/roadmap.md').read()
+w=set(re.findall(r'\x60([a-z0-9-]*)\x60',t))
+d={p.name for p in pathlib.Path('skills').iterdir() if p.is_dir()}
+s=t.split('\n## Named, not built as skills\n',1)
+r=set(re.findall(r'^\|\s*\x60([a-z0-9-]+)\x60\s*\|',s[1].split('\n## ',1)[0],re.M)) if len(s)==2 else set()
+n=d|r
+e=functools.lru_cache(None)(lambda a,b:len(a+b) if len(a)==0 or len(b)==0 else min(e(a[1:],b)+1,e(a,b[1:])+1,e(a[1:],b[1:])+1-(a[0]==b[0])))
+if len(r)==0 or len(d)==0: print('nothing to hold the roadmap against: %d rows under the table, %d directories under skills/'%(len(r),len(d)))
+for x,m in [(x,m) for x in sorted(w-n) for m in sorted(n) if len(m)>=6 and e(x,m)<=2]: print('%s is %d from %s'%(x,e(x,m),m))
+"
+''',
+      "lines",
+      'silence: the word is written as the name it was meant to be, or its name gets a directory under skills/ or a row of the table "Named, not built as skills"; and the table carries a row and skills/ a directory')
+
+check("invocability",
+      "Invocability is set deliberately, not by omission",
+      "skills/*/SKILL.md",
+      r'''
+grep -c 'disable-model-invocation' skills/*/SKILL.md
+''',
+      "list",
+      read='"## Who may invoke a skill" in docs/skill-conventions.md, which decides for every skill whether a lock stands in its frontmatter, 1, or none, 0')
+
+check("locked-skills",
+      "No skill is told to run a skill that is locked against being run",
+      "skills/*/SKILL.md and shared/*.md",
+      r'''
+for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
+  grep -n "\`$s\`" skills/*/SKILL.md shared/*.md | grep -v "^skills/$s/SKILL.md:"
+done
+''',
+      "list")
+
+check("shared-copies",
+      "No shared text still stands written out in a skill",
+      "skills/*/SKILL.md",
+      r'''
+cat shared/*.md | awk 'length >= 40' | grep -Fl -f - skills/*/SKILL.md
+''',
+      "lines",
+      "silence: the copy goes from the skill this line names, which carries a line of forty characters or more of a file under shared/ and inserts that text instead")
+
+check("insert-lines",
+      "Every insert line has exactly the form the frontmatter grants, and names a file that exists",
+      "skills/*/SKILL.md",
+      r'''
+grep -n -e '^!`' -e 'devloop-text' skills/*/SKILL.md | awk '{ l=$0; sub(/^[^:]*:[^:]*:/, "", l) } l != "allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)" && l !~ /^!`\$\{CLAUDE_PLUGIN_ROOT\}\/bin\/devloop-text [a-z0-9-]+`$/'
+for n in $(grep -ho 'devloop-text [a-z0-9-]*`$' skills/*/SKILL.md | sed 's/devloop-text //;s/`$//' | sort -u); do [ -f "shared/$n.md" ] || echo "no shared/$n.md"; done
+''',
+      "lines",
+      "silence: a line that starts with the insert marker or names bin/devloop-text is the grant or an insert line of the granted form, and the name behind devloop-text is a file under shared/")
+
+check("grant",
+      "Every skill that inserts anything carries the grant that lets the program run at load without a prompt",
+      "skills/*/SKILL.md",
+      r'''
+for f in skills/*/SKILL.md; do grep -q '^!`' "$f" && ! grep -qF 'allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)' "$f" && echo "$f: inserts without the allowed-tools line"; done
+''',
+      "lines",
+      "silence: the frontmatter of a skill that inserts carries the line allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)")
+
+check("language-block",
+      "The language block stands at its two places in every file",
+      "skills/*/SKILL.md",
+      r'''
+for f in skills/*/SKILL.md; do
+  [ "$(tail -n 1 "$f")" = '!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text closing`' ] || echo "$f: does not end on the closing language block"
+  awk -v f="$f" '/^## /{h=$0} /devloop-text language-opening`$/{n++; o=NR; print f": opening " (h=="" ? "before any heading" : "under \"" h "\"")} /devloop-text skill-name`$/{m++; if(NR!=o+2) print f": skill-name line not two lines under the opening"} END{if(n!=1) print f": opening block inserted " n+0 " times"; if(m!=1) print f": skill-name line inserted " m+0 " times"}' "$f"
+done
+''',
+      "lines",
+      'one line per skill saying where the opening stands, before any heading and in start-work under "## How to talk while doing all this", and nothing else: the closing block is the last line of the file, and the opening and the line on skill names are inserted once each, the second two lines under the first',
+      want=openings)
+
+check("notice",
+      "The notice above the first insert line is the same paragraph in every skill",
+      "skills/*/SKILL.md",
+      r'''
+for f in skills/*/SKILL.md; do sed -n '/^\*\*If `\[shell command execution disabled by policy\]`/,/^$/p' "$f" | cksum; done | sort -u
+grep -l '^\*\*If `\[shell command execution disabled by policy\]`' skills/*/SKILL.md | wc -l
+''',
+      "answer",
+      "one line of cksum and the count of the skills: the paragraph from **If `[shell command execution disabled by policy]` to the next empty line stands in every skill and reads the same in all",
+      want=one_notice)
+
+check("expansion",
+      "Every skill expands without error",
+      "skills/*/SKILL.md",
+      r'''
+for f in skills/*/SKILL.md; do scripts/devloop-expand "$f" > /dev/null || echo "$f: expansion failed"; done
+''',
+      "lines",
+      "silence: scripts/devloop-expand prints the skill and ends with 0, every insert line naming a file under shared/ and bin/devloop-text running")
+
+check("executable",
+      "The program under bin/ and the tools under scripts/ are executable, in the working tree and in what git records, and git tracks every file there",
+      "bin/ and scripts/",
+      r'''
+for p in bin/* scripts/*; do [ -x "$p" ] || echo "$p: not executable"; done; git ls-files -s bin/ scripts/ | grep -v '^100755 '; [ "$(git ls-files bin/ scripts/ | wc -l)" -eq "$(find bin scripts -type f | wc -l)" ] || echo "bin/ or scripts/ has files git does not track"
+''',
+      "lines",
+      "silence: every file under bin/ and scripts/ is executable in the working tree and stands as 100755 in what git records, git update-index --chmod=+x, and git tracks every file there; where it does not, scripts/__pycache__/ is the first place to look")
+
+check("arming-guard",
+      "The arming command in the merge guard's message is the one in shared/arming-command.md",
+      "hooks/pre-tool-use-merge-guard.sh",
+      r'''
+sed 's/^    //' shared/arming-command.md | grep -cFx -f - hooks/pre-tool-use-merge-guard.sh
+''',
+      "answer",
+      "1: the line of shared/arming-command.md stands in the hook whole and unchanged, without the four blanks of its indentation",
+      want=lambda root, got: ["1"])
+
+check("arming-conventions",
+      'The arming command under "Arming auto-merge is allowed; merging is not" in docs/skill-conventions.md is the one in shared/arming-command.md',
+      "docs/skill-conventions.md",
+      r'''
+grep -cFx -f shared/arming-command.md docs/skill-conventions.md
+''',
+      "answer",
+      "1: the line of shared/arming-command.md stands in docs/skill-conventions.md whole and unchanged, indented as in the shared file",
+      want=lambda root, got: ["1"])
+
+check("default-branch",
+      "The default branch is resolved in bin/devloop-install-record, in bin/devloop-setup-state and in bin/devloop-start-conditions exactly as hooks/pre-tool-use-branch-guard.sh resolves it",
+      "bin/devloop-install-record, bin/devloop-setup-state, bin/devloop-start-conditions and hooks/pre-tool-use-branch-guard.sh",
+      r'''
+for f in bin/devloop-install-record bin/devloop-setup-state bin/devloop-start-conditions hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
+grep -l '^DEFAULT=\$(git symbolic-ref' bin/devloop-install-record bin/devloop-setup-state bin/devloop-start-conditions hooks/pre-tool-use-branch-guard.sh | wc -l
+''',
+      "answer",
+      "1 and 4: the lines from DEFAULT=$(git symbolic-ref to the fi that closes the fallback read the same in all four files, and all four carry the line DEFAULT=$(git symbolic-ref; four checksums of nothing are one line too, which is what the 4 holds",
+      want=lambda root, got: ["1", "4"])
+
+check("status-forms",
+      "The sentence naming the four forms a status takes is, in both table guards, the one in shared/status-forms.md",
+      "hooks/post-tool-use-table-guard.sh and hooks/pre-tool-use-table-guard.sh",
+      r'''
+for f in hooks/post-tool-use-table-guard.sh hooks/pre-tool-use-table-guard.sh; do grep -cFx -f shared/status-forms.md "$f"; done
+''',
+      "answer",
+      "1 twice, the post guard first: the one line of shared/status-forms.md stands whole and unchanged in the message of each",
+      want=lambda root, got: ["1", "1"])
+
+check("offers",
+      "No sentence tells a run to ask for permission to reach the next stage, or to put a question as an either-or",
+      "skills/*/SKILL.md and shared/*.md",
+      r'''
+grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md shared/*.md
+''',
+      "list")
+
+check("handovers",
+      "Every place a run hands the user something to do says where a no leads",
+      "skills/*/SKILL.md and shared/*.md",
+      r'''
+grep -rn 'picks up as soon as\|picks up once\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md shared/*.md
+''',
+      "list")
+
+check("unattended-finish",
+      "The unattended finish is not stated in the readiness query's vocabulary alone",
+      "skills/build-work/SKILL.md",
+      r'''
+for spec in "skills/build-work/SKILL.md:^## Unattended mode"; do
+  f=${spec%%:*}; h=${spec#*:}
+  awk -v h="$h" '$0 ~ h {n=1;next} n&&/^## /{exit} n' "$f" |
+    grep -q 'raised-here' || echo "$f: the unattended finish does not mention loose raised-here issues"
+done
+''',
+      "lines",
+      'silence: the section "## Unattended mode" of skills/build-work/SKILL.md names the loose issues by their label, raised-here, and the heading stands as the check names it')
+
+check("second-statement",
+      "The decision on the unattended finish is stated once, and no place states it a second time",
+      "skills/*/SKILL.md and shared/*.md",
+      r'''
+grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md shared/*.md
+''',
+      "list")
+
+
+def answer(root, c, path):
+    """What the command of a check prints, on stdout and on stderr, the empty lines left out."""
+    p = subprocess.run([shutil.which("bash", path=path), "--noprofile", "--norc", "-c", c["command"]], cwd=root, env={"PATH": path}, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return [[l for l in s.decode("utf-8", "replace").split("\n") if l.strip()] for s in (p.stdout, p.stderr)]
+
+
+def read_list(root, name):
+    """The lines of a list: every line of the file but the empty ones and those that start with #."""
+    try:
+        text = open(os.path.join(root, name), encoding="utf-8").read()
+    except (OSError, UnicodeDecodeError) as e:
+        raise CannotRun("the list %s cannot be read: %s" % (name, getattr(e, "strerror", None) or "it is no UTF-8"))
+    return [l.rstrip() for l in text.split("\n") if l.strip() and not l.startswith("#")]
+
+
+def place(line, where):
+    """The file, with the line where the command names one, and the text of a line a command printed."""
+    line = line.strip()
+    m = PLACE.match(line)
+    return (m.group(1) + (":" + m.group(2) if m.group(2) else ""), m.group(3) or "") if m else (where, line)
+
+
+def quoted(lines):
+    return ", ".join('"%s"' % l for l in lines) or "nothing"
+
+
+def judge(root, c, path=PATH):
+    """The finds of one check, none where it is green: each the place, the text and what makes it green."""
+    out, err = answer(root, c, path)
+    where, green = c["where"], c["green"]
+    finds = [(where, "stderr: " + l.strip(), STDERR) for l in err]
+    if c["kind"] == "list":
+        name = "%s/%s.txt" % (LISTS, c["key"])
+        left = collections.Counter(read_list(root, name))
+        for raw in out:
+            line = NUMBER.sub(r"\1:", raw.rstrip(), count=1)
+            if left[line] > 0:
+                left[line] -= 1
+                continue
+            finds.append(place(raw, where) + (NEW % (name, c["read"], line),))
+        return finds + [place(line, where) + (GONE % (name, c["read"]),) for line in sorted(left.elements())]
+    got = [l.strip() for l in out]
+    want = c["want"](root, got)
+    if c["kind"] == "answer":
+        return finds + [(where, "prints %s where %s is green" % (quoted(got), quoted(want)), "Green: " + green)] * (sorted(got) != sorted(want))
+    left = collections.Counter(want)
+    for line in got:
+        if left[line] > 0:
+            left[line] -= 1
+            continue
+        finds.append(place(line, where) + ("the check prints this line. Green: " + green,))
+    return finds + [place(line, where) + ("the check does not print this line. Green: " + green,) for line in sorted(left.elements())]
+
+
+def verdicts(root, path=PATH):
+    """Every check with its finds, in the order of the section."""
+    if not os.path.isfile(os.path.join(root, ".claude-plugin", "plugin.json")) or not skills(root):
+        raise CannotRun("the directory above this program is not devloop's repository: it carries no .claude-plugin/plugin.json or no skills/*/SKILL.md")
+    missing = [t for t in TOOLS if not shutil.which(t, path=path)]
+    if missing:
+        raise CannotRun("the commands run with PATH=%s, and it holds no %s" % (path, ", no ".join(missing)))
+    return [(c, judge(root, c, path)) for c in CHECKS]
+
+
+def run(root, path=PATH):
+    """Every check once: the exit code, and the lines to print."""
+    try:
+        found = verdicts(root, path)
+    except CannotRun as e:
+        return 2, ["devloop-handover-checks cannot run: %s" % e]
+    lines = ['devloop-handover-checks: %d checks of "Before a handover, run these", each command run as env -i PATH=%s bash --noprofile --norc in the repository this program stands in' % (len(CHECKS), path)]
+    for c, finds in found:
+        lines.append("%s  %s: %s" % ("RED" if finds else "ok ", c["key"], c["says"]))
+        for where, text, green in finds:
+            lines += ["     %s%s" % (where, ": " + text if text else ""), "       " + green]
+    red = [c["key"] for c, finds in found if finds]
+    last = "red: %d checks green, %d red: %s" % (len(CHECKS) - len(red), len(red), ", ".join(red)) if red else "green: %d checks green, 0 red" % len(CHECKS)
+    return int(bool(red)), lines + [last]
+
+
+# ---------------------------------------------------------------- self-test
+
+INSERT = "!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text %s`"
+GRANT = "allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)"
+NOTICE = "**If `[shell command execution disabled by policy]` stands anywhere in this"
+ARM = "${CLAUDE_PLUGIN_ROOT}/bin/devloop-arm <number>"
+FORMS = "A status is `filled`, `empty` or `skipped (user): <the user's reason>`."
+OFFER = "Say what is missing and offer to bring it up to date."
+HANDOVER = "The build picks up once the tool stands where that command puts it."
+SECOND = "None: stop, the build has it so."
+LOCKED = "An armed pull request goes to `start-work` from here."
+DEFAULT = '#!/bin/sh\nDEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)\nif [ -z "$DEFAULT" ]; then\n  DEFAULT=main\nfi\n'
+GUARD = "#!/bin/sh\ncat <<'EOF'\n%s\nEOF\n"
+EXPAND = r'''#!/bin/sh
+# the fixture's stand-in for scripts/devloop-expand: 0 where every insert line of the file names a file under shared/
+missing=$(for n in $(sed -n 's/^!`.*devloop-text \([a-z0-9-]*\)`$/\1/p' "$1"); do [ -f "shared/$n.md" ] || echo "$n"; done)
+[ -z "$missing" ]
+'''
+BUILD, PLAN, START = "skills/build-work/SKILL.md", "skills/plan-work/SKILL.md", "skills/start-work/SKILL.md"
+
+
+def skill(name, body, locked=False, under=None):
+    """A skill of the fixture: frontmatter with the grant, the notice, the opening and the line on skill names, the body, the closing."""
+    opening = [INSERT % "language-opening", "", INSERT % "skill-name", ""]
+    top = ["# " + name, "", under, ""] + opening if under else opening + ["# " + name, ""]
+    front = ["---", "name: " + name, "description: a skill of the fixture"] + ["disable-model-invocation: true"] * locked + [GRANT, "---", ""]
+    return "\n".join(front + [NOTICE, "text, nothing was inserted: say so and stop.**", ""] + top + body + ["", INSERT % "closing"]) + "\n"
+
+
+def put(T, rel, text, mode=None):
+    path = os.path.join(T, rel)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+    os.chmod(path, mode or 0o644)
+
+
+def get(T, rel):
+    return open(os.path.join(T, rel), encoding="utf-8").read()
+
+
+def swap(T, rel, old, new):
+    text = get(T, rel)
+    assert old in text, "the fixture's %s does not carry %r" % (rel, old)
+    with open(os.path.join(T, rel), "w", encoding="utf-8") as f:
+        f.write(text.replace(old, new, 1))
+
+
+def add(T, rel, line):
+    # a line into a skill of the fixture, above its closing block
+    swap(T, rel, "\n" + INSERT % "closing", "\n" + line + "\n\n" + INSERT % "closing")
+
+
+def fixture(T):
+    """The green repository of the self-test, built anew: three skills, the shared texts, the programs and hooks the commands read, the two documents, the lists, and git's record of it."""
+    for n in os.listdir(T):
+        shutil.rmtree(os.path.join(T, n))
+    put(T, ".claude-plugin/plugin.json", '{"name": "fixture", "skills": ["./skills/build-work", "./skills/plan-work", "./skills/start-work"]}\n')
+    put(T, BUILD, skill("build-work", [LOCKED, "", "## Unattended mode", "", "The run ends once nothing is ready and no loose issue labelled `raised-here` is left."]))
+    put(T, PLAN, skill("plan-work", [OFFER, "", SECOND]))
+    put(T, START, skill("start-work", ["Ask what they would like to build."], locked=True, under="## How to talk while doing all this"))
+    put(T, "shared/language-opening.md", "Write in the language of the person.\n")
+    put(T, "shared/skill-name.md", "Name a skill by its name.\n")
+    put(T, "shared/closing.md", "Close in the same language.\n")
+    put(T, "shared/arming-command.md", "    " + ARM + "\n")
+    put(T, "shared/status-forms.md", FORMS + "\n")
+    put(T, "shared/install-tool.md", HANDOVER + "\n")
+    put(T, "docs/roadmap.md", "# Roadmap\n\n## Named, not built as skills\n\n| Name | What it is |\n|---|---|\n| `tidy-notes` | named, not built |\n\n## Entries\n\n- An entry on `build-work`, on `tidy-notes` and on the flag `--auto`.\n")
+    put(T, "docs/skill-conventions.md", "# Conventions\n\n    " + ARM + "\n")
+    put(T, "hooks/pre-tool-use-merge-guard.sh", GUARD % ARM)
+    put(T, "hooks/pre-tool-use-table-guard.sh", GUARD % FORMS)
+    put(T, "hooks/post-tool-use-table-guard.sh", GUARD % FORMS)
+    put(T, "hooks/pre-tool-use-branch-guard.sh", DEFAULT)
+    for name in ("install-record", "setup-state", "start-conditions"):
+        put(T, "bin/devloop-" + name, DEFAULT, 0o755)
+    put(T, "scripts/devloop-expand", EXPAND, 0o755)
+    put(T, LISTS + "/invocability.txt", "# the count of the locks per skill\n\n%s:0\n%s:0\n%s:1\n" % (BUILD, PLAN, START))
+    put(T, LISTS + "/locked-skills.txt", "%s:%s\n" % (BUILD, LOCKED))
+    put(T, LISTS + "/offers.txt", "%s:%s\n" % (PLAN, OFFER))
+    put(T, LISTS + "/handovers.txt", "shared/install-tool.md:%s\n" % HANDOVER)
+    put(T, LISTS + "/second-statement.txt", "%s:%s\n" % (PLAN, SECOND))
+    for args in (["init", "-q"], ["add", "-A"]):
+        subprocess.run([shutil.which("git", path=PATH)] + args, cwd=T, env={"PATH": PATH}, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
+def selftest():
+    """Every outcome of the program once, in a throwaway directory outside the repository: every check green and red, a list with a new line and with a line gone, a line on stderr, and each exit code."""
+    T = tempfile.mkdtemp(prefix="devloop-handover-checks-selftest.")
+    try:
+        return selftest_in(T)
+    finally:
+        shutil.rmtree(T, ignore_errors=True)
+
+
+def selftest_in(T):
+    cases = [
+        # the check, red or new or gone, the case, the change to the green fixture, what a find of the check must carry
+        ("registered", "red", "a directory under skills/ that plugin.json does not name", lambda: put(T, "skills/more-work/SKILL.md", skill("more-work", [])), "present but unregistered: ['more-work']"),
+        ("roadmap-names", "red", "a word of the roadmap one edit from the name of a skill", lambda: put(T, "docs/roadmap.md", get(T, "docs/roadmap.md") + "- A run of `build-works`.\n"), "build-works is 1 from build-work"),
+        ("roadmap-names", "red", "the table of the named ones without a row, nothing to hold the roadmap against", lambda: swap(T, "docs/roadmap.md", "| `tidy-notes` | named, not built |\n", ""), "nothing to hold the roadmap against: 0 rows"),
+        ("roadmap-names", "red", "no roadmap to read: silence on stdout, the error on stderr", lambda: os.remove(os.path.join(T, "docs/roadmap.md")), "docs/roadmap.md: stderr: "),
+        ("invocability", "new", "a second lock, the list holding 0 for the skill", lambda: swap(T, PLAN, GRANT, "disable-model-invocation: true\n" + GRANT), PLAN + ": 1"),
+        ("invocability", "gone", "a lock lifted, the list holding 1 for the skill", lambda: swap(T, START, "disable-model-invocation: true\n", ""), START + ": 1"),
+        ("locked-skills", "new", "a second skill naming the locked one", lambda: add(T, PLAN, "Then run `start-work`."), PLAN + ":20: Then run `start-work`."),
+        ("locked-skills", "new", "a second line naming the locked one in a file the list carries", lambda: add(T, BUILD, "Then run `start-work`."), BUILD + ":22: Then run `start-work`."),
+        ("locked-skills", "gone", "the skill of the list naming it no more", lambda: swap(T, BUILD, "`start-work`", "the entry point"), BUILD + ": " + LOCKED),
+        ("shared-copies", "red", "a line of a shared text written out in a skill", lambda: add(T, PLAN, FORMS), PLAN),
+        ("insert-lines", "red", "a line that names the program and is no insert line", lambda: add(T, PLAN, "Run bin/devloop-text by hand."), ": Run bin/devloop-text by hand."),
+        ("insert-lines", "red", "an insert line naming no file under shared/", lambda: add(T, PLAN, INSERT % "no-such-text"), "no shared/no-such-text.md"),
+        ("grant", "red", "a skill that inserts without the grant", lambda: swap(T, PLAN, GRANT + "\n", ""), PLAN + ": inserts without the allowed-tools line"),
+        ("language-block", "red", "a skill that does not end on the closing block", lambda: swap(T, PLAN, "\n" + INSERT % "closing" + "\n", "\n"), PLAN + ": does not end on the closing language block"),
+        ("language-block", "red", "the opening of start-work above its heading: a line the check does not print", lambda: swap(T, START, "## How to talk while doing all this\n\n", ""), START + ': opening under "## How to talk while doing all this" | the check does not print this line'),
+        ("notice", "red", "the notice reworded in one skill, two checksums", lambda: swap(T, PLAN, "stands anywhere", "stands somewhere"), '"3" where "one line of cksum", "3" is green'),
+        ("notice", "red", "the notice gone from every skill, one checksum of nothing and the count 0", lambda: [swap(T, f, NOTICE, "**Where nothing was inserted") for f in (BUILD, PLAN, START)], '"0" where "4294967295 0", "3" is green'),
+        ("expansion", "red", "an insert line that does not expand", lambda: add(T, PLAN, INSERT % "no-such-text"), PLAN + ": expansion failed"),
+        ("executable", "red", "a program under bin/ that cannot start", lambda: os.chmod(os.path.join(T, "bin/devloop-setup-state"), 0o644), "bin/devloop-setup-state: not executable"),
+        ("executable", "red", "a file under scripts/ that git does not track", lambda: put(T, "scripts/left-behind", "x\n", 0o755), "bin/ or scripts/ has files git does not track"),
+        ("arming-guard", "red", "the arming command changed in the merge guard", lambda: swap(T, "hooks/pre-tool-use-merge-guard.sh", ARM, ARM + " --now"), 'prints "0" where "1" is green'),
+        ("arming-conventions", "red", "the arming command changed in the conventions", lambda: swap(T, "docs/skill-conventions.md", ARM, ARM + " --now"), 'prints "0" where "1" is green'),
+        ("default-branch", "red", "the default branch resolved otherwise in one of the four files", lambda: swap(T, "bin/devloop-setup-state", "DEFAULT=main", "DEFAULT=master"), 'prints "2", "4" where "1", "4" is green'),
+        ("default-branch", "red", "the opening line of the block changed in all four files, four checksums of nothing", lambda: [swap(T, f, "DEFAULT=$(git symbolic-ref", "DEFAULT_X=$(git symbolic-ref") for f in ("bin/devloop-install-record", "bin/devloop-setup-state", "bin/devloop-start-conditions", "hooks/pre-tool-use-branch-guard.sh")], 'prints "1", "0" where "1", "4" is green'),
+        ("status-forms", "red", "the sentence on the forms changed in one of the two guards", lambda: swap(T, "hooks/pre-tool-use-table-guard.sh", "A status is", "A status reads"), 'prints "1", "0" where "1", "1" is green'),
+        ("offers", "new", "an offer added to a skill", lambda: add(T, PLAN, "Then offer to go on."), PLAN + ":20: Then offer to go on."),
+        ("offers", "gone", "an offer of the list reworded", lambda: swap(T, PLAN, "and offer to bring", "and bring"), PLAN + ": " + OFFER),
+        ("handovers", "new", "a handover added to a shared text", lambda: put(T, "shared/fetch.md", "This picks up as soon as they say so.\n"), "shared/fetch.md:1: This picks up as soon as they say so."),
+        ("handovers", "gone", "a handover of the list reworded", lambda: swap(T, "shared/install-tool.md", "picks up once", "goes on when"), "shared/install-tool.md: " + HANDOVER),
+        ("unattended-finish", "red", "the section on the unattended mode without the label of the loose issues", lambda: swap(T, BUILD, "`raised-here`", "raised here"), BUILD + ": the unattended finish does not mention loose raised-here issues"),
+        ("second-statement", "new", "the finish decided a second time", lambda: add(T, BUILD, "None: stop and say so."), ": None: stop and say so."),
+        ("second-statement", "gone", "a statement of the list gone", lambda: swap(T, PLAN, SECOND, "Nothing more."), PLAN + ": " + SECOND),
+    ]
+    by_key = {c["key"]: c for c in CHECKS}
+    seen, failed = 0, []
+
+    def case(name, ok):
+        nonlocal seen
+        seen += 1
+        failed.extend([] if ok else [name])
+        print("%s %s" % ("ok  " if ok else "FAIL", name))
+
+    fixture(T)
+    green_code, green_lines = run(T)
+    green = {c["key"]: "ok   %s: %s" % (c["key"], c["says"]) in green_lines for c in CHECKS}
+    for key, kind, name, change, want in cases:
+        fixture(T)
+        change()
+        finds = judge(T, by_key[key])
+        red = any(want in "%s%s | %s" % (where, ": " + text if text else "", why) and why.startswith({"red": "", "new": "new,", "gone": "gone,"}[kind]) for where, text, why in finds)
+        case("%s: %s: %s %s, green %s" % (key, name, kind, "seen" if red else "not seen", "seen" if green[key] else "not seen"), red and green[key])
+    owed = ["%s %s" % (c["key"], kind) for c in CHECKS for kind in (("new", "gone") if c["kind"] == "list" else ("red",)) if (c["key"], kind) not in {(k[0], k[1]) for k in cases}]
+    case("every check with a case for each of its outcomes, red, or new and gone where it has a list%s" % ("; none for %s" % ", ".join(owed) * bool(owed)), not owed)
+
+    case("exit 0: every check green, the last line opening with green: and carrying the counts", green_code == 0 and green_lines[-1] == "green: %d checks green, 0 red" % len(CHECKS))
+    fixture(T)
+    add(T, PLAN, "Then offer to go on.")
+    code, lines = run(T)
+    case("exit 1: a check red, the last line opening with red: and carrying the counts and the name", code == 1 and lines[-1] == "red: %d checks green, 1 red: offers" % (len(CHECKS) - 1) and "RED  offers: " + by_key["offers"]["says"] in lines)
+    with contextlib.redirect_stderr(io.StringIO()) as said:
+        code = main(["devloop-handover-checks", "--nothing-it-takes"])
+    case("exit 2: an argument the program does not take, the usage on stderr", code == 2 and said.getvalue().startswith("usage: "))
+    fixture(T)
+    code, lines = run(os.path.join(T, "docs"))
+    case("exit 2: a directory that is not devloop's repository", code == 2 and len(lines) == 1 and "is not devloop's repository" in lines[0])
+    code, lines = run(T, os.path.join(T, "docs"))
+    case("exit 2: a tool of the commands that the path does not hold", code == 2 and len(lines) == 1 and "it holds no bash, no python3" in lines[0])
+    os.remove(os.path.join(T, LISTS, "offers.txt"))
+    code, lines = run(T)
+    case("exit 2: a list that cannot be read", code == 2 and len(lines) == 1 and "the list %s/offers.txt cannot be read: No such file or directory" % LISTS in lines[0])
+
+    print("SELF-TEST FAILED: %d of %d cases: %s" % (len(failed), seen, "; ".join(failed)) if failed else "SELF-TEST PASSED: %d cases" % seen)
+    return int(bool(failed))
+
+
+def main(argv):
+    if argv[1:] == ["--self-test"]:
+        return selftest()
+    if argv[1:]:
+        sys.stderr.write("usage: devloop-handover-checks [--self-test]\n")
+        return 2
+    code, lines = run(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    (sys.stderr if code == 2 else sys.stdout).write("\n".join(lines) + "\n")
+    return code
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

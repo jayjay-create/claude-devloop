@@ -1,0 +1,13 @@
+# The lines the check "handovers" of scripts/devloop-handover-checks
+# prints, each read against the paragraph of that check under "Before a
+# handover, run these" in docs/skill-conventions.md and found right. One a
+# line, FILE:TEXT, as the command prints it with the line number taken out.
+# The program is red on a line it prints that does not stand here, and on a
+# line that stands here and that it prints no more.
+skills/build-work/SKILL.md:  act is theirs or their say-so is, and this picks up as soon as they say which;
+skills/build-work/SKILL.md:meanwhile; the tasks are in the tracker and this picks up as soon as they
+skills/setup-checks/SKILL.md:On the first: hand them the command, backed and as it runs from wherever
+skills/setup-checks/SKILL.md:once it has run the run reads that the tool is there and sets the check up;
+shared/fetch-three-times.md:attempt was ended; and that this picks up as soon as they say it is cleared,
+shared/install-tool.md:   ask —, and the build picks up once the tool is where that command puts it and
+shared/merge-handover.md:nothing happens here until then: this picks up as soon as the form's signal

@@ -102,7 +102,11 @@ A. WHAT GOES IN
   the command under "Before you change anything, run this": the answer its
   section calls green, and any other. The green form is the record's note.
   Where the section does not say what green looks like, the note says so;
-  whoever writes the record does not supply one.
+  whoever writes the record does not supply one. Since 23 November 2026 this
+  item holds for the commands the two headings keep: a check that
+  scripts/devloop-handover-checks holds is an outcome of that program, by
+  the item on the programs under bin/ and scripts/ above, and no thing of
+  this item.
 - The entries under "Named, not built as skills" in docs/roadmap.md that the
   section does not record as done inside another skill or as a stage, each a
   thing of kind named skill; how many is read off the tool's output, not off

@@ -1,0 +1,21 @@
+# The lines the check "offers" of scripts/devloop-handover-checks
+# prints, each read against the paragraph of that check under "Before a
+# handover, run these" in docs/skill-conventions.md and found right. One a
+# line, FILE:TEXT, as the command prints it with the line number taken out.
+# The program is red on a line it prints that does not stand here, and on a
+# line that stands here and that it prints no more.
+skills/build-work/SKILL.md:tree stands on the main branch as freshly fetched: on a yes read all seven
+skills/plan-work/SKILL.md:  Do not open a planning issue for it and do not plan it again. Offer to land
+skills/plan-work/SKILL.md:with the user there, stop and offer to build it, and say which kind it is; do not
+skills/plan-work/SKILL.md:returns, the tree stands on the main branch as freshly fetched: on a yes the
+skills/plan-work/SKILL.md:again, now, on what is true today — and offer to do that here rather than leaving
+skills/setup-checks/SKILL.md:it, a public repository or a different plan. Offer to take the workflow file back
+skills/setup-checks/SKILL.md:freshly fetched — on a yes that place reads the conditions again and goes
+skills/setup-project/SKILL.md:   If there is no remote at all, do not stop yet — offer to create one, since
+skills/start-work/SKILL.md:no offer to set anything up. Where it did — they said what they want built
+skills/start-work/SKILL.md:    do not take it up, do not offer to land it, do not count it as the work in
+skills/start-work/SKILL.md:offer to take it up, as the paragraph on such an issue below says; the
+skills/start-work/SKILL.md:offer to land it. On a yes, that is `build-work` at step 6 and nothing before
+skills/start-work/SKILL.md:yours waiting to land means a question and a stop too, the offer to land it
+skills/untangle-idea/SKILL.md:   one session — you don't need a map. Say so and offer to plan and build it
+shared/missing-command.md:the file, say what is missing, and offer to bring it up to date.

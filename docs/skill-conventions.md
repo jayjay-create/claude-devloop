@@ -1951,9 +1951,9 @@ type `edited` too, so that a title changed on an open pull request is read
 before it can be merged, at the cost of one run of the workflow per edit of
 the title, the body or the base. A commit's first line is not held by the
 workflow: a squash merge takes the title of the pull request, so the one
-title that lands is the one read. The check is not one of the twenty
-under "Before a handover, run these", though the sixteenth, since 31 October
-2026, runs it here with the workflow's other steps.
+title that lands is the one read. The check is none of those
+under "Before a handover, run these", though the run of the workflow's steps
+there, since 31 October 2026, runs it here with the workflow's other steps.
 
 **An entry of the roadmap is short, and what stands elsewhere it points
 at.** A new entry in `docs/roadmap.md` says what changed, the decisions with
@@ -4168,15 +4168,24 @@ price and the point.
 **User-invoked** (`disable-model-invocation: true` under `description`): costs no
 context, but only a typed command starts it — no other skill can.
 
-In this set, two are user-invoked, and what each lock costs is written here,
+Which skill of this set is user-invoked stands in
+`docs/handover-checks/invocability.txt`, a line for every skill, `1` where
+the lock stands and `0` where none does, and the check `invocability` under
+"Before a handover, run these" holds every skill to that file. What each
+lock costs is written here,
 because "costs nothing" was written for both and held for one.
 
-`start-work`, the entry point. No skill runs it: every line the check under
-"Before a handover, run these" that holds locked skills against their callers
-prints names it at a place that sends a run to it and does not call it —
-`build-work` step 6, which names it as where an armed pull request goes,
-among them. Its lock costs nothing, and that is read off the check each time,
-not assumed.
+`start-work`, the entry point. No skill runs it: every line the check
+`locked-skills` under "Before a handover, run these", which holds locked
+skills against their callers, prints for it names it and tells no run to run
+it. One names it as what sends a run on: `build-work` step 6, to which
+`start-work` sends a pull request that is armed already. The others name it as
+what does something or has done it: `setup-project` and the two shared texts
+of the language block say that it asks the language, and
+`shared/install-issues-read.md` names its in-flight query and a start that
+followed it. Its lock costs nothing, and that is read off the check, not
+assumed: the lines stand in `docs/handover-checks/locked-skills.txt`, each
+read, and a line that file does not carry is red until somebody has read it.
 
 `record-lessons`. Its lock stood on the same ground — no other skill runs it —
 and the ground did not survive the run of 11 to 13 September 2026 in
@@ -4205,9 +4214,8 @@ another file. The entry of 14 September 2026 in `docs/roadmap-archive-1.md` reco
 build.
 
 Everything else is model-invocable, because the chain reaches it from
-`start-work` or from another skill: `setup-project`, `setup-checks`,
-`untangle-idea`, `research`, `build-prototype`, `plan-work`, `cut-into-tasks`,
-`build-work`, `review-changes`, `diagnose-bug`. Note the consequence — the model can also reach
+`start-work` or from another skill; which skills those are the same file
+holds, each with its `0`. Note the consequence — the model can also reach
 for `build-work` or `setup-project` on its own. If that ever proves to be a
 problem, the fix is not to lock it, which would break the chain, but to keep the
 gate inside the skill. For `setup-project` that gate is not a confirmation
@@ -4314,12 +4322,54 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Twenty checks that catch what a conversation loses. Each one has found a
+The checks that catch what a conversation loses. Each one has found a
 real gap, or guards a mechanism that fails without a sound when nobody runs it.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
+
+**One program holds them, on every pull request and by itself.** Since 23
+November 2026 `scripts/devloop-handover-checks` carries the command of every
+check under this heading but one, the run of the workflow's steps, each under
+a name, and a paragraph below gives the name of its check in backticks. The
+program runs each command with `bash --noprofile --norc -c` in the environment
+`env -i PATH=/usr/bin:/bin` leaves and holds what it prints against the answer
+that is green. For most that is a fixed answer: silence, a count, two empty
+lists, one line per skill. Some print lines somebody has to judge, and a
+program judges none — `invocability`, `locked-skills`, `offers`, `handovers`
+and `second-statement`: each of these has a file under
+`docs/handover-checks/`, named by the check, that carries the lines the check
+prints which were read and found right, one a line, as the command prints it
+with the line number taken out. A line the command prints that its list does
+not carry is red, and so is a line of the list that the command prints no
+more; the branch that changed it reads the line against the paragraph of its
+check here and brings the list in line. A line on stderr is red in every
+check: a command that printed an error has not answered, and silence behind an
+error is the checksum of nothing of the paragraph above. A find comes with the
+name of its check, the file and the line where the command names them, the
+text, and what makes it green; the last line opens with `green:` or with
+`red:` and counts the green checks and the red ones, and the program ends with
+0, with 1, or with 2 where it cannot run.
+
+The job `stock-take` of `.github/workflows/stock-take.yml` runs the program as
+a step on every pull request, and after it the program's self-test, which
+walks every check green and red and every list with a new line and with a line
+gone, so that no red case has to be made by hand. The run of the workflow's
+steps below therefore runs it here with the other steps, and the program has
+no command block of its own under this heading: by section A of the header of
+`scripts/devloop-stock-take` a command under this heading is a thing with two
+outcomes, the answer the section calls green and any other, and a block for
+the program would stand as a second pair beside the exits of the program,
+which are things by that section's item on the programs under `scripts/`.
+During a change it runs by itself as well, `scripts/devloop-handover-checks`
+from the root of the repository, in a few seconds, and after any edit to a
+skill it is run so. The paragraphs below keep what a command cannot say: what
+each check holds, why, and what a line it prints means. Decided on 23 November
+2026, `docs/plan.md` under milestone 15, where the reasons stand with what was
+not chosen. Until that day every check stood here as a command block and ran
+where somebody started it, the checks that print lines to judge were read at
+every handover, and a line gone from such an output said nothing.
 
 A run of any of these counts, for the stock-take in `docs/stock-take.tsv`, the
 way every other run counts: it is recorded under the version
@@ -4343,34 +4393,35 @@ September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
-**Twenty checks, twenty command blocks.** Count them, or this number
-drifts again. It drifted once already, and quietly: on 7 September 2026 one
-check was split into three blocks, one of them unreachable, so the checks went
-from eleven to twelve while this sentence stayed at eleven — and the change
-after it added two real checks and moved the number by two, carrying the error
-forward untouched. Measured on 9 September 2026, the sentence read thirteen
-against fourteen checks. It reads seventeen against seventeen since 18
-September 2026, when the five checks that held byte-identical copies together
-— three of them by checksum — went with the copies, together with the block
-beside them that could not go red, and nine checks over the text now inserted
-at load took their place. It reads eighteen against eighteen since 28 September
-2026, when the check holding the install record's reader to the branch guard's
-resolution of the default branch came in. It reads nineteen against nineteen
-since 5 October 2026, when the check holding the two table guards' copy of the
-four status forms to the shared file came in. It reads twenty against twenty
-since 31 October 2026, when the run of the workflow's steps on this machine
-came in.
+**The checks are counted by the program, and by no sentence here.**
+`scripts/devloop-handover-checks` gives on its last line the count of the
+checks it holds; the run of the workflow's steps is the one check beside them,
+and its command block the one block under this heading. Until 23 November 2026
+this paragraph opened "Twenty checks, twenty command blocks" and asked to
+count them, or the number would drift again. It had drifted once already, and
+quietly: on 7 September 2026 one check was split into three blocks, one of
+them unreachable, so the checks went from eleven to twelve while this sentence
+stayed at eleven — and the change after it added two real checks and moved the
+number by two, carrying the error forward untouched. Measured on 9 September
+2026, the sentence read thirteen against fourteen checks. It read seventeen
+against seventeen from 18 September 2026, when the five checks that held
+byte-identical copies together — three of them by checksum — went with the
+copies, together with the block beside them that could not go red, and nine
+checks over the text now inserted at load took their place; eighteen against
+eighteen from 28 September 2026, when the check holding the install record's
+reader to the branch guard's resolution of the default branch came in;
+nineteen against nineteen from 5 October 2026, when the check holding the two
+table guards' copy of the four status forms to the shared file came in; and
+twenty against twenty from 31 October 2026, when the run of the workflow's
+steps on this machine came in.
 
 Every skill on disk is registered, and every registered skill exists:
+`registered`. It prints two lists, the entries under "skills" in
+`.claude-plugin/plugin.json` that have no directory under `skills/` and the
+directories there that have no entry, and both are empty where it is green.
 
-    python3 -c "
-    import json,pathlib
-    m=[p.split('/')[-1] for p in json.load(open('.claude-plugin/plugin.json'))['skills']]
-    d=sorted(p.name for p in pathlib.Path('skills').iterdir())
-    print('registered but missing:', sorted(set(m)-set(d)))
-    print('present but unregistered:', sorted(set(d)-set(m)))"
-
-No name in the roadmap resembles a real one without being one. A skill name
+No name in the roadmap resembles a real one without being one:
+`roadmap-names`. A skill name
 that does not exist is made from one that does, by a typo, a rename left
 behind or a plural, so it stays near the name it was meant to be. This prints
 every backticked word of lowercase letters, digits and hyphens that is no
@@ -4393,92 +4444,74 @@ today; a name of five would already print a word of the roadmap (`batch` would
 print `watch`, and `tdd` `sed`, measured the same day). So a name of fewer
 than six characters is compared for equality only, which for a word that is
 not one of the names prints nothing, and the day a skill gets such a name,
-this is the sentence that says it goes unwatched:
+this is the sentence that says it goes unwatched.
 
-    python3 -c "
-    import re,pathlib,functools
-    t=open('docs/roadmap.md').read()
-    w=set(re.findall(r'\x60([a-z0-9-]*)\x60',t))
-    d={p.name for p in pathlib.Path('skills').iterdir() if p.is_dir()}
-    s=t.split('\n## Named, not built as skills\n',1)
-    r=set(re.findall(r'^\|\s*\x60([a-z0-9-]+)\x60\s*\|',s[1].split('\n## ',1)[0],re.M)) if len(s)==2 else set()
-    n=d|r
-    e=functools.lru_cache(None)(lambda a,b:len(a+b) if len(a)==0 or len(b)==0 else min(e(a[1:],b)+1,e(a,b[1:])+1,e(a[1:],b[1:])+1-(a[0]==b[0])))
-    if len(r)==0 or len(d)==0: print('nothing to hold the roadmap against: %d rows under the table, %d directories under skills/'%(len(r),len(d)))
-    for x,m in [(x,m) for x in sorted(w-n) for m in sorted(n) if len(m)>=6 and e(x,m)<=2]: print('%s is %d from %s'%(x,e(x,m),m))
-    "
+Invocability is set deliberately, not by omission: `invocability`. It counts,
+for every skill, the lines of its file that carry `disable-model-invocation`,
+`1` under a lock and `0` without one, and holds the counts against
+`docs/handover-checks/invocability.txt`, which carries for every skill what
+"## Who may invoke a skill" above decides. A skill whose count is not the one
+the list carries is red, and so is a skill the list does not carry: a new
+skill gets its line there when its invocability has been decided.
 
-Invocability is set deliberately, not by omission:
+No skill is told to run a skill that is locked against being run:
+`locked-skills`. A locked skill refuses the call and tells the model to ask
+the user to type the command, which no skill here may do. The shared files are
+searched too, because text inserted into a skill is that skill's text. It
+prints every line of another skill or of a shared file that names a locked
+skill in backticks, and every line it prints needs an eye on it: whether the
+line tells a run to run the locked skill, or names it as what does something
+or as where something comes from. The lines read so and found right are those
+of `docs/handover-checks/locked-skills.txt`. Since 23 November 2026 it prints
+a line for every place; until then it printed one for every file, "locked:
+<skill> referenced by <file>", which somebody read at each handover. Nobody
+reads the output now, so a second place in a file the list carries already has
+to come out as a line of its own, new and red.
 
-    grep -c 'disable-model-invocation' skills/*/SKILL.md
+No shared text still stands written out in a skill: `shared-copies`. Every
+line of forty characters or more from the files under `shared/` is looked for
+in every skill. A file it prints carries a copy of something that is inserted,
+and the copy goes.
 
-No skill is told to run a skill that is locked against being run. A locked skill
-refuses the call and tells the model to ask the user to type the command, which no
-skill here may do. The shared files are searched too, because text inserted
-into a skill is that skill's text. Every line this prints needs an eye on it:
-
-    for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
-      grep -l "\`$s\`" skills/*/SKILL.md shared/*.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
-    done
-
-No shared text still stands written out in a skill. Every line of forty
-characters or more from the files under `shared/` is looked for in every
-skill. A file printed here carries a copy of something that is inserted, and
-the copy goes:
-
-    cat shared/*.md | awk 'length >= 40' | grep -Fl -f - skills/*/SKILL.md
-
-Every insert line has exactly the form the frontmatter grants, and names a file
-that exists. The first command prints any line in a skill that starts with the
-insert marker or names the program and is neither an insert line nor the grant —
-a line that would run at load without being meant to, or abort the load; the
-second prints every name that does not resolve. Both silent means every insert
-is one:
-
-    grep -n -e '^!`' -e 'devloop-text' skills/*/SKILL.md | awk '{ l=$0; sub(/^[^:]*:[^:]*:/, "", l) } l != "allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)" && l !~ /^!`\$\{CLAUDE_PLUGIN_ROOT\}\/bin\/devloop-text [a-z0-9-]+`$/'
-    for n in $(grep -ho 'devloop-text [a-z0-9-]*`$' skills/*/SKILL.md | sed 's/devloop-text //;s/`$//' | sort -u); do [ -f "shared/$n.md" ] || echo "no shared/$n.md"; done
+Every insert line has exactly the form the frontmatter grants, and names a
+file that exists: `insert-lines`. Its first command prints any line in a skill
+that starts with the insert marker or names `bin/devloop-text` and is neither
+an insert line nor the grant — a line that would run at load without being
+meant to, or abort the load; the second prints every name that does not
+resolve. Both silent means every insert is one.
 
 Every skill that inserts anything carries the grant that lets the program run
-at load without a prompt. Without it the load aborts outside auto mode, and in
-auto mode the model is told to run the command itself — the case the
-measurement rules out:
+at load without a prompt: `grant`. Without it the load aborts outside auto
+mode, and in auto mode the model is told to run the command itself — the case
+the measurement rules out. It prints every skill that inserts and carries no
+`allowed-tools` line for `bin/devloop-text`.
 
-    for f in skills/*/SKILL.md; do grep -q '^!`' "$f" && ! grep -qF 'allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)' "$f" && echo "$f: inserts without the allowed-tools line"; done
+The language block stands at its two places in every file: `language-block`.
+It is inserted once at the top — before any heading, and in `start-work`
+directly under "How to talk while doing all this", for the reason under
+"Numbered steps where order matters" — and once as the very last line. The
+line on skill names stands two lines under the opening, once per file. Green
+is one line for every skill saying where the opening stands, and nothing else;
+how many skills there are the program reads off the files `skills/*/SKILL.md`.
 
-The language block stands at its two places in every file: inserted once at
-the top — in eleven before any heading, in `start-work` directly under "How to
-talk while doing all this", for the reason under "Numbered steps where order
-matters" — and once as the very last line. The line on skill names stands two
-lines under the opening, once per file. Twelve lines saying where the opening
-stands, and nothing else:
-
-    for f in skills/*/SKILL.md; do
-      [ "$(tail -n 1 "$f")" = '!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text closing`' ] || echo "$f: does not end on the closing language block"
-      awk -v f="$f" '/^## /{h=$0} /devloop-text language-opening`$/{n++; o=NR; print f": opening " (h=="" ? "before any heading" : "under \"" h "\"")} /devloop-text skill-name`$/{m++; if(NR!=o+2) print f": skill-name line not two lines under the opening"} END{if(n!=1) print f": opening block inserted " n+0 " times"; if(m!=1) print f": skill-name line inserted " m+0 " times"}' "$f"
-    done
-
-The notice above the first insert line is the same paragraph in all twelve. It
-is the one paragraph that cannot come from the shared source, being what the
-run reads when nothing was inserted, so it is the one place a checksum over
-copies remains. One line means all twelve agree; the count says none is
-missing:
-
-    for f in skills/*/SKILL.md; do sed -n '/^\*\*If `\[shell command execution disabled by policy\]`/,/^$/p' "$f" | cksum; done | sort -u
-    grep -l '^\*\*If `\[shell command execution disabled by policy\]`' skills/*/SKILL.md | wc -l
+The notice above the first insert line is the same paragraph in every skill:
+`notice`. It is the one paragraph that cannot come from the shared source,
+being what the run reads when nothing was inserted, so it is the one place a
+checksum over copies remains. One line of checksum means all agree; the count
+of the files that carry the paragraph's opening line says none is missing,
+held against the number of the files `skills/*/SKILL.md`, which the program
+counts.
 
 Every skill expands without error — each insert line replaced by what the
-program prints for it, which is what a session receives. A name that does not
-resolve or a program that cannot run prints here. The expanded file is also
-how a change to a skill is read at all, since the file on disk is no longer
-the text a run gets:
-
-    for f in skills/*/SKILL.md; do scripts/devloop-expand "$f" > /dev/null || echo "$f: expansion failed"; done
+program prints for it, which is what a session receives: `expansion`, which
+runs `scripts/devloop-expand` over every skill. A name that does not resolve
+or a program that cannot run prints here. The expanded file is also how a
+change to a skill is read at all, since the file on disk is no longer the text
+a run gets.
 
 The program under `bin/` and the tools under `scripts/` are executable, in the
-working tree and in what git records, and git tracks every file there. A
-program that cannot start aborts every load that names it:
-
-    for p in bin/* scripts/*; do [ -x "$p" ] || echo "$p: not executable"; done; git ls-files -s bin/ scripts/ | grep -v '^100755 '; [ "$(git ls-files bin/ scripts/ | wc -l)" -eq "$(find bin scripts -type f | wc -l)" ] || echo "bin/ or scripts/ has files git does not track"
+working tree and in what git records, and git tracks every file there:
+`executable`. A program that cannot start aborts every load that names it.
 
 Where this prints that `bin/` or `scripts/` has files git does not track, look
 for `scripts/__pycache__/` before anything else: bytecode left behind. This
@@ -4487,37 +4520,37 @@ of the command that leaves it stands in the header of
 `scripts/devloop-stock-take`, beside its self-test.
 
 The arming command in the merge guard's message is the one in
-`shared/arming-command.md`. A hook cannot insert text, so it carries a copy,
-and this looks for the shared file's line in the hook, where it stands
-without the indentation the skills give it — `1` means it stands there
-unchanged, since 17 October 2026, when the two lines became the one call of
-`bin/devloop-arm`:
-
-    sed 's/^    //' shared/arming-command.md | grep -cFx -f - hooks/pre-tool-use-merge-guard.sh
+`shared/arming-command.md`: `arming-guard`. A hook cannot insert text, so it
+carries a copy, and this looks for the shared file's line in the hook, where
+it stands without the indentation the skills give it — `1` means it stands
+there unchanged, since 17 October 2026, when the two lines became the one call
+of `bin/devloop-arm`.
 
 The same for the copy in this file, under "Arming auto-merge is allowed;
-merging is not", indented as in the shared file — `1` again:
-
-    grep -cFx -f shared/arming-command.md docs/skill-conventions.md
+merging is not", indented as in the shared file: `arming-conventions` — `1`
+again.
 
 The default branch is resolved in `bin/devloop-install-record`, in
 `bin/devloop-setup-state` and, since 25 October 2026, in
 `bin/devloop-start-conditions` exactly as `hooks/pre-tool-use-branch-guard.sh`
-resolves it, from `origin/HEAD` and then `main` or `master`: two guards that
-disagree about which branch is the main one are worse than one, the install
-guard reads its record off that branch, the setup state is read off it, and
-so are the start conditions of the mode with nobody there.
-The seven lines from `DEFAULT=$(git symbolic-ref` to the `fi` that closes the
-fallback are checksummed in all four files — one line means they agree:
-
-    for f in bin/devloop-install-record bin/devloop-setup-state bin/devloop-start-conditions hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
+resolves it, from `origin/HEAD` and then `main` or `master`, which
+`default-branch` holds: two guards that disagree about which branch is the
+main one are worse than one, the install guard reads its record off that
+branch, the setup state is read off it, and so are the start conditions of the
+mode with nobody there. The seven lines from `DEFAULT=$(git symbolic-ref` to
+the `fi` that closes the fallback are checksummed in all four files — one line
+means they agree — and since 23 November 2026 a second line counts the files
+that carry the opening line `DEFAULT=$(git symbolic-ref`: `1` and `4` is
+green. Until that day the checksums stood alone, and the check answered `1`
+where the opening line stood in none of the four files, four checksums of
+nothing being one line too; the count holds that the block stands in every one
+of them.
 
 The sentence naming the four forms a status takes is, in both table guards,
-the one in `shared/status-forms.md`. A hook cannot insert text, so each
-carries a copy in its message, and this looks for the shared file's one line
-standing whole in each hook — `1` twice means both carry it unchanged:
-
-    for f in hooks/post-tool-use-table-guard.sh hooks/pre-tool-use-table-guard.sh; do grep -cFx -f shared/status-forms.md "$f"; done
+the one in `shared/status-forms.md`: `status-forms`. A hook cannot insert
+text, so each carries a copy in its message, and this looks for the shared
+file's one line standing whole in each hook — `1` twice means both carry it
+unchanged.
 
 The steps of the workflow run here as GitHub runs them, since 31 October
 2026. `scripts/devloop-run-workflow` reads `.github/workflows/stock-take.yml`
@@ -4535,7 +4568,9 @@ reading their input through the reader and the handlers to blocking on
 failure and to carrying no `if` field, with the reader's
 self-test, the hooks step with every self-test
 under `bin/`, since 31 October 2026 the self-test of this program among
-them, every handler once with a harmless input of its event, the install
+them, and since 23 November 2026, under macOS, that of
+`scripts/devloop-handover-checks`,
+every handler once with a harmless input of its event, the install
 guard under `PermissionDenied` with a counted refusal, the guard on the mark
 blocking a write of the mark in auto mode, GitHub answered by a stand-in,
 since 18 November 2026 the guard on the PowerShell tool turning a call down
@@ -4548,7 +4583,9 @@ since 17 November 2026 the step on line endings, the
 two README steps, since 1 November 2026 the step on the dates of the loaded
 texts, since 18 November 2026 the step that holds every line that reads a
 file of the project to a case of the step on line endings or to its not
-places, and the title step run here before the pull
+places, since 23 November 2026 the checks under this heading that
+`scripts/devloop-handover-checks` holds, with that program's self-test,
+and the title step run here before the pull
 request shows them, on this one system, a job with a matrix once; a step added
 to the file runs without a change to the program. It ends with 0 where every
 step did, and its last line opens with `green:`, the count of the steps run and
@@ -4574,27 +4611,28 @@ reading, every skill agrees with it — see "A finding that would have passed
 unsupervised gets written down".
 
 No sentence tells a run to ask for permission to reach the next stage, or to
-put a question as an either-or. Every line this prints needs an eye on it: some
-are real offers that stay, and the point is that each one gets looked at rather
-than assumed. Run it after **any** edit to a skill, not only before a handover —
-a rule added at one anchor and a sentence contradicting it further down the same
-file is how three of these got in. The shared files are read with the skills,
+put a question as an either-or: `offers`. It finds an offer by its wording,
+and every line it prints needs an eye on it: some are real offers that stay,
+and the point is that each one gets looked at rather than assumed. The lines
+looked at and left standing are those of `docs/handover-checks/offers.txt`; a
+line that file does not carry is red until somebody has looked at it. Run the
+program after **any** edit to a skill, not only before a handover — a rule
+added at one anchor and a sentence contradicting it further down the same file
+is how three of these got in. The shared files are read with the skills,
 because an offer inserted into seven skills is an offer in seven skills — the
 missing-command rule ends on one, and it comes out here once instead of seven
-times:
+times.
 
-    grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md shared/*.md
-
-Every place a run hands the user something to do says where a no leads. The
-check above finds offers by their wording and misses one written in other words:
-the rule that a build hands over an install command was three sentences long,
-said what happens once it has run, and said nothing about declining — and none
-of the five phrasings above appears in it. This one looks for the other half,
-the sentence that describes the yes. Every line it prints needs an eye on it,
-and it is read for two things: whether the no is there too, and whether what it
-promises about carrying on is something this run can actually do:
-
-    grep -rn 'picks up as soon as\|picks up once\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md shared/*.md
+Every place a run hands the user something to do says where a no leads:
+`handovers`. The check above finds offers by their wording and misses one
+written in other words: the rule that a build hands over an install command
+was three sentences long, said what happens once it has run, and said nothing
+about declining — and none of the phrasings `offers` looks for appears in it.
+This one looks for the other half, the sentence that describes the yes. Every
+line it prints needs an eye on it, and it is read for two things: whether the
+no is there too, and whether what it promises about carrying on is something
+this run can actually do. The lines read so are those of
+`docs/handover-checks/handovers.txt`.
 
 **`picks up once` was added on 7 September 2026, and why says something about
 this check.** The install handover in `build-work` step 3 used to read "picks up
@@ -4602,10 +4640,13 @@ as soon as they say it has run", and that sentence was the defect: success came
 off the user's word rather than off the result. Rewriting it to "picks up once
 the tool is where that command puts it" fixed the defect and dropped the site out
 of this check, which is the one site the check was written for. A check keyed to
-wording loses what it watches every time the wording is improved, and it loses it
-silently — one fewer line, and nothing says a line went missing. So the phrasings
+wording loses what it watches every time the wording is improved, and until 23
+November 2026 it lost it silently — one fewer line, and nothing said a line
+went missing. So the phrasings
 get added as they are coined, and a line disappearing from this output is read as
-a question rather than as progress.
+a question rather than as progress; since that day the program puts the
+question, a line of the list that the check prints no more being red on the
+pull request that took it.
 
 **Two forms now come out of this check, and the boundary between them is what a
 reader has to see, or they will rewrite one into the other.** What releases
@@ -4619,8 +4660,10 @@ they are done. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the signal releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's seven
-lines fall out like this — seven lines over six sites since 28 October 2026,
+and resuming on it is the only possible form rather than a defect. The lines
+of `docs/handover-checks/handovers.txt` fall out like this; the file holds
+them and with them their number, which this paragraph counted until 23
+November 2026 — seven lines over six sites from 28 October 2026,
 when `setup-checks` step 3 came to say, beside its handover, what the run
 reads once a form A command has run, and matches on two lines, counted again
 on 21 November 2026 after the second part of order (4) of milestone 12, the
@@ -4642,8 +4685,9 @@ when its step 3 came to hand a command over, and eight over seven until 6
 October 2026, when `shared/fetch-three-times.md` came to say what a run says
 where the main branch cannot be fetched or fast-forwarded:
 
-- **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
-  install: the tool is at the path that installer writes to, or the command did
+- **The outcome is read, by this sentence.** The install handover, the line
+  `shared/install-tool.md` carries into `build-work` step 3 point 7: the tool
+  is at the path that installer writes to, or the command did
   not do what it was handed over for — which the run says, since 21 November
   2026, only where the conversation shows that the command ran to its end or
   their word under form B says that it did; where a command typed with `!` did
@@ -4698,25 +4742,22 @@ So the question to ask of a line in this output is not which wording it uses. It
 is whether the act behind it leaves a result anywhere, and if it does, whether
 something reads that result before the run carries on.
 
-The unattended finish is not stated in the readiness query's vocabulary alone.
+The unattended finish is not stated in the readiness query's vocabulary alone:
+`unattended-finish`.
 The place that states it names the loose issues too, and the label is what they
 are named by. Silence means it holds; a line means the place has lost its
 loose-issue clause, or the heading it is keyed to has been renamed — either way
-something needs reading. Until 9 October 2026, version 0.134.0, the loop ran
+something needs reading. Until 9 October 2026, version 0.134.0, the loop of
+its command ran
 over two places, `setup-checks` step 8 beside `build-work`: step 8 stated the
 finish to the person before its question, and since that day it said there
 only that the run says so once everything is built, text 6 of the roadmap
 entry of 9 October 2026, and since 17 October 2026, in the question field,
 only that they see the result at the end, text 6 as the roadmap entry of
 that date has it; it states the finish nowhere, so the one place that
-states it is the one read here; a second place that comes to state it goes
-back into the list:
-
-    for spec in "skills/build-work/SKILL.md:^## Unattended mode"; do
-      f=${spec%%:*}; h=${spec#*:}
-      awk -v h="$h" '$0 ~ h {n=1;next} n&&/^## /{exit} n' "$f" |
-        grep -q 'raised-here' || echo "$f: the unattended finish does not mention loose raised-here issues"
-    done
+states it, the section "## Unattended mode" of `skills/build-work/SKILL.md`,
+is the one read here; a second place that comes to state it goes
+back into the list of the places the command reads.
 
 **This one is keyed so it cannot drift, and it is worth saying how.** It stands on
 two things that are not prose: a section heading, and `raised-here`, which is a
@@ -4728,7 +4769,8 @@ failure worth having. What it cannot see is a section that names the label and
 states the finish wrongly anyway. It asserts the element is present, which is the
 strongest thing a static check can assert about prose.
 
-**The check below it is keyed on wording, and there is no drift-safe way to write
+**The check below it, `second-statement`, is keyed on wording, and there is no
+drift-safe way to write
 it.** What it looks for is a second statement of step 2's decision, and a second
 statement can be written in any words at all — there is no identifier, no
 heading and no structure that distinguishes one from a paragraph that legitimately
@@ -4736,11 +4778,12 @@ mentions the same situation. So it carries the same standing note as the handove
 check above: **the phrasings get added as they are coined, and a line disappearing
 from this output is read as a question rather than as progress.** Every line it
 prints needs an eye on it, and the question to ask of each is whether it is the
-decision being made a second time or a place that quotes or qualifies it:
+decision being made a second time or a place that quotes or qualifies it; a
+line read so and found sound stands in
+`docs/handover-checks/second-statement.txt`.
 
-    grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md shared/*.md
-
-It prints nothing since 1 November 2026. From 9 October 2026, version 0.134.0,
+What it prints today that file holds. It fell silent on 1 November 2026. From
+9 October 2026, version 0.134.0, until then
 it printed one line, and it was sound: `build-work` quoted the old finish inside
 the paragraph that replaced it, which would read as a defect on the wording
 alone, which is the reason this check reports rather than judges; that quote was

@@ -1935,7 +1935,7 @@ their section.
 - Wrong: not stated
 - Should: not stated
 - Found: The loose-issue rule was written by appending, and the sentences it competes with were left standing.
-- Fix: `docs/skill-conventions.md` ""skills/build-work/SKILL.md:^## Unattended mode""
+- Fix: `scripts/devloop-handover-checks` ""skills/build-work/SKILL.md:^## Unattended mode""
 - Status: Built, never walked
 - Note: Stop cannot tell a finish from a wait at a gate and blocks by forcing the run on, SessionStart supplies facts the run already had. Built instead: the checks over the unattended finish and the second statement under Before a handover, run these
 
@@ -4916,7 +4916,7 @@ their section.
 - Wrong: not stated
 - Should: not stated
 - Found: Text inserted into a skill at load, measured on 17 September 2026 in eight runs against a throwaway plugin, and it divides into four findings and one open line.
-- Fix: `docs/skill-conventions.md` "grep -n -e '^!`' -e 'devloop-text' skills/*/SKILL.md | awk"
+- Fix: `scripts/devloop-handover-checks` "grep -n -e '^!`' -e 'devloop-text' skills/*/SKILL.md | awk"
 - Status: Built, never walked
 - Note: should: shared text is never inserted by cat on a path inside the plugin; every insert line goes through bin/devloop-text, and this check prints any line starting with the insert marker that is not one. Measured in runs 1 and 4 of 17 September 2026 against the throwaway plugin probe, the load aborting outside auto mode and the model fetching the text in it
 
@@ -5057,7 +5057,7 @@ their section.
 - Wrong: not stated
 - Should: not stated
 - Found: An install command handed to the user without being backed, measured on 6 September 2026 in `devloop-test-o`.
-- Fix: `docs/skill-conventions.md` "'picks up as soon as\|picks up once\|picks up the moment\|carry on when"
+- Fix: `scripts/devloop-handover-checks` "'picks up as soon as\|picks up once\|picks up the moment\|carry on when"
 - Status: Built, never walked
 - Note: picks up once added to the pattern, and the rule written beside the check that a line vanishing from its output is read as a question
 
@@ -5148,7 +5148,7 @@ their section.
 - Wrong: the command prints every backticked lower-case name in docs/roadmap.md that is not a directory under skills/, 129 lines on 23 September 2026, the twenty-two names under "Named, not built as skills" among them, so it can never be silent and the sentence above it is not what it checks
 - Should: subtract the names of that table as well, so that a line printed is a name the sentence forbids, and the section says that silence is green.
 - Found: The stock-take of what is built, closed on 23 September 2026.
-- Fix: `docs/skill-conventions.md` "for m in sorted(n) if len(m)>=6 and e(x,m)<=2]"
+- Fix: `scripts/devloop-handover-checks` "for m in sorted(n) if len(m)>=6 and e(x,m)<=2]"
 - Status: Built, never walked
 - Note: finding of the stock-take, concerns docs/skill-conventions.md at | tr -d '`' | sort -u) <(ls skills/ | sort)
 
@@ -5714,11 +5714,11 @@ their section.
 
 ### fourteen of the nineteen checks under Before a handover, run these have a fixed expected answer and run only where somebody starts them
 - Wrong: fourteen of the nineteen checks under "Before a handover, run these" have a fixed expected answer and run only where somebody starts them — the checks introduced by the fourteen sentences above
-- Should: they run in `.github/workflows/stock-take.yml` on every pull request, the five whose output somebody judges staying under the heading.
+- Should: they run in `.github/workflows/stock-take.yml` on every pull request, and the five whose output somebody judges run there too, the one on invocability against `docs/handover-checks/invocability.txt` and the four others each against a list of the lines that were read and found right, a new line or a line gone being red until the branch that changes it has read it and brought the list in line; `scripts/devloop-run-workflow`, which runs the workflow itself, stays a check run by hand.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: recorded 12 October 2026, point 8 of the order on the command reader; the five whose output somebody judges stay under the heading
+- Fix: `scripts/devloop-handover-checks` "return [(c, judge(root, c, path)) for c in CHECKS]"
+- Status: Walked
+- Note: recorded 12 October 2026, point 8 of the order on the command reader; until 23 November 2026 the five whose output somebody judges stayed under the heading
 
 ### the defect on the rule keeping runtimes out of the install question read recorded and not built while the question says nothing of runtimes since 5 October 2026
 - Wrong: the defect on the rule keeping runtimes out of the install question carries its evidence on the line of shared/install-question.md saying nothing of it is said since 5 October 2026.
