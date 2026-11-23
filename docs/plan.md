@@ -2008,6 +2008,10 @@ point 7 has them", built by the next order that changes
 that the order touching the same place builds such a block; and on the
 references to `build-work` step 3 point 7 in texts that are loaded elsewhere,
 built on the branch of that part.
+Reason: the rule of `docs/skill-conventions.md` that a finding in the code,
+the skills, the shared texts, the hooks, the programs or the workflow gets a
+block in every case. Not chosen: the findings in the report of the order
+alone, where they would stand nowhere in the repository.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
@@ -2502,7 +2506,7 @@ rule at its head. Which checks those are, how the workflow runs them without
 their standing at two places, and how each reports green and red, the person
 decides before the order. Correcting the statements of the documents that no
 branch mended stays here, last. Reason: these checks cost work at every
-handover, ten of the 32 merges from 5 to 22 November 2026 being consistency
+handover, ten of the 34 merges from 5 to 22 November 2026 being consistency
 audits, and the orders of the third part of (4) cut the twenty checks out of
 `docs/skill-conventions.md` and held quotes, letters and counts with
 throwaway scripts of their own; the reason for placing this milestone last,
