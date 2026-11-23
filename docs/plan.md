@@ -209,10 +209,13 @@ The things: the twelve skills down to their branches, `shared/`, since 15
 October 2026 `output-styles/`, `hooks/`,
 `bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
 the tool itself included; the
-twenty checks under "Before a handover, run these", seventeen until 28
+commands under "Before a handover, run these" and the one under
+"Before you change anything, run this", both outcomes of each — under the
+first heading, since 23 November 2026, the run of the workflow's steps alone,
+the other checks there being outcomes of `scripts/devloop-handover-checks`;
+until that day twenty checks stood there as commands, seventeen until 28
 September 2026, eighteen until 5 October 2026 and nineteen until 31 October
-2026, and the check under
-"Before you change anything, run this", both outcomes of each; the twenty
+2026; the twenty
 names under "Named, not built as skills", eleven as things of their own and
 nine as a note on the thing that does their work, the two side paths under
 "What is missing" in `README.md` among the eleven, since two names left the
@@ -2394,8 +2397,12 @@ measurement the split owes, since the roadmap holds no compacted run; and the
 set forbids "alone" before the end of Stage 1, so the run is attended that far.
 
 Conventions: "Text shared between skills"; "Registering a skill"; the checks
-under "Before a handover, run these" that count twelve files; "A count lives
-in one place"; the delegation claim in the roadmap, measured first.
+under "Before a handover, run these" that hold a line or a count for every
+skill, the number read off `skills/*/SKILL.md` by
+`scripts/devloop-handover-checks`, and the list
+`docs/handover-checks/invocability.txt` with its line for every skill; "A
+count lives in one place"; the delegation claim in the roadmap, measured
+first.
 
 Recorded on 12 October 2026, the roadmap entry of that date on the decisions:
 one session for a whole run can become a problem on larger ideas and is not
@@ -2514,6 +2521,79 @@ that the records are brought in line once after the texts they describe have
 stopped moving, holds for that correcting and not for checks that come back.
 Not chosen: this milestone last as a whole, as decided on 5 November 2026,
 under which every audit until then holds these by hand.
+
+Decided on 23 November 2026 by the person, decisions (a) to (h) of the roadmap
+entry of that date, "The checks before a handover run as one program on every
+pull request", which builds the checks of decision (s) and decides the form of
+the references. (a) The five checks whose output somebody judges run in the
+workflow too: the one on invocability against
+`docs/handover-checks/invocability.txt`, the four others each against a list
+of the lines that were read and found right; a new line or a line gone is red,
+and the branch that changes it reads it and brings the list in line.
+`scripts/devloop-run-workflow` stays a check run by hand, since it runs the
+workflow itself. Reason: decision (s) builds these checks first because they
+cost work at every handover; by hand the checks with the most reading would
+have stayed, and a line that vanishes would have dropped out in silence, as
+the site with "picks up once" did on 7 September 2026. The output of these
+checks changed in 3 of the 35 merges from 5 to 22 November 2026 and in 17 of
+the 113 from 1 October 2026 to that day, each day as its commit carries it,
+measured with their commands of `c047c03` over `skills/` and `shared/` at
+every commit of the first-parent line of main, compared without line numbers.
+Not chosen: the five by hand under the heading, the should since 12 October
+2026 of the block "fourteen of the nineteen checks under Before a handover,
+run these have a fixed expected answer and run only where somebody starts
+them" of `docs/defects.md`, which this decision changes. (b) The checks stand
+in one program under `scripts/` that the workflow runs as a step; the same
+program later takes the references between the documents; the conventions keep
+the reasons and name for each check its name in the program. Reason: it runs
+by itself in seconds, after every change to a skill too; its self-test walks
+every red case, where until then an order made each by hand; one new program
+and not two. Not chosen: each check a step of its own of the job `stock-take`,
+the form of four rules of the conventions, under which the checks run here
+only with the whole workflow and every red case is made by hand; and the
+workflow cutting the commands out of `docs/skill-conventions.md`, where green
+stands in prose alone and an indented quote under the heading would run as a
+command. (c) The program holds the four kinds of references of decision (s),
+no counts and no quoted place in general. Reason for the counts: a check would
+hold only the counts written in its form and so rest on the memory of whoever
+writes, whose gaps the audits find; the counts that go stale most often "A
+count lives in one place" keeps out of the text that carries no date, and the
+audit of 6 November 2026 replaced three. Reason for the quoted places: of 795
+quotes behind a file name in the five documents under `docs/`, the archive
+left out, at `c047c03`, 158 do not stand in the file named, nearly all of them
+heads of entries or older wordings beside the name of another file; such a
+check would be red from its first day. Not chosen: counts in a fixed form that
+the program computes again. (d) The program reads the references only in the
+lines a branch adds or changes, with their paragraph; a head a branch adds
+stands nowhere else; lines that move into a new archive count as moved. The
+breaks that stand today the order on the references finds once, with a full
+run, and writes as blocks. Every find is reported with file, line, text and
+what makes it green; the last line opens with `green:` or `red:`, and the
+program ends with 0, 1 or 2. Reason: what the four kinds refer to, the entries
+on main and the archive, does not change; a new break arises in a line the
+branch writes, and reading everything would be red on breaks no branch may
+mend. Not chosen: reading everything, with a list of the known breaks. (e) The
+lists stand under `docs/handover-checks/`. Reason: the root directory holds
+the parts of the plugin, and the lists are records of the development like
+`docs/stock-take.tsv`. Not chosen: `handover-checks/` in the root directory.
+(f) The check of the default branch gets a second line that counts the files
+carrying the opening line `DEFAULT=$(git symbolic-ref`; green is `1` and `4`,
+the way the check of the notice holds its count. Reason: the check was green
+where the block was missing in all four files, four checksums of nothing being
+one line, measured in a throwaway clone at `c047c03`. Not chosen: leaving the
+gap. (g) The check on locked skills prints a line for every place and not for
+every file, in the form of the three other lists, file and text without the
+line number. Reason: by (a) nobody reads the output any more, so a second
+naming in a file the list carries already has to turn red as a new line. Not
+chosen: a line for every file. (h) The self-test of the program runs in the
+job hooks on every system under macOS alone. Reason: nobody hands over from
+Alpine, and a red there would hold a pull request up for a system that is not
+needed for it. Not chosen: under Alpine too. Built of decision (s) with that
+entry: the checks, in `scripts/devloop-handover-checks` with its self-test and
+its lists, run by two steps of the job `stock-take` and, the self-test, by the
+job hooks on every system. Not built: the references between the documents,
+whose form (c) and (d) decide; the order on them follows, before order (5) of
+milestone 12 as (s) places it.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A
