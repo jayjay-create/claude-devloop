@@ -13205,11 +13205,12 @@ and for the proofs of closings.
 
   23 November 2026, version 0.194.0, raised once from 0.193.0 by the first
   commit. On `task/handover-checks-program`, off `origin/main` at `c047c03`,
-  in four commits: `85a9a57`, under the head of this entry, the program, its
+  in five commits: `85a9a57`, under the head of this entry, the program, its
   lists and the steps of the workflow; `b0950c7`, "The conventions name each
   check before a handover, the program runs it", the documents; the third,
-  which writes this entry and brings `docs/stock-take.tsv` in line; and the
-  fourth, the runs below. The order: the checks of decision (s) of the entry
+  which writes this entry and brings `docs/stock-take.tsv` in line; the
+  fourth, the runs below; and the fifth, at the merge, the corrections at the
+  end of this entry. The order: the checks of decision (s) of the entry
   "Every handover and the steps for the PATH follow surface and system", in
   four parts. The report stands on this machine as
   `~/devloop-handover-checks.md`, in German, outside the repository.
@@ -13360,13 +13361,62 @@ and for the proofs of closings.
   a run the branch adds: 0. Its self-test: exit 0, 159 cases.
 
   **Open.** The references between the documents of decision (s), whose form
-  (c) and (d) decide: the next order, before order (5) of milestone 12. And
-  what the platform alone measures, on the pull request of this branch: the
-  two steps of the job `stock-take` under ubuntu-latest on the merge ref, the
-  self-test under macos-latest in the job hooks on every system, and the line
-  that leaves it out under ubuntu-latest, windows-latest and alpine. No run
+  (c) and (d) decide: the next order, before order (5) of milestone 12. No run
   recorded here brings about a red end of the program or of a step; the
   self-test walks each red end of a check in its fixture.
+
+  **The corrections of the merge**, of 23 November 2026, the fifth commit,
+  after the checks of pull request #264 at the fourth commit, `8a8c413`, were
+  green and before the merge. First, the sentence of `docs/plan.md` under
+  milestone 15 on the quoted places, in (c): it said of the 158 "nearly all of
+  them heads of entries or older wordings beside the name of another file",
+  where nobody had read more than the first 40 of them and the script sorts
+  none; it says now "and of the first 40 of them, read by hand that day,
+  nearly all were heads of entries or older wordings beside the name of
+  another file". Second, the first paragraph of this entry said "in four
+  commits", and "Open." named as open what the platform alone measures: the
+  two steps of the job `stock-take` under ubuntu-latest, the self-test under
+  macos-latest in the job hooks on every system and the line that leaves it
+  out under ubuntu-latest, windows-latest and alpine. The platform measured
+  them on the pull request, run G below.
+
+  **Decided at the merge**, by the person on 23 November 2026, without a
+  question, by the rule that nothing is asked where one way carries a great
+  disadvantage and the other none, on the points the report of the order put
+  to the person. The 38 things of kind check command go with their 405 runs
+  and are not renamed onto the program: renamed, not one of the runs would
+  count, every line of the program being younger than its version, and a run
+  of 28 September 2026 would stand on a program that did not exist that day;
+  the table did the same where lines went to another file, as
+  `docs/roadmap-archive-1.md` records at lines 8471 and 26880. A behavior for
+  every case of the self-test at a check, 51, and not one red end for every
+  check, 43: only so do the two gaps of (f) and (g) stand as behaviors of
+  their own. The run on the block of (a) is run W, which runs the step that
+  runs the program, as the should of the block speaks of the workflow. The two
+  steps of the job `stock-take` count as walked by run W on the Mac; run G
+  shows them under ubuntu-latest as well, and no run is recorded for that.
+
+  **The run of the platform**, run 45180097255 of the workflow on pull
+  request #264 at the fourth commit, `8a8c413`, under 0.194.0, on 23 November
+  2026 in UTC, read in the log of each job with `gh run view --job`, every job
+  green.
+
+  Run G, the jobs on pull request #264, run 45180097255: in the job
+  stock-take under ubuntu-latest the step of the checks printed "green: 19
+  checks green, 0 red" at 13:04:43 and the step of the self-test "SELF-TEST
+  PASSED: 39 cases" at 13:04:44; in the hooks step of the job hooks on every
+  system, under macos-latest "== devloop-handover-checks --self-test" at
+  13:05:31 over "SELF-TEST PASSED: 39 cases" at 13:05:39, and under
+  ubuntu-latest at 13:04:34, alpine at 13:04:32 and windows-latest at
+  13:10:42 the line "== devloop-handover-checks --self-test left out here, it
+  runs under macos-latest alone: ubuntu-latest has it in the job stock-take,
+  and from Windows and Alpine no handover is made". Recorded is one run, on
+  the behavior no run on the Mac walks, the line that leaves the self-test out
+  on ubuntu-latest, windows-latest and alpine; the other behaviors run W
+  walked already. The tool at the fifth commit: exit 0, broken records 0,
+  uncovered lines 0 of 4916; Built, never walked 1634 and Walked 867, of them
+  program outcome 175 and 401, the one behavior run G walks; every other
+  figure as at the fourth.
 
 ## Decisions taken against
 

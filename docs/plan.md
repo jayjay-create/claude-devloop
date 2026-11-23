@@ -2560,9 +2560,10 @@ writes, whose gaps the audits find; the counts that go stale most often "A
 count lives in one place" keeps out of the text that carries no date, and the
 audit of 6 November 2026 replaced three. Reason for the quoted places: of 795
 quotes behind a file name in the five documents under `docs/`, the archive
-left out, at `c047c03`, 158 do not stand in the file named, nearly all of them
-heads of entries or older wordings beside the name of another file; such a
-check would be red from its first day. Not chosen: counts in a fixed form that
+left out, at `c047c03`, 158 do not stand in the file named, and of the first
+40 of them, read by hand that day, nearly all were heads of entries or older
+wordings beside the name of another file; such a check would be red from its
+first day. Not chosen: counts in a fixed form that
 the program computes again. (d) The program reads the references only in the
 lines a branch adds or changes, with their paragraph; a head a branch adds
 stands nowhere else; lines that move into a new archive count as moved. The
