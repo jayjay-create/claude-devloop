@@ -13418,6 +13418,150 @@ and for the proofs of closings.
   program outcome 175 and 401, the one behavior run G walks; every other
   figure as at the fourth.
 
+- **One entry held, forty-one places mended, two blocks added**
+
+  23 November 2026, version 0.194.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/audit-handover-checks`, off `origin/main` at `265846a`, in
+  one commit: `docs/plan.md`, `docs/skill-conventions.md`, `docs/defects.md`,
+  `docs/stock-take.tsv` and this entry. The order: the consistency audit after
+  pull request #264, in three parts, the first two holding and reporting
+  without a change, the third mending. The report stands on this machine as
+  `~/devloop-audit-handover-checks.md`, in German, outside the repository.
+
+  **Held.** The entry "The checks before a handover run as one program on
+  every pull request", sentence by sentence, against the five commits of that
+  pull request, the tool at `c047c03`, at the fourth and the fifth commit and
+  at `265846a`, and run 45180097255 of the platform, the measurements (a) and
+  (c) run anew; and the documents #264 changed, against the program, the
+  workflow, the lists and the table, with twelve search patterns over the
+  repository. It holds, in its figures and its runs, but for what follows.
+
+  **Found in the entry held, and put right here**, each with its place in this
+  file, the wrong text and the right one; that entry stands as written. Lines
+  13388 to 13389: "a run of 28 September 2026"; right: "a run of 19 September
+  2026", the date of 17 of the 405 runs, none of which is of 28 September
+  2026. Line 13391: "at lines 8471 and 26880"; right: "at line 8471", since
+  the entry of `docs/roadmap-archive-1.md` from line 26506 on does not say
+  that lines went to another file. And it leaves out two things. Its first
+  commit, `85a9a57`, changed the head of `scripts/devloop-stock-take` too,
+  lines 105 to 109. Its second, `b0950c7`, moved the Fix of four further
+  blocks from `docs/skill-conventions.md` to
+  `scripts/devloop-handover-checks`, the state of none changing: "nothing
+  enforces the loose-issue rule, a guard examined and rejected, two text
+  checks built instead", "a file in the plugin read with cat at load is never
+  inserted, the load aborting outside auto mode and the model fetching the
+  text itself in it", "rewriting the resumption sentence dropped the site out
+  of the handover check that finds sites by wording" and "the check on names
+  in the roadmap prints every name under "Named, not built as skills" and can
+  never be silent".
+
+  **Found in a document, and mended**, forty-one places, each with its place
+  at `265846a`, the wrong text and the right one.
+
+  `docs/skill-conventions.md`, seven. Lines 406 to 408: "and a check under
+  "Before a handover, run these" holds the twelve copies of that one paragraph
+  together, because"; right: "and the check `notice` under "Before a handover,
+  run these" holds the copies of that one paragraph together, one in every
+  skill, because". Lines 4211 to 4213: "because the check under "Before a
+  handover, run these" prints a locked skill named in backticks by another
+  file."; right: "because the check `locked-skills` under "Before a handover,
+  run these" prints every line of another file that names a locked skill in
+  backticks, and a line its list does not carry is red." Line 4397: "gives on
+  its last line the count of the"; right: "gives on its first line the count
+  of the", the last line giving the green and the red. Lines 4499 to 4500: "so
+  it is the one place a checksum over copies remains."; right: "so it is the
+  one place in the skills where a checksum over copies remains.", the check
+  `default-branch` checksumming seven lines in four files too. Lines 1252 to
+  1253: "a line in twelve skills would reach it twelve times and after each
+  load."; right: "a line in every skill would reach it as many times as there
+  are skills, and after each load." Line 4090: "inserted into all twelve
+  from"; right: "inserted into every skill from". Line 4092: "and five of the
+  twelve files never name the mark at all."; right: "and five of the skills'
+  files never name the mark at all."
+
+  `docs/plan.md`, six. Lines 1460 to 1461: "it is the sixteenth check before a
+  handover and runs"; right: "it is a check before a handover and runs". Line
+  2516: "ten of the 34 merges from 5 to 22 November 2026 being consistency";
+  right: "ten of the 34 merges from 5 to 22 November 2026, #228 to #261, being
+  consistency", the decision under it counting 35 in the same days, #262 among
+  them. Line 2552: "the form of four rules of the conventions, under which";
+  right: "the form other rules of the conventions take, under which". Lines
+  2563 to 2565: "and of the first 40 of them, read by hand that day, nearly
+  all were heads of entries or older wordings beside the name of another
+  file;"; right: "and of the first 40 of them, read by hand on 23 November
+  2026, 27 stand elsewhere than in the file named — 8 heads of entries, 6
+  heads of rules or sections, 7 approved wordings of what a run says, 4
+  subjects of commits and 2 titles of blocks or finds —, 9 are older wordings
+  of that file, found in it at the commit the place names, and 4 are found in
+  it at no commit read;"; the entry held quotes the old sentence at lines
+  13374 to 13376 of this file, as it stood at its merge. Line 208: "The
+  things: the twelve skills down"; right: "The things: the skills down". Lines
+  2386 to 2387: "The count of skills changes with it, and every place that
+  counts twelve changes too."; right: "The count of skills changes with it."
+
+  `docs/defects.md`, four, each in a Note. Line 5721: "until 23 November 2026
+  the five whose output somebody judges stayed under the heading"; right:
+  "until 23 November 2026 the should left the five whose output somebody
+  judges under the heading, run by hand". Line 5995: "under Beside the
+  twelve,"; right: "under Beside the milestones,", the words `docs/plan.md`
+  opens that paragraph with. Line 1859: "stands in all twelve skills"; right:
+  "stands in every skill". Line 2090: "When a command does not answer, in all
+  twelve skills,"; right: "When a command does not answer, in every skill,".
+
+  `docs/stock-take.tsv`, twenty-four, each in a note. Line 2282: "held to them
+  by the nineteenth check"; right: "held to them by the check `status-forms`".
+  The 23 on `scripts/devloop-run-workflow`, the notes of its 22 things at
+  lines 6907 to 6928 and the note of the green end of the check command that
+  runs it at line 6905, called the run of the workflow's steps "the sixteenth
+  check", where the program counts the checks and that run is none of its
+  nineteen; right: "run as the check of the workflow's steps under Before a
+  handover, run these" in the 22 and "; the run of the workflow's steps" at
+  the end of the one.
+
+  **Two blocks**, written with this entry under milestone 15: "the head of
+  scripts/devloop-stock-take counts the skills as twelve at two places, where
+  a count lives in one place" and "the head of scripts/devloop-stock-take says
+  the two check headings of the conventions are run, where since 23 November
+  2026 the paragraphs under the second are not".
+
+  **Decided on 23 November 2026**, four, on points the first two parts put up,
+  each with its reason and what was not chosen. (1) The reason for the quoted
+  places under (c) in `docs/plan.md` carries the count of this audit over the
+  first 40 finds where it said "nearly all", which the count does not bear: 17
+  of the 40, and at most 21, are heads of entries or older wordings. Not
+  chosen: striking the half-sentence, after which the reason would no longer
+  say what the 158 are. (2) "the form of four rules of the conventions" loses
+  its figure: which four were meant the text does not say, and the reason does
+  not need them. Not chosen: naming the four. (3) The count of the skills
+  leaves now every place outside the code that "A count lives in one place,
+  and everywhere else points at it." keeps free of it; the two places in the
+  head of `scripts/devloop-stock-take` become a block for the next order that
+  changes `scripts/` and raises the version anyway, which this one does not.
+  Not chosen: leaving the places as they stand until milestone 9, with which
+  the count changes. (4) In the head of `scripts/devloop-stock-take` the
+  sentence on the two check headings is set right, and the line of Built stays
+  around both sections: no evidence stands on a paragraph under "Before a
+  handover, run these" that says what a check of the program holds, the two
+  that stand under that heading being those of the run of the workflow's
+  steps, whose command is run, and a fix of those checks lands in
+  `scripts/devloop-handover-checks`. A block carries it to the next order that
+  changes `scripts/`. Not chosen: narrowing the rule to command blocks, a
+  change of the tool with a case for a gap no block has met.
+
+  **The tool and the checks.** Before, on `265846a`: exit 0, broken records 0,
+  uncovered lines 0 of 4916; Undetermined 24, Recorded, not built 241, Built,
+  never walked 1634, Walked 867, Closed 80. After: Recorded, not built 243, of
+  them defect 232, and milestone 15 at 106 with 36 Recorded, not built, the
+  two new blocks; every other figure as before, and nothing Walked on the
+  branch without a run. `scripts/devloop-handover-checks`, in `env -i
+  PATH=/usr/bin:/bin bash --noprofile --norc`, before the first change and
+  after the last: exit 0, "green: 19 checks green, 0 red". The run of the
+  workflow's steps was no part of the order; the head was held by hand to the
+  rules of the title step, 57 characters and no find. No run is recorded, and
+  no line of the fixed forms is written, no block being removed, renamed or
+  given another should. Open stay the two blocks.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

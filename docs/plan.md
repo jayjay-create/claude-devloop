@@ -205,7 +205,7 @@ defects as rows of the table, of findings in the table and of the lines of
 "Known gaps" in the search set, it quotes how the milestone stood when it
 landed.
 
-The things: the twelve skills down to their branches, `shared/`, since 15
+The things: the skills down to their branches, `shared/`, since 15
 October 2026 `output-styles/`, `hooks/`,
 `bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
 the tool itself included; the
@@ -1457,7 +1457,7 @@ four blocks of `scripts/devloop-run-workflow` decided: the program is
 left on purpose under Windows with both its blocks, the block of 11 November
 2026 on a step past the job's timeout and the block of 16 November 2026 on a
 step that ends in time, and runs there as it runs. Reason: no skill, hook,
-program under `bin/` or `README.md` starts the program; it is the sixteenth
+program under `bin/` or `README.md` starts the program; it is a
 check before a handover and runs under Windows by hand alone, over a step
 with shell bash, and the job hooks on every system leaves its self-test out
 there; a build would take a job object of Windows over ctypes that the job
@@ -2384,7 +2384,7 @@ reading off the session log of what its other halves loaded when called. Then
 every skill as `scripts/devloop-expand` prints it, read against the limit the
 vendor names — 5,000 tokens per loaded skill re-attached after a compaction,
 25,000 in all — and split where it has to be. The count of skills changes with
-it, and every place that counts twelve changes too.
+it.
 
 Ends with the full run on a fresh project on which the gate is set up — "on
 the gated bench" until 5 October 2026, when the existing benches went out of
@@ -2513,12 +2513,13 @@ rule at its head. Which checks those are, how the workflow runs them without
 their standing at two places, and how each reports green and red, the person
 decides before the order. Correcting the statements of the documents that no
 branch mended stays here, last. Reason: these checks cost work at every
-handover, ten of the 34 merges from 5 to 22 November 2026 being consistency
-audits, and the orders of the third part of (4) cut the twenty checks out of
-`docs/skill-conventions.md` and held quotes, letters and counts with
-throwaway scripts of their own; the reason for placing this milestone last,
-that the records are brought in line once after the texts they describe have
-stopped moving, holds for that correcting and not for checks that come back.
+handover, ten of the 34 merges from 5 to 22 November 2026, #228 to #261,
+being consistency audits, and the orders of the third part of (4) cut the
+twenty checks out of `docs/skill-conventions.md` and held quotes, letters
+and counts with throwaway scripts of their own; the reason for placing this
+milestone last, that the records are brought in line once after the texts
+they describe have stopped moving, holds for that correcting and not for
+checks that come back.
 Not chosen: this milestone last as a whole, as decided on 5 November 2026,
 under which every audit until then holds these by hand.
 
@@ -2549,7 +2550,7 @@ the reasons and name for each check its name in the program. Reason: it runs
 by itself in seconds, after every change to a skill too; its self-test walks
 every red case, where until then an order made each by hand; one new program
 and not two. Not chosen: each check a step of its own of the job `stock-take`,
-the form of four rules of the conventions, under which the checks run here
+the form other rules of the conventions take, under which the checks run here
 only with the whole workflow and every red case is made by hand; and the
 workflow cutting the commands out of `docs/skill-conventions.md`, where green
 stands in prose alone and an indented quote under the heading would run as a
@@ -2561,9 +2562,12 @@ count lives in one place" keeps out of the text that carries no date, and the
 audit of 6 November 2026 replaced three. Reason for the quoted places: of 795
 quotes behind a file name in the five documents under `docs/`, the archive
 left out, at `c047c03`, 158 do not stand in the file named, and of the first
-40 of them, read by hand that day, nearly all were heads of entries or older
-wordings beside the name of another file; such a check would be red from its
-first day. Not chosen: counts in a fixed form that
+40 of them, read by hand on 23 November 2026, 27 stand elsewhere than in the
+file named — 8 heads of entries, 6 heads of rules or sections, 7 approved
+wordings of what a run says, 4 subjects of commits and 2 titles of blocks or
+finds —, 9 are older wordings of that file, found in it at the commit the
+place names, and 4 are found in it at no commit read; such a check would be
+red from its first day. Not chosen: counts in a fixed form that
 the program computes again. (d) The program reads the references only in the
 lines a branch adds or changes, with their paragraph; a head a branch adds
 stands nowhere else; lines that move into a new archive count as moved. The

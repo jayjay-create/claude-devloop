@@ -403,10 +403,10 @@ no skill quotes the form to explain it. This file may; a skill may not.
 point.** With `disableSkillShellExecution` set, every insert line reads
 `[shell command execution disabled by policy]` and no shared text arrives —
 the language block among it. So every skill opens, in its own text, with the
-same paragraph telling the run what to say in that case and to stop, and a
-check under "Before a handover, run these" holds the twelve copies of that one
-paragraph together, because it is the one thing that cannot come from the
-shared source.
+same paragraph telling the run what to say in that case and to stop, and the
+check `notice` under "Before a handover, run these" holds the copies of that
+one paragraph together, one in every skill, because it is the one thing that
+cannot come from the shared source.
 
 **What is shared today** is of three kinds, and `ls shared/` is the list. The
 first is what stood byte-identical in more than one skill on 17 September 2026
@@ -1249,8 +1249,9 @@ October 2026 on the thinking part of the two closing runs measured such text
 at thirty-seven places in the model's progress updates, which the session
 keeps as a summary and shows collapsed. A style is sent with every request
 of a session in which the plugin is enabled, which no skill's text is, and it
-reaches the model before the first skill is loaded; a line in twelve skills
-would reach it twelve times and after each load. It is forced because a
+reaches the model before the first skill is loaded; a line in every skill
+would reach it as many times as there are skills, and after each load. It is
+forced because a
 style the person has to pick is a step they would have to know, against
 "The session start tells you where you are" in README.md. A session in which
 no skill of devloop is loaded changes nothing under it, the style saying so
@@ -4087,9 +4088,10 @@ every place a skill reads the mode off a file: the forks in `plan-work`,
 `start-work` name it, and since 18 September 2026 those six carry the file's
 name and meaning from `shared/mark.md`, inserted at load, with what follows on
 each path still written in the skill. The block under "When a command does not answer",
-inserted into all twelve from `shared/command-does-not-answer.md`, forks on
+inserted into every skill from `shared/command-does-not-answer.md`, forks on
 whether somebody is there and reads nothing — it was not changed for the mark —
-and five of the twelve files never name the mark at all. So where a skill does fork on the file, it no longer
+and five of the skills' files never name the mark at all. So where a skill does
+fork on the file, it no longer
 carries the mode as a word from the start of the session. Since 9 October 2026
 two hooks read it: `hooks/permission-request-unattended.sh` answers no to every
 permission prompt while the mark stands, unless its third line names another session,
@@ -4208,9 +4210,11 @@ context for the sake of one call; and the skill routes into four destinations
 where the close needs one; and, since 27 September 2026, the listing of skills
 has a budget, so one more entry can push another out.
 `record-lessons` stays the typed command for what a
-person notices, and the shared block names no skill, because the check under
-"Before a handover, run these" prints a locked skill named in backticks by
-another file. The entry of 14 September 2026 in `docs/roadmap-archive-1.md` records the
+person notices, and the shared block names no skill, because the check
+`locked-skills` under "Before a handover, run these" prints every line of
+another file that names a locked skill in backticks, and a line its list does
+not carry is red. The entry of 14 September 2026 in
+`docs/roadmap-archive-1.md` records the
 build.
 
 Everything else is model-invocable, because the chain reaches it from
@@ -4394,7 +4398,7 @@ was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
 **The checks are counted by the program, and by no sentence here.**
-`scripts/devloop-handover-checks` gives on its last line the count of the
+`scripts/devloop-handover-checks` gives on its first line the count of the
 checks it holds; the run of the workflow's steps is the one check beside them,
 and its command block the one block under this heading. Until 23 November 2026
 this paragraph opened "Twenty checks, twenty command blocks" and asked to
@@ -4496,8 +4500,9 @@ how many skills there are the program reads off the files `skills/*/SKILL.md`.
 
 The notice above the first insert line is the same paragraph in every skill:
 `notice`. It is the one paragraph that cannot come from the shared source,
-being what the run reads when nothing was inserted, so it is the one place a
-checksum over copies remains. One line of checksum means all agree; the count
+being what the run reads when nothing was inserted, so it is the one place in
+the skills where a checksum over copies remains. One line of checksum means
+all agree; the count
 of the files that carry the paragraph's opening line says none is missing,
 held against the number of the files `skills/*/SKILL.md`, which the program
 counts.
