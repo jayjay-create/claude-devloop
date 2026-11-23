@@ -1856,7 +1856,7 @@ their section.
 - Found: A refused command was repeated in silence, and that was measured on 31 August 2026.
 - Fix: `shared/command-does-not-answer.md` "permission or safety check refused is said, though the second went through:"
 - Status: Built, never walked
-- Note: the block When a command does not answer stands in all twelve skills, since 17 to 18 September 2026 as shared text inserted at load. The boundary, an empty answer against a missing one, is drawn at the readiness query, the in-flight query and the entry point's query; by the roadmap entry of 17 October 2026 on the reports of what was done a refusal the second attempt got past went unsaid, reversing the report of the first refusal beside the answer built here; since the person's decision of the same day, built by the addendum to that entry, a first attempt a permission or safety check refused is said in one line naming the check, the command and that the second attempt went through, in the next message that ends the turn with text, with nobody there in the pull request of the work or its issue, while a command that only did not answer and answered the second time is not said; a command that answers on neither attempt is said where it changes what the person gets, with the command and the message
+- Note: the block When a command does not answer stands in every skill, since 17 to 18 September 2026 as shared text inserted at load. The boundary, an empty answer against a missing one, is drawn at the readiness query, the in-flight query and the entry point's query; by the roadmap entry of 17 October 2026 on the reports of what was done a refusal the second attempt got past went unsaid, reversing the report of the first refusal beside the answer built here; since the person's decision of the same day, built by the addendum to that entry, a first attempt a permission or safety check refused is said in one line naming the check, the command and that the second attempt went through, in the next message that ends the turn with text, with nobody there in the pull request of the work or its issue, while a command that only did not answer and answered the second time is not said; a command that answers on neither attempt is said where it changes what the person gets, with the command and the message
 
 ### the mergeStateStatus enumeration had no case for no value at all
 - Wrong: not stated
@@ -2087,7 +2087,7 @@ their section.
 - Found: Two guard false positives, and a run that stepped around both, measured on 6 September 2026 in `devloop-test-o`.
 - Fix: `shared/command-does-not-answer.md` "refused; a text reworded until the match no longer catches is the same"
 - Status: Built, never walked
-- Note: the negative half of When a command does not answer, in all twelve skills, and build-work's unattended answer as a third case of the shape at the turn-end hook and the refused arming
+- Note: the negative half of When a command does not answer, in every skill, and build-work's unattended answer as a third case of the shape at the turn-end hook and the refused arming
 
 ### git reset --hard without querying the state first took uncommitted work with it
 - Wrong: not stated
@@ -5718,7 +5718,7 @@ their section.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `scripts/devloop-handover-checks` "return [(c, judge(root, c, path)) for c in CHECKS]"
 - Status: Walked
-- Note: recorded 12 October 2026, point 8 of the order on the command reader; until 23 November 2026 the five whose output somebody judges stayed under the heading
+- Note: recorded 12 October 2026, point 8 of the order on the command reader; until 23 November 2026 the should left the five whose output somebody judges under the heading, run by hand
 
 ### the defect on the rule keeping runtimes out of the install question read recorded and not built while the question says nothing of runtimes since 5 October 2026
 - Wrong: the defect on the rule keeping runtimes out of the install question carries its evidence on the line of shared/install-question.md saying nothing of it is said since 5 October 2026.
@@ -5856,6 +5856,22 @@ their section.
 - Status: Closed, corrected in the document: `docs/skill-conventions.md` carries "no line at the session start is built for it".
 - Note: found 6 November 2026 by the order on the language recorded, reading the places that name the records of `environment.md`, outside that order and not built by it; in milestone 15, the group of the documents' statements about the set; closed 6 November 2026 by the consistency audit of that day, the roadmap entry of that date on the counts and references of the control documents: the sentence now names the reader and the way the guard reads through it
 
+### the head of scripts/devloop-stock-take counts the skills as twelve at two places, where a count lives in one place
+- Wrong: `scripts/devloop-stock-take` says in its head "Every branch of the twelve skills" and "what it claims about the twelve skills", where `docs/skill-conventions.md` under "A count lives in one place, and everywhere else points at it." writes a figure describing something this repository holds once, where the thing itself is
+- Should: the head names the skills without their number
+- Found: One entry held, forty-one places mended, two blocks added
+- Fix: none
+- Status: Recorded, not built
+- Note: found 23 November 2026 by the consistency audit after pull request #264, with the places outside the code that counted the skills, which that audit's branch mended; to be built by the next order that changes scripts/
+
+### the head of scripts/devloop-stock-take says the two check headings of the conventions are run, where since 23 November 2026 the paragraphs under the second are not
+- Wrong: `scripts/devloop-stock-take` says in its head that the line of Built is drawn around the two check headings of `docs/skill-conventions.md` "because they are run - somebody executes them before a handover -", where since 23 November 2026 one command block stands under "Before a handover, run these" and its paragraphs say what the checks of `scripts/devloop-handover-checks` hold, run by nobody, while evidence on such a paragraph still counts as built
+- Should: the head says what is run under each of the two headings, and that evidence on a paragraph under "Before a handover, run these" counts as built though nobody runs it, the line staying around the whole section because a fix of those checks lands in `scripts/devloop-handover-checks`
+- Found: One entry held, forty-one places mended, two blocks added
+- Fix: none
+- Status: Recorded, not built
+- Note: found 23 November 2026 by the consistency audit after pull request #264; decided on 23 November 2026 to set the sentence right and keep the line, no evidence standing on such a paragraph; to be built by the next order that changes scripts/
+
 ## Without a milestone
 
 ### diagnose-bug opens with three routes in and names a fourth further down
@@ -5992,7 +6008,7 @@ their section.
 - Found: The aim is idea to a running application; this gets to merged code.
 - Fix: none
 - Status: Closed, left on purpose: decided in `docs/plan.md` at "decided on 25 September 2026 to be built".
-- Note: closed 5 November 2026 as left on purpose at docs/plan.md under Beside the twelve, where one named skill waits and the other three side paths were answered, decision (14) of the roadmap entry of 5 November 2026 on the sorting into the milestones
+- Note: closed 5 November 2026 as left on purpose at docs/plan.md under Beside the milestones, where one named skill waits and the other three side paths were answered, decision (14) of the roadmap entry of 5 November 2026 on the sorting into the milestones
 
 ### README carried a rule about a hook gating on a state file's existence that no hook had
 - Wrong: not stated
