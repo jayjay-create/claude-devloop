@@ -13105,8 +13105,9 @@ and for the proofs of closings.
 
   22 November 2026, version 0.193.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
-  changes. On `task/audit-2026-11-22`, off `origin/main` at `1c92a8b`, in one
-  commit: `docs/plan.md`, `docs/stock-take.tsv` and this entry. The order: the
+  changes. On `task/audit-2026-11-22`, off `origin/main` at `1c92a8b`, in two
+  commits, the second the corrections of the merge: `docs/plan.md`,
+  `docs/rationale.md`, `docs/stock-take.tsv` and this entry. The order: the
   consistency audit before the handover, after pull request #262. It held the
   entry "Every handover and the steps for the PATH follow surface and system"
   sentence by sentence against the seven commits of that pull request, read
@@ -13136,22 +13137,22 @@ and for the proofs of closings.
   Second, lines 12694 to 12701 of the same entry: "their reasons and what was
   not chosen in `docs/plan.md`: (f) …; (g) …; (h) …; (j) four findings of the
   third part get a block each, written with this entry."; `docs/plan.md`
-  carries (j) under milestone 12 without a reason and without what was not
-  chosen; right: "their reasons and what was not chosen in `docs/plan.md` for
-  (f) to (h), and (j) there without either, its reason standing in the Note of
-  each of its blocks". Both stand in that entry as written and are put right
+  carried (j) under milestone 12 without a reason and without what was not
+  chosen; it carries both since the corrections of the merge, below, and that
+  sentence holds. The first stands in that entry as written and is put right
   here. Third, `docs/plan.md` under milestone 15, in the decision of 22
   November 2026: "ten of the 32 merges from 5 to 22 November 2026"; `git log
   --first-parent` at `12cc12a` dates 34 merges in those days, #228 to #261; it
   reads "ten of the 34 merges" now.
 
-  **Decided on 22 November 2026** by the person, in the order of this audit: a
-  behavior outside the places of #262 whose name names several branches by the
-  surface, the system, the form or the shell at once, in the sense of (q) of
-  its entry, is split where it carries no run, one behavior for each branch,
-  by the head of `scripts/devloop-stock-take`. Reason: that of (q), the tool's
-  rule may undercount and never overcount. Four were found, none with a run:
-  two of `shared/merge-handover.md`, whose text says after the command under
+  **Decided on 22 November 2026** without a question, by the reason of (q),
+  and confirmed by the person with the order of this audit: a behavior outside
+  the places of #262 whose name names several branches by the surface, the
+  system, the form or the shell at once, in the sense of (q) of its entry, is
+  split where it carries no run, one behavior for each branch, by the head of
+  `scripts/devloop-stock-take`. Reason: that of (q), the tool's rule may
+  undercount and never overcount. Four were found, none with a run: two of
+  `shared/merge-handover.md`, whose text says after the command under
   `terminal` what it does not say under `desktop`, and two of
   `scripts/devloop-run-workflow`, whose reading of a step's shell takes
   another way for each shell its name names; they stand as eleven, seven of
@@ -13172,16 +13173,19 @@ and for the proofs of closings.
   over the job's and the workflow's that two of those lines read; not chosen:
   a behavior of its own for such a line, which decides nothing by the shell.
 
-  **What stays open.** Two points of `docs/rationale.md` under
-  `shared/path-steps.md` give no reason in words for part of what they say:
-  the one opening "Under `macos` and `linux` the step for the folder gives the
-  line" for the sentence after the line, on what it does and that they type it
-  exactly as it stands, and the one opening "`unknown` under `macos` and
-  `linux`, three steps" for the three steps. Neither the entry of 20 November
-  2026 on the handover by surface nor the dated sentences of 19 and 20
-  November 2026 under milestone 12 of `docs/plan.md` carries one; the report
-  puts them to the person, with whether (j) in `docs/plan.md` takes a reason
-  and what was not chosen.
+  **The corrections of the merge**, of 23 November 2026, the second commit,
+  without a question, by the rule that nothing is asked where one way carries
+  a great disadvantage and the other none, on the three points the report put
+  to the person. (j) in `docs/plan.md` under milestone 12 carries its reason,
+  the rule that a finding in the code, the skills, the shared texts, the
+  hooks, the programs or the workflow gets a block in every case, and what was
+  not chosen, the findings in the report of the order alone, as (m) of the
+  entry held says for its finding. Not chosen: the sentence of that entry
+  named wrong, which would leave (j) the one decision of (f) to (j) without
+  either. The two points of `docs/rationale.md` under `shared/path-steps.md`
+  say that no reason in words for that part stands in the entry of 20 November
+  2026 on the handover by surface or in `docs/plan.md`. Not chosen: a reason
+  written now, which no record carries. Nothing of this audit stays open.
 
   **The tool and the checks.** Before, on `1c92a8b`: exit 0, broken records 0,
   uncovered lines 0 of 4889; Undetermined 24, Recorded, not built 242, Built,

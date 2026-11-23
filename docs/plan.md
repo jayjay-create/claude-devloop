@@ -2008,6 +2008,10 @@ point 7 has them", built by the next order that changes
 that the order touching the same place builds such a block; and on the
 references to `build-work` step 3 point 7 in texts that are loaded elsewhere,
 built on the branch of that part.
+Reason: the rule of `docs/skill-conventions.md` that a finding in the code,
+the skills, the shared texts, the hooks, the programs or the workflow gets a
+block in every case. Not chosen: the findings in the report of the order
+alone, where they would stand nowhere in the repository.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

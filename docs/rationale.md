@@ -5026,6 +5026,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   explanation after every line with `echo`: „Die Zeile schreibt in die Datei
   `~/.zshrc`, dass dein Terminal auch in `~/go/bin` nach Programmen sucht. Gib
   sie genau so ein, wie sie dasteht.“
+  No reason in words for the sentence after the line stands in that entry or
+  in `docs/plan.md`; the audit of 22 November 2026 looked for one.
 - **Under `terminal`, `terminal-vscode` and `unknown` the line goes into the
   file their shell reads when a terminal opens it, `~/.zshrc` for zsh and for
   bash `~/.bash_profile` on macOS and `~/.bashrc` on Linux; under `panel-vscode`
@@ -5134,6 +5136,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“ — the explanation of (11) —
   „2. Beende Claude Code ganz, auch das Programm, in dem es läuft, und starte es
   neu.“ — „3. Gib in Claude Code `/devloop:start-work` ein.“
+  No reason in words for the three steps beyond what this point says stands in
+  that entry or in `docs/plan.md`; the audit of 22 November 2026 looked for
+  one.
 - **For a shell without a sure form, another shell, fish say, or a system that
   reads `unknown`, the run reads the command in the maker's guide first and
   gives it with the source; only where that yields none does the step name no
