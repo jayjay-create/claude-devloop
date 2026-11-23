@@ -5717,7 +5717,7 @@ their section.
 - Should: they run in `.github/workflows/stock-take.yml` on every pull request, and the five whose output somebody judges run there too, the one on invocability against `docs/handover-checks/invocability.txt` and the four others each against a list of the lines that were read and found right, a new line or a line gone being red until the branch that changes it has read it and brought the list in line; `scripts/devloop-run-workflow`, which runs the workflow itself, stays a check run by hand.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `scripts/devloop-handover-checks` "return [(c, judge(root, c, path)) for c in CHECKS]"
-- Status: Built, never walked
+- Status: Walked
 - Note: recorded 12 October 2026, point 8 of the order on the command reader; until 23 November 2026 the five whose output somebody judges stayed under the heading
 
 ### the defect on the rule keeping runtimes out of the install question read recorded and not built while the question says nothing of runtimes since 5 October 2026

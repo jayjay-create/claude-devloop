@@ -13319,6 +13319,46 @@ and for the proofs of closings.
   names by the system. 25 not-a-thing records cover the other lines of the
   program that the search set holds.
 
+  **The runs**, at the third commit, `b0d251e`, under 0.194.0, the tree
+  clean, on 23 November 2026 in UTC, on the person's Mac, every call under
+  `bin/devloop-bounded 600`. A run's date is the day in UTC at the run, read
+  off `date -u` in the call that runs it.
+
+  Run P, on the Mac from 12:29:10 to 12:29:25:
+  `scripts/devloop-handover-checks` twice, in the session's shell and as
+  `env -i PATH=/usr/bin:/bin bash --noprofile --norc -c`, exit 0 both times
+  and the same 21 lines: the line that names the 19 checks, a line "ok" for
+  each of them, and "green: 19 checks green, 0 red"; nothing on stderr.
+
+  Run S, on the Mac from 12:29:25 to 12:29:32: its self-test twice, in the
+  same two ways, exit 0 both times and the same 40 lines, a line "ok" for
+  each case and "SELF-TEST PASSED: 39 cases"; nothing on stderr.
+
+  Run W, on the Mac from 12:29:39 to 12:33:41: `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml`, exit 0, "green: 12 steps run, every one
+  ended with 0; not run by design: no run: block (uses:
+  actions/checkout@v7): 2; left out by the order of 31 October 2026: 3". In
+  the job `stock-take` the step of the checks printed the 21 lines of run P
+  and ended with 0, the step of the self-test the 40 lines of run S and
+  ended with 0, and the step on titles "the head of the new entry at line
+  13204 of docs/roadmap.md passes" with the head. In the hooks step, run
+  here once and under macOS, the line "== devloop-handover-checks
+  --self-test" stood over the 40 lines of run S. The run on the block of (a)
+  is this one, the step of the job running the program; that the step runs
+  on every pull request the platform shows, and this run does not.
+
+  **The tool.** Before, on `c047c03`: exit 0, broken records 0, uncovered
+  lines 0 of 4889; Undetermined 24, Recorded, not built 242, Built, never
+  walked 1613, Walked 859, Closed 80. At the fourth commit: exit 0, broken
+  records 0, uncovered lines 0 of 4916, the search set 44 lines of the
+  program and 2 of the workflow larger and the nineteen command blocks
+  smaller; Recorded, not built 241, the block of (a) built; Built, never
+  walked 1635, of them program outcome 176 where 134 and check command 2
+  where 22; Walked 866, of them program outcome 400 where 376, check command
+  2 where 20 and defect 136 where 135, the 24 behaviors and the block the
+  runs walk; Undetermined and Closed as before. Walked on this branch without
+  a run the branch adds: 0. Its self-test: exit 0, 159 cases.
+
   **Open.** The references between the documents of decision (s), whose form
   (c) and (d) decide: the next order, before order (5) of milestone 12. And
   what the platform alone measures, on the pull request of this branch: the
