@@ -13201,6 +13201,133 @@ and for the proofs of closings.
   the sentence of the yes, print the lines they printed at `12cc12a`, the last
   two at the line numbers the code of #262 moved. No run is recorded.
 
+- **The checks before a handover run as one program on every pull request**
+
+  23 November 2026, version 0.194.0, raised once from 0.193.0 by the first
+  commit. On `task/handover-checks-program`, off `origin/main` at `c047c03`,
+  in four commits: `85a9a57`, under the head of this entry, the program, its
+  lists and the steps of the workflow; `b0950c7`, "The conventions name each
+  check before a handover, the program runs it", the documents; the third,
+  which writes this entry and brings `docs/stock-take.tsv` in line; and the
+  fourth, the runs below. The order: the checks of decision (s) of the entry
+  "Every handover and the steps for the PATH follow surface and system", in
+  four parts. The report stands on this machine as
+  `~/devloop-handover-checks.md`, in German, outside the repository.
+
+  **What changed, and where it stands.** `scripts/devloop-handover-checks`
+  runs every check under "Before a handover, run these" but the run of the
+  workflow's steps, each command as `env -i PATH=/usr/bin:/bin bash
+  --noprofile --norc` in the repository, and holds what it prints against the
+  answer that is green: a fixed answer, or, for the five checks whose lines
+  somebody has to judge, the list under `docs/handover-checks/` of the lines
+  that were read and found right. How many checks it holds its last line
+  says, "green: 19 checks green, 0 red" at the third commit; what a find
+  carries, what each exit code means and what the self-test walks its head
+  says. Two steps of the job `stock-take` in
+  `.github/workflows/stock-take.yml` run it and its self-test on every pull
+  request, and the hooks step of the job hooks on every system runs the
+  self-test under macOS. In `docs/skill-conventions.md` the section keeps for
+  each check its paragraph with the reason and names the check in the
+  program; one command block stays there, `scripts/devloop-run-workflow`,
+  which runs the workflow that runs the program.
+
+  **Decided on 23 November 2026**: (a) to (h), which `docs/plan.md` carries
+  under milestone 15 with their reasons and what was not chosen, in the
+  paragraph that names this entry. (a) changes the should of a block of
+  `docs/defects.md` under milestone 15. The old one, of 12 October 2026:
+  "they run in `.github/workflows/stock-take.yml` on every pull request, the
+  five whose output somebody judges staying under the heading." The new one:
+  "they run in `.github/workflows/stock-take.yml` on every pull request, and
+  the five whose output somebody judges run there too, the one on
+  invocability against `docs/handover-checks/invocability.txt` and the four
+  others each against a list of the lines that were read and found right, a
+  new line or a line gone being red until the branch that changes it has read
+  it and brought the list in line; `scripts/devloop-run-workflow`, which runs
+  the workflow itself, stays a check run by hand." The block has its Fix on
+  the line of the program that runs every check. The line as the tool reads
+  it:
+
+  Should changed: fourteen of the nineteen checks under Before a handover, run these have a fixed expected answer and run only where somebody starts them
+
+  **The numbers of (a) and (c), as measured.** For (a): the five commands as
+  `docs/skill-conventions.md` carried them at `c047c03`, each run as `env -i
+  PATH=/usr/bin:/bin bash --noprofile --norc` over `skills/` and `shared/` at
+  every commit of the first-parent line of main from 30 September 2026 on,
+  118 commits, the line numbers taken out and the lines of each check sorted,
+  every commit held against its first parent. The output changed at 3 of the
+  35 commits that `git log --date=short` dates 5 to 22 November 2026,
+  `9524bb9`, `8ca843a` and `aaab097`, and at 17 of the 113 from 1 October
+  2026 to that day; no command wrote to stderr. For (c): a script outside the
+  repository, its text in the report, run over a copy of `c047c03`. It reads
+  `docs/plan.md`, `docs/skill-conventions.md`, `docs/rationale.md`,
+  `docs/defects.md` and `docs/roadmap.md` with their line breaks as blanks
+  and takes as a quote a text of 8 to 200 characters in double quotes,
+  straight or German, that follows a name in backticks within 60 characters
+  holding no quotation mark and no backtick; the name is a file that stands at
+  that commit, a markdown file under `docs/`, `README.md`, a program under
+  `bin/` or `scripts/`, a shared text or the file of a skill. A quote is
+  found where it stands in the file named, the dots of an omission and the
+  punctuation at its end taken off, itself or without the marks `*` and `#`
+  around it. Its first line: "references 795 not found 158". The script
+  counts; how the 158 divide between heads of entries and older wordings it
+  does not measure.
+
+  **Found in a document, and put right on this branch**, each with its place,
+  the wrong text and the right one. First, `docs/skill-conventions.md` under
+  "Who may invoke a skill", lines 4174 to 4178 at `c047c03`: "every line the
+  check under "Before a handover, run these" that holds locked skills against
+  their callers prints names it at a place that sends a run to it and does
+  not call it — `build-work` step 6, which names it as where an armed pull
+  request goes, among them". The check printed five files there, which name
+  `start-work` at seven places; one of them has to do with a run sent on, in
+  `build-work` step 6, and there it is `start-work` that sends an armed pull
+  request to that step; the six others name `start-work` as what asks the
+  language or by its query and its start. Right, lines 4178 to 4186 now:
+  "every line the check
+  `locked-skills` under "Before a handover, run these", which holds locked
+  skills against their callers, prints for it names it and tells no run to
+  run it. One names it as what sends a run on: `build-work` step 6, to which
+  `start-work` sends a pull request that is armed already. The others name it
+  as what does something or has done it". Second and third, two command
+  blocks of the section as they stood at `c047c03`, each green where it
+  should not be; their commands stand in the program now, changed by (f) and
+  (g), and both gaps were brought about in a copy of `c047c03`. The block of
+  the default branch, line 4513, ended "| cksum; done | sort -u | wc -l"
+  under the sentence "one line means they agree"; it printed 1 with the
+  opening line `DEFAULT=$(git symbolic-ref` gone from all four files, four
+  checksums of nothing being one line. Right: a second line counts the files
+  that carry the opening line, and "`1` and `4` is green". The block on
+  locked skills, lines 4420 to 4422, printed with `grep -l` a line for every
+  file, "locked: <skill> referenced by <file>"; a second place naming
+  `start-work` in `skills/build-work/SKILL.md`, a file it printed already,
+  left its five lines as they were. Right: `grep -n`, a line for every place,
+  held against `docs/handover-checks/locked-skills.txt`.
+
+  **The table.** The 38 things of kind check command that stood on the
+  nineteen blocks that left the section go, and with them the 405 runs, all
+  on their green ends: by the head of `scripts/devloop-stock-take` a check
+  the program holds is an outcome of that program and no thing of the
+  section, and no sentence of the head keeps a thing whose line is gone. New
+  are 66 behaviors, every one Built, never walked at the third commit. 59 are
+  the program's: each of the nineteen checks green; each case of the
+  self-test at a check, 32, as a red end, a new line or a line gone; the two
+  ends of a run, green and red; the four ways it cannot run; and the two ends
+  of the self-test. 7 are the workflow's: the two steps of the job
+  `stock-take`, each green and red, and in the hooks step of the job hooks on
+  every system the self-test under macOS passing, red there, and left out on
+  the three other systems with a line, one behavior for each branch its text
+  names by the system. 25 not-a-thing records cover the other lines of the
+  program that the search set holds.
+
+  **Open.** The references between the documents of decision (s), whose form
+  (c) and (d) decide: the next order, before order (5) of milestone 12. And
+  what the platform alone measures, on the pull request of this branch: the
+  two steps of the job `stock-take` under ubuntu-latest on the merge ref, the
+  self-test under macos-latest in the job hooks on every system, and the line
+  that leaves it out under ubuntu-latest, windows-latest and alpine. No run
+  recorded here brings about a red end of the program or of a step; the
+  self-test walks each red end of a check in its fixture.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
