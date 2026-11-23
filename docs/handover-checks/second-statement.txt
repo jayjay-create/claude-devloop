@@ -1,0 +1,6 @@
+# The lines the check "second-statement" of scripts/devloop-handover-checks
+# prints, each read against the paragraph of that check under "Before a
+# handover, run these" in docs/skill-conventions.md and found right. One a
+# line, FILE:TEXT, as the command prints it with the line number taken out.
+# The program is red on a line it prints that does not stand here, and on a
+# line that stands here and that it prints no more.

@@ -1,0 +1,19 @@
+# The count the check "invocability" of scripts/devloop-handover-checks
+# prints for every skill, as "## Who may invoke a skill" in
+# docs/skill-conventions.md decides it: 1 where the skill is user-invoked, 0
+# where it is model-invocable. One a line, FILE:COUNT, as the command prints
+# it.
+# The program is red on a line it prints that does not stand here, and on a
+# line that stands here and that it prints no more.
+skills/build-prototype/SKILL.md:0
+skills/build-work/SKILL.md:0
+skills/cut-into-tasks/SKILL.md:0
+skills/diagnose-bug/SKILL.md:0
+skills/plan-work/SKILL.md:0
+skills/record-lessons/SKILL.md:1
+skills/research/SKILL.md:0
+skills/review-changes/SKILL.md:0
+skills/setup-checks/SKILL.md:0
+skills/setup-project/SKILL.md:0
+skills/start-work/SKILL.md:1
+skills/untangle-idea/SKILL.md:0

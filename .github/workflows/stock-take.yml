@@ -54,6 +54,12 @@
 # the programs and the loaded texts that reads a file of the project to a
 # case of that last step or to the places it names as none, the roadmap
 # entry of that date on the check for a place without a case.
+# Since 23 November 2026 the job stock-take runs the checks under "Before a
+# handover, run these" in docs/skill-conventions.md, every one but the run
+# of this file's steps, with scripts/devloop-handover-checks, and that
+# program's self-test, and the job hooks on every system runs the self-test
+# under macos-latest, each place saying in its comment what it holds;
+# decided on that day, docs/plan.md under milestone 15.
 name: merge gate
 
 on:
@@ -379,6 +385,33 @@ jobs:
           sys.exit(1 if red else 0)
           PY
 
+      # Since 23 November 2026: the checks under "Before a handover, run
+      # these" in docs/skill-conventions.md run here, on every pull request,
+      # every one but scripts/devloop-run-workflow, which runs this file;
+      # decided on that day, docs/plan.md under milestone 15.
+      # scripts/devloop-handover-checks runs each command as env -i
+      # PATH=/usr/bin:/bin bash --noprofile --norc in the checkout and holds
+      # what it prints against the answer that is green: a fixed answer where
+      # the check has one - silence, a count, one line per skill -, and,
+      # where its lines are for somebody to judge, the list under
+      # docs/handover-checks/ of the lines that were read and found right.
+      # Red where a check answers otherwise, prints a line its list does not
+      # carry or prints a line of its list no more, or writes to stderr;
+      # every find printed with its check, its file, its line where there is
+      # one, its text and what makes it green, the last line opening with
+      # green: or red: and carrying both counts. A branch that adds or takes
+      # a line of a list reads it against the paragraph of its check and
+      # brings the list in line. It installs nothing and writes nothing.
+      - name: the checks before a handover, each held against its green answer or its list of the lines read
+        run: scripts/devloop-handover-checks
+
+      # The self-test of that program, in a throwaway directory outside the
+      # checkout: every check green and red once, each list with a new line
+      # and with a line gone, a command that writes to stderr, and each exit
+      # code, 0, 1 and 2. Red where a case does not come out as it must.
+      - name: the self-test of the checks before a handover
+        run: scripts/devloop-handover-checks --self-test
+
       # Since 22 October 2026: a title says what changed and nothing else -
       # the title of a pull request, the first line of a commit message, the
       # head of a new entry in docs/roadmap.md - in at most 72 characters,
@@ -599,6 +632,16 @@ jobs:
   # hook name the place alone. A case that comes out otherwise prints the
   # message. What bin/devloop-surface reads under Windows its self-test shows
   # in the loop above; what the four messages say there, these cases.
+  # Since 23 November 2026 the step runs the self-test of
+  # scripts/devloop-handover-checks after that of scripts/devloop-run-workflow,
+  # under macos-latest alone, red where it is red: the program is run before
+  # a handover on a Mac, the job stock-take runs it and its self-test on
+  # ubuntu-latest alone, and a later change to one of its commands that only
+  # a GNU tool takes would break it on the Mac without a sound. On the three
+  # other systems it is left out, a line printed that says so and why:
+  # ubuntu-latest has it in the job stock-take, and from Windows and Alpine
+  # no handover is made, the job under windows-latest having taken 10 to 12
+  # of its 15 minutes on pull requests #258 to #263.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -662,6 +705,13 @@ jobs:
           else
             echo "== devloop-run-workflow --self-test"
             "$PY" "$ROOT"/scripts/devloop-run-workflow --self-test || { echo "the self-test of devloop-run-workflow is red"; red=1; }
+          fi
+          # the self-test of scripts/devloop-handover-checks, since 23 November 2026: under macos-latest alone, red where it is red; the program is run before a handover on a Mac and by the job stock-take on ubuntu-latest, and a change to one of its commands that only a GNU tool takes would break it on the Mac without a sound. Left out on the three other systems, a line saying so and why: ubuntu-latest has it in the job stock-take, and from Windows and Alpine no handover is made
+          if [ "${RUNNER_OS:-}" = macOS ]; then
+            echo "== devloop-handover-checks --self-test"
+            "$PY" "$ROOT"/scripts/devloop-handover-checks --self-test || { echo "the self-test of devloop-handover-checks is red"; red=1; }
+          else
+            echo "== devloop-handover-checks --self-test left out here, it runs under macos-latest alone: ubuntu-latest has it in the job stock-take, and from Windows and Alpine no handover is made"
           fi
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
