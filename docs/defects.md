@@ -5904,6 +5904,14 @@ their section.
 - Status: Recorded, not built
 - Note: found 24 November 2026 by the order on the references between the documents, the roadmap entry of that date on the references between the documents, in the count of the forms in which the documents name an entry, which the order on the references made before it built; not mended on that branch: by (d) of 23 November 2026 under milestone 15 in `docs/plan.md` the breaks that stand are written as blocks, and mending them belongs to the statements of the documents at the end of this milestone
 
+### no program holds that a branch was audited before its push or a milestone's area before its line Done on
+- Wrong: `docs/skill-conventions.md` under "Before a push, the branch is audited" asks for the audit of every branch of an order before its push, in a session of Claude Code that did not build it, and for an audit of what a milestone covers before its line "Done on"; no program reads whether either stood, neither `scripts/devloop-handover-checks` nor `scripts/devloop-stock-take` nor a step of the workflow, so that an order written without the audit, or a line "Done on" added without it, passes every check
+- Should: a program that runs on every pull request is red where the branch of an order that is not itself an audit was pushed without its audit, and where a branch adds a line "Done on" to a milestone without the audit of what the milestone covers
+- Found: One entry held, three sentences mended, the audit put before the push
+- Fix: none
+- Status: Recorded, not built
+- Note: written 24 November 2026 at the merge of the branch of the roadmap entry of that date on the audit put before the push, decided there; what an audit leaves on the branch for a program to read the rule does not say yet, and the order that builds this block decides it
+
 ## Without a milestone
 
 ### diagnose-bug opens with three routes in and names a fourth further down

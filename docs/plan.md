@@ -2664,6 +2664,43 @@ each holds the head of the program says. The breaks that stood on that day the
 full run of (d) found, and they stand as blocks of this milestone, mended with
 the statements of the documents, last.
 
+Decided on 24 November 2026 by the person, the roadmap entry of that date,
+"One entry held, three sentences mended, the audit put before the push": every
+branch of an order gets its audit before the push, as the last part of the
+order, in a session of Claude Code that did not build it. That session holds
+the entry sentence by sentence against code, tool, table and runs and searches
+the whole repository, with several patterns for each subject, for every place
+that a change or a decision of the branch makes wrong. Documents it mends in a
+commit that changes `docs/` alone, so that the recorded runs count; at an
+error in the code it stops and reports. Before a milestone gets a line "Done
+on", an audit holds its whole area against the plan. No audit any more as an
+order of its own after a merge and none at a handover of the chat; an order
+that is itself an audit is checked at the merge. The rule stands in
+`docs/skill-conventions.md` under "Before a push, the branch is audited".
+Reason: of the 34 merges from 5 to 22 November 2026, #228 to #261, ten were
+consistency audits, as the reason of decision (s) above counts them. What they
+found, the branch held had mostly caused itself: #265 found in the entry held
+a wrong date, a wrong line number and two omissions, and in the documents 41
+places, most of them counts and ordinals that #264 had made stale. After the
+merge every such finding costs a pull request of its own and, an entry on main
+not changing, a new entry that says what was wrong. Of the findings of the six
+audits #253, #257, #259, #261, #263 and #265 that change what devloop does or
+what a user reads, a branch had caused three itself, in its lines or at places
+its decision made wrong: the blocks "devloop reads neither the version of git
+nor the name and address git config gives before the first commit, while
+README.md says it says so", "six places name the command's output in the
+conversation as the one signal of form A, the person saying nothing, where the
+first of two signs counts" and "no step of the job hooks on every system runs
+bin/devloop-text, so no system of the job shows the line it puts into the rule
+on the forms" of `docs/defects.md`. One stood in an area no branch touched,
+found because an audit held the open blocks of milestone 12 against the plan:
+"setup-checks step 8 names the command that keeps a machine awake for macOS
+alone, none for Linux or Windows".
+Not chosen: the audit as an order of its own after a merge and at a handover
+of the chat, as until that day; and an audit before the push that reads the
+changed lines alone and misses the places a decision of the branch makes
+wrong elsewhere.
+
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A
 run's date is copied from the session log of that run, not from memory"; "An
