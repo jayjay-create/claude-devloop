@@ -13799,8 +13799,9 @@ and for the proofs of closings.
 
   24 November 2026, version 0.195.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
-  changes. On `task/audit-references`, off `origin/main` at `861320a`, in one
-  commit: `docs/plan.md`, `docs/skill-conventions.md` and this entry. The
+  changes. On `task/audit-references`, off `origin/main` at `861320a`, in two
+  commits: `e294071`, `docs/plan.md`, `docs/skill-conventions.md` and this
+  entry; the second, the corrections of the merge. The
   order: the consistency audit after pull request #266, in two parts, the
   first holding and reporting without a change, the second mending. The
   report stands on this machine as `~/devloop-audit-references.md`, in German,
@@ -13816,8 +13817,7 @@ and for the proofs of closings.
   kinds of references, the order on the references as the next one, the
   self-tests that commit under an identity that is made up, what the
   workflow's steps hold, and the two blocks closed. It holds, in its figures
-  and its runs, but for what follows. Nothing was found in the code, and no
-  block is written.
+  and its runs, but for what follows. Nothing was found in the code.
 
   **Found in the entry held**, two, each with its place in this file, the
   wrong text and the right one; that entry stands as written. Lines 13773 to
@@ -13901,7 +13901,34 @@ and for the proofs of closings.
 
   **Open.** The four blocks of the entry held. And no program holds that an
   audit stood before a push or before a line "Done on": the rule stands in the
-  conventions alone.
+  conventions alone, and the block the corrections of the merge add records
+  it.
+
+  **The corrections of the merge**, of 24 November 2026, the second commit,
+  after the first was read against the code and before the push. First,
+  `docs/plan.md` said under milestone 15, in the paragraph that names this
+  entry, "Not chosen: the audit after every merge and at every handover, as
+  until that day", where until that day an audit followed some merges and not
+  others, #253 holding two entries and #257 three; it says now "Not chosen:
+  the audit as an order of its own after a merge and at a handover of the
+  chat, as until that day". Second, the block "no program holds that a branch
+  was audited before its push or a milestone's area before its line Done on"
+  stands in `docs/defects.md` under milestone 15, decided below. Third, this
+  entry said "in one commit" and "Nothing was found in the code, and no block
+  is written", and names the second commit and the block now. The tool after
+  the second commit: exit 0, broken records 0, uncovered lines 0 of 4968;
+  Recorded, not built 246, milestone 15 at 111 blocks, one block added, every
+  other figure as before; `scripts/devloop-handover-checks` exit 0, "green: 22
+  checks green, 0 red".
+
+  **Decided at the merge**, by the person on 24 November 2026, without a
+  question, by the rule that nothing is asked where one way carries a great
+  disadvantage and the other none: the gap that no program holds the audit
+  stands as a block of milestone 15, since a rule that whoever writes an
+  order holds alone is weaker than a check, and a gap named in an entry alone
+  no program counts; what an audit leaves on the branch for a program to
+  read, the order that builds the block decides. Not chosen: the gap in this
+  entry alone.
 
 ## Decisions taken against
 

@@ -2696,9 +2696,10 @@ on the forms" of `docs/defects.md`. One stood in an area no branch touched,
 found because an audit held the open blocks of milestone 12 against the plan:
 "setup-checks step 8 names the command that keeps a machine awake for macOS
 alone, none for Linux or Windows".
-Not chosen: the audit after every merge and at every handover, as until that
-day; and an audit before the push that reads the changed lines alone and
-misses the places a decision of the branch makes wrong elsewhere.
+Not chosen: the audit as an order of its own after a merge and at a handover
+of the chat, as until that day; and an audit before the push that reads the
+changed lines alone and misses the places a decision of the branch makes
+wrong elsewhere.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A
