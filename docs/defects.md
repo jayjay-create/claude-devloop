@@ -5861,16 +5861,48 @@ their section.
 - Should: the head names the skills without their number
 - Found: One entry held, forty-one places mended, two blocks added
 - Fix: none
-- Status: Recorded, not built
-- Note: found 23 November 2026 by the consistency audit after pull request #264, with the places outside the code that counted the skills, which that audit's branch mended; to be built by the next order that changes scripts/
+- Status: Closed, corrected in the document: `scripts/devloop-stock-take` carries "Every branch of the skills, all files in each skill directory, and".
+- Note: found 23 November 2026 by the consistency audit after pull request #264, with the places outside the code that counted the skills, which that audit's branch mended; to be built by the next order that changes scripts/; built 24 November 2026 with version 0.195.0 by the order on the references between the documents, the roadmap entry of that date on the references between the documents, both places of the head naming the skills without their number; closed 24 November 2026 as corrected in the document, the sentence itself the error and a run of the tool doing the same before and after
 
 ### the head of scripts/devloop-stock-take says the two check headings of the conventions are run, where since 23 November 2026 the paragraphs under the second are not
 - Wrong: `scripts/devloop-stock-take` says in its head that the line of Built is drawn around the two check headings of `docs/skill-conventions.md` "because they are run - somebody executes them before a handover -", where since 23 November 2026 one command block stands under "Before a handover, run these" and its paragraphs say what the checks of `scripts/devloop-handover-checks` hold, run by nobody, while evidence on such a paragraph still counts as built
 - Should: the head says what is run under each of the two headings, and that evidence on a paragraph under "Before a handover, run these" counts as built though nobody runs it, the line staying around the whole section because a fix of those checks lands in `scripts/devloop-handover-checks`
 - Found: One entry held, forty-one places mended, two blocks added
 - Fix: none
+- Status: Closed, corrected in the document: `scripts/devloop-stock-take` carries "those two sections and not around the whole file because of what is run".
+- Note: found 23 November 2026 by the consistency audit after pull request #264; decided on 23 November 2026 to set the sentence right and keep the line, no evidence standing on such a paragraph; to be built by the next order that changes scripts/; built 24 November 2026 with version 0.195.0 by the order on the references between the documents, the roadmap entry of that date on the references between the documents, the head saying what is run under each of the two headings, that evidence on a paragraph under the second counts as built all the same and why the line stays around the whole section; closed 24 November 2026 as corrected in the document, the sentence itself the error and a run of the tool doing the same before and after
+
+### docs/plan.md names the entry on the aim by its head without the period the head ends on
+- Wrong: `docs/plan.md` under "The aim" names the entry of `docs/roadmap-archive-1.md` on the aim as "The aim is idea to a running application; this gets to merged code", where its head ends on a period and `scripts/devloop-handover-checks` holds under `entry-heads` that a quote behind the word entry that opens as a head is that head whole
+- Should: the place quotes the head whole, with the period it ends on
+- Found: The checks before a handover hold the references between the documents
+- Fix: none
 - Status: Recorded, not built
-- Note: found 23 November 2026 by the consistency audit after pull request #264; decided on 23 November 2026 to set the sentence right and keep the line, no evidence standing on such a paragraph; to be built by the next order that changes scripts/
+- Note: found 24 November 2026 by the run of `scripts/devloop-handover-checks` with --all, the roadmap entry of that date on the references between the documents, which shows the place red under entry-heads; not mended on that branch: by (d) of 23 November 2026 under milestone 15 in `docs/plan.md` the breaks that stand are written as blocks, and mending them belongs to the statements of the documents at the end of this milestone; until then the run with --all shows the place red, and a branch that changes its paragraph is red on it
+
+### docs/roadmap.md names the entry on the aim by its head without the period the head ends on
+- Wrong: `docs/roadmap.md` under "Where these would attach", at `measure-runtime-effect`, names the entry of `docs/roadmap-archive-1.md` on the aim as "The aim is idea to a running application; this gets to merged code", where its head ends on a period and `scripts/devloop-handover-checks` holds under `entry-heads` that a quote behind the word entry that opens as a head is that head whole
+- Should: the place quotes the head whole, with the period it ends on
+- Found: The checks before a handover hold the references between the documents
+- Fix: none
+- Status: Recorded, not built
+- Note: found 24 November 2026 by the run of `scripts/devloop-handover-checks` with --all, the roadmap entry of that date on the references between the documents, which shows the place red under entry-heads; not mended on that branch: by (d) of 23 November 2026 under milestone 15 in `docs/plan.md` the breaks that stand are written as blocks, and mending them belongs to the statements of the documents at the end of this milestone; until then the run with --all shows the place red, and a branch that changes its paragraph is red on it
+
+### docs/plan.md names a line of two files outside the repository under milestone 12, where its head lets it name a line of an archive alone
+- Wrong: `docs/plan.md` under milestone 12, in the decision of 16 November 2026 on a number given out again between two listings, names `bsd/sys/proc_internal.h` "line 767 of xnu-12377.121.6" and `include/linux/threads.h` "line 28 at v7.0.14", where its head says "A reference below names a file and a section, never a line" and takes out a line of an archive of the roadmap alone, which `scripts/devloop-handover-checks` holds under `plan-lines`
+- Should: the sentence names each of the two files at its version and what it defines there, and no line
+- Found: The checks before a handover hold the references between the documents
+- Fix: none
+- Status: Recorded, not built
+- Note: found 24 November 2026 by the run of `scripts/devloop-handover-checks` with --all, the roadmap entry of that date on the references between the documents, which shows the two lines of the sentence red under plan-lines; what stands at the two lines of the two files was not read, the sentence itself giving the two values, 99999 and 32768; not mended on that branch: by (d) of 23 November 2026 under milestone 15 in `docs/plan.md` the breaks that stand are written as blocks, and mending them belongs to the statements of the documents at the end of this milestone; until then the run with --all shows the place red, and a branch that changes its paragraph is red on it
+
+### a block of docs/defects.md names the entry on the wrapper that downloads on first use as the entry above and by its head without the period the head ends on
+- Wrong: the block "npx playwright install, a named install command whose download lands outside the repository, passed the guard" of `docs/defects.md` says in its Wrong "the wrapper case the entry above, "The install guard does not see a wrapper that downloads on first use", records as left alone on purpose", where the head of that entry in `docs/roadmap-archive-1.md` ends on a period and "the entry above" names nothing in `docs/defects.md`, where no entry stands; `scripts/devloop-handover-checks` does not read the form "the entry above," as its head says, and its run with --all does not show the place
+- Should: the field names the entry by its head whole, with the period it ends on, and without "above"
+- Found: The checks before a handover hold the references between the documents
+- Fix: none
+- Status: Recorded, not built
+- Note: found 24 November 2026 by the order on the references between the documents, the roadmap entry of that date on the references between the documents, in the count of the forms in which the documents name an entry, which the order on the references made before it built; not mended on that branch: by (d) of 23 November 2026 under milestone 15 in `docs/plan.md` the breaks that stand are written as blocks, and mending them belongs to the statements of the documents at the end of this milestone
 
 ## Without a milestone
 

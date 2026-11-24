@@ -76,7 +76,7 @@ the first run.
 
 A. WHAT GOES IN
 
-- Every branch of the twelve skills, all files in each skill directory, and
+- Every branch of the skills, all files in each skill directory, and
   the straight path of every unit of those files.
 - Every branch of the text under shared/, and the straight path of every unit.
 - Every branch of the output style under output-styles/, and the straight
@@ -486,8 +486,17 @@ is its evidence, and off the closing its Status carries.
   lies under one of the two
   check headings of docs/skill-conventions.md, "Before you change anything,
   run this" and "Before a handover, run these". The line is drawn around
-  those two sections and not around the whole file because they are run -
-  somebody executes them before a handover - while the rest of that file is
+  those two sections and not around the whole file because of what is run
+  there. Under the first, the command that holds the installed copy against
+  the tree, which somebody runs before the first edit. Under the second,
+  since 23 November 2026, the one command of the run of the workflow's
+  steps, scripts/devloop-run-workflow, which somebody runs before a
+  handover; the paragraphs beside it say what the checks of
+  scripts/devloop-handover-checks hold, and nobody runs a paragraph: that
+  program runs the checks, on every pull request and by itself. Evidence on
+  such a paragraph counts as built all the same, and the line stays around
+  the whole section, because a fix of one of those checks lands in
+  scripts/devloop-handover-checks. The rest of that file is
   a rule for whoever writes a skill, not a mechanism a run meets: a defect
   answered only by a written convention stays recorded, and that is right.
   The enclosing heading is derived from the evidence line, never claimed, so
@@ -671,7 +680,7 @@ E. THE SEARCH SET, FOR COVERAGE
   named skill or as "part of" the thing that does its work, so a name added
   to the table is seen as uncovered until an order takes it.
   The table under "Built and exercised" stays out: what it claims about the
-  twelve skills, the things of those skills carry themselves.
+  skills, the things of those skills carry themselves.
 
 A line is covered when an anchor of any record that is not rejected (thing,
 run or not-a-thing) or of any block that is not rejected (its Fix, Trigger,

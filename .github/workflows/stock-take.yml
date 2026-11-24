@@ -401,7 +401,21 @@ jobs:
       # one, its text and what makes it green, the last line opening with
       # green: or red: and carrying both counts. A branch that adds or takes
       # a line of a list reads it against the paragraph of its check and
-      # brings the list in line. It installs nothing and writes nothing.
+      # brings the list in line. Since 24 November 2026 the program holds,
+      # as three checks more, the references between the documents under
+      # docs/ in the lines the pull request adds or changes, each read with
+      # its paragraph: an entry a document names by its head stands once and
+      # a head the branch adds stands nowhere else, a letter or number of a
+      # decision given to an entry named so stands in that entry, and
+      # docs/plan.md names no line of a file but of an archive of the
+      # roadmap. The lines of the branch are those the checkout carries
+      # beyond git merge-base HEAD origin/main, which is origin/main here,
+      # HEAD being the branch merged onto main; without it the program ends
+      # with 2, and the step "what the checkout holds" is red before. What
+      # each of the three reads, which files are sources and why the
+      # archives are none the head of the program says; decided on 22, 23
+      # and 24 November 2026, docs/plan.md under milestone 15. It installs
+      # nothing and writes nothing.
       - name: the checks before a handover, each held against its green answer or its list of the lines read
         run: scripts/devloop-handover-checks
 
@@ -409,6 +423,11 @@ jobs:
       # checkout: every check green and red once, each list with a new line
       # and with a line gone, a command that writes to stderr, and each exit
       # code, 0, 1 and 2. Red where a case does not come out as it must.
+      # Since 24 November 2026 it commits in that directory, under the fixed
+      # identity of the self-tests, which is made up, and walks the three
+      # checks on the references there: each green and red, the lines of a
+      # branch committed and not, on main after a squash merge and merged
+      # onto main as here, an archive the branch adds, and the switch --all.
       - name: the self-test of the checks before a handover
         run: scripts/devloop-handover-checks --self-test
 

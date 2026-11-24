@@ -3990,7 +3990,8 @@ repositories of their own with a fixed identity that is made up, and may:
 `hooks` and `hooks@example.invalid` in the step, `t` and `t@t` in the
 self-tests of `bin/devloop-bounded` and `bin/devloop-setup-state`, the
 `GIT_AUTHOR_` and `GIT_COMMITTER_` variables in the self-test of
-`scripts/devloop-stock-take`; never a real address. A repository that the
+`scripts/devloop-stock-take` and, since 24 November 2026, with `t` and `t@t`,
+in that of `scripts/devloop-handover-checks`; never a real address. A repository that the
 test removes itself and that never reaches GitHub touches neither half of
 the rule, and the runners carry no identity, so that the fixed one is what
 lets the step commit there at all. Every commit an order makes itself, in a
@@ -4334,12 +4335,18 @@ comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
 
 **One program holds them, on every pull request and by itself.** Since 23
-November 2026 `scripts/devloop-handover-checks` carries the command of every
-check under this heading but one, the run of the workflow's steps, each under
-a name, and a paragraph below gives the name of its check in backticks. The
-program runs each command with `bash --noprofile --norc -c` in the environment
-`env -i PATH=/usr/bin:/bin` leaves and holds what it prints against the answer
-that is green. For most that is a fixed answer: silence, a count, two empty
+November 2026 `scripts/devloop-handover-checks` carries every check under this
+heading but one, the run of the workflow's steps, each under a name, and a
+paragraph below gives the name of its check in backticks. All but three of
+them are a command: the program runs it with `bash --noprofile --norc -c` in
+the environment `env -i PATH=/usr/bin:/bin` leaves and holds what it prints
+against the answer that is green. The three without a command, `entry-heads`,
+`entry-letters` and `plan-lines`, hold since 24 November 2026 the references
+between the documents under `docs/`: for them the program reads the documents
+itself, in the lines a branch adds or changes against `git merge-base HEAD
+origin/main`, each line with its paragraph, and with `--all` in every line,
+and each is green where what was read holds no break. For most commands green
+is a fixed answer: silence, a count, two empty
 lists, one line per skill. Some print lines somebody has to judge, and a
 program judges none — `invocability`, `locked-skills`, `offers`, `handovers`
 and `second-statement`: each of these has a file under
@@ -4803,6 +4810,42 @@ before its question; that explanation went with text 6 of the roadmap entry of 9
 October 2026, and the line went with it — read as the question this section asks
 of a disappearing line, and answered: the decision is stated once, in
 `build-work`, and step 8 states it no more.
+
+The three checks that follow hold the references between the documents under
+`docs/`, since 24 November 2026. None has a command: the program reads the
+documents itself, as the paragraph on the one program above says. What each
+reads and holds, form by form, and what it does not hold, the head of
+`scripts/devloop-handover-checks` says, and no paragraph here says it a second
+time; here stands why each is held. Decided on 22, 23 and 24 November 2026,
+`docs/plan.md` under milestone 15, where the reasons stand with what was not
+chosen. Without `--all` they answer for the lines of the branch alone, so that
+a break standing in a line no branch touched stays silent until a branch
+changes its paragraph; the breaks that stood on 24 November 2026 the run with
+`--all` found once, and they stand as blocks of `docs/defects.md`.
+
+An entry that a document names by its head stands exactly once, and a head the
+branch adds stands nowhere else: `entry-heads`. The head is the one name an
+entry has: the documents and the blocks of `docs/defects.md`, in their field
+Found, find an entry by it, so that a head quoted a word off finds none and a
+head standing twice finds two. Outside that field, which
+`scripts/devloop-stock-take` holds, nothing held it until this check; the run
+with `--all` of 24 November 2026 found two places that quote a head without
+the period it ends on.
+
+A letter or a number of a decision that a document gives an entry named by its
+head stands in that entry: `entry-letters`. A document that gives a decision
+by its letter sends its reader into the entry for that letter; where the
+entry carries none, the reader cannot tell a slip of the letter from a slip of
+the entry. Until this check nothing held these letters; the run with `--all`
+of 24 November 2026 found none broken.
+
+`docs/plan.md` names no line of a file but of an archive of the roadmap, by
+the rule at its head: `plan-lines`. The rule stands at the head of the plan
+because its line numbers had drifted by the next pull request while its
+section names had not, and an archive is the one exception because it never
+changes. Until this check whoever wrote a reference held the rule; the run
+with `--all` of 24 November 2026 found one sentence naming a line of two files
+outside the repository.
 
 **The check that used to close this section is not here any more.** "The
 installed copy is the copy you changed" now stands under "Before you change
