@@ -1424,8 +1424,11 @@ milestone: the ten of the eleven that stand on texts the model loads, three
 whose Fix line that part built anew, and the one on texts loaded in
 `start-work`, `plan-work` and `setup-checks` that pointed at `build-work`
 step 3 point 7, which that part wrote with its Fix.
-Before (5) come the checks of milestone 15 that come back at every
-handover, by the decision of 22 November 2026 under milestone 15.
+Before (5) came the checks of milestone 15 that come back at every
+handover, by the decision of 22 November 2026 under milestone 15: built on 23
+and 24 November 2026, the two roadmap entries that the decisions of those
+days under milestone 15 name. Until 24 November 2026 this paragraph said that
+these checks come before (5), as still to be built.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
@@ -2596,9 +2599,70 @@ Alpine, and a red there would hold a pull request up for a system that is not
 needed for it. Not chosen: under Alpine too. Built of decision (s) with that
 entry: the checks, in `scripts/devloop-handover-checks` with its self-test and
 its lists, run by two steps of the job `stock-take` and, the self-test, by the
-job hooks on every system. Not built: the references between the documents,
-whose form (c) and (d) decide; the order on them follows, before order (5) of
-milestone 12 as (s) places it.
+job hooks on every system. Not built with it: the references between the
+documents, whose form (c) and (d) decide; they are built since 24 November
+2026, the roadmap entry of that date, "The checks before a handover hold the
+references between the documents", the paragraph below. Until that day this
+paragraph said that the order on them follows, before order (5) of milestone
+12 as (s) places it.
+
+Decided on 24 November 2026 by the person, decisions (1) to (4) of the roadmap
+entry of that date, "The checks before a handover hold the references between
+the documents", which builds the references of decision (s) in the form (c)
+and (d) above decide, as three checks of `scripts/devloop-handover-checks`.
+(1) Of the four kinds of references of decision (s) the first falls away, a
+German wording of `docs/rationale.md` standing word for word in the roadmap or
+its archive, and decision (n) of the roadmap entry of 22 November 2026, "Every
+handover and the steps for the PATH follow surface and system", stays; the
+program holds the three other kinds. Reason: `docs/rationale.md` is loaded
+into no session, as its opening says, and what a user reads the model writes
+from the description in the skill, which gives no wording, "Describe what must
+be said; never dictate wording" in `docs/skill-conventions.md`. So the check
+would guard a copy in the documents and not what users read, and the two
+places where an approved wording reaches users word for word, `README.md` and
+the rule in `bin/devloop-auto-mode-rule`, it would not read. Its use is small:
+of 309 German quotes in `docs/rationale.md`, each read from „ to the next “ or
+straight quotation mark, counted on 24 November 2026 at `b50e023`, 300 stand
+word for word in the roadmap or its archive; the 9 others are eight wordings
+that (a), (c) and (d) of 22 November 2026 approved and that by (n) stand in
+`docs/rationale.md` alone, and one that (b) did not choose; none goes back to
+a change nobody noticed. Its cost would be real: every approval would make the
+roadmap longer again, against which (n) decided, and a German quote that is no
+approval, „mit Ctrl+Q“ under `shared/path-steps.md` in `docs/rationale.md` for
+one, would be red. Not chosen: (n) taken back, the entry that approves a
+wording quoting it word for word again, as the entries of 28 October and of 19
+and 20 November 2026 did, and the check holding both places alike. (2) A head
+cut with „…“ before its closing quotation mark is green where the text before
+the „…“ opens exactly one head, and red otherwise. Reason: what the check
+holds, that the entry named stands once, can be decided for a head cut so; the
+documents cut quotes openly with „…“; and the one head cut so on that day
+stands in a dated entry of `docs/roadmap.md`, the entry "Six contradictions
+settled, the README says what the mark guard reads.", which no branch may
+mend, so that a branch correcting a line number in that paragraph would be red
+on a break it may not mend. Its price: a new entry may cut a head as well. Not
+chosen: red, a head being named whole or not at all, the rule the field Found
+of a block has, one rule without an exception. (3) A head named without the
+period it ends on is red, and green by the period. Reason: the head is the
+text between `- **` and its closing `**`, as the header of
+`scripts/devloop-stock-take` reads it for the field Found, and the period
+belongs to it; counted on 24 November 2026 at `b50e023`, 823 places quote a
+head whole and 2 do not, in this file under "The aim" and in `docs/roadmap.md`
+under "Where these would attach", and both can be mended, neither standing in
+a dated entry. Not chosen: green, a quote that is a head once a period stands
+behind it naming that head, since the entry named stands once and nothing is
+broken in substance; an exception in the rule for a form at 2 of 825 places.
+(4) Without `origin/main`, or without a commit HEAD shares with it, the
+program cannot run and ends with 2, one line on stderr and no last line;
+`--all` runs without that commit. Reason: the program has three exits, and a
+check that cannot read its lines is neither green nor red. Not chosen: one
+line and not red, as `scripts/devloop-stock-take` holds it where it finds no
+`origin/main`, whose report has a line of its own for that, where the last
+line of this program has none. Built with that entry: the three checks,
+`entry-heads`, `entry-letters` and `plan-lines`, read in the lines a branch
+adds or changes with their paragraph and, with `--all`, in every line; what
+each holds the head of the program says. The breaks that stood on that day the
+full run of (d) found, and they stand as blocks of this milestone, mended with
+the statements of the documents, last.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A

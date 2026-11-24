@@ -13562,6 +13562,133 @@ and for the proofs of closings.
   no line of the fixed forms is written, no block being removed, renamed or
   given another should. Open stay the two blocks.
 
+- **The checks before a handover hold the references between the documents**
+
+  24 November 2026, version 0.195.0, raised once from 0.194.0 by the first
+  commit. On `task/references-between-documents`, off `origin/main` at
+  `b50e023`, in three commits: `38f1e05`, under the head of this entry, the
+  three checks in the program with their cases, the head of
+  `scripts/devloop-stock-take` and the comments of the workflow's two steps;
+  the second, the documents, the blocks, `docs/stock-take.tsv` and this entry;
+  the third, the runs below. The order: the references between the documents
+  of decision (s) of the entry "Every handover and the steps for the PATH
+  follow surface and system", in two parts, the first building and the second
+  writing and measuring. The report stands on this machine as
+  `~/devloop-references.md`, in German, outside the repository.
+
+  **What changed, and where it stands.** `scripts/devloop-handover-checks`
+  holds three checks more, `entry-heads`, `entry-letters` and `plan-lines`: an
+  entry a document names by its head stands once and a head the branch adds
+  stands nowhere else, a letter or a number of a decision that a document
+  gives an entry named so stands in that entry, and `docs/plan.md` names no
+  line of a file but of an archive of the roadmap. None is a command: the
+  program reads the documents under `docs/` itself, in the lines the branch
+  adds or changes against `git merge-base HEAD origin/main`, each with its
+  paragraph, and with `--all` in every line. In which forms a document names
+  an entry, a letter and a line, which files are sources, what a find carries
+  and what the program does not hold its head says; the second line it prints
+  says what it read. Its last line counts the checks, "green: 22 checks green,
+  0 red" at the first commit, and its self-test the cases, "SELF-TEST PASSED:
+  126 cases". The comments of the workflow's two steps that run the program
+  and its self-test say what the steps hold since. In
+  `docs/skill-conventions.md` the section "Before a handover, run these" names
+  each of the three with its reason, and the rule on the identity of a commit
+  names the self-test of the program among those that commit under an identity
+  that is made up. The head of `scripts/devloop-stock-take` names the skills
+  without their number and says what is run under each of the two check
+  headings, the two blocks of 23 November 2026 that are closed below.
+
+  **Decided on 24 November 2026**: (1) to (4), which `docs/plan.md` carries
+  under milestone 15 with their reasons and what was not chosen, in the
+  paragraph that names this entry. (1) Of the four kinds of references of
+  decision (s) the first falls away, a German wording of `docs/rationale.md`
+  word for word in the roadmap or its archive, and (n) of 22 November 2026
+  stays. (2) A head cut with „…“ is green where the text before the „…“ opens
+  exactly one head. (3) A head named without the period it ends on is red. (4)
+  Without `origin/main`, or without a commit HEAD shares with it, the program
+  ends with 2.
+
+  **Set by the order where it was left open**, each said in the head of the
+  program. Before a head, "of the entry" is read as "of entry" and "of the
+  roadmap entry" are, two places having stood so. A quote counts as a head
+  misquoted from 20 characters of agreement with a head on, the shortest
+  length of an anchor of the table, and below that as no head. Heads are read
+  in `docs/roadmap.md` under every heading and in an archive under "## Known
+  gaps" alone, the sections without a date standing in the archive as a copy.
+  The three checks stand in the program behind `second-statement`, so that its
+  last line counts them and its self-test asks a case of each. The self-test
+  commits in its throwaway directory, under the fixed identity of the
+  self-tests, which is made up. And the first commit changes the comments of
+  the two steps in `.github/workflows/stock-take.yml` with the program, by (r)
+  of 22 November 2026, no commit after it changing code.
+
+  **The first commit, written anew.** As first written, `596ce83`, its
+  self-test had 76 cases and walked six branches of the three checks by no
+  case, found by the second part before it changed anything: each broken in a
+  copy of the program outside the repository, the self-test passed. Decided on
+  24 November 2026: the cases go into the commit with the version, written
+  anew as `38f1e05` under the same message, and no block records the gap, by
+  (r) of the entry "Every handover and the steps for the PATH follow surface
+  and system", what a commit of this branch made wrong and the same branch
+  mends belonging to what changes. The six: a range of numbers before a head,
+  held in every number between its ends; a range whose ends do not rise, held
+  in its two ends alone; a head longer than a find carries, cut in its middle
+  with „…“; a head misquoted in a quote that does not close within 40
+  characters; a new head the branch writes twice, of which the find says "it
+  stood 0 times"; and `origin/main` sharing no commit with HEAD, where git
+  ends with 1 and says nothing, the second situation the head of the program
+  names for exit 2. Held then, as the same decision asks, with one copy for
+  every branch of the code the commit adds, a decision forced one way or an
+  alternative of a pattern taken out in each, 195 copies in the last of three
+  rounds: 194 turn the self-test red, and the one that does not leaves out a
+  part of a condition in the reading of a range that decides nothing, a letter
+  never sorting before a number. The branches that the first rounds found
+  walked by no case got their cases too, 41, among them each form in which the
+  head of the program says a document names an entry, a letter or a line. And
+  two places in what a find of `entry-heads` says were put right in the same
+  commit, decided on the same day, with three cases: the find gave as the way
+  the quote goes on 16 characters that ran past the closing mark of the quote,
+  and of a quote going on behind a whole head it said that the head goes on
+  with nothing; it gives the quote up to its closing mark now and says that
+  the head ends.
+
+  **The breaks that stood**, found once by the run with `--all`, at the first
+  commit and the same at the second, each written as a block of
+  `docs/defects.md` under milestone 15 by (d) of 23 November 2026 and mended
+  with the statements of the documents at the end of that milestone. Under
+  `entry-heads`, two places name the entry on the aim, of
+  `docs/roadmap-archive-1.md`, by its head without the period it ends on,
+  `docs/plan.md` under "The aim" and this file under "Where these would
+  attach": the blocks "docs/plan.md names the entry on the aim by its head
+  without the period the head ends on" and "docs/roadmap.md names the entry on
+  the aim by its head without the period the head ends on". Under
+  `plan-lines`, one sentence of `docs/plan.md` under milestone 12 names a line
+  of two files outside the repository: the block "docs/plan.md names a line of
+  two files outside the repository under milestone 12, where its head lets it
+  name a line of an archive alone". Under `entry-letters`, nothing. In no
+  dated entry did the run find a break. A fourth block holds a place the run
+  does not show, its form being none the program reads: "a block of
+  docs/defects.md names the entry on the wrapper that downloads on first use
+  as the entry above and by its head without the period the head ends on". One
+  block for each file, a closing having its proof in one file.
+
+  **Two blocks closed**, both of 23 November 2026 on the head of
+  `scripts/devloop-stock-take`, as corrected in the document, the sentence
+  itself having been the error and a run of the tool doing the same before and
+  after: "the head of scripts/devloop-stock-take counts the skills as twelve
+  at two places, where a count lives in one place" and "the head of
+  scripts/devloop-stock-take says the two check headings of the conventions
+  are run, where since 23 November 2026 the paragraphs under the second are
+  not".
+
+  **The table.** New are 93 behaviors of the program, every one Built, never
+  walked at the second commit: each of the three checks green, and one for
+  every case of the self-test on the references, ten red ends at a check, in
+  the list where the other checks have theirs, and eighty on what is read,
+  what is found in which form and how the program ends, three cases standing
+  for two behaviors each. 11 not-a-thing records cover the other lines of the
+  program that the search set holds.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
