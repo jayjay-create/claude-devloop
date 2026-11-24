@@ -13689,6 +13689,84 @@ and for the proofs of closings.
   for two behaviors each. 11 not-a-thing records cover the other lines of the
   program that the search set holds.
 
+  **The runs**, at the second commit, `aa3b767`, under 0.195.0, the tree
+  clean, on 24 November 2026 in UTC, on the person's Mac, every call under
+  `bin/devloop-bounded 600`. A run's date is the day in UTC at the run, read
+  off `date -u` in the call that runs it.
+
+  Run P, on the Mac from 11:34:09 to 11:34:25:
+  `scripts/devloop-handover-checks` twice, in the session's shell and as `env
+  -i PATH=/usr/bin:/bin bash --noprofile --norc -c`, exit 0 both times and the
+  same 25 lines: the line that names the 22 checks, the line "the references
+  between the documents: read in the 153 paragraphs of 5 sources under docs/
+  that carry a line this branch adds or changes against b50e023, git
+  merge-base HEAD origin/main", a line "ok" for each check, and "green: 22
+  checks green, 0 red"; nothing on stderr. The lines read are those the second
+  commit carries, a head named across a line break among them; the same call
+  before that commit, the lines standing in the working tree alone, printed
+  the same 25 lines. The three paragraphs that run A shows red carry no line
+  of the branch and were not read.
+
+  Run S, on the Mac from 11:34:25 to 11:35:07: its self-test twice, in the
+  same two ways, exit 0 both times and the same 127 lines, a line "ok" for
+  each case and "SELF-TEST PASSED: 126 cases"; nothing on stderr.
+
+  Run A, on the Mac from 11:35:07 to 11:35:22:
+  `scripts/devloop-handover-checks --all` twice, in the same two ways, exit 1
+  both times and the same 33 lines: the line "the references between the
+  documents: read in every line of the 6 sources under docs/, 15347
+  paragraphs, with --all"; a line "RED" for `entry-heads` with two finds, at
+  line 34 of `docs/plan.md` and at line 147 of this file, each quoting the
+  head of the entry on the aim without its period and saying that behind "this
+  gets to merged code" the head goes on with "." and the quote ends; a line
+  "RED" for `plan-lines` with two finds, at lines 1492 and 1493 of
+  `docs/plan.md`, "line 767, a line of `bsd/sys/proc_internal.h`" and "line
+  28, a line of `include/linux/threads.h`", neither given to
+  `scripts/devloop-run-workflow`, the file of the repository that the
+  paragraph names first; a line "ok" for each of the twenty other checks; and
+  "red: 20 checks green, 2 red: entry-heads, plan-lines"; nothing on stderr.
+  The four finds are the places of three of the four blocks, and the run shows
+  no other.
+
+  Run W, on the Mac from 11:35:35 to 11:40:10: `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml`, exit 0, "green: 12 steps run, every one
+  ended with 0; not run by design: no run: block (uses: actions/checkout@v7):
+  2; left out by the order of 31 October 2026: 3". In the job `stock-take` the
+  step of the checks printed the 25 lines of run P and ended with 0, the step
+  of the self-test the 127 lines of run S and ended with 0, and the step on
+  titles "the head of the new entry at line 13565 of docs/roadmap.md passes"
+  with the head. In the hooks step, run here once and under macOS, the line
+  "== devloop-handover-checks --self-test" stood over the 127 lines of run S.
+
+  Recorded are eight runs, on the behaviors of the table that a run on this
+  machine walks and not its fixture alone: run P on each of the three checks
+  green, on the lines of the branch read with their paragraph and on a line
+  the branch committed read like one in the working tree; run A on the run
+  with `--all` red, on a head named without the period it ends on and on the
+  lines of two files outside the repository. Runs S and W walk no behavior
+  that is new or that the branch takes a run from, and none is recorded for
+  them.
+
+  **The tool.** Before, on `b50e023`: exit 0, broken records 0, uncovered
+  lines 0 of 4916; Undetermined 24, Recorded, not built 243, Built, never
+  walked 1634, Walked 867, Closed 80. At the first commit: exit 1, uncovered
+  lines 52 of 4968, the search set 52 lines of the program larger and none of
+  them covered, every other figure as before. At the second, in run W: exit 0,
+  broken records 0, uncovered lines 0 of 4968; Recorded, not built 245, of
+  them defect 234 where 232, the four new blocks less the two closed; Closed
+  82; milestone 15 at 110 blocks with 38 Recorded, not built and 8 Closed;
+  Built, never walked 1727, of them program outcome 268 where 175, the 93
+  behaviors. At the third: Built, never walked 1719 and Walked 875, of them
+  program outcome 260 and 409, the eight behaviors that runs P and A walk;
+  every other figure as at the second. Walked on this branch without a run the
+  branch adds: 0. Its self-test: exit 0, 159 cases.
+
+  **Open.** The four blocks. Of the 93 behaviors 85 stand Built, never walked:
+  their cases walk them in the fixture of the self-test, and no run on this
+  machine brings them about. The run of the platform on the pull request is
+  not recorded here; there the step of the checks runs with HEAD the branch
+  merged onto main, which on this machine the self-test alone walks.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
