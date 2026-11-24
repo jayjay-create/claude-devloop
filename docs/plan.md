@@ -92,15 +92,22 @@ already uses under "Hand it over so it gets looked at".
 4. A building milestone ends with a run on a named bench. A measuring milestone
    ends with a dated entry in the roadmap. A text milestone ends with the
    rewritten rule and the list of every place that stood on it.
-5. A rule that does not hold in a run is rewritten, not appended to, and every
-   place deciding the same thing is named in the same change.
+5. A rule that does not hold in a run is not repaired by its text as it stands:
+   a hook or a program takes the duty over where one can, the rule is
+   rewritten, not appended to, only where its old text shows the cause, and
+   every place deciding the same thing is named in the same change.
 
 The fifth is `docs/skill-conventions.md` twice over: "A rule holds only on the
 path it is written on", and the third rule under "A field is not an answer to a
-question it was not asked". The first is the form the same file gives under "A
-finding that would have passed unsupervised gets written down": where it can
-happen again and cannot be prevented, that is the answer and it gets written
-down as one.
+question it was not asked". It reads so since 24 November 2026, decided by the
+person on that day, (1) of the roadmap entry of that date,
+"A text a run did not hold is no repair as it stands, six more decisions",
+under milestone 12 below with the reason and what was not chosen; until then it
+read "A rule that does not hold in a run is rewritten, not appended to, and
+every place deciding the same thing is named in the same change." The first is
+the form the same file gives under "A finding that would have passed
+unsupervised gets written down": where it can happen again and cannot be
+prevented, that is the answer and it gets written down as one.
 
 Decided on 2 November 2026 by the person, the roadmap entry of that date on
 the blocks held against the branch point: a milestone counts as reached only
@@ -1104,14 +1111,17 @@ bash` in the frontmatter of every skill, the two blocks on them. (4) The
 handover by surface: the blocks on the panel of the extension for VS Code,
 on the desktop app under Windows, on `respondToBashCommands`, on the steps
 for the PATH under Use Terminal and on step 4 of `setup-checks` naming the
-terminal alone. (5) The remaining questions of the installation: the blocks
-on the sandbox of Claude Code, on `brew search`, on the group of programs
-the reader reads over, on the workflow file changed with sed, on the
-question on gitleaks, on the planning of run 3 reading the tool records
-itself, on the folders for browsers of run 2, on the install of run 2 on
-main before the cut, and on `bin/devloop-tool-state` and pip; before them
-the question to the person whether a text that says what the should asks
-counts as a repair. (6) The texts users read: the README on Windows, on
+terminal alone. (5) The remaining questions of the installation: the blocks on
+the sandbox of Claude Code, on `brew search`, on the readings of four groups of
+programs going stale, until 24 November 2026 the group of programs the reader
+reads over alone, on the workflow file changed with sed, closed on that day, on
+the question on gitleaks, split on that day, on the planning of run 3 reading
+the tool records itself, on the folders for browsers of run 2, on the install
+of run 2 on main before the cut, and on `bin/devloop-tool-state` and pip;
+before them the question to the person whether a text that says what the should
+asks counts as a repair, answered on 24 November 2026; and since that day (5)
+is built in six parts, with the blocks that day added, by the decisions of that
+day below. (6) The texts users read: the README on Windows, on
 the places where devloop runs and on the version of Claude Code it needs,
 the three blocks on them, and the commands that keep a machine awake under
 Linux and under Windows named above, after the person has approved the
@@ -2018,6 +2028,127 @@ Reason: the rule of `docs/skill-conventions.md` that a finding in the code,
 the skills, the shared texts, the hooks, the programs or the workflow gets a
 block in every case. Not chosen: the findings in the report of the order
 alone, where they would stand nowhere in the repository.
+
+Decided on 24 November 2026 by the person, the roadmap entry of that date,
+"A text a run did not hold is no repair as it stands, six more decisions", (1):
+a text that said the should already when a run missed it does not count as the
+repair, as it stands. Where it can be done, a hook takes the duty over without
+blocking; otherwise a program the run uses with one call; a hook that blocks
+only where the harm is great. A rewritten text counts only where the cause is
+shown in the old text: a sentence that contradicts the should, or the rule
+missing altogether. Where none of this takes hold, the block stays open and
+goes to the person as a question of its own. Reason: the same text a run has
+failed on already gives the next run no new reason to hold. With it the fifth
+of the five sentences above reads as it does since that day, and the rule
+stands in `docs/skill-conventions.md` under "A rule holds only on the path it
+is written on", whose questions on a competing sentence and on the routes a
+rule stands on are how a cause is shown. Not chosen: the text counts as it
+stands and the closing runs of order (7) hold it, for the reason above, and
+because it contradicts the fifth sentence. The numbers (1) to (7) are those of
+that entry, where the counter-check stands and, for (5), the wording
+approved, word for word.
+
+Decided on 24 November 2026 by the person, the same entry, (2): the block of
+this milestone on
+the workflow file changed with sed is closed as left on purpose. Reason: no
+cause is found in the text, `grep -rn -w sed skills shared` finding the rule
+itself alone; the run named the fault itself as a slip,
+`docs/roadmap-archive-1.md` lines 26042 to 26050; the change itself was right;
+and a mechanism would have to block, which (1) rules out where the harm is
+small. The block on the question on gitleaks is split. Its part on „installiert
+nichts“ for „darf nichts installieren“ stays open, the cause shown: step 3 of
+`skills/setup-checks/SKILL.md` says that under a no "the run installs nothing"
+and asks of the question field, some lines on, "that outside the project the
+run may install nothing"; the fourth part of order (5) builds it. Its part on
+the command without backticks and on
+the browser left out as the example is closed as left on purpose, as a block of
+its own, for the reason of the first; the statement held in both runs. Both
+closed blocks are opened again where the same fault comes back in a run and
+does harm.
+
+Decided on 24 November 2026 by the person, the same entry, (3): the block on
+run 2 installing on main before it cut the task's branch stays whole in this
+milestone, as the decision of 5 November 2026 below has it, (11) of the roadmap
+entry of that date on the sorting into the milestones. The third part of order
+(5) builds one half: the message `bin/devloop-install-note` gives on the
+default branch says besides that in the report the run stands as the writer of
+the line and not the hook. The fourth part builds the other: step 3 of
+`skills/build-work/SKILL.md` says that an install of a task runs on the task's
+branch, after the cut, and that the main run installs nothing for a task
+itself. The cause is the rule missing: `grep -n -i -E 'after the cut|before the
+cut' skills/build-work/SKILL.md` finds nothing on it. The block of milestone 13
+on the main run building the tasks itself stays apart from it.
+
+Decided on 24 November 2026 by the person, the same entry, (4): the check for
+new versions is a workflow of its own that runs on GitHub once a week as a
+scheduled run, at a minute that is no full hour, and is none of the checks
+`main` requires. For every program it holds the version devloop read it at
+against the vendor's newest and names those that are to be read anew, in four
+groups: the programs the command reader knows; the installers the install guard
+and `bin/devloop-tool-state` read; Playwright, Puppeteer and Cypress; and
+Claude Code, where it reports a new version with its changelog to be read,
+whether the guards still take hold after it being shown by a run, which belongs
+to order (6). A reading that names no version gets it added once. A red run
+changes nothing of devloop at its users and blocks no merge. The fifth part of
+order (5) builds it, the block of this milestone on the readings going stale,
+which named the first group alone until that day. GitHub's page on the event
+`schedule`, "Events that trigger workflows" on docs.github.com, read on that
+day, says: a scheduled workflow runs on the latest commit on the default
+branch; its notifications go to the user who last modified the cron syntax in
+the workflow file; in a public repository scheduled workflows are disabled
+automatically when no repository activity has occurred in 60 days; and the
+event can be delayed under high load, the start of every hour among the times
+of high load, where some queued jobs may be dropped. Not chosen: the check on
+every pull request, since every pull request would go red as soon as any vendor
+releases something; and the check at the pull request alone that adds a line
+"Done on", since once devloop is done there is no milestone any more and the
+check would never run again.
+
+Decided on 24 November 2026 by the person, the same entry, (5): where git is
+missing or older than 2.31, devloop says so when a project is set up and at the
+start of every piece of work and gives the steps as for `gh`, as the decision
+of 19 November 2026 above on git has it; new is the wording, approved, which
+that entry carries word for word: for a command that asks nothing, for a git
+that is too old, for a command that asks for the password and for a page that
+gives no command. Where `git config` gives no name or no address, devloop takes
+the text `hooks/pre-tool-use-identity-guard.sh` hands over already, unchanged;
+and the identity guard blocks every `git commit` as long as `git config` gives
+no name or no address, and hands over the same text. Reason: an address git
+guesses from the machine's name becomes public for good with the push, the
+great harm for which (1) allows a hook that blocks; approved by the person with
+the wording. The fourth part of order (5) builds it and takes the wording to
+`docs/rationale.md`.
+
+Decided on 24 November 2026 by the person, the same entry, (6): two findings on
+the install guard under Windows with Git Bash get a block each under this
+milestone, written with that entry. Under a record that says yes the guard
+blocks every browser download of Playwright, Puppeteer and Cypress there where
+no variable before the command names the folder, since it names the default
+folders for macOS and Linux alone, and `bin/devloop-tool-state` says not read
+there for Cypress and Puppeteer, Playwright being read off its own dry run;
+should: the default folders of the three under Windows are read from the
+vendor's raw source at its newest version and named at the three places,
+measured under Windows with Git Bash; the third part of order (5) builds it.
+And the guard takes an installer's answer for a folder only where it opens with
+a slash, what the installers answer under Git Bash not being measured, and
+`bin/devloop-tool-state` reads the same answers; should: measured under Windows
+with Git Bash for every program the guard asks, and an answer in the form of
+Windows read as the same folder; the third part measures first. A third finding
+of the same reading, a path in the form of Windows written in the command and
+read as lying inside the project, is no part of this decision: it has a block
+of its own by the rule of `docs/skill-conventions.md` that a finding in the
+code gets one in every case, written with that entry.
+
+Decided on 24 November 2026 by the person, the same entry, (7): order (5) is
+built in six parts. The first writes these decisions down and changes no code.
+The second, the programs: the line endings in put of
+`bin/devloop-install-note`, in `bin/devloop-auto-mode-question` and in
+`bin/devloop-tool-state`, pip, and the self-test of
+`bin/devloop-install-issues`. The third, the install guard and the fact hook:
+the folders for browsers, the two blocks of (6), the message on the steps for
+the PATH and the message on the default branch. The fourth, the texts and git.
+The fifth, the check for new versions. The sixth examines the sandbox and
+reports.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

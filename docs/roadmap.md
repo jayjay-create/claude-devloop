@@ -13930,6 +13930,148 @@ and for the proofs of closings.
   read, the order that builds the block decides. Not chosen: the gap in this
   entry alone.
 
+- **A text a run did not hold is no repair as it stands, six more decisions**
+
+  24 November 2026, version 0.195.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/auftrag-5-teil-1`, off `origin/main` at `00f1d7a`, in one
+  commit: `docs/plan.md`, `docs/skill-conventions.md`, `docs/defects.md` and
+  this entry. The order: the first part of order (5) of milestone 12, which
+  writes down what was decided on 24 November 2026 and builds nothing. The
+  report stands on this machine as `~/devloop-auftrag5-teil1.md`, in German,
+  outside the repository.
+
+  **Decided on 24 November 2026**, seven, which `docs/plan.md` carries under
+  milestone 12 with their reasons and what was not chosen, in the seven
+  paragraphs that name this entry; here a sentence each. (1) A text that said
+  the should already when a run missed it is no repair as it stands: a hook, a
+  program, or a text rewritten where the old one shows the cause takes its
+  place, the fifth of the five sentences of the plan is rewritten with it, and
+  the rule stands in `docs/skill-conventions.md`. (2) The block on the
+  workflow file changed with sed is closed as left on purpose, and the block
+  on the question on gitleaks is split, its part on „installiert nichts“
+  staying open and its part on the backticks and on the browser as the example
+  closed as a block of its own. (3) The block on run 2 installing on main
+  before the cut stays whole in milestone 12. (4) The check for new versions
+  is a workflow of its own, scheduled once a week, over four groups of
+  programs, and the block on the readings going stale takes that should. (5)
+  The wording for a git that is missing or too old is approved, below, and the
+  identity guard blocks every `git commit` as long as `git config` gives no
+  name or no address. (6) Two findings on the install guard under Windows with
+  Git Bash get a block each. (7) Order (5) is built in six parts, this one the
+  first.
+
+  **The counter-check before the writing**, five points, a sentence each;
+  every line number is one at `00f1d7a`. (a) The fifth sentence read "A rule
+  that does not hold in a run is rewritten, not appended to, and every place
+  deciding the same thing is named in the same change.", without a condition,
+  which the rule (2) leaves as it stands would have broken, so that it is
+  rewritten with the old wording kept beside it, and the rule stands at the
+  end of "A rule holds only on the path it is written on", the section the
+  plan names for the fifth sentence and whose questions show a cause, and not
+  in the paragraph "A defect is a block in `docs/defects.md`; the roadmap
+  reports it", which says how a defect is recorded and not what repairs it.
+  (b) No place says the opposite of decision (11) of 5 November 2026: `grep
+  -rn -i -E 'install of (a|the) task|before cutting|before the cut|after the
+  cut|on main before'` over `docs/plan.md`, `docs/defects.md`, this file,
+  `docs/skill-conventions.md`, `docs/rationale.md`, `skills`, `shared`,
+  `hooks`, `bin` and `README.md` finds on this install the block, its line
+  "Should changed" at line 1271 of this file, the plan twice and line 3341 of
+  this file, and `skills/build-work/SKILL.md` carries neither "after the cut"
+  nor "before the cut". (c) Decisions (4) and (7) of 24 October 2026,
+  `docs/roadmap-archive-1.md` lines 37721 to 37724 and 37753 to 37766, and the
+  two they left under "Decisions taken against" below agree with the closing
+  of the part on the form, no hook on `AskUserQuestion` and no approved
+  wording as an example, and their conditions to reopen are not met, `grep -n
+  -i 'without backticks' docs/defects.md` finding that one block alone at that
+  commit. (d) Read at the code as the two blocks of (6) quote it:
+  `hooks/pre-tool-use-install-guard.sh` lines 890 to 894, 1039 to 1042, 1049,
+  1058, 1104 to 1155, 1198 to 1200 and 1265 to 1266, `bin/devloop-tool-state`
+  lines 59 to 61, 562 to 566 and 619 to 627, and `shared/backed-command.md`
+  lines 28 to 31; what npm, pnpm, yarn, bun, go and the others print under Git
+  Bash is not measured, by this part either. (e) No block held either finding:
+  of the titles of `docs/defects.md` at that commit, `grep -i -E 'windows'`
+  finds 38 and `grep -i -E 'git bash|browser|absolute|drive
+  letter|backslash|folder|starts with /|prefix -g|not read'` 39, and the two
+  nearest hold other faults, the carriage return at the end of a folder an
+  installer prints and the walk for a cargo configuration. And for (4),
+  GitHub's page on the event `schedule` was read on 24 November 2026,
+  https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows;
+  the plan's paragraph on (4) carries what it says.
+
+  **The wording of (5), approved, word for word.** The command asks nothing,
+  form A: „Für die Arbeit braucht devloop das Programm git in Version 2.31
+  oder neuer, und auf diesem Rechner ist es noch nicht installiert. Gib den
+  Befehl dafür hier in Claude Code ein, mit `!` davor:“, then the command,
+  then „Geprüft mit `brew info git`: Homebrew bietet git 2.xx an, es landet in
+  `/opt/homebrew/bin`.“, then „Sobald er durchgelaufen ist, prüfe ich, dass
+  git da ist, und mache weiter.“ Under `terminal` there stands directly before
+  the last sentence „Gib gleich nach dem Befehl „fertig“ ein.“ git is too old:
+  the first sentence ends with „…, und auf diesem Rechner ist git 2.30.2
+  installiert, das ist zu alt.“ The rest is as in form A or form B, with the
+  command that updates. The command asks for the password, form B: „… Der
+  Befehl dafür fragt nach deinem Passwort, darum gib ihn in einem zweiten
+  Terminalfenster ein, nicht in dem, in dem Claude Code läuft:“, then the
+  commands of the page, then „Geprüft an git-scm.com: Das ist die Anleitung
+  von git für Ubuntu.“, then „Sag mir hier Bescheid, sobald er durchgelaufen
+  ist. Dann prüfe ich, dass git da ist, und mache weiter.“ The page gives no
+  command: „Für die Arbeit braucht devloop das Programm git in Version 2.31
+  oder neuer, und auf diesem Rechner ist es noch nicht installiert.
+  Installiere es, wie git-scm.com es für dein System beschreibt, und sag mir
+  hier Bescheid, sobald das erledigt ist. Dann mache ich weiter.“ The version
+  number, the folder and the system are examples the run fills in.
+
+  **Found in the code beyond the two blocks of (6)**, in the same reading,
+  one, with a block of its own under milestone 12: the install guard reads a
+  path in the form of Windows written in the command, `C:/elsewhere`, as a
+  relative path inside the project, `inside()` at lines 226 to 242 of
+  `hooks/pre-tool-use-install-guard.sh`, so that an install to it passes
+  whatever the record says. Measured on 24 November 2026 on macOS, the path
+  given by hand, with the commands the block names: 0 and nothing on stderr
+  for four installs to such a path, 2 and "Blocked: this installs outside the
+  repository." for the same with `/c/elsewhere`. Under macOS and Linux the
+  reading is right; under Windows nothing is measured. A block by the rule
+  that a finding in the code gets one in every case; its should is this
+  order's, and the report puts it to the person.
+
+  **The lines of the fixed forms.** Two blocks are renamed, each with another
+  should; the block closed, the block split off and the three added need none.
+  Block renamed: the group of programs the reader reads over goes stale with new tools and options and nothing holds each program's named release against the vendor's newest / the readings of four groups of programs go stale with new releases and nothing holds each program's read release against the vendor's newest: the programs the reader knows, the installers the install guard and bin/devloop-tool-state read, Playwright, Puppeteer and Cypress, and Claude Code
+  Should changed: the readings of four groups of programs go stale with new releases and nothing holds each program's read release against the vendor's newest: the programs the reader knows, the installers the install guard and bin/devloop-tool-state read, Playwright, Puppeteer and Cypress, and Claude Code
+  Block renamed: the question on gitleaks of run 1 said that the run installs nothing and gave the command without backticks, and run 4 left out the browser as the example under the no of the install question, both holding in their statement / the question on gitleaks of run 1 said that the run installs nothing outside the project where the field is to say that it may install nothing there, holding in its statement
+  Should changed: the question on gitleaks of run 1 said that the run installs nothing outside the project where the field is to say that it may install nothing there, holding in its statement
+  The should of the first until now: "a check that holds, per program, the
+  release named in the roadmap against the vendor's newest release, and reads
+  again only the programs for which a newer one has appeared since, on the
+  rule of `docs/skill-conventions.md` under "A hook reads its input through
+  one program" that every reading of a program names the release or commit it
+  was made at, with the command that shows it exists and the vendor's sentence
+  quoted." Of the second: "the field says that outside the project the run may
+  install nothing and gives the command in backticks, as approved on 21
+  October 2026, and the line under the no names the browser as its example, as
+  approved on 20 October 2026; milestone 12."; what it said of the backticks
+  and the browser stands in the block split off.
+
+  **The tool and the checks.** Before, on `00f1d7a`: exit 0, broken records 0,
+  uncovered lines 0 of 4968; Undetermined 24, Recorded, not built 246, Built,
+  never walked 1719, Walked 875, Closed 82; milestone 12 at 153 blocks,
+  Recorded, not built 25 and Closed 14. After: exit 0, broken records 0,
+  uncovered lines 0 of 4968; Recorded, not built 248, Closed 84, every other
+  figure as before; milestone 12 at 157 blocks, Recorded, not built 27 and
+  Closed 16, milestone 13 unchanged at 174. `scripts/devloop-handover-checks`,
+  before the first change and after the last: exit 0, "green: 22 checks green,
+  0 red". The run of the workflow's steps was no part of the order; the three
+  heads this branch adds were held by hand to the rules of the title step, 71,
+  58 and 49 characters and no find. No run is recorded.
+
+  **Open.** Nothing is built. The blocks of (2), (3), (4) and (6) that stay
+  open wait for the third, the fourth and the fifth part, as the plan's
+  paragraphs say of each. The should of the block found beyond (6) waits for
+  the person. And the two conditions to reopen under "Decisions taken against"
+  that (2) was held against speak of a form that keeps failing where the
+  statement holds, which by (1) no hook that blocks answers while the harm is
+  small; whether they are worded anew is the person's to decide.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
@@ -14235,6 +14377,34 @@ of them if the reason stops holding — the reason is the point, not the verdict
   runs until the command is through, as the terminal does, or stops answering
   its output by itself — a condition derived from the reason, the decision
   naming none.
+
+- **A text that said the should already, counted as it stands.** A block whose
+  text said the should before the run that did not hold it would count as
+  built by that text, unchanged, and the closing runs of milestone 12 would
+  hold it, the question the entry
+  "Install blocks held to the code, systems and surfaces decided." above left
+  to the person for three blocks. Rejected on 24 November 2026, in the roadmap
+  entry of that date,
+  "A text a run did not hold is no repair as it stands, six more decisions",
+  decision (1): the same text a run has failed on already gives the next run
+  no new reason to hold, and it contradicts the fifth of the five sentences of
+  `docs/plan.md`. In its place a hook that does not block, a program called
+  once, a hook that blocks where the harm is great, or a rewritten text where
+  the old one shows the cause; and where none takes hold the block stays open
+  and goes to the person. Reopen if texts a run failed on come to hold in the
+  runs after it with nothing changed, counted over the runs — a condition
+  derived from the reason, the decision naming none.
+- **The check for new versions on every pull request.** The check that holds
+  for every program the version devloop read it at against the vendor's newest
+  would run on every pull request, with the checks `main` requires or beside
+  them. Rejected on 24 November 2026, in the roadmap entry of that date,
+  "A text a run did not hold is no repair as it stands, six more decisions",
+  decision (4): every pull request would go red as soon as any vendor releases
+  something, whatever it changes. In its place a workflow of its own runs once
+  a week as a scheduled run, none of the checks `main` requires, and a red run
+  of it blocks no merge. Reopen if the check can be held to the readings a
+  pull request itself adds or changes — a condition derived from the reason,
+  the decision naming none.
 
 ## Names that were rejected
 
