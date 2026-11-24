@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """devloop-handover-checks: the checks under "Before a handover, run these" in
 docs/skill-conventions.md, every one but the run of the workflow's steps, each
-held against the answer it has when it is green.
+held against the answer it has when it is green, and with them the references
+between the documents under docs/ that a program can hold, read in the lines
+a branch adds or changes.
 
 Usage
     scripts/devloop-handover-checks              every check, in the
                                                  repository this file stands in
+    scripts/devloop-handover-checks --all        the same, the references read
+                                                 in every line of the
+                                                 documents and not in the
+                                                 lines of the branch alone
     scripts/devloop-handover-checks --self-test  every outcome once, in a
                                                  throwaway directory outside
                                                  the repository
@@ -13,13 +19,15 @@ Usage
 Exit 0 where every check is green; 1 where one is red; 2 where the program
 cannot run: an argument it does not take, a directory above it that is not
 devloop's repository, a tool its commands name that the path they run with
-does not hold, a list that cannot be read. The last line says which of the
+does not hold, a list that cannot be read, a question about the commit the
+branch forked from that git does not answer. The last line says which of the
 first two: it opens with "green:" or with "red:" and carries the count of the
 green checks and of the red ones, the red ones by name. Where it cannot run it
 prints one line on stderr that says why, and no such last line.
 
 What a check is. One call of check() below: a name, the sentence that says
-what it holds, its command and the answer that is green. The command is the
+what it holds, and for all but three its command and the answer that is
+green. The command is the
 one of the command block the section carried for the check, word for word
 but for two, decided on 23 November 2026: default-branch counts in a second
 line the files that carry the opening line of the block it checksums, since
@@ -27,7 +35,11 @@ four checksums of nothing are one line too; locked-skills prints every place
 that names a locked skill, grep -n, where the block printed every file,
 grep -l, since a second place in a file its list carries would otherwise go
 unseen. The run of the workflow's steps, scripts/devloop-run-workflow, is
-none of them: it runs the workflow that runs this program.
+none of them: it runs the workflow that runs this program. The three without
+a command, entry-heads, entry-letters and plan-lines, hold the references
+between the documents: the program reads the documents itself for them, as
+the paragraphs from "The references between the documents" to "Which lines
+are read" say, and a find of theirs is a place where a reference breaks.
 
 How a command runs. With bash --noprofile --norc -c, in the root of the
 repository, in the environment env -i PATH=/usr/bin:/bin leaves. So grep, sed
@@ -36,6 +48,7 @@ shell, no locale of a session decides what awk counts or how a list sorts, and
 a check answers in a session of Claude Code what it answers in a terminal and
 in the workflow. The commands need bash, python3 and git and what POSIX gives
 beside them, and no GNU tool: the program runs on macOS as on ubuntu-latest.
+What the program asks git for the references it asks in that environment too.
 
 What is green. Two kinds of answer.
 - A fixed one: silence, a count, two empty lists, one line per skill. The
@@ -58,15 +71,103 @@ What is green. Two kinds of answer.
   with # and an empty line are no line of the list.
 In both kinds a line on stderr is red: a command that printed an error has
 not answered, and silence behind an error is how a check comes to look as if
-it passed.
+it passed. A check on the references is green where it finds no break in the
+lines it read.
+
+The references between the documents. Three checks, decided on 22, 23 and 24
+November 2026, docs/plan.md under milestone 15, where the reasons stand with
+what was not chosen.
+- entry-heads: an entry that a document names by its head stands exactly
+  once. An entry is a line of docs/roadmap.md, or of an archive of it,
+  docs/roadmap-archive-<n>.md, that opens with "- **" at the margin, with
+  what follows to the line before the next such line or the next heading
+  "## "; its head is the text to the closing "**", read across line breaks,
+  every run of blanks one blank. The heads are read in docs/roadmap.md under
+  every heading and in an archive under "## Known gaps" alone: the sections
+  without a date stay in docs/roadmap.md, and an archive carries them as the
+  copy of the day it was made, so that every entry of theirs would stand
+  twice. A document names an entry by its head where a quote follows the
+  word entry, Entry, entries or Entries, with "of" and a date between the
+  two or not - a date written out, or "that date", "that day" or "the same
+  day" for one -, and behind the date a comma or not; behind entries, every
+  further quote joined by a comma, "and" or "or" is read as well. The text
+  behind the opening quote is held against every head with its closing
+  quote, the longest head first, so that a quote inside a head does not end
+  the reading. A quote that is a head whole is green where that head stands
+  once. A quote that agrees with a head in its first 20 characters and is
+  not that head whole is red, and a head without the period it ends on is
+  not that head; with one exception: cut with "…" before its closing quote,
+  it is green where exactly one head opens with the text before the "…". A
+  quote that agrees with no head that far is no head, the Built line of an
+  entry or a commit's subject, and the program says nothing of it. And a
+  head a branch adds stands nowhere else: a head that stands more often in
+  the working tree than at the commit the branch forked from, counted over
+  docs/roadmap.md and the archives together, is red where it stands more
+  than once, so that an entry that moves into a new archive, standing once
+  before and once after, counts as moved.
+- entry-letters: a letter or a number of a decision that a document gives an
+  entry named so stands in that entry. Held is an identifier in brackets,
+  one small letter or a number, that stands before "of entry", "of the
+  entry" or "of the roadmap entry": alone, in a list joined by commas, "and"
+  or "or", or as an end of a range "(a) to (h)", every member of which is
+  held. It stands in the entry where the entry writes it out in brackets or
+  writes such a range around it. An entry named by its date and its subject
+  has no head a program can read, and its letters are not held.
+- plan-lines: docs/plan.md names no line of a file against the rule at its
+  head, a file and a section and never a line, a line of an archive of the
+  roadmap being the one exception. A line is the word line or lines and a
+  number. Its file is the one in backticks right behind it, after "of", "in"
+  or "at", else the last one in backticks before it in its paragraph; a file
+  is what stands in backticks without a blank and carries a slash or ends on
+  a period and an extension. Green where that file is an archive of the
+  roadmap; red for any other, one outside the repository at a named version
+  too, and where the paragraph names no file.
+
+Which files are read. The sources are the files under docs/ but two kinds:
+the lists under docs/handover-checks/, which carry what commands print, and
+the archives of the roadmap. An archive never changes, "An archive of the
+roadmap never changes" in docs/skill-conventions.md, so a reference in one
+could never be mended, and the check roadmap-names reads none either. An
+archive is read for its heads and its entries, as what a reference points
+at.
+
+Which lines are read. Without --all, the lines the branch adds or changes,
+each with its paragraph. The commit the branch forked from is git merge-base
+HEAD origin/main, and it is held against the working tree, so that a change
+not committed yet is read like a committed one: the lines git diff -U0
+--no-renames marks as added in a source, and every line of a source that did
+not stand at that commit under its name, whether git tracks it yet or not. A
+paragraph is a run of lines that are not empty, begun anew at a line that
+opens with "- " or "#" at the margin; in a source that is no Markdown,
+docs/stock-take.tsv, every line is one. Every paragraph that carries a line
+of the branch is read whole, so that a branch that changes one line of a
+paragraph answers for every reference of that paragraph. On main after a
+squash merge HEAD is that commit and nothing is read; in the workflow HEAD
+is the branch merged onto main, and that commit is origin/main. Where git
+does not name it, there being no origin/main or no commit HEAD shares with
+it, the program cannot run, exit 2. With --all every line of every source is
+read and git is asked nothing, and a head of docs/roadmap.md that stands
+more than once is red whichever branch added it: the run that finds the
+breaks that stand, once, for the blocks of docs/defects.md, where reading
+everything on every pull request would be red on breaks no branch may mend.
+The second line the program prints says which of the two it read, and how
+many paragraphs.
 
 What a red find carries: the check's name, the file and the line where the
-command names them, the text, and what makes it green.
+command names them, the text, and what makes it green; a find on a reference
+always its file and its line.
 
 What the program does not hold: that a line of a list is right. Whoever wrote
-it there read it.
+it there read it. Nor, of the references: a head misquoted within its first
+20 characters, which nothing tells from a quote that is no head; an entry
+named in another form than those above, "the entry above" among them, or by
+the field Found of a block of docs/defects.md, which
+scripts/devloop-stock-take holds; a line written without the word line; a
+paragraph a branch only takes lines out of; and a reference in a line the
+branch leaves alone to an entry the branch changes.
 """
 
+import bisect
 import collections
 import contextlib
 import glob
@@ -88,6 +189,32 @@ GONE = "gone, the list %s carries it and the check prints it no more. Green: the
 NUMBER = re.compile(r"^([^:]+):[0-9]+:")
 PLACE = re.compile(r"^((?:skills|shared|bin|scripts|hooks|docs)/[^:\s]*)(?::([0-9]+)(?=:))?(?::\s*(.*))?$")
 CHECKS = []
+DOCS, ROADMAP, THE_PLAN = "docs", "docs/roadmap.md", "docs/plan.md"
+ARCHIVE = re.compile(r"^docs/roadmap-archive-[0-9]+\.md$")
+KNOWN = "## Known gaps"
+OPENS = 20
+DAY = r"(?:[0-9]{1,2} (?:January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{4}|that date|that day|the same day)"
+NAMED = re.compile(r"\b([Ee]ntry|[Ee]ntries)(?: of %s,?)? \"" % DAY)
+FURTHER = re.compile(r"(?:,? and |,? or |, )\"")
+CUT = re.compile(r" ?…\"")
+SIGN = r"\((?:[a-z]|[0-9]{1,3})\)"
+GIVEN = re.compile(r"(%s(?:(?:,? and |,? or | to |, )%s)*),? of (?:the )?(?:roadmap )?$" % (SIGN, SIGN))
+ONE = re.compile(r"\(([a-z]|[0-9]{1,3})\)")
+RANGE = re.compile(r"\(([a-z]|[0-9]{1,3})\) to \(([a-z]|[0-9]{1,3})\)")
+LINE = re.compile(r"\b[Ll]ines? [0-9]+(?:(?:,? and | to |, )[0-9]+)*")
+BEHIND = re.compile(r" (?:of|in|at) `([^`\s]+)`")
+TICKED = re.compile(r"`([^`\s]+)`")
+ENDING = re.compile(r"\.[A-Za-z][A-Za-z0-9]{0,4}$")
+HUNK = re.compile(r"^@@ -[0-9]+(?:,[0-9]+)? \+([0-9]+)(?:,([0-9]+))? @@", re.M)
+REFERENCES = "the references between the documents: read in "
+NO_BRANCH_POINT = "git %s ended with %d%s: without that answer the lines this branch adds cannot be told from the lines that stood. The checks on the references read them against the commit the branch forked from, git merge-base HEAD origin/main, so origin/main has to be here and share a commit with HEAD; --all reads every line and asks git nothing"
+NOT_WHOLE = 'the quote opens as the head at %s:%d opens and is not that head: behind "%s" the head %s and the quote %s. Green: the head whole, as it stands there, its last character with it; or cut with … behind an opening no other head has'
+CUT_WIDE = "the quote is cut with … behind an opening that %d heads have, at %s. Green: the quote goes on until one head alone opens so, or the head whole"
+TWICE = "the head stands %d times, at %s, and names no single entry. Green: where one of them stands in docs/roadmap.md, that entry gets a head that stands nowhere else"
+ADDED = "the head stands %d times, at %s%s. Green: a head for the entry in docs/roadmap.md that stands nowhere else in it and in its archives; an entry that moves into a new archive leaves docs/roadmap.md"
+NO_LETTER = 'the entry at %s:%d carries no (%s), written out or inside a range "(x) to (y)" of its own. Green: the letter or number the entry gives the decision, or the entry that carries it'
+NO_LINE = "by the rule at the head of docs/plan.md a reference names a file and a section, never a line, a line of an archive docs/roadmap-archive-<n>.md being the one exception. Green: the section in place of the line"
+READ = {}  # what one reading of the references found, by check, and under "note" what it read: verdicts() puts it here, judge() and run() take it out, so that a run reads the documents once for the three checks
 
 
 class CannotRun(Exception):
@@ -319,6 +446,27 @@ grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope i
 ''',
       "list")
 
+check("entry-heads",
+      "An entry that a document names by its head stands exactly once, and a head the branch adds stands nowhere else",
+      "docs/",
+      "",
+      "references",
+      "no find: the quote behind entry is a head whole, or one cut with … behind an opening no other head has, of an entry that stands once over docs/roadmap.md and its archives")
+
+check("entry-letters",
+      "A letter or a number of a decision that a document gives an entry named by its head stands in that entry",
+      "docs/",
+      "",
+      "references",
+      "no find: every identifier in brackets before of entry, of the entry or of the roadmap entry stands in the entry named, written out or inside a range of its own")
+
+check("plan-lines",
+      "docs/plan.md names no line of a file but of an archive of the roadmap, by the rule at its head",
+      "docs/plan.md",
+      "",
+      "references",
+      "no find: every line docs/plan.md names is a line of an archive docs/roadmap-archive-<n>.md")
+
 
 def answer(root, c, path):
     """What the command of a check prints, on stdout and on stderr, the empty lines left out."""
@@ -346,8 +494,187 @@ def quoted(lines):
     return ", ".join('"%s"' % l for l in lines) or "nothing"
 
 
+# ------------------------------------------- the references between the documents
+
+def git(root, path, *args):
+    """What git answers to one question about the repository; where it answers none, the program cannot run."""
+    p = subprocess.run([shutil.which("git", path=path)] + list(args), cwd=root, env={"PATH": path}, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if p.returncode:
+        said = p.stderr.decode("utf-8", "replace").strip().split("\n")[0]
+        raise CannotRun(NO_BRANCH_POINT % (" ".join(args), p.returncode, ", " + said if said else ""))
+    return p.stdout.decode("utf-8", "replace").replace("\r\n", "\n")
+
+
+def documents(root):
+    """The lines of every file under docs/ but the lists of the checks, each under its path from the root."""
+    out = {}
+    for there, dirs, names in os.walk(os.path.join(root, DOCS)):
+        rel = os.path.relpath(there, root).replace(os.sep, "/")
+        if rel == LISTS:
+            del dirs[:]
+            continue
+        for n in names:
+            with open(os.path.join(there, n), encoding="utf-8", errors="replace") as f:
+                out[rel + "/" + n] = f.read().split("\n")
+    return out
+
+
+def entries(rel, lines):
+    """The entries of docs/roadmap.md or of an archive: for each its head, the line it opens on and the line it ends on."""
+    marks, section = [], None
+    for i, l in enumerate(lines, 1):
+        if l.startswith("## "):
+            section = l.rstrip()
+            marks.append((i, False))
+        elif l.startswith("- **") and section and (rel == ROADMAP or section == KNOWN):
+            marks.append((i, True))
+    out = []
+    for k, (i, opens) in enumerate(marks):
+        if opens:
+            text, j = lines[i - 1][4:], i
+            while "**" not in text and j < len(lines):
+                text, j = text + " " + lines[j], j + 1
+            out.append((" ".join(text.split("**", 1)[0].split()), i, marks[k + 1][0] - 1 if k + 1 < len(marks) else len(lines)))
+    return out
+
+
+def heads(files):
+    """Every head with the places it stands at, over docs/roadmap.md and its archives: the file, the line, the last line of the entry."""
+    out = {}
+    for rel in sorted(files, key=lambda r: (r != ROADMAP, r)):
+        if rel == ROADMAP or ARCHIVE.match(rel):
+            for head, i, end in entries(rel, files[rel]):
+                out.setdefault(head, []).append((rel, i, end))
+    return out
+
+
+def paragraphs(rel, lines):
+    """The paragraphs of a source: for each the numbers of its lines, its text with every run of blanks one blank, and where in that text each line begins."""
+    runs, cur, table = [], None, not rel.endswith(".md")
+    for i, l in enumerate(lines, 1):
+        if not l.strip():
+            cur = None
+            continue
+        if cur is None or table or l.startswith(("- ", "#")):
+            cur = ([], [])
+            runs.append(cur)
+        cur[0].append(i)
+        cur[1].append(" ".join(l.split()))
+    return [(numbers, " ".join(parts), [sum(len(p) + 1 for p in parts[:k]) for k in range(len(parts))]) for numbers, parts in runs]
+
+
+def span(lo, hi):
+    """The members of a range from its first end to its last; the two ends alone where they do not rise as letters or as numbers."""
+    if lo.isdigit() and hi.isdigit() and int(lo) < int(hi):
+        return [str(n) for n in range(int(lo), int(hi) + 1)]
+    if lo.isalpha() and hi.isalpha() and lo < hi:
+        return [chr(n) for n in range(ord(lo), ord(hi) + 1)]
+    return [lo, hi]
+
+
+def signs(text):
+    """The identifiers a text carries in brackets: each written out, and each inside a range it writes."""
+    return set(ONE.findall(text)) | {x for lo, hi in RANGE.findall(text) for x in span(lo, hi)}
+
+
+def brief(text, most=96):
+    return text if len(text) <= most else text[:most - 34].rstrip() + " … " + text[-30:].lstrip()
+
+
+def places(stands):
+    return ", ".join("%s:%d" % (rel, i) for rel, i, end in stands)
+
+
+def meant_by(rest, order):
+    """What the text behind an opening quote names: a head whole, a head cut with …, a head that it opens as and is not, or nothing where it opens as no head opens. With it the heads meant and how far the quote was read."""
+    for head in order:
+        if rest.startswith(head) and rest[len(head):len(head) + 1] == '"':
+            return "whole", [head], len(head) + 1
+    best, n = None, 0
+    for head in order:
+        k = len(os.path.commonprefix([rest[:len(head)], head]))
+        if k > n:
+            best, n = head, k
+    if n < OPENS:
+        return None, [], 0
+    cut = CUT.match(rest, n)
+    if cut:
+        return "cut", [head for head in order if head.startswith(rest[:n].rstrip())], cut.end()
+    return "other", [best], n
+
+
+def references(root, path=PATH, everything=False):
+    """What the three checks on the references find, by check, each find the place, the text and what makes it green; and the line that says what was read."""
+    files = documents(root)
+    sources = sorted(rel for rel in files if not ARCHIVE.match(rel))
+    now, then, lines_of = heads(files), None, dict.fromkeys(sources)
+    if not everything:
+        base = git(root, path, "merge-base", "HEAD", "origin/main").strip()
+        stood = set(git(root, path, "ls-tree", "-r", "--name-only", base, "--", DOCS).split("\n"))
+        then = heads({rel: git(root, path, "show", "%s:%s" % (base, rel)).split("\n") for rel in stood if rel == ROADMAP or ARCHIVE.match(rel)})
+        for rel in sources:
+            if rel in stood:
+                hunks = HUNK.findall(git(root, path, "diff", "--no-ext-diff", "--no-color", "--no-renames", "-U0", base, "--", rel))
+                lines_of[rel] = {n for first, count in hunks for n in range(int(first), int(first) + int(count or 1))}
+    found = {"entry-heads": [], "entry-letters": [], "plan-lines": []}
+    order, carried, read = sorted(now, key=len, reverse=True), {}, collections.Counter()
+    for rel in sources:
+        for numbers, text, starts in paragraphs(rel, files[rel]):
+            if lines_of[rel] is not None and lines_of[rel].isdisjoint(numbers):
+                continue
+            read[rel] += 1
+
+            def at(offset):
+                return "%s:%d" % (rel, numbers[bisect.bisect_right(starts, offset) - 1])
+
+            for m in NAMED.finditer(text):
+                pos, first = m.end(), True
+                while pos:
+                    rest = text[pos:]
+                    kind, meant, length = meant_by(rest, order)
+                    said = text[pos - len(m.group(0)) if first else pos - 1:pos]
+                    if kind == "other":
+                        head, n = meant[0], length
+                        stop = rest.find('"', n)
+                        found["entry-heads"].append((at(pos), said + brief(rest[:stop + 1 if 0 <= stop - n < 40 else n + 20]), NOT_WHOLE % (now[head][0][0], now[head][0][1], rest[max(0, n - 24):n].lstrip(), 'goes on with "%s"' % head[n:n + 16] if head[n:] else "ends", "ends" if stop == n else ('with "%s"' if head[n:] else 'goes on with "%s"') % rest[n:stop if n < stop < n + 16 else n + 16])))
+                    elif kind == "cut" and len(meant) > 1:
+                        found["entry-heads"].append((at(pos), said + brief(rest[:length]), CUT_WIDE % (len(meant), ", ".join(places(now[head]) for head in meant))))
+                    elif kind and len(now[meant[0]]) > 1:
+                        found["entry-heads"].append((at(pos), said + brief(rest[:length]), TWICE % (len(now[meant[0]]), places(now[meant[0]]))))
+                    elif kind and first:
+                        given = GIVEN.search(text[:m.start()])
+                        if given:
+                            entry, i, end = now[meant[0]][0]
+                            if (entry, i) not in carried:
+                                carried[entry, i] = signs(" ".join(" ".join(files[entry][i - 1:end]).split()))
+                            ranged = [r.span() for r in RANGE.finditer(given.group(1))]
+                            asked = {x for r in RANGE.finditer(given.group(1)) for x in span(*r.groups())} | {o.group(1) for o in ONE.finditer(given.group(1)) if not any(a <= o.start() < b for a, b in ranged)}
+                            for x in sorted(asked - carried[entry, i], key=lambda x: (len(x), x)):
+                                found["entry-letters"].append((at(given.start(1)), '(%s), in "%s" of the entry "%s"' % (x, given.group(1), brief(meant[0], 60)), NO_LETTER % (entry, i, x)))
+                    further = FURTHER.match(text, pos + length) if kind in ("whole", "cut") and m.group(1).lower() == "entries" else None
+                    pos, first = further.end() if further else 0, False
+            if rel == THE_PLAN:
+                for m in LINE.finditer(text):
+                    behind = BEHIND.match(text, m.end())
+                    named = [t for t in TICKED.findall(text[:m.start()]) + ([behind.group(1)] if behind else []) if "/" in t or ENDING.search(t)]
+                    if not named:
+                        found["plan-lines"].append((at(m.start()), "%s, and its paragraph names no file in backticks before it or right behind it" % m.group(0), NO_LINE))
+                    elif not ARCHIVE.match(named[-1]):
+                        found["plan-lines"].append((at(m.start()), "%s, a line of `%s`" % (m.group(0), named[-1]), NO_LINE))
+    for head, stands in now.items():
+        was = len(then.get(head, ())) if then is not None else 0
+        if len(stands) > 1 and stands[0][0] == ROADMAP if everything else len(stands) > max(was, 1):
+            found["entry-heads"].append(("%s:%d" % stands[0][:2], "- **%s**" % brief(head), ADDED % (len(stands), places(stands), "" if everything else ", and the branch adds it: at the commit it forked from, %s, it stood %s" % (base[:7], "%d times" % was if was != 1 else "once"))))
+    if everything:
+        return found, REFERENCES + "every line of the %d sources under docs/, %d paragraphs, with --all" % (len(sources), sum(read.values()))
+    return found, REFERENCES + "the %d paragraphs of %d sources under docs/ that carry a line this branch adds or changes against %s, git merge-base HEAD origin/main" % (sum(read.values()), len(read), base[:7])
+
+
 def judge(root, c, path=PATH):
     """The finds of one check, none where it is green: each the place, the text and what makes it green."""
+    if c["kind"] == "references":
+        held = READ.pop(c["key"], None)
+        return references(root, path)[0][c["key"]] if held is None else held
     out, err = answer(root, c, path)
     where, green = c["where"], c["green"]
     finds = [(where, "stderr: " + l.strip(), STDERR) for l in err]
@@ -374,23 +701,28 @@ def judge(root, c, path=PATH):
     return finds + [place(line, where) + ("the check does not print this line. Green: " + green,) for line in sorted(left.elements())]
 
 
-def verdicts(root, path=PATH):
-    """Every check with its finds, in the order of the section."""
+def verdicts(root, path=PATH, everything=False):
+    """Every check with its finds, in the order of the section, the three on the references last and read once for all three."""
     if not os.path.isfile(os.path.join(root, ".claude-plugin", "plugin.json")) or not skills(root):
         raise CannotRun("the directory above this program is not devloop's repository: it carries no .claude-plugin/plugin.json or no skills/*/SKILL.md")
     missing = [t for t in TOOLS if not shutil.which(t, path=path)]
     if missing:
         raise CannotRun("the commands run with PATH=%s, and it holds no %s" % (path, ", no ".join(missing)))
+    READ.clear()
+    found, READ["note"] = references(root, path, everything)
+    READ.update(found)
     return [(c, judge(root, c, path)) for c in CHECKS]
 
 
-def run(root, path=PATH):
+def run(root, path=PATH, everything=False):
     """Every check once: the exit code, and the lines to print."""
     try:
-        found = verdicts(root, path)
+        found = verdicts(root, path, everything)
     except CannotRun as e:
+        READ.clear()
         return 2, ["devloop-handover-checks cannot run: %s" % e]
     lines = ['devloop-handover-checks: %d checks of "Before a handover, run these", each command run as env -i PATH=%s bash --noprofile --norc in the repository this program stands in' % (len(CHECKS), path)]
+    lines.append(READ.pop("note"))
     for c, finds in found:
         lines.append("%s  %s: %s" % ("RED" if finds else "ok ", c["key"], c["says"]))
         for where, text, green in finds:
@@ -419,6 +751,15 @@ missing=$(for n in $(sed -n 's/^!`.*devloop-text \([a-z0-9-]*\)`$/\1/p' "$1"); d
 [ -z "$missing" ]
 '''
 BUILD, PLAN, START = "skills/build-work/SKILL.md", "skills/plan-work/SKILL.md", "skills/start-work/SKILL.md"
+RATIONALE, ARCHIVED = "docs/rationale.md", "docs/roadmap-archive-1.md"
+THREE = "The plan decided, in three parts."
+ANSWER = 'The answer "none" leaves the step, and a guard holds it.'
+GATE, GUARDED = "The archive opens with one entry, on the gate.", "The archive opens with one entry, on the guard."
+AGAINST = "A wording kept as an example."
+LONG = "A head so long that a find of the letters cannot carry it whole, the gate and the guard."
+TWO = 'Held in entry "The plan decided, in two parts.".'
+SKILL_LINE = "Decided for line 12 of `skills/build-work/SKILL.md`."
+WHO = {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
 
 
 def skill(name, body, locked=False, under=None):
@@ -453,8 +794,24 @@ def add(T, rel, line):
     swap(T, rel, "\n" + INSERT % "closing", "\n" + line + "\n\n" + INSERT % "closing")
 
 
+def more(T, rel, text):
+    # a paragraph at the end of a document of the fixture
+    put(T, rel, get(T, rel) + "\n" + text + "\n")
+
+
+def tgit(T, *args):
+    # git in the fixture, its commits under the fixed identity of the self-tests, which is made up
+    return subprocess.run([shutil.which("git", path=PATH)] + list(args), cwd=T, env=dict(WHO, PATH=PATH), check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout.decode("utf-8")
+
+
+def commit(T, subject):
+    tgit(T, "add", "-A")
+    tgit(T, "commit", "-q", "-m", subject)
+
+
 def fixture(T):
-    """The green repository of the self-test, built anew: three skills, the shared texts, the programs and hooks the commands read, the two documents, the lists, and git's record of it."""
+    """The green repository of the self-test, built anew: three skills, the shared texts, the programs and hooks the commands read, the documents with an archive of the roadmap, the lists, a commit of all that with origin/main on it, and in the working tree two paragraphs a branch adds, every reference of theirs holding."""
+    READ.clear()
     for n in os.listdir(T):
         shutil.rmtree(os.path.join(T, n))
     put(T, ".claude-plugin/plugin.json", '{"name": "fixture", "skills": ["./skills/build-work", "./skills/plan-work", "./skills/start-work"]}\n')
@@ -467,7 +824,10 @@ def fixture(T):
     put(T, "shared/arming-command.md", "    " + ARM + "\n")
     put(T, "shared/status-forms.md", FORMS + "\n")
     put(T, "shared/install-tool.md", HANDOVER + "\n")
-    put(T, "docs/roadmap.md", "# Roadmap\n\n## Named, not built as skills\n\n| Name | What it is |\n|---|---|\n| `tidy-notes` | named, not built |\n\n## Entries\n\n- An entry on `build-work`, on `tidy-notes` and on the flag `--auto`.\n")
+    put(T, ROADMAP, "# Roadmap\n\n## Named, not built as skills\n\n| Name | What it is |\n|---|---|\n| `tidy-notes` | named, not built |\n\n## Known gaps\n\n- An entry on `build-work`, on `tidy-notes` and on the flag `--auto`.\n- **The plan decided, in three\n  parts.** Decided: (a) to (c). Measured: (1) and (2).\n\n## Decisions taken against\n\n- **%s** Not built.\n" % AGAINST)
+    put(T, ARCHIVED, "# Roadmap\n\n## Known gaps\n\n- **%s** It decides\n  (4) and (8).\n- **%s** Old.\n- **%s** Old.\n\n## Decisions taken against\n\n- **%s** Not built.\n" % (ANSWER, GATE, GUARDED, AGAINST))
+    put(T, THE_PLAN, "# The plan\n\nA reference below names a file and a section, never a line.\n\nThe counter runs out late, `kernel/pid.c` line 28 at v1,\nand no run meets it.\n")
+    put(T, RATIONALE, "# Reasons\n\n- **A rule.** Decided in entry \"%s\".\n" % THREE)
     put(T, "docs/skill-conventions.md", "# Conventions\n\n    " + ARM + "\n")
     put(T, "hooks/pre-tool-use-merge-guard.sh", GUARD % ARM)
     put(T, "hooks/pre-tool-use-table-guard.sh", GUARD % FORMS)
@@ -481,8 +841,12 @@ def fixture(T):
     put(T, LISTS + "/offers.txt", "%s:%s\n" % (PLAN, OFFER))
     put(T, LISTS + "/handovers.txt", "shared/install-tool.md:%s\n" % HANDOVER)
     put(T, LISTS + "/second-statement.txt", "%s:%s\n" % (PLAN, SECOND))
-    for args in (["init", "-q"], ["add", "-A"]):
-        subprocess.run([shutil.which("git", path=PATH)] + args, cwd=T, env={"PATH": PATH}, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    tgit(T, "init", "-q")
+    tgit(T, "symbolic-ref", "HEAD", "refs/heads/main")
+    commit(T, "the fixture as main carries it")
+    tgit(T, "update-ref", "refs/remotes/origin/main", "HEAD")
+    more(T, RATIONALE, '- **Another rule.** Decided as (a) and (c) of entry "The plan decided, in\n  three parts.", with (b) of the roadmap entry of 1 January 2026 "%s".' % THREE)
+    more(T, THE_PLAN, "The gate was measured, `%s` lines 7 to 8." % ARCHIVED)
 
 
 def selftest():
@@ -495,6 +859,10 @@ def selftest():
 
 
 def selftest_in(T):
+    def again():
+        # an entry in docs/roadmap.md under a head the archive carries
+        swap(T, ROADMAP, "\n\n## Decisions taken against", "\n- **%s** Again.\n\n## Decisions taken against" % GATE)
+
     cases = [
         # the check, red or new or gone, the case, the change to the green fixture, what a find of the check must carry
         ("registered", "red", "a directory under skills/ that plugin.json does not name", lambda: put(T, "skills/more-work/SKILL.md", skill("more-work", [])), "present but unregistered: ['more-work']"),
@@ -529,6 +897,16 @@ def selftest_in(T):
         ("unattended-finish", "red", "the section on the unattended mode without the label of the loose issues", lambda: swap(T, BUILD, "`raised-here`", "raised here"), BUILD + ": the unattended finish does not mention loose raised-here issues"),
         ("second-statement", "new", "the finish decided a second time", lambda: add(T, BUILD, "None: stop and say so."), ": None: stop and say so."),
         ("second-statement", "gone", "a statement of the list gone", lambda: swap(T, PLAN, SECOND, "Nothing more."), PLAN + ": " + SECOND),
+        ("entry-heads", "red", "a head named without the period it ends on", lambda: more(T, RATIONALE, 'Held in entry "The plan decided, in three parts" since.'), RATIONALE + ':8: entry "The plan decided, in three parts" | the quote opens as the head at docs/roadmap.md:12 opens and is not that head: behind "decided, in three parts" the head goes on with "." and the quote ends. Green: the head whole'),
+        ("entry-heads", "red", "a head misquoted behind its opening", lambda: more(T, RATIONALE, TWO), RATIONALE + ':8: entry "The plan decided, in two parts." | the quote opens as the head at docs/roadmap.md:12 opens and is not that head: behind "The plan decided, in t" the head goes on with "hree parts."'),
+        ("entry-heads", "red", "a head cut with … behind an opening two heads have", lambda: more(T, RATIONALE, 'Held in entry "The archive opens with one entry, on the …".'), RATIONALE + ':8: entry "The archive opens with one entry, on the …" | the quote is cut with … behind an opening that 2 heads have, at docs/roadmap-archive-1.md:8, docs/roadmap-archive-1.md:7.'),
+        ("entry-heads", "red", "a head the branch adds that an archive carries already", lambda: again(), 'docs/roadmap.md:14: - **%s** | the head stands 2 times, at docs/roadmap.md:14, docs/roadmap-archive-1.md:7, and the branch adds it: at the commit it forked from, ' % GATE),
+        ("entry-heads", "red", "an entry named by a head that stands twice", lambda: [again(), more(T, RATIONALE, 'Held in entry "%s".' % GATE)], RATIONALE + ':8: entry "%s" | the head stands 2 times, at docs/roadmap.md:14, docs/roadmap-archive-1.md:7, and names no single entry' % GATE),
+        ("entry-letters", "red", "a letter the entry named does not carry", lambda: more(T, RATIONALE, 'Decided as (d) of entry "%s".' % THREE), RATIONALE + ':8: (d), in "(d)" of the entry "%s" | the entry at docs/roadmap.md:12 carries no (d), written out or inside a range' % THREE),
+        ("entry-letters", "red", "a range that runs past the letters the entry carries", lambda: more(T, RATIONALE, 'Decided as (a) to (d) of the roadmap entry of that date, "%s".' % THREE), RATIONALE + ':8: (d), in "(a) to (d)" of the entry "%s" | the entry at docs/roadmap.md:12 carries no (d)' % THREE),
+        ("entry-letters", "red", "one number of a list that the entry does not carry", lambda: more(T, RATIONALE, 'Held by (4), (5) and (8) of entry "%s".' % ANSWER), RATIONALE + ':8: (5), in "(4), (5) and (8)" of the entry "%s" | the entry at docs/roadmap-archive-1.md:5 carries no (5)' % ANSWER),
+        ("plan-lines", "red", "a line of a file of the repository, the file behind the number", lambda: more(T, THE_PLAN, SKILL_LINE), THE_PLAN + ":10: line 12, a line of `skills/build-work/SKILL.md` | by the rule at the head of docs/plan.md"),
+        ("plan-lines", "red", "a line where the paragraph names no file", lambda: more(T, THE_PLAN, "The gate stands at line 12 since."), THE_PLAN + ":10: line 12, and its paragraph names no file in backticks before it or right behind it | by the rule"),
     ]
     by_key = {c["key"]: c for c in CHECKS}
     seen, failed = 0, []
@@ -568,17 +946,180 @@ def selftest_in(T):
     code, lines = run(T)
     case("exit 2: a list that cannot be read", code == 2 and len(lines) == 1 and "the list %s/offers.txt cannot be read: No such file or directory" % LISTS in lines[0])
 
+    # the references: what the lines of a branch are, each situation the program decides, and the switch
+    def reads(change=None, everything=False):
+        fixture(T)
+        if change:
+            change()
+        found, note = references(T, PATH, everything)
+        return ["%s: %s: %s | %s" % ((key,) + find) for key in sorted(found) for find in found[key]], note
+
+    def places_of(got):
+        return [g.split(" | ")[0] for g in got]
+
+    def squashed():
+        commit(T, "the branch, squashed")
+        tgit(T, "update-ref", "refs/remotes/origin/main", "HEAD")
+
+    def archive(leaving):
+        put(T, "docs/roadmap-archive-2.md", tgit(T, "show", "origin/main:" + ROADMAP))
+        if not leaving:
+            swap(T, ROADMAP, "- **The plan decided, in three\n  parts.** Decided: (a) to (c). Measured: (1) and (2).\n", "")
+
+    def onto_main():
+        tgit(T, "checkout", "-q", "-b", "task")
+        more(T, THE_PLAN, SKILL_LINE)
+        commit(T, "the branch")
+        tgit(T, "checkout", "-q", "main")
+        more(T, "docs/skill-conventions.md", TWO)
+        commit(T, "main goes on")
+        tgit(T, "update-ref", "refs/remotes/origin/main", "HEAD")
+        tgit(T, "checkout", "-q", "--detach")
+        tgit(T, "merge", "-q", "--no-ff", "-m", "the branch merged onto main", "task")
+
+    got, note = reads()
+    case("the lines the branch adds read with their paragraph, a head named across a line break among them, and the line docs/plan.md named before the branch left unread: nothing found", not got and note == REFERENCES + "the 2 paragraphs of 2 sources under docs/ that carry a line this branch adds or changes against %s, git merge-base HEAD origin/main" % tgit(T, "rev-parse", "origin/main")[:7])
+    for name, rel, text in (
+        ("a head with quotes inside it, and two numbers its entry carries", RATIONALE, 'Held by (4) and (8) of entry "%s".' % ANSWER),
+        ("a head cut with … behind an opening one head alone has", RATIONALE, 'Held in entry "The archive opens with one entry, on the ga…".'),
+        ('behind entry a quote that is no head, the Built line of an entry and one of its quotes, and a head behind "this entry," and behind "the entry above,", two forms the program does not hold', RATIONALE, 'The Built line of the entry of 2 January 2026, "the bullet says nothing of the gate, …", the quotes of the entry "failed; the guard is "off"" alone, this entry, "The plan decided", and the entry above, "The plan decided, in three parts", hold.'),
+        ('a head under "## Decisions taken against", which the archive carries as a copy', RATIONALE, 'Held in entry "%s" under "Decisions taken against".' % AGAINST),
+        ("a range the entry writes as a range, its middle letter standing nowhere by itself", RATIONALE, 'Decided as (a) to (c) of the roadmap entry of that date, "%s".' % THREE),
+        ("a list of two numbers and a letter before the head", RATIONALE, 'Held by (1), (2) and (a) of entry "%s".' % THREE),
+        ("identifiers of an entry named by its date and its subject, which the program does not hold", RATIONALE, "Decisions (7) and (9) of the roadmap entry of that date on the plan."),
+        ("a line of the archive, the file behind the number", THE_PLAN, "Decided for line 7 of `%s`: the gate." % ARCHIVED),
+        ("lines of the archive, the file before the first, the second without a file and across a line break", THE_PLAN, "The decision, `%s` lines 5 to\n6, meant the gate, lines 7 to\n8." % ARCHIVED),
+        ("a line in brackets, the archive named at the head of the paragraph and a flag in backticks between", THE_PLAN, "Each point with its status line in `%s`: the gate, decided without `--force` (status line 7); the guard (8)." % ARCHIVED),
+        ("a head cut with … behind a blank, one head alone opening so", RATIONALE, 'Held in entry "The archive opens with one entry, on the ga …".'),
+        ("a quote that agrees with a head in 19 characters and no further, which is no head", RATIONALE, 'Held in entry "The plan decided, it seems" since.'),
+        ("an identifier before a quote that is no head, which is not held", RATIONALE, 'Held by (z) of entry "nothing that a head opens with".'),
+        ("an identifier before entries, held in the first head of the list alone", RATIONALE, 'Held by (4) of entries "%s" and "%s".' % (ANSWER, THREE)),
+        ("behind entry in the singular a second quote, which is no head of a list", RATIONALE, 'Held in entry "%s" and "The archive opens with one entry, on the gate".' % THREE),
+        ("lines of the archive in a list joined by a comma and by and, the file behind the last number", THE_PLAN, "Decided for lines 5, 6 and 8 of `%s`." % ARCHIVED),
+        ("lines of the archive joined by to and by a comma with and, the file behind the last number", THE_PLAN, "Decided for lines 5 to 6, and 8 of `%s`." % ARCHIVED),
+        ("a line of the archive, the file behind the number after in", THE_PLAN, "The gate, line 7 in `%s`." % ARCHIVED),
+        ("a line of the archive, the file behind the number after at", THE_PLAN, "The gate, line 7 at `%s`." % ARCHIVED),
+    ):
+        got, note = reads(lambda: more(T, rel, text))
+        case("nothing found, the paragraph read: %s" % name, not got and REFERENCES + "the 3 paragraphs of 2 sources" in note)
+    got, note = reads(lambda: more(T, THE_PLAN, "The block on `scripts/devloop-expand` holds: a number comes back late,\n`bsd/sys/proc.h` line 767 of xnu-1, and under Linux\n`include/linux/threads.h` line 28 at v7."))
+    case("lines of two files outside the repository, each given to the file right before it and none to the file of the repository named first: two finds", places_of(got) == ["plan-lines: %s:11: line 767, a line of `bsd/sys/proc.h`" % THE_PLAN, "plan-lines: %s:12: line 28, a line of `include/linux/threads.h`" % THE_PLAN])
+    got, note = reads(lambda: swap(T, THE_PLAN, "and no run meets it.", "and no run of the milestone meets it."))
+    case("a branch that changes one line of a paragraph answers for the line the paragraph named before it", places_of(got) == ["plan-lines: %s:5: line 28, a line of `kernel/pid.c`" % THE_PLAN])
+    got, note = reads(lambda: more(T, RATIONALE, 'Entries "%s" and "The archive opens with one entry, on the gate" hold it.' % THREE))
+    case("behind entries every head of the list is read: the second, without its period, red", places_of(got) == ['entry-heads: %s:8: "The archive opens with one entry, on the gate"' % RATIONALE])
+    got, note = reads(lambda: more(T, RATIONALE, 'Held by (4) to (8) of entry "%s".' % ANSWER))
+    case("a range of numbers before the head is held in every number between its ends: the three the entry does not carry red, its two ends carried", places_of(got) == ['entry-letters: %s:8: (%d), in "(4) to (8)" of the entry "%s"' % (RATIONALE, n, ANSWER) for n in (5, 6, 7)])
+    got, note = reads(lambda: more(T, RATIONALE, 'Held by (9) to (4) of entry "%s".' % ANSWER))
+    case("a range whose ends do not rise is held in its two ends alone: the first, which the entry does not carry, red, and no number between the two", places_of(got) == ['entry-letters: %s:8: (9), in "(9) to (4)" of the entry "%s"' % (RATIONALE, ANSWER)])
+    got, note = reads(lambda: [swap(T, ROADMAP, "\n\n## Decisions taken against", "\n- **%s** Decided: (a).\n\n## Decisions taken against" % LONG), more(T, RATIONALE, 'Decided as (b) of entry "%s".' % LONG)])
+    case("a head longer than a find carries is cut in its middle with …: the find names the entry by the opening of its head and by its end", places_of(got) == ['entry-letters: %s:8: (b), in "(b)" of the entry "A head so long that a find … whole, the gate and the guard."' % RATIONALE])
+    got, note = reads(lambda: more(T, RATIONALE, 'Held in entry "The plan decided, in three parts and in a fourth that nobody had counted before" since.'))
+    case("a head misquoted in a quote that does not close within 40 characters: the find carries 20 characters of the quote behind the place where it leaves the head, and says how the quote goes on there", places_of(got) == ['entry-heads: %s:8: entry "The plan decided, in three parts and in a fourth tha' % RATIONALE] and 'the head goes on with "." and the quote with " and in a fourth". Green:' in got[0])
+    for name, key, rel, text, want in (
+        ("the entry named with that day for its date", "entry-letters", RATIONALE, 'Decided as (d) of the roadmap entry of that day "%s".' % THREE, ['(d), in "(d)" of the entry "%s"' % THREE]),
+        ("the entry named with the same day for its date, a comma behind it", "entry-letters", RATIONALE, 'Decided as (d) of the roadmap entry of the same day, "%s".' % THREE, ['(d), in "(d)" of the entry "%s"' % THREE]),
+        ("an identifier before of the entry", "entry-letters", RATIONALE, 'Decided as (d) of the entry "%s".' % THREE, ['(d), in "(d)" of the entry "%s"' % THREE]),
+        ("an identifier with a comma before of", "entry-letters", RATIONALE, 'Held by (5), of entry "%s".' % ANSWER, ['(5), in "(5)" of the entry "%s"' % ANSWER]),
+        ("a list joined by a comma and by a comma with and", "entry-letters", RATIONALE, 'Held by (4), (5), and (9) of entry "%s".' % ANSWER, ['(%d), in "(4), (5), and (9)" of the entry "%s"' % (n, ANSWER) for n in (5, 9)]),
+        ("a list joined by or and by a comma with or", "entry-letters", RATIONALE, 'Held by (4) or (5), or (9) of entry "%s".' % ANSWER, ['(%d), in "(4) or (5), or (9)" of the entry "%s"' % (n, ANSWER) for n in (5, 9)]),
+        ("a range from a letter to a number and one from a number to a letter, each held in its two ends alone", "entry-letters", RATIONALE, 'Held by (a) to (4) and (8) to (b) of entry "%s".' % ANSWER, ['(%s), in "(a) to (4) and (8) to (b)" of the entry "%s"' % (x, ANSWER) for x in "ab"]),
+        ("a range of letters that does not rise, held in its two ends alone", "entry-letters", RATIONALE, 'Decided as (d) to (a) of entry "%s".' % THREE, ['(d), in "(d) to (a)" of the entry "%s"' % THREE]),
+        ("Entry with a capital", "entry-heads", RATIONALE, 'Entry "The plan decided, in two parts." holds it.', ['Entry "The plan decided, in two parts."']),
+        ("behind Entries a third head, joined by a comma and by a comma with and", "entry-heads", RATIONALE, 'Entries "%s", "%s", and "The archive opens with one entry, on the guard" hold it.' % (THREE, GATE), ['"The archive opens with one entry, on the guard"']),
+        ("behind entries a third head, joined by or and by a comma with or", "entry-heads", RATIONALE, 'Held in entries "%s" or "%s", or "The archive opens with one entry, on the guard".' % (THREE, GATE), ['"The archive opens with one entry, on the guard"']),
+        ("behind a head of a list cut with … the next head is read", "entry-heads", RATIONALE, 'Entries "The archive opens with one entry, on the ga…" and "The plan decided, in two parts." hold it.', ['"The plan decided, in two parts."']),
+        ("behind a head of a list that is not whole, its closing mark forgotten, no further head is read", "entry-heads", RATIONALE, 'Entries "The plan decided, in three parts and "The archive opens with one entry, on the gate" hold it.', ['Entries "The plan decided, in three parts and "']),
+        ('a head under another heading of docs/roadmap.md than "## Known gaps", named without its period', "entry-heads", RATIONALE, 'Held in entry "A wording kept as an example" too.', ['entry "A wording kept as an example"']),
+        ("a head misquoted in its last character alone, the quote as long as the head", "entry-heads", RATIONALE, 'Held in entry "The plan decided, in three parts!" since.', ['entry "The plan decided, in three parts!"']),
+        ("a quote that goes on behind a whole head", "entry-heads", RATIONALE, 'Held in entry "The plan decided, in three parts. And a fourth" since.', ['entry "The plan decided, in three parts. And a fourth"']),
+        ("a quote that agrees with a head in 20 characters and no further, which is that head misquoted", "entry-heads", RATIONALE, 'Held in entry "The plan decided, into parts" since.', ['entry "The plan decided, into parts"']),
+        ("a head misquoted in a quote that never closes", "entry-heads", RATIONALE, 'Held in entry "The plan decided, in three parts and so on without an end', ['entry "The plan decided, in three parts and so on without a']),
+        ("Line with a capital", "plan-lines", THE_PLAN, "Line 12 of `skills/build-work/SKILL.md` decides it.", ["Line 12, a line of `skills/build-work/SKILL.md`"]),
+        ("lines in the plural, the file behind the last number", "plan-lines", THE_PLAN, "Decided for lines 12 to 14 of `skills/build-work/SKILL.md`.", ["lines 12 to 14, a line of `skills/build-work/SKILL.md`"]),
+        ("a file known by its slash alone, without an ending", "plan-lines", THE_PLAN, "Held at `scripts/devloop-expand` line 3.", ["line 3, a line of `scripts/devloop-expand`"]),
+        ("a file known by its ending alone, without a slash", "plan-lines", THE_PLAN, "Held at `README.md` line 5.", ["line 5, a line of `README.md`"]),
+        ("a line behind a second file, given to that file and not to the archive named first", "plan-lines", THE_PLAN, "Measured in `%s` line 7 and in `skills/build-work/SKILL.md` line 12." % ARCHIVED, ["line 12, a line of `skills/build-work/SKILL.md`"]),
+    ):
+        got, note = reads(lambda: more(T, rel, text))
+        case("found, the paragraph read: %s" % name, places_of(got) == ["%s: %s:%d: %s" % (key, rel, {RATIONALE: 8, THE_PLAN: 10}[rel], w) for w in want])
+    for name, change in (
+        ("a bold item above the first heading of docs/roadmap.md, which is no entry", lambda: swap(T, ROADMAP, "# Roadmap\n\n", "# Roadmap\n\n- **%s** A note above every heading.\n\n" % GATE)),
+        ("a head that never closes, read to the end of the file and no further", lambda: more(T, ROADMAP, "- **A head that never closes, on the last line of the file")),
+        ('a bold item under "## Known gaps" of a document that is neither docs/roadmap.md nor an archive, which is no entry', lambda: put(T, "docs/notes.md", "# Notes\n\n## Known gaps\n\n- **%s** A copy.\n" % THREE)),
+        ("a list item the branch adds right under a paragraph, which begins a paragraph of its own and leaves the one above unread", lambda: swap(T, THE_PLAN, "and no run meets it.\n", "and no run meets it.\n- An item right under it.\n")),
+        ("a heading the branch adds right under a paragraph, which begins a paragraph of its own and leaves the one above unread", lambda: swap(T, THE_PLAN, "and no run meets it.\n", "and no run meets it.\n## A heading right under it\n")),
+    ):
+        got, note = reads(change)
+        case("nothing found: %s" % name, not got)
+    got, note = reads(lambda: [swap(T, ROADMAP, "\n\n## Decisions taken against", "\n- **First of two entries.** Decided: (a).\n- **Second of two entries.** Decided: (b).\n\n## Decisions taken against"), more(T, RATIONALE, 'Decided as (b) of entry "First of two entries.".')])
+    case("an entry ends before the next entry: a letter that the entry behind it carries is not its own, red", places_of(got) == ['entry-letters: %s:8: (b), in "(b)" of the entry "First of two entries."' % RATIONALE])
+    got, note = reads(lambda: swap(T, THE_PLAN, "The counter runs out late,", "The counter runs out very late,"))
+    case("a branch that changes one line alone, which git gives as a hunk without a count, answers for the paragraph of that line", places_of(got) == ["plan-lines: %s:5: line 28, a line of `kernel/pid.c`" % THE_PLAN])
+    got, note = reads(lambda: more(T, RATIONALE, TWO))
+    case("a find on a head misquoted says how the quote goes on up to its closing mark, and nothing of what stands behind the mark", len(got) == 1 and 'the head goes on with "hree parts." and the quote with "wo parts.". Green:' in got[0])
+    got, note = reads(lambda: more(T, RATIONALE, 'Held in entry "The plan decided, in three parts. And a fourth" since.'))
+    case("a find on a quote that goes on behind a whole head says that the head ends there, and how the quote goes on", len(got) == 1 and 'behind "decided, in three parts." the head ends and the quote goes on with " And a fourth". Green:' in got[0])
+    got, note = reads(lambda: more(T, RATIONALE, 'Held in entry "The plan decided, in three parts and so on without an end'))
+    case("a find on a head misquoted in a quote that never closes says how the quote goes on in its next 16 characters", len(got) == 1 and 'the head goes on with "." and the quote with " and so on witho". Green:' in got[0])
+    got, note = reads(lambda: swap(T, ROADMAP, "\n\n## Decisions taken against", "\n- **A new entry, written twice.** One.\n- **A new entry, written twice.** Two.\n\n## Decisions taken against"))
+    case("a new head the branch writes twice: red at the first of the two, and the find says that it stood 0 times at the commit the branch forked from", places_of(got) == ["entry-heads: docs/roadmap.md:14: - **A new entry, written twice.**"] and "at docs/roadmap.md:14, docs/roadmap.md:15, and the branch adds it: at the commit it forked from, %s, it stood 0 times. Green:" % tgit(T, "rev-parse", "origin/main")[:7] in got[0])
+    got, note = reads(lambda: put(T, "docs/stock-take.tsv", 'thing\tone\tbuilt, the roadmap entry of 1 January 2026 "The plan decided, in two parts."\nthing\ttwo\tline 3 of the entry "%s"\n' % THREE))
+    case("in docs/stock-take.tsv every line is a paragraph, and a source git does not track yet is read in every line", places_of(got) == ['entry-heads: docs/stock-take.tsv:1: entry of 1 January 2026 "The plan decided, in two parts."'] and REFERENCES + "the 4 paragraphs of 3 sources" in note)
+    got, note = reads(lambda: [put(T, LISTS + "/notes.txt", TWO + "\n"), put(T, "docs/roadmap-archive-2.md", "# Roadmap\n\n## Known gaps\n\n- **An entry archived.** %s\n" % TWO)])
+    case("a file under docs/handover-checks/ and an archive are no sources: a reference that breaks in either is not read", not got and REFERENCES + "the 2 paragraphs of 2 sources" in note)
+    got, note = reads(lambda: [more(T, THE_PLAN, SKILL_LINE), commit(T, "the branch")])
+    case("a line the branch committed is read like one that stands in the working tree alone", places_of(got) == ["plan-lines: %s:10: line 12, a line of `skills/build-work/SKILL.md`" % THE_PLAN])
+    got, note = reads(lambda: archive(False))
+    case("the entries moved into a new archive: no head added, the entry the branch names found once there", not got and REFERENCES + "the 2 paragraphs of 2 sources" in note)
+    got, note = reads(lambda: archive(True))
+    case("a new archive whose entries stay in docs/roadmap.md: the head added, and the entry named twice by the branch standing twice", len(got) == 3 and all("the head stands 2 times, at docs/roadmap.md:12, docs/roadmap-archive-2.md:12" in g for g in got) and places_of(got)[2] == "entry-heads: docs/roadmap.md:12: - **%s**" % THREE and "and the branch adds it: at the commit it forked from, %s, it stood once" % tgit(T, "rev-parse", "origin/main")[:7] in got[2])
+    fixture(T)
+    squashed()
+    code, lines = run(T)
+    case("on main after a squash merge HEAD is the commit the branch forked from: nothing read, every check green", code == 0 and lines[1] == REFERENCES + "the 0 paragraphs of 0 sources under docs/ that carry a line this branch adds or changes against %s, git merge-base HEAD origin/main" % tgit(T, "rev-parse", "HEAD")[:7] and lines[-1] == "green: %d checks green, 0 red" % len(CHECKS))
+    got, note = reads(onto_main)
+    case("HEAD the branch merged onto main, as in the workflow: the commit forked from is origin/main, the lines of the branch are read and a line main got meanwhile is not", places_of(got) == ["plan-lines: %s:10: line 12, a line of `skills/build-work/SKILL.md`" % THE_PLAN] and tgit(T, "rev-parse", "HEAD^1") == tgit(T, "rev-parse", "origin/main") and REFERENCES + "the 3 paragraphs of 2 sources under docs/ that carry a line this branch adds or changes against %s," % tgit(T, "rev-parse", "origin/main")[:7] in note)
+    fixture(T)
+    code, lines = run(T, everything=True)
+    case("--all: every line of every source read, the line docs/plan.md named before the branch red", code == 1 and lines[1].startswith(REFERENCES + "every line of the 4 sources under docs/, ") and lines[1].endswith(" paragraphs, with --all") and "     %s:5: line 28, a line of `kernel/pid.c`" % THE_PLAN in lines and lines[-1] == "red: %d checks green, 1 red: plan-lines" % (len(CHECKS) - 1))
+    got, note = reads(lambda: [again(), squashed()], True)
+    case("--all: a head of docs/roadmap.md that an archive carries too is red, on main as well, where without --all nothing is read", places_of(got) == ["entry-heads: docs/roadmap.md:14: - **%s**" % GATE, "plan-lines: %s:5: line 28, a line of `kernel/pid.c`" % THE_PLAN] and "at docs/roadmap.md:14, docs/roadmap-archive-1.md:7. Green:" in got[0] and reads(lambda: [again(), squashed()])[0] == [])
+    fixture(T)
+    swap(T, THE_PLAN, "`kernel/pid.c` line 28 at v1", "`kernel/pid.c` at v1")
+    with contextlib.redirect_stdout(io.StringIO()) as said:
+        code = main(["devloop-handover-checks", "--all"], T)
+    case("--all as the one argument of the program: every line read, every check green, exit 0", code == 0 and " paragraphs, with --all\n" in said.getvalue() and said.getvalue().endswith("green: %d checks green, 0 red\n" % len(CHECKS)))
+    with contextlib.redirect_stderr(io.StringIO()) as said:
+        code = main(["devloop-handover-checks", "--all", "--self-test"], T)
+    case("exit 2: --all beside another argument, the usage on stderr", code == 2 and said.getvalue().startswith("usage: "))
+    fixture(T)
+    tgit(T, "update-ref", "-d", "refs/remotes/origin/main")
+    code, lines = run(T)
+    case("exit 2: no origin/main, so no commit the branch forked from: one line that says so, and no last line", code == 2 and len(lines) == 1 and "cannot run: git merge-base HEAD origin/main ended with " in lines[0] and "--all reads every line and asks git nothing" in lines[0])
+    case("exit 2: no origin/main: behind the code git ended with, the line carries the first line git said", code == 2 and re.search(r"origin/main ended with [0-9]+, \S.*: without that answer", lines[0]) is not None)
+    code, lines = run(T, everything=True)
+    case("--all without origin/main: git asked nothing, every line read", code == 1 and lines[-1] == "red: %d checks green, 1 red: plan-lines" % (len(CHECKS) - 1))
+    got, note = reads(lambda: put(T, "docs/roadmap-archive-2.md", "# Roadmap\n\n## Known gaps\n\n- **%s** Old.\n" % GATE), True)
+    case("--all: a head that two archives carry and docs/roadmap.md does not is not red, an archive being mended by no branch", places_of(got) == ["plan-lines: %s:5: line 28, a line of `kernel/pid.c`" % THE_PLAN])
+    fixture(T)
+    tgit(T, "update-ref", "refs/remotes/origin/main", tgit(T, "commit-tree", "-m", "another history", "HEAD^{tree}").strip())
+    code, lines = run(T)
+    case("exit 2: origin/main shares no commit with HEAD, git ending with 1 and saying nothing: one line that says so, nothing of git's behind the 1, and no last line", code == 2 and len(lines) == 1 and "cannot run: git merge-base HEAD origin/main ended with 1: without that answer" in lines[0])
+
     print("SELF-TEST FAILED: %d of %d cases: %s" % (len(failed), seen, "; ".join(failed)) if failed else "SELF-TEST PASSED: %d cases" % seen)
     return int(bool(failed))
 
 
-def main(argv):
+def main(argv, root=None):
     if argv[1:] == ["--self-test"]:
         return selftest()
+    everything = argv[1:] == ["--all"]
+    argv = argv[:1] if everything else argv
     if argv[1:]:
-        sys.stderr.write("usage: devloop-handover-checks [--self-test]\n")
+        sys.stderr.write("usage: devloop-handover-checks [--all | --self-test]\n")
         return 2
-    code, lines = run(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    code, lines = run(root or os.path.dirname(os.path.dirname(os.path.abspath(__file__))), everything=everything)
     (sys.stderr if code == 2 else sys.stdout).write("\n".join(lines) + "\n")
     return code
 
