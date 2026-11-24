@@ -13934,17 +13934,17 @@ and for the proofs of closings.
 
   24 November 2026, version 0.195.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
-  changes. On `task/auftrag-5-teil-1`, off `origin/main` at `00f1d7a`, in two
-  commits, the build's and the audit's, each of them `docs/plan.md`,
-  `docs/skill-conventions.md`, `docs/defects.md` and this file and nothing
-  else. The order: the first part of order (5) of milestone 12, which
-  writes down what was decided on 24 November 2026 and builds nothing. The
-  report stands on this machine as `~/devloop-auftrag5-teil1.md`, in German,
-  outside the repository.
+  changes. On `task/auftrag-5-teil-1`, off `origin/main` at `00f1d7a`, in
+  three commits, the build's, the audit's and the merge's, which change
+  `docs/plan.md`, `docs/skill-conventions.md`, `docs/defects.md` and this file
+  and nothing else. The order: the first part of order (5) of milestone 12,
+  which writes down what was decided on 24 November 2026 and builds nothing.
+  The report stands on this machine as `~/devloop-auftrag5-teil1.md`, in
+  German, outside the repository.
 
   **Decided on 24 November 2026**, seven, which `docs/plan.md` carries under
   milestone 12 in the seven paragraphs that name this entry, with the reason
-  where one is given and, for (1) and (4), with what was not chosen; here a
+  of each and, for (1) to (5), with what was not chosen; here a
   sentence each. (1) A text that said
   the should already when a run missed it is no repair as it stands: a hook, a
   program, or a text rewritten where the old one shows the cause takes its
@@ -14069,8 +14069,9 @@ and for the proofs of closings.
 
   **Open.** Nothing is built. The blocks of (2), (3), (4) and (6) that stay
   open wait for the third, the fourth and the fifth part, as the plan's
-  paragraphs say of each, and the block found beyond (6) waits for the third;
-  its should waits for the person. Of the two conditions to reopen under
+  paragraphs say of each, and the block found beyond (6) waits for the third,
+  its should kept as the order wrote it; the block on git and the identity
+  waits for the fourth. Of the two conditions to reopen under
   "Decisions taken against" that (2) was held against, the one on a hook on
   `AskUserQuestion` spoke of a form that keeps failing where the statement
   holds, which by (1) no hook that blocks answers while the harm is small; it
@@ -14133,6 +14134,26 @@ and for the proofs of closings.
   since it speaks of the statement itself. The plan's paragraph on (2) says
   nothing of either condition and needs nothing added: its sentence on opening
   the two closed blocks again carries the harm already.
+
+  **The corrections of the merge**, of 24 November 2026, the third commit,
+  decided at the check at the code before the merge on points the audit's
+  report left to the person, and the first sentence of this entry, which
+  counted two commits. First, the block on git and the identity: its should
+  named the saying and the steps alone, where (5) has the identity guard block
+  every `git commit` as long as `git config` gives no name or no address; the
+  should takes that half, so that the block holds what the fourth part builds.
+  Should changed: devloop reads neither the version of git nor the name and address git config gives before the first commit, while README.md says it says so
+  Its should until now: "where git is missing or older than 2.31, or where git
+  config gives no user.name or no user.email, devloop says so when a project
+  is set up and when a piece of work is started, before the first commit, and
+  gives the steps, as for gh". Second, the block found beyond (6): its `Note`
+  said its should waits for the person; it is the single right answer for such
+  a path, was shown to the person before the merge and stays, and the `Note`
+  and Open above say so. Third, the plan's paragraphs on (2), (3), (5), (6)
+  and (7) gave no reason for (6) and (7) and nothing not chosen for (2), (3)
+  and (5); each now carries its reason and, where one was weighed on that day,
+  what was not chosen, and the second sentence of "Decided on 24 November
+  2026" above says so.
 
 ## Decisions taken against
 

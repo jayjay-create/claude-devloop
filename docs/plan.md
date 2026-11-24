@@ -2065,6 +2065,9 @@ the browser left out as the example is closed as left on purpose, as a block of
 its own, for the reason of the first; the statement held in both runs. Both
 closed blocks are opened again where the same fault comes back in a run and
 does harm.
+Not chosen: keeping the two open and moving them to milestone 13 to wait for
+further runs; that milestone would hang on blocks nothing is built for, and
+the condition above keeps them in sight.
 
 Decided on 24 November 2026 by the person, the same entry, (3): the block on
 run 2 installing on main before it cut the task's branch stays whole in this
@@ -2078,6 +2081,10 @@ branch, after the cut, and that the main run installs nothing for a task
 itself. The cause is the rule missing: `grep -n -i -E 'after the cut|before the
 cut' skills/build-work/SKILL.md` finds nothing on it. The block of milestone 13
 on the main run building the tasks itself stays apart from it.
+Not chosen: moving the half on the install before the cut to milestone 13
+beside that block, chosen first on that day and taken back the same day, since
+the decision of 5 November 2026 puts it here and the rule missing in
+`build-work` is a cause of its own by (1).
 
 Decided on 24 November 2026 by the person, the same entry, (4): the check for
 new versions is a workflow of its own that runs on GitHub once a week as a
@@ -2118,6 +2125,9 @@ guesses from the machine's name becomes public for good with the push, the
 great harm for which (1) allows a hook that blocks; approved by the person with
 the wording. The fourth part of order (5) builds it and takes the wording to
 `docs/rationale.md`.
+Not chosen: devloop saying so alone, without the guard on `git commit`, since
+a session that goes on past what was said commits with a guessed address all
+the same.
 
 Decided on 24 November 2026 by the person, the same entry, (6): two findings on
 the install guard under Windows with Git Bash get a block each under this
@@ -2140,6 +2150,9 @@ read as lying inside the project, is no part of this decision: it has a block
 of its own by the rule of `docs/skill-conventions.md` that a finding in the
 code gets one in every case, written with that entry; the third part builds
 that block as well, as (7) below has it.
+Reason for the two blocks of this decision: a finding in the code gets a block
+in every case, `docs/skill-conventions.md`, and both stop an install under a
+yes, which the closing run of this milestone under Windows walks.
 
 Decided on 24 November 2026 by the person, the same entry, (7): order (5) is
 built in six parts. The first writes these decisions down and changes no code.
@@ -2155,6 +2168,8 @@ the block is built by the next order that does, by the decision of 18 November
 2026 above. The fourth, the texts and git.
 The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
+Reason: the reading list of each part fits one session of Claude Code, and the
+decisions stand in the repository before a part builds on them.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
