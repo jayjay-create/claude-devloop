@@ -13566,15 +13566,16 @@ and for the proofs of closings.
 
   24 November 2026, version 0.195.0, raised once from 0.194.0 by the first
   commit. On `task/references-between-documents`, off `origin/main` at
-  `b50e023`, in three commits: `38f1e05`, under the head of this entry, the
+  `b50e023`, in four commits: `38f1e05`, under the head of this entry, the
   three checks in the program with their cases, the head of
   `scripts/devloop-stock-take` and the comments of the workflow's two steps;
   the second, the documents, the blocks, `docs/stock-take.tsv` and this entry;
-  the third, the runs below. The order: the references between the documents
-  of decision (s) of the entry "Every handover and the steps for the PATH
-  follow surface and system", in two parts, the first building and the second
-  writing and measuring. The report stands on this machine as
-  `~/devloop-references.md`, in German, outside the repository.
+  the third, the runs below; the fourth, the corrections of the merge. The
+  order: the references between the documents of decision (s) of the entry
+  "Every handover and the steps for the PATH follow surface and system", in
+  two parts, the first building and the second writing and measuring. The
+  report stands on this machine as `~/devloop-references.md`, in German,
+  outside the repository.
 
   **What changed, and where it stands.** `scripts/devloop-handover-checks`
   holds three checks more, `entry-heads`, `entry-letters` and `plan-lines`: an
@@ -13622,7 +13623,7 @@ and for the proofs of closings.
   the two steps in `.github/workflows/stock-take.yml` with the program, by (r)
   of 22 November 2026, no commit after it changing code.
 
-  **The first commit, written anew.** As first written, `596ce83`, its
+  **The first commit, written anew.** As first written and never pushed, its
   self-test had 76 cases and walked six branches of the three checks by no
   case, found by the second part before it changed anything: each broken in a
   copy of the program outside the repository, the self-test passed. Decided on
@@ -13766,6 +13767,33 @@ and for the proofs of closings.
   machine brings them about. The run of the platform on the pull request is
   not recorded here; there the step of the checks runs with HEAD the branch
   merged onto main, which on this machine the self-test alone walks.
+
+  **The corrections of the merge**, of 24 November 2026, the fourth commit,
+  after the three commits were read against the code and before the push.
+  First, the paragraph on `entry-letters` under "Before a handover, run these"
+  in `docs/skill-conventions.md` said "The orders of November 2026 held these
+  letters with throwaway scripts of their own, each anew", which no entry and
+  no document bears out; it says now "Until this check nothing held these
+  letters; the run with `--all` of 24 November 2026 found none broken".
+  Second, this entry named the first commit as first written by its hash, a
+  commit that was never pushed and that nobody can fetch; it says "As first
+  written and never pushed" now. Third, its first paragraph said "in three
+  commits" and names the fourth now.
+
+  **Decided at the merge**, by the person on 24 November 2026, without a
+  question, by the rule that nothing is asked where one way carries a great
+  disadvantage and the other none, on the points the report of the order put
+  to the person. The cases of the first commit stand as built, one for every
+  form the head of the program names as held. The part `hi.isalpha()` in the
+  reading of a range stays: it says that both ends are letters, and leaving it
+  out would change nothing. The paragraphs of (s) of 22 November and of (c) of
+  23 November 2026 under milestone 15 stay as they were decided; (1) says
+  that the first kind falls away. The two blocks closed as corrected in the
+  document, with the program as proof, stand as the block on the head of
+  `scripts/devloop-run-workflow` in `docs/defects.md` is closed. No run is
+  recorded for the red end of the program of 23 November 2026 that run A
+  brings about, a behavior that is neither new nor loses its run on this
+  branch, and none for the run of the platform on the pull request.
 
 ## Decisions taken against
 

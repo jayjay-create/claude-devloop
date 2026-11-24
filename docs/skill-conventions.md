@@ -4836,8 +4836,8 @@ A letter or a number of a decision that a document gives an entry named by its
 head stands in that entry: `entry-letters`. A document that gives a decision
 by its letter sends its reader into the entry for that letter; where the
 entry carries none, the reader cannot tell a slip of the letter from a slip of
-the entry. The orders of November 2026 held these letters with throwaway
-scripts of their own, each anew.
+the entry. Until this check nothing held these letters; the run with `--all`
+of 24 November 2026 found none broken.
 
 `docs/plan.md` names no line of a file but of an archive of the roadmap, by
 the rule at its head: `plan-lines`. The rule stands at the head of the plan
