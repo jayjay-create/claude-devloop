@@ -611,7 +611,7 @@ Not chosen: the text counts as it stands and the next runs hold it; the same
 text a run has failed on already gives the next run no new reason to hold.
 Decided by the person on 24 November 2026, (1) of the roadmap entry of that
 date,
-"A text a run did not hold is no repair as it stands, six more decisions";
+"A text a run did not hold is no repair, two blocks closed, three added";
 `docs/plan.md` carries it under milestone 12, and the fifth of its five
 sentences is rewritten to it.
 

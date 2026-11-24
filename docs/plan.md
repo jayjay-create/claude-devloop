@@ -101,7 +101,7 @@ The fifth is `docs/skill-conventions.md` twice over: "A rule holds only on the
 path it is written on", and the third rule under "A field is not an answer to a
 question it was not asked". It reads so since 24 November 2026, decided by the
 person on that day, (1) of the roadmap entry of that date,
-"A text a run did not hold is no repair as it stands, six more decisions",
+"A text a run did not hold is no repair, two blocks closed, three added",
 under milestone 12 below with the reason and what was not chosen; until then it
 read "A rule that does not hold in a run is rewritten, not appended to, and
 every place deciding the same thing is named in the same change." The first is
@@ -2030,7 +2030,7 @@ block in every case. Not chosen: the findings in the report of the order
 alone, where they would stand nowhere in the repository.
 
 Decided on 24 November 2026 by the person, the roadmap entry of that date,
-"A text a run did not hold is no repair as it stands, six more decisions", (1):
+"A text a run did not hold is no repair, two blocks closed, three added", (1):
 a text that said the should already when a run missed it does not count as the
 repair, as it stands. Where it can be done, a hook takes the duty over without
 blocking; otherwise a program the run uses with one call; a hook that blocks
@@ -2123,8 +2123,9 @@ Decided on 24 November 2026 by the person, the same entry, (6): two findings on
 the install guard under Windows with Git Bash get a block each under this
 milestone, written with that entry. Under a record that says yes the guard
 blocks every browser download of Playwright, Puppeteer and Cypress there where
-no variable before the command names the folder, since it names the default
-folders for macOS and Linux alone, and `bin/devloop-tool-state` says not read
+neither a variable before the command nor a `--path` of Puppeteer names the
+folder, since it names the default folders for macOS and Linux alone, and
+`bin/devloop-tool-state` says not read
 there for Cypress and Puppeteer, Playwright being read off its own dry run;
 should: the default folders of the three under Windows are read from the
 vendor's raw source at its newest version and named at the three places,
@@ -2137,7 +2138,8 @@ Windows read as the same folder; the third part measures first. A third finding
 of the same reading, a path in the form of Windows written in the command and
 read as lying inside the project, is no part of this decision: it has a block
 of its own by the rule of `docs/skill-conventions.md` that a finding in the
-code gets one in every case, written with that entry.
+code gets one in every case, written with that entry; the third part builds
+that block as well, as (7) below has it.
 
 Decided on 24 November 2026 by the person, the same entry, (7): order (5) is
 built in six parts. The first writes these decisions down and changes no code.
@@ -2145,8 +2147,12 @@ The second, the programs: the line endings in put of
 `bin/devloop-install-note`, in `bin/devloop-auto-mode-question` and in
 `bin/devloop-tool-state`, pip, and the self-test of
 `bin/devloop-install-issues`. The third, the install guard and the fact hook:
-the folders for browsers, the two blocks of (6), the message on the steps for
-the PATH and the message on the default branch. The fourth, the texts and git.
+the folders for browsers, the two blocks of (6), the block on a path in the
+form of Windows written in the command, found with those two, the message on
+the steps for the PATH and the message on the default branch; the third block
+belongs here since this part changes `hooks/pre-tool-use-install-guard.sh` and
+the block is built by the next order that does, by the decision of 18 November
+2026 above. The fourth, the texts and git.
 The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
 

@@ -13930,20 +13930,22 @@ and for the proofs of closings.
   read, the order that builds the block decides. Not chosen: the gap in this
   entry alone.
 
-- **A text a run did not hold is no repair as it stands, six more decisions**
+- **A text a run did not hold is no repair, two blocks closed, three added**
 
   24 November 2026, version 0.195.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
-  changes. On `task/auftrag-5-teil-1`, off `origin/main` at `00f1d7a`, in one
-  commit: `docs/plan.md`, `docs/skill-conventions.md`, `docs/defects.md` and
-  this entry. The order: the first part of order (5) of milestone 12, which
+  changes. On `task/auftrag-5-teil-1`, off `origin/main` at `00f1d7a`, in two
+  commits, the build's and the audit's, each of them `docs/plan.md`,
+  `docs/skill-conventions.md`, `docs/defects.md` and this file and nothing
+  else. The order: the first part of order (5) of milestone 12, which
   writes down what was decided on 24 November 2026 and builds nothing. The
   report stands on this machine as `~/devloop-auftrag5-teil1.md`, in German,
   outside the repository.
 
   **Decided on 24 November 2026**, seven, which `docs/plan.md` carries under
-  milestone 12 with their reasons and what was not chosen, in the seven
-  paragraphs that name this entry; here a sentence each. (1) A text that said
+  milestone 12 in the seven paragraphs that name this entry, with the reason
+  where one is given and, for (1) and (4), with what was not chosen; here a
+  sentence each. (1) A text that said
   the should already when a run missed it is no repair as it stands: a hook, a
   program, or a text rewritten where the old one shows the cause takes its
   place, the fifth of the five sentences of the plan is rewritten with it, and
@@ -14032,7 +14034,8 @@ and for the proofs of closings.
   repository." for the same with `/c/elsewhere`. Under macOS and Linux the
   reading is right; under Windows nothing is measured. A block by the rule
   that a finding in the code gets one in every case; its should is this
-  order's, and the report puts it to the person.
+  order's, and the report puts it to the person. The third part of order (5)
+  builds it with the two of (6), since that part changes the install guard.
 
   **The lines of the fixed forms.** Two blocks are renamed, each with another
   should; the block closed, the block split off and the three added need none.
@@ -14066,11 +14069,70 @@ and for the proofs of closings.
 
   **Open.** Nothing is built. The blocks of (2), (3), (4) and (6) that stay
   open wait for the third, the fourth and the fifth part, as the plan's
-  paragraphs say of each. The should of the block found beyond (6) waits for
-  the person. And the two conditions to reopen under "Decisions taken against"
-  that (2) was held against speak of a form that keeps failing where the
-  statement holds, which by (1) no hook that blocks answers while the harm is
-  small; whether they are worded anew is the person's to decide.
+  paragraphs say of each, and the block found beyond (6) waits for the third;
+  its should waits for the person. Of the two conditions to reopen under
+  "Decisions taken against" that (2) was held against, the one on a hook on
+  `AskUserQuestion` spoke of a form that keeps failing where the statement
+  holds, which by (1) no hook that blocks answers while the harm is small; it
+  is worded anew, decided after the build, below, and the other stays.
+
+  **The corrections of the audit**, of 24 November 2026, the second commit,
+  made before the push by a session that did not build the branch, which held
+  this entry against the code, the tool and the plan and searched the
+  repository for what the branch makes wrong. First, the head. It read "A text
+  a run did not hold is no repair as it stands, six more decisions", which
+  counts the decisions and does not say what changed, as "A title says what
+  changed, and nothing else" in `docs/skill-conventions.md` asks; it reads as
+  above at the sixteen places that named it, three in this file, two in
+  `docs/plan.md`, one in `docs/skill-conventions.md` and ten in the fields
+  `Found` and `Note` of seven blocks. Second, the third part. `docs/plan.md`
+  gave it in the paragraph on (7) "the two blocks of (6)" alone, where it
+  changes `hooks/pre-tool-use-install-guard.sh` and so builds the block found
+  beyond (6) as well, whose `Note` names the next order that changes that
+  file; the plan's paragraphs on (6) and (7), this entry and that `Note` say
+  so. Third, the block on the browser downloads. Its title and the plan's
+  paragraph on (6) said the guard blocks every such download "where no
+  variable before the command names the folder", and its `Wrong` "unless a
+  variable before the command names the folder", where a `--path` of
+  `puppeteer browsers install` names it as well, lines 852 to 861 of the
+  guard: measured on 24 November 2026 on macOS with a stand-in `uname`
+  answering `MINGW64_NT-10.0-26100`, in a throwaway repository whose record
+  says yes with the eleven places, `npx playwright install chromium`,
+  `npx cypress install` and `npx puppeteer browsers install chrome` each ended
+  with 2 and "where it puts things is not read off this machine by this
+  guard", and `npx puppeteer browsers install chrome --path browsers` with 0.
+  The title and the plan say "where neither a variable before the command nor
+  a `--path` of Puppeteer names the folder", and the `Wrong` names the
+  `--path` and carries the measurement. Fourth, three sentences of this entry:
+  it said "in one commit"; it said the plan carries the seven "with their
+  reasons and what was not chosen", where the seven paragraphs give what was
+  not chosen for (1) and (4) alone and no reason for (6) and (7); and it said
+  under Open that both conditions to reopen "speak of a form that keeps
+  failing where the statement holds", where the one on an approved wording
+  speaks of what the statement needs. Each says what holds. Held besides, with
+  nothing found: the figures of the tool on `00f1d7a`, run there again; every
+  line of the code the three new blocks quote; the four installs to a path in
+  the form of Windows, measured again, all four blocked with `/c/elsewhere`
+  and `/d/cache` in its place; and GitHub's page on `schedule`, read again
+  that day, in the four statements the plan takes from it. The tool after the
+  second commit: exit 0, broken records 0, uncovered lines 0 of 4968, every
+  figure as after the first; `scripts/devloop-handover-checks` exit 0, "green:
+  22 checks green, 0 red".
+
+  **Decided after the build**, on 24 November 2026, and written down by the
+  audit: the condition to reopen that "Decisions taken against" gives for a
+  hook on `AskUserQuestion` holding the form of the install questions carries
+  the harm as well. It reads "Reopen if the form alone keeps failing in runs
+  where the statement holds, and the failure does harm.", where it read
+  "Reopen if the form alone keeps failing in runs where the statement holds."
+  Reason: by (1) a hook that blocks comes only where the harm is great, and
+  where the statement holds the harm is small, so that the condition as it
+  read led to a hook the rule rules out there; the two blocks (2) closes are
+  opened again on the same ground, a fault that comes back in a run and does
+  harm. The condition for an approved wording as an example in a skill stays,
+  since it speaks of the statement itself. The plan's paragraph on (2) says
+  nothing of either condition and needs nothing added: its sentence on opening
+  the two closed blocks again carries the harm already.
 
 ## Decisions taken against
 
@@ -14286,7 +14348,13 @@ of them if the reason stops holding — the reason is the point, not the verdict
   questions, the backticks and the number, not what they say, and for an
   install command in prose it would need a second list of commands beside
   the install guard's. Reopen if the form alone keeps failing in runs where
-  the statement holds.
+  the statement holds, and the failure does harm. The harm stands in the
+  condition since 24 November 2026, decided on that day after the build of
+  the branch that wrote the roadmap entry of that date,
+  "A text a run did not hold is no repair, two blocks closed, three added",
+  which carries the reason: by its decision (1) a hook that blocks comes only
+  where the harm is great, and where the statement holds the harm is small;
+  until that day the condition ended on "holds".
 - **An approved wording as an example in a skill.** The wordings the
   person approves would stand in the skill that has them said, as the text
   a run copies, since at run 4 the line under the no of the install
@@ -14385,7 +14453,7 @@ of them if the reason stops holding — the reason is the point, not the verdict
   "Install blocks held to the code, systems and surfaces decided." above left
   to the person for three blocks. Rejected on 24 November 2026, in the roadmap
   entry of that date,
-  "A text a run did not hold is no repair as it stands, six more decisions",
+  "A text a run did not hold is no repair, two blocks closed, three added",
   decision (1): the same text a run has failed on already gives the next run
   no new reason to hold, and it contradicts the fifth of the five sentences of
   `docs/plan.md`. In its place a hook that does not block, a program called
@@ -14398,7 +14466,7 @@ of them if the reason stops holding — the reason is the point, not the verdict
   for every program the version devloop read it at against the vendor's newest
   would run on every pull request, with the checks `main` requires or beside
   them. Rejected on 24 November 2026, in the roadmap entry of that date,
-  "A text a run did not hold is no repair as it stands, six more decisions",
+  "A text a run did not hold is no repair, two blocks closed, three added",
   decision (4): every pull request would go red as soon as any vendor releases
   something, whatever it changes. In its place a workflow of its own runs once
   a week as a scheduled run, none of the checks `main` requires, and a red run
