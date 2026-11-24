@@ -3986,12 +3986,8 @@ person's address stays out of the repository and no commit goes under a
 wrong name; in a project set up with devloop the guard on the identity of a
 commit holds it, since 9 October 2026. devloop's own self-tests and the step "hooks on every
 system" of `.github/workflows/stock-take.yml` commit in throwaway
-repositories of their own with a fixed identity that is made up, and may:
-`hooks` and `hooks@example.invalid` in the step, `t` and `t@t` in the
-self-tests of `bin/devloop-bounded` and `bin/devloop-setup-state`, the
-`GIT_AUTHOR_` and `GIT_COMMITTER_` variables in the self-test of
-`scripts/devloop-stock-take` and, since 24 November 2026, with `t` and `t@t`,
-in that of `scripts/devloop-handover-checks`; never a real address. A repository that the
+repositories of their own with a fixed identity that is made up, and may;
+which one each uses, its code says, and none is a real address. A repository that the
 test removes itself and that never reaches GitHub touches neither half of
 the rule, and the runners carry no identity, so that the fixed one is what
 lets the step commit there at all. Every commit an order makes itself, in a
@@ -4324,6 +4320,27 @@ green and stops watching, here it goes loudly red and stops being read.
 the version itself, so reading that field against `git rev-parse origin/main`
 answers the same question in one line. The diff is what is written here because a
 red answer has to be acted on, and only the diff says what differs.
+
+## Before a push, the branch is audited
+
+Every branch of an order gets its audit before the push, as the last part of
+the order, in a session of Claude Code that did not build it. That session
+holds the entry of the branch sentence by sentence against the code, the tool,
+the table and the runs, and it searches the whole repository, with several
+patterns for each subject, for every place that a change or a decision of the
+branch makes wrong. What it finds in a document it mends in a commit that
+changes nothing but `docs/`, so that the runs recorded on the branch count; at
+an error in the code it stops and reports. Before a milestone gets its line
+"Done on", an audit holds the whole of what the milestone covers against the
+plan. No audit is an order of its own after a merge any more, and none is made
+at a handover of the chat; an order that is itself an audit is checked at the
+merge. Decided on 24 November 2026, `docs/plan.md` under milestone 15, where
+the reason stands with what was not chosen.
+
+The rule has a section of its own and does not stand under the heading below:
+it is a rule for whoever writes an order and nothing a program runs, and
+`scripts/devloop-stock-take` counts evidence on any line under that heading as
+built, as its header says where it draws that line.
 
 ## Before a handover, run these
 
@@ -4828,16 +4845,17 @@ branch adds stands nowhere else: `entry-heads`. The head is the one name an
 entry has: the documents and the blocks of `docs/defects.md`, in their field
 Found, find an entry by it, so that a head quoted a word off finds none and a
 head standing twice finds two. Outside that field, which
-`scripts/devloop-stock-take` holds, nothing held it until this check; the run
-with `--all` of 24 November 2026 found two places that quote a head without
-the period it ends on.
+`scripts/devloop-stock-take` holds, no check held it until this one, and every
+audit held it by hand; the run with `--all` of 24 November 2026 found two
+places that quote a head without the period it ends on.
 
 A letter or a number of a decision that a document gives an entry named by its
 head stands in that entry: `entry-letters`. A document that gives a decision
 by its letter sends its reader into the entry for that letter; where the
 entry carries none, the reader cannot tell a slip of the letter from a slip of
-the entry. Until this check nothing held these letters; the run with `--all`
-of 24 November 2026 found none broken.
+the entry. The orders of November 2026 held these letters with throwaway
+scripts of their own, each anew; the run with `--all` of 24 November 2026
+found none broken.
 
 `docs/plan.md` names no line of a file but of an archive of the roadmap, by
 the rule at its head: `plan-lines`. The rule stands at the head of the plan

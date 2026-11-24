@@ -13795,6 +13795,114 @@ and for the proofs of closings.
   brings about, a behavior that is neither new nor loses its run on this
   branch, and none for the run of the platform on the pull request.
 
+- **One entry held, three sentences mended, the audit put before the push**
+
+  24 November 2026, version 0.195.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/audit-references`, off `origin/main` at `861320a`, in one
+  commit: `docs/plan.md`, `docs/skill-conventions.md` and this entry. The
+  order: the consistency audit after pull request #266, in two parts, the
+  first holding and reporting without a change, the second mending. The
+  report stands on this machine as `~/devloop-audit-references.md`, in German,
+  outside the repository.
+
+  **Held.** The entry "The checks before a handover hold the references
+  between the documents", sentence by sentence, against the four commits of
+  that pull request, the tool at `b50e023` and at each of its first three
+  commits, the runs P, S, A and W run anew at the second commit in a throwaway
+  clone, and run 45392687644 of the platform; and what that pull request
+  changed, searched over the repository on seven subjects with several
+  patterns for each: the count of the checks, the count of the cases, the
+  kinds of references, the order on the references as the next one, the
+  self-tests that commit under an identity that is made up, what the
+  workflow's steps hold, and the two blocks closed. It holds, in its figures
+  and its runs, but for what follows. Nothing was found in the code, and no
+  block is written.
+
+  **Found in the entry held**, two, each with its place in this file, the
+  wrong text and the right one; that entry stands as written. Lines 13773 to
+  13777, of the sentence "The orders of November 2026 held these letters with
+  throwaway scripts of their own, each anew": "which no entry and no document
+  bears out"; right: `docs/plan.md` bears it out, in the reason of decision
+  (s) under milestone 15, "the orders of the third part of (4) cut the twenty
+  checks out of `docs/skill-conventions.md` and held quotes, letters and
+  counts with throwaway scripts of their own", which stood at `b50e023`
+  already. Lines 13612 to 13613, of the six points the order set: "each said
+  in the head of the program"; right: the head of
+  `scripts/devloop-handover-checks` says three of them, how "of the entry" is
+  read, the 20 characters and where the heads are read. That the three checks
+  stand behind `second-statement` the order of the calls in the program says
+  and no sentence of its head; the identity of the self-test a comment of the
+  program and the comment of the workflow's step say; and the sixth is about
+  the workflow.
+
+  **Found in a document, and mended**, three sentences of
+  `docs/skill-conventions.md`, each with its place at `861320a`, the old text
+  and the new one. Lines 4839 to 4840, on `entry-letters`: "Until this check
+  nothing held these letters; the run with `--all` of 24 November 2026 found
+  none broken."; new: "The orders of November 2026 held these letters with
+  throwaway scripts of their own, each anew; the run with `--all` of 24
+  November 2026 found none broken.", the sentence that pull request carried
+  before the corrections of its merge, with what the run found behind it.
+  Lines 4830 to 4833, on `entry-heads`: "Outside that field, which
+  `scripts/devloop-stock-take` holds, nothing held it until this check; the
+  run with `--all` of 24 November 2026 found two places that quote a head
+  without the period it ends on."; new: "Outside that field, which
+  `scripts/devloop-stock-take` holds, no check held it until this one, and
+  every audit held it by hand; the run with `--all` of 24 November 2026 found
+  two places that quote a head without the period it ends on.", `docs/plan.md`
+  saying under the reason of (s) that every audit until then held these by
+  hand. Lines 3989 to 3994, in the rule on the identity of a commit: "and may:
+  `hooks` and `hooks@example.invalid` in the step, `t` and `t@t` in the
+  self-tests of `bin/devloop-bounded` and `bin/devloop-setup-state`, the
+  `GIT_AUTHOR_` and `GIT_COMMITTER_` variables in the self-test of
+  `scripts/devloop-stock-take` and, since 24 November 2026, with `t` and
+  `t@t`, in that of `scripts/devloop-handover-checks`; never a real address.";
+  new: "and may; which one each uses, its code says, and none is a real
+  address." The list named four self-tests where eight commit so: those of
+  `bin/devloop-install-note`, `bin/devloop-start-conditions`,
+  `bin/devloop-tool-state` and `scripts/devloop-run-workflow` came between 24
+  and 31 October 2026 and never into it.
+
+  **Decided on 24 November 2026**, which `docs/plan.md` carries under
+  milestone 15 with its reason and what was not chosen, in the paragraph that
+  names this entry: every branch of an order gets its audit before the push,
+  as the last part of the order, in a session that did not build it; before a
+  milestone gets its line "Done on", an audit holds what the milestone covers
+  against the plan; and no audit is an order of its own after a merge any
+  more, an order that is itself an audit, as this one, being checked at the
+  merge. The rule stands in `docs/skill-conventions.md` in a section of its
+  own, "Before a push, the branch is audited", before "Before a handover, run
+  these" and not under it: `scripts/devloop-stock-take` counts evidence on a
+  line under that heading as built, and the sentence of its head on what
+  stands there would no longer be whole, which a branch that changes `docs/`
+  alone cannot set right. Not chosen: a paragraph under that heading. Decided
+  on the same day, on the points the report put up: the sentence on
+  `entry-heads` takes the wording above; the list of the identities goes and
+  the sentence says the rule alone, since which identity a self-test uses its
+  code holds, and a list the repository keeps at one place stands at no
+  second, not chosen being the list completed and the list left as it stood;
+  and behind the sentence on `entry-letters` the half-sentence on the run with
+  `--all` stays, the run having found none broken.
+
+  **The tool and the checks.** Before, on `861320a`: exit 0, broken records 0,
+  uncovered lines 0 of 4968; Undetermined 24, Recorded, not built 245, Built,
+  never walked 1719, Walked 875, Closed 82. After: every figure as before,
+  milestone 15 at 110 blocks, and nothing Walked on the branch without a run;
+  no anchor of the table or of a block stood on a line this branch changes.
+  `scripts/devloop-handover-checks`, before the first change and after the
+  last: exit 0, "green: 22 checks green, 0 red", after the last with "read in
+  the 15 paragraphs of 3 sources"; with `--all`, exit 1 before and after and
+  the same four finds, the places of three of the four blocks of the entry
+  held. The run of the workflow's steps was no part of the order; the head
+  was held by hand to the rules of the title step, 69 characters and no find.
+  No run is recorded, and no line of the fixed forms is written, no block
+  being removed, renamed or given another should.
+
+  **Open.** The four blocks of the entry held. And no program holds that an
+  audit stood before a push or before a line "Done on": the rule stands in the
+  conventions alone.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
