@@ -535,7 +535,8 @@ does not change, **rewrite the sentence rather than appending to it**: "offer to
 run X, without asking" was patched that way and kept producing the offer, and
 the entry point was patched that way again: a paragraph saying not to ask what
 the user wants to build was added below the sentence telling it to ask, which
-still stood, so runs did both.
+still stood, so runs did both. Whether a rewrite is the repair at all, the last
+paragraph of this section says: only where the old text shows the cause.
 
 **So the first thing to look for is not a missing anchor but a competing
 sentence.** Where a rule is written well, at the right place, and the behaviour
@@ -596,6 +597,23 @@ above it, the whole time. Measured on 9 September 2026, three further violations
 followed, and every one of them matched a competing sentence rather than a gap.
 Applying this page to the file being edited is part of writing a rule, not a
 review step afterwards.
+
+**A text that said the should already is no repair as it stands.** Where a run
+missed what a text said already, that text does not count as the repair of the
+defect, as it stands. Where it can be done, a hook takes the duty over, without
+blocking; otherwise a program the run uses with one call; a hook that blocks
+only where the harm is great. A rewritten text counts only where the cause is
+shown in the old text, and the questions of this section are how it is shown: a
+sentence that contradicts the should, the competing sentence above, or the rule
+missing altogether. Where none of this takes hold, the block of the defect in
+`docs/defects.md` stays open and goes to the person as a question of its own.
+Not chosen: the text counts as it stands and the next runs hold it; the same
+text a run has failed on already gives the next run no new reason to hold.
+Decided by the person on 24 November 2026, (1) of the roadmap entry of that
+date,
+"A text a run did not hold is no repair, two blocks closed, three added";
+`docs/plan.md` carries it under milestone 12, and the fifth of its five
+sentences is rewritten to it.
 
 ## Never assert state — query it
 
