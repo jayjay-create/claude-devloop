@@ -14266,14 +14266,15 @@ and for the proofs of closings.
   found as with LF, printed on one line". `bin/devloop-install-issues`,
   "SELF-TEST PASSED: 49 cases".
 
-  Run M2, on the Mac from 09:00:45 to 09:07:03: the measurement on the limits
-  again, with the programs as built, a copy of `bin/` at `8e06e2b` outside
-  the repository in which `loaded()` prints as before: each self-test ten
-  times in a row and twice eight at once, 52 runs, none red, 49 and 54 cases
-  each time. A call answered at once took 0.037 to 0.444 seconds alone and
-  0.033 to 0.313 with eight at once, the eight calls of the build now with
-  ten seconds where they had three; a call not answered, with its three, was
-  back after 3.041 to 3.409.
+  M2, on the Mac from 09:00:45 to 09:07:03, a measurement and no run since
+  the addendum, below: the measurement on the limits again, with the
+  programs as built, a copy of `bin/` at `8e06e2b` outside the repository in
+  which `loaded()` prints as before, and so not the bytes of the version:
+  each self-test ten times in a row and twice eight at once, 52 runs, none
+  red, 49 and 54 cases each time. A call answered at once took 0.037 to
+  0.444 seconds alone and 0.033 to 0.313 with eight at once, the eight calls
+  of the build now with ten seconds where they had three; a call not
+  answered, with its three, was back after 3.041 to 3.409.
 
   Run A1, in a container of alpine:3.22 from 09:07:11 to 09:07:43, Alpine
   3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and Python 3.12.16, the
@@ -14286,9 +14287,10 @@ and for the proofs of closings.
   line ending put writes and the four on pip and on uv not read; and on four
   blocks, the line handed to awk through -v, a recorded command in an issue
   with CRLF, pip said to be none of the installers, and `uv tool dir --bin`
-  asked for every command of uv. M2 stands on the block on the self-test that
-  went red once. A1 shows the same under Linux with BusyBox and carries no
-  record.
+  asked for every command of uv. On the block on the self-test that went red
+  once stands run M3 of the addendum, below, where the record of M2 stood
+  until the addendum; M2 carries none. A1 shows the same under Linux with
+  BusyBox and carries no record.
 
   **The tool and the checks.** Before, on `f5a037b`: exit 0, broken records
   0, uncovered lines 0 of 4968; Undetermined 24, Recorded, not built 248,
@@ -14308,6 +14310,12 @@ and for the proofs of closings.
   last: exit 0, "green: 22 checks green, 0 red". The run of the workflow's
   steps, `scripts/devloop-run-workflow`, at the second commit on the Mac from
   09:08:20 to 09:13:02: green, 12 steps run and every one ended with 0.
+  After the addendum, the seventh commit: exit 0, broken records 0,
+  uncovered lines 0 of 4981; Recorded, not built 243 and milestone 12 at 160
+  blocks, Recorded, not built 22, the block the addendum adds; every other
+  figure as after the third, and the list Walked the same, the block on the
+  self-test that went red once walked by M3 where it was by M2;
+  `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0 red".
 
   **Open.** Under Windows nothing of this part is measured before the pull
   request. The block on the line endings put writes and the block on the
@@ -14360,8 +14368,8 @@ and for the proofs of closings.
 
   **The addendum**, of 25 November 2026, the day read off `date -u`, made
   before the push in three commits: the code of one case of a self-test,
-  `f3c6de3`; the documents; and run M3 with its record. The version stays
-  0.196.0.
+  `f3c6de3`; the documents, `4091f2c`; and run M3 with its record. The
+  version stays 0.196.0.
 
   The case. In the self-test of `bin/devloop-install-issues` the case of the
   tool state program started with a few of the ninety-five seconds left set
@@ -14382,6 +14390,22 @@ and for the proofs of closings.
   starts with a few seconds, and none stands besides. After that commit the
   tool ended with 0, every figure and the list Walked as before it: no thing
   and no block stands on a line the commit changes.
+
+  Run M3, on the Mac from 11:10:48 to 11:17:26: at the second commit of the
+  addendum, `4091f2c`, under 0.196.0, the tree clean, the Mac as above, the
+  day and the time read off `date -u`: the self-tests of
+  `bin/devloop-install-issues` and `bin/devloop-auto-mode-question`
+  unchanged out of the repository, each ten times in a row and then twice
+  eight at once in one call, 52 runs, each ended with 0, "SELF-TEST PASSED:
+  49 cases" and "SELF-TEST PASSED: 54 cases" each time. M3 stands on the
+  block on the self-test that went red once, in the place of the record of
+  M2, which ran a copy of `bin/` in which `loaded()` prints besides and not
+  the bytes of the version; M2 stays above as a measurement on the limits.
+
+  Run A2, in a container of alpine:3.22 from 11:17:38 to 11:18:10, at the
+  same commit, Alpine 3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1
+  and Python 3.12.16, the repository mounted read-only: the four self-tests,
+  each ended with 0, with 59, 90, 54 and 49 cases. It carries no record.
 
   Decided on 25 November 2026, on the block on the carriage return an
   installer prints: its run is not read off the log of the job hooks on
@@ -14420,11 +14444,14 @@ and for the proofs of closings.
   Corrected by the addendum where the text stood, none of it on main yet.
   This entry said "in four commits" and "**Two blocks added**, both under
   milestone 12"; under The tool and the checks it gave "the two blocks whose
-  runs wait for the merge" for the 1721; and under Open it said of both
-  blocks that "their runs are read at the merge off the log of the job hooks
-  on every system under windows-latest". The note of the block on the
-  carriage return said the measurement under Windows is that job, "read off
-  its log under windows-latest at the merge". The plan's paragraph on what
+  runs wait for the merge" for the 1721; under The runs it headed the
+  measurement "Run M2" and said "M2 stands on the block on the self-test
+  that went red once", as the note of that block said "walked 25 November
+  2026 by that run"; and under Open it said of both blocks that "their runs
+  are read at the merge off the log of the job hooks on every system under
+  windows-latest". The note of the block on the carriage return said the
+  measurement under Windows is that job, "read off its log under
+  windows-latest at the merge". The plan's paragraph on what
   is built of milestone 12 said that "two wait for the log of the job hooks
   on every system under windows-latest at the merge" and that what this part
   did not build "stands in one more block of this milestone with Fix none".
