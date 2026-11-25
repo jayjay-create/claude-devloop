@@ -99,7 +99,8 @@
 # $(npm prefix -g)/bin for npm with -g or --global, the prefix itself on
 # Windows, where npm puts its commands; $(go env GOBIN), or $(go env
 # GOPATH)/bin where GOBIN is empty, for go; pnpm bin -g; yarn global bin;
-# bun pm bin -g; pipx environment --value PIPX_BIN_DIR; uv tool dir --bin;
+# bun pm bin -g; pipx environment --value PIPX_BIN_DIR; uv tool dir --bin
+# for uv tool;
 # the EXECUTABLE DIRECTORY of gem environment; and for cargo, which has no
 # query, $CARGO_INSTALL_ROOT/bin, $CARGO_HOME/bin or ~/.cargo/bin as cargo
 # documents them. The installer is the first word of COMMAND after any
@@ -119,6 +120,26 @@
 # not found, build-work step 3 point 7, the roadmap entry of 28 October 2026
 # on the hook on SubagentStart. For a browser the one line stays: the
 # vendor's folder is where the test tool looks.
+# pip is not read, since 25 November 2026, the second part of order (5) of
+# milestone 12, in the forms the install guard reads as pip - pip and pip3,
+# bare or by a path, an interpreter python, with a number as well, bare or
+# by a path, followed by -m pip, and uv pip: the folder depends on --user
+# and on the interpreter, for uv pip on the environment it installs into,
+# as docs/pip/environments.md of uv says at 0.13.10, "uv will search for a
+# virtual environment in the following order", and the line says not read
+# with that cause. Until that day the line said of pip and of python that
+# they are none of the installers this program reads, and for uv pip, as
+# for every command whose first word is uv, the program asked uv tool dir
+# --bin and looked for the tool in the folder of uv tool. Since that day it
+# asks uv tool dir --bin for uv tool alone, and any other form of uv is
+# not read, the line naming the form.
+# The carriage return at the end of a line that an installer or a vendor
+# prints is taken off, since the same day, in the output of every query
+# and in the line read off its stderr, at the one place every query goes
+# through: a command substitution takes off the line feed alone, so that
+# until then a folder printed with CRLF, as a program under Windows may
+# print it, ended in a carriage return and the tool was looked for under
+# that folder.
 #
 # Every query of a vendor or an installer runs under bin/devloop-bounded,
 # and the program holds a limit over its whole call, ninety-five seconds, as
@@ -186,7 +207,7 @@ me=devloop-tool-state
 usage() { echo "$me: $1" >&2; exit 2; }
 
 selftest() {
-  local self T P out rc n=0 f=0 RED=0 LASTRED= DAY SYS=Darwin WITH= PROG s
+  local self T P out rc n=0 f=0 RED=0 LASTRED= DAY SYS=Darwin WITH= PROG s CR FOUND PIPCAUSE PYCAUSE
   self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state-selftest.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -460,6 +481,68 @@ FFmpeg (playwright ffmpeg v1013)
   lines "--installed with a browser: read as the browser, whatever the command, no record line, one line" 1
   expect "--installed with a browser: read as the browser, whatever the command, no record line, one line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
 
+  # pip, in the forms the install guard reads as pip: not read, the folder depending on --user and on the interpreter, nothing asked; uv read off uv tool dir --bin for uv tool alone
+  PIPCAUSE="installs into a folder that depends on --user and on the interpreter the pip belongs to, which this program does not read (on $DAY)"
+  PYCAUSE="-m pip installs into a folder that depends on --user and on the interpreter, which this program does not read (on $DAY)"
+  fresh; run --installed 'pip install devloop-selftest-present' devloop-selftest-present
+  lines "installed by pip, bare: not read, the folder depending on --user and on the interpreter, then the search-path line, 1" 2
+  calls "installed by pip, bare: not read, the folder depending on --user and on the interpreter, then the search-path line, 1"
+  expect "installed by pip, bare: not read, the folder depending on --user and on the interpreter, then the search-path line, 1" 1 "devloop-selftest-present: not read, because pip $PIPCAUSE" "$PRESENT"
+  fresh; run --installed 'PIP_USER=1 pip3 install --user devloop-selftest-present' devloop-selftest-present
+  expect "installed by pip3, bare, a VAR=value before it: not read" 1 "devloop-selftest-present: not read, because pip3 $PIPCAUSE"
+  fresh; run --installed '/usr/local/bin/pip install devloop-selftest-present' devloop-selftest-present
+  expect "installed by pip, named by a path: not read" 1 "devloop-selftest-present: not read, because /usr/local/bin/pip $PIPCAUSE"
+  fresh; run --installed '.venv/bin/pip3 install devloop-selftest-present' devloop-selftest-present
+  expect "installed by pip3, named by a path: not read" 1 "devloop-selftest-present: not read, because .venv/bin/pip3 $PIPCAUSE"
+  fresh; run --installed 'python -m pip install devloop-selftest-present' devloop-selftest-present
+  calls "installed by python -m pip, bare: not read, nothing asked"
+  expect "installed by python -m pip, bare: not read, nothing asked" 1 "devloop-selftest-present: not read, because python $PYCAUSE"
+  fresh; run --installed 'python3 -m pip install --user devloop-selftest-present' devloop-selftest-present
+  expect "installed by python3 -m pip, an interpreter with a number: not read" 1 "devloop-selftest-present: not read, because python3 $PYCAUSE"
+  fresh; run --installed '/usr/bin/python3.12 -m pip install devloop-selftest-present' devloop-selftest-present
+  expect "installed by an interpreter named by a path, -m pip behind it: not read" 1 "devloop-selftest-present: not read, because /usr/bin/python3.12 $PYCAUSE"
+  fresh; run --installed 'python3 -m venv devloop-selftest-present' devloop-selftest-present
+  expect "an interpreter without -m pip behind it: none of the installers, as before" 1 "devloop-selftest-present: not read, because this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and 'python3' is none of them (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'uv pip install --system devloop-selftest-present' devloop-selftest-present
+  calls "installed by uv pip: not read, the folder depending on the environment, uv tool dir --bin not asked"
+  expect "installed by uv pip: not read, the folder depending on the environment, uv tool dir --bin not asked" 1 "devloop-selftest-present: not read, because uv pip installs into a folder that depends on the environment, the virtual environment uv finds or the one --python or --system names, which this program does not read (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'uv add devloop-selftest-present' devloop-selftest-present
+  calls "another form of uv than uv tool and uv pip: not read, the form named, uv tool dir --bin not asked"
+  expect "another form of uv than uv tool and uv pip: not read, the form named, uv tool dir --bin not asked" 1 "devloop-selftest-present: not read, because this program reads the folder of uv off uv tool dir --bin for uv tool alone, and 'uv add' is another form of uv (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'uv tool install devloop-selftest-present' devloop-selftest-present
+  calls "installed by uv tool: uv tool dir --bin asked" "uv tool dir --bin"
+
+  # an answer printed with CRLF, as a program under Windows may print it: the carriage return at the end of every line taken off at the one place every query goes through, the folder read without it
+  CR=$(printf '\r')
+  FOUND="devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder"
+  fresh; ans brew d 0 "$T/home/hb$CR"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
+  expect "brew --prefix answers with CRLF: the folder read without the carriage return" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)" "$PRESENT"
+  fresh; ans npm d 0 "$T/home/npm$CR"; folder "$T/home/npm/bin" devloop-selftest-present; run --installed 'npm install -g devloop-selftest-present' devloop-selftest-present
+  expect "npm prefix -g answers with CRLF: the folder read without the carriage return" 0 "devloop-selftest-present: found at ~/npm/bin/devloop-selftest-present, the folder npm writes to, read off npm prefix -g (on $DAY)"
+  fresh; ans pnpm d 0 "$(printf 'some notice\r\n%s/x\r' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'pnpm add -g devloop-selftest-present' devloop-selftest-present
+  expect "pnpm bin -g answers with CRLF: the folder read without the carriage return" 0 "$FOUND pnpm writes to, read off pnpm bin -g (on $DAY)"
+  fresh; ans yarn d 0 "$(printf 'yarn global v1.22\r\n%s/x\r\nDone in 0.1s.\r' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'yarn global add devloop-selftest-present' devloop-selftest-present
+  expect "yarn global bin answers with CRLF: the folder read without the carriage return" 0 "$FOUND yarn writes to, read off yarn global bin (on $DAY)"
+  fresh; ans bun d 0 "$T/home/x$CR"; folder "$T/home/x" devloop-selftest-present; run --installed 'bun install -g devloop-selftest-present' devloop-selftest-present
+  expect "bun pm bin -g answers with CRLF: the folder read without the carriage return" 0 "$FOUND bun writes to, read off bun pm bin -g (on $DAY)"
+  fresh; ans go 1 0 "$T/home/x$CR"; folder "$T/home/x" devloop-selftest-present; run --installed 'go install example.invalid/x/cmd/devloop-selftest-present@latest' devloop-selftest-present
+  expect "go env GOBIN answers with CRLF: the folder read without the carriage return" 0 "$FOUND go writes to, read off go env GOBIN (on $DAY)"
+  fresh; ans go 1 0 "$CR"; ans go 2 0 "$T/home/go$CR"; folder "$T/home/go/bin" devloop-selftest-present; run --installed 'go install example.invalid/x@latest' devloop-selftest-present
+  calls "go env GOBIN answers a carriage return alone and go env GOPATH with CRLF: GOBIN read as empty, GOPATH asked, the folder read without the carriage return" "go env GOBIN" "go env GOPATH"
+  expect "go env GOBIN answers a carriage return alone and go env GOPATH with CRLF: GOBIN read as empty, GOPATH asked, the folder read without the carriage return" 0 "devloop-selftest-present: found at ~/go/bin/devloop-selftest-present, the folder go writes to, read off go env GOPATH, GOBIN being empty (on $DAY)"
+  fresh; ans pipx d 0 "$T/home/x$CR"; folder "$T/home/x" devloop-selftest-present; run --installed 'pipx install devloop-selftest-present' devloop-selftest-present
+  expect "pipx environment answers with CRLF: the folder read without the carriage return" 0 "$FOUND pipx writes to, read off pipx environment --value PIPX_BIN_DIR (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x$CR"; folder "$T/home/x" devloop-selftest-present; run --installed 'uv tool install devloop-selftest-present' devloop-selftest-present
+  expect "uv tool dir --bin answers with CRLF: the folder read without the carriage return" 0 "$FOUND uv writes to, read off uv tool dir --bin (on $DAY)"
+  fresh; ans gem d 0 "$(printf 'RubyGems Environment:\r\n  - RUBYGEMS VERSION: 3.5\r\n  - EXECUTABLE DIRECTORY: %s/x\r\n  - GEM PATHS:\r' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'gem install devloop-selftest-present' devloop-selftest-present
+  expect "gem environment answers with CRLF: the folder read without the carriage return" 0 "$FOUND gem writes to, read off the EXECUTABLE DIRECTORY of gem environment (on $DAY)"
+  fresh; pw; ans project-playwright d 0 "$(printf '%s\n' "$DRY" | sed "s/\$/$CR/")"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit
+  expect "the dry run of Playwright answers with CRLF: the version and the folder read without the carriage return" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  fresh; pkg puppeteer-core; ans node d 0 "$(printf '156.0.1\r\n%s\r' "$EXE")"; folder "$(dirname "$EXE")" "$(basename "$EXE")"; run --planning puppeteer:chrome
+  expect "node, asked for the build of Puppeteer, answers with CRLF: the build and the folder read without the carriage return" 0 "puppeteer:chrome: found at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; ans brew d 1 '' "$(printf '\r\nError: Homebrew is not installed\r')"; run --installed 'brew install yq' yq
+  expect "the line on stderr comes with CRLF, an empty line before it: the line read without the carriage return, the empty line passed over" 1 "yq: not read, because brew --prefix did not answer: Error: Homebrew is not installed (on $DAY)"
+
   # the limit over the whole call, on the self-test's clock and with the copy beside the stand-in for the bound: a query has its sixty seconds, or what is left of the ninety-five where that is less, and none starts once fewer than ten are left
   fresh; PROG=$T/copy/devloop-tool-state; pw; ans project-playwright d 0 "$DRY"; takes project-playwright 1 59; takes project-playwright 2 26; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit playwright:chromium playwright:firefox
   lines "three queries, 59 and 26 seconds: the first has sixty, the second the 36 left, the third has ten left and is asked with them" 4
@@ -522,6 +605,9 @@ cd "$PROJECT_DIR" 2>/dev/null || usage "the project directory $PROJECT_DIR canno
 T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state.XXXXXX") || usage "mktemp -d failed"
 trap 'rm -rf "$T"' EXIT
 BAD=0
+# a carriage return and a line feed, for ask
+CR=$'\r'
+NL=$'\n'
 
 # say LINE: a line of a tool, with the day it was read; bad: the exit becomes 1
 say() { echo "$1 (on $DAY)"; }
@@ -534,7 +620,7 @@ cap() { printf '%s%s' "$(printf '%s' "${1%"${1#?}"}" | tr '[:lower:]' '[:upper:]
 flat() { tr '\n' ' ' | sed 's/   */ /g; s/ *$//'; }
 # The clock: bash's SECONDS, the whole seconds since the program started, or, where DEVLOOP_TOOL_STATE_CLOCK names a file, the seconds in it - the self-test's clock, which its stand-ins add to
 tick() { if [ -n "${DEVLOOP_TOOL_STATE_CLOCK:-}" ]; then read -r NOW <"$DEVLOOP_TOOL_STATE_CLOCK"; else NOW=$SECONDS; fi; }
-# ask LABEL COMMAND...: the query under the bound, with BOUND seconds or with what is left of LIMIT where that is less; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with. Where fewer than STEP seconds of LIMIT are left the query is not started and answers as one that did not answer, in the words of bin/devloop-start-conditions
+# ask LABEL COMMAND...: the query under the bound, with BOUND seconds or with what is left of LIMIT where that is less; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with. Where fewer than STEP seconds of LIMIT are left the query is not started and answers as one that did not answer, in the words of bin/devloop-start-conditions. The carriage return at the end of every line is taken off here, in the output and in the line read off stderr, for every query at once: the command substitution takes off the line feed alone
 ask() {
   local label=$1 err secs; shift
   tick; secs=$((LIMIT - NOW))
@@ -544,7 +630,8 @@ ask() {
   fi
   [ "$secs" -le "$BOUND" ] || secs=$BOUND
   OUT=$("$BOUNDED" "$secs" "$@" 2>"$T/err"); RC=$?
-  err=$(grep -v -e '^ ' -e '^$' -e '^node:' -e '^Require stack' "$T/err" | head -n 1)
+  OUT=${OUT//$CR$NL/$NL}; OUT=${OUT%$CR}
+  err=$(sed $'s/\r$//' "$T/err" | grep -v -e '^ ' -e '^$' -e '^node:' -e '^Require stack' | head -n 1)
   FAIL=""
   case $RC in
     0) ;;
@@ -608,14 +695,19 @@ browser_line() {
 read_tool() { case $1 in *:*) browser_line "${1%%:*}" "${1#*:}" ;; *) tool_line "$1" ;; esac; }
 # has_flag FLAG... -- WORD...: whether one of the flags stands among the words
 has_flag() { local f w; f=" "; while [ "$1" != -- ]; do f="$f$1 "; shift; done; shift; for w in "$@"; do case $f in *" $w "*) return 0 ;; esac; done; return 1; }
-# installed_line COMMAND TOOL: the line of --installed, the folder read off the installer named by the command's first word after any VAR=value
+# installed_line COMMAND TOOL: the line of --installed, the folder read off the installer named by the command's first word after any VAR=value; pip in the forms the install guard reads as pip is not read, the folder depending on --user and on the interpreter, and uv is read off uv tool dir --bin for uv tool alone
 installed_line() {
-  local tool=$2 installer="" dir="" q="" p w
+  local tool=$2 installer="" dir="" q="" p
   CAUSE=""; FAIL=""
   # shellcheck disable=SC2086
   set -- $1
-  for w in "$@"; do case $w in *=*) continue ;; esac; installer=$w; break; done
-  case $installer in
+  while [ $# -gt 0 ]; do case $1 in *=*) shift ;; *) break ;; esac; done
+  installer=${1:-}
+  case ${installer##*/} in
+    pip|pip3) CAUSE="$installer installs into a folder that depends on --user and on the interpreter the pip belongs to, which this program does not read" ;;
+    python|python[0-9]*) [ "${2:-}" != -m ] || [ "${3:-}" != pip ] || CAUSE="$installer -m pip installs into a folder that depends on --user and on the interpreter, which this program does not read" ;;
+  esac
+  [ -n "$CAUSE" ] || case $installer in
     brew) ask "brew --prefix" brew --prefix; dir=$OUT/bin; q="brew --prefix" ;;
     npm) has_flag -g --global -- "$@" && { ask "npm prefix -g" npm prefix -g; dir=$OUT/bin; [ -z "$WIN" ] || dir=$OUT; q="npm prefix -g"; } || CAUSE="npm without -g or --global installs inside a project, which is no tool outside it" ;;
     pnpm) ask "pnpm bin -g" pnpm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="pnpm bin -g" ;;
@@ -623,7 +715,12 @@ installed_line() {
     bun) ask "bun pm bin -g" bun pm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="bun pm bin -g" ;;
     go) ask "go env GOBIN" go env GOBIN; dir=$OUT; q="go env GOBIN"; [ -n "$FAIL" ] || [ -n "$dir" ] || { ask "go env GOPATH" go env GOPATH; dir=${OUT%%:*}/bin; q="go env GOPATH, GOBIN being empty"; } ;;
     pipx) ask "pipx environment --value PIPX_BIN_DIR" pipx environment --value PIPX_BIN_DIR; dir=$OUT; q="pipx environment --value PIPX_BIN_DIR" ;;
-    uv) ask "uv tool dir --bin" uv tool dir --bin; dir=$OUT; q="uv tool dir --bin" ;;
+    uv)
+      case ${2:-} in
+        tool) ask "uv tool dir --bin" uv tool dir --bin; dir=$OUT; q="uv tool dir --bin" ;;
+        pip) CAUSE="uv pip installs into a folder that depends on the environment, the virtual environment uv finds or the one --python or --system names, which this program does not read" ;;
+        *) CAUSE="this program reads the folder of uv off uv tool dir --bin for uv tool alone, and 'uv${2:+ $2}' is another form of uv" ;;
+      esac ;;
     gem) ask "gem environment" gem environment; dir=$(printf '%s\n' "$OUT" | sed -n 's/.*EXECUTABLE DIRECTORY: *//p' | head -n 1); q="the EXECUTABLE DIRECTORY of gem environment" ;;
     cargo) dir=${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin; q="CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it" ;;
     *) CAUSE="this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and '$installer' is none of them" ;;

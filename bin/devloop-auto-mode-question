@@ -80,6 +80,12 @@ it concerns a check class otherwise, since such an issue is recorded as a
 blocker of no task. gh is called in DIR, as the skills call it, each call
 with 60 seconds, or with what is left of the ninety-five seconds of the
 whole call where that is less, below.
+The title and the body of an issue are read with CRLF as with LF, since 25
+November 2026, the second part of order (5) of milestone 12: every carriage
+return in them is read as a line feed before a command is looked for, as
+bin/devloop-install-issues reads a body. Until then a command recorded
+over several lines, which carries line feeds alone, stood in no issue
+whose text carries CRLF.
 
 The limit over the whole call, since 15 November 2026, the roadmap entry of
 that date on a limit over the whole call. The program holds ninety-five
@@ -202,6 +208,15 @@ setting of the environment moves the limit in operation, and holds the
 answer to the message with those seconds, to both files standing still
 once the program has returned, and to the call being back no later than
 those seconds and two after a call the stand-in answers at once.
+A call through the loader that gh answers at once, or that starts nothing,
+has ten seconds, STEP, the fewest a call of gh starts with in operation,
+since 25 November 2026, the second part of order (5) of milestone 12: in
+operation the limit of a call is never below those ten, so that such a
+case red under a few seconds on a machine that is held up says nothing of
+operation, and one red under ten does; the few seconds stand where gh does
+not answer alone, and the comparison of the two calls reads how long each
+took and no limit of the first. Until then such a call had the few
+seconds as well.
 The cases on the limit over the whole call, since 15 November 2026: where
 DEVLOOP_QUESTION_CLOCK names a file, the self-test's loader puts that file
 in the place of the program's clock, the seconds since its start, and the
@@ -452,7 +467,8 @@ def question(d):
         number = issue.get("number")
         if not isinstance(number, int):
             continue
-        text = (issue.get("title") or "") + "\n" + (issue.get("body") or "")
+        # with CRLF as with LF: a carriage return in the title or the body read as a line feed, as bin/devloop-install-issues reads a body
+        text = ((issue.get("title") or "") + "\n" + (issue.get("body") or "")).replace("\r\n", "\n").replace("\r", "\n")
         for _, way, _, cmd in recorded:
             if cmd in text:
                 found.append((number, issue.get("title") or "", way, cmd))
@@ -894,6 +910,10 @@ def selftest():
         issues((20, "Task", "    cargo install \\\n  ripgrep\n")); blocking(20, "open")
         ok &= expect("a command over two lines: matched verbatim, printed on one line", run(), 0,
                      "issue: 20", "command: cargo install \\   ripgrep")
+        # the same issue, its text carrying CRLF: found as with LF
+        issues((20, "Task", "    cargo install \\\r\n  ripgrep\r\n")); blocking(20, "open")
+        ok &= expect("a command over two lines in an issue whose text carries CRLF: found as with LF, printed on one line", run(), 0,
+                     "issue: 20", "command: cargo install \\   ripgrep")
         # a line of the record not in the form
         fresh()
         with open(denials_file, "w", encoding="utf-8") as f:
@@ -922,12 +942,12 @@ def selftest():
         ok &= expect("the blocking relation does not answer: not decided", run(), 2,
                      "question: not decided", "command: gh api repos/{owner}/{repo}/issues/15/dependencies/blocking",
                      "message: HTTP 404: Not Found")
-        # gh does not answer within the limit, a few seconds here, more on Windows, where the processes of the stand-in take longer to start: ended by the bound with the process it started, the message with the seconds, and the call back no later than those seconds and two after a call gh answers at once
+        # gh does not answer within the limit, a few seconds here, more on Windows, where the processes of the stand-in take longer to start: ended by the bound with the process it started, the message with the seconds, and the call back no later than those seconds and two after a call gh answers at once; the call gh answers at once has STEP, the ten seconds a call starts with at the fewest in operation, and so has every call below that gh answers at once or that starts nothing
         short = 5 if os.name == "nt" else 3
         fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
         ans("issues", 1, "", "HTTP 502: Bad Gateway (https://api.github.com/graphql)")
-        got, at_once = loaded("SECONDS=%d" % short, "")
-        ok &= expect("the limit set to a few seconds and gh answering at once: as with sixty", got, 2,
+        got, at_once = loaded("SECONDS=%d" % STEP, "")
+        ok &= expect("the limit set to ten seconds, the fewest a call starts with, and gh answering at once: as with sixty", got, 2,
                      "question: not decided",
                      "message: HTTP 502: Bad Gateway (https://api.github.com/graphql)")
         open(os.path.join(S, "issues.hang"), "w").close()
@@ -946,7 +966,7 @@ def selftest():
             print("FAIL gh does not answer within the limit: back after %.3f seconds, %.3f where gh answers at once, more than the %d seconds and 2 apart" % (hung, at_once, short))
         # no gh on PATH: nothing started, the system's message for a file that is not there
         fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
-        got, _ = loaded("SECONDS=%d" % short, "gh")
+        got, _ = loaded("SECONDS=%d" % STEP, "gh")
         ok &= expect("no gh on PATH: not decided, the command and the system's message naming gh, exit 2", got, 2,
                      "question: not decided",
                      "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
@@ -999,7 +1019,7 @@ def selftest():
         # no bash on PATH: under Windows, where bash runs the bound, no call of gh is started and the message names bash; on macOS and Linux bash is not looked up, the bound running by its first line, and the question is decided as with one
         fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
         issues((15, "The class", "brew install gitleaks")); blocking(15)
-        got, _ = loaded("SECONDS=%d" % short, "bash")
+        got, _ = loaded("SECONDS=%d" % STEP, "bash")
         under_windows = os.name == "nt"
         if under_windows:
             ok &= expect("no bash on PATH under Windows: not decided, the command and the system's message naming bash, exit 2", got, 2,

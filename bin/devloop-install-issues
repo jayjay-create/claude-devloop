@@ -236,7 +236,18 @@ and calls it, so that no setting of the environment moves a limit in
 operation, and holds the answer to the message with those seconds, to the
 files standing still once the program has returned, and to the call being
 back no later than those seconds and two after a call that is answered at
-once. The cases on the limit over the whole call, since 15 November 2026:
+once. A call through the loader that is answered at once, or that starts
+nothing, has ten seconds, STEP, the fewest a command starts with in
+operation, since 25 November 2026, the second part of order (5) of
+milestone 12: in operation the limit of a command is never below those
+ten, so that such a case red under a few seconds on a machine that is
+held up says nothing of operation, and one red under ten does; the few
+seconds stand where a command does not answer alone, and the comparison
+of the two calls reads how long each took and no limit of the first.
+Until then such a call had the few seconds as well, and on 22 November
+2026 the case under --build went red once in the run of the workflow's
+steps, not answered within its three.
+The cases on the limit over the whole call, since 15 November 2026:
 where DEVLOOP_ISSUES_CLOCK names a file, the self-test's loader puts that
 file in the place of the program's clock, the seconds since its start, and
 the stand-in for gh adds to it the seconds a case gives an answer, as the
@@ -878,14 +889,14 @@ def selftest():
         expect("a query fails after an issue was closed: that issue's group stands, then not decided, 2", go(), 2,
                "issue: 15", "closed: yes", "issues: not decided", "message: gh: HTTP 500", absent=("issue: 16",))
 
-        # a command that does not answer within its limit, the limit set through LOADER: ended by the bound with the process it started, the message with the seconds of that limit, and the call back no later than those seconds and two after a call answered at once; the seconds longer on Windows, where the processes of a stand-in take longer to start
+        # a command that does not answer within its limit, the limit set through LOADER: ended by the bound with the process it started, the message with the seconds of that limit, and the call back no later than those seconds and two after a call answered at once; the seconds longer on Windows, where the processes of a stand-in take longer to start; the call answered at once has STEP, the ten seconds a command starts with at the fewest in operation, and so has every call below that is answered at once or that starts nothing
         short = 5 if os.name == "nt" else 3
         longer = 10 if os.name == "nt" else 3
         listing = "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body"
         # gh
         fresh(); ans("issues", 1, "", "gh: Not logged in")
-        got, at_once = loaded("SECONDS=%d" % short, "")
-        expect("the limit of gh set to a few seconds and gh answering at once: as with sixty, 2", got, 2,
+        got, at_once = loaded("SECONDS=%d" % STEP, "")
+        expect("the limit of gh set to ten seconds, the fewest a command starts with, and gh answering at once: as with sixty, 2", got, 2,
                "issues: not decided", listing, "message: gh: Not logged in")
         open(os.path.join(S, "issues.hang"), "w").close()
         got, hung = loaded("SECONDS=%d" % short, "")
@@ -902,8 +913,8 @@ def selftest():
         os.chmod(playwright, os.stat(playwright).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
         webkit = "install-tool: playwright:webkit\ninstall-command: npx playwright install webkit\n"
         fresh(); issues((21, "Download WebKit", webkit)); blocking(21)
-        got, at_once = loaded("BUILD_SECONDS=%d" % longer, "")
-        expect("the limit under --build set to a few seconds and the query answering at once: the line not read with the query's message, not closed, 0", got, 0,
+        got, at_once = loaded("BUILD_SECONDS=%d" % STEP, "")
+        expect("the limit under --build set to ten seconds, the fewest a command starts with, and the query answering at once: the line not read with the query's message, not closed, 0", got, 0,
                "issue: 21",
                "tool: playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: node_modules/.bin/playwright install --dry-run webkit did not answer: no dry run scripted (on %s)" % present_line[-11:-1],
                "closed: no")
@@ -929,8 +940,8 @@ def selftest():
         # the tool state program under --installed: its query the stand-in for go
         infolder = "install-tool: devloop-selftest-infolder\ninstall-command: go install example.invalid/x/cmd/devloop-selftest-infolder@latest\n"
         fresh(); issues((22, "Install devloop-selftest-infolder", infolder)); blocking(22)
-        got, at_once = loaded("INSTALLED_SECONDS=%d" % longer, "")
-        expect("the limit under --installed set to a few seconds and go answering at once: the group, not closed, 0", got, 0,
+        got, at_once = loaded("INSTALLED_SECONDS=%d" % STEP, "")
+        expect("the limit under --installed set to ten seconds, the fewest a command starts with, and go answering at once: the group, not closed, 0", got, 0,
                "issue: 22", "kind: class", "closed: no")
         open(os.path.join(S, "go.hang"), "w").close()
         got, hung = loaded("INSTALLED_SECONDS=%d" % longer, "")
@@ -943,7 +954,7 @@ def selftest():
         in_time("the tool state program does not answer under --installed: back no later than the limit and two seconds after a call answered at once", hung, at_once, longer)
         # no gh on PATH: nothing started, the system's message for a file that is not there
         fresh()
-        got, _ = loaded("SECONDS=%d" % short, "gh")
+        got, _ = loaded("SECONDS=%d" % STEP, "gh")
         expect("no gh on PATH: not decided, the command and the system's message naming gh, 2", got, 2,
                "issues: not decided", listing, "message: %s" % FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "gh"))
         called("no gh on PATH: nothing started")
@@ -974,7 +985,7 @@ def selftest():
                "issue: 15", "tool: " + present_line, "closed: yes")
         # no bash on PATH: under Windows, where bash runs the bound of every command, nothing is started and the message names bash; on macOS and Linux bash is looked up for the tool state program alone, so that gh is called and that program is not started, the message naming bash
         fresh(); issues((7, "Install devloop-selftest-present for task #5", body_present)); blocking(7, "open")
-        got, _ = loaded("SECONDS=%d" % short, "bash")
+        got, _ = loaded("SECONDS=%d" % STEP, "bash")
         no_bash = "message: %s" % FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "bash")
         under_windows = os.name == "nt"
         if under_windows:
