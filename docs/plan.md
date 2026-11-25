@@ -1326,18 +1326,22 @@ the install guard for a cargo configuration does not end at a path in the
 form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
-fewer; the first and the third carry their Fix since (3) built them, below.
+fewer; the first and the third carry their Fix since (3) built them, below,
+and the second since the second part of (5) built it, below.
 Of (4) the second of its three parts is built, since 21 November 2026, and
-the third, since 22 November 2026, both below; of (5) to (7) nothing is
-built yet. Since 18 November
+the third, since 22 November 2026, both below; of (5) the second of its six
+parts is built, since 25 November 2026, below, the first having written its
+decisions down and changed no code; of its other four parts, of (6) and of
+(7) nothing is built yet. Since 18 November
 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
 a file of the project to a case of the last step of the job hooks on every
 system or to the places that step names as none; what that order found and
-did not build stands in three more blocks of this milestone with Fix none,
+did not build stood in three more blocks of this milestone with Fix none,
 on the line endings put writes, on a recorded command over several lines in
-an issue with CRLF and on the folder an installer prints under Windows.
+an issue with CRLF and on the folder an installer prints under Windows,
+which carry their Fix since the second part of (5) built them, below.
 And two blocks of this milestone the consistency audit of 18 November 2026
 wrote, the roadmap entry of that date on the two entries held: a sentence of
 the head of `bin/devloop-install-note` says that git converts a file put
@@ -1439,6 +1443,34 @@ handover, by the decision of 22 November 2026 under milestone 15: built on 23
 and 24 November 2026, the two roadmap entries that the decisions of those
 days under milestone 15 name. Until 24 November 2026 this paragraph said that
 these checks come before (5), as still to be built.
+Since 25 November 2026 the second of the six parts of (5) is built, the
+roadmap entry of that date, "The install programs keep a file's line ending
+and say pip is not read": put of `bin/devloop-install-note` writes every
+line it adds with the line ending the file's first line carries and hands
+the line of an install to `awk` through the environment, so that the command
+stands as it reads; `bin/devloop-auto-mode-question` reads a carriage return
+in the title or the body of an issue as a line feed; `bin/devloop-tool-state`
+takes the carriage return off the end of every line a query prints, says not
+read of pip in the forms the install guard reads as pip, and asks
+`uv tool dir --bin` for `uv tool` alone; and in the self-tests of
+`bin/devloop-install-issues` and `bin/devloop-auto-mode-question` a call that
+is answered at once has the ten seconds a command starts with at the fewest
+in operation. Of the eight blocks of this milestone that part builds, the
+one on `uv tool dir --bin` asked for every command of uv found and written
+by it, five are walked by its runs, the one on the sentence of the head of
+`bin/devloop-install-note` is closed as corrected in the document, and two
+wait for the log of the job hooks on every system under windows-latest at
+the merge, on the line endings put writes and on the folder an installer
+prints; under Windows nothing of that part is measured before its pull
+request. What that part found and did not build stands in one more block of
+this milestone with Fix none, on an installer's answer the install guard
+takes with a carriage return at its end, which the third part builds, (7)
+below.
+Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
+built yet, that what the order before (3) found and did not build "stands in
+three more blocks of this milestone with Fix none", and of the three blocks
+(2) wrote with Fix none only that the first and the third carry their Fix;
+mended by the audit of that part before its push, that entry.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026

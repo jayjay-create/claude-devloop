@@ -14158,12 +14158,12 @@ and for the proofs of closings.
 - **The install programs keep a file's line ending and say pip is not read**
 
   25 November 2026, version 0.196.0. On `task/auftrag-5-teil-2`, off
-  `origin/main` at `f5a037b`, in three commits: the code with the version;
-  this entry with the blocks, the table and a sentence of the plan; and the
-  runs. The order: the second part of order (5) of milestone 12, the programs,
-  as the plan's paragraph on decision (7) of 24 November 2026 has it. The
-  report stands on this machine as `~/devloop-auftrag5-teil2.md`, in German,
-  outside the repository.
+  `origin/main` at `f5a037b`, in four commits: the code with the version;
+  this entry with the blocks, the table and a sentence of the plan; the
+  runs; and the audit's. The order: the second part of order (5) of milestone
+  12, the programs, as the plan's paragraph on decision (7) of 24 November
+  2026 has it. The report stands on this machine as
+  `~/devloop-auftrag5-teil2.md`, in German, outside the repository.
 
   **Built**, each with its block of milestone 12 in `docs/defects.md`, which
   carries the wrong, the should, the line of the repair and what is measured.
@@ -14311,7 +14311,41 @@ and for the proofs of closings.
   stand-ins and no installer itself, so that which installer prints CRLF
   under Windows stays unmeasured. An answer in the form of Windows, a drive
   letter or backslashes, is no part of this part; the third part measures and
-  builds it with the block on the install guard's `absolute()`.
+  builds it with the block of 24 November 2026 on an installer's answer the
+  install guard takes for a folder only where it opens with a slash.
+
+  **The corrections of the audit**, of 25 November 2026, the fourth commit,
+  made before the push by a session that did not build the branch, which held
+  this entry against the code, the tool, the table and the runs and searched
+  the repository for what the branch makes wrong. First, the plan. The
+  paragraph of `docs/plan.md` on what is built of milestone 12 said "of (5) to
+  (7) nothing is built yet"; it said of what the order before (3) found and
+  did not build that it "stands in three more blocks of this milestone with
+  Fix none", where the three carry their Fix since this part; and it said of
+  the three blocks (2) wrote with Fix none that "the first and the third carry
+  their Fix", where the second, on the line handed to `awk` through `-v`,
+  carries it since this part as well. It says what holds, with a sentence
+  "Since 25 November 2026" on this part in the form of those on the parts of
+  (4), and a sentence "Until 25 November 2026" on what it said. Second, two
+  sentences of this entry: it said "in three commits"; and it said under Open
+  that the third part builds an answer in the form of Windows "with the block
+  on the install guard's `absolute()`", where two blocks stand on that
+  function since this part, the one of 24 November 2026 on an answer taken
+  only where it opens with a slash, which is meant, and the one this part
+  wrote on the carriage return at its end. Each says what holds. Held
+  besides, with nothing found: the figures of the tool on `f5a037b`, run
+  there again in a clone; the five counter-checks and the sixth place of put,
+  each run again at `f5a037b` and at the tip of the branch; the four
+  self-tests at both, 46, 67, 53 and 49 cases there and 59, 90, 54 and 49
+  here; the measurement on the limits, run again as M2 was, 52 runs, none
+  red, eight calls of the two self-tests with ten seconds, a call answered at
+  once 0.031 to 0.425 seconds and a call not answered back after 3.039 to
+  3.311; the tags of uv, `0.13.10` the newest on that day as well, and the
+  three sentences of its manual; and every line of the guard the two new
+  blocks quote. Not run again: A1, which gives the container bash, git and
+  python3 before it runs. The tool after the fourth commit: exit 0, broken
+  records 0, uncovered lines 0 of 4981, every figure as after the third;
+  `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0 red".
 
 ## Decisions taken against
 
