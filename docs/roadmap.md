@@ -14328,6 +14328,18 @@ and for the proofs of closings.
   figure as after the third, and the list Walked the same, the block on the
   self-test that went red once walked by M3 where it was by M2;
   `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0 red".
+  After the second addendum, the tenth commit, on the branch: exit 0, broken
+  records 0, uncovered lines 0 of 4980, the search set one line shorter, the
+  line of awk that printed the blank line of an empty section; Recorded, not
+  built 244 and milestone 12 at 161 blocks, Recorded, not built 23, the
+  block the second addendum adds; Built, never walked 1725, four more, and
+  Walked 882, four fewer: the three things of put whose lines the code of
+  the second addendum changes, which stand on M4 and count after the squash
+  on main, and the block on the line handed to awk through -v, milestone 12
+  with it at Built, never walked 67 and Walked 54; Undetermined and Closed
+  as before; what the merge played through shows stands under the second
+  addendum, below. `scripts/devloop-handover-checks` exit 0, "green: 22
+  checks green, 0 red".
 
   **Open.** Under Windows the pull request measured this part once, in the
   run the second addendum reads, below, which went red; what the second
@@ -14478,8 +14490,9 @@ and for the proofs of closings.
   **The second addendum**, of 25 November 2026, the day read off `date -u`,
   made after the push of the seven commits, on pull request #269, in three
   commits: the code of put with two anchors of the step on line endings,
-  `31d8d5b`; the documents; and run M4 with its records. The version stays
-  0.196.0. Its report is the section "Nachtrag 2" of the report named above.
+  `31d8d5b`; the documents, `0100f76`; and run M4 with its records. The
+  version stays 0.196.0. Its report is the section "Nachtrag 2" of the
+  report named above.
 
   The run under Windows. Run 45610760999 of the workflow `stock-take.yml` on
   pull request #269, its job "hooks on every system (windows-latest)",
@@ -14612,6 +14625,44 @@ and for the proofs of closings.
   addendum builds how the file is set together and no answer of put, and wrote
   the block by the rule that a finding in a program gets one in every case.
   Which order builds it is put to the person by the report.
+
+  Run M4, on the Mac from 13:14:24 to 13:14:33: at the second commit of the
+  second addendum, `0100f76`, under 0.196.0, the tree clean, the Mac as above,
+  the day and the time read off `date -u`: the self-test of
+  `bin/devloop-install-note` unchanged out of the repository, ended with 0,
+  "SELF-TEST PASSED: 59 cases", every line of its output as at `836cf56`,
+  among them "put: three lines in their section, the next heading after them",
+  the twelve cases on the bytes put writes and "put of a command carrying \n,
+  \t and a doubled backslash: the line stands as the command reads, byte for
+  byte, and is found standing on the second call". M4 stands on the three
+  things whose records of M1 left the table, the line put writes at the end of
+  its section and the two on the line ending put writes. It ran the case of
+  the block on the line handed to awk through -v and carries no record for it,
+  above. No thing of the step on line endings lost its run with the second
+  addendum, so that the run of the workflow's steps is no part of M4; run at
+  the same commit all the same, on the Mac from 13:15:38 to 13:20:28, it was
+  green, 12 steps run and every one ended with 0, the case of put in the step
+  on line endings among them.
+
+  Run A3, in a container of alpine:3.22 from 13:14:39 to 13:14:45, at the same
+  commit, Alpine 3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and
+  Python 3.12.16, the repository mounted read-only: the self-test of
+  `bin/devloop-install-note`, ended with 0, "SELF-TEST PASSED: 59 cases". It
+  carries no record.
+
+  The two sides, after the tenth commit. On the branch the tool ends with 0,
+  broken records 0, uncovered lines 0 of 4980: Undetermined 24, Recorded, not
+  built 244, Built, never walked 1725, Walked 882, Closed 85; milestone 12 at
+  161 blocks, Recorded, not built 23, Built, never walked 67, Walked 54,
+  Closed 17. The merge played through, the tree of the branch as one commit on
+  `f5a037b` in a clone of main whose origin/main is set to that commit: exit
+  0, broken records 0, uncovered lines 0 of 4980; Built, never walked 1722 and
+  Walked 885, and every other figure and the line of milestone 12 as on the
+  branch. The lists Walked of the two sides differ by three lines, the three
+  things M4 stands on: Walked in the merge, and Built, never walked on the
+  branch, where their lines are of a commit after the one that carries the
+  version. Against the 886 before the second addendum, the merge lacks the
+  block on the line handed to awk through -v alone.
 
   Corrected by the second addendum where the text stood, none of it on main
   yet. This entry said "in seven commits"; under Built that "put hands the
