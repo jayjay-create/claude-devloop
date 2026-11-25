@@ -64,10 +64,42 @@
 #   return at their end, where git checked the file out with CRLF or it was
 #   committed so. Until then such a file got the heading a second time, at
 #   its end, and a line that stood already again, measured that day on macOS
-#   and under Alpine. What put writes ends on LF in such a file as well, the
-#   heading, the blank line before it and the line: the file then carries
-#   both endings until git converts it, which the report of that order puts
-#   to the person as a question of its own.
+#   and under Alpine. And put writes every line it adds with the line ending
+#   the file carries, since 25 November 2026, the second part of order (5)
+#   of milestone 12: the ending is read once, before the first write, off
+#   the file's first line - CRLF where that line ends in a carriage return
+#   before its line feed, LF otherwise, in an empty file and in one without
+#   a line feed as well - and with it put writes the end of a last line that
+#   has none, the blank line before the heading, the heading, the blank line
+#   of an empty section and the line of the install; a line that stands
+#   stays as it stands. The first line decides, since a file put wrote into
+#   until that day carries both endings, and its first line stands as git
+#   checked it out or as it was committed. Until that day put wrote what it
+#   added with LF into a file at CRLF as well, so that the file carried both
+#   endings in the working tree.
+#   The command is written as it reads, every backslash as it stands, since
+#   25 November 2026, the same part: printf writes the line, and it reaches
+#   no awk. Until then it went to awk through -v, and awk read \n, \t or a
+#   doubled backslash of the command as another character, so that the line
+#   stood as another text than the command and a second call wrote it again.
+#   And put sets the file together from head, printf and tail, since 25
+#   November 2026, the second addendum to the same part, decided by the
+#   person on that day: awk reads the file for two numbers alone, the line
+#   the new one goes after and whether its section is empty, and writes no
+#   line of it; head copies the lines up to that number, printf writes the
+#   blank line of an empty section and the line of the install, and tail
+#   copies the lines after them, so that no byte of a line that stands goes
+#   through awk. Until then awk wrote every line of the file. Under Git
+#   Bash awk reads a file without the carriage return before each line
+#   feed, measured on 25 November 2026 with GNU Awk 5.4.1 in run 45610760999
+#   of the checks of pull request #269, the job hooks on every system under
+#   windows-latest: of a file at CRLF put had written into, every line that
+#   stood ended on LF alone and the two lines awk printed with a carriage
+#   return of its own on CRLF, where head and tail had read the ending of
+#   the first line as CRLF. So awk wrote a file at CRLF back at LF there,
+#   read at the code for the versions before that day and not measured with
+#   them; the step on line endings did not see it, since it holds the file
+#   without its carriage returns.
 # Exit 2 with one line on stderr: an action it does not know, not exactly the
 # two ids behind write, take or drop, or not a folder and a command behind put.
 # --self-test runs every outcome under a temporary directory of its own as
@@ -98,7 +130,7 @@ folder() {
 }
 
 selftest() {
-  local me T out rc n=0 P Q G H S L
+  local me T out rc n=0 P Q G H S L A B K e
   me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-install-note.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -219,6 +251,38 @@ None.
 EOF
   n=$((n+1)); echo "ok   put: three lines in their section, the next heading after them"
 
+  # put, the bytes it writes: every line it adds ends as the file's first
+  # line ends, a line that stands stays as it stands, and the command stands
+  # as it reads, every backslash in it
+  # wrote NAME BEFORE AFTER [COMMAND]: put of the install COMMAND into the
+  # file holding BEFORE answers written and leaves the file holding AFTER,
+  # byte for byte, and a second call answers stands already and changes none
+  wrote() {
+    local k="${4:-cargo install alpha}" w
+    printf '%s' "$2" > "$P/$FILE"; printf '%s' "$3" > "$T/want"; n=$((n+1))
+    w="written: - \`$k\` installed into /opt/x/bin
+stands already: - \`$k\` installed into /opt/x/bin"
+    out=$(cd "$P" && "$me" put /opt/x/bin "$k" 2>&1 && "$me" put /opt/x/bin "$k" 2>&1); rc=$?
+    [ "$rc" -eq 0 ] && [ "$out" = "$w" ] && cmp -s "$T/want" "$P/$FILE" || { echo "FAIL $1: exit $rc; what the two calls printed, the bytes expected and the bytes that stand:"; printf '%s\n' "$out" | sed 's/^/    /'; od -c "$T/want" | sed 's/^/    /'; od -c "$P/$FILE" | sed 's/^/    /'; exit 1; }
+    echo "ok   $1"
+  }
+  A='- `cargo install alpha` installed into /opt/x/bin'; B='- `brew install gitleaks` installed into /opt/homebrew/bin'
+  for Q in LF CRLF; do
+    e=$'\n'; [ "$Q" = LF ] || e=$'\r\n'
+    wrote "put into a file at $Q without the heading: the blank line, the heading, the blank line and the line, each with $Q" "# Environment${e}${e}Run make.${e}" "# Environment${e}${e}Run make.${e}${e}${HEADING}${e}${e}${A}${e}"
+    wrote "put into a file at $Q with the heading and a section after it: the line with $Q, every line that stands as it stood" "# Environment${e}${e}${HEADING}${e}${e}${B}${e}${e}## Services${e}${e}None.${e}" "# Environment${e}${e}${HEADING}${e}${e}${B}${e}${A}${e}${e}## Services${e}${e}None.${e}"
+    wrote "put into a file at $Q with the heading and nothing under it: the blank line of the empty section and the line with $Q" "# Environment${e}${e}${HEADING}${e}" "# Environment${e}${e}${HEADING}${e}${e}${A}${e}"
+  done
+  e=$'\r\n'
+  wrote "put into a file at CRLF whose last line has no line feed, without the heading: the line end that completes it with CRLF" "# Environment${e}${e}Run make." "# Environment${e}${e}Run make.${e}${e}${HEADING}${e}${e}${A}${e}"
+  wrote "put into a file at CRLF whose last line has no line feed, the heading standing: the line end that completes it with CRLF" "# Environment${e}${e}${HEADING}${e}${e}${B}" "# Environment${e}${e}${HEADING}${e}${e}${B}${e}${A}${e}"
+  wrote "put into a file whose first line ends on CRLF and whose later lines on LF, as put left one until then: what it adds with CRLF, every line that stands as it stood" "# Environment${e}${e}Run make.${e}"$'\n'"${HEADING}"$'\n\n'"${B}"$'\n' "# Environment${e}${e}Run make.${e}"$'\n'"${HEADING}"$'\n\n'"${B}"$'\n'"${A}${e}"
+  wrote "put into a file whose first line ends on LF and a later one on CRLF: what it adds with LF" $'# Environment\n\nRun make.\r\n' $'# Environment\n\nRun make.\r\n\n'"${HEADING}"$'\n\n'"${A}"$'\n'
+  wrote "put into an empty file: the heading, the blank line and the line with LF" "" "${HEADING}"$'\n\n'"${A}"$'\n'
+  wrote "put into a file without a line feed: what it adds with LF" "Run make." $'Run make.\n\n'"${HEADING}"$'\n\n'"${A}"$'\n'
+  K='cargo install --path tools\new\table --features a\\b'
+  wrote "put of a command carrying \\n, \\t and a doubled backslash: the line stands as the command reads, byte for byte, and is found standing on the second call" $'# Environment\n' $'# Environment\n\n'"${HEADING}"$'\n\n- `'"$K"$'` installed into /opt/x/bin\n' "$K"
+
   # the guard and the fact hook, under a record saying yes; each case a call
   # of its own, read through the section afterwards
   G=$(cd "$(dirname "$me")/.." && pwd)
@@ -326,30 +390,52 @@ if [ "$ACTION" = put ]; then
   # line is compared without the carriage return at its end, the line that
   # stands already, the heading, a blank line; the head says since when.
   if sed $'s/\r$//' "$FILE" | grep -qxF -- "$LINE"; then echo "stands already: $LINE"; exit 0; fi
+  # The line ending the file carries, read once, before the first write, off
+  # its first line: CRLF where that line ends in a carriage return before its
+  # line feed, LF otherwise, in an empty file and in one without a line feed
+  # as well. Every line put adds ends on it; the head says since when.
+  EOL=$'\n'
+  [ "$(head -n 1 "$FILE" | tail -c 2; printf x)" != $'\r\nx' ] || EOL=$'\r\n'
+  # The file's last line given its line end where it has none, whether the
+  # heading stands or not, so that the line of the install never goes onto
+  # it: head below copies such a line as it stands, without a line end.
+  [ ! -s "$FILE" ] || [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '%s' "$EOL" >> "$FILE"
   # The heading where it does not stand yet: at the end of the file, a blank
-  # line before it, the file's last line given its newline where it has none.
+  # line before it.
   if ! sed $'s/\r$//' "$FILE" | grep -qxF "$HEADING"; then
     if [ -s "$FILE" ]; then
-      [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '\n' >> "$FILE"
-      [ -z "$(tail -n 1 "$FILE" | sed $'s/\r$//')" ] || printf '\n' >> "$FILE"
+      [ -z "$(tail -n 1 "$FILE" | sed $'s/\r$//')" ] || printf '%s' "$EOL" >> "$FILE"
     fi
-    printf '%s\n' "$HEADING" >> "$FILE"
+    printf '%s%s' "$HEADING" "$EOL" >> "$FILE"
   fi
   # The line at the end of the section, after its last line that is not
-  # blank, and before the next heading where one follows.
-  awk -v h="$HEADING" -v l="$LINE" '
-    { cr[NR] = sub(/\r$/, ""); lines[NR] = $0 }
+  # blank, and before the next heading where one follows. awk reads the file
+  # for two numbers and writes none of its lines: the number of the line the
+  # new one goes after, at least 1 since the heading stands by now, and 1
+  # where the section is empty, 0 where it is not. head and tail copy the
+  # lines that stand, and printf writes between them the blank line of an
+  # empty section and the line of the install, which reaches no awk, so that
+  # every backslash of the command stands as it reads; the head says since
+  # when and why. Each step runs where the one before it ended with 0, so
+  # that a file cut short never takes the place of the one that stands. The
+  # heading is fixed text and goes to awk with -v.
+  AT=$(awk -v h="$HEADING" '
+    { sub(/\r$/, ""); lines[NR] = $0 }
     END {
       s = 0
       for (i = 1; i <= NR; i++) if (lines[i] == h) { s = i; break }
       e = NR
       for (i = s + 1; i <= NR; i++) if (lines[i] ~ /^## /) { e = i - 1; break }
       while (e > s && lines[e] == "") e--
-      for (i = 1; i <= e; i++) print lines[i] (cr[i] ? "\r" : "")
-      if (e == s) print ""
-      print l
-      for (i = e + 1; i <= NR; i++) print lines[i] (cr[i] ? "\r" : "")
-    }' "$FILE" > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
+      print e, (e == s)
+    }' "$FILE")
+  N=${AT% *}; EMPTY=${AT#* }
+  {
+    head -n "$N" "$FILE" &&
+    { [ "$EMPTY" != 1 ] || printf '%s' "$EOL"; } &&
+    printf '%s%s' "$LINE" "$EOL" &&
+    tail -n +"$((N + 1))" "$FILE"
+  } > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
   echo "written: $LINE"
   exit 0
 fi

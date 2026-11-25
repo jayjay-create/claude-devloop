@@ -1326,18 +1326,22 @@ the install guard for a cargo configuration does not end at a path in the
 form of Windows; the line of an install is handed to `awk` through `-v`,
 which turns a backslash sequence into another character; and under Windows
 the step builds its history of the standards file with one carriage return
-fewer; the first and the third carry their Fix since (3) built them, below.
+fewer; the first and the third carry their Fix since (3) built them, below,
+and the second since the second part of (5) built it, below.
 Of (4) the second of its three parts is built, since 21 November 2026, and
-the third, since 22 November 2026, both below; of (5) to (7) nothing is
-built yet. Since 18 November
+the third, since 22 November 2026, both below; of (5) the second of its six
+parts is built, since 25 November 2026, below, the first having written its
+decisions down and changed no code; of its other four parts, of (6) and of
+(7) nothing is built yet. Since 18 November
 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
 holds every line of the hooks, the programs and the loaded texts that reads
 a file of the project to a case of the last step of the job hooks on every
 system or to the places that step names as none; what that order found and
-did not build stands in three more blocks of this milestone with Fix none,
+did not build stood in three more blocks of this milestone with Fix none,
 on the line endings put writes, on a recorded command over several lines in
-an issue with CRLF and on the folder an installer prints under Windows.
+an issue with CRLF and on the folder an installer prints under Windows,
+which carry their Fix since the second part of (5) built them, below.
 And two blocks of this milestone the consistency audit of 18 November 2026
 wrote, the roadmap entry of that date on the two entries held: a sentence of
 the head of `bin/devloop-install-note` says that git converts a file put
@@ -1439,6 +1443,58 @@ handover, by the decision of 22 November 2026 under milestone 15: built on 23
 and 24 November 2026, the two roadmap entries that the decisions of those
 days under milestone 15 name. Until 24 November 2026 this paragraph said that
 these checks come before (5), as still to be built.
+Since 25 November 2026 the second of the six parts of (5) is built, the
+roadmap entry of that date, "The install programs keep a file's line ending
+and say pip is not read": put of `bin/devloop-install-note` writes every
+line it adds with the line ending the file's first line carries, writes the
+line of an install with `printf`, so that it reaches no `awk` and the
+command stands as it reads, and sets the file together from `head`,
+`printf` and `tail`, `awk` reading it for the place of the line alone:
+decided by the person on that day, after the job hooks on every system went
+red under windows-latest on the pull request of that part, where `awk` reads
+a file without the carriage return before each line feed, the paragraph "The
+second addendum" of that entry; `bin/devloop-auto-mode-question` reads a
+carriage return
+in the title or the body of an issue as a line feed; `bin/devloop-tool-state`
+takes the carriage return off the end of every line a query prints, says not
+read of pip in the forms the install guard reads as pip, and asks
+`uv tool dir --bin` for `uv tool` alone; and in the self-tests of
+`bin/devloop-install-issues` and `bin/devloop-auto-mode-question` a call that
+is answered at once has the ten seconds a command starts with at the fewest
+in operation. Of the eight blocks of this milestone that part builds, the
+one on `uv tool dir --bin` asked for every command of uv found and written
+by it, four are walked by its runs, the one on the sentence of the head of
+`bin/devloop-install-note` is closed as corrected in the document, one, on
+the line handed to `awk` through `-v`, is Built, never walked since the
+second addendum, the line of its Fix being of a commit after the one that
+carries the version, so that its record is written on main after the merge,
+one, on
+the line endings put writes, waits for the log of the job hooks on every
+system under windows-latest at the merge, and one, on the folder an
+installer prints, stays Built, never walked until a measurement under
+Windows with the installers themselves, that of the third part, which
+measures what the installers answer under Git Bash, or the closing runs of
+(7): decided on 25 November 2026 by the person, the paragraph "The addendum"
+of that entry, since that job runs the self-test with stand-ins and no
+installer itself, which does not hold the words of the block's should,
+"measured under Windows with the installers the program names", and since
+the waiting costs nothing, the third part measuring those answers anyway;
+the should stands as it stands. Under Windows the pull request of that part
+measured it once before the second addendum, red at the self-test of
+`bin/devloop-install-note`, and what the second addendum builds is measured
+by its next run. What that part found and did not build
+stands in three more blocks of this milestone with Fix none: on an installer's
+answer the install guard takes with a carriage return at its end, and, by
+the addendum, on an installer written with its path, which
+`bin/devloop-tool-state` reads as none of the ten it reads; the third part
+builds both, (7) below. The third, by the second addendum, is on put of
+`bin/devloop-install-note` answering written where the file could not be
+replaced, and no order is named for it yet.
+Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
+built yet, that what the order before (3) found and did not build "stands in
+three more blocks of this milestone with Fix none", and of the three blocks
+(2) wrote with Fix none only that the first and the third carry their Fix;
+mended by the audit of that part before its push, that entry.
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
@@ -2165,7 +2221,15 @@ form of Windows written in the command, found with those two, the message on
 the steps for the PATH and the message on the default branch; the third block
 belongs here since this part changes `hooks/pre-tool-use-install-guard.sh` and
 the block is built by the next order that does, by the decision of 18 November
-2026 above. The fourth, the texts and git.
+2026 above; and the block on an installer's answer the guard takes with a
+carriage return at its end, found by the second part on 25 November 2026, the
+roadmap entry of that date, "The install programs keep a file's line ending
+and say pip is not read", on the same ground; and the block on an installer
+written with its path, which `bin/devloop-tool-state` reads as none of the ten
+it reads, written by the addendum of 25 November 2026 to that entry, since
+this part changes the same function of that program for the second block of
+(6), on an installer's answer in the form of Windows, by the same decision.
+The fourth, the texts and git.
 The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
 Reason: the reading list of each part fits one session of Claude Code, and the
