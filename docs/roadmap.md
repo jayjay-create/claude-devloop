@@ -14155,6 +14155,95 @@ and for the proofs of closings.
   what was not chosen, and the second sentence of "Decided on 24 November
   2026" above says so.
 
+- **The install programs keep a file's line ending and say pip is not read**
+
+  25 November 2026, version 0.196.0. On `task/auftrag-5-teil-2`, off
+  `origin/main` at `f5a037b`, in three commits: the code with the version;
+  this entry with the blocks, the table and a sentence of the plan; and the
+  runs. The order: the second part of order (5) of milestone 12, the programs,
+  as the plan's paragraph on decision (7) of 24 November 2026 has it. The
+  report stands on this machine as `~/devloop-auftrag5-teil2.md`, in German,
+  outside the repository.
+
+  **Built**, each with its block of milestone 12 in `docs/defects.md`, which
+  carries the wrong, the should, the line of the repair and what is measured.
+  In `bin/devloop-install-note`, put hands the line of an install to awk
+  through the environment, so that a backslash of the command stands as it
+  reads, and writes every line it adds with the line ending the file's first
+  line carries; the paragraph of its head on a file at CRLF says what holds,
+  and the block on that paragraph is closed. In
+  `bin/devloop-auto-mode-question` a carriage return in the title or the body
+  of an issue is read as a line feed. In `bin/devloop-tool-state`, `ask()`
+  takes the carriage return off the end of every line a query prints, and pip
+  in the forms the install guard reads as pip answers not read. In the
+  self-tests of `bin/devloop-install-issues` and
+  `bin/devloop-auto-mode-question` a call that is answered at once has the ten
+  seconds a command starts with at the fewest in operation. The step on line
+  endings in `.github/workflows/stock-take.yml` carries the anchor of the line
+  of put that reads the file's first line.
+
+  **Two blocks added**, both under milestone 12. `bin/devloop-tool-state`
+  asked `uv tool dir --bin` for every command whose first word is uv; built
+  with the block on pip, the same function: the query for `uv tool` alone,
+  `uv pip` not read, any other form of uv not read with the form named. Where
+  `uv pip` installs, the manual of uv says at its tag `0.13.10`, the newest
+  that `git ls-remote --tags https://github.com/astral-sh/uv.git` named on 25
+  November 2026, in docs/pip/environments.md, fetched raw: "When running a
+  command that mutates an environment such as `uv pip sync` or `uv pip
+  install`, uv will search for a virtual environment in the following order".
+  And the install guard takes an installer's answer that opens with a slash as
+  it stands, a carriage return at its end with it: nothing built, the third
+  part builds it since it changes the guard, and the plan's paragraph on (7)
+  names the block there.
+
+  **The counter-checks before the build**, at `f5a037b` on macOS, each showing
+  what the order said. (a) put with `cargo install --path tools\new` into a
+  file at CRLF on a branch that is not the default branch: a line feed in the
+  place of `\n`, the new line with LF between lines with CRLF, and "written"
+  again at the second call. (b) A stand-in for uv printing its folder with
+  CRLF: `--installed 'uv tool install black' black` named the folder with the
+  carriage return and said not found. (c) `pip install black` and `python3 -m
+  pip install --user black` said "is none of them", and `uv pip install
+  --system black` asked `uv tool dir --bin`. (d) The expression of lines 455
+  to 457 of `bin/devloop-auto-mode-question`, with Python alone: the command
+  of its line 893 stands in the body of line 894 with LF and not with CRLF.
+  (e) `absolute()` of the install guard, line 1049, given
+  `/opt/devloop-probe/bin` with CRLF out of a command substitution: the
+  carriage return printed at its end.
+
+  **Beyond the words of the order**, four places where it overlooked a
+  situation that has one right answer, built and named in the report. awk
+  gave a last line without a line feed its own LF where the heading stands, a
+  sixth place beside the five the order names, measured at `f5a037b`; put
+  completes that line before it looks for the heading. Eight calls of the two
+  self-tests have the ten seconds, the four the order names and four more:
+  the two of the case without bash on PATH, where gh answers at once on macOS
+  and Linux, and the two of the case without gh, which start nothing. node,
+  asked for the build of Puppeteer, has its case with CRLF beside the eleven
+  queries the order lists. And the forms of uv other than `uv tool` and `uv
+  pip` are built with the block on uv, whose wrong holds for each of them.
+
+  **The measurement on the limits of the self-tests, before the build**, at
+  `f5a037b` on macOS, with a copy of `bin/` outside the repository in which
+  `loaded()` of both programs prints the limits and the seconds of every
+  call: each self-test ten times in a row and twice eight at once, 52 runs.
+  None was red. A call answered at once took 0.042 to 0.538 seconds alone and
+  0.031 to 0.325 with eight at once, where the case that went red had three;
+  a call not answered was back after 3.043 to 3.328. So the red run of 22
+  November 2026 did not come back, and what held the machine up that day
+  stays unread.
+
+  **Open.** Under Windows nothing of this part is measured before the pull
+  request. The block on the line endings put writes and the block on the
+  carriage return an installer prints stay Built, never walked: their should
+  asks for all four systems and for Windows, their runs are read at the merge
+  off the log of the job hooks on every system under windows-latest, and no
+  run of theirs is recorded here. That job runs the self-tests with their
+  stand-ins and no installer itself, so that which installer prints CRLF
+  under Windows stays unmeasured. An answer in the form of Windows, a drive
+  letter or backslashes, is no part of this part; the third part measures and
+  builds it with the block on the install guard's `absolute()`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

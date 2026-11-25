@@ -2165,7 +2165,10 @@ form of Windows written in the command, found with those two, the message on
 the steps for the PATH and the message on the default branch; the third block
 belongs here since this part changes `hooks/pre-tool-use-install-guard.sh` and
 the block is built by the next order that does, by the decision of 18 November
-2026 above. The fourth, the texts and git.
+2026 above; and the block on an installer's answer the guard takes with a
+carriage return at its end, found by the second part on 25 November 2026, the
+roadmap entry of that date, "The install programs keep a file's line ending
+and say pip is not read", on the same ground. The fourth, the texts and git.
 The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
 Reason: the reading list of each part fits one session of Claude Code, and the
