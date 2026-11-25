@@ -1446,9 +1446,15 @@ these checks come before (5), as still to be built.
 Since 25 November 2026 the second of the six parts of (5) is built, the
 roadmap entry of that date, "The install programs keep a file's line ending
 and say pip is not read": put of `bin/devloop-install-note` writes every
-line it adds with the line ending the file's first line carries and hands
-the line of an install to `awk` through the environment, so that the command
-stands as it reads; `bin/devloop-auto-mode-question` reads a carriage return
+line it adds with the line ending the file's first line carries, writes the
+line of an install with `printf`, so that it reaches no `awk` and the
+command stands as it reads, and sets the file together from `head`,
+`printf` and `tail`, `awk` reading it for the place of the line alone:
+decided by the person on that day, after the job hooks on every system went
+red under windows-latest on the pull request of that part, where `awk` reads
+a file without the carriage return before each line feed, the paragraph "The
+second addendum" of that entry; `bin/devloop-auto-mode-question` reads a
+carriage return
 in the title or the body of an issue as a line feed; `bin/devloop-tool-state`
 takes the carriage return off the end of every line a query prints, says not
 read of pip in the forms the install guard reads as pip, and asks
@@ -1457,8 +1463,12 @@ read of pip in the forms the install guard reads as pip, and asks
 is answered at once has the ten seconds a command starts with at the fewest
 in operation. Of the eight blocks of this milestone that part builds, the
 one on `uv tool dir --bin` asked for every command of uv found and written
-by it, five are walked by its runs, the one on the sentence of the head of
+by it, four are walked by its runs, the one on the sentence of the head of
 `bin/devloop-install-note` is closed as corrected in the document, one, on
+the line handed to `awk` through `-v`, is Built, never walked since the
+second addendum, the line of its Fix being of a commit after the one that
+carries the version, so that its record is written on main after the merge,
+one, on
 the line endings put writes, waits for the log of the job hooks on every
 system under windows-latest at the merge, and one, on the folder an
 installer prints, stays Built, never walked until a measurement under
@@ -1469,13 +1479,17 @@ of that entry, since that job runs the self-test with stand-ins and no
 installer itself, which does not hold the words of the block's should,
 "measured under Windows with the installers the program names", and since
 the waiting costs nothing, the third part measuring those answers anyway;
-the should stands as it stands. Under Windows nothing of that part is
-measured before its pull request. What that part found and did not build
-stands in two more blocks of this milestone with Fix none: on an installer's
+the should stands as it stands. Under Windows the pull request of that part
+measured it once before the second addendum, red at the self-test of
+`bin/devloop-install-note`, and what the second addendum builds is measured
+by its next run. What that part found and did not build
+stands in three more blocks of this milestone with Fix none: on an installer's
 answer the install guard takes with a carriage return at its end, and, by
 the addendum, on an installer written with its path, which
 `bin/devloop-tool-state` reads as none of the ten it reads; the third part
-builds both, (7) below.
+builds both, (7) below. The third, by the second addendum, is on put of
+`bin/devloop-install-note` answering written where the file could not be
+replaced, and no order is named for it yet.
 Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
 built yet, that what the order before (3) found and did not build "stands in
 three more blocks of this milestone with Fix none", and of the three blocks

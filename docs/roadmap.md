@@ -14158,9 +14158,10 @@ and for the proofs of closings.
 - **The install programs keep a file's line ending and say pip is not read**
 
   25 November 2026, version 0.196.0. On `task/auftrag-5-teil-2`, off
-  `origin/main` at `f5a037b`, in seven commits: the code with the version;
+  `origin/main` at `f5a037b`, in ten commits: the code with the version;
   this entry with the blocks, the table and a sentence of the plan; the
-  runs; the audit's; and the three of the addendum, below. The order: the
+  runs; the audit's; the three of the addendum; and the three of the second
+  addendum, both below. The order: the
   second part of order (5) of milestone 12, the programs, as the plan's
   paragraph on decision (7) of 24 November 2026 has it. The report stands on
   this machine as
@@ -14168,11 +14169,13 @@ and for the proofs of closings.
 
   **Built**, each with its block of milestone 12 in `docs/defects.md`, which
   carries the wrong, the should, the line of the repair and what is measured.
-  In `bin/devloop-install-note`, put hands the line of an install to awk
-  through the environment, so that a backslash of the command stands as it
-  reads, and writes every line it adds with the line ending the file's first
-  line carries; the paragraph of its head on a file at CRLF says what holds,
-  and the block on that paragraph is closed. In
+  In `bin/devloop-install-note`, put writes the line of an install with
+  printf, so that it reaches no awk and a backslash of the command stands as
+  it reads, and writes every line it adds with the line ending the file's
+  first line carries; since the second addendum, below, it sets the file
+  together from head, printf and tail, awk reading the file for the place of
+  the line alone. The paragraph of its head on a file at CRLF says what
+  holds, and the block on that paragraph is closed. In
   `bin/devloop-auto-mode-question` a carriage return in the title or the body
   of an issue is read as a line feed. In `bin/devloop-tool-state`, `ask()`
   takes the carriage return off the end of every line a query prints, and pip
@@ -14183,10 +14186,11 @@ and for the proofs of closings.
   addendum, below, no command that is answered at once starts with fewer in
   any case of the two. The step on line endings in
   `.github/workflows/stock-take.yml` carries the anchor of the line of put
-  that reads the file's first line.
+  that reads the file's first line and, since the second addendum, those of
+  the two lines of head and tail that copy the lines that stand.
 
-  **Three blocks added**, all under milestone 12, the third by the addendum,
-  below. `bin/devloop-tool-state`
+  **Four blocks added**, all under milestone 12, the third by the addendum
+  and the fourth by the second addendum, both below. `bin/devloop-tool-state`
   asked `uv tool dir --bin` for every command whose first word is uv; built
   with the block on pip, the same function: the query for `uv tool` alone,
   `uv pip` not read, any other form of uv not read with the form named. Where
@@ -14200,7 +14204,9 @@ and for the proofs of closings.
   part builds it since it changes the guard, and the plan's paragraph on (7)
   names the block there. And `bin/devloop-tool-state` reads an installer
   written with its path as none of the ten it reads: nothing built, the
-  third part builds it as well, the addendum.
+  third part builds it as well, the addendum. And put of
+  `bin/devloop-install-note` answers written and ends with 0 where the file
+  could not be replaced: nothing built, the second addendum.
 
   **The counter-checks before the build**, at `f5a037b` on macOS, each showing
   what the order said. (a) put with `cargo install --path tools\new` into a
@@ -14281,13 +14287,17 @@ and for the proofs of closings.
   repository mounted read-only: the four self-tests, each ended with 0, with
   the counts of M1.
 
-  M1 stands on the two things that lost their run with the change, the line
-  put writes at the end of its section and a tool found in the folder its
-  installer writes to; on the six things this branch adds, the two on the
-  line ending put writes and the four on pip and on uv not read; and on four
-  blocks, the line handed to awk through -v, a recorded command in an issue
-  with CRLF, pip said to be none of the installers, and `uv tool dir --bin`
-  asked for every command of uv. On the block on the self-test that went red
+  M1 stands on a thing that lost its run with the change, a tool found in
+  the folder its installer writes to; on four things this branch adds, those
+  on pip and on uv not read; and on three blocks, a recorded command in an
+  issue with CRLF, pip said to be none of the installers, and
+  `uv tool dir --bin` asked for every command of uv. Until the second
+  addendum, below, it stood on four more: the line put writes at the end of
+  its section, which had lost its run with the change as well, the two
+  things this branch adds on the line ending put writes, and the block on
+  the line handed to awk through -v. Their lines are of the code of the
+  second addendum, and the four records left the table with it. On the
+  block on the self-test that went red
   once stands run M3 of the addendum, below, where the record of M2 stood
   until the addendum; M2 carries none. A1 shows the same under Linux with
   BusyBox and carries no record.
@@ -14305,7 +14315,9 @@ and for the proofs of closings.
   five blocks; Closed 85, the block on the head of
   `bin/devloop-install-note`; milestone 12 at 159 blocks, two added,
   Recorded, not built 21, Built, never walked 66, Walked 55, Closed 17. The
-  two things that lost their run have one again by M1.
+  two things that lost their run had one again by M1; since the second
+  addendum, below, the one on the line put writes at the end of its section
+  stands on run M4.
   `scripts/devloop-handover-checks`, before the first change and after the
   last: exit 0, "green: 22 checks green, 0 red". The run of the workflow's
   steps, `scripts/devloop-run-workflow`, at the second commit on the Mac from
@@ -14317,8 +14329,10 @@ and for the proofs of closings.
   self-test that went red once walked by M3 where it was by M2;
   `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0 red".
 
-  **Open.** Under Windows nothing of this part is measured before the pull
-  request. The block on the line endings put writes and the block on the
+  **Open.** Under Windows the pull request measured this part once, in the
+  run the second addendum reads, below, which went red; what the second
+  addendum builds is measured there by the next run of that job and not
+  before. The block on the line endings put writes and the block on the
   carriage return an installer prints stay Built, never walked, and no run
   of theirs is recorded here. The should of the first asks for all four
   systems, and its run is read at the merge off the log of the job hooks on
@@ -14326,7 +14340,11 @@ and for the proofs of closings.
   "measured under Windows with the installers the program names", and that
   job runs the self-tests with their stand-ins and no installer itself: its
   run is not read off that log, by the decision in the addendum, below, and
-  which installer prints CRLF under Windows stays unmeasured. An answer in
+  which installer prints CRLF under Windows stays unmeasured. Since the
+  second addendum the block on the line handed to awk through -v is Built,
+  never walked as well: no run under 0.196.0 counts for it before the squash
+  on main, and its record is written there, the second addendum, which puts
+  to the person which order builds the block it adds. An answer in
   the form of Windows, a drive letter or backslashes, is no part of this
   part; the third part measures and builds it with the block of 24 November
   2026 on an installer's answer the install guard takes for a folder only
@@ -14456,6 +14474,165 @@ and for the proofs of closings.
   on every system under windows-latest at the merge" and that what this part
   did not build "stands in one more block of this milestone with Fix none".
   Each says what holds.
+
+  **The second addendum**, of 25 November 2026, the day read off `date -u`,
+  made after the push of the seven commits, on pull request #269, in three
+  commits: the code of put with two anchors of the step on line endings,
+  `31d8d5b`; the documents; and run M4 with its records. The version stays
+  0.196.0. Its report is the section "Nachtrag 2" of the report named above.
+
+  The run under Windows. Run 45610760999 of the workflow `stock-take.yml` on
+  pull request #269, its job "hooks on every system (windows-latest)",
+  139193338161, with GNU Awk 5.4.1 by its log: the self-test of
+  `bin/devloop-install-note` went red at the case "put into a file at CRLF
+  without the heading: the blank line, the heading, the blank line and the
+  line, each with CRLF", the first of its cases on a file at CRLF, after 31
+  cases that were green. The self-test ends at its first red case, so that the
+  eight further cases on the bytes put writes and the case of a command
+  carrying `\n`, `\t` and a doubled backslash did not run there. Both calls of
+  put had ended with 0. The log shows the bytes of the file with `od -c`, 112
+  where 117 were expected: `# Environment`, the blank line, `Run make.`, the
+  blank line before the heading and the heading ended on LF alone, and the
+  blank line of the empty section and the line of the install on CRLF. The
+  first five awk had read out of the file and printed back, the heading among
+  them, which put had appended with printf and CRLF; the last two awk printed
+  with a carriage return of its own, which it prints only where put has read
+  the ending of the file's first line as CRLF, with `head -n 1 | tail -c 2`.
+  So under Git Bash this awk reads a file without the carriage return before
+  each line feed and writes what it prints as it stands, and head and tail
+  read the bytes as they stand. The manual of gawk says otherwise: at its tag
+  `gawk-5.4.1`, the commit `52af7f1` that `git ls-remote --tags
+  https://git.savannah.gnu.org/git/gawk.git` named for it on 25 November 2026,
+  doc/gawk.texi says under "Using gawk In The MSYS Environment": "In the MSYS
+  environment under MS-Windows, @command{gawk} automatically uses binary mode
+  for reading and writing files. Thus, there is no need to use the
+  @code{BINMODE} variable." Before this branch put so wrote a file at CRLF
+  back at LF whole under Windows, read at the code of `f5a037b` and not
+  measured there: awk gave a line back the carriage return it had taken off
+  it, and under Git Bash it finds none to take off. The step on line endings
+  did not see it, since it holds the file without its carriage returns.
+
+  Decided by the person on 25 November 2026: put sets the file together from
+  `head`, `printf` and `tail`. awk computes at which line the new line belongs
+  and whether the section is empty, and prints these numbers; no byte of a
+  line that stands goes through the output of awk, and the line of the install
+  goes through no awk at all, written with `printf '%s'`. Reason: this stands
+  on what head and tail were measured to do under Windows and not on the
+  manual of gawk, which was wrong for this build once already. Not chosen: to
+  have gawk read without conversion by `BINMODE=1`, one line of code; whether
+  this gawk heeds the switch is not measured, and were the check still red,
+  this way would come all the same, with one more round over the pull request.
+  Accepted: where lines change that records stand on, their runs are recorded
+  anew, and since this code comes after the commit with the version, they
+  count on the branch only after the squash on main, the branch showing them
+  as not walked until the merge.
+
+  The build, `31d8d5b`. In put, awk reads the file and prints two numbers, the
+  number of the line the new line goes after and 1 where its section is empty,
+  0 where it is not; its search for the heading, for the next heading and for
+  the last line of the section that is not blank stands as it stood. `head -n`
+  copies the lines up to that number, printf writes the blank line of an empty
+  section and then the line of the install, each with the ending read off the
+  file's first line, and `tail -n +` copies the lines after them, into the
+  temporary file that then takes the place of the file; each step runs where
+  the one before it ended with 0. The search for a line that stands already,
+  the reading of the ending, the completing of a last line without a line feed
+  and the appending of the heading stand as they stood. Beyond the words of
+  the order: the variable that told awk of CRLF went with its only reader, so
+  that the two lines that read the ending changed with it; and the comment on
+  completing a last line names head where it named awk. What every case of the
+  self-test expects stands as it stood. The head says what holds, with the day
+  and what held until then. The step on line endings carries the anchors of
+  the two lines of head and tail; the check of the job stock-take on every
+  line that reads a file of the project, run alone, counted 24 lines in 13
+  files where it counted 22, each with its anchor, and was red at both lines
+  without the two anchors. That check does not see the reading by awk, before
+  the build as after it, since it leaves out every line of an awk program over
+  several lines and the line that closes it. POSIX defines `head -n` and `tail
+  -n +` for text files and says nothing of a conversion of line endings: that
+  `head -n` with a number above 1 and `tail -n +` copy the bytes as they stand
+  under Git Bash is measured by the next run of that job and by nothing before
+  it, `head -n 1 | tail -c 2` alone being measured there.
+
+  The counter-check, on macOS before the build and after it, with a stand-in
+  for awk first on PATH that hands a file named as its last argument to the
+  system's awk without the carriage return before each line feed, as that run
+  showed gawk to read. At `836cf56`, in a throwaway repository on a branch
+  that is not the default branch, put into a file of `# Environment`, a blank
+  line and `Run make.` at CRLF gave the 112 bytes of that run, line for line
+  of its `od -c`, and with the system's awk the 117 expected; the self-test
+  with the stand-in went red at the same case after the same 31. After the
+  build put gave the 117 bytes with the stand-in, and the self-test ended with
+  0 with it and without it, "SELF-TEST PASSED: 59 cases", every line of its
+  output as at `836cf56`. In a container of alpine:3.22, Alpine 3.22.8 with
+  BusyBox 1.37.0, the repository mounted read-only, the tree as it was
+  committed: 59 cases, ended with 0.
+
+  The records. After the commit of the code the tool ended with 2 and named
+  eleven broken records, all on put: the anchor of the line of awk that
+  printed the blank line of an empty section, a line recorded as part of the
+  thing on the line put writes at the end of its section; the evidence of that
+  thing, the line that replaces the file; the site and the evidence of the
+  thing on a file whose first line ends otherwise than on CRLF, the line that
+  sets LF; the Fix of the block on the line handed to awk through -v; five
+  runs rejected with a thing or a block of these; and the run of M1 on the
+  thing on a file at CRLF, recorded before the commit that changed its line.
+  Each anchor stands again: the line recorded as part of that thing is the
+  line that writes the blank line of an empty section, the evidence the line
+  that replaces the file, the site of the other thing the line that sets LF,
+  and the Fix the line that writes the line of the install. With the anchors
+  standing the tool rejected four runs, those of M1 on the three things and on
+  the block, each as recorded before the commit of the code changed a line of
+  its thing, and they left the table; the two runs of 25 October 2026 on the
+  line put writes at the end of its section, rejected with their thing while
+  its anchor was broken, stand as they stood and count as little as before.
+  The search set is one line shorter, 4980: the line of awk that printed the
+  blank line held `if`, and no line of the build holds a word of the set.
+
+  The block on the line handed to awk through -v. Its Fix is the line of
+  printf that writes the line of the install, a line of `31d8d5b`. The commit
+  that carries the version, `7465e85`, does not contain it, so that no run
+  under 0.196.0 counts for the block on the branch and the tool computes
+  Built, never walked there, where it computes Walked after the squash on main
+  once a run at the final state is recorded; and the tool rejects a block
+  whose Status names another state than it computes. So the Status says Built,
+  never walked, and the branch writes no record for this block: with one the
+  tool would end with 2 on main after the merge, and with the Status Walked it
+  would end with 2 on the branch. The record is written on main after the
+  merge, with the Status; put to the person by the report, with the other way,
+  the record on the branch and main red until the Status follows. A thing of
+  the table carries no Status, and the three things have their records.
+
+  The block added. put prints "written:" with the line and ends with 0
+  whatever the step that replaces the file ended with. Shown at `836cf56` and
+  at `31d8d5b` in the throwaway repository with the folder `docs/agents`
+  without write permission: the shell's message that the temporary file is
+  refused, then "written:" with the line, exit 0, and the file with the
+  heading and without the line. It stood so before this branch; the second
+  addendum builds how the file is set together and no answer of put, and wrote
+  the block by the rule that a finding in a program gets one in every case.
+  Which order builds it is put to the person by the report.
+
+  Corrected by the second addendum where the text stood, none of it on main
+  yet. This entry said "in seven commits"; under Built that "put hands the
+  line of an install to awk through the environment" and that the step on line
+  endings "carries the anchor of the line of put that reads the file's first
+  line"; "**Three blocks added**"; under The runs that M1 stands on "the two
+  things that lost their run with the change", on "the six things this branch
+  adds" and "on four blocks", the line handed to awk among them; under The
+  tool and the checks that "The two things that lost their run have one again
+  by M1"; and under Open that "Under Windows nothing of this part is measured
+  before the pull request". The head of `bin/devloop-install-note` said that
+  "the line reaches awk through the environment, which awk reads without
+  escape sequences". The note of the block on the line handed to awk said that
+  the line "reaches awk through the environment" and that the block is "walked
+  25 November 2026 by run M1 of that entry", and its Status said Walked. The
+  plan's paragraph on what is built of milestone 12 said that put "hands the
+  line of an install to `awk` through the environment", that of the eight
+  blocks that part builds "five are walked by its runs", that "Under Windows
+  nothing of that part is measured before its pull request", and that what
+  that part found and did not build "stands in two more blocks of this
+  milestone with Fix none". Each says what holds.
 
 ## Decisions taken against
 
