@@ -246,7 +246,12 @@ seconds stand where a command does not answer alone, and the comparison
 of the two calls reads how long each took and no limit of the first.
 Until then such a call had the few seconds as well, and on 22 November
 2026 the case under --build went red once in the run of the workflow's
-steps, not answered within its three.
+steps, not answered within its three. In the case of a few seconds of
+the whole call left, below, the two calls of gh, which are answered at
+once, had those few as well until the addendum of 25 November 2026 to
+that part, the self-test's clock standing at the ninety-five less the
+few before the first command; since that addendum no command that is
+answered at once starts with fewer than ten seconds in any case here.
 The cases on the limit over the whole call, since 15 November 2026:
 where DEVLOOP_ISSUES_CLOCK names a file, the self-test's loader puts that
 file in the place of the program's clock, the seconds since its start, and
@@ -257,7 +262,12 @@ the clock in operation. A call of gh and a call of the tool state program
 are not started with nine of the ninety-five seconds left, and every
 command of an issue is started with ten; and the tool state program,
 started with a few seconds left, the fewest a command starts with set to
-those few by the loader, has those and not its 72. And no bash on PATH:
+those few by the loader, has those and not its 72: the clock of that case
+starts at 0 and the blocking relation of its issue takes the ninety-five
+less those few on it, as the list does in the case of
+bin/devloop-auto-mode-question, so that the two calls of gh before the
+tool state program start with the ninety-five left and have their sixty.
+And no bash on PATH:
 under Windows no command started and the message naming bash; on macOS and
 Linux gh called and the tool state program not started, the message naming
 bash.
@@ -926,10 +936,10 @@ def selftest():
         standing_still("the tool state program does not answer under --build: its bound, the query and the process the query started ended, none standing once the program has returned",
                        "marks.query", "marks.started")
         in_time("the tool state program does not answer under --build: back no later than the limit and two seconds after a call answered at once", hung, at_once, longer)
-        # the same with the limit under --build as it stands, 72 seconds, and a few seconds of the whole call left: the self-test's clock at the ninety-five less those few, the fewest seconds a command starts with set to them, so that the tool state program has what is left and not its 72
-        fresh(); issues((21, "Download WebKit", webkit)); blocking(21)
+        # the same with the limit under --build as it stands, 72 seconds, and a few seconds of the whole call left where the tool state program starts: the self-test's clock at 0, the blocking relation of the issue taking the ninety-five less those few on it, so that the two calls of gh, answered at once, start with the ninety-five left and have their sixty, and the fewest seconds a command starts with set to those few, so that the tool state program has what is left and not its 72
+        fresh(); issues((21, "Download WebKit", webkit)); blocking(21); takes("blocking.21", 95 - longer)
         open(os.path.join(S, "query.hang"), "w").close()
-        got, hung = loaded("STEP=%d" % longer, "", clock=95 - longer)
+        got, hung = loaded("STEP=%d" % longer, "", clock=0)
         expect("the tool state program started with a few of the 95 seconds left has those and not its 72: not decided, the command, no answer within those seconds, the group not printed, 2", got, 2,
                "issues: not decided", "command: bin/devloop-tool-state --build playwright:webkit",
                "message: no answer within %d seconds" % longer, absent=("issue: 21",))
