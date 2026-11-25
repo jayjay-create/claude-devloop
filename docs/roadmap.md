@@ -14233,6 +14233,75 @@ and for the proofs of closings.
   November 2026 did not come back, and what held the machine up that day
   stays unread.
 
+  **The runs**, at the second commit, `8e06e2b`, under 0.196.0, the tree
+  clean, on 25 November 2026 in UTC, the day and the time read off `date -u`
+  at each run: on the Mac, macOS 26.6.2 with bash 3.2.57, awk version
+  20200816, git 2.50.1 and Python 3.14.7.
+
+  Run M1, on the Mac from 08:59:49 to 09:00:36: the self-tests of the four
+  programs, each ended with 0. `bin/devloop-install-note`, "SELF-TEST PASSED:
+  59 cases", among them "put: three lines in their section, the next heading
+  after them", the twelve cases on the bytes put writes, a file at LF and at
+  CRLF, each without the heading, with it and with nothing under it, a file
+  at CRLF whose last line has no line feed, without the heading and with it,
+  a file of both endings in either order, an empty file and one without a
+  line feed, and "put of a command carrying \n, \t and a doubled backslash:
+  the line stands as the command reads, byte for byte, and is found standing
+  on the second call". `bin/devloop-tool-state`, "SELF-TEST PASSED: 90
+  cases", among them the cases of a tool found in the folder of brew, npm,
+  go, pnpm, yarn, bun, pipx, uv, gem and cargo, the seven on pip, the first
+  "installed by pip, bare: not read, the folder depending on --user and on
+  the interpreter, then the search-path line, 1", then "installed by uv pip:
+  not read, the folder depending on the environment, uv tool dir --bin not
+  asked" and "another form of uv than uv tool and uv pip: not read, the form
+  named, uv tool dir --bin not asked", and the thirteen on an answer printed
+  with CRLF. `bin/devloop-auto-mode-question`, "SELF-TEST PASSED: 54 cases",
+  among them "a command over two lines in an issue whose text carries CRLF:
+  found as with LF, printed on one line". `bin/devloop-install-issues`,
+  "SELF-TEST PASSED: 49 cases".
+
+  Run M2, on the Mac from 09:00:45 to 09:07:03: the measurement on the limits
+  again, with the programs as built, a copy of `bin/` at `8e06e2b` outside
+  the repository in which `loaded()` prints as before: each self-test ten
+  times in a row and twice eight at once, 52 runs, none red, 49 and 54 cases
+  each time. A call answered at once took 0.037 to 0.444 seconds alone and
+  0.033 to 0.313 with eight at once, the eight calls of the build now with
+  ten seconds where they had three; a call not answered, with its three, was
+  back after 3.041 to 3.409.
+
+  Run A1, in a container of alpine:3.22 from 09:07:11 to 09:07:43, Alpine
+  3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and Python 3.12.16, the
+  repository mounted read-only: the four self-tests, each ended with 0, with
+  the counts of M1.
+
+  M1 stands on the two things that lost their run with the change, the line
+  put writes at the end of its section and a tool found in the folder its
+  installer writes to; on the six things this branch adds, the two on the
+  line ending put writes and the four on pip and on uv not read; and on four
+  blocks, the line handed to awk through -v, a recorded command in an issue
+  with CRLF, pip said to be none of the installers, and `uv tool dir --bin`
+  asked for every command of uv. M2 stands on the block on the self-test that
+  went red once. A1 shows the same under Linux with BusyBox and carries no
+  record.
+
+  **The tool and the checks.** Before, on `f5a037b`: exit 0, broken records
+  0, uncovered lines 0 of 4968; Undetermined 24, Recorded, not built 248,
+  Built, never walked 1719, Walked 875, Closed 84; milestone 12 at 157
+  blocks, Recorded, not built 27, Built, never walked 64, Walked 50, Closed
+  16. After the third commit: exit 0, broken records 0, uncovered lines 0 of
+  4981, the search set thirteen lines of the four programs longer;
+  Undetermined as before; Recorded, not built 242, six blocks built and one
+  closed against one added; Built, never walked 1721, the two blocks whose
+  runs wait for the merge; Walked 886, the six things this branch adds and
+  five blocks; Closed 85, the block on the head of
+  `bin/devloop-install-note`; milestone 12 at 159 blocks, two added,
+  Recorded, not built 21, Built, never walked 66, Walked 55, Closed 17. The
+  two things that lost their run have one again by M1.
+  `scripts/devloop-handover-checks`, before the first change and after the
+  last: exit 0, "green: 22 checks green, 0 red". The run of the workflow's
+  steps, `scripts/devloop-run-workflow`, at the second commit on the Mac from
+  09:08:20 to 09:13:02: green, 12 steps run and every one ended with 0.
+
   **Open.** Under Windows nothing of this part is measured before the pull
   request. The block on the line endings put writes and the block on the
   carriage return an installer prints stay Built, never walked: their should
