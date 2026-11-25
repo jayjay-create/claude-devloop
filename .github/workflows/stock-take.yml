@@ -1207,6 +1207,8 @@ jobs:
           # reads: `bin/devloop-install-note` "[ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ]"
           # reads: `bin/devloop-install-note` "if ! sed $'s/\r$//' "$FILE" | grep -qxF "$HEADING"; then"
           # reads: `bin/devloop-install-note` "[ -z "$(tail -n 1 "$FILE" | sed $'s/\r$//')" ]"
+          # reads: `bin/devloop-install-note` "head -n "$N" "$FILE" &&"
+          # reads: `bin/devloop-install-note` "tail -n +"$((N + 1))" "$FILE""
           hold "bin/devloop-install-note put, docs/agents/environment.md in the working tree" "the line that stands is found, the heading is found, and the new line goes to the end of its section before the next heading" "$(printf '%s\n' 'stands already: - `cargo install alpha` installed into /opt/devloop-probe/bin' '[0]' 'written: - `cargo install beta` installed into /opt/devloop-probe/bin' '[0]' '## Installed outside the project' '' '- `cargo install alpha` installed into /opt/devloop-probe/bin' '- `cargo install beta` installed into /opt/devloop-probe/bin' '' '## Language' '' 'language: German' 'language-recorded: 2026-11-14')" "$LF" "$CO" "$BLOB"
           rm -rf "$T"
           [ "$red" -eq 0 ]

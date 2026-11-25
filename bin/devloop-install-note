@@ -78,11 +78,28 @@
 #   added with LF into a file at CRLF as well, so that the file carried both
 #   endings in the working tree.
 #   The command is written as it reads, every backslash as it stands, since
-#   25 November 2026, the same part: the line reaches awk through the
-#   environment, which awk reads without escape sequences. Until then it
-#   went to awk through -v, and awk read \n, \t or a doubled backslash of
-#   the command as another character, so that the line stood as another
-#   text than the command and a second call wrote it again.
+#   25 November 2026, the same part: printf writes the line, and it reaches
+#   no awk. Until then it went to awk through -v, and awk read \n, \t or a
+#   doubled backslash of the command as another character, so that the line
+#   stood as another text than the command and a second call wrote it again.
+#   And put sets the file together from head, printf and tail, since 25
+#   November 2026, the second addendum to the same part, decided by the
+#   person on that day: awk reads the file for two numbers alone, the line
+#   the new one goes after and whether its section is empty, and writes no
+#   line of it; head copies the lines up to that number, printf writes the
+#   blank line of an empty section and the line of the install, and tail
+#   copies the lines after them, so that no byte of a line that stands goes
+#   through awk. Until then awk wrote every line of the file. Under Git
+#   Bash awk reads a file without the carriage return before each line
+#   feed, measured on 25 November 2026 with GNU Awk 5.4.1 in run 45610760999
+#   of the checks of pull request #269, the job hooks on every system under
+#   windows-latest: of a file at CRLF put had written into, every line that
+#   stood ended on LF alone and the two lines awk printed with a carriage
+#   return of its own on CRLF, where head and tail had read the ending of
+#   the first line as CRLF. So awk wrote a file at CRLF back at LF there,
+#   read at the code for the versions before that day and not measured with
+#   them; the step on line endings did not see it, since it holds the file
+#   without its carriage returns.
 # Exit 2 with one line on stderr: an action it does not know, not exactly the
 # two ids behind write, take or drop, or not a folder and a command behind put.
 # --self-test runs every outcome under a temporary directory of its own as
@@ -377,10 +394,11 @@ if [ "$ACTION" = put ]; then
   # its first line: CRLF where that line ends in a carriage return before its
   # line feed, LF otherwise, in an empty file and in one without a line feed
   # as well. Every line put adds ends on it; the head says since when.
-  EOL=$'\n'; CRLF=""
-  [ "$(head -n 1 "$FILE" | tail -c 2; printf x)" != $'\r\nx' ] || { EOL=$'\r\n'; CRLF=yes; }
+  EOL=$'\n'
+  [ "$(head -n 1 "$FILE" | tail -c 2; printf x)" != $'\r\nx' ] || EOL=$'\r\n'
   # The file's last line given its line end where it has none, whether the
-  # heading stands or not, so that awk below never ends it with its own.
+  # heading stands or not, so that the line of the install never goes onto
+  # it: head below copies such a line as it stands, without a line end.
   [ ! -s "$FILE" ] || [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '%s' "$EOL" >> "$FILE"
   # The heading where it does not stand yet: at the end of the file, a blank
   # line before it.
@@ -391,24 +409,33 @@ if [ "$ACTION" = put ]; then
     printf '%s%s' "$HEADING" "$EOL" >> "$FILE"
   fi
   # The line at the end of the section, after its last line that is not
-  # blank, and before the next heading where one follows. The line reaches
-  # awk through the environment, read with ENVIRON, which reads no escape
-  # sequence; an assignment by -v would turn a backslash of the command
-  # into another character. The heading is fixed text and stays with -v.
-  DEVLOOP_INSTALL_NOTE_LINE="$LINE" awk -v h="$HEADING" -v crlf="$CRLF" '
-    { cr[NR] = sub(/\r$/, ""); lines[NR] = $0 }
+  # blank, and before the next heading where one follows. awk reads the file
+  # for two numbers and writes none of its lines: the number of the line the
+  # new one goes after, at least 1 since the heading stands by now, and 1
+  # where the section is empty, 0 where it is not. head and tail copy the
+  # lines that stand, and printf writes between them the blank line of an
+  # empty section and the line of the install, which reaches no awk, so that
+  # every backslash of the command stands as it reads; the head says since
+  # when and why. Each step runs where the one before it ended with 0, so
+  # that a file cut short never takes the place of the one that stands. The
+  # heading is fixed text and goes to awk with -v.
+  AT=$(awk -v h="$HEADING" '
+    { sub(/\r$/, ""); lines[NR] = $0 }
     END {
-      l = ENVIRON["DEVLOOP_INSTALL_NOTE_LINE"]; eol = crlf ? "\r" : ""
       s = 0
       for (i = 1; i <= NR; i++) if (lines[i] == h) { s = i; break }
       e = NR
       for (i = s + 1; i <= NR; i++) if (lines[i] ~ /^## /) { e = i - 1; break }
       while (e > s && lines[e] == "") e--
-      for (i = 1; i <= e; i++) print lines[i] (cr[i] ? "\r" : "")
-      if (e == s) print eol
-      print l eol
-      for (i = e + 1; i <= NR; i++) print lines[i] (cr[i] ? "\r" : "")
-    }' "$FILE" > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
+      print e, (e == s)
+    }' "$FILE")
+  N=${AT% *}; EMPTY=${AT#* }
+  {
+    head -n "$N" "$FILE" &&
+    { [ "$EMPTY" != 1 ] || printf '%s' "$EOL"; } &&
+    printf '%s%s' "$LINE" "$EOL" &&
+    tail -n +"$((N + 1))" "$FILE"
+  } > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
   echo "written: $LINE"
   exit 0
 fi
