@@ -14158,11 +14158,12 @@ and for the proofs of closings.
 - **The install programs keep a file's line ending and say pip is not read**
 
   25 November 2026, version 0.196.0. On `task/auftrag-5-teil-2`, off
-  `origin/main` at `f5a037b`, in four commits: the code with the version;
+  `origin/main` at `f5a037b`, in seven commits: the code with the version;
   this entry with the blocks, the table and a sentence of the plan; the
-  runs; and the audit's. The order: the second part of order (5) of milestone
-  12, the programs, as the plan's paragraph on decision (7) of 24 November
-  2026 has it. The report stands on this machine as
+  runs; the audit's; and the three of the addendum, below. The order: the
+  second part of order (5) of milestone 12, the programs, as the plan's
+  paragraph on decision (7) of 24 November 2026 has it. The report stands on
+  this machine as
   `~/devloop-auftrag5-teil2.md`, in German, outside the repository.
 
   **Built**, each with its block of milestone 12 in `docs/defects.md`, which
@@ -14178,11 +14179,14 @@ and for the proofs of closings.
   in the forms the install guard reads as pip answers not read. In the
   self-tests of `bin/devloop-install-issues` and
   `bin/devloop-auto-mode-question` a call that is answered at once has the ten
-  seconds a command starts with at the fewest in operation. The step on line
-  endings in `.github/workflows/stock-take.yml` carries the anchor of the line
-  of put that reads the file's first line.
+  seconds a command starts with at the fewest in operation, and since the
+  addendum, below, no command that is answered at once starts with fewer in
+  any case of the two. The step on line endings in
+  `.github/workflows/stock-take.yml` carries the anchor of the line of put
+  that reads the file's first line.
 
-  **Two blocks added**, both under milestone 12. `bin/devloop-tool-state`
+  **Three blocks added**, all under milestone 12, the third by the addendum,
+  below. `bin/devloop-tool-state`
   asked `uv tool dir --bin` for every command whose first word is uv; built
   with the block on pip, the same function: the query for `uv tool` alone,
   `uv pip` not read, any other form of uv not read with the form named. Where
@@ -14194,7 +14198,9 @@ and for the proofs of closings.
   And the install guard takes an installer's answer that opens with a slash as
   it stands, a carriage return at its end with it: nothing built, the third
   part builds it since it changes the guard, and the plan's paragraph on (7)
-  names the block there.
+  names the block there. And `bin/devloop-tool-state` reads an installer
+  written with its path as none of the ten it reads: nothing built, the
+  third part builds it as well, the addendum.
 
   **The counter-checks before the build**, at `f5a037b` on macOS, each showing
   what the order said. (a) put with `cargo install --path tools\new` into a
@@ -14291,8 +14297,9 @@ and for the proofs of closings.
   16. After the third commit: exit 0, broken records 0, uncovered lines 0 of
   4981, the search set thirteen lines of the four programs longer;
   Undetermined as before; Recorded, not built 242, six blocks built and one
-  closed against one added; Built, never walked 1721, the two blocks whose
-  runs wait for the merge; Walked 886, the six things this branch adds and
+  closed against one added; Built, never walked 1721, the two blocks without
+  a run, on the line endings put writes and on the carriage return an
+  installer prints; Walked 886, the six things this branch adds and
   five blocks; Closed 85, the block on the head of
   `bin/devloop-install-note`; milestone 12 at 159 blocks, two added,
   Recorded, not built 21, Built, never walked 66, Walked 55, Closed 17. The
@@ -14304,15 +14311,19 @@ and for the proofs of closings.
 
   **Open.** Under Windows nothing of this part is measured before the pull
   request. The block on the line endings put writes and the block on the
-  carriage return an installer prints stay Built, never walked: their should
-  asks for all four systems and for Windows, their runs are read at the merge
-  off the log of the job hooks on every system under windows-latest, and no
-  run of theirs is recorded here. That job runs the self-tests with their
-  stand-ins and no installer itself, so that which installer prints CRLF
-  under Windows stays unmeasured. An answer in the form of Windows, a drive
-  letter or backslashes, is no part of this part; the third part measures and
-  builds it with the block of 24 November 2026 on an installer's answer the
-  install guard takes for a folder only where it opens with a slash.
+  carriage return an installer prints stay Built, never walked, and no run
+  of theirs is recorded here. The should of the first asks for all four
+  systems, and its run is read at the merge off the log of the job hooks on
+  every system under windows-latest. The should of the second asks for
+  "measured under Windows with the installers the program names", and that
+  job runs the self-tests with their stand-ins and no installer itself: its
+  run is not read off that log, by the decision in the addendum, below, and
+  which installer prints CRLF under Windows stays unmeasured. An answer in
+  the form of Windows, a drive letter or backslashes, is no part of this
+  part; the third part measures and builds it with the block of 24 November
+  2026 on an installer's answer the install guard takes for a folder only
+  where it opens with a slash, and with it the block of the addendum on an
+  installer written with its path.
 
   **The corrections of the audit**, of 25 November 2026, the fourth commit,
   made before the push by a session that did not build the branch, which held
@@ -14346,6 +14357,78 @@ and for the proofs of closings.
   python3 before it runs. The tool after the fourth commit: exit 0, broken
   records 0, uncovered lines 0 of 4981, every figure as after the third;
   `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0 red".
+
+  **The addendum**, of 25 November 2026, the day read off `date -u`, made
+  before the push in three commits: the code of one case of a self-test,
+  `f3c6de3`; the documents; and run M3 with its record. The version stays
+  0.196.0.
+
+  The case. In the self-test of `bin/devloop-install-issues` the case of the
+  tool state program started with a few of the ninety-five seconds left set
+  the self-test's clock to the ninety-five less those few before the first
+  command, so that the two calls of gh, which are answered at once, started
+  with the few as well, where the program's head and the note of the block
+  on the self-test that went red once said that the few seconds stand where
+  a command does not answer alone. A copy of `bin/` outside the repository
+  in which the program prints the seconds every command starts with showed
+  three for both calls of gh and for the tool state program at `167e1d7`.
+  Built as `bin/devloop-auto-mode-question` builds its case: the clock
+  starts at 0 and the blocking relation of the issue takes the ninety-five
+  less the few on it, so that both calls of gh start with the ninety-five
+  left and have their sixty, and the tool state program has the few; the
+  same copy showed sixty, sixty and three after the change. What the case
+  expects stands as it stood, and the head says what holds. Every self-test
+  under `bin/` was searched for a command that is answered at once and
+  starts with a few seconds, and none stands besides. After that commit the
+  tool ended with 0, every figure and the list Walked as before it: no thing
+  and no block stands on a line the commit changes.
+
+  Decided on 25 November 2026, on the block on the carriage return an
+  installer prints: its run is not read off the log of the job hooks on
+  every system under windows-latest, and the block stays Built, never walked
+  until a measurement under Windows with the installers themselves, that of
+  the third part of order (5), which measures what the installers answer
+  under Git Bash, or the closing runs of order (7). Reason: the should asks
+  for "measured under Windows with the installers the program names", a run
+  with stand-ins does not hold those words, and the waiting costs nothing,
+  the third part measuring those answers anyway. The should stands as it
+  stands. Not chosen: the run read off that log at the merge, as this entry
+  had it. At the merge the log under windows-latest is read for the block on
+  the line endings put writes alone.
+
+  The block added. `bin/devloop-tool-state` takes pip and python by their
+  name without the path and every other installer by the first word as it
+  stands, so that `/opt/homebrew/bin/brew install yq` answers "is none of
+  them", where the install guard takes the name of every program without
+  its path. Shown at `167e1d7` with a stand-in for brew first on PATH:
+  `--installed 'brew install yq' yq` found yq in the folder the stand-in
+  names and ended with 0, and the same call with the stand-in written with
+  its path answered not read, "is none of them", and ended with 1. The
+  second part had put it to the person in its report and written no block.
+  Nothing built: by the decision of 18 November 2026 the third part builds
+  it, which changes the same function for an installer's answer in the form
+  of Windows, and the plan's paragraph on (7) names the block there.
+
+  The table. Four steps were missing in the notes of the self-tests' things:
+  `bin/devloop-tool-state` has 67 cases and
+  `bin/devloop-auto-mode-question` 53 since 15 November 2026, the entry of
+  that date, "Three programs end inside their call's limit, a missing bash
+  named", and `bin/devloop-install-issues` 25 since 30 October 2026 and 49
+  since 15 November 2026. Each note carries its step now, in its own form;
+  the note of `bin/devloop-install-note` lacked none.
+
+  Corrected by the addendum where the text stood, none of it on main yet.
+  This entry said "in four commits" and "**Two blocks added**, both under
+  milestone 12"; under The tool and the checks it gave "the two blocks whose
+  runs wait for the merge" for the 1721; and under Open it said of both
+  blocks that "their runs are read at the merge off the log of the job hooks
+  on every system under windows-latest". The note of the block on the
+  carriage return said the measurement under Windows is that job, "read off
+  its log under windows-latest at the merge". The plan's paragraph on what
+  is built of milestone 12 said that "two wait for the log of the job hooks
+  on every system under windows-latest at the merge" and that what this part
+  did not build "stands in one more block of this milestone with Fix none".
+  Each says what holds.
 
 ## Decisions taken against
 

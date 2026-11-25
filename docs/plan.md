@@ -1458,14 +1458,24 @@ is answered at once has the ten seconds a command starts with at the fewest
 in operation. Of the eight blocks of this milestone that part builds, the
 one on `uv tool dir --bin` asked for every command of uv found and written
 by it, five are walked by its runs, the one on the sentence of the head of
-`bin/devloop-install-note` is closed as corrected in the document, and two
-wait for the log of the job hooks on every system under windows-latest at
-the merge, on the line endings put writes and on the folder an installer
-prints; under Windows nothing of that part is measured before its pull
-request. What that part found and did not build stands in one more block of
-this milestone with Fix none, on an installer's answer the install guard
-takes with a carriage return at its end, which the third part builds, (7)
-below.
+`bin/devloop-install-note` is closed as corrected in the document, one, on
+the line endings put writes, waits for the log of the job hooks on every
+system under windows-latest at the merge, and one, on the folder an
+installer prints, stays Built, never walked until a measurement under
+Windows with the installers themselves, that of the third part, which
+measures what the installers answer under Git Bash, or the closing runs of
+(7): decided on 25 November 2026 by the person, the paragraph "The addendum"
+of that entry, since that job runs the self-test with stand-ins and no
+installer itself, which does not hold the words of the block's should,
+"measured under Windows with the installers the program names", and since
+the waiting costs nothing, the third part measuring those answers anyway;
+the should stands as it stands. Under Windows nothing of that part is
+measured before its pull request. What that part found and did not build
+stands in two more blocks of this milestone with Fix none: on an installer's
+answer the install guard takes with a carriage return at its end, and, by
+the addendum, on an installer written with its path, which
+`bin/devloop-tool-state` reads as none of the ten it reads; the third part
+builds both, (7) below.
 Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
 built yet, that what the order before (3) found and did not build "stands in
 three more blocks of this milestone with Fix none", and of the three blocks
@@ -2200,7 +2210,12 @@ the block is built by the next order that does, by the decision of 18 November
 2026 above; and the block on an installer's answer the guard takes with a
 carriage return at its end, found by the second part on 25 November 2026, the
 roadmap entry of that date, "The install programs keep a file's line ending
-and say pip is not read", on the same ground. The fourth, the texts and git.
+and say pip is not read", on the same ground; and the block on an installer
+written with its path, which `bin/devloop-tool-state` reads as none of the ten
+it reads, written by the addendum of 25 November 2026 to that entry, since
+this part changes the same function of that program for the second block of
+(6), on an installer's answer in the form of Windows, by the same decision.
+The fourth, the texts and git.
 The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
 Reason: the reading list of each part fits one session of Claude Code, and the
