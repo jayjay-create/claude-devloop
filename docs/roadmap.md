@@ -14685,6 +14685,75 @@ and for the proofs of closings.
   that part found and did not build "stands in two more blocks of this
   milestone with Fix none". Each says what holds.
 
+- **Two blocks on put walked by the checks under Windows**
+
+  25 November 2026, version 0.196.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/auftrag-5-teil-2-laeufe`, off `origin/main` at
+  `6ce4e7c`, in one commit: `docs/defects.md`, `docs/plan.md`,
+  `docs/stock-take.tsv` and this entry. The records the entry above, "The
+  install programs keep a file's line ending and say pip is not read", left
+  to main: written as a patch outside this machine after its merge, from the
+  logs of its checks, and applied in the person's terminal; no session log
+  was read; nothing was installed.
+
+  Run W1, the job hooks on every system of run 45633082832: the workflow
+  `stock-take.yml` on pull request #269 at its last commit, `b48c315`, on
+  the merge ref, `dd28d9a` by the job's log, the merge of `b48c315` into
+  `f5a037b`. `f5a037b` is an ancestor of `b48c315`, so that the merge
+  carries the tree of `b48c315`, and `git rev-parse` gives `ddb332b` for
+  that tree and for the tree of `6ce4e7c`. The job was green on all four
+  systems, the five checks of the pull request green at its merge. Read off
+  its log under windows-latest, job 139271204075, on 25 November 2026 from
+  14:21:06 to 14:29:34 UTC, with bash 5.3.15, GNU Awk 5.4.1 and git
+  2.56.1.windows.1: the self-test of `bin/devloop-install-note` ended with
+  "SELF-TEST PASSED: 59 cases", no case red, among them the twelve on the
+  bytes put writes, the file at LF and at CRLF, each held byte for byte, and
+  "put of a command carrying \n, \t and a doubled backslash: the line stands
+  as the command reads, byte for byte, and is found standing on the second
+  call", whose command carries the path `tools\new\table`; and the case of
+  put in the step on line endings was ok, which holds where the line goes in
+  the file at LF, at CRLF from a checkout under core.autocrlf=true and with
+  CRLF committed, the file read without its carriage returns. Read off its
+  log under ubuntu-latest, job 139271204239: the same self-test with the same
+  59 cases, no case red. The logs under macos-latest and alpine are not read.
+  On macOS and in a container of alpine:3.22 the self-test ran as runs M4
+  and A3 of the entry above at `0100f76`, whose `bin/` is that of `b48c315`:
+  `git diff --name-only 0100f76 b48c315` names `docs/defects.md`,
+  `docs/roadmap.md` and `docs/stock-take.tsv` alone.
+
+  The two blocks. W1 walks the block on the line handed to awk through -v,
+  whose case it ran under Windows, where the block's Wrong says it was not
+  measured, and the block on the line endings put writes, whose should asks
+  for the file at LF and at CRLF on all four systems: under windows-latest
+  and ubuntu-latest by W1, on macOS and under Alpine by M4 and A3 at the
+  same code. Each gets a record of W1 and the Status Walked, which the tool
+  computes on main, where the commit that carries 0.196.0, `6ce4e7c`,
+  carries the line of each Fix; on the branch of the entry above it computed
+  Built, never walked for the first, that entry says why, and the second
+  waited for this log. Their notes say so, and the plan's paragraph on what
+  is built of milestone 12, which said that the first "is Built, never
+  walked since the second addendum" and that the second "waits for the log
+  of the job hooks on every system under windows-latest at the merge". The
+  block on the carriage return an installer prints is not read off this log,
+  by the decision of 25 November 2026 in the entry above, and stays Built,
+  never walked.
+
+  The tool and the checks, at the commit of this entry.
+  `scripts/devloop-stock-take` exit 0, broken records 0, uncovered lines 0 of
+  4980: Undetermined 24, Recorded, not built 244, Built, never walked 1720,
+  Walked 887, Closed 85; milestone 12 at 161 blocks, Recorded, not built 23,
+  Built, never walked 65, Walked 56, Closed 17. On `6ce4e7c` the same with
+  Built, never walked 1722 and Walked 885, and in milestone 12 Built, never
+  walked 67 and Walked 54; the outputs differ in the two blocks, in these
+  counts, in two line numbers of `docs/plan.md` after its changed paragraph,
+  and in the line on what the branch walks without a run it adds, "against
+  6ce4e7c: 0". `scripts/devloop-handover-checks` exit 0, "green: 22 checks
+  green, 0 red". `scripts/devloop-run-workflow` over
+  `.github/workflows/stock-take.yml` under `bin/devloop-bounded 600`, outside
+  this machine, exit 0, "green: 12 steps run, every one ended with 0", the
+  head of this entry passing the step on titles.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
