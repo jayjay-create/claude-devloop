@@ -1464,14 +1464,15 @@ is answered at once has the ten seconds a command starts with at the fewest
 in operation. Of the eight blocks of this milestone that part builds, the
 one on `uv tool dir --bin` asked for every command of uv found and written
 by it, four are walked by its runs, the one on the sentence of the head of
-`bin/devloop-install-note` is closed as corrected in the document, one, on
-the line handed to `awk` through `-v`, is Built, never walked since the
-second addendum, the line of its Fix being of a commit after the one that
-carries the version, so that its record is written on main after the merge,
-one, on
-the line endings put writes, waits for the log of the job hooks on every
-system under windows-latest at the merge, and one, on the folder an
-installer prints, stays Built, never walked until a measurement under
+`bin/devloop-install-note` is closed as corrected in the document, two, on
+the line handed to `awk` through `-v` and on the line endings put writes,
+are walked by run W1 of the roadmap entry "Two blocks on put walked by the
+checks under Windows", the job hooks on every system on the pull request of
+that part, read off its log under windows-latest at the merge and recorded
+on main after it, where the commit that carries the version carries the line
+of the first one's Fix, which on the branch was of a commit after the one
+that carried the version, and one, on the folder an installer prints, stays
+Built, never walked until a measurement under
 Windows with the installers themselves, that of the third part, which
 measures what the installers answer under Git Bash, or the closing runs of
 (7): decided on 25 November 2026 by the person, the paragraph "The addendum"
@@ -1481,8 +1482,9 @@ installer itself, which does not hold the words of the block's should,
 the waiting costs nothing, the third part measuring those answers anyway;
 the should stands as it stands. Under Windows the pull request of that part
 measured it once before the second addendum, red at the self-test of
-`bin/devloop-install-note`, and what the second addendum builds is measured
-by its next run. What that part found and did not build
+`bin/devloop-install-note`, and what the second addendum builds was measured
+by its next run, run W1 above, green. What that part found and did not
+build
 stands in three more blocks of this milestone with Fix none: on an installer's
 answer the install guard takes with a carriage return at its end, and, by
 the addendum, on an installer written with its path, which
@@ -1495,6 +1497,13 @@ built yet, that what the order before (3) found and did not build "stands in
 three more blocks of this milestone with Fix none", and of the three blocks
 (2) wrote with Fix none only that the first and the third carry their Fix;
 mended by the audit of that part before its push, that entry.
+Until the roadmap entry of 25 November 2026 on the two blocks on put walked
+under Windows this paragraph said that the one on the line handed to `awk`
+"is Built, never walked since the second addendum", "so that its record is
+written on main after the merge", that the one on the line endings put
+writes "waits for the log of the job hooks on every system under
+windows-latest at the merge", and that what the second addendum builds "is
+measured by its next run".
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
