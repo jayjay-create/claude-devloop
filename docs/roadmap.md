@@ -14951,6 +14951,151 @@ and for the proofs of closings.
   `command -v` and the one form meet in one text under Git Bash is what they
   measure.
 
+  **The runs**, at the second commit, `4ce5c82`, under 0.197.0, the tree
+  clean, on 26 November 2026 in UTC, the day and the time read off `date -u`
+  at each run: on the Mac, macOS 26.6.2 with bash 3.2.57, awk version
+  20200816, git 2.50.1 and Python 3.14.7. They stand in place of the runs of
+  the first build of this day, which were measured at a second commit that
+  stands no more.
+
+  Run M1, on the Mac from 12:46:48 to 12:46:58: the self-test of
+  `bin/devloop-tool-state`, ended with 0, "SELF-TEST PASSED: 136 cases",
+  forty-six more than at `1d63f2a`. Thirty-two on an installer written with
+  its path and on PATH set before it: each of the nine that are asked written
+  with the path the search path finds, read by its name and asked as the one
+  written bare is; cargo, which is asked nothing, with a path of its own; each
+  of the nine with the path of another installation, asked nothing and no
+  stand-in started; brew with another path that opens with `~` and with
+  `$HOME`, with a relative path inside the project, with the path of a
+  symbolic and of a hard link to the brew the search path finds, with a `..`
+  in the path the search path finds and with a path at which nothing stands,
+  and npm with a drive letter on macOS, each asked nothing; PATH set before
+  brew written bare and before brew written with the path the search path
+  finds; and, the brew of the search path standing under the home directory,
+  that path written with `~` and with `$HOME`, asked, and the line of the
+  shell of the bound, by a copy beside a stand-in for the bound. Fourteen
+  behind `DEVLOOP_TOOL_STATE_SYSTEM` as Git Bash: the answers of npm, pnpm,
+  yarn, bun, go, pipx, uv and gem as measured, `CARGO_HOME`, an installer
+  written with backslashes at another path than the one the search path finds,
+  asked nothing, and at that very path, asked, and the folders of Playwright,
+  Cypress and Puppeteer, each line naming the folder in the one form and under
+  the home directory with `~`; no such folder stands on the machine, so each
+  of the fourteen says not found or not read.
+
+  Run M2, on the Mac from 12:46:58 to 12:47:09: the run: block of the step on
+  the folders the install guard reads, taken out of the workflow file of that
+  commit and started as the workflow starts it, `bash --noprofile --norc -eo
+  pipefail`: ended with 0, 67 lines ok and none RED, and the line that the
+  cases under Windows itself are left out, no cygpath standing on the path.
+  Twenty as Git Bash, uname answered MINGW64_NT-10.0-26100: the answers of
+  npm, yarn, pipx, gem, uv, bun, pnpm and go in the form of Windows, under a
+  record that names the route and under one whose places are written in other
+  forms than the answers; the variables of Playwright and Cypress, `--path` of
+  Puppeteer and `--prefix` of npm with a drive letter; a drive letter with no
+  slash behind its colon; a cd to a drive; an interpreter and npm written with
+  a drive letter, another path than the one the PATH finds, each asked
+  nothing; and no record at all. Eight as Linux, the same words read as before
+  and an answer with CRLF read without its carriage return. Thirty-nine on an
+  installer written with its path, on PATH set in the command and on the
+  interpreter of pip: brew written bare; each of the nine routes written with
+  the path the PATH finds, asked and let through, and with the path of another
+  installation, asked nothing under a record that names the folders of both,
+  no stand-in started; brew with another path that opens with `~`, with a
+  relative and with an absolute path inside the project, with a path that
+  carries `..`, with the path of a symbolic and of a hard link to the brew the
+  PATH finds, with a `..` in the path the PATH finds and with a path at which
+  nothing stands, each asked nothing; brew written `~/pbin/brew` and
+  `$HOME/pbin/brew` where that is the path the PATH finds, asked; npm of
+  another installation with `--prefix` on the line, let through as before,
+  nothing to ask; PATH set before brew by a variable, with `export`, with
+  `env` and on a line of its own, and before brew written with the path the
+  PATH finds, each asked nothing; and the interpreter written bare and with
+  the path the PATH finds, both asked, and as the link of a virtual
+  environment outside the project and bare behind a PATH the command sets,
+  both asked nothing.
+
+  Runs A1 and A2, in a container of alpine:3.22 from 12:47:23 to 12:47:28,
+  Alpine 3.22.8 with bash 5.2.37, BusyBox 1.37.0, git 2.49.1 and Python
+  3.12.16, the repository mounted read-only: the same self-test, 136 cases,
+  and the same block, 67 lines ok and none RED, each ended with 0. They show
+  the same under Linux with BusyBox and carry no record.
+
+  M3, a measurement and no run, on the Mac from 12:47:35 to 12:47:59: the same
+  block started in the tree of `1d63f2a`, whose guard reads as it read, ended
+  with 1, 70 lines RED and 21 ok; and started in the tree of the first build
+  of this day, which asked an installer at the path the command names, ended
+  with 1, 47 lines RED and 41 ok, among the RED every case of another
+  installation, of a link and of PATH set in the command, each with the line
+  that an installer was started. The step is red where a case comes out
+  otherwise; neither tree being this branch under 0.197.0 as it stands, the
+  thing on the step's red side carries no record.
+
+  Run W0, of the measurement under Windows, run 45784957955 at `d8b4a9f`,
+  the programs of 0.196.0, on 26 November 2026 at 08:39 and 08:40 UTC by its
+  log: `gem environment` answered every line with CRLF, and
+  `bin/devloop-tool-state --installed 'gem install --no-document coderay'
+  coderay` said "coderay: found at" the folder gem names, without a carriage
+  return, "the folder gem writes to, read off the EXECUTABLE DIRECTORY of
+  gem environment". It stands on the block of the second part on the folder
+  an installer prints with a carriage return, whose line of the Fix this
+  branch leaves as it stands; the block is Walked by it.
+
+  M1 stands on the ten things this branch adds in `bin/devloop-tool-state`, on
+  two that lost their run with the change, a tool found in the folder its
+  installer writes to and the self-test, and on the block on an installer
+  written with its path. M2 stands on fifteen of the sixteen things this
+  branch adds in the guard, on two that lost their run, a destination the
+  record does not name and the pass under a record whose places name every
+  destination, on two of the four things of the step, on the blocks on the
+  guard asking an installer through its own PATH and on PATH set in the
+  command, and on a block of milestone 3 that lost its run, its Fix the line
+  that asks pnpm: the guard reading where a route lands for more than brew, go
+  and npm.
+
+  **The tool and the checks.** Before, on `1d63f2a`: exit 0, broken records 0,
+  uncovered lines 0 of 4980; Undetermined 24, Recorded, not built 244, Built,
+  never walked 1720, Walked 887, Closed 85; milestone 12 at 161 blocks,
+  Recorded, not built 23, Built, never walked 65, Walked 56, Closed 17. After
+  the third commit: exit 0, broken records 0, uncovered lines 0 of 5006, the
+  search set twenty-six lines longer, lines of the guard, of
+  `bin/devloop-tool-state` and of the new step; Undetermined as before;
+  Recorded, not built 246, two more, four blocks built against six written;
+  Built, never walked 1727, seven more: the five blocks of the paragraph
+  "Open" below and three things without a run, against the block on the folder
+  an installer prints, now Walked; Walked 918, thirty-one more: twenty-seven
+  of the thirty things this branch adds and four blocks; Closed as before;
+  milestone 12 at 171 blocks, ten added, Recorded, not built 25, Built, never
+  walked 69, Walked 60, Closed 17. The four things and the block of milestone
+  3 that lost their run with the change have one again by M1 and M2.
+  `scripts/devloop-stock-take --self-test`, 159 cases, and
+  `scripts/devloop-handover-checks`, "green: 22 checks green, 0 red", with its
+  self-test, 126 cases, as before the first change. The run of the workflow's
+  steps, `scripts/devloop-run-workflow`, on the Mac: green, 13 steps run and
+  every one ended with 0, one more than before, the step this branch adds.
+
+  **Open.** Five blocks this branch builds stay Built, never walked, each with
+  a should that asks for Windows with Git Bash: on an installer's answer under
+  Windows, on a path in the form of Windows written in the command, on an
+  answer the guard takes with a carriage return at its end, on the prefix of
+  npm under Windows, and on the first colon of GOPATH. M2 walked their cases
+  behind a stand-in for uname and carries no record on them; the job hooks on
+  every system of the pull request walks the same cases under windows-latest,
+  and with them, there alone, the cases that give the guard its directories in
+  the forms of Windows, `bin/devloop-tool-state` a folder that stands, and
+  both an installer written in a form of Windows with the path the PATH finds,
+  two of the three things without a run here, the third the step's red side.
+  Their records are written after the merge, off the log of that job. Under
+  windows-latest that job took 8 minutes 28 seconds of its 15 on pull request
+  #269, run W1 of the entry above; what the new step, sixty-seven starts of
+  the guard and more there, and the forty-six cases of the self-test add is
+  not measured. Under Cygwin nothing is measured. Part 3b builds the default
+  folders of the browsers under Windows, the places of a yes for them, and the
+  folders `shared/backed-command.md` names. And put to the person in the
+  report: which order builds the four blocks written with no order named for
+  them; and whether this entry keeps its title, which says of an installer
+  that it is asked at its path, where since the addendum it is asked there
+  only if that path is the one the PATH finds.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

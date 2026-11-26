@@ -1471,11 +1471,12 @@ checks under Windows", the job hooks on every system on the pull request of
 that part, read off its log under windows-latest at the merge and recorded
 on main after it, where the commit that carries the version carries the line
 of the first one's Fix, which on the branch was of a commit after the one
-that carried the version, and one, on the folder an installer prints, stays
+that carried the version, and one, on the folder an installer prints, stayed
 Built, never walked until a measurement under
 Windows with the installers themselves, that of the third part, which
 measures what the installers answer under Git Bash, or the closing runs of
-(7): decided on 25 November 2026 by the person, the paragraph "The addendum"
+(7), and is walked by that measurement since 26 November 2026, below:
+decided on 25 November 2026 by the person, the paragraph "The addendum"
 of that entry, since that job runs the self-test with stand-ins and no
 installer itself, which does not hold the words of the block's should,
 "measured under Windows with the installers the program names", and since
@@ -1536,10 +1537,22 @@ and two found by the addendum, on a pip or an interpreter written with a path
 inside the project, taken for the project's own without a look at what stands
 there, and on `deno upgrade` and a destination written by go's variables,
 placed by the hook's own PATH.
+Of the eight built, three are walked by their runs on macOS, on an installer
+written with its path, on the guard asking an installer through its own PATH
+and on PATH set in the command; five stay Built, never walked, their shoulds
+asking for Windows with Git Bash, until the job hooks on every system of its
+pull request has walked their cases under windows-latest and a record is
+written after the merge. And the block on the folder an installer prints with
+a carriage return, of the second part, is walked since that day by the
+measurement under Windows, run W0 of that entry: `gem environment` answered
+with CRLF there, and the program at 0.196.0 named the folder without the
+carriage return and found the tool.
 Until 26 November 2026 this paragraph said of the block on an answer the
 guard takes with a carriage return and of the one on an installer written
-with its path that "the third part builds both, (7) below", and of the block
-on put that "no order is named for it yet".
+with its path that "the third part builds both, (7) below", of the block
+on put that "no order is named for it yet", and of the block on the folder
+an installer prints that it "stays Built, never walked until a measurement
+under Windows with the installers themselves".
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
