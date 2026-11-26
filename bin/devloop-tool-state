@@ -97,14 +97,35 @@
 # to, read off the installer itself, "Whether it worked is read off the
 # result" in shared/backed-command.md - $(brew --prefix)/bin for brew;
 # $(npm prefix -g)/bin for npm with -g or --global, the prefix itself on
-# Windows, where npm puts its commands; $(go env GOBIN), or $(go env
-# GOPATH)/bin where GOBIN is empty, for go; pnpm bin -g; yarn global bin;
+# Windows, where npm puts its commands; $(go env GOBIN), or bin under the
+# first folder of $(go env GOPATH) where GOBIN is empty, for go, GOPATH a
+# list parted by a semicolon on Windows and by a colon elsewhere; pnpm bin
+# -g; yarn global bin;
 # bun pm bin -g; pipx environment --value PIPX_BIN_DIR; uv tool dir --bin
 # for uv tool;
 # the EXECUTABLE DIRECTORY of gem environment; and for cargo, which has no
 # query, $CARGO_INSTALL_ROOT/bin, $CARGO_HOME/bin or ~/.cargo/bin as cargo
 # documents them. The installer is the first word of COMMAND after any
-# VAR=value; a browser TOOL is read as above, the folder being the
+# VAR=value, taken by its name without its path, since 26 November 2026,
+# part 3a of order (5) of milestone 12: until that day a brew, npm, pnpm,
+# yarn, bun, go, pipx, uv, gem or cargo written with its path was none of
+# the ten, and the line said so. The query asks the program the search path
+# finds for that name, where COMMAND writes it bare or with that very path,
+# character for character, and asks nothing where it writes another path
+# or sets PATH before the installer, the rule of the install guard, by the
+# decision of that day in docs/plan.md under milestone 12: COMMAND reaches
+# this program from the text of an issue as well, through
+# bin/devloop-install-issues at the start of a run, and a program named
+# there is not started for being named. The line then says that the query
+# was not asked and why. On Windows a folder is read in one form, whichever it is written
+# in - C:\x\y, C:/x/y, c:\x\y and /c/x/y name one folder - since the same
+# day: the answer of an installer or a vendor, CYPRESS_CACHE_FOLDER,
+# PUPPETEER_CACHE_DIR, CARGO_INSTALL_ROOT and CARGO_HOME, the installer
+# written with its path and the home directory; measured that day on
+# windows-latest with the bash of Git for Windows, where every installer
+# asked answers in the form of Windows, gem environment with slashes and
+# the others with backslashes, the roadmap entry of that date. A browser
+# TOOL is read as above, the folder being the
 # vendor's, whatever COMMAND says. The tool stands where TOOL, or on
 # Windows TOOL.exe, TOOL.cmd or TOOL.bat, exists in the folder. The folder
 # line first, and no record line:
@@ -245,10 +266,20 @@ IN
   # standin PATH LABEL: the stand-in at PATH, answering and logging under LABEL
   standin() { sed "s|__S__|$T/s|; s|__N__|$2|" "$T/standin.sh" > "$1"; chmod +x "$1"; }
   for s in brew npm pnpm yarn bun go pipx uv gem npx node playwright cypress; do standin "$T/bin/$s" "$s"; done
+  # a second stand-in of every installer at a path of its own, under the label alt-NAME, for the cases of an installer written with a path that is not the one the search path finds: outside the project and the home directory, under the home directory, and inside the project; no case may see one of them asked
+  mkdir -p "$T/alt" "$T/home/alt" "$P/tools"
+  for s in brew npm pnpm yarn bun go pipx uv gem cargo; do standin "$T/alt/$s" "alt-$s"; done
+  standin "$T/home/alt/brew" alt-brew; standin "$P/tools/brew" alt-brew
+  # a symbolic link and a hard link to the brew the search path finds, each at a path of its own: the same file under another path
+  mkdir "$T/alt/link" "$T/alt/hard"; ln -s "$T/bin/brew" "$T/alt/link/brew"; ln "$T/bin/brew" "$T/alt/hard/brew"
   # the copy of this program for the cases on the limit over the whole call, beside a stand-in for bin/devloop-bounded that writes the seconds it was given into the log, as "bound SECONDS", and runs the query without a bound
   mkdir "$T/copy"; cp "$self" "$T/copy/devloop-tool-state"
   printf '%s\n' '#!/bin/bash' "echo \"bound \$1\" >> \"$T/s/log\"" 'shift' 'exec "$@"' > "$T/copy/devloop-bounded"
   chmod +x "$T/copy/devloop-tool-state" "$T/copy/devloop-bounded"
+  # a second copy, beside a stand-in for bin/devloop-bounded that answers as the shell of the bound answers a program it cannot run: its own path, a line number, the program and the cause on stderr, and 126
+  mkdir "$T/copy2"; cp "$self" "$T/copy2/devloop-tool-state"
+  printf '%s\n' '#!/bin/bash' 'echo "$0: line 575: $2: Permission denied" >&2' 'exit 126' > "$T/copy2/devloop-bounded"
+  chmod +x "$T/copy2/devloop-tool-state" "$T/copy2/devloop-bounded"
   # the tool that stands on the search path of every case: an executable file under the self-test's home
   : > "$T/home/bin/devloop-selftest-present"; chmod +x "$T/home/bin/devloop-selftest-present"
   [ "$(PATH="$T/bin:$PATH" command -v npx)" = "$T/bin/npx" ] || { echo "FAIL the stand-in for npx is not the npx the path finds"; exit 1; }
@@ -543,6 +574,135 @@ FFmpeg (playwright ffmpeg v1013)
   fresh; ans brew d 1 '' "$(printf '\r\nError: Homebrew is not installed\r')"; run --installed 'brew install yq' yq
   expect "the line on stderr comes with CRLF, an empty line before it: the line read without the carriage return, the empty line passed over" 1 "yq: not read, because brew --prefix did not answer: Error: Homebrew is not installed (on $DAY)"
 
+  # an installer written with its path: read as the installer its name without the path names, each of the ten, and asked only where that path is the one the search path finds for it, character for character; any other path, and a PATH set before the installer, asks nothing, the line saying that the query was not asked and why
+  FOUND="devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder"
+  fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed "$T/bin/brew install devloop-selftest-present" devloop-selftest-present
+  calls "brew written with the path the search path finds: read as brew, asked as the one written bare is" "brew --prefix"
+  expect "brew written with the path the search path finds: read as brew, asked as the one written bare is" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)" "$PRESENT"
+  fresh; ans npm d 0 "$T/home/npm"; folder "$T/home/npm/bin" devloop-selftest-present; run --installed "$T/bin/npm install -g devloop-selftest-present" devloop-selftest-present
+  calls "npm written with the path the search path finds: read as npm, asked" "npm prefix -g"
+  expect "npm written with the path the search path finds: read as npm, asked" 0 "devloop-selftest-present: found at ~/npm/bin/devloop-selftest-present, the folder npm writes to, read off npm prefix -g (on $DAY)"
+  fresh; ans pnpm d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/pnpm add -g devloop-selftest-present" devloop-selftest-present
+  calls "pnpm written with the path the search path finds: read as pnpm, asked" "pnpm bin -g"
+  expect "pnpm written with the path the search path finds: read as pnpm, asked" 0 "$FOUND pnpm writes to, read off pnpm bin -g (on $DAY)"
+  fresh; ans yarn d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/yarn global add devloop-selftest-present" devloop-selftest-present
+  calls "yarn written with the path the search path finds: read as yarn, asked" "yarn global bin"
+  expect "yarn written with the path the search path finds: read as yarn, asked" 0 "$FOUND yarn writes to, read off yarn global bin (on $DAY)"
+  fresh; ans bun d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/bun install -g devloop-selftest-present" devloop-selftest-present
+  calls "bun written with the path the search path finds: read as bun, asked" "bun pm bin -g"
+  expect "bun written with the path the search path finds: read as bun, asked" 0 "$FOUND bun writes to, read off bun pm bin -g (on $DAY)"
+  fresh; ans go 1 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/go install example.invalid/x/cmd/devloop-selftest-present@latest" devloop-selftest-present
+  calls "go written with the path the search path finds: read as go, asked" "go env GOBIN"
+  expect "go written with the path the search path finds: read as go, asked" 0 "$FOUND go writes to, read off go env GOBIN (on $DAY)"
+  fresh; ans pipx d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/pipx install devloop-selftest-present" devloop-selftest-present
+  calls "pipx written with the path the search path finds: read as pipx, asked" "pipx environment --value PIPX_BIN_DIR"
+  expect "pipx written with the path the search path finds: read as pipx, asked" 0 "$FOUND pipx writes to, read off pipx environment --value PIPX_BIN_DIR (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/uv tool install devloop-selftest-present" devloop-selftest-present
+  calls "uv written with the path the search path finds: read as uv, uv tool dir --bin asked" "uv tool dir --bin"
+  expect "uv written with the path the search path finds: read as uv, uv tool dir --bin asked" 0 "$FOUND uv writes to, read off uv tool dir --bin (on $DAY)"
+  fresh; ans gem d 0 "$(printf 'RubyGems Environment:\n  - EXECUTABLE DIRECTORY: %s/x' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed "$T/bin/gem install devloop-selftest-present" devloop-selftest-present
+  calls "gem written with the path the search path finds: read as gem, asked" "gem environment"
+  expect "gem written with the path the search path finds: read as gem, asked" 0 "$FOUND gem writes to, read off the EXECUTABLE DIRECTORY of gem environment (on $DAY)"
+  fresh; folder "$T/home/cg/bin" devloop-selftest-present; WITH="CARGO_HOME=$T/home/cg"; run --installed "$T/alt/cargo install devloop-selftest-present" devloop-selftest-present
+  calls "cargo written with a path: read as cargo, its variables read, nothing asked and so no path held against the search path"
+  expect "cargo written with a path: read as cargo, its variables read, nothing asked and so no path held against the search path" 0 "devloop-selftest-present: found at ~/cg/bin/devloop-selftest-present, the folder cargo writes to, read off CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it (on $DAY)"
+  # another installation of each of the nine that are asked, at a path that is not the one the search path finds: read by its name, not asked, neither it nor the one on the search path started
+  OTHER="with a path that is not the one the search path finds for it (on $DAY)"
+  while IFS='|' read -r words query <&3; do
+    fresh; run --installed "$T/alt/$words devloop-selftest-present" devloop-selftest-present
+    calls "${words%% *} written with the path of another installation: read as ${words%% *}, not asked, nothing started"
+    expect "${words%% *} written with the path of another installation: read as ${words%% *}, not asked, nothing started" 1 "devloop-selftest-present: not read, because $query was not asked: the command writes ${words%% *} $OTHER"
+  done 3<<'OTHERS'
+brew install|brew --prefix
+npm install -g|npm prefix -g
+pnpm add -g|pnpm bin -g
+yarn global add|yarn global bin
+bun install -g|bun pm bin -g
+go install|go env GOBIN
+pipx install|pipx environment --value PIPX_BIN_DIR
+uv tool install|uv tool dir --bin
+gem install|gem environment
+OTHERS
+  NOTBREW="yq: not read, because brew --prefix was not asked: the command writes brew $OTHER"
+  fresh; run --installed '~/alt/brew install yq' yq
+  calls "brew written with another path that opens with ~: not asked"
+  expect "brew written with another path that opens with ~: not asked" 1 "$NOTBREW"
+  fresh; run --installed '$HOME/alt/brew install yq' yq
+  calls "brew written with another path that opens with \$HOME: not asked"
+  expect "brew written with another path that opens with \$HOME: not asked" 1 "$NOTBREW"
+  fresh; run --installed 'tools/brew install yq' yq
+  calls "brew written with a path inside the project, a relative one: not asked, the file of the project not started"
+  expect "brew written with a path inside the project, a relative one: not asked, the file of the project not started" 1 "$NOTBREW"
+  fresh; run --installed "$T/alt/link/brew install yq" yq
+  calls "brew written with the path of a symbolic link to the brew the search path finds: the same file and another path, not asked"
+  expect "brew written with the path of a symbolic link to the brew the search path finds: the same file and another path, not asked" 1 "$NOTBREW"
+  fresh; run --installed "$T/alt/hard/brew install yq" yq
+  calls "brew written with the path of a hard link to the brew the search path finds: not asked"
+  expect "brew written with the path of a hard link to the brew the search path finds: not asked" 1 "$NOTBREW"
+  fresh; run --installed "$T/bin/../bin/brew install yq" yq
+  calls "brew written with the path the search path finds, a .. in it: another text, not asked"
+  expect "brew written with the path the search path finds, a .. in it: another text, not asked" 1 "$NOTBREW"
+  fresh; run --installed '/opt/devloop-selftest-nowhere/brew install yq' yq
+  calls "brew written with a path at which nothing stands: not asked, the one on the search path not asked in its place"
+  expect "brew written with a path at which nothing stands: not asked, the one on the search path not asked in its place" 1 "$NOTBREW"
+  fresh; run --installed 'C:/devloop-selftest/npm install -g devloop-selftest-present' devloop-selftest-present
+  calls "an installer written C:/devloop-selftest/npm on macOS: read as npm, the path a relative one as it stands, not asked"
+  expect "an installer written C:/devloop-selftest/npm on macOS: read as npm, the path a relative one as it stands, not asked" 1 "devloop-selftest-present: not read, because npm prefix -g was not asked: the command writes npm $OTHER"
+  # PATH set before the installer: the installer that ran is the one that PATH found, not asked
+  SETS="yq: not read, because brew --prefix was not asked: the command sets PATH, and which brew that PATH finds is not read by this program (on $DAY)"
+  fresh; run --installed 'PATH=/opt/devloop-selftest/bin:$PATH brew install yq' yq
+  calls "PATH set before brew written bare: not asked, the brew on this search path not started"
+  expect "PATH set before brew written bare: not asked, the brew on this search path not started" 1 "$SETS"
+  fresh; run --installed "HOMEBREW_NO_AUTO_UPDATE=1 PATH=/opt/devloop-selftest/bin $T/bin/brew install yq" yq
+  calls "PATH set among other variables before brew written with the path the search path finds: not asked"
+  expect "PATH set among other variables before brew written with the path the search path finds: not asked" 1 "$SETS"
+  # the brew the search path finds standing under the home directory, the one of every other case moved away for these three: a path that opens with ~ or $HOME is that very path, asked; and the line the shell of the bound writes of that program, by the copy beside the stand-in for the bound
+  mv "$T/bin/brew" "$T/bin/brew.away"; standin "$T/home/bin/brew" home-brew
+  fresh; ans home-brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed '~/bin/brew install devloop-selftest-present' devloop-selftest-present
+  calls "brew written ~/bin/brew, the path the search path finds: the home directory put in, asked" "home-brew --prefix"
+  expect "brew written ~/bin/brew, the path the search path finds: the home directory put in, asked" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
+  fresh; ans home-brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed '$HOME/bin/brew install devloop-selftest-present' devloop-selftest-present
+  calls "brew written \$HOME/bin/brew, the path the search path finds: the home directory put in, asked" "home-brew --prefix"
+  expect "brew written \$HOME/bin/brew, the path the search path finds: the home directory put in, asked" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
+  fresh; PROG=$T/copy2/devloop-tool-state; run --installed '~/bin/brew install yq' yq
+  expect "the shell of the bound cannot run the program and says so with its own path before it: the path of the bound and the line number taken off, the home directory written ~" 1 "yq: not read, because brew --prefix did not answer: ~/bin/brew: Permission denied (on $DAY)"
+  rm "$T/home/bin/brew"; mv "$T/bin/brew.away" "$T/bin/brew"
+
+  # under Windows a folder in the form of Windows is read as the folder it names: the answers as measured on windows-latest on 26 November 2026, backslashes, a drive letter, blanks and parentheses, the home directory in the form of Windows as well; no such folder stands on the machine of the self-test, so each line says not found at the folder in the one form
+  WINHOME='HOME=C:\Users\devloop-probe'
+  NOTFOUND="a copy elsewhere on the search path does not count (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; ans npm d 0 'C:\npm\prefix'; run --installed 'npm install -g devloop-selftest-present' devloop-selftest-present
+  expect "under Windows npm prefix -g answers C:\\npm\\prefix: the prefix itself, read as /c/npm/prefix" 1 "devloop-selftest-present: not found at /c/npm/prefix/devloop-selftest-present, the folder npm writes to, read off npm prefix -g; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH=$WINHOME; ans pnpm d 0 'C:\Users\devloop-probe\AppData\Local\pnpm\bin'; run --installed 'pnpm add -g devloop-selftest-present' devloop-selftest-present
+  expect "under Windows pnpm bin -g answers with backslashes alone, under the home directory: a folder read, written with ~" 1 "devloop-selftest-present: not found at ~/AppData/Local/pnpm/bin/devloop-selftest-present, the folder pnpm writes to, read off pnpm bin -g; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; ans yarn d 0 "$(printf 'yarn global v1.22\n%s\nDone in 0.1s.' 'C:\npm\prefix\bin')"; run --installed 'yarn global add devloop-selftest-present' devloop-selftest-present
+  expect "under Windows yarn global bin answers with backslashes alone: the line that is a path read" 1 "devloop-selftest-present: not found at /c/npm/prefix/bin/devloop-selftest-present, the folder yarn writes to, read off yarn global bin; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH=$WINHOME; ans bun d 0 'C:\Users\devloop-probe\.bun\bin'; run --installed 'bun add -g devloop-selftest-present' devloop-selftest-present
+  expect "under Windows bun pm bin -g answers with backslashes alone, under the home directory: a folder read, written with ~" 1 "devloop-selftest-present: not found at ~/.bun/bin/devloop-selftest-present, the folder bun writes to, read off bun pm bin -g; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH=$WINHOME; ans go 1 0 ''; ans go 2 0 'C:\Users\devloop-probe\go;D:\work\go'; run --installed 'go install example.invalid/x@latest' devloop-selftest-present
+  calls "under Windows go env GOPATH answers two folders parted by a semicolon: the first, the colon of its drive no end of it" "go env GOBIN" "go env GOPATH"
+  expect "under Windows go env GOPATH answers two folders parted by a semicolon: the first, the colon of its drive no end of it" 1 "devloop-selftest-present: not found at ~/go/bin/devloop-selftest-present, the folder go writes to, read off go env GOPATH, GOBIN being empty; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; ans pipx d 0 'C:\Program Files (x86)\pipx_bin'; run --installed 'pipx install devloop-selftest-present' devloop-selftest-present
+  expect "under Windows pipx environment answers a folder with blanks and parentheses: read whole" 1 "devloop-selftest-present: not found at /c/Program Files (x86)/pipx_bin/devloop-selftest-present, the folder pipx writes to, read off pipx environment --value PIPX_BIN_DIR; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH=$WINHOME; ans uv d 0 'C:\Users\devloop-probe\.local\bin'; run --installed 'uv tool install devloop-selftest-present' devloop-selftest-present
+  expect "under Windows uv tool dir --bin answers under the home directory: written with ~" 1 "devloop-selftest-present: not found at ~/.local/bin/devloop-selftest-present, the folder uv writes to, read off uv tool dir --bin; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; ans gem d 0 "$(printf 'RubyGems Environment:\r\n  - EXECUTABLE DIRECTORY: C:/devloop-selftest/Ruby/bin\r\n  - GEM PATHS:\r')"; run --installed 'gem install devloop-selftest-present' devloop-selftest-present
+  expect "under Windows gem environment answers with CRLF, a drive letter and slashes: read as /c/..., without the carriage return" 1 "devloop-selftest-present: not found at /c/devloop-selftest/Ruby/bin/devloop-selftest-present, the folder gem writes to, read off the EXECUTABLE DIRECTORY of gem environment; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH="$WINHOME CARGO_HOME=c:\\Users\\devloop-probe\\.cargo"; run --installed 'cargo install devloop-selftest-present' devloop-selftest-present
+  expect "under Windows CARGO_HOME in the form of Windows, the drive letter small: read as the folder under the home directory" 1 "devloop-selftest-present: not found at ~/.cargo/bin/devloop-selftest-present, the folder cargo writes to, read off CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; run --installed 'C:\devloop-selftest\npm install -g devloop-selftest-present' devloop-selftest-present
+  calls "under Windows an installer written C:\\devloop-selftest\\npm: read as npm, another path than the one the search path finds, not asked"
+  expect "under Windows an installer written C:\\devloop-selftest\\npm: read as npm, another path than the one the search path finds, not asked" 1 "devloop-selftest-present: not read, because npm prefix -g was not asked: the command writes npm with a path that is not the one the search path finds for it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; ans npm d 0 'C:\npm\prefix'; run --installed "$(printf '%s' "$T/bin/npm" | tr / '\\') install -g devloop-selftest-present" devloop-selftest-present
+  calls "under Windows an installer written with backslashes, the path the search path finds: one path in the one form, asked" "npm prefix -g"
+  expect "under Windows an installer written with backslashes, the path the search path finds: one path in the one form, asked" 1 "devloop-selftest-present: not found at /c/npm/prefix/devloop-selftest-present, the folder npm writes to, read off npm prefix -g; $NOTFOUND"
+  fresh; SYS=MINGW64_NT-10.0-26100; WITH=$WINHOME; pw; ans project-playwright d 0 "$(printf 'WebKit 27.2 (playwright webkit v9999)\n  Install location:    %s\n' 'C:\Users\devloop-probe\AppData\Local\ms-playwright\webkit-9999')"; run --planning playwright:webkit
+  expect "under Windows the dry run of Playwright names its folder in the form of Windows: written with ~" 1 "playwright:webkit: not found: nothing stands at ~/AppData/Local/ms-playwright/webkit-9999, the folder of WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; WITH='CYPRESS_CACHE_FOLDER=D:\devloop-selftest-cy'; run --planning cypress:binary
+  expect "under Windows CYPRESS_CACHE_FOLDER in the form of Windows: read as /d/..." 1 "cypress:binary: not found: nothing stands at /d/devloop-selftest-cy/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg puppeteer-core; WITH='PUPPETEER_CACHE_DIR=C:/devloop-selftest-pp'; ans node d 0 "$(printf '156.0.1\n%s' 'C:\devloop-selftest-pp\chrome\win64-156.0.1\chrome-win64\chrome.exe')"; run --planning puppeteer:chrome
+  expect "under Windows PUPPETEER_CACHE_DIR with slashes and the answer of node with backslashes: one folder, the build's folder under it" 1 "puppeteer:chrome: not found: nothing stands at /c/devloop-selftest-pp/chrome/win64-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+
   # the limit over the whole call, on the self-test's clock and with the copy beside the stand-in for the bound: a query has its sixty seconds, or what is left of the ninety-five where that is less, and none starts once fewer than ten are left
   fresh; PROG=$T/copy/devloop-tool-state; pw; ans project-playwright d 0 "$DRY"; takes project-playwright 1 59; takes project-playwright 2 26; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit playwright:chromium playwright:firefox
   lines "three queries, 59 and 26 seconds: the first has sixty, the second the 36 left, the third has ten left and is asked with them" 4
@@ -576,6 +736,19 @@ DAY=$(date +%Y-%m-%d)
 SYSTEM=${DEVLOOP_TOOL_STATE_SYSTEM:-$(uname -s)}
 WIN=""
 case $SYSTEM in MINGW*|MSYS*|CYGWIN*|Windows*) WIN=yes ;; esac
+# Under Windows a folder is read as the folder it names, in whatever form it is written, since 26 November 2026, part 3a of order (5) of milestone 12, as the install guard reads it and with its lines: C:\x\y, C:/x/y, c:\x\y and /c/x/y name one folder, held in the last form, the one Git Bash gives a path in itself, so that the home directory at its opening is written ~ and the tool is looked for where the search-path line names it; text alone and no call of cygpath, the reasons at norm in hooks/pre-tool-use-install-guard.sh; on every other system the path stands as it is
+UPPER=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+LOWER=abcdefghijklmnopqrstuvwxyz
+# norm PATH: NORM, under Windows the path in that form - every backslash a slash, a drive letter and its colon at the opening /LETTER, where the path ends there or a slash follows, and the letter small
+norm() {
+  local d r
+  NORM=$1
+  [ -n "$WIN" ] || return 0
+  NORM=${NORM//\\//}
+  case $NORM in [A-Za-z]:|[A-Za-z]:/*) NORM="/${NORM%%:*}${NORM#?:}" ;; esac
+  case $NORM in /?|/?/*) d=${NORM#/}; d=${d%%/*}; r=${UPPER%%"$d"*}; [ "${#r}" -eq 26 ] || NORM="/${LOWER:${#r}:1}${NORM#/?}" ;; esac
+}
+[ -z "$WIN" ] || [ -z "${HOME:-}" ] || { norm "$HOME"; HOME=$NORM; }
 # node resolves from the project and from nothing else that answers: the lookup starts at the project's puppeteer where one stands in its node_modules, else at the project, and a module whose real path lies outside the project's node_modules is refused with exit 3, since 28 October 2026
 PUPPETEER_JS='const fs=require("fs"),path=require("path");const name=process.argv[1],cache=process.argv[2],proj=fs.realpathSync(process.argv[3]);const inside=path.join(proj,"node_modules")+path.sep;const within=p=>fs.realpathSync(p).startsWith(inside);const home=process.env.HOME;const show=p=>home&&p.startsWith(home+path.sep)?"~"+p.slice(home.length):p;const from=[proj];try{const d=path.dirname(require.resolve("puppeteer/package.json",{paths:[proj]}));if(within(d))from.unshift(d)}catch(e){}const need=id=>{const p=require.resolve(id,{paths:from});if(!within(p)){process.stderr.write(id+" resolved outside the project'"'"'s node_modules, at "+show(p)+"\n");process.exit(3)}return require(p)};const r=need("puppeteer-core/internal/revisions.js").PUPPETEER_REVISIONS;const b=need("@puppeteer/browsers");const id=r[name]||"";console.log(id);console.log(id&&b.computeExecutablePath({browser:name,buildId:id,cacheDir:cache}));'
 WAY="a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7"
@@ -605,9 +778,11 @@ cd "$PROJECT_DIR" 2>/dev/null || usage "the project directory $PROJECT_DIR canno
 T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state.XXXXXX") || usage "mktemp -d failed"
 trap 'rm -rf "$T"' EXIT
 BAD=0
-# a carriage return and a line feed, for ask
+NOTASKED=""
+# a carriage return and a line feed, for ask, and the sign the home directory is written with
 CR=$'\r'
 NL=$'\n'
+TILDE='~'
 
 # say LINE: a line of a tool, with the day it was read; bad: the exit becomes 1
 say() { echo "$1 (on $DAY)"; }
@@ -623,6 +798,8 @@ tick() { if [ -n "${DEVLOOP_TOOL_STATE_CLOCK:-}" ]; then read -r NOW <"$DEVLOOP_
 # ask LABEL COMMAND...: the query under the bound, with BOUND seconds or with what is left of LIMIT where that is less; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with. Where fewer than STEP seconds of LIMIT are left the query is not started and answers as one that did not answer, in the words of bin/devloop-start-conditions. The carriage return at the end of every line is taken off here, in the output and in the line read off stderr, for every query at once: the command substitution takes off the line feed alone
 ask() {
   local label=$1 err secs; shift
+  # an installer that installed_line found is not to be asked is not started: the clause says that the query was not asked and why, since 26 November 2026
+  [ -z "$NOTASKED" ] || { OUT=; RC=1; FAIL="$label was not asked: $NOTASKED"; return; }
   tick; secs=$((LIMIT - NOW))
   if [ "$secs" -lt "$STEP" ]; then
     OUT=; RC=124; FAIL="$label did not answer: no time left within the $LIMIT seconds of this call"
@@ -632,6 +809,9 @@ ask() {
   OUT=$("$BOUNDED" "$secs" "$@" 2>"$T/err"); RC=$?
   OUT=${OUT//$CR$NL/$NL}; OUT=${OUT%$CR}
   err=$(sed $'s/\r$//' "$T/err" | grep -v -e '^ ' -e '^$' -e '^node:' -e '^Require stack' | head -n 1)
+  # a line the shell of the bound writes itself, of a program it cannot run say, carries the path of this program's own bound before it, a path under the home directory of whoever installed devloop, on a line a spec may carry: the path of the bound and its line number are taken off, and the home directory is written ~, since 26 November 2026
+  case $err in "$BOUNDED: line "*) err=${err#"$BOUNDED: line "}; err=${err#*: } ;; esac
+  [ -z "${HOME:-}" ] || [ "$HOME" = / ] || err=${err//"$HOME"\//$TILDE/}
   FAIL=""
   case $RC in
     0) ;;
@@ -645,7 +825,7 @@ stands_at() { local x; for x in "" ${WIN:+.exe .cmd .bat}; do [ -e "$1/$2$x" ] &
 cache() {
   local set; eval "set=\${$1:-}"
   CACHE=""; CAUSE=""
-  [ -z "$set" ] || { CACHE=${set%/}; return; }
+  [ -z "$set" ] || { norm "$set"; CACHE=${NORM%/}; return; }
   case $SYSTEM in
     Darwin) CACHE=$HOME/$2 ;;
     Linux) CACHE=$HOME/$3 ;;
@@ -670,7 +850,7 @@ browser_line() {
       [ -e node_modules/.bin/playwright ] || CAUSE="the project has no Playwright package to say which version of $name it needs, no node_modules/.bin/playwright"
       [ -n "$CAUSE" ] || ask "node_modules/.bin/playwright install --dry-run $name" node_modules/.bin/playwright install --dry-run "$name"
       [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Playwright did not say which version of $name it needs: $FAIL"
-      [ -n "$CAUSE" ] || { version=$(printf '%s\n' "$OUT" | grep -m1 .); folder=$(printf '%s\n' "$OUT" | sed -n 's/^ *Install location: *//p' | head -n 1); folder=${folder%/}; probe=$folder; }
+      [ -n "$CAUSE" ] || { version=$(printf '%s\n' "$OUT" | grep -m1 .); folder=$(printf '%s\n' "$OUT" | sed -n 's/^ *Install location: *//p' | head -n 1); norm "$folder"; folder=${NORM%/}; probe=$folder; }
       [ -n "$CAUSE" ] || [ -n "$folder" ] || CAUSE="the dry run printed no install location: $(printf '%s\n' "$OUT" | flat)" ;;
     cypress)
       version=$(sed -n 's/^ *"version": *"\([^"]*\)".*/\1/p' node_modules/cypress/package.json 2>/dev/null | head -n 1)
@@ -683,7 +863,7 @@ browser_line() {
       [ -n "$CAUSE" ] || cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer
       [ -n "$CAUSE" ] || ask "node, asked for the build of $name and its folder under $(tilde "$CACHE")," node -e "$PUPPETEER_JS" "$name" "$CACHE" "$PWD"
       [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Puppeteer did not say which build of $name it needs: $FAIL"
-      [ -n "$CAUSE" ] || { id=$(printf '%s\n' "$OUT" | sed -n 1p); exe=$(printf '%s\n' "$OUT" | sed -n 2p); }
+      [ -n "$CAUSE" ] || { id=$(printf '%s\n' "$OUT" | sed -n 1p); norm "$(printf '%s\n' "$OUT" | sed -n 2p)"; exe=$NORM; }
       [ -n "$CAUSE" ] || [ -n "$id" ] || CAUSE="the project's Puppeteer names no build of $name, PUPPETEER_REVISIONS having no entry for it"
       [ -n "$CAUSE" ] || { rel=${exe#"$CACHE"/}; folder=$CACHE/$(printf '%s' "$rel" | cut -d/ -f1-2); probe=$exe; version="$name $id"; } ;;
   esac
@@ -695,43 +875,54 @@ browser_line() {
 read_tool() { case $1 in *:*) browser_line "${1%%:*}" "${1#*:}" ;; *) tool_line "$1" ;; esac; }
 # has_flag FLAG... -- WORD...: whether one of the flags stands among the words
 has_flag() { local f w; f=" "; while [ "$1" != -- ]; do f="$f$1 "; shift; done; shift; for w in "$@"; do case $f in *" $w "*) return 0 ;; esac; done; return 1; }
+# path_line: the last line of OUT that is a path, one that carries a slash; under Windows one that carries a backslash as well, every backslash read as a slash, since 26 November 2026: measured that day on windows-latest, pnpm bin -g, yarn global bin and bun pm bin -g answer a folder written with backslashes alone, and until then such an answer gave no folder
+path_line() { local o=$OUT; [ -z "$WIN" ] || o=${o//\\//}; printf '%s\n' "$o" | grep '/' | tail -n 1; }
 # installed_line COMMAND TOOL: the line of --installed, the folder read off the installer named by the command's first word after any VAR=value; pip in the forms the install guard reads as pip is not read, the folder depending on --user and on the interpreter, and uv is read off uv tool dir --bin for uv tool alone
 installed_line() {
-  local tool=$2 installer="" dir="" q="" p
-  CAUSE=""; FAIL=""
+  local tool=$2 installer="" name="" prog="" dir="" q="" p
+  CAUSE=""; FAIL=""; NOTASKED=""
+  # PATH set before the installer, among the variables the loop below passes over: the installer that ran is the one that PATH found, which this program does not read
+  # shellcheck disable=SC2086
+  for p in $1; do case $p in PATH=*) NOTASKED=PATH; break ;; *=*) ;; *) break ;; esac; done
   # shellcheck disable=SC2086
   set -- $1
   while [ $# -gt 0 ]; do case $1 in *=*) shift ;; *) break ;; esac; done
   installer=${1:-}
-  case ${installer##*/} in
+  # name, the installer without its path, for each of the ten as for pip and python and as the install guard takes every program, since 26 November 2026, part 3a of order (5) of milestone 12, until then a brew, npm, pnpm, yarn, bun, go, pipx, uv, gem or cargo written with its path was none of the ten; prog, what a query asks: the program the search path finds for that name, where the command writes it bare or with that very path, character for character, a ~ or $HOME at its opening expanded and both in the one form of norm under Windows; NOTASKED, why a query asks nothing: the command writes another path, or sets PATH before the installer - the rule of the install guard, its asked()
+  norm "$installer"; prog=$NORM
+  name=${prog##*/}
+  case $prog in '~/'*) prog=$HOME${prog#\~} ;; '$HOME/'*) prog=$HOME${prog#\$HOME} ;; '${HOME}/'*) prog=$HOME${prog#\$\{HOME\}} ;; esac
+  if [ -n "$NOTASKED" ]; then NOTASKED="the command sets PATH, and which $name that PATH finds is not read by this program"
+  else case $prog in */*) p=$(command -v -- "$name" 2>/dev/null); norm "$p"; if [ -n "$p" ] && [ "$prog" = "$NORM" ]; then prog=$p; else NOTASKED="the command writes $name with a path that is not the one the search path finds for it"; fi ;; esac; fi
+  case $name in
     pip|pip3) CAUSE="$installer installs into a folder that depends on --user and on the interpreter the pip belongs to, which this program does not read" ;;
     python|python[0-9]*) [ "${2:-}" != -m ] || [ "${3:-}" != pip ] || CAUSE="$installer -m pip installs into a folder that depends on --user and on the interpreter, which this program does not read" ;;
   esac
-  [ -n "$CAUSE" ] || case $installer in
-    brew) ask "brew --prefix" brew --prefix; dir=$OUT/bin; q="brew --prefix" ;;
-    npm) has_flag -g --global -- "$@" && { ask "npm prefix -g" npm prefix -g; dir=$OUT/bin; [ -z "$WIN" ] || dir=$OUT; q="npm prefix -g"; } || CAUSE="npm without -g or --global installs inside a project, which is no tool outside it" ;;
-    pnpm) ask "pnpm bin -g" pnpm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="pnpm bin -g" ;;
-    yarn) ask "yarn global bin" yarn global bin; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="yarn global bin" ;;
-    bun) ask "bun pm bin -g" bun pm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="bun pm bin -g" ;;
-    go) ask "go env GOBIN" go env GOBIN; dir=$OUT; q="go env GOBIN"; [ -n "$FAIL" ] || [ -n "$dir" ] || { ask "go env GOPATH" go env GOPATH; dir=${OUT%%:*}/bin; q="go env GOPATH, GOBIN being empty"; } ;;
-    pipx) ask "pipx environment --value PIPX_BIN_DIR" pipx environment --value PIPX_BIN_DIR; dir=$OUT; q="pipx environment --value PIPX_BIN_DIR" ;;
+  [ -n "$CAUSE" ] || case $name in
+    brew) ask "brew --prefix" "$prog" --prefix; dir=$OUT/bin; q="brew --prefix" ;;
+    npm) has_flag -g --global -- "$@" && { ask "npm prefix -g" "$prog" prefix -g; dir=$OUT/bin; [ -z "$WIN" ] || dir=$OUT; q="npm prefix -g"; } || CAUSE="npm without -g or --global installs inside a project, which is no tool outside it" ;;
+    pnpm) ask "pnpm bin -g" "$prog" bin -g; dir=$(path_line); q="pnpm bin -g" ;;
+    yarn) ask "yarn global bin" "$prog" global bin; dir=$(path_line); q="yarn global bin" ;;
+    bun) ask "bun pm bin -g" "$prog" pm bin -g; dir=$(path_line); q="bun pm bin -g" ;;
+    go) ask "go env GOBIN" "$prog" env GOBIN; dir=$OUT; q="go env GOBIN"; [ -n "$FAIL" ] || [ -n "$dir" ] || { ask "go env GOPATH" "$prog" env GOPATH; dir=${OUT%%:*}; [ -z "$WIN" ] || dir=${OUT%%;*}; dir=$dir/bin; q="go env GOPATH, GOBIN being empty"; } ;;
+    pipx) ask "pipx environment --value PIPX_BIN_DIR" "$prog" environment --value PIPX_BIN_DIR; dir=$OUT; q="pipx environment --value PIPX_BIN_DIR" ;;
     uv)
       case ${2:-} in
-        tool) ask "uv tool dir --bin" uv tool dir --bin; dir=$OUT; q="uv tool dir --bin" ;;
+        tool) ask "uv tool dir --bin" "$prog" tool dir --bin; dir=$OUT; q="uv tool dir --bin" ;;
         pip) CAUSE="uv pip installs into a folder that depends on the environment, the virtual environment uv finds or the one --python or --system names, which this program does not read" ;;
         *) CAUSE="this program reads the folder of uv off uv tool dir --bin for uv tool alone, and 'uv${2:+ $2}' is another form of uv" ;;
       esac ;;
-    gem) ask "gem environment" gem environment; dir=$(printf '%s\n' "$OUT" | sed -n 's/.*EXECUTABLE DIRECTORY: *//p' | head -n 1); q="the EXECUTABLE DIRECTORY of gem environment" ;;
+    gem) ask "gem environment" "$prog" environment; dir=$(printf '%s\n' "$OUT" | sed -n 's/.*EXECUTABLE DIRECTORY: *//p' | head -n 1); q="the EXECUTABLE DIRECTORY of gem environment" ;;
     cargo) dir=${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin; q="CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it" ;;
     *) CAUSE="this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and '$installer' is none of them" ;;
   esac
   [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE=$FAIL
   [ -n "$CAUSE" ] || [ -n "${dir%/bin}" ] || CAUSE="$q printed no folder"
   [ -z "$CAUSE" ] || { say "$tool: not read, because $CAUSE"; bad; return; }
-  dir=${dir%/}
+  norm "$dir"; dir=${NORM%/}
   p=$(stands_at "$dir" "$tool")
-  [ -n "$p" ] && { say "$tool: found at $(tilde "$p"), the folder $installer writes to, read off $q"; return; }
-  say "$tool: not found at $(tilde "$dir/$tool"), the folder $installer writes to, read off $q; a copy elsewhere on the search path does not count"; bad
+  [ -n "$p" ] && { say "$tool: found at $(tilde "$p"), the folder $name writes to, read off $q"; return; }
+  say "$tool: not found at $(tilde "$dir/$tool"), the folder $name writes to, read off $q; a copy elsewhere on the search path does not count"; bad
 }
 # installed_lines COMMAND TOOL: the folder line, then the search-path line, since 28 October 2026
 installed_lines() { installed_line "$1" "$2"; tool_line "$2"; }
