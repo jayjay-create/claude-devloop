@@ -14754,6 +14754,203 @@ and for the proofs of closings.
   this machine, exit 0, "green: 12 steps run, every one ended with 0", the
   head of this entry passing the step on titles.
 
+- **The guard reads a folder of Windows and asks an installer at its path**
+
+  26 November 2026, version 0.197.0. On `task/auftrag-5-teil-3a`, off
+  `origin/main` at `1d63f2a`, in three commits: the code with the version;
+  this entry with the blocks, the table, the plan and a paragraph of
+  `docs/skill-conventions.md`; the runs. The order: part 3a of order (5) of
+  milestone 12, the first of the two orders its third part is built in, the
+  decision of this day in `docs/plan.md` after the paragraph on (7), where
+  the reason stands with its figures; and the addendum to that order, of
+  the same day and before the branch was pushed, which attacked the decision
+  on an installer written with its path and built the three commits anew on
+  what the person then decided, the paragraph "The addendum" below. The
+  report stands on this machine as `~/devloop-auftrag5-teil3a.md`, in
+  German, outside the repository.
+
+  **The measurement under Windows**, made before the order: two runs on
+  windows-latest, image windows-2025-vs2026 in version 20261116.315.1, under
+  the bash of Git for Windows, GNU bash 5.3.15, on 26 November 2026. Run
+  45784957955 ran `d8b4a9f` and run 45787008409 `e712736`, each a commit on
+  `1d63f2a` that adds `.github/workflows/measure-windows.yml` and nothing
+  else, so that both ran the hooks and the programs of 0.196.0. The workflow
+  ran at the push of its branch, `task/auftrag-5-teil-3-messung`, with no
+  pull request; the branch is deleted, and the file stands in no commit of
+  main. The logs were read on this machine, outside the repository, and what
+  GitHub holds of the two runs, their commits and their branch, with `gh run
+  view`. Decided on 26 November 2026: a measurement that only a run on
+  GitHub can make runs over a branch of its own with a workflow file of its
+  own, not over a pull request. Reason: a pull request runs all five checks
+  `main` requires, where the run under Windows alone measures, and leaves a
+  closed pull request behind. Not chosen: a pull request closed unmerged.
+
+  What the runs measured, each read at its line of a log. `uname -s` answers
+  MINGW64_NT-10.0-26100; `HOME` and `pwd` come in the form of Git Bash, the
+  other variables, `PIPX_BIN_DIR` and `npm_config_prefix` among them, in the
+  form of Windows; `cygpath` stands in `/usr/bin`, and `[ -e ]` finds a
+  folder written with backslashes, with slashes and in the form of Git Bash.
+  Every installer asked answers in the form of Windows: `go env GOPATH`,
+  `npm prefix -g`, `yarn global bin`, `pipx environment --value
+  PIPX_BIN_DIR`, `pnpm bin -g`, `bun pm bin -g`, `uv tool dir --bin` and the
+  interpreter asked through `sysconfig` with backslashes, `gem environment`
+  with slashes and with CRLF, `go env GOBIN` nothing; brew does not stand on
+  the image. npm puts a global tool into its prefix itself, yarn into `bin`
+  under its own. Playwright, Cypress and Puppeteer take
+  `PLAYWRIGHT_BROWSERS_PATH=C:/pw-elsewhere`,
+  `CYPRESS_CACHE_FOLDER=D:/cy-elsewhere` and `--path C:/pp-elsewhere` for a
+  folder on that drive, and put a browser by default under the home
+  directory, where the block on the places of a yes names the three folders.
+  `bin/devloop-tool-state --installed` at 0.196.0 said found for npm, pipx,
+  uv and gem, the folder of gem without a carriage return; that the query
+  printed no folder for pnpm, yarn and bun; and "not found at C/bin/hello"
+  for go, where `hello.exe` lay in `bin` under GOPATH.
+
+  **Built**, each with its block of milestone 12 in `docs/defects.md`, which
+  carries the wrong, the should, the line of the repair and what is
+  measured. Under Windows, where `uname -s` opens with MINGW, MSYS or
+  CYGWIN, the install guard and `bin/devloop-tool-state` hold a folder in
+  one form, whichever it is written in, the form Git Bash gives a path in
+  itself: in the answer of an installer, a variable before the command or
+  of the environment, a place of the record, a path written in the command,
+  and the directories the hook is given, so that the result hangs on the
+  form of none of them. The conversion is text alone, in bash, and no call
+  of `cygpath`: the guard compares the paths of a destination and opens
+  none, a destination need not exist yet, the same lines run behind a
+  stand-in for uname on the three other systems, and no process starts at a
+  call that installs nothing; what the text does not see, a mount of Git
+  Bash that is no drive and Cygwin's `/cygdrive`, the comment at `norm` in
+  the guard says. An answer is read without a carriage return at its end,
+  on every system. The folder of a global npm is the prefix itself under
+  Windows, in both branches of the guard. GOPATH gives its first folder, by
+  the semicolon under Windows and by the colon elsewhere. And an installer
+  written with its path is taken by its name without the path, each of the
+  ten `bin/devloop-tool-state` reads, and asked by both programs only where
+  that path is, character for character, the one the PATH finds for it, as
+  the one written bare is asked; every other path, and every installer
+  behind a PATH the command sets, is asked nothing, which is a block, its
+  cause saying that it was not asked and why, the paragraph "The addendum"
+  below and the decisions of this day in `docs/plan.md` under milestone 12.
+  The interpreter of a `python -m pip` goes by the same rule. The
+  job hooks on every system has a step of its own for the guard's readings,
+  before the step on line endings, which stays the last.
+
+  **The blocks.** Eight built: four that stood, on an installer's answer under
+  Windows, on a path in the form of Windows written in the command, on an
+  answer the guard takes with a carriage return at its end, and on an
+  installer written with its path; three the order writes, on the prefix of
+  npm under Windows, on the first colon of GOPATH, and on the guard asking an
+  installer through its own PATH; and one the addendum writes, on PATH set in
+  the command. Six written and not built, Fix none: on the places a yes opens,
+  which name no default folder of a browser under Windows, and on the folders
+  `shared/backed-command.md` names, both built by part 3b; and four with no
+  order named for them yet. Two of the four were found by counter-checks of
+  the order: on an installer written with the ending of a program of Windows,
+  with backslashes or, widened by the addendum, in other capitals, which the
+  guard takes for no installer and lets through under every answer, and on
+  `bin/devloop-tool-state` passing over a variable written before the command,
+  so that it looks for the tool where the installer answers without it. Two
+  were found by the addendum: on a pip or an interpreter written with a path
+  inside the project, taken for the project's own with no look at what stands
+  there, and on `deno upgrade` and a destination written by go's variables,
+  placed by the hook's own PATH.
+
+  **The counter-checks before the build**, at `1d63f2a` on macOS, in a
+  throwaway project with stand-ins, uname answered MINGW64_NT-10.0-26100
+  where the situation is Windows; each showed what the order said. (a) Under
+  a record naming the route npm, `npm prefix -g` answering in the form of
+  Windows: `npm install -g semver` blocked, "npm (npm prefix -g did not
+  answer)". (b) `bin/devloop-tool-state --installed` with GOPATH in the form
+  of Windows: "not found at C/bin/hello". (c) With no record,
+  `PLAYWRIGHT_BROWSERS_PATH=C:/elsewhere npx playwright install chromium`
+  let through. (d) `gem environment` with CRLF and a folder that opens with a
+  slash: the folder in the guard's message ends in a carriage return, and
+  the install is blocked under a record that names the folder. (e) The
+  message names `bin` under the prefix of npm as the place, in both
+  branches. (f) Two stand-ins for brew, the command naming the second by its
+  path: the one on the PATH was asked, and the install let through under a
+  record naming its folder.
+
+  **Beyond the words of the order**, where it overlooked a situation that
+  has one right answer, built and named in the report. Under Windows the
+  target of a cd is read in the one form too, so that `cd C:/elsewhere`
+  leaves the project; a drive letter and a colon with no slash behind them,
+  `C:elsewhere`, is no place inside the project; the interpreter of a
+  `python -m pip` written with a drive letter is absolute; a place of the
+  record and the home directory are held in the one form, a folder under the
+  home directory written `~` on both sides. And in
+  `bin/devloop-tool-state` a line the shell of the bound writes of a
+  program it cannot run loses the path of the bound, a path under the home
+  directory of whoever installed devloop.
+
+  **The addendum**, of the same day, before the branch was pushed. The order
+  of this part had an installer asked at the path the command names, decided
+  without a question, and the report of the part put to the person what that
+  way carries: the hook starts the program the command names before Claude
+  Code has decided on the call. The person decided that the guard asks only
+  what it asks for the same command without the path, with the test that the
+  two paths are one file, by `[ -ef ]`, and had that decision attacked before
+  anything was built on it. The attack, on macOS in a throwaway project with
+  stand-ins, at the trees of `1d63f2a` and of the branch and at three copies
+  of the guard that carried the decision in its readings, none of them in the
+  repository: one file under two paths gives two answers. Homebrew 7.0.15
+  forms its prefix from the path it is started under, lines 79 to 81 of its
+  `bin/brew`: through a symbolic link `brew --prefix` answered the folder of
+  the link, and `brew --cache` what a `brew.env` under that prefix set. Python
+  3.14.7, through the `python3` of a virtual environment outside the project,
+  a link to the interpreter the PATH finds, answered that environment for its
+  scripts and ran a `.pth` file of it, where the interpreter under the path
+  the PATH finds ran none. So the decision by `[ -ef ]` did not hold at a
+  symbolic link, at a hard link and at the virtual environment: started under
+  the path the PATH finds, the file answers for another folder than the
+  command writes to, and the copy of the guard let the install through under a
+  record naming the first folder; started under the path of the command, the
+  answer is right and the hook runs what the command without the path does not
+  run. It held at the program written bare, at the path written as the PATH
+  finds it, at a second installation and at a path at which nothing stands.
+  npm 11.12.1 answered one prefix under both paths. What `[ -ef ]` answers
+  under Git Bash for two paths of one file is not measured; the manual of bash
+  says under "CONDITIONAL EXPRESSIONS" that it is "True if file1 and file2
+  refer to the same device and inode numbers", and not where those come from
+  under Windows.
+
+  Decided on these findings, `docs/plan.md` under milestone 12, each with its
+  reason and with what was not chosen. The form of the rule is the path as
+  text, without a question: asked is the program the PATH finds, where the
+  command writes it bare or with that very path, and no other.
+  `bin/devloop-tool-state` goes by the rule of the guard, without a question:
+  the command reaches that program from the text of an issue as well, through
+  `bin/devloop-install-issues` at the start of a run, and the branch as first
+  built started there the program an issue named, a file of the project among
+  them, measured. And PATH set in the command, which the attack found to pass
+  at `1d63f2a` and on the branch, the program on the hook's PATH answering for
+  the one the command's PATH finds, is built by the person's decision, with
+  its block: no installer is asked behind it. A line that is `PATH=` alone,
+  earlier in the same string, is read the same way, beyond the three forms the
+  decision names, a shell exporting PATH as it starts.
+
+  Decided on 26 November 2026 by the person: what is approved is a text from
+  which an action follows for a user; a reason a program names to Claude is
+  not. The causes the guard sets in brackets into its message, and the cause
+  in a line of `bin/devloop-tool-state`, are addressed to Claude: the order
+  that builds them words them, short and true, in the pattern of the other
+  causes of the same message, and the approved sentences of the message stand
+  word for word. So worded here, for a route that is asked nothing, in place
+  of the query that did not answer: "not asked: the command writes brew with a
+  path that is not the one this hook's PATH finds for it" and "not asked: the
+  command sets PATH, and which brew that PATH finds is not read by this
+  guard"; and in a line of `bin/devloop-tool-state`, "brew --prefix was not
+  asked:" with the same two reasons.
+
+  The three commits were built anew from `1d63f2a`, each a plain commit, and
+  the runs below are measured at the new second one. The step of the job hooks
+  on every system holds each situation of the attack whose outcome the rule
+  changes, and under windows-latest two cases more that run there alone: brew
+  written with the path the PATH finds, a drive letter and slashes, at the
+  guard, and npm written so with backslashes at `bin/devloop-tool-state`; that
+  `command -v` and the one form meet in one text under Git Bash is what they
+  measure.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

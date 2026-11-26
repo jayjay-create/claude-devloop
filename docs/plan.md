@@ -1488,10 +1488,12 @@ build
 stands in three more blocks of this milestone with Fix none: on an installer's
 answer the install guard takes with a carriage return at its end, and, by
 the addendum, on an installer written with its path, which
-`bin/devloop-tool-state` reads as none of the ten it reads; the third part
-builds both, (7) below. The third, by the second addendum, is on put of
+`bin/devloop-tool-state` reads as none of the ten it reads; part 3a of the
+third part built both on 26 November 2026, below. The third, by the second
+addendum, is on put of
 `bin/devloop-install-note` answering written where the file could not be
-replaced, and no order is named for it yet.
+replaced; part 3b of the third part builds it, the decision of 26 November
+2026 after the paragraph on (7) below.
 Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
 built yet, that what the order before (3) found and did not build "stands in
 three more blocks of this milestone with Fix none", and of the three blocks
@@ -1504,6 +1506,40 @@ written on main after the merge", that the one on the line endings put
 writes "waits for the log of the job hooks on every system under
 windows-latest at the merge", and that what the second addendum builds "is
 measured by its next run".
+Since 26 November 2026 the first of the two orders of the third part, 3a,
+is built, the roadmap entry of that date, "The guard reads a folder of Windows and asks an installer at its path", after a measurement of that
+day under Windows with the installers themselves, two runs of a workflow of
+its own: under Windows the install guard and `bin/devloop-tool-state` read a
+folder as the folder it names in whatever form it is written, in the answer
+of an installer, in a variable, in a place of the record and in a path
+written in the command; an answer is read without a carriage return at its
+end; the folder of a global npm is the prefix itself there; GOPATH gives
+its first folder by the semicolon there; and an installer written with its
+path is taken by its name and asked only where that path is the one the PATH
+finds for it, none being asked where the command sets PATH before it, the two
+decisions of that day below. Eight blocks of this milestone that order and its
+addendum of the same day build: four that stood, on an installer's answer
+under Windows, the second of decision (6), on a path in the form of Windows
+written in the command, on an answer the guard takes with a carriage return at
+its end, and on an installer written with its path; three the order found and
+wrote, on the prefix of npm under Windows, on the first colon of GOPATH, and
+on the guard asking an installer through its own PATH; and one the addendum
+found and wrote, on PATH set in the command. Six more blocks they wrote and
+did not build, Fix none: on the places a yes opens, which name no default
+folder of a browser under Windows, and on the folders
+`shared/backed-command.md` names, both built by 3b; and four with no order
+named for them yet, two found by counter-checks of the order, on an installer
+written with the ending of a program of Windows, with backslashes or in other
+capitals, which the guard takes for no installer, and on
+`bin/devloop-tool-state` passing over a variable written before the command,
+and two found by the addendum, on a pip or an interpreter written with a path
+inside the project, taken for the project's own without a look at what stands
+there, and on `deno upgrade` and a destination written by go's variables,
+placed by the hook's own PATH.
+Until 26 November 2026 this paragraph said of the block on an answer the
+guard takes with a carriage return and of the one on an installer written
+with its path that "the third part builds both, (7) below", and of the block
+on put that "no order is named for it yet".
 Until 21 November 2026 this paragraph said that of (4) to (7) nothing was
 built yet, and until 22 November 2026 that the third part was not built.
 Until 19 November 2026 this paragraph said of the state of 14 October 2026
@@ -2243,6 +2279,95 @@ The fifth, the check for new versions. The sixth examines the sandbox and
 reports.
 Reason: the reading list of each part fits one session of Claude Code, and the
 decisions stand in the repository before a part builds on them.
+
+Decided on 26 November 2026 by the person: the third part of (7) is built in
+two orders, 3a and 3b. 3a builds how the install guard,
+`hooks/pre-tool-use-install-guard.sh`, and `bin/devloop-tool-state` read the
+answer of an installer, a variable and a path written in the command, under
+Windows with Git Bash and on the other systems, the roadmap entry of that
+date, "The guard reads a folder of Windows and asks an installer at its path". 3b builds the rest of the third part: the default folders of the
+browsers under Windows at the places that name them, the places of a yes for
+those folders, the browser folders before and after every install, the
+guard's message on the steps for the PATH, the message of
+`bin/devloop-install-note` on the default branch and the answer of put.
+Reason: each of the two sessions holds a smaller part of its context taken up
+than one session would for the whole third part.
+Measured with `wc -c` at `1d63f2a`: the seven files of the third part,
+`hooks/pre-tool-use-install-guard.sh` 78539,
+`bin/devloop-tool-state` 76227, `bin/devloop-install-note` 36608,
+`hooks/post-tool-use-install-fact.sh` 7335, `shared/path-steps.md` 7326,
+`shared/backed-command.md` 2848 and `bin/devloop-text` 2584, are 211467
+bytes, and its ten blocks in `docs/defects.md`, the eight the paragraph
+above names and the two on the folder an installer prints and on put
+answering written, 25566 bytes: 237033 bytes before a line of this plan, of
+`docs/skill-conventions.md`, of the roadmap or of the workflow is read.
+The largest reading list of an order that `docs/roadmap.md` names is of
+441761 bytes, in its entry "Three entries held, eleven places mended, two
+blocks added."; one of 509232 bytes, of two orders together, it names as
+one that "does not fit one session", in its entry "Under hidepid the bound
+looks by kill alone, its head set right"; and the reading list of 3a alone,
+which takes the two programs in ranges and not whole, is of 209567 bytes.
+Not chosen: one order, as (7) lays it down.
+
+Decided on 26 November 2026 by the person: where the command names an
+installer with a path, the install guard asks only what it asks for the same
+command without the path. Reason: the guard runs as a PreToolUse hook, before
+Claude Code has decided on the call; so it starts only what it starts for the
+same command without the path, and the program that installs is the one to
+answer. The same holds for the interpreter of a `python -m pip` that the
+command names by a path. Not chosen: A, the program at the path the command
+names asked, as the order of 3a had it built on that day: the hook starts a
+file the command names before Claude Code has decided on the call. B, an
+absolute path outside the project or under `~` asked alone: the same for every
+such file. C, a program with a path never asked: `/opt/homebrew/bin/brew
+install yq` goes to the person under a yes although it is the brew the PATH
+finds.
+
+Decided on 26 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none: the form
+of that rule. The installer or the interpreter is asked only where the path
+the command writes, a `~` or `$HOME` at its opening expanded and under Windows
+in the one form of `norm`, is character for character the path `command -v`
+gives for its name; every other path counts as not read, which is a block.
+Reason: the same file answers by the path it is started under, measured that
+day on macOS by the addendum to 3a, the paragraph "The addendum" of the
+roadmap entry of that date. A symbolic link and a hard link to the brew the
+PATH finds answer `brew --prefix` with the folder of the link, Homebrew 7.0.15
+forming its prefix from the path it is started under; and the python of a
+virtual environment outside the project, a link to the interpreter the PATH
+finds, answers for that environment and runs its `.pth` files as it starts,
+Python 3.14.7. Not chosen: W1, asked wherever the two paths are one file, by
+`[ -ef ]`, and started under the path of the command: the hook reads and runs
+what stands beside a link, the `.pth` files of a virtual environment and the
+`brew.env` under the prefix of the link, and the test is not measured under
+Git Bash. W2, the same test and started under the path the PATH finds: an
+install let through to a place the record does not name, measured at the two
+links and at the virtual environment. W4, which is C. What the form costs:
+every other spelling of the program the PATH finds, a link, a `..` or a
+doubled slash in the path, a path through a linked folder, other capitals
+under Windows, goes to the person; it blocks and never lets through.
+
+Decided on 26 November 2026 without a question, by the same rule:
+`bin/devloop-tool-state` asks an installer by the rule of the guard. Reason:
+the command reaches that program not only from the run after an install,
+`shared/install-tool.md`, but from the text of an open issue as well,
+`bin/devloop-install-issues` reading the line `install-command:` at every
+start; with the program at the path asked, as the order of 3a had it built, a
+file an issue named was started at the start of a run, a file of the project
+among them, measured that day by the addendum. Not chosen: the program at the
+path the command names asked, T2 of the report of that addendum: the folder
+line then names the folder of the program that installed where two of a kind
+stand on a machine, and the start of a run starts what an issue names.
+
+Decided on 26 November 2026 by the person: where the command sets PATH before
+an installer, by a variable before the command, with `export` earlier in the
+same string or with `env`, the guard and `bin/devloop-tool-state` ask it
+nothing, and the route counts as not read. Reason: the program that runs is
+then the one that PATH finds, and the one the hook's PATH finds would answer
+for it, the block of this milestone on PATH set in the command, found by the
+addendum to 3a. A line that is `PATH=` alone, earlier in the same string, is
+read the same way, beyond the three forms the decision names: a shell exports
+PATH as it starts.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

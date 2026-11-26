@@ -3023,7 +3023,32 @@ writes into the shell's rc file, so a harness started before that, or from an
 editor, carries it in neither its own process nor the hook's; `bun pm bin -g`
 exits 1 with nothing on stdout until something has been installed globally,
 on bun 1.4.2) or one answering no absolute path is not read,
-and not read is a block, never a pass. What stays blocked with that cause
+and not read is a block, never a pass. Since 26 November 2026, the roadmap
+entry of that date, "The guard reads a folder of Windows and asks an
+installer at its path", three things of this paragraph read otherwise. A
+route whose command writes its program with a path is asked only where
+that path is, character for character, the one the hook's PATH finds for
+the program, a `~` or `$HOME` at its opening expanded, and then as the one
+written bare is; every other path is asked nothing, and so is every route
+where the command sets PATH before its program, which is a block, decided
+that day, `docs/plan.md` under milestone 12; the interpreter of a `python
+-m pip` goes by the same rule, and `bin/devloop-tool-state` asks an
+installer by it. An answer is read without a carriage return
+at its end, which a command substitution leaves there, `gem environment`
+printing its lines with CRLF under Windows. And under Windows, where `uname
+-s` opens with MINGW, MSYS or CYGWIN, a folder is read as the folder it
+names in whatever form it is written — `C:\x\y`, `C:/x/y`, `c:\x\y` and
+`/c/x/y` one folder, held in the last form, the one Git Bash gives a path
+in itself, by text alone and with no call of `cygpath` — in the answer of a
+route, in a variable before the command, in a place of the record, in a
+path written in the command and in the directories the hook is given; so
+an answer in the form of Windows is an absolute path there, a path that
+opens with a drive letter and a colon lies outside the project unless under
+its directory, the folder of a global `npm` is the prefix itself, and
+`GOPATH` gives its first folder by the semicolon. Measured that day on
+windows-latest with the installers themselves, by a workflow of its own,
+that entry. On macOS, Linux and Alpine a path stays as it is written, a
+drive letter and a colon opening a relative one. What stays blocked with that cause
 under every answer: a system package manager, which owns no directory of its
 own since each package decides, and needs root anyway; a version manager, by
 **Runtimes are not a kind the permission may cover** above — `volta` and
