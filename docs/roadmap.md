@@ -14754,12 +14754,13 @@ and for the proofs of closings.
   this machine, exit 0, "green: 12 steps run, every one ended with 0", the
   head of this entry passing the step on titles.
 
-- **The guard reads a folder of Windows and asks an installer at its path**
+- **The guard reads a folder of Windows and asks only the installer on PATH**
 
   26 November 2026, version 0.197.0. On `task/auftrag-5-teil-3a`, off
-  `origin/main` at `1d63f2a`, in three commits: the code with the version;
+  `origin/main` at `1d63f2a`, in four commits: the code with the version;
   this entry with the blocks, the table, the plan and a paragraph of
-  `docs/skill-conventions.md`; the runs. The order: part 3a of order (5) of
+  `docs/skill-conventions.md`; the runs; and the corrections of the audit
+  before the push, the last paragraph below. The order: part 3a of order (5) of
   milestone 12, the first of the two orders its third part is built in, the
   decision of this day in `docs/plan.md` after the paragraph on (7), where
   the reason stands with its figures; and the addendum to that order, of
@@ -14786,9 +14787,10 @@ and for the proofs of closings.
   closed pull request behind. Not chosen: a pull request closed unmerged.
 
   What the runs measured, each read at its line of a log. `uname -s` answers
-  MINGW64_NT-10.0-26100; `HOME` and `pwd` come in the form of Git Bash, the
-  other variables, `PIPX_BIN_DIR` and `npm_config_prefix` among them, in the
-  form of Windows; `cygpath` stands in `/usr/bin`, and `[ -e ]` finds a
+  MINGW64_NT-10.0-26100; `HOME`, `TEMP`, `TMP` and `pwd` come in the form of
+  Git Bash, the other variables that carry a path, `PIPX_BIN_DIR` and
+  `npm_config_prefix` among them, in the form of Windows; `cygpath` stands in
+  `/usr/bin`, and `[ -e ]` finds a
   folder written with backslashes, with slashes and in the form of Git Bash.
   Every installer asked answers in the form of Windows: `go env GOPATH`,
   `npm prefix -g`, `yarn global bin`, `pipx environment --value
@@ -14808,13 +14810,25 @@ and for the proofs of closings.
 
   **Built**, each with its block of milestone 12 in `docs/defects.md`, which
   carries the wrong, the should, the line of the repair and what is
-  measured. Under Windows, where `uname -s` opens with MINGW, MSYS or
-  CYGWIN, the install guard and `bin/devloop-tool-state` hold a folder in
-  one form, whichever it is written in, the form Git Bash gives a path in
-  itself: in the answer of an installer, a variable before the command or
+  measured. Under Windows the install guard and `bin/devloop-tool-state` hold
+  a folder in one form, whichever it is written in, the form Git Bash gives a
+  path in itself, the guard where `uname -s` opens with MINGW, MSYS or CYGWIN,
+  and `bin/devloop-tool-state` where it opens with `Windows` as well and
+  where `DEVLOOP_TOOL_STATE_SYSTEM` names such a system, as before this
+  branch: in the answer of an installer, a variable before the command or
   of the environment, a place of the record, a path written in the command,
   and the directories the hook is given, so that the result hangs on the
-  form of none of them. The conversion is text alone, in bash, and no call
+  form of none of them. Two places the guard does not read so yet, found by
+  the audit before the push, each with its block: the root of `deno install
+  -g` behind `--root`, written with backslashes, the block "under Windows the
+  install guard tests the root of deno install -g for bin at its end before
+  the path is in the one form, so that a root written with backslashes is
+  read as bin under itself"; and `VIRTUAL_ENV` and `CONDA_PREFIX` of the
+  hook's environment, the block "under Windows the install guard holds
+  VIRTUAL_ENV and CONDA_PREFIX of its environment against the project's
+  directory as they come, so that an environment of the project named in the
+  form of Windows is not read as the project's own and uv pip install is
+  blocked". The conversion is text alone, in bash, and no call
   of `cygpath`: the guard compares the paths of a destination and opens
   none, a destination need not exist yet, the same lines run behind a
   stand-in for uname on the three other systems, and no process starts at a
@@ -14827,10 +14841,14 @@ and for the proofs of closings.
   written with its path is taken by its name without the path, each of the
   ten `bin/devloop-tool-state` reads, and asked by both programs only where
   that path is, character for character, the one the PATH finds for it, as
-  the one written bare is asked; every other path, and every installer
-  behind a PATH the command sets, is asked nothing, which is a block, its
-  cause saying that it was not asked and why, the paragraph "The addendum"
-  below and the decisions of this day in `docs/plan.md` under milestone 12.
+  the one written bare is asked; every other path is asked nothing, and so is
+  every installer where the command sets PATH before it in one of the forms
+  read, by an assignment before the command, behind `env` as well, with
+  `export` earlier in the same string, or on a line that is `PATH=` alone,
+  which is a block, its cause saying that it was not asked and why, the
+  paragraph "The addendum" below and the decisions of this day in
+  `docs/plan.md` under milestone 12; PATH set in another form is read by
+  neither program yet, the block of the audit on it.
   The interpreter of a `python -m pip` goes by the same rule. The
   job hooks on every system has a step of its own for the guard's readings,
   before the step on line endings, which stays the last.
@@ -14901,12 +14919,15 @@ and for the proofs of closings.
   a link to the interpreter the PATH finds, answered that environment for its
   scripts and ran a `.pth` file of it, where the interpreter under the path
   the PATH finds ran none. So the decision by `[ -ef ]` did not hold at a
-  symbolic link, at a hard link and at the virtual environment: started under
+  symbolic link, at the virtual environment and, for a stand-in that answers
+  by the folder it is started in, at a hard link: started under
   the path the PATH finds, the file answers for another folder than the
   command writes to, and the copy of the guard let the install through under a
   record naming the first folder; started under the path of the command, the
   answer is right and the hook runs what the command without the path does not
-  run. It held at the program written bare, at the path written as the PATH
+  run. Through a hard link Homebrew 7.0.15 itself does not start: exit 127,
+  the `brew.sh` beside the link not found, measured by the audit before the
+  push. It held at the program written bare, at the path written as the PATH
   finds it, at a second installation and at a path at which nothing stands.
   npm 11.12.1 answered one prefix under both paths. What `[ -ef ]` answers
   under Git Bash for two paths of one file is not measured; the manual of bash
@@ -14929,18 +14950,27 @@ and for the proofs of closings.
   earlier in the same string, is read the same way, beyond the three forms the
   decision names, a shell exporting PATH as it starts.
 
-  Decided on 26 November 2026 by the person: what is approved is a text from
-  which an action follows for a user; a reason a program names to Claude is
-  not. The causes the guard sets in brackets into its message, and the cause
-  in a line of `bin/devloop-tool-state`, are addressed to Claude: the order
-  that builds them words them, short and true, in the pattern of the other
-  causes of the same message, and the approved sentences of the message stand
-  word for word. So worded here, for a route that is asked nothing, in place
-  of the query that did not answer: "not asked: the command writes brew with a
-  path that is not the one this hook's PATH finds for it" and "not asked: the
+  Decided on 26 November 2026 by the person: before a build the person
+  approves only a text from which an action follows for a user, and a text
+  that is shown to a user as the one it addresses. A text to Claude is not
+  approved, a reason a hook or a program names to Claude among them, and what
+  Claude reasons on its way is no text to the user; the wording of a text to
+  Claude the order that builds it chooses, so that it works best. That holds
+  for every order: the rule stands in `docs/skill-conventions.md` under "The
+  person approves a text to a user before the build, and no text to Claude",
+  the decision with its reason and with what was not chosen in `docs/plan.md`
+  under milestone 15. The causes the guard sets in brackets into its message,
+  and the cause in a line of `bin/devloop-tool-state`, are addressed to
+  Claude: this order words them, in the pattern of the other causes of the
+  same message, and the approved sentences of the message stand word for
+  word. So worded here, for a route that is asked nothing, in place of the
+  query that did not answer: "not asked: the command writes brew with a path
+  that is not the one this hook's PATH finds for it" and "not asked: the
   command sets PATH, and which brew that PATH finds is not read by this
-  guard"; and in a line of `bin/devloop-tool-state`, "brew --prefix was not
-  asked:" with the same two reasons.
+  guard"; and in a line of `bin/devloop-tool-state`, behind "brew --prefix was
+  not asked:", in that program's words, "the command writes brew with a path
+  that is not the one the search path finds for it" and "the command sets
+  PATH, and which brew that PATH finds is not read by this program".
 
   The three commits were built anew from `1d63f2a`, each a plain commit, and
   the runs below are measured at the new second one. The step of the job hooks
@@ -15084,7 +15114,15 @@ and for the proofs of closings.
   the forms of Windows, `bin/devloop-tool-state` a folder that stands, and
   both an installer written in a form of Windows with the path the PATH finds,
   two of the three things without a run here, the third the step's red side.
-  Their records are written after the merge, off the log of that job. Under
+  The records of four of the five blocks and of the two things are written
+  after the merge, off the log of that job. The fifth block, on an
+  installer's answer under Windows, whose should asks for "every program the
+  guard asks", gets its record from a measurement under Windows with the
+  installers themselves at 0.197.0, over a branch of its own with a workflow
+  file of its own as the measurement of this day was made, after the merge:
+  decided on 26 November 2026 without a question, by the decision of 25
+  November 2026 in `docs/plan.md` under milestone 12, that job running
+  stand-ins and no installer itself. Under
   windows-latest that job took 8 minutes 28 seconds of its 15 on pull request
   #269, run W1 of the entry above; what the new step, sixty-seven starts of
   the guard and more there, and the forty-six cases of the self-test add is
@@ -15092,9 +15130,124 @@ and for the proofs of closings.
   folders of the browsers under Windows, the places of a yes for them, and the
   folders `shared/backed-command.md` names. And put to the person in the
   report: which order builds the four blocks written with no order named for
-  them; and whether this entry keeps its title, which says of an installer
-  that it is asked at its path, where since the addendum it is asked there
-  only if that path is the one the PATH finds.
+  them. The head of this entry read "The guard reads a folder of Windows and
+  asks an installer at its path" until the audit before the push renamed it:
+  by "A title says what changed, and nothing else" in
+  `docs/skill-conventions.md` a title says what changed, and since the
+  addendum the branch asks a program written with a path only where that path
+  is the one the PATH finds, the decisions of this day in `docs/plan.md` under
+  milestone 12.
+
+  **The corrections of the audit**, of 26 November 2026, the fourth commit,
+  made before the push by sessions that did not build the branch. The audit
+  ran in two parts, each in a session of its own. The first held this entry
+  sentence by sentence, the code, the plan and the conventions, ran the
+  self-tests and the run of the workflow's steps again at `36516b3` and
+  changed nothing; the person decided on its report; the second held the
+  blocks and the table, searched the repository for what the branch makes
+  wrong, mended, and wrote five blocks. The report of both stands on this
+  machine as `~/devloop-audit-auftrag5-teil3a.md`, in German, outside the
+  repository. The fourth commit changes `docs/` alone.
+
+  First, the head, renamed as the paragraph "Open" says, at every place that
+  names it: twice in `docs/plan.md`, once in `docs/skill-conventions.md`, in
+  26 lines of `docs/defects.md` and 66 of `docs/stock-take.tsv`. Second, this
+  entry. It said "in three commits"; that "`HOME` and `pwd` come in the form
+  of Git Bash, the other variables" in the form of Windows, where the log of
+  run 45784957955 shows `TEMP=/tmp` and `TMP=/tmp` as well; that both programs
+  hold a folder in one form "where `uname -s` opens with MINGW, MSYS or
+  CYGWIN", which is the guard, `bin/devloop-tool-state` taking `Windows` and
+  `DEVLOOP_TOOL_STATE_SYSTEM` as well, its lines 736 and 738; that "every
+  installer behind a PATH the command sets" is asked nothing, where four forms
+  of setting it are read; that the decision by `[ -ef ]` did not hold "at a
+  hard link", which holds for a stand-in that answers by its folder, where
+  Homebrew 7.0.15 does not start through one, measured by both parts; of the
+  causes in `bin/devloop-tool-state` "with the same two reasons", where that
+  program words them otherwise, its lines 895 to 896; and under Open that the
+  records of the five blocks "are written after the merge, off the log of that
+  job". Each says what holds. Third, `docs/plan.md`: its paragraph on what is
+  built of milestone 12 said of (5) that of "its other four parts" nothing is
+  built yet, and that what the second part found "stands in three more blocks
+  of this milestone with Fix none", where two of the three carry their Fix
+  since this branch; it spoke of "the two decisions of that day below", where
+  four stand below; it had the five blocks wait for "the job hooks on every
+  system of its pull request"; the decision on the two orders did not name the
+  block on the folders `shared/backed-command.md` names among what 3b builds;
+  the decision on the form of the rule said that "A symbolic link and a hard
+  link" answer `brew --prefix` with the folder of the link; and the decision
+  on PATH set in the command named nothing that was not chosen. Fourth,
+  `docs/skill-conventions.md`: "every route where the command sets PATH before
+  its program" now names the forms read; "What stays blocked with that cause"
+  had lost what it pointed at and reads "as not read"; and three sentences the
+  new step of the job hooks on every system made stale, "the job ends on a
+  second step" with "the step before it", "the step before reads through `tr
+  -d`", and the list of what `scripts/devloop-run-workflow` runs, twelve steps
+  where it runs thirteen. Fifth, the blocks and the table: the note of the
+  block on an installer's answer under Windows had its record written off the
+  job; the note of the block on the guard's message on the steps for the PATH
+  named "the next order that changes" the guard, which was this branch and did
+  not build it, and names 3b; a line of the table counted "the thirteen cases"
+  behind `DEVLOOP_TOOL_STATE_SYSTEM` where fourteen stand; and the note of the
+  self-test of `bin/devloop-tool-state` ended on "90 cases" and carries the
+  136.
+
+  Five blocks, Fix none, each shown on macOS behind the stand-ins before it
+  was written. Three the first part found at the code this branch builds:
+  under Windows `norm` in both programs reads a path that opens with two
+  slashes as a folder on a drive `a`; PATH is read as set in the command in
+  four forms alone, so that behind `declare`, `eval`, `source`, a function of
+  the program's name and eleven forms more the program of the hook's PATH
+  answers for the one the shell starts; and for `python -m pip` the guard
+  counts an export that stands behind the command, so that one of PATH blocks
+  the install, and, found by the second part at the same line and so at
+  `1d63f2a` already, one of `PIP_USER` lets it through to a folder the record
+  does not name. Two the search of the second part found, the two places the
+  paragraph "Built" names as not read in the one form, the root of `deno
+  install -g` and `VIRTUAL_ENV` with `CONDA_PREFIX`. No block: `env -S "brew
+  install yq"` passes without the record being read, at `1d63f2a` as here,
+  and that is the rule `docs/skill-conventions.md` gives for the command
+  reader, the argument of `env -S` among what is "Not taken apart", "which the
+  vendor splits by rules of its own"; decided on 26 November 2026 by the
+  person.
+
+  Decided on 26 November 2026, each in `docs/plan.md` with its reason.
+  Without a question: none of the five blocks is built
+  before the push, since the code would change after the first commit and the
+  runs above would be measured anew; an order after the merge builds them with
+  the four no order is named for; the person decided the same for the two
+  blocks of the search and for the second consequence at pip. Without a
+  question: `source` and `.`, `eval`, `BASH_ENV` and a shell that reads a file
+  as it starts count as setting PATH, the should of the block on it. Without a
+  question: of the five blocks under Open, the one on an installer's answer
+  under Windows gets its record from a measurement with the installers
+  themselves at 0.197.0, its should asking for "every program the guard asks",
+  and 3b builds the block on the folders `shared/backed-command.md` names.
+  Without a question, under milestone 15: an audit whose reading does not fit
+  one session runs in parts, and its reading list names the whole paragraph of
+  every sentence a branch changes, the rule in `docs/skill-conventions.md`
+  under "Before a push, the branch is audited". And the decision of the
+  person on what is approved, the paragraph above on it, stands since the
+  audit as a rule in `docs/skill-conventions.md` and as a decision under
+  milestone 15.
+
+  Held besides, with nothing found: the 27 lines the blocks of this branch
+  quote at `1d63f2a`, each at its place; the nine lines of a Fix, each once in
+  its file; the 36 lines of a run in the table, 22 against the cases of the
+  step and 13 against those of the self-test, one against run W0, and the
+  three lines of this entry they point at; and the searches of the second part
+  through the plan, the conventions, `docs/rationale.md`, `README.md`, the
+  loaded texts, the hooks, the programs, the workflow, the things of the table
+  and the open blocks, which found the places above and the two blocks. The
+  branch changes no text devloop loads, so nothing was held against
+  `docs/rationale.md`. Not run again by the second part: the self-tests and
+  the run of the workflow's steps, the fourth commit changing no code.
+
+  The tool and the checks after the fourth commit: exit 0, broken records 0,
+  uncovered lines 0 of 5006; Undetermined 24, Built, never walked 1727, Walked
+  918 and Closed 85 as after the third commit; Recorded, not built 251, five
+  more, the five blocks; milestone 12 at 176 blocks, fifteen added by the
+  branch, Recorded, not built 30, Built, never walked 69, Walked 60, Closed
+  17. `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
 
 ## Decisions taken against
 
