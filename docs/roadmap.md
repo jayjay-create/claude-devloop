@@ -14757,10 +14757,12 @@ and for the proofs of closings.
 - **The guard reads a folder of Windows and asks only the installer on PATH**
 
   26 November 2026, version 0.197.0. On `task/auftrag-5-teil-3a`, off
-  `origin/main` at `1d63f2a`, in four commits: the code with the version;
+  `origin/main` at `1d63f2a`, in five commits: the code with the version;
   this entry with the blocks, the table, the plan and a paragraph of
-  `docs/skill-conventions.md`; the runs; and the corrections of the audit
-  before the push, the last paragraph below. The order: part 3a of order (5) of
+  `docs/skill-conventions.md`; the runs; the corrections of the audit before
+  the push, the paragraph of that name below; and, after the push, the second
+  addendum on the self-test of `bin/devloop-install-note`, the last paragraph
+  below. The order: part 3a of order (5) of
   milestone 12, the first of the two orders its third part is built in, the
   decision of this day in `docs/plan.md` after the paragraph on (7), where
   the reason stands with its figures; and the addendum to that order, of
@@ -15248,6 +15250,77 @@ and for the proofs of closings.
   more, the five blocks; milestone 12 at 176 blocks, fifteen added by the
   branch, Recorded, not built 30, Built, never walked 69, Walked 60, Closed
   17. `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
+
+  **The second addendum**, of 26 November 2026, the day read off `date -u`,
+  made after the push of the four commits, on pull request #271, in one
+  commit, the fifth: the self-test of `bin/devloop-install-note` and this
+  entry, and nothing else. The guard is not changed. The version stays
+  0.197.0. Its report is the section "Nachtrag 2" of the report named above.
+
+  The run under Windows. Run 45899945857 of the workflow `stock-take.yml` on
+  pull request #271, at `7372cbd`: green the job stock-take and the job hooks
+  on every system under alpine, ubuntu-latest and macos-latest, red its job
+  "hooks on every system (windows-latest)", 140182989984. There the self-test
+  of `bin/devloop-install-note` went red at the case "an install alone, its
+  output seen: the line, as today", the first of its cases that feed the
+  guard and the fact hook a command, after 41 cases that were green. The case
+  feeds them `npm install -g --prefix $L alpha`, `$L` the folder the record of
+  its throwaway project names as the place, and expected the line of the fact
+  hook to end on "installed into $L/bin"; the hook wrote "installed into $L",
+  the two texts alike up to `/bin` by the log of the job. The hook writes the
+  folder the guard has noted for the command, and since the first commit of
+  this branch the guard reads the folder of a global tool of npm under
+  Windows as the prefix itself, the paragraph "Built" above; the expectations
+  of the self-test still named `bin` under the prefix on every system. The
+  self-test read no uname and set no stand-in for one, so that on the three
+  other systems it ran as the system it stood on, and this entry names no
+  run of it behind a stand-in. The self-test ends at its first red case, so
+  that its 17 cases after that one did not run there. The step went on, through
+  the self-tests after this one and the handlers, with no second red line,
+  and ended with 1; the two steps after it, on the folders the install guard
+  reads and on every place that reads a file of the project, did not run
+  under Windows.
+
+  The build. In the self-test the folder npm puts a global tool in under
+  `--prefix $L` is set once, behind the line that builds the throwaway
+  project: `bin` under `$L`, and `$L` itself where `uname -s` opens with
+  MINGW, MSYS or CYGWIN, which is how the guard reads Windows. The fourteen
+  places of an expectation that named `$L/bin` take the folder from there:
+  the line of the fact hook in eleven, five of them in the section the case
+  on it reads back, and the context of an install that did not stand alone in
+  three, the folder to look in and the folder of the call of put. The text of
+  a command a case hands the hook stays as it stood, `ls $L/bin` in one of
+  them. The line that sets the folder reads the answer of uname through
+  `grep -qE` and carries no word of the search set, so that it needs no
+  record; a comment above it says why, with the day. The count stays 59
+  cases.
+
+  The counter-check, on the Mac behind a stand-in for uname that answers
+  `MINGW64_NT-10.0-26100` for `-s`, as the measurement above read it off
+  windows-latest, and hands every other call to `/usr/bin/uname`, its folder
+  first on PATH. Before the change, at `7372cbd`: the self-test ended with 1
+  after 41 green cases at the case of the job, "installed into $L" where
+  "installed into $L/bin" was expected. After it: ended with 0, "SELF-TEST
+  PASSED: 59 cases", and so with the uname of the Mac, the 59 names alike in
+  both; and so behind stand-ins that answer `MSYS_NT-10.0-26100`,
+  `CYGWIN_NT-10.0-26100` and `Linux`. Not measured here: the self-test and
+  the two steps under windows-latest itself, which the job of the pull
+  request runs at the fifth commit.
+
+  The tool and the checks after the fifth commit: exit 0, broken records 0,
+  uncovered lines 0 of 5006, Undetermined 24, Recorded, not built 251, Built,
+  never walked 1727, Walked 918 and Closed 85, and milestone 12 at 176 blocks,
+  Recorded, not built 30, Built, never walked 69, Walked 60, Closed 17, each
+  as after the fourth commit; nothing Walked on this branch without a run the
+  branch adds. `scripts/devloop-handover-checks`: "green: 22 checks green, 0
+  red". This addendum records no run. Code that changes after the commit with
+  the version costs a thing its run where it changes a line the thing stands
+  on, the rule at the head of `scripts/devloop-stock-take`. Here it costs
+  none: every line the fifth commit changes in `bin/devloop-install-note`
+  stands inside the self-test, and the eight of them that carry a record are
+  each part of one thing, the self-test with every outcome once and its count,
+  which was Built, never walked before, its run of 21 October 2026 under
+  0.155.0 older than the last change to its lines.
 
 ## Decisions taken against
 
