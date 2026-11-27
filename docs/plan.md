@@ -1576,9 +1576,8 @@ for uname that answers as Git Bash, and the job has thirty minutes. The
 block on the machine's own uname is walked by the runs of that entry on the
 Mac, the second run green and, in a counter-check, red at the case that had
 gone red first under windows-latest. The
-block on the fifteen minutes stays Built, never walked until the job under
-windows-latest of that order's pull request has run and a record is written
-at the merge. For the first of the three no order is named yet: it is one of
+block on the fifteen minutes is Built, never walked and cannot be forced, by
+the decision of the person of 27 November 2026 below. For the first of the three no order is named yet: it is one of
 the ten blocks that follow 3b by the decision of 27 November 2026 below.
 Of the eight built, seven are walked: three by their runs on macOS, on an
 installer written with its path, on the guard asking an installer through its
@@ -2528,6 +2527,25 @@ the owner has to make required on main, `docs/skill-conventions.md` under
 "Registering a skill", its sentence on the four checks required since 14
 October 2026, and the head of `.github/workflows/stock-take.yml`,
 "is the owner's setting, as for stock-take".
+
+Decided on 27 November 2026 by the person: the block of this milestone on the
+fifteen minutes of the job hooks on every system cannot be forced, since
+GitHub chooses the runner a job gets and no run can choose one as slow as that
+of the first attempt of run 45957499843. Not chosen: a record off the job
+under windows-latest of pull request #272, of the order of that day, which ran
+on a faster runner, green in 13 minutes 19 seconds with its step of the
+self-tests and the hooks at 9 minutes 18 seconds, and would have counted the
+case walked where it was not met.
+
+Decided on 27 November 2026 at the merge of the order of that day, without a
+question, by the rule that nothing is asked where one way carries a great
+disadvantage and the other none: where the first run of the step of the
+self-tests stops at the job's limit, `scripts/devloop-run-workflow` runs the
+second run all the same, as built. Reason: that comes about only where a step
+hangs, which its first run then shows red already; the second run costs the
+limit once more only where nothing bounds the call of the program, and leaving
+it out would take an order of its own with a case, a thing and a run. Not
+chosen: the second run left out after a first run stopped at the limit.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

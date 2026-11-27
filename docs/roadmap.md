@@ -15429,9 +15429,9 @@ and for the proofs of closings.
 - **The self-tests run again as Git Bash, and the job has thirty minutes**
 
   27 November 2026, version 0.198.0. On `task/pruefungen-uname-und-limit`,
-  off `origin/main` at `37d22e4`, in four commits: the code with the
-  version, the documents, the runs with their records, and the corrections
-  of the audit before the push. It builds two of
+  off `origin/main` at `37d22e4`, in five commits: the code with the
+  version, the documents, the runs with their records, the corrections of
+  the audit before the push, and the corrections of the merge. It builds two of
   the three blocks the merge of the entry above wrote, on
   `scripts/devloop-run-workflow` running the self-tests under `bin/` with the
   machine's own uname alone and on the fifteen minutes of the job hooks on
@@ -15580,13 +15580,10 @@ and for the proofs of closings.
   `bin/devloop-surface`. `scripts/devloop-handover-checks` exit 0, "green: 22
   checks green, 0 red".
 
-  Open. The block on the fifteen minutes stays Built, never walked on this
-  branch: its case, the job under windows-latest within its limit on a
-  runner as slow as that of the first attempt, runs first in the job of the
-  pull request, and a record of it is written at the merge. The line of the
-  second run left out under Windows has no run. And a first run that is
-  stopped at the job's limit is followed by a second run under the same
-  limit; whether the second is left out then is not decided.
+  Open. The line of the second run left out under Windows has no run. The
+  block on the fifteen minutes and the second run after a first run stopped
+  at the job's limit were decided at the merge, "The corrections of the
+  merge" below.
 
   **The corrections of the audit**, of 27 November 2026, the day read off
   `date -u`, the fourth commit, made before the push by a session that did
@@ -15662,6 +15659,36 @@ and for the proofs of closings.
   0, uncovered lines 0 of 5018, and every count as after the third commit;
   nothing Walked on this branch without a run the branch adds.
   `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
+
+  **The corrections of the merge**, of 27 November 2026, the fifth commit,
+  made at the merge from the check of the branch at the code; it changes
+  `docs/` alone. The checks of pull request #272, run 46067767114, were
+  green on the five jobs, the job under windows-latest in 13 minutes 19
+  seconds, its step of the self-tests and the hooks at 9 minutes 18 seconds,
+  the step on the folders at 2 minutes 11 seconds and the step on line
+  endings at 1 minute 36 seconds: a runner slower than that of the second
+  attempt of run 45957499843 and faster than that of the first, so that its
+  run does not meet the case of the block on the fifteen minutes. Decided at
+  the merge by the person: that block cannot be forced, `docs/plan.md` under
+  milestone 12, and it carries the form since this commit. Decided at the
+  merge without a question: the second run follows a first run stopped at
+  the job's limit, as built, `docs/plan.md` under milestone 12. The two
+  things the audit saw at the program stand as two blocks of milestone 12
+  with Fix none, on the value of `DEVLOOP_UNAME_STAND_IN`, which no case
+  holds, and on the head of the program on OSTYPE. Mended where the text
+  stood: this entry said "in four commits" and, under "Open", that a record
+  of the block on the fifteen minutes "is written at the merge" and that a
+  second run after a first stopped at the limit "is not decided"; and
+  `docs/plan.md`, the paragraph on what is built of milestone 12, said that
+  block "stays Built, never walked until the job under windows-latest of
+  that order's pull request has run and a record is written at the merge".
+  The tool after the fifth commit: exit 0, broken records 0, uncovered lines
+  0 of 5018, Recorded, not built 254 and milestone 12 at 181 blocks with
+  Recorded, not built 33, by the two blocks, every other count as after the
+  fourth commit, and the block on the fifteen minutes listed among the
+  defects whose case cannot be forced. The run of the workflow's steps over
+  the branch at `d605177` was green on Linux as well in this check, 14 steps
+  with the second run among them, no record.
 
 ## Decisions taken against
 
