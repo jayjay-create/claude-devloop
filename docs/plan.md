@@ -1568,7 +1568,15 @@ lets through under a yes, which leaves the fact hook no note; on
 `scripts/devloop-run-workflow`, which runs the self-tests under `bin/` with
 the machine's own uname alone; and on the job hooks on every system, whose
 fifteen minutes a slower runner under windows-latest overran with no case
-red. No order is named for them yet.
+red. The second and the third an order of 27 November 2026 builds, before
+3b, the roadmap entry of that date, "The self-tests run again as Git Bash, and the job has thirty minutes", the
+decisions of that day below: `scripts/devloop-run-workflow` runs the step of
+the self-tests under `bin/` and the hooks a second time behind a stand-in
+for uname that answers as Git Bash, and the job has thirty minutes. The
+block on the fifteen minutes stays Built, never walked until the job under
+windows-latest of that order's pull request has run and a record is written
+at the merge. For the first of the three no order is named yet: it is one of
+the ten blocks that follow 3b by the decision of 27 November 2026 below.
 Of the eight built, seven are walked: three by their runs on macOS, on an
 installer written with its path, on the guard asking an installer through its
 own PATH and on PATH set in the command; and four, their shoulds asking for
@@ -1585,6 +1593,9 @@ a carriage return, of the second part, is walked since that day by the
 measurement under Windows, run W0 of that entry: `gem environment` answered
 with CRLF there, and the program at 0.196.0 named the folder without the
 carriage return and found the tool.
+Until the order of 27 November 2026 on those two blocks this paragraph said
+of the three blocks the merge of 3a wrote "No order is named for them yet.",
+mended by that order, the roadmap entry of that date, "The self-tests run again as Git Bash, and the job has thirty minutes".
 Until 27 November 2026 this paragraph said of the eight built that "five stay
 Built, never walked", four of them "until the job hooks on every system of its
 pull request has walked their cases under windows-latest and a record is
@@ -2456,6 +2467,62 @@ the program of the hook's PATH then answers for the one the text read puts
 first on PATH; on a Mac with a Homebrew under `/opt/homebrew` and one under
 `/usr/local` that holds for `eval "$(/usr/local/bin/brew shellenv)"; brew
 install yq`.
+
+Decided on 27 November 2026 by the person: the order of the work that
+follows the merge of 3a. First an order for two of the three blocks that
+merge wrote, on `scripts/devloop-run-workflow` running the self-tests under
+`bin/` with the machine's own uname alone and on the fifteen minutes of the
+job hooks on every system, the roadmap entry of that date, "The self-tests run again as Git Bash, and the job has thirty minutes"; then 3b; and after
+3b the ten other blocks of this milestone with Fix none whose Found names
+the entry "The guard reads a folder of Windows and asks only the installer on PATH", those that neither that first order nor 3b builds.
+Reason: the job under windows-latest was stopped at its fifteen minutes at
+the first attempt of run 45957499843 on pull request #271 with no case red,
+and every pull request runs through that job; and the second run behind a
+stand-in for uname would have shown on the Mac the case of the self-test of
+`bin/devloop-install-note` that went red first under windows-latest on 26
+November 2026, the second addendum of the entry of that date named above.
+Not chosen: both blocks built by 3b, since 3b is large as it stands, and
+until its merge the second run would protect no branch.
+
+Decided on 27 November 2026 without a question, by the rule that nothing is
+asked where one way carries a great disadvantage and the other none: in the
+second run of `scripts/devloop-run-workflow` a case that holds the answer of
+uname against a second source of the system is left out with a line, today
+the last case of the self-test of `bin/devloop-surface`, which holds uname
+against bash's OSTYPE, and OSTYPE is not set in that run. Reason:
+`bin/devloop-bounded` reads OSTYPE for its look at `/proc`, in its function
+`stands` and in its self-test before the case "does not end, all of it ended
+on the SIGTERM"; with OSTYPE reading msys under Linux its look is kill with
+the signal 0 alone, and that case is then held to 1900 milliseconds where,
+by the comment above it, the watchdog waits a second out as soon as nobody
+reaps an orphaned process: red by construction, with no fault in the
+program. And OSTYPE would bring no branch to run: the self-test of
+`bin/devloop-command-reader` names its system through `DEVLOOP_READER_OS`,
+in its functions `runw`, `runm` and `runl`. Not chosen: OSTYPE reading msys
+in the second run as well.
+
+Decided on 27 November 2026 without a question, by the same rule: the job
+hooks on every system has thirty minutes, one limit for the job on all four
+systems. Reason: the times in the Wrong of the block of this milestone on
+the fifteen minutes. The first attempt of run 45957499843 was stopped at
+fifteen minutes with its three steps at 10 minutes 53 seconds, 2 minutes 18
+seconds and more than 1 minute 41 seconds; the second attempt was green in 9
+minutes 28 seconds, the same steps at 6 minutes 36 seconds, 1 minute 29
+seconds and 1 minute 8 seconds; and the runner of the first attempt ran most
+self-tests up to twice as long. Thirty minutes hold a runner twice as slow
+as that of the second attempt, with room for the steps later orders give the
+job, and a step that hangs is still stopped at them. Not chosen: a limit for
+windows-latest alone through an expression of the matrix, since
+`scripts/devloop-run-workflow` reads `timeout-minutes` as a number, in its
+function `run_step`, evaluates no expression of the platform, and could not
+tell under Linux the entry of ubuntu-latest from that of alpine. And not
+chosen: the job split into more jobs, since the step of the self-tests alone
+took 10 minutes 53 seconds on the slow runner, so that a split job would
+keep hardly four minutes of room under fifteen, and every new job is a check
+the owner has to make required on main, `docs/skill-conventions.md` under
+"Registering a skill", its sentence on the four checks required since 14
+October 2026, and the head of `.github/workflows/stock-take.yml`,
+"is the owner's setting, as for stock-take".
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

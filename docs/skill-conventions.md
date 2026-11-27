@@ -4720,7 +4720,21 @@ places, since 23 November 2026 the checks under this heading that
 `scripts/devloop-handover-checks` holds, with that program's self-test,
 and the title step run here before the pull
 request shows them, on this one system, a job with a matrix once; a step added
-to the file runs without a change to the program. It ends with 0 where every
+to the file runs without a change to the program. Since 27 November 2026 the
+hooks step, found by the opening of its name, "every self-test under bin/",
+runs a second time right after its first run, with `RUNNER_OS` reading
+Windows and behind a stand-in for uname that answers `uname -s` as Git Bash
+answered on windows-latest, `MINGW64_NT-10.0-26100`, so that a branch a
+program takes for Windows off `uname -s` runs here before the push and not
+first in the job under windows-latest, the roadmap entry of that date, "The self-tests run again as Git Bash, and the job has thirty minutes";
+one line before that run says what it is and what the stand-in does not
+reach, `OSTYPE`, the forms of `pwd` and `HOME`, `os.name` in the programs in
+Python and the tools of Git Bash, which stay with that job; a case that
+holds the answer of uname against a second source of the system is left out
+in it with a line, today the last case of the self-test of
+`bin/devloop-surface`; the run counts in the last line as a step of its
+own; and where no step of the file opens so, the program says so and ends
+red. It ends with 0 where every
 step did, and its last line opens with `green:`, the count of the steps run and
 of those not run by design behind it; a red step, a step it could not run, or a
 job stopped at its `timeout-minutes` end it with 1 and a last line opening with

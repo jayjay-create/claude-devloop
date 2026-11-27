@@ -15426,6 +15426,97 @@ and for the proofs of closings.
   17; nothing Walked on this branch without a run the branch adds.
   `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
 
+- **The self-tests run again as Git Bash, and the job has thirty minutes**
+
+  27 November 2026, version 0.198.0. On `task/pruefungen-uname-und-limit`,
+  off `origin/main` at `37d22e4`, in three commits: the code with the
+  version, the documents, and the runs with their records. It builds two of
+  the three blocks the merge of the entry above wrote, on
+  `scripts/devloop-run-workflow` running the self-tests under `bin/` with the
+  machine's own uname alone and on the fifteen minutes of the job hooks on
+  every system, as the first of the orders decided on 27 November 2026,
+  `docs/plan.md` under milestone 12. No session log was read; nothing was
+  installed.
+
+  Built. `scripts/devloop-run-workflow` runs the step whose name opens with
+  "every self-test under bin/" a second time right after its first run, with
+  RUNNER_OS reading Windows and behind a stand-in for uname, first on the
+  step's PATH, that answers `uname -s` MINGW64_NT-10.0-26100 and hands every
+  other call to the uname of the system. Its head says the rest under "The
+  second run", and what the stand-in does not reach: OSTYPE, the forms of
+  `pwd` and `HOME`, `os.name` in the programs in Python and the tools of Git
+  Bash, which stay with the job under windows-latest. The second run is a
+  step of its own in the plan, in the output and in the last line, which
+  counts 14 steps over `.github/workflows/stock-take.yml` where it counted
+  13. The file the program takes by default without such a step ends it red,
+  with a line that names the opening. The self-test of `bin/devloop-surface`
+  leaves its last case out, with a line, where `DEVLOOP_UNAME_STAND_IN` is
+  set, the variable the second run sets and nothing sets on GitHub. The job
+  hooks on every system has `timeout-minutes` at 30 where it had 15. The
+  self-test of `scripts/devloop-run-workflow` has 55 cases where it had 45.
+  Six things are new in `docs/stock-take.tsv`, five of that program and one
+  of `bin/devloop-surface`; the thing on the job stopped at its limit, which
+  had no run, is renamed from "hooks on every system stopped at fifteen
+  minutes, the check red" to the same words with thirty.
+
+  Decided on 27 November 2026, each with its reason and with what was not
+  chosen in `docs/plan.md` under milestone 12: the order of the work after
+  the merge of the entry above; the case with the second source left out and
+  OSTYPE not set; thirty minutes, one limit for the four systems. Decided on
+  that day while building, without a question: the second run leaves out
+  that one case and not the whole self-test of `bin/devloop-surface`.
+  Reason: the case is what holds uname against a second source, so the
+  self-test says so itself and the step's loop names no program; and every
+  other case of that self-test answers uname itself, by a stand-in first on
+  the path of its own calls, so that it runs behind the outer stand-in as
+  before and a later case that came to hang on the outer uname would show.
+  Not chosen: the whole self-test left out by the step. The stand-in hands
+  every other call to the uname the search path of the program finds and not
+  to `/usr/bin/uname`, since the self-test of the program runs in the job
+  under Alpine as well, where uname stands elsewhere. Under Windows itself
+  the program leaves the second run out, said and counted as not run by
+  design, the first run being that run there. And the step is asked of the
+  file the program takes by default alone; another file may be without it.
+
+  The should of the block on the machine's own uname takes the decisions on
+  RUNNER_OS, on the case left out and on OSTYPE.
+  Should changed: scripts/devloop-run-workflow runs the self-tests under bin/ with the machine's own uname alone, so that a program's branch for Windows read off uname -s first runs in the job under windows-latest of the pull request
+  Its should until now: "`scripts/devloop-run-workflow` runs the step of the
+  self-tests under `bin/` a second time behind a stand-in for uname that
+  answers as Git Bash answered on windows-latest, MINGW64_NT-10.0-26100, and
+  ends red where a case is red there, so that a branch for Windows read off
+  `uname -s` runs on the machine before the push; what such a stand-in does
+  not reach, the forms of `pwd`, `HOME` and the tools of Git Bash, stays with
+  the job under windows-latest; milestone 12." Its should now:
+  "`scripts/devloop-run-workflow` runs the step of the self-tests under `bin/`
+  a second time, with RUNNER_OS reading Windows and behind a stand-in for
+  uname that answers as Git Bash answered on windows-latest,
+  MINGW64_NT-10.0-26100, and ends red where a case is red there, so that a
+  branch for Windows read off `uname -s` runs on the machine before the push;
+  a case that holds the answer of uname against a second source of the system
+  is left out in that second run, with a line that says so and why, today the
+  last case of the self-test of `bin/devloop-surface`; OSTYPE is not set in
+  it; what such a stand-in does not reach, OSTYPE, the forms of `pwd` and
+  `HOME`, `os.name` in the programs in Python and the tools of Git Bash,
+  stays with the job under windows-latest; milestone 12." The should of the
+  block on the fifteen minutes stays.
+
+  Mended where the text stood. `docs/plan.md`, the paragraph on what is built
+  of milestone 12, said of the three blocks the merge of the entry above
+  wrote "No order is named for them yet.", which holds for the first of them
+  alone now. The notes of the two blocks built ended on "no order is named
+  for it yet". And the comment of the job in the workflow said that the job
+  under windows-latest had taken 10 to 12 "of its 15 minutes", the limit it
+  had until this entry.
+
+  Open. The block on the fifteen minutes stays Built, never walked on this
+  branch: its case, the job under windows-latest within its limit on a
+  runner as slow as that of the first attempt, runs first in the job of the
+  pull request, and a record of it is written at the merge. The line of the
+  second run left out under Windows has no run. And a first run that is
+  stopped at the job's limit is followed by a second run under the same
+  limit; whether the second is left out then is not decided.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
