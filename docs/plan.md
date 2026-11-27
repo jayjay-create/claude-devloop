@@ -1573,6 +1573,9 @@ red. The second and the third an order of 27 November 2026 builds, before
 decisions of that day below: `scripts/devloop-run-workflow` runs the step of
 the self-tests under `bin/` and the hooks a second time behind a stand-in
 for uname that answers as Git Bash, and the job has thirty minutes. The
+block on the machine's own uname is walked by the runs of that entry on the
+Mac, the second run green and, in a counter-check, red at the case that had
+gone red first under windows-latest. The
 block on the fifteen minutes stays Built, never walked until the job under
 windows-latest of that order's pull request has run and a record is written
 at the merge. For the first of the three no order is named yet: it is one of

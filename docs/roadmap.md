@@ -15436,7 +15436,8 @@ and for the proofs of closings.
   machine's own uname alone and on the fifteen minutes of the job hooks on
   every system, as the first of the orders decided on 27 November 2026,
   `docs/plan.md` under milestone 12. No session log was read; nothing was
-  installed.
+  installed but bash, git and python3 into the throwaway container of run
+  A1.
 
   Built. `scripts/devloop-run-workflow` runs the step whose name opens with
   "every self-test under bin/" a second time right after its first run, with
@@ -15508,6 +15509,74 @@ and for the proofs of closings.
   for it yet". And the comment of the job in the workflow said that the job
   under windows-latest had taken 10 to 12 "of its 15 minutes", the limit it
   had until this entry.
+
+  The runs, each at the second commit, `c261c67`, the day and the times read
+  off `date -u`, 27 November 2026.
+
+  Run M1, on the Mac from 18:54:49 to 19:01:09 UTC: the tree clean,
+  `scripts/devloop-run-workflow` over `.github/workflows/stock-take.yml`
+  under `bin/devloop-bounded 600`, exit 0 after 380 seconds, "green: 14 steps
+  run, every one ended with 0"; at `37d22e4` the same run took 262 seconds
+  and counted 13. The hooks step ended with 0 in its first run, 14 self-tests
+  passed, among them the 55 cases of `scripts/devloop-run-workflow` and the
+  34 of `bin/devloop-surface`, its case "no stand-in: the system this
+  self-test runs on, macos" ok. Then the line before the second run, once,
+  and the second run under the step's name with ", a second time, as under
+  Git Bash", ended with 0: the self-test of `bin/devloop-bounded` with its
+  line "left out under Windows with Git Bash" and 18 cases where the first
+  run has 19, that of `bin/devloop-setup-state` the same way, that of
+  `bin/devloop-install-note` with 59 cases, that of `bin/devloop-surface`
+  with the line "left out behind a stand-in for uname" and 33 cases, the
+  self-tests of `scripts/devloop-run-workflow` and
+  `scripts/devloop-handover-checks` left out by the step's lines for Windows,
+  the eight cases of the four hooks each with "the place Git Bash", and
+  `bin/devloop-text skill-name` twice with "system: windows". M1 walks the
+  second run green, its environment, the case left out, the self-test of
+  `bin/devloop-surface`, whose runs of 21 November 2026 the changed line of
+  its last case ended, and, by the cases of the program's self-test, the file
+  without the step, which those cases run red, list and run green under
+  another path.
+
+  Run A1, in a container of alpine:3.22 from 19:01:59 to 19:02:14 UTC: the
+  repository mounted read-only, bash 5.2.37 and Python 3.12.16. The self-test
+  of `scripts/devloop-run-workflow` with 55 cases, the ten new ones among
+  them, the stand-in handing every other call to the uname of busybox; the
+  self-test of `bin/devloop-surface` with 34 cases, its last case naming
+  linux, and with `DEVLOOP_UNAME_STAND_IN` set with the line and 33.
+
+  Run G1, on the Mac from 19:02:35 to 19:06:26 UTC: the counter-check of the
+  red end, with the case of 26 November 2026. In a throwaway clone of the
+  branch, `bin/devloop-install-note` as it stood at `7372cbd`, whose
+  self-test went red under windows-latest in run 45899945857 and green on
+  the Mac; `git diff --stat 7372cbd 37d22e4` over `bin/`, `hooks/`,
+  `scripts/`, `shared/`, `skills/`, `output-styles/` and `.github/` names
+  that file alone. The job hooks on every
+  system was cut out of the workflow unchanged into a file of its own, so
+  that the steps of the job stock-take, which hold the table against the
+  tree, do not run over the changed file. The program over that file: the
+  first run of the hooks step ended with 0, that self-test at 59 cases; the
+  second run ended with 1, the self-test red after 41 cases at "an install
+  alone, its output seen: the line, as today", the case and the count of the
+  job under windows-latest, the eleven other self-tests of the second run
+  green; the two steps after it green; the last line "red: 1 of 4 steps run
+  did not end with 0 or did not run here" with the second run named, exit 1
+  after 231 seconds. G1 walks the second run red, and with M1 the block on
+  the machine's own uname, which gets the Status Walked.
+
+  The tool and the checks, at the last commit. `scripts/devloop-stock-take`
+  exit 0, broken records 0, uncovered lines 0 of 5018: Undetermined 24,
+  Recorded, not built 252, Built, never walked 1723, Walked 930, Closed 85;
+  milestone 12 at 179 blocks, Recorded, not built 31, Built, never walked
+  66, Walked 65, Closed 17; nothing Walked on this branch without a run the
+  branch adds. At `37d22e4` uncovered lines 0 of 5006, Recorded, not built
+  254, Built, never walked 1721 and Walked 924, and in milestone 12
+  Recorded, not built 33, Built, never walked 65 and Walked 64: the two
+  blocks leave Recorded, not built, one for Walked and one for Built, never
+  walked; five of the six new things are Walked, and the one on the second
+  run under Windows itself is Built, never walked; and twelve lines of the
+  search set are new, ten in `scripts/devloop-run-workflow` and two in
+  `bin/devloop-surface`. `scripts/devloop-handover-checks` exit 0, "green: 22
+  checks green, 0 red".
 
   Open. The block on the fifteen minutes stays Built, never walked on this
   branch: its case, the job under windows-latest within its limit on a
