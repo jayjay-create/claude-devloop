@@ -15426,6 +15426,270 @@ and for the proofs of closings.
   17; nothing Walked on this branch without a run the branch adds.
   `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
 
+- **The self-tests run again as Git Bash, and the job has thirty minutes**
+
+  27 November 2026, version 0.198.0. On `task/pruefungen-uname-und-limit`,
+  off `origin/main` at `37d22e4`, in five commits: the code with the
+  version, the documents, the runs with their records, the corrections of
+  the audit before the push, and the corrections of the merge. It builds two of
+  the three blocks the merge of the entry above wrote, on
+  `scripts/devloop-run-workflow` running the self-tests under `bin/` with the
+  machine's own uname alone and on the fifteen minutes of the job hooks on
+  every system, as the first of the orders decided on 27 November 2026,
+  `docs/plan.md` under milestone 12. No session log was read; nothing was
+  installed but bash, git and python3 into the throwaway container of run
+  A1.
+
+  Built. `scripts/devloop-run-workflow` runs the step whose name opens with
+  "every self-test under bin/" a second time right after its first run, with
+  RUNNER_OS reading Windows and behind a stand-in for uname, first on the
+  step's PATH, that answers `uname -s` MINGW64_NT-10.0-26100 and hands every
+  other call to the uname of the system. Its head says the rest under "The
+  second run", and what the stand-in does not reach: OSTYPE, the forms of
+  `pwd` and `HOME`, `os.name` in the programs in Python and the tools of Git
+  Bash, which stay with the job under windows-latest. The second run is a
+  step of its own in the plan, in the output and in the last line, which
+  counts 14 steps over `.github/workflows/stock-take.yml` where it counted
+  13. The file the program takes by default without such a step ends it red,
+  with a line that names the opening. The self-test of `bin/devloop-surface`
+  leaves its last case out, with a line, where `DEVLOOP_UNAME_STAND_IN` is
+  set, the variable the second run sets and nothing sets on GitHub. The job
+  hooks on every system has `timeout-minutes` at 30 where it had 15. The
+  self-test of `scripts/devloop-run-workflow` has 55 cases where it had 45.
+  Six things are new in `docs/stock-take.tsv`, five of that program and one
+  of `bin/devloop-surface`; the thing on the job stopped at its limit, which
+  had no run, is renamed from "hooks on every system stopped at fifteen
+  minutes, the check red" to the same words with thirty.
+
+  Decided on 27 November 2026, each with its reason and with what was not
+  chosen in `docs/plan.md` under milestone 12: the order of the work after
+  the merge of the entry above; the case with the second source left out and
+  OSTYPE not set; thirty minutes, one limit for the four systems. Decided on
+  that day while building, without a question: the second run leaves out
+  that one case and not the whole self-test of `bin/devloop-surface`.
+  Reason: the case is what holds uname against a second source, so the
+  self-test says so itself and the step's loop names no program; and every
+  other case of that self-test answers uname itself, 32 by a stand-in first
+  on the path of its own calls and one by a search path with no uname on
+  it, so that it runs behind the outer stand-in as
+  before and a later case that came to hang on the outer uname would show.
+  Not chosen: the whole self-test left out by the step. The stand-in hands
+  every other call to the uname the search path of the program finds and not
+  to `/usr/bin/uname`, since the self-test of the program runs in the job
+  under Alpine as well, where uname stands elsewhere. Under Windows itself
+  the program leaves the second run out, said and counted as not run by
+  design, the first run being that run there. And the step is asked of the
+  file the program takes by default alone; another file may be without it.
+
+  The should of the block on the machine's own uname takes the decisions on
+  RUNNER_OS, on the case left out and on OSTYPE.
+  Should changed: scripts/devloop-run-workflow runs the self-tests under bin/ with the machine's own uname alone, so that a program's branch for Windows read off uname -s first runs in the job under windows-latest of the pull request
+  Its should until now: "`scripts/devloop-run-workflow` runs the step of the
+  self-tests under `bin/` a second time behind a stand-in for uname that
+  answers as Git Bash answered on windows-latest, MINGW64_NT-10.0-26100, and
+  ends red where a case is red there, so that a branch for Windows read off
+  `uname -s` runs on the machine before the push; what such a stand-in does
+  not reach, the forms of `pwd`, `HOME` and the tools of Git Bash, stays with
+  the job under windows-latest; milestone 12." Its should now:
+  "`scripts/devloop-run-workflow` runs the step of the self-tests under `bin/`
+  a second time, with RUNNER_OS reading Windows and behind a stand-in for
+  uname that answers as Git Bash answered on windows-latest,
+  MINGW64_NT-10.0-26100, and ends red where a case is red there, so that a
+  branch for Windows read off `uname -s` runs on the machine before the push;
+  a case that holds the answer of uname against a second source of the system
+  is left out in that second run, with a line that says so and why, today the
+  last case of the self-test of `bin/devloop-surface`; OSTYPE is not set in
+  it; what such a stand-in does not reach, OSTYPE, the forms of `pwd` and
+  `HOME`, `os.name` in the programs in Python and the tools of Git Bash,
+  stays with the job under windows-latest; milestone 12." The should of the
+  block on the fifteen minutes stays.
+
+  Mended where the text stood. `docs/plan.md`, the paragraph on what is built
+  of milestone 12, said of the three blocks the merge of the entry above
+  wrote "No order is named for them yet.", which holds for the first of them
+  alone now. The notes of the two blocks built ended on "no order is named
+  for it yet". And the comment of the job in the workflow said that the job
+  under windows-latest had taken 10 to 12 "of its 15 minutes", the limit it
+  had until this entry.
+
+  The runs, each at the second commit, `c261c67`, the day and the times read
+  off `date -u`, 27 November 2026.
+
+  Run M1, on the Mac from 18:54:49 to 19:01:09 UTC: the tree clean,
+  `scripts/devloop-run-workflow` over `.github/workflows/stock-take.yml`
+  under `bin/devloop-bounded 600`, exit 0 after 380 seconds, "green: 14 steps
+  run, every one ended with 0"; at `37d22e4` the same run took 262 seconds
+  and counted 13. The hooks step ended with 0 in its first run, 14 self-tests
+  passed, among them the 55 cases of `scripts/devloop-run-workflow` and the
+  34 of `bin/devloop-surface`, its case "no stand-in: the system this
+  self-test runs on, macos" ok. Then the line before the second run, once,
+  and the second run under the step's name with ", a second time, as under
+  Git Bash", ended with 0: the self-test of `bin/devloop-bounded` with its
+  line "left out under Windows with Git Bash" and 18 cases where the first
+  run has 19, that of `bin/devloop-setup-state` the same way, that of
+  `bin/devloop-install-note` with 59 cases, that of `bin/devloop-surface`
+  with the line "left out behind a stand-in for uname" and 33 cases, the
+  self-tests of `scripts/devloop-run-workflow` and
+  `scripts/devloop-handover-checks` left out by the step's lines for Windows,
+  the eight cases of the four hooks each with "the place Git Bash", and
+  `bin/devloop-text skill-name` twice with "system: windows". M1 walks the
+  second run green, its environment, the case left out, the self-test of
+  `bin/devloop-surface`, whose runs of 21 November 2026 the changed line of
+  its last case ended, and, by the cases of the program's self-test, the file
+  without the step, which those cases run red, list and run green under
+  another path.
+
+  Run A1, in a container of alpine:3.22 from 19:01:59 to 19:02:14 UTC: the
+  repository mounted read-only, bash 5.2.37 and Python 3.12.16. The self-test
+  of `scripts/devloop-run-workflow` with 55 cases, the ten new ones among
+  them, the stand-in handing every other call to the uname of busybox; the
+  self-test of `bin/devloop-surface` with 34 cases, its last case naming
+  linux, and with `DEVLOOP_UNAME_STAND_IN` set with the line and 33.
+
+  Run G1, on the Mac from 19:02:35 to 19:06:26 UTC: the counter-check of the
+  red end, with the case of 26 November 2026. In a throwaway clone of the
+  branch, `bin/devloop-install-note` as it stood at `7372cbd`, whose
+  self-test went red under windows-latest in run 45899945857 and green on
+  the Mac; `git diff --stat 7372cbd 37d22e4` over `bin/`, `hooks/`,
+  `scripts/`, `shared/`, `skills/`, `output-styles/` and `.github/` names
+  that file alone. The job hooks on every
+  system was cut out of the workflow unchanged into a file of its own, so
+  that the steps of the job stock-take, which hold the table against the
+  tree, do not run over the changed file. The program over that file: the
+  first run of the hooks step ended with 0, that self-test at 59 cases; the
+  second run ended with 1, the self-test red after 41 cases at "an install
+  alone, its output seen: the line, as today", the case and the count of the
+  job under windows-latest, the eleven other self-tests of the second run
+  green; the two steps after it green; the last line "red: 1 of 4 steps run
+  did not end with 0 or did not run here" with the second run named, exit 1
+  after 231 seconds. G1 walks the second run red, and with M1 the block on
+  the machine's own uname, which gets the Status Walked.
+
+  The tool and the checks, at the third commit. `scripts/devloop-stock-take`
+  exit 0, broken records 0, uncovered lines 0 of 5018: Undetermined 24,
+  Recorded, not built 252, Built, never walked 1723, Walked 930, Closed 85;
+  milestone 12 at 179 blocks, Recorded, not built 31, Built, never walked
+  66, Walked 65, Closed 17; nothing Walked on this branch without a run the
+  branch adds. At `37d22e4` uncovered lines 0 of 5006, Recorded, not built
+  254, Built, never walked 1721 and Walked 924, and in milestone 12
+  Recorded, not built 33, Built, never walked 65 and Walked 64: the two
+  blocks leave Recorded, not built, one for Walked and one for Built, never
+  walked; five of the six new things are Walked, and the one on the second
+  run under Windows itself is Built, never walked; and twelve lines of the
+  search set are new, ten in `scripts/devloop-run-workflow` and two in
+  `bin/devloop-surface`. `scripts/devloop-handover-checks` exit 0, "green: 22
+  checks green, 0 red".
+
+  Open. The line of the second run left out under Windows has no run. The
+  block on the fifteen minutes and the second run after a first run stopped
+  at the job's limit were decided at the merge, "The corrections of the
+  merge" below.
+
+  **The corrections of the audit**, of 27 November 2026, the day read off
+  `date -u`, the fourth commit, made before the push by a session that did
+  not build the branch. It held this entry sentence by sentence against the
+  code, the tool, the table and the runs, the plan, the two blocks and the
+  conventions with it, and searched the repository for what the branch
+  makes wrong. The fourth commit changes `docs/` alone. Its report stands
+  on this machine as `~/devloop-audit-pruefungen-uname-und-limit.md`, in
+  German, outside the repository. No session log was read; nothing was
+  installed.
+
+  Corrected where the text stood, five places. This entry said "in three
+  commits". It said that every other case of the self-test of
+  `bin/devloop-surface` answers uname "by a stand-in first on the path of
+  its own calls", where 32 of the 33 do and the case "no uname on the
+  search path: the system unknown" gives its call a search path with no
+  uname on it; what the sentence concludes holds. It gave the numbers of
+  the tool "at the last commit", which was the third. And the line of the
+  table for run M1 on the environment of the second run said nothing of
+  `DEVLOOP_UNAME_STAND_IN`, which the name of its thing has "set to that
+  answer": M1 shows the variable set and not empty, by the line "left out
+  behind a stand-in for uname" of the self-test of `bin/devloop-surface`,
+  and no line of M1 or A1 prints its value; the line of the table says so.
+  And the decision in `docs/plan.md` on OSTYPE said that it "would bring no
+  branch to run": it brings none of a program, and of the self-tests the
+  case left out, which named windows where the audit ran the self-test of
+  `bin/devloop-surface` on the Mac behind a stand-in of its own with OSTYPE
+  reading msys, 34 cases, that of `bin/devloop-command-reader` passing
+  there with its 178 and that of `bin/devloop-bounded` with 18.
+
+  Held besides, with nothing found, each counter-check in a throwaway
+  clone of the branch at `dcb10dd`, outside the repository, and none of
+  them a record. G1 made again: the first run of the hooks step with 0 and
+  59 cases of that self-test, the second with 1 after 41 cases at the same
+  case, "red: 1 of 4 steps run", exit 1 after 232 seconds. A step of the
+  audit's own that is red where `uname -s` opens with MINGW and nowhere
+  else, in a file under another path: green in its first run and red in
+  its second, which printed Windows for RUNNER_OS, MINGW64_NT-10.0-26100
+  for `uname -s` and for `DEVLOOP_UNAME_STAND_IN`, and for `uname -m`,
+  `uname -sm` and OSTYPE what the first run printed. A step red in its
+  first run and a step stopped at the job's limit in its first run: the
+  second run followed each. The self-test of `bin/devloop-surface` with 34
+  cases without the variable and with it empty, with the line and 33 with
+  it set, and behind a stand-in of the audit's own without the variable
+  red at its last case after 33 that were green. In a clone at `37d22e4`
+  the tool with the numbers this entry gives for that commit, and the run
+  of the workflow's steps green with 13 steps after 266 seconds. Off
+  GitHub: both attempts of run 45957499843 under windows-latest with the
+  times the comment of the job and `docs/plan.md` give, by the stamps of
+  the logs, and the job under windows-latest of run 45899945857 red after
+  41 cases at the case of G1. Run A1 was not made again, since nothing may
+  be installed by the audit; in the image alpine:3.22, started as it
+  stood, uname stands at `/bin/uname` and nothing at `/usr/bin/uname`. The
+  search went through the plan, the conventions, `docs/rationale.md`,
+  `README.md`, the loaded texts, the hooks, the programs, the workflow, the
+  blocks and the table, for the limit of fifteen minutes, the count of the
+  steps, the counts of the two self-tests, the name of the step, the
+  answer of uname and who reads it, OSTYPE, the new variable, the order of
+  the work and the version: every place it found is a dated sentence or a
+  line this branch wrote.
+
+  At the programs the audit changed nothing and wrote no block; two things
+  it saw there stand in its report for the person to decide on. No case of
+  the self-test of `scripts/devloop-run-workflow` holds the value of
+  `DEVLOOP_UNAME_STAND_IN`. And the head of that program says of OSTYPE
+  reading msys under Linux that the self-test of `bin/devloop-bounded`
+  "would be red by construction", where the decision in `docs/plan.md`
+  names the condition, that nobody reaps an orphaned process, and that
+  OSTYPE "would bring no branch to run", as the plan said until this
+  commit.
+
+  The tool and the checks after the fourth commit: exit 0, broken records
+  0, uncovered lines 0 of 5018, and every count as after the third commit;
+  nothing Walked on this branch without a run the branch adds.
+  `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
+
+  **The corrections of the merge**, of 27 November 2026, the fifth commit,
+  made at the merge from the check of the branch at the code; it changes
+  `docs/` alone. The checks of pull request #272, run 46067767114, were
+  green on the five jobs, the job under windows-latest in 13 minutes 19
+  seconds, its step of the self-tests and the hooks at 9 minutes 18 seconds,
+  the step on the folders at 2 minutes 11 seconds and the step on line
+  endings at 1 minute 36 seconds: a runner slower than that of the second
+  attempt of run 45957499843 and faster than that of the first, so that its
+  run does not meet the case of the block on the fifteen minutes. Decided at
+  the merge by the person: that block cannot be forced, `docs/plan.md` under
+  milestone 12, and it carries the form since this commit. Decided at the
+  merge without a question: the second run follows a first run stopped at
+  the job's limit, as built, `docs/plan.md` under milestone 12. The two
+  things the audit saw at the program stand as two blocks of milestone 12
+  with Fix none, on the value of `DEVLOOP_UNAME_STAND_IN`, which no case
+  holds, and on the head of the program on OSTYPE. Mended where the text
+  stood: this entry said "in four commits" and, under "Open", that a record
+  of the block on the fifteen minutes "is written at the merge" and that a
+  second run after a first stopped at the limit "is not decided"; and
+  `docs/plan.md`, the paragraph on what is built of milestone 12, said that
+  block "stays Built, never walked until the job under windows-latest of
+  that order's pull request has run and a record is written at the merge".
+  The tool after the fifth commit: exit 0, broken records 0, uncovered lines
+  0 of 5018, Recorded, not built 254 and milestone 12 at 181 blocks with
+  Recorded, not built 33, by the two blocks, every other count as after the
+  fourth commit, and the block on the fifteen minutes listed among the
+  defects whose case cannot be forced. The run of the workflow's steps over
+  the branch at `d605177` was green on Linux as well in this check, 14 steps
+  with the second run among them, no record.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
