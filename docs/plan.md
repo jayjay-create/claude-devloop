@@ -2499,10 +2499,12 @@ on the SIGTERM"; with OSTYPE reading msys under Linux its look is kill with
 the signal 0 alone, and that case is then held to 1900 milliseconds where,
 by the comment above it, the watchdog waits a second out as soon as nobody
 reaps an orphaned process: red by construction, with no fault in the
-program. And OSTYPE would bring no branch to run: the self-test of
-`bin/devloop-command-reader` names its system through `DEVLOOP_READER_OS`,
-in its functions `runw`, `runm` and `runl`. Not chosen: OSTYPE reading msys
-in the second run as well.
+program. And OSTYPE would bring no branch of a program to run: the
+self-test of `bin/devloop-command-reader` names its system through
+`DEVLOOP_READER_OS`, in its functions `runw`, `runm` and `runl`. Of the
+self-tests it would bring one branch to run, the case left out above, which
+would then name windows off OSTYPE as the job under windows-latest has it.
+Not chosen: OSTYPE reading msys in the second run as well.
 
 Decided on 27 November 2026 without a question, by the same rule: the job
 hooks on every system has thirty minutes, one limit for the job on all four
