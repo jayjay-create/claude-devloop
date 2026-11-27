@@ -80,7 +80,17 @@
 # stands first on the search path of the self-test's own calls and nowhere
 # else, and one case without the stand-in, which names the system the
 # self-test runs on as bash's OSTYPE has it; it prints one line per case and
-# exits 1 at the first that does not come out as this head says.
+# exits 1 at the first that does not come out as this head says. Since 27
+# November 2026 the case without the stand-in is left out, with a line that
+# says so and why, where the environment variable DEVLOOP_UNAME_STAND_IN is
+# set and not empty: whoever starts the self-test behind a stand-in for uname
+# of their own says so by that variable, as scripts/devloop-run-workflow does
+# in its second run of the step of the self-tests, where uname -s answers as
+# Git Bash; the case holds the answer of uname against OSTYPE, a second
+# source that no stand-in for uname answers, so that behind one it would be
+# red by construction and not for a fault. The count of the last line is one
+# lower then. The variable is read in the self-test alone, by no other path
+# of this program.
 set -u
 
 selftest() {
@@ -163,7 +173,12 @@ claude-desktop" -;                 expect "a value of two lines: the surface unk
     *) here=unknown ;;
   esac
   case "$here" in windows) goes=windows ;; unknown) goes=unknown ;; *) goes=terminal ;; esac
-  run "$PATH" cli -;               expect "no stand-in: the system this self-test runs on, $here" 0 "surface: terminal | system: $here | handover: $goes"
+  # left out, with a line, where DEVLOOP_UNAME_STAND_IN is set and not empty, since 27 November 2026: the call that started this self-test says by that variable that uname is answered by a stand-in of its own, as scripts/devloop-run-workflow does in its second run of the step of the self-tests, and such a stand-in answers uname and not OSTYPE, so that the two sources differ there by construction and not for a fault
+  if [ -n "${DEVLOOP_UNAME_STAND_IN:-}" ]; then
+    echo "left out behind a stand-in for uname: no stand-in: the system this self-test runs on, $here, since DEVLOOP_UNAME_STAND_IN says that uname is answered by a stand-in of the call that started this self-test, and bash's OSTYPE, the second source this case holds the answer of uname against, is answered by none"
+  else
+    run "$PATH" cli -;             expect "no stand-in: the system this self-test runs on, $here" 0 "surface: terminal | system: $here | handover: $goes"
+  fi
   echo "SELF-TEST PASSED: $n cases"
   exit 0
 }

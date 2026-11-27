@@ -60,6 +60,12 @@
 # program's self-test, and the job hooks on every system runs the self-test
 # under macos-latest, each place saying in its comment what it holds;
 # decided on that day, docs/plan.md under milestone 15.
+# Since 27 November 2026 the job hooks on every system has thirty minutes
+# where it had fifteen, and scripts/devloop-run-workflow, where it runs this
+# file on a machine, runs that job's step of the self-tests and the hooks a
+# second time behind a stand-in for uname that answers as Git Bash, the
+# job's comment saying what that run is and what it does not reach; decided
+# on that day, docs/plan.md under milestone 12.
 name: merge gate
 
 on:
@@ -660,7 +666,8 @@ jobs:
   # other systems it is left out, a line printed that says so and why:
   # ubuntu-latest has it in the job stock-take, and from Windows and Alpine
   # no handover is made, the job under windows-latest having taken 10 to 12
-  # of its 15 minutes on pull requests #258 to #263.
+  # of the 15 minutes it had until 27 November 2026 on pull requests #258 to
+  # #263.
   # Since 26 November 2026, part 3a of order (5) of milestone 12, the roadmap
   # entry of that date on the folders the install guard reads: a step of its
   # own before the step on line endings, which stays the last. It starts the
@@ -683,6 +690,35 @@ jobs:
   # on the three other systems a line says that these are left out and why.
   # No case asks an installer itself: what the installers answer under
   # Windows was measured once, on that day, by a workflow of its own.
+  # Since 27 November 2026, the roadmap entry of that date,
+  # "The self-tests run again as Git Bash, and the job has thirty minutes":
+  # the job has thirty minutes on each of its four systems, fifteen until
+  # then. Under windows-latest the first attempt of run 45957499843 on pull
+  # request #271 was stopped at the fifteen with no case red, the step of
+  # the self-tests and the hooks at 10 minutes 53 seconds, the step on the
+  # folders at 2 minutes 18 seconds and the last step stopped after 1 minute
+  # 41 seconds, where the second attempt, on another runner, was green in 9
+  # minutes 28 seconds. Thirty hold a runner twice as slow as that of the
+  # second attempt, with room for the steps the job gains, and a step that
+  # hangs is still stopped at them; decided that day, docs/plan.md under
+  # milestone 12, with what was not chosen.
+  # And since the same day scripts/devloop-run-workflow, where it runs this
+  # file on a machine, runs the step of the self-tests and the hooks below a
+  # second time, with RUNNER_OS reading Windows and behind a stand-in for
+  # uname that answers uname -s as Git Bash answered on windows-latest,
+  # MINGW64_NT-10.0-26100, so that a branch a program takes for Windows off
+  # uname -s, and what the step expects where RUNNER_OS reads Windows, runs
+  # there before the push. The program finds the step by the opening of its
+  # name, "every self-test under bin/", and ends red where no step of this
+  # file opens so. Nothing of that is a run of this job: on GitHub the step
+  # runs once on each system, every self-test as before. What the stand-in
+  # does not reach - OSTYPE, the forms of pwd and HOME, os.name in the
+  # programs in Python and the tools of Git Bash - stays with this job under
+  # windows-latest. A case that holds the answer of uname against a second
+  # source of the system, today the last case of the self-test of
+  # bin/devloop-surface, is left out in that second run alone, with a line,
+  # by the variable DEVLOOP_UNAME_STAND_IN, which the program sets for that
+  # run and nothing sets here.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -700,7 +736,7 @@ jobs:
             container: alpine:3.22
     runs-on: ${{ matrix.runner }}
     container: ${{ matrix.container }}
-    timeout-minutes: 15
+    timeout-minutes: 30
     defaults:
       run:
         shell: bash

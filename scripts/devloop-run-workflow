@@ -19,7 +19,9 @@ Usage
 Exit 0 where every step that runs here ended with 0 and no step was left
 unrun but by design; 1 where a step ended otherwise than 0, was stopped at the
 job's timeout, ended the process of this program that holds it, or could not
-be run here; 2 where the file cannot be read as a workflow or the repository
+be run here, or, since 27 November 2026, where the file this program takes by
+default carries no step for the second run, "The second run" below; 2 where
+the file cannot be read as a workflow or the repository
 cannot be found. The last line says which: it opens with "green:" or with
 "red:". Ended itself by SIGINT, SIGTERM or SIGHUP, on macOS, Linux and
 Alpine, it ends the step that runs with everything it started and what the
@@ -39,6 +41,51 @@ this program learns its condition, the way the workflow's own hooks step goes
 red on an event it has no input for. A job with a strategy.matrix runs on
 GitHub once per entry of the matrix; here it runs once, on this system, and
 the output says so.
+
+The second run, since 27 November 2026. The step whose name opens with
+"every self-test under bin/", in .github/workflows/stock-take.yml the step
+of the job hooks on every system that runs the self-tests under bin/ and
+the hooks, runs twice here: once as every step, and right after that once
+more with RUNNER_OS reading Windows and behind a stand-in for uname first on
+the step's PATH, a file in this program's throwaway directory that answers
+uname -s, with that one argument, MINGW64_NT-10.0-26100, as Git Bash
+answered on windows-latest on 26 November 2026, and hands every other call
+to the uname the search path of this program finds. So a branch a program
+takes for Windows off uname -s, and what the step itself expects where
+RUNNER_OS reads Windows, runs on the machine before the push. Until that day
+such a branch ran first in the job under windows-latest of the pull request,
+as the self-test of bin/devloop-install-note did on 26 November 2026, red
+there after this program had ended green on macOS, the block of milestone 12
+in docs/defects.md on the machine's own uname. The second run is a step of
+its own in the plan, in the output and in the last line: listed behind its
+step, announced with the step's name and the words ", a second time, as
+under Git Bash", run with the step's shell under the job's timeout-minutes,
+whatever the first run came to, red where it ends otherwise than 0, and
+counted among the steps run, so that the count of the last line is one above
+the steps of the file that ran. One line before it says what the run is and
+what it does not reach. The stand-in answers uname and nothing else: OSTYPE,
+the forms of pwd and HOME, os.name in the programs written in Python and the
+tools of Git Bash stay those of this system, and what hangs on them stays
+with the job under windows-latest. OSTYPE is not set, decided on 27 November
+2026, docs/plan.md under milestone 12: bin/devloop-bounded takes its look at
+/proc off OSTYPE, and with msys there under Linux its self-test would be red
+by construction; and the one program that takes Windows off OSTYPE,
+bin/devloop-command-reader, names its system in its self-test through
+DEVLOOP_READER_OS, so that OSTYPE would bring no branch to run. A case of a
+self-test that holds the answer of uname against a second source of the
+system would be red behind the stand-in by construction and not for a fault;
+so the second run sets DEVLOOP_UNAME_STAND_IN, to what the stand-in answers,
+and such a case reads the variable and is left out with a line that says so,
+today the last case of the self-test of bin/devloop-surface, which holds
+uname against bash's OSTYPE. On GitHub nothing sets the variable, and the
+step runs every case there as before. Under Windows itself the second run is
+left out, said and counted as not run by design: the first run is the run
+under Windows there. Where the file is the one this program takes by
+default, .github/workflows/stock-take.yml under the root, and no step of it
+has a name that opens so, the step renamed say, the program says so in a
+line, in a listing too, and ends red with 1, the line in its last line, so
+that the second run does not go missing without a sound. No other file is
+asked for such a step.
 
 The shell, from the file and from GitHub's docs. For every step the shell is
 the step's own shell: field, else the job's defaults.run.shell, else the
@@ -87,8 +134,8 @@ since nothing here stands in for the event. Three variables the runner sets
 and the steps read are set here too: GITHUB_WORKSPACE, the root of this
 repository, which is also every step's working directory unless a
 working-directory names another below it; RUNNER_OS, Linux, macOS or Windows
-for this system, as GitHub spells them; RUNNER_TEMP, the throwaway directory
-above.
+for this system, as GitHub spells them, and Windows in a second run, above;
+RUNNER_TEMP, the throwaway directory above.
 
 The end of a step. On macOS, Linux and Alpine every step runs under a holder,
 since 16 November 2026: a process forked off this program that leads a
@@ -287,8 +334,21 @@ not run on; the first line naming the system and its release, sysname and
 release of os.uname(), or sys.platform where os.uname is missing, and no node
 name, held against the text the self-test builds from the same two fields,
 which it does not print where it is red, only the count of words in the
-parenthesis and the count expected; and that the real workflow file reads and
-carries the two names left out, so that the exclusion stays live. Nothing of
+parenthesis and the count expected; since 27 November 2026 the second run,
+in the plan a record of its own behind its step and under Windows left out,
+and then run, in the file the program takes by default under the root of the
+throwaway repository, a step that asks uname and runs the self-test of
+bin/devloop-surface: the line before the second run, its own line, the count
+of the last line, RUNNER_OS reading Windows there and uname -s answered by
+the stand-in, every other call of uname and OSTYPE as in the first run, the
+last case of that self-test run in the first run and left out in the second
+with its line, the second run in a listing, a step that ends with 1 where
+uname -s opens with MINGW, green in its first run and red in its second, and
+the default file without the step, red with its line, in a listing said, and
+green under another path, all of these but the plan left out under Windows
+with a third line; and that the real workflow file reads,
+carries the two names left out, so that the exclusion stays live, and
+carries the step that runs a second time, once. Nothing of
 it reaches GitHub.
 """
 
@@ -307,6 +367,14 @@ import time
 OUTPUT_SECONDS = 5
 EXCLUDED = ("what the checkout holds", "what the container needs, under Alpine alone")
 DEFAULT_WORKFLOW = ".github/workflows/stock-take.yml"
+# the second run, since 27 November 2026, "The second run" in the head: the opening of the name of the step that runs once more, the words its second record carries behind the step's name, what the stand-in answers uname -s with, as Git Bash answered on windows-latest on 26 November 2026, and the system on which the second run is left out, the first run being that run there
+SECOND_RUN = "every self-test under bin/"
+SECOND_NAME = ", a second time, as under Git Bash"
+UNAME_ANSWER = "MINGW64_NT-10.0-26100"
+SECOND_NOT_ON = "Windows"
+# the one line before a second run, and the line where the file this program takes by default carries no such step
+SECOND_SAYS = "== a second run of the step before this line follows: RUNNER_OS reads Windows and uname -s is answered %s by a stand-in first on PATH, as Git Bash answers under windows-latest, every other call of uname by the uname of this system, so that a branch a program takes for Windows off uname -s runs here; what the stand-in does not reach stays with the job under windows-latest: OSTYPE, which this run does not set, the forms of pwd and HOME, os.name in the programs in Python, and the tools of Git Bash" % UNAME_ANSWER
+SECOND_MISSING = "no step of the file has a name that opens with \"%s\", the step this program runs a second time behind a stand-in for uname, so that no second run was made" % SECOND_RUN
 # the commands of the docs, {0} the file; "none" the row for a step without a shell on Linux and macOS
 SHELLS = {
     "none": "bash -e {0}",
@@ -577,6 +645,12 @@ def plan(wf, system):
                 if why:
                     rec["red"] = why
             out.append(rec)
+            if name.startswith(SECOND_RUN) and rec.get("command") and not rec.get("red"):
+                # the second run: a record of its own behind the step's, so that it is listed, run, said and counted as a step is
+                again = dict(rec, name=name + SECOND_NAME, second=True)
+                if system == SECOND_NOT_ON:
+                    again["skip"] = "left out under Windows, where the first run of the step is the run under Windows"
+                out.append(again)
     return out
 
 
@@ -606,6 +680,23 @@ def entry_head(root):
     return None, "the added head is not in the file"
 
 
+def uname_stand_in(tmp):
+    """The stand-in for uname of a second run, written into a directory of
+    its own under tmp, which run_step puts first on the step's PATH: uname
+    -s, with that one argument, answers UNAME_ANSWER, and every other call
+    goes to the uname the search path of this program finds, read here,
+    before the stand-in stands on any path, so that the stand-in never
+    starts itself; where the path finds none, to /usr/bin/uname. Returns
+    the directory."""
+    d = os.path.join(tmp, "uname-as-git-bash")
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, "uname")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("#!/bin/sh\n[ \"$#\" -eq 1 ] && [ \"$1\" = -s ] && exec echo %s\nexec %s \"$@\"\n" % (shlex.quote(UNAME_ANSWER), shlex.quote(shutil.which("uname") or "/usr/bin/uname")))
+    os.chmod(path, 0o755)
+    return d
+
+
 def run_step(rec, root, tmp, base_env, title, standing):
     """Runs one step; returns (exit code or None, output, note). What is to
     be said of a step that counts with its exit code stands in rec["said"]
@@ -618,6 +709,9 @@ def run_step(rec, root, tmp, base_env, title, standing):
         if ANY_EXPR.search(v):
             return None, "", "env %s carries an expression this program does not resolve: %s" % (k, v)
         env[k] = v
+    if rec.get("stand_in"):
+        # a second run: RUNNER_OS as under windows-latest, the stand-in for uname first on the step's PATH, and the variable by which a self-test leaves out a case that holds the answer of uname against a second source of the system; OSTYPE is not set
+        env.update({"RUNNER_OS": "Windows", "DEVLOOP_UNAME_STAND_IN": UNAME_ANSWER, "PATH": rec["stand_in"] + os.pathsep + (env.get("PATH") or os.defpath)})
     text = str(rec["run"])
     if ANY_EXPR.search(text):
         return None, "", "the run: block carries an expression this program does not resolve: %s" % ANY_EXPR.search(text).group(0)
@@ -954,6 +1048,11 @@ def main(argv):
     for rec in steps:
         rec["wf_env"] = wf.get("env") if isinstance(wf.get("env"), dict) else {}
         rec["wf_defaults"] = wf.get("defaults") if isinstance(wf.get("defaults"), dict) else {}
+    late = []
+    if os.path.realpath(path) == os.path.realpath(os.path.join(root, DEFAULT_WORKFLOW)) and not any(rec["name"].startswith(SECOND_RUN) for rec in steps):
+        # the file this program takes by default, without the step that runs a second time, renamed say: said here, in a listing too, and red in the last line
+        print("== %s" % SECOND_MISSING)
+        late.append(SECOND_MISSING)
     if listing:
         for rec in steps:
             what = rec.get("skip") and "not run: " + rec["skip"] or rec.get("red") and "red: " + rec["red"] or "runs as %s (%s)" % (rec["command"], rec["source"])
@@ -986,6 +1085,10 @@ def main(argv):
                 print("== %s / %s: not run, %s" % (rec["job"], rec["name"], rec["red"]))
                 red.append("%s / %s: %s" % (rec["job"], rec["name"], rec["red"]))
                 continue
+            if rec.get("second"):
+                # a second run: its stand-in written, inside the try that removes the directory, and the one line that says what the run is and what it does not reach
+                rec["stand_in"] = uname_stand_in(tmp)
+                print(SECOND_SAYS)
             print("== %s / %s, as %s (%s)" % (rec["job"], rec["name"], rec["command"], rec["source"]))
             sys.stdout.flush()
             rc, out, note = run_step(rec, root, tmp, base_env, title, standing)
@@ -1007,6 +1110,7 @@ def main(argv):
         # on the way out by a signal or an error: what the steps that have ended left behind is ended all the same, without a line
         end_left(standing, False)
         shutil.rmtree(tmp, ignore_errors=True)
+    red.extend(late)
     by_design = "; ".join("%s: %d" % (k, v) for k, v in skipped.items()) or "none"
     if red:
         print("red: %d of %d steps run did not end with 0 or did not run here (%s); not run by design: %s" % (len(red), len(red) + green, "; ".join(red), by_design))
@@ -1344,6 +1448,61 @@ def selftest():
         else:
             print("left out under Windows: that this program, ended by a signal while a step runs, ends the step and what the steps before it left behind, and that a step past the timeout which runs this program one level down is ended with the step of that one, since it starts a step in no session of its own there and takes no signal in hand")
             print("left out under Windows: that a step which ends in time counts with its own exit code after five seconds at most where a process it left holds its output, that what the steps of a job left behind is ended at the job's end, what is said where ps does not answer then, a shell that cannot be started and a step that ends its holder, since this program runs a step there as before, with no holder, and looks for nothing a step left behind; docs/defects.md, the block \"under Windows scripts/devloop-run-workflow ends at a time limit one process alone, the shell of a step past the job's timeout and a run of the program in its self-test, and waits for the step's output to close\"")
+        # the second run, since 27 November 2026: the step whose name opens with SECOND_RUN run once more behind a stand-in for uname. First in the plan, where the system is a word handed in, Windows among them; then run, in the file the program takes by default under its root, here the throwaway repository, its block asking uname and running the self-test of bin/devloop-surface, whose last case holds the answer of uname against bash's OSTYPE
+        named = SECOND_RUN + ", in the self-test"
+        second = "jobs:\n  g:\n    runs-on: ubuntu-latest\n    defaults:\n      run:\n        shell: bash\n    steps:\n      - name: %s\n        run: |\n          echo \"os=$RUNNER_OS uname=$(uname -s) machine=$(uname -m) ostype=$OSTYPE\"\n          \"$SELFTEST_SURFACE\" --self-test\n      - name: the step after it\n        run: echo after-it\n" % named
+        planned = plan(read_yaml(second), "Linux"), plan(read_yaml(second), "Windows")
+        case("the second run in the plan: a record of its own behind the step's, with the step's command, and under Windows left out by design",
+             [[r["name"] for r in pl] for pl in planned] == [[named, named + SECOND_NAME, "the step after it"]] * 2
+             and [r.get("skip") for r in planned[0]] == [None, None, None] and planned[0][1]["command"] == SHELLS["bash"]
+             and [r.get("skip") for r in planned[1]] == [None, "left out under Windows, where the first run of the step is the run under Windows", None],
+             repr([[(r["name"], r.get("skip")) for r in pl] for pl in planned]))
+        if this_system() != SECOND_NOT_ON:
+            default_wf = os.path.join(repo, DEFAULT_WORKFLOW)
+            os.makedirs(os.path.dirname(default_wf))
+            open(default_wf, "w").write(second)
+            surface = os.path.join(os.path.dirname(os.path.dirname(me)), "bin", "devloop-surface")
+            asked = subprocess.run(["uname", "-s"], env=env, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True).stdout.strip()
+            p = subprocess.run([sys.executable, me], env=dict(env, SELFTEST_SURFACE=surface), capture_output=True, text=True, timeout=120)
+            out = p.stdout
+            one, _, two = out.partition(SECOND_SAYS + "\n")
+            case("the step whose name opens with \"%s\" runs a second time: one line before it that says what the run is and what it does not reach, a line of its own with its name and the step's command, counted as a step, the file green" % SECOND_RUN,
+                 p.returncode == 0 and out.count(SECOND_SAYS) == 1 and two.startswith("== g / %s%s, as %s (the job's defaults.run.shell)\n" % (named, SECOND_NAME, SHELLS["bash"]))
+                 and out.rstrip().split("\n")[-1] == "green: 3 steps run, every one ended with 0; not run by design: none", out)
+            said = [re.search(r"^os=(\S*) uname=(\S*) machine=(\S*) ostype=(\S*)$", x, re.M) for x in (one, two)]
+            said = [m.groups() if m else ("", "", "", "") for m in said]
+            case("in the second run RUNNER_OS reads Windows and uname -s is answered by the stand-in, every other call of uname by this system's, OSTYPE as in the first run",
+                 asked != "" and said[0][:2] == (this_system(), asked) and said[1][:2] == ("Windows", UNAME_ANSWER) and said[0][2] != "" and said[0][2:] == said[1][2:], repr(said))
+            counts = re.findall(r"^SELF-TEST PASSED: (\d+) cases$", out, re.M)
+            case("a case that holds the answer of uname against a second source of the system is left out in the second run with a line: the last case of the self-test of bin/devloop-surface, which the first run runs",
+                 "ok   no stand-in: the system this self-test runs on, " in one and "left out behind a stand-in for uname" not in one
+                 and "left out behind a stand-in for uname: no stand-in: the system this self-test runs on, " in two and "ok   no stand-in: " not in two
+                 and len(counts) == 2 and int(counts[0]) == int(counts[1]) + 1, out)
+            p = subprocess.run([sys.executable, me, "--list"], env=env, capture_output=True, text=True, timeout=60)
+            case("--list names the second run behind its step and runs neither",
+                 p.returncode == 0 and ("g / %s%s: runs as %s (the job's defaults.run.shell)" % (named, SECOND_NAME, SHELLS["bash"])) in p.stdout and "os=" not in p.stdout and SECOND_SAYS not in p.stdout, p.stdout)
+            only = SECOND_RUN + ", red as under Git Bash alone"
+            open(default_wf, "w").write("jobs:\n  g:\n    runs-on: ubuntu-latest\n    steps:\n      - name: %s\n        shell: bash\n        run: |\n          case \"$(uname -s)\" in MINGW*) echo as-git-bash; false ;; esac\n          echo as-here\n" % only)
+            p = subprocess.run([sys.executable, me], env=env, capture_output=True, text=True, timeout=120)
+            one, _, two = p.stdout.partition(SECOND_SAYS + "\n")
+            case("a step that ends with 0 here and with 1 where uname -s opens with MINGW: green in its first run, red in its second, named in the last line as a red step is",
+                 p.returncode == 1 and "as-here" in one and one.rstrip().endswith("-- exit 0") and "as-git-bash" in two and "as-here" not in two
+                 and p.stdout.rstrip().split("\n")[-1] == "red: 1 of 2 steps run did not end with 0 or did not run here (g / %s%s: exit 1); not run by design: none" % (only, SECOND_NAME), p.stdout)
+            renamed = "jobs:\n  g:\n    runs-on: ubuntu-latest\n    steps:\n      - name: the self-tests under another name\n        run: echo renamed\n"
+            open(default_wf, "w").write(renamed)
+            p = subprocess.run([sys.executable, me], env=env, capture_output=True, text=True, timeout=60)
+            case("the file the program takes by default without the step that runs a second time: said in a line, red in the last line, the program ending with 1",
+                 p.returncode == 1 and ("== " + SECOND_MISSING + "\n") in p.stdout and "renamed" in p.stdout and SECOND_SAYS not in p.stdout
+                 and p.stdout.rstrip().split("\n")[-1] == "red: 1 of 2 steps run did not end with 0 or did not run here (%s); not run by design: none" % SECOND_MISSING, p.stdout)
+            p = subprocess.run([sys.executable, me, "--list"], env=env, capture_output=True, text=True, timeout=60)
+            case("--list over that file says that the step is missing and runs nothing", p.returncode == 0 and ("== " + SECOND_MISSING + "\n") in p.stdout and p.stdout.rstrip().endswith("listed, nothing run") and "renamed" not in p.stdout, p.stdout)
+            open(os.path.join(T, "renamed.yml"), "w").write(renamed)
+            p = subprocess.run([sys.executable, me, os.path.join(T, "renamed.yml")], env=env, capture_output=True, text=True, timeout=60)
+            case("the same file under another path: no such step is asked of it, green",
+                 p.returncode == 0 and SECOND_MISSING not in p.stdout and p.stdout.rstrip().split("\n")[-1] == "green: 1 steps run, every one ended with 0; not run by design: none", p.stdout)
+            os.remove(default_wf)
+        else:
+            print("left out under Windows: that the step whose name opens with \"%s\" runs a second time behind a stand-in for uname, what that run is given and says, a case left out in it, a step red in it alone, and the file without that step, since this program leaves the second run out there, the first run of the step being the run under Windows" % SECOND_RUN)
         # the real workflow reads, and the exclusion stays live
         real = os.path.join(os.path.dirname(os.path.dirname(me)), DEFAULT_WORKFLOW)
         try:
@@ -1352,6 +1511,8 @@ def selftest():
             names = [r["name"] for r in steps]
             case("the real workflow reads: jobs stock-take and hooks-on-every-system, every step with a name or uses", list(real_wf["jobs"]) == ["stock-take", "hooks-on-every-system"] and all(names), repr(names))
             case("the two names the order left out stand in the real workflow", all(any(nm == e for nm in names) for e in EXCLUDED), repr(names))
+            case("the real workflow carries the step that runs a second time, once, in the job hooks on every system, its second run planned behind it",
+                 [(r["job"], bool(r.get("second"))) for r in steps if r["name"].startswith(SECOND_RUN)] == [("hooks-on-every-system", False), ("hooks-on-every-system", True)], repr(names))
             case("in the real workflow the job stock-take runs as bash -e {0} and hooks on every system as bash with pipefail",
                  all(r.get("command") == "bash -e {0}" for r in steps if r["job"] == "stock-take" and r.get("command")) and all(r.get("command") == SHELLS["bash"] for r in steps if r["job"] == "hooks-on-every-system" and r.get("command")), repr([(r["job"], r.get("command")) for r in steps]))
             case("the real workflow's title step carries the event's title in its env", any(TITLE_EXPR.search(str(((r["step"].get("env") or {}).get("PR_TITLE") or ""))) for r in steps), "")
