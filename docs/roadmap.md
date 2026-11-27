@@ -14757,11 +14757,12 @@ and for the proofs of closings.
 - **The guard reads a folder of Windows and asks only the installer on PATH**
 
   26 November 2026, version 0.197.0. On `task/auftrag-5-teil-3a`, off
-  `origin/main` at `1d63f2a`, in five commits: the code with the version;
+  `origin/main` at `1d63f2a`, in six commits: the code with the version;
   this entry with the blocks, the table, the plan and a paragraph of
   `docs/skill-conventions.md`; the runs; the corrections of the audit before
-  the push, the paragraph of that name below; and, after the push, the second
-  addendum on the self-test of `bin/devloop-install-note`, the last paragraph
+  the push, the paragraph of that name below; after the push, the second
+  addendum on the self-test of `bin/devloop-install-note`, the paragraph of
+  that name below; and the corrections of the merge, the last paragraph
   below. The order: part 3a of order (5) of
   milestone 12, the first of the two orders its third part is built in, the
   decision of this day in `docs/plan.md` after the paragraph on (7), where
@@ -15117,7 +15118,8 @@ and for the proofs of closings.
   both an installer written in a form of Windows with the path the PATH finds,
   two of the three things without a run here, the third the step's red side.
   The records of four of the five blocks and of the two things are written
-  after the merge, off the log of that job. The fifth block, on an
+  at the merge, off the log of that job, run W1 of the paragraph "The
+  corrections of the merge" below. The fifth block, on an
   installer's answer under Windows, whose should asks for "every program the
   guard asks", gets its record from a measurement under Windows with the
   installers themselves at 0.197.0, over a branch of its own with a workflow
@@ -15127,8 +15129,8 @@ and for the proofs of closings.
   stand-ins and no installer itself. Under
   windows-latest that job took 8 minutes 28 seconds of its 15 on pull request
   #269, run W1 of the entry above; what the new step, sixty-seven starts of
-  the guard and more there, and the forty-six cases of the self-test add is
-  not measured. Under Cygwin nothing is measured. Part 3b builds the default
+  the guard and more there, and the forty-six cases of the self-test add,
+  run W1 of the paragraph "The corrections of the merge" below measures. Under Cygwin nothing is measured. Part 3b builds the default
   folders of the browsers under Windows, the places of a yes for them, and the
   folders `shared/backed-command.md` names. And put to the person in the
   report: which order builds the four blocks written with no order named for
@@ -15321,6 +15323,108 @@ and for the proofs of closings.
   each part of one thing, the self-test with every outcome once and its count,
   which was Built, never walked before, its run of 21 October 2026 under
   0.155.0 older than the last change to its lines.
+
+  **The corrections of the merge**, of 27 November 2026, the sixth commit,
+  made outside this machine from the logs of the checks of pull request #271
+  and applied in the person's terminal as the patch of the merge call. It
+  changes `docs/` alone: the records of the run under Windows, three blocks,
+  a rule of 26 November 2026 written into `docs/skill-conventions.md` and
+  `docs/plan.md`, and the places these make wrong. No session log was read;
+  nothing was installed.
+
+  Run W1, the job hooks on every system of run 45957499843: the workflow
+  `stock-take.yml` on pull request #271 at its fifth commit, `fc9c34d`, on
+  the merge ref, `047f4d0` by the job's log, the merge of `fc9c34d` into
+  `1d63f2a`, an ancestor of `fc9c34d`, so that the merge carries the tree of
+  `fc9c34d`. Its first attempt was green under ubuntu-latest, macos-latest
+  and alpine and in the job stock-take; under windows-latest it was
+  cancelled at the job's fifteen minutes, from 07:18:03 to 07:33:15 UTC on
+  27 November 2026, with no case red: the step of the self-tests under
+  `bin/` and the hooks took 10 minutes 53 seconds, the step on the folders
+  the install guard reads 2 minutes 18 seconds, and the last step was
+  stopped after 1 minute 41 seconds. The job under windows-latest alone ran
+  again, the second attempt of the run, from 16:24:23 to 16:33:51 UTC the
+  same day, green in 9 minutes 28 seconds, on the image windows-2025-vs2026
+  in version 20261123.321.1, `uname -a` opening with MINGW64_NT-10.0-26100,
+  GNU bash 5.3.15. Read off its log: the step of the self-tests and the hooks
+  in 6 minutes 36 seconds, among them "SELF-TEST PASSED: 59 cases" of
+  `bin/devloop-install-note`, the seventeen cases after the one that was red
+  at the fourth commit run there for the first time, and "SELF-TEST PASSED:
+  136 cases" of `bin/devloop-tool-state`, whose case "under Windows go env
+  GOPATH answers two folders parted by a semicolon: the first, the colon of
+  its drive no end of it" ran under Git Bash itself; the step on the folders
+  the install guard reads in 1 minute 29 seconds, 76 lines ok and none RED,
+  the 67 cases the Mac ran as M2 and the nine cases under Windows itself that
+  no other system runs; and the last step in 1 minute 8 seconds. The five
+  checks of the pull request were green at `fc9c34d`.
+
+  What W1 walks. The four blocks whose shoulds ask for Windows with Git Bash
+  and whose cases the step ran under windows-latest: on a path in the form
+  of Windows written in the command, by the cases as Git Bash with `--prefix
+  C:/npm-elsewhere`, `--prefix C:npm-elsewhere`, `cd C:/elsewhere`, the
+  variables of Playwright and Cypress, `--path` of Puppeteer and the
+  interpreter written `C:/devloop-probe/python`, and by the case under
+  Windows itself "--prefix C:/npm-elsewhere: outside the project, blocked";
+  on an answer the guard takes with a carriage return at its end, by the
+  case "as Git Bash, gem environment answering with CRLF and C:/...: the
+  folder without the carriage return, the record naming it as /c/..., let
+  through"; on the prefix of npm under Windows, by the cases of both
+  branches as Git Bash, `npm prefix -g` answering `C:\npm\prefix` and
+  `--prefix C:/npm-elsewhere`, each read as the prefix itself; and on the
+  first colon of GOPATH, by the case "as Git Bash, go env GOPATH answering
+  two folders parted by a semicolon: bin under the first, let through" and
+  the case of the self-test above. And two of the three things without a run
+  before, which a run under Windows itself alone walks: the guard's
+  directories held in the form of Git Bash in whichever form Claude Code
+  gives them, by the cases "under Windows, the project's directory with
+  backslashes and the directory of the command with slashes: a relative path
+  placed inside the project, which opens nothing" and "under Windows,
+  --prefix naming a folder of the project with backslashes, the project's
+  directory with slashes: inside the project"; and the step's own outcome
+  under windows-latest, its nine cases under Windows itself run. Each gets a
+  record of W1, and the four blocks the Status Walked, which the tool
+  computes on the branch, where the commit that carries 0.197.0, `267623b`,
+  carries the line of each Fix, and so on main. The third thing, the step's
+  red side, stays Built, never walked; so does the block on an installer's
+  answer under Windows, whose should asks for "every program the guard
+  asks", until the measurement with the installers themselves after the
+  merge, the paragraph "Open" above. Corrected where the text stood: the
+  notes of the four blocks, which said their record "is written after the
+  merge"; the plan's paragraph on what is built of milestone 12, which said
+  of the eight blocks built that "five stay Built, never walked"; and the
+  paragraph "Open" above, which said the records "are written after the
+  merge" and that what the new step and the new cases add to the job "is not
+  measured".
+
+  Three blocks, Fix none, in milestone 12, each a finding of the code by the
+  rule of `docs/skill-conventions.md` that it gets a block in every case. A
+  `python -m pip` the guard lets through under a yes leaves the fact hook no
+  note, so that `docs/agents/environment.md` gets no line for it: seen by
+  part 3a while it wrote its cases, its report naming it without a block,
+  and shown at the code on 27 November 2026 at the tree of `fc9c34d` and at
+  `1d63f2a`. `scripts/devloop-run-workflow` runs the self-tests under `bin/`
+  with the machine's own uname alone, so that the case of the second
+  addendum went red first in the job under windows-latest, where behind a
+  stand-in for uname it was red on the Mac, that addendum's counter-check.
+  And the job hooks on every system has fifteen minutes, which the runner of
+  W1's first attempt overran with no case red; that attempt was run again,
+  and the block names the limit for an order after the merge.
+
+  The rule of 26 November 2026 that a measurement only a run on GitHub can
+  make runs over a branch of its own with a workflow file of its own, not
+  over a pull request, stood in this entry alone, in the paragraph "The
+  measurement under Windows" above. It is written as a rule into
+  `docs/skill-conventions.md`, "A measurement only a run on GitHub can make
+  runs on a branch of its own", and as the person's decision into
+  `docs/plan.md` under milestone 15, with the reason and what was not chosen
+  as that paragraph gives them.
+
+  The tool and the checks after the sixth commit: exit 0, broken records 0,
+  uncovered lines 0 of 5006, Undetermined 24, Recorded, not built 254, Built,
+  never walked 1721, Walked 924 and Closed 85, and milestone 12 at 179
+  blocks, Recorded, not built 33, Built, never walked 65, Walked 64, Closed
+  17; nothing Walked on this branch without a run the branch adds.
+  `scripts/devloop-handover-checks`: "green: 22 checks green, 0 red".
 
 ## Decisions taken against
 

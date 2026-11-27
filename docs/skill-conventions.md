@@ -4400,6 +4400,20 @@ the version itself, so reading that field against `git rev-parse origin/main`
 answers the same question in one line. The diff is what is written here because a
 red answer has to be acted on, and only the diff says what differs.
 
+## A measurement only a run on GitHub can make runs on a branch of its own
+
+What only a runner of GitHub can show, an installer's answer under
+windows-latest or the form a variable takes there, is measured by a workflow
+file of its own on a branch of its own, which the person pushes, and not by
+a pull request. The workflow runs at the push of its branch; its log is read
+outside the repository; the branch is deleted after the run, and the file
+stands in no commit of main. What the run measured enters the repository
+through the order it was made for, as a run with its number. Decided on 26
+November 2026, `docs/plan.md` under milestone 15, where the reason stands
+with what was not chosen. It is a rule for whoever writes an order and
+nothing a program runs, and so has a section of its own, outside the heading
+"Before a handover, run these".
+
 ## Before a push, the branch is audited
 
 Every branch of an order gets its audit before the push, as the last part of

@@ -1562,13 +1562,20 @@ at `1d63f2a` as on the branch: no block, decided on 26 November 2026 by the
 person, since `docs/skill-conventions.md` names the argument of `env -S`
 among what the command reader does not take apart, "which the vendor splits
 by rules of its own", and the guard does what that rule says.
-Of the eight built, three are walked by their runs on macOS, on an installer
-written with its path, on the guard asking an installer through its own PATH
-and on PATH set in the command; five stay Built, never walked, their shoulds
-asking for Windows with Git Bash: four until the job hooks on every system of
-its pull request has walked their cases under windows-latest and a record is
-written after the merge; and the fifth, on an installer's answer under
-Windows, until a measurement under Windows with the installers themselves at
+Three more the merge of 3a wrote on 27 November 2026, Fix none, the paragraph
+"The corrections of the merge" of that entry: on a `python -m pip` the guard
+lets through under a yes, which leaves the fact hook no note; on
+`scripts/devloop-run-workflow`, which runs the self-tests under `bin/` with
+the machine's own uname alone; and on the job hooks on every system, whose
+fifteen minutes a slower runner under windows-latest overran with no case
+red. No order is named for them yet.
+Of the eight built, seven are walked: three by their runs on macOS, on an
+installer written with its path, on the guard asking an installer through its
+own PATH and on PATH set in the command; and four, their shoulds asking for
+Windows with Git Bash, by run W1 of that entry, the job hooks on every system
+under windows-latest of its pull request, #271, whose records were written at
+the merge. The fifth, on an installer's answer under Windows, stays Built,
+never walked until a measurement under Windows with the installers themselves at
 0.197.0, over a branch of its own with a workflow file of its own as the
 measurement of 26 November 2026 was made, after the merge, decided on 26
 November 2026 without a question by the decision of 25 November 2026 above:
@@ -1578,6 +1585,10 @@ a carriage return, of the second part, is walked since that day by the
 measurement under Windows, run W0 of that entry: `gem environment` answered
 with CRLF there, and the program at 0.196.0 named the folder without the
 carriage return and found the tool.
+Until 27 November 2026 this paragraph said of the eight built that "five stay
+Built, never walked", four of them "until the job hooks on every system of its
+pull request has walked their cases under windows-latest and a record is
+written after the merge", mended by the merge of part 3a, that entry.
 Until 26 November 2026 this paragraph said of the block on an answer the
 guard takes with a carriage return and of the one on an installer written
 with its path that "the third part builds both, (7) below", of the block
@@ -3168,6 +3179,20 @@ Reason: a text to Claude asks an action of no user, so the person has nothing
 to decide on it.
 Not chosen: every text a program puts out approved before the build, the
 reasons in the install guard's message among them, as on 21 October 2026.
+
+Decided on 26 November 2026 by the person, the same entry, its paragraph "The
+measurement under Windows": a measurement that only a run on GitHub can make
+runs over a branch of its own with a workflow file of its own, not over a pull
+request; the branch is deleted after the run, and the file stands in no
+commit of main. That holds for every order. The rule stands in
+`docs/skill-conventions.md` under "A measurement only a run on GitHub can
+make runs on a branch of its own", written there by the merge of that entry
+on 27 November 2026, the decision having stood in the entry alone.
+Reason: a pull request runs all five checks `main` requires, where the run
+under Windows alone measures, and leaves a closed pull request behind; the
+measurement for part 3a of order (5) of milestone 12 ran so, runs 45784957955
+and 45787008409.
+Not chosen: a pull request closed unmerged.
 
 Conventions: "A count lives in one place"; "A figure taken from a command is
 copied out of that command's output"; "Never assert state — query it"; "A
