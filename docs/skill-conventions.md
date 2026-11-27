@@ -1625,12 +1625,18 @@ place its situation has, and since 22 November 2026 runs
 date, "Every handover and the steps for the PATH follow surface and system",
 and is red where the program does not end with 0, leaves
 `${DEVLOOP_SURFACE}` in the text or does not carry the line of its situation
-on a line of its own; and since 17 November 2026 the job ends on a second
-step, the roadmap entry of that date on a project's files read with CRLF as
-with LF, which reads every place of the hooks, the programs and the loaded
+on a line of its own; and since 17 November 2026 the job ends on a step of
+its own, the roadmap entry of that date on a project's files read with CRLF
+as with LF, which reads every place of the hooks, the programs and the loaded
 texts that takes a file of the project apart with the file at LF, with CRLF
 from a checkout under `core.autocrlf=true` and with CRLF committed, and
-reaches the three calls of awk the step before it does not reach. The
+reaches the three calls of awk the step of the self-tests and the hooks does
+not reach; and since 26 November 2026 a step stands between those two, the
+roadmap entry of that date, "The guard reads a folder of Windows and asks
+only the installer on PATH", which starts the install guard at the folders
+it reads, behind a stand-in for uname that answers as Git Bash and behind
+one that answers Linux, and under windows-latest at folders that stand, and
+is red where a case comes out otherwise. The
 fourth and fifth addenda of the entry on the command reader carry the
 command that requires the four checks, and the audit of 14 October 2026
 read that setting off the platform.
@@ -1945,6 +1951,19 @@ starts on. History written without a date — "until then", an entry named by it
 subject, a run described — it does not see; that half is held by reading, under
 the third rule of "A field is not an answer to a question it was not asked" for
 every change.
+
+**The person approves a text to a user before the build, and no text to
+Claude.** Before a build the person approves only a text from which an action
+follows for a user, and a text that is shown to a user as the one it
+addresses. A text to Claude is not approved, a reason a hook or a program
+names to Claude among them, and what Claude reasons on its way is no text to
+the user. The wording of a text to Claude the order that builds it chooses, so
+that it works best. The rule holds for every order; where the approved
+wordings stand, the paragraph above says. Decided on 26 November 2026,
+`docs/plan.md` under milestone 15, where the reason stands with what was not
+chosen; until then the reasons in the install guard's message were approved
+as well, on 21 October 2026, the paragraph on that guard under "Environment
+constraints, measured".
 
 **A title says what changed, and nothing else.** The title of a pull
 request, the first line of a commit message and the head of a new entry in
@@ -2532,7 +2551,8 @@ path of the project that reaches a program from another file, as an argument
 without a default or what a function returns, nor a reading that none of the
 words of the search names. Not places, read and decided on 17 November 2026:
 the record of the refusals of auto mode, which Python writes and reads in
-text mode and the step before reads through `tr -d`; the stash message and
+text mode and the step of the self-tests and the hooks reads through `tr
+-d`; the stash message and
 the lists git forms itself, `git status --short` among them; the output of a
 tool a hook or a program starts; and a file under the home directory, the one
 under `CARGO_HOME` among them. Measured on `windows-latest` on 18 November
@@ -2956,7 +2976,13 @@ the message's own colon, and the fallback for a reader that gave no cause
 quoted what the reader printed, the shell's error with its paths among it,
 where it says now that the reader gave no cause; the block for a place the
 record does not name names the places and the routes the record carries, or
-that it carries no route. Since the same day the message says that the
+that it carries no route. Since 26 November 2026 a cause is not approved any
+more: it is a reason the hook names to Claude, and the order that builds it
+chooses its wording, the rule "The person approves a text to a user before
+the build, and no text to Claude" above; the wordings of 21 October 2026
+stand as they were approved, and the two causes of 26 November 2026, which
+open with "not asked:" in the brackets behind a route, are worded by the
+order that built them. Since 21 October 2026 the message says that the
 command is handed over so that it runs from wherever the person is, with the
 change into the project's directory in front of it where it needs one, the
 rule under "A command handed over runs as it stands" at the head of this
@@ -3023,8 +3049,43 @@ writes into the shell's rc file, so a harness started before that, or from an
 editor, carries it in neither its own process nor the hook's; `bun pm bin -g`
 exits 1 with nothing on stdout until something has been installed globally,
 on bun 1.4.2) or one answering no absolute path is not read,
-and not read is a block, never a pass. What stays blocked with that cause
-under every answer: a system package manager, which owns no directory of its
+and not read is a block, never a pass. Since 26 November 2026, the roadmap
+entry of that date, "The guard reads a folder of Windows and asks only the
+installer on PATH", three things of this paragraph read otherwise. A
+route whose command writes its program with a path is asked only where
+that path is, character for character, the one the hook's PATH finds for
+the program, a `~` or `$HOME` at its opening expanded, and then as the one
+written bare is; every other path is asked nothing, and so is every route
+where the command sets PATH before its program in one of the forms read, by
+an assignment before the command, behind `env` as well, with `export`
+earlier in the same string, or on a line that is `PATH=` alone, which is a
+block, decided that day, `docs/plan.md` under milestone 12; what is to be
+read beyond those forms the block of that milestone on PATH set in other
+forms says; the interpreter of a `python
+-m pip` goes by the same rule, and `bin/devloop-tool-state` asks an
+installer by it. An answer is read without a carriage return
+at its end, which a command substitution leaves there, `gem environment`
+printing its lines with CRLF under Windows. And under Windows, where `uname
+-s` opens with MINGW, MSYS or CYGWIN, a folder is read as the folder it
+names in whatever form it is written — `C:\x\y`, `C:/x/y`, `c:\x\y` and
+`/c/x/y` one folder, held in the last form, the one Git Bash gives a path
+in itself, by text alone and with no call of `cygpath` — in the answer of a
+route, in a variable before the command, in a place of the record, in a
+path written in the command and in the directories the hook is given, one
+path written in the command apart, the root of `deno install -g` behind
+`--root` written with backslashes, which is tested for `bin` at its end
+before it is in that form, the block of milestone 12 in `docs/defects.md`
+"under Windows the install guard tests the root of deno install -g for bin
+at its end before the path is in the one form, so that a root written with
+backslashes is read as bin under itself"; so
+an answer in the form of Windows is an absolute path there, a path that
+opens with a drive letter and a colon lies outside the project unless under
+its directory, the folder of a global `npm` is the prefix itself, and
+`GOPATH` gives its first folder by the semicolon. Measured that day on
+windows-latest with the installers themselves, by a workflow of its own,
+that entry. On macOS, Linux and Alpine a path stays as it is written, a
+drive letter and a colon opening a relative one. What stays blocked as not
+read under every answer: a system package manager, which owns no directory of its
 own since each package decides, and needs root anyway; a version manager, by
 **Runtimes are not a kind the permission may cover** above — `volta` and
 `fnm` among them since 12 October 2026, `volta install node@22` setting the
@@ -4339,6 +4400,20 @@ the version itself, so reading that field against `git rev-parse origin/main`
 answers the same question in one line. The diff is what is written here because a
 red answer has to be acted on, and only the diff says what differs.
 
+## A measurement only a run on GitHub can make runs on a branch of its own
+
+What only a runner of GitHub can show, an installer's answer under
+windows-latest or the form a variable takes there, is measured by a workflow
+file of its own on a branch of its own, which the person pushes, and not by
+a pull request. The workflow runs at the push of its branch; its log is read
+outside the repository; the branch is deleted after the run, and the file
+stands in no commit of main. What the run measured enters the repository
+through the order it was made for, as a run with its number. Decided on 26
+November 2026, `docs/plan.md` under milestone 15, where the reason stands
+with what was not chosen. It is a rule for whoever writes an order and
+nothing a program runs, and so has a section of its own, outside the heading
+"Before a handover, run these".
+
 ## Before a push, the branch is audited
 
 Every branch of an order gets its audit before the push, as the last part of
@@ -4354,6 +4429,16 @@ plan. No audit is an order of its own after a merge any more, and none is made
 at a handover of the chat; an order that is itself an audit is checked at the
 merge. Decided on 24 November 2026, `docs/plan.md` under milestone 15, where
 the reason stands with what was not chosen.
+
+Where the reading of an audit does not fit one session, the audit runs in
+parts, each in a session of its own. The parts that hold change nothing and
+report into one file, an error in the code among their findings; the person
+decides on that report; the last part holds what is left, mends, writes the
+blocks, the dated sentences and the paragraph in the entry, and commits. And
+the reading list of an audit names, for every sentence the branch adds or
+changes in a document, the whole paragraph the sentence stands in. Decided on
+26 November 2026, `docs/plan.md` under milestone 15, where the reason stands
+with what was not chosen.
 
 The rule has a section of its own and does not stand under the heading below:
 it is a rule for whoever writes an order and nothing a program runs, and
@@ -4626,6 +4711,7 @@ since 21 November 2026 each of the four hooks that hand a command over on the
 path on which it hands over, without `CLAUDE_CODE_ENTRYPOINT` and with it on
 `cli`, and since 22 November 2026 `bin/devloop-text skill-name` the same two
 ways, holding the line the program puts into the rule on the two forms,
+since 26 November 2026 the step on the folders the install guard reads,
 since 17 November 2026 the step on line endings, the
 two README steps, since 1 November 2026 the step on the dates of the loaded
 texts, since 18 November 2026 the step that holds every line that reads a

@@ -61,6 +61,49 @@ CMDS=$(printf '%s\n' "$INPUT" | grep '^[0-9]')
 US=$(printf '\037')
 RS=$(printf '\036')
 OS=$(uname -s 2>/dev/null)
+CR=$(printf '\r')
+# Under Windows a folder is read as the folder it names, in whatever form it
+# is written, since 26 November 2026, part 3a of order (5) of milestone 12:
+# C:\x\y, C:/x/y, c:\x\y and /c/x/y name one folder, and this guard holds
+# every one of them in the last form, the one Git Bash gives a path in
+# itself - pwd, HOME and command -v, measured that day on windows-latest
+# with the bash of Git for Windows, the roadmap entry of that date - so that
+# every place below that reads a path by the slash it opens with, or holds
+# it against the project's directory, the home directory or a place of the
+# record, reads it there as on the three other systems. Windows is where
+# uname -s opens with MINGW, MSYS or CYGWIN. The conversion is text alone,
+# made here in bash, and no call of cygpath, which stands in /usr/bin under
+# Git Bash: the guard compares the paths of a destination and opens none of
+# them, a destination need not exist yet, the same lines run on the three
+# other systems behind a stand-in for uname, where no cygpath stands, and
+# no process is started for it at a Bash call that installs nothing. What
+# the text does not see: a mount of Git Bash that is no drive - its / is the
+# folder Git is installed in and its /tmp the temporary folder of the
+# account - so that a path below one of them, written in the form of
+# Windows, is another text than the same path in the form of Git Bash, which
+# blocks and never passes; the letters behind the drive, which stand as
+# written; and Cygwin, where a drive stands under /cygdrive unless its
+# configuration says otherwise and nothing is measured. The directory of the
+# project, the directory the command runs in and the home directory are
+# held in the same form, in whichever one Claude Code gives the first two
+# under Windows, which nobody has measured.
+WIN=""
+case $OS in MINGW*|MSYS*|CYGWIN*) WIN=yes ;; esac
+UPPER=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+LOWER=abcdefghijklmnopqrstuvwxyz
+# norm PATH: NORM, under Windows the path in that form - every backslash a
+# slash, a drive letter and its colon at the opening /LETTER, where the path
+# ends there or a slash follows, and the letter small - and on every other
+# system the path as it stands; set and not printed, so that no process starts
+norm() {
+  local d r
+  NORM="$1"
+  [ -n "$WIN" ] || return 0
+  NORM="${NORM//\\//}"
+  case "$NORM" in [A-Za-z]:|[A-Za-z]:/*) NORM="/${NORM%%:*}${NORM#?:}" ;; esac
+  case "$NORM" in /?|/?/*) d="${NORM#/}"; d="${d%%/*}"; r="${UPPER%%"$d"*}"; [ "${#r}" -eq 26 ] || NORM="/${LOWER:${#r}:1}${NORM#/?}" ;; esac
+}
+[ -z "$WIN" ] || { norm "$PROJECT_DIR"; PROJECT_DIR="$NORM"; norm "$CWD"; CWD="$NORM"; [ -z "${HOME:-}" ] || { norm "$HOME"; HOME="$NORM"; }; }
 
 # load LINE: the fields of one command line into ID, PARENT, REL, PIPE, the
 # words into W from 0, N their count, F the index of the word the command is
@@ -218,15 +261,26 @@ expand() {
 # it - a cd to a relative path without .. stays inside, any other cd, or one
 # without a target, is not followed. A ~ or $HOME opening is expanded; any
 # other variable is not read. Nothing here says the path exists: a pip that
-# does not exist installs nothing.
+# does not exist installs nothing. Under Windows the path is read in the one
+# form of norm first, since 26 November 2026, part 3a of order (5) of
+# milestone 12, so that a path that opens with a drive letter and a colon is
+# absolute there, outside the project unless it lies under its directory,
+# and the target of a cd as well; until that day C:/elsewhere was read as a
+# relative path inside the project on every system, and an install to it
+# passed under every answer, measured on 24 November 2026. A drive letter
+# and a colon with no slash behind them, C:elsewhere, name a folder by the
+# directory that drive stands in, which is not in the command: no place
+# inside the project. On the three other systems such a path stays relative.
 inside() {
   local p="$1" before="$2" c L
+  norm "$p"; p="$NORM"
   case "$p" in '~/'*) p="$HOME${p#\~}" ;; '$HOME/'*) p="$HOME${p#\$HOME}" ;; '${HOME}/'*) p="$HOME${p#\$\{HOME\}}" ;; esac
   case "/$p/" in */../*) return ;; esac
   case "$p" in # absolute inside the project, absolute or variable elsewhere, or relative
     "$PROJECT_DIR"|"$PROJECT_DIR"/*) printf '%s' "$p" ;;
     /*|'~'*|'$'*) ;;
     *)
+      [ -z "$WIN" ] || case "$p" in [A-Za-z]:*) return ;; esac
       case "$CWD" in "$PROJECT_DIR"|"$PROJECT_DIR"/*) ;; *) return ;; esac
       while IFS= read -r L; do
         IFS="$US" read -r ID2 _ _ _ FIRST2 WORDS2 <<< "$L"
@@ -236,6 +290,8 @@ inside() {
         [ "${W2[$((FIRST2 - 1))]##*/}" = "cd" ] || continue
         c="${W2[$FIRST2]:-x}"
         [ "${W2[$FIRST2]+set}" = set ] && [ "$FIRST2" -lt $((${#W2[@]} - 1)) ] || return
+        norm "$c"; c="$NORM"
+        [ -z "$WIN" ] || case "$c" in [A-Za-z]:*) return ;; esac
         case "$c" in /*|'~'*|'$'*|-*) return ;; esac
         case "/$c/" in */../*) return ;; esac
       done <<< "$CMDS"
@@ -249,6 +305,11 @@ var() {
   while IFS= read -r e; do case "$e" in "$1="*) v="${e#*=}" ;; esac; done <<< "$VARS"
   printf '%s' "$v"
 }
+# pathset: whether the command being read sets PATH before its program - by a
+# variable before the command, with env, or with export or on a line of its
+# own earlier in the same string; the program that runs is then the one that
+# PATH finds, which this guard does not read
+pathset() { local e; while IFS= read -r e; do case "$e" in PATH=*) return 0 ;; esac; done <<< "$VARS"; return 1; }
 # moved NAME: the destination a variable before the command moves a route to,
 # read as the record's places are read: inside the project it opens nothing
 # and prints INSIDE; outside it prints the path; a value this guard cannot
@@ -258,6 +319,7 @@ moved() {
   v=$(var "$1"); [ -n "$v" ] || return
   p=$(inside "$v" "$ID"); if [ -n "$p" ]; then printf 'INSIDE'; return; fi
   p=$(expand "$v"); if [ -z "$p" ]; then printf 'UNREAD'; return; fi
+  norm "$p"; p="$NORM"
   case "$p" in /*) printf '%s' "$p" ;; *) printf 'UNREAD' ;; esac
 }
 # envs NAME...: the variables named that stand before the command, as the
@@ -364,7 +426,7 @@ way() { WAYS="$WAYS;$1"; }
 onpath() {
   local X L
   X=$(inside "$1" "$ID"); [ -n "$X" ] && return
-  X=$(expand "$1")
+  X=$(expand "$1"); norm "$X"; X="$NORM"
   case "$BR" in puppeteer) L="puppeteer browsers install" ;; *) L="@puppeteer/browsers install" ;; esac
   case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; $L (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac
   way "puppeteer browsers install"
@@ -484,6 +546,12 @@ ${W[$i]}" ;; esac ;;
     esac
     i=$((i + 1))
   done
+  # PATH set on a line of its own, PATH=/elsewhere:$PATH; say, holds for every
+  # command after it as an export does, a shell exporting PATH as it starts:
+  # kept as an export is, since 26 November 2026, so that a route behind it is
+  # asked nothing
+  [ "$F" -ge 0 ] || ! pathset || EXPORTS="$EXPORTS
+PATH=set on a line of its own"
   [ "$F" -ge 0 ] || continue
   # the judged word itself, where it hands on a command of its own as a line
   # of its own - start-stop-daemon -c with --exec and -- say
@@ -1045,17 +1113,75 @@ else
     # system package manager, a version manager, a make install whose command
     # names no destination, and anything else cannot be read off the command
     # and stay blocked, as before.
+    # Since 26 November 2026, part 3a of order (5) of milestone 12: an answer
+    # is read without a carriage return at its end, which a command
+    # substitution leaves there - gem environment prints its lines with CRLF
+    # under Windows, measured that day - and under Windows in the one form of
+    # norm, so that an answer in the form of Windows, C:\npm\prefix, is an
+    # absolute path there and the folder it names; until that day such an
+    # answer counted as none and the install was blocked under a record that
+    # says yes. And a route whose command names its program with a path is
+    # asked only where that path is the one this hook's PATH finds for the
+    # program, and not at all where the command sets PATH, asked below,
+    # decided by the person on 26 November 2026: this hook runs before Claude
+    # Code has decided on the call, so it starts only what it starts for the
+    # same command without the path, and the program that installs is the one
+    # to answer. Until that day the program this hook's PATH finds was asked
+    # whatever the command wrote, and where two of a kind stand on a machine,
+    # two Homebrews say, it answered for another folder than the one the
+    # command's program writes to.
     OPENED=no
-    absolute() { case "$1" in /*) printf '%s' "$1" ;; esac; }
+    absolute() { norm "${1%"$CR"}"; case "$NORM" in /*) printf '%s' "$NORM" ;; esac; }
     place() {
       FACTS="$FACTS
 $IID$US$2"
       if printf '%s\n' "$RROUTES" | grep -qxF "$1"; then OPENED=yes; else DESTS="$DESTS
 $2"; fi
     }
+    # asked ID NAME: Q, the program a route is asked through, and NOTASKED,
+    # why it is asked through none. NAME, found on this hook's PATH, where the
+    # judged word of the command with that id is written bare. Where it is
+    # written with a path, what this hook's PATH finds for NAME, and only
+    # where the path written is that very path, character for character, a ~
+    # or $HOME at its opening expanded and both in the one form of norm under
+    # Windows. The same file under another path is not the same: a link to
+    # the brew the PATH finds answers brew --prefix with the folder of the
+    # link, and the python of a virtual environment, a link to the interpreter
+    # the PATH finds, answers for that environment and runs its .pth files,
+    # measured on 26 November 2026 with Homebrew 7.0.15 and Python 3.14.7. So
+    # another installation, a link, a relative path and a path at which
+    # nothing stands are asked nothing, and so is every program where the
+    # command sets PATH before it, pathset above. A route asked through
+    # nothing is not read, which is a block, and its cause says that it was
+    # not asked and why
+    asked() {
+      local L w="" f
+      Q="$2"; NOTASKED=""
+      if pathset; then Q=""; NOTASKED="not asked: the command sets PATH, and which $2 that PATH finds is not read by this guard"; return 0; fi
+      while IFS= read -r L; do
+        case "$L" in "$1$US"*) ;; *) continue ;; esac
+        IFS="$US" read -r _ _ _ _ FIRSTQ WORDSQ <<< "$L"
+        IFS="$US" read -ra WQ <<< "${WORDSQ}${US}x"
+        [ "$FIRSTQ" -gt 0 ] && w="${WQ[$((FIRSTQ - 1))]}"
+        break
+      done <<< "$CMDS"
+      norm "$w"; w="$NORM"
+      case "$w" in */*) ;; *) return 0 ;; esac
+      w=$(expand "$w"); norm "$w"; w="$NORM"
+      f=$(command -v "$2" 2>/dev/null); norm "$f"
+      case "$w" in "$NORM") case "$w" in /*) Q="$f"; return 0 ;; esac ;; esac
+      Q=""; NOTASKED="not asked: the command writes $2 with a path that is not the one this hook's PATH finds for it"
+    }
+    # gobin PROGRAM: the folder go installs into, GOBIN, or bin under the
+    # first folder of GOPATH, a list parted by a semicolon under Windows and
+    # by a colon on every other system, as go help gopath says; until 26
+    # November 2026 the list was cut at its first colon on every system,
+    # under Windows the colon of the drive
     gobin() {
       local b p
-      b=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} go env GOBIN 2>/dev/null)"); p=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} go env GOPATH 2>/dev/null)"); p="${p%%:*}"
+      b=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} "$1" env GOBIN 2>/dev/null)"); p=$(env ${ENVS[@]+"${ENVS[@]}"} "$1" env GOPATH 2>/dev/null)
+      if [ -n "$WIN" ]; then p="${p%%;*}"; else p="${p%%:*}"; fi
+      p=$(absolute "$p")
       if [ -n "$b" ]; then echo "$b"; elif [ -n "$p" ]; then echo "$p/bin"; fi
     }
     # cargo cannot be asked on the stable channel - cargo config get is
@@ -1100,27 +1226,30 @@ $2"; fi
     while IFS="$US" read -r R EXTRA VARS IID; do
       [ -n "$R" ] || continue
       VARS=$(printf '%s' "$VARS" | tr "$RS" '\n')
+      asked "$IID" "${R%% *}"; U0="$UNREAD"
       case "$R" in
-        brew) P=$(absolute "$(brew --prefix 2>/dev/null)"); if [ -n "$P" ]; then place brew "$P/bin"; else UNREAD="$UNREAD; brew (brew --prefix did not answer)"; fi ;;
-        go) envs GOBIN GOPATH; P=$(gobin); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; go (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place go "$P"; else UNREAD="$UNREAD; go (go env did not answer)"; fi ;;
+        brew) P=$(absolute "$("$Q" --prefix 2>/dev/null)"); if [ -n "$P" ]; then place brew "$P/bin"; else UNREAD="$UNREAD; brew (brew --prefix did not answer)"; fi ;;
+        go) envs GOBIN GOPATH; P=$(gobin "$Q"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; go (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place go "$P"; else UNREAD="$UNREAD; go (go env did not answer)"; fi ;;
         npm)
           # npm prefix -g is asked with npm_config_logs_max=0, since 31 October 2026: npm writes a debug log under ~/.npm/_logs at every command unless logs-max is 0, measured on 25 October 2026 (F5 and F6 of the roadmap entry of that date on the benches) and again on 31 October 2026, and a guard that only reads writes nothing outside the project
+          # Where a global tool of npm lands: under Windows in the prefix itself, on every other system in bin under it, since 26 November 2026, part 3a of order (5) of milestone 12; measured that day on windows-latest, semver, semver.cmd and semver.ps1 standing in the folder npm prefix -g names and no bin under it; until that day bin under the prefix on every system
+          NPMBIN="/bin"; [ -z "$WIN" ] || NPMBIN=""
           PFX="${EXTRA#prefix=}"
-          if [ -n "$PFX" ]; then X=$(inside "$PFX" "$ID") ; [ -n "$X" ] || { X=$(expand "$PFX"); if [ -n "$X" ]; then place npm "$X/bin"; else UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; fi; }
+          if [ -n "$PFX" ]; then X=$(inside "$PFX" "$ID") ; [ -n "$X" ] || { X=$(expand "$PFX"); if [ -n "$X" ]; then place npm "$X$NPMBIN"; else UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; fi; }
           else
             envs npm_config_prefix NPM_CONFIG_PREFIX
-            P=$(absolute "$(env npm_config_logs_max=0 ${ENVS[@]+"${ENVS[@]}"} npm prefix -g 2>/dev/null)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place npm "$P/bin"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi
+            P=$(absolute "$(env npm_config_logs_max=0 ${ENVS[@]+"${ENVS[@]}"} "$Q" prefix -g 2>/dev/null)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place npm "$P$NPMBIN"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi
           fi ;;
-        pnpm) envs PNPM_HOME; P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} pnpm bin -g 2>/dev/null | tail -1)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; pnpm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place pnpm "$P"; else UNREAD="$UNREAD; pnpm (pnpm bin -g did not answer)"; fi ;;
+        pnpm) envs PNPM_HOME; P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} "$Q" bin -g 2>/dev/null | tail -1)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; pnpm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place pnpm "$P"; else UNREAD="$UNREAD; pnpm (pnpm bin -g did not answer)"; fi ;;
         yarn)
           PFX="${EXTRA#prefix=}"
           if [ -n "$PFX" ]; then X=$(inside "$PFX" "$ID"); [ -n "$X" ] || { X=$(expand "$PFX"); if [ -n "$X" ]; then place yarn "$X/bin"; else UNREAD="$UNREAD; yarn (where it puts things is not read off this machine by this guard)"; fi; }
-          else P=$(absolute "$(yarn global bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place yarn "$P"; else UNREAD="$UNREAD; yarn (yarn global bin did not answer)"; fi; fi ;;
+          else P=$(absolute "$("$Q" global bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place yarn "$P"; else UNREAD="$UNREAD; yarn (yarn global bin did not answer)"; fi; fi ;;
         bun)
           # BUN_INSTALL_BIN is the bin directory itself, taken as written
           M=$(moved BUN_INSTALL_BIN)
           case "$M" in UNREAD) UNREAD="$UNREAD; bun (where it puts things is not read off this machine by this guard)" ;; INSIDE) ;; ?*) place bun "$M" ;; *)
-            P=$(absolute "$(bun pm bin -g 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place bun "$P"; else UNREAD="$UNREAD; bun (bun pm bin -g did not answer)"; fi ;; esac ;;
+            P=$(absolute "$("$Q" pm bin -g 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place bun "$P"; else UNREAD="$UNREAD; bun (bun pm bin -g did not answer)"; fi ;; esac ;;
         pipx)
           # PIPX_BIN_DIR and PIPX_GLOBAL_BIN_DIR are the bin directory itself,
           # taken as written: pipx environment answers the value set by the
@@ -1130,12 +1259,12 @@ $2"; fi
           # set, the vendor's default /usr/local/bin
           if [ "$EXTRA" = global ]; then M=$(moved PIPX_GLOBAL_BIN_DIR); [ -n "$M" ] || M="/usr/local/bin"; else M=$(moved PIPX_BIN_DIR); fi
           case "$M" in UNREAD) UNREAD="$UNREAD; pipx (where it puts things is not read off this machine by this guard)" ;; INSIDE) ;; ?*) place pipx "$M" ;; *)
-            P=$(absolute "$(pipx environment --value PIPX_BIN_DIR 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place pipx "$P"; else UNREAD="$UNREAD; pipx (pipx environment --value PIPX_BIN_DIR did not answer)"; fi ;; esac ;;
+            P=$(absolute "$("$Q" environment --value PIPX_BIN_DIR 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place pipx "$P"; else UNREAD="$UNREAD; pipx (pipx environment --value PIPX_BIN_DIR did not answer)"; fi ;; esac ;;
         'uv tool')
           # UV_TOOL_BIN_DIR is the bin directory itself, taken as written
           M=$(moved UV_TOOL_BIN_DIR)
           case "$M" in UNREAD) UNREAD="$UNREAD; uv tool (where it puts things is not read off this machine by this guard)" ;; INSIDE) ;; ?*) place uv "$M" ;; *)
-            P=$(absolute "$(uv tool dir --bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place uv "$P"; else UNREAD="$UNREAD; uv tool (uv tool dir --bin did not answer)"; fi ;; esac ;;
+            P=$(absolute "$("$Q" tool dir --bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place uv "$P"; else UNREAD="$UNREAD; uv tool (uv tool dir --bin did not answer)"; fi ;; esac ;;
         cargo) P=$(cargobin "${EXTRA#root=}"); case "$P" in
           CONFIG) UNREAD="$UNREAD; cargo (a config file on cargo's search path sets install.root, which this guard does not read)" ;;
           UNREAD|'') UNREAD="$UNREAD; cargo (its install root could not be read)" ;;
@@ -1150,9 +1279,9 @@ $IID$US${EXTRA#bindir=}" ;; # --bindir, taken as written
             *)
               envs GEM_HOME
               if [ "$EXTRA" = user ]; then
-                P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} gem environment 2>/dev/null | sed -n 's/^[[:space:]]*- USER INSTALLATION DIRECTORY: //p' | head -1)"); [ -n "$P" ] && P="$P/bin"
+                P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} "$Q" environment 2>/dev/null | sed -n 's/^[[:space:]]*- USER INSTALLATION DIRECTORY: //p' | head -1)"); [ -n "$P" ] && P="$P/bin"
               else
-                P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} gem environment 2>/dev/null | sed -n 's/^[[:space:]]*- EXECUTABLE DIRECTORY: //p' | head -1)")
+                P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} "$Q" environment 2>/dev/null | sed -n 's/^[[:space:]]*- EXECUTABLE DIRECTORY: //p' | head -1)")
               fi
               if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; gem (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place gem "$P"; else UNREAD="$UNREAD; gem (gem environment did not answer)"; fi ;;
           esac ;;
@@ -1160,11 +1289,15 @@ $IID$US${EXTRA#bindir=}" ;; # --bindir, taken as written
         ver:*) UNREAD="$UNREAD; ${R#ver:} (a version manager: what it installs lands in its own tree and reaches shell profiles this guard never reads, so it stays the user's under every answer)" ;;
         *) UNREAD="$UNREAD; ${R#unread:} (where it puts things is not read off this machine by this guard)" ;;
       esac
+      # a route asked through nothing gave no folder: its cause is that it was not asked and why, in place of the query that did not answer; a route that asks nothing for this command, its place written in it, is read as before
+      [ -z "$NOTASKED" ] || case "$UNREAD" in "$U0; "*' did not answer)') U="${UNREAD#"$U0; "}"; UNREAD="$U0; ${U%% (*} ($NOTASKED)" ;; esac
     done <<< "$ITEMS"
     # pip outside the project: the destination is the scripts directory of
     # the interpreter the command names, asked of that interpreter through
     # sysconfig, the user scheme where --user stands there or PIP_USER before
-    # the command, with PYTHONUSERBASE before the command handed to it. A
+    # the command, with PYTHONUSERBASE before the command handed to it; the
+    # interpreter asked is the one this hook's PATH finds, for a bare name
+    # and for a path that is that very path, and no other. A
     # bare pip names no interpreter and cannot be asked; uv pip that reached
     # here names no environment inside the project.
     while IFS="$US" read -r K PID T; do
@@ -1182,14 +1315,20 @@ ${W[$i]}" ;; esac; i=$((i + 1)); done
           if has -t --target --prefix --root || [ -n "$(var PIP_TARGET)$(var PIP_PREFIX)$(var PIP_ROOT)" ]; then
             UNREAD="$UNREAD; $T -m pip (--target, --prefix or --root moves the destination, which this guard does not read)"
           else
-            case "$T" in # the interpreter: a path, expanded where it opens on ~ or $HOME, or a bare name found on this hook's PATH
-              '~/'*) I="$HOME${T#\~}" ;;
-              '$HOME/'*) I="$HOME${T#\$HOME}" ;;
-              '${HOME}/'*) I="$HOME${T#\$\{HOME\}}" ;;
-              /*) I="$T" ;;
+            norm "$T"; TP="$NORM" # under Windows the path in the one form of norm, an interpreter named C:/Python/python an absolute path there, since 26 November 2026
+            case "$TP" in # the interpreter: a path, expanded where it opens on ~ or $HOME, or a bare name found on this hook's PATH
+              '~/'*) I="$HOME${TP#\~}" ;;
+              '$HOME/'*) I="$HOME${TP#\$HOME}" ;;
+              '${HOME}/'*) I="$HOME${TP#\$\{HOME\}}" ;;
+              /*) I="$TP" ;;
               */*) I="" ;;
-              *) I=$(command -v "$T" 2>/dev/null) ;;
+              *) I=$(command -v "$TP" 2>/dev/null) ;;
             esac
+            # the rule of asked() for the interpreter, since 26 November 2026: one written with a path is asked only where that path is the one this hook's PATH finds for its name, and none where the command sets PATH; until that day an interpreter written with an absolute path was asked at that path
+            NOTASKED=""
+            if pathset; then NOTASKED="not asked: the command sets PATH, and which ${TP##*/} that PATH finds is not read by this guard"
+            else case "$TP" in */*) f=$(command -v "${TP##*/}" 2>/dev/null); norm "$f"; if [ -n "$f" ] && [ "$I" = "$NORM" ]; then I="$f"; else NOTASKED="not asked: the command writes ${TP##*/} with a path that is not the one this hook's PATH finds for it"; fi ;; esac; fi
+            [ -z "$NOTASKED" ] || { UNREAD="$UNREAD; $T -m pip ($NOTASKED)"; continue; }
             if [ -z "$I" ] || [ ! -x "$I" ]; then
               UNREAD="$UNREAD; $T -m pip ($T is not found here)"
             else
@@ -1210,7 +1349,7 @@ ${W[$i]}" ;; esac; i=$((i + 1)); done
       while IFS= read -r D; do
         [ -n "$D" ] || continue
         case "$D" in
-          '$(go env GOPATH)/bin'*|'$GOPATH/bin'*|'$GOBIN'*) ENVS=(); P=$(gobin); if [ -n "$P" ]; then NEWDESTS="$NEWDESTS
+          '$(go env GOPATH)/bin'*|'$GOPATH/bin'*|'$GOBIN'*) ENVS=(); P=$(gobin go); if [ -n "$P" ]; then NEWDESTS="$NEWDESTS
 $P"; else UNREAD="$UNREAD; $D (go env did not answer)"; fi ;;
           *) NEWDESTS="$NEWDESTS
 $D" ;;
@@ -1234,8 +1373,9 @@ $D" ;;
       local I D C
       while IFS="$US" read -r I D; do
         [ -n "$I" ] && [ -n "$D" ] || continue
-        case "$D" in '$(go env GOPATH)/bin'*|'$GOPATH/bin'*|'$GOBIN'*) ENVS=(); D=$(gobin) ;; esac
+        case "$D" in '$(go env GOPATH)/bin'*|'$GOPATH/bin'*|'$GOBIN'*) ENVS=(); D=$(gobin go) ;; esac
         [ -n "$D" ] || continue
+        norm "$D"; D="$NORM"
         case "$D" in
           '$HOME'/*|'$HOME') D="~${D#\$HOME}" ;;
           '${HOME}'/*|'${HOME}') D="~${D#\$\{HOME\}}" ;;
@@ -1245,10 +1385,17 @@ $D" ;;
         [ -n "$C" ] && printf '%s\n' "$D$US$C$US$(alone_of "$I")$US$(away_of "$I")$US$(pipe_of "$I")"
       done <<< "$(printf '%s\n' "$FACTS" | grep -v '^$' | sort -t "$US" -k1,1n)"
     }
+    # Every destination is held against the places of the record in one
+    # form: under Windows the destination and the place both in the form of
+    # norm, the home directory at the opening of either written ~, since 26
+    # November 2026, part 3a of order (5) of milestone 12, so that a place
+    # the record writes C:\npm\prefix, C:/npm/prefix or /c/npm/prefix names
+    # the folder an installer answers in any of them; on the three other
+    # systems the place stands as the record spells it, as before.
     UNNAMED=""
     while IFS= read -r D; do
       [ -n "$D" ] || continue
-      N2="$D"
+      norm "$D"; N2="$NORM"
       case "$N2" in
         '$HOME'/*|'$HOME') N2="~${N2#\$HOME}" ;;
         '${HOME}'/*|'${HOME}') N2="~${N2#\$\{HOME\}}" ;;
@@ -1257,7 +1404,8 @@ $D" ;;
       HIT=no
       while IFS= read -r P; do
         [ -n "$P" ] || continue
-        P="${P%/}"
+        norm "$P"; P="${NORM%/}"
+        [ -z "$WIN" ] || case "$P" in "$HOME"/*|"$HOME") P="~${P#"$HOME"}" ;; esac
         case "$N2" in "$P"|"$P"/*) HIT=yes ;; esac
       done <<< "$PLACES"
       [ "$HIT" = yes ] || UNNAMED="$UNNAMED $N2"

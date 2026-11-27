@@ -661,6 +661,28 @@ jobs:
   # ubuntu-latest has it in the job stock-take, and from Windows and Alpine
   # no handover is made, the job under windows-latest having taken 10 to 12
   # of its 15 minutes on pull requests #258 to #263.
+  # Since 26 November 2026, part 3a of order (5) of milestone 12, the roadmap
+  # entry of that date on the folders the install guard reads: a step of its
+  # own before the step on line endings, which stays the last. It starts the
+  # install guard in a throwaway project whose record origin/main carries,
+  # the installers answered by stand-ins and uname by a stand-in that answers
+  # as Git Bash answered on windows-latest that day, MINGW64_NT-10.0-26100,
+  # or Linux, so that each of the four systems walks both readings of a
+  # folder: an answer, a variable before the command and a path written in
+  # it in the form of Windows read as the folder it names, and the same
+  # words read as before where the system is another. With them an answer
+  # that ends in a carriage return, the first folder of GOPATH, the folder
+  # of a global npm, and an installer written with its path, asked only
+  # where that path is the one the path finds for it and not at all where
+  # the command sets PATH, the interpreter of a python -m pip by the same
+  # rule. Under windows-latest
+  # alone, where cygpath stands on the path, the last cases give the guard
+  # its project's directory, the directory of the command and the home
+  # directory in the forms of Windows, and bin/devloop-tool-state an answer
+  # in them that names a folder of the step with the tool standing in it;
+  # on the three other systems a line says that these are left out and why.
+  # No case asks an installer itself: what the installers answer under
+  # Windows was measured once, on that day, by a workflow of its own.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -920,6 +942,266 @@ jobs:
           texted
           rm -rf "$T"
           exit "$red"
+
+      - name: the folders the install guard reads, the answer of an installer, a variable before the command and a path written in it, in the form of Windows behind a stand-in for uname and as before behind another, an answer with a carriage return at its end, an installer written with its path, and under Windows itself the guard and bin/devloop-tool-state at a folder that stands
+        run: |
+          set -u
+          # since 26 November 2026, part 3a of order (5) of milestone 12: the guard started by its first line in a throwaway project whose record origin/main carries, the installers answered by stand-ins that print what the case gives them, uname by a stand-in that answers MINGW64_NT-10.0-26100, as Git Bash answered on windows-latest that day, or Linux, so that every system walks both readings of a folder, the one of Windows and the one of the three other systems; a line per case in both outcomes, the exit of the guard in brackets and the cause it names held against the case, and the folder it notes for the fact hook where the case names one. Under Windows itself, where cygpath stands on the path, the last cases give the guard its project's directory, the directory of the command and the home directory in the forms of Windows and bin/devloop-tool-state an answer in them that names a folder of this step, the tool standing in it
+          ROOT=$(pwd)
+          red=0
+          PY=$(command -v python3 || command -v python || true)
+          [ -n "$PY" ] || { echo "no python on PATH for the step on the folders the install guard reads"; false; }
+          T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-folders.XXXXXX")
+          # under Windows the directory in the form of Git Bash, as in the step on line endings
+          ! command -v cygpath >/dev/null 2>&1 || T=$(cygpath -u "$T")
+          P="$T/p"
+          US=$(printf '\037')
+          GIT="git -c user.name=hooks -c user.email=hooks@example.invalid -c commit.gpgsign=false"
+          mkdir -p "$P/docs/agents" "$P/tools" "$T/home/named" "$T/tmp" "$T/on/W" "$T/on/L" "$T/on/R" "$T/bin" "$T/named" "$T/none"
+          $GIT init -q -b main "$P"
+          printf '#!/bin/sh\n[ "$*" = -s ] || exit 64\necho MINGW64_NT-10.0-26100\n' > "$T/on/W/uname"
+          printf '#!/bin/sh\n[ "$*" = -s ] || exit 64\necho Linux\n' > "$T/on/L/uname"
+          chmod +x "$T/on/W/uname" "$T/on/L/uname"
+          # the stand-in for an installer: it writes its call into the log of its directory and prints the file beside it that carries its name and its arguments, joined by underscores; no such file, no answer and 1
+          printf '%s\n' '#!/bin/sh' 'n=$(basename "$0"); d=$(dirname "$0")' 'echo "$n $*" >> "$d/log"' 'f="$d/$n.$(echo "$*" | tr " " _)"' '[ -e "$f" ] || exit 1' 'cat "$f"' > "$T/standin"
+          # says DIRECTORY NAME ARGUMENTS FORMAT [TEXT...]: the stand-in NAME in the directory answers the call with ARGUMENTS, written as its file is named, with what printf makes of the rest
+          says() { local d=$1 n=$2 a=$3; shift 3; cp "$T/standin" "$d/$n"; chmod +x "$d/$n"; printf "$@" > "$d/$n.$a"; }
+          # record LINE...: the record origin/main of the throwaway project carries, a yes with these places and routes; without a line no record at all
+          N=0
+          record() {
+            rm -f "$P/docs/agents/environment.md"
+            [ $# -eq 0 ] || printf '%s\n' '## Install permission' '' 'install-tools: yes' "$@" 'install-answered: 2026-11-26' > "$P/docs/agents/environment.md"
+            N=$((N + 1)); echo "$N" > "$P/docs/agents/count"
+            ( cd "$P" && $GIT add -A && $GIT commit -q -m "record $N" && git update-ref refs/remotes/origin/main HEAD && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main ) || { echo "the throwaway project could not be committed to"; false; }
+          }
+          PROG='import json, sys; sys.stdout.write(json.dumps({"session_id": "s1", "cwd": sys.argv[1], "permission_mode": "default", "tool_use_id": "t1", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"command": sys.argv[2], "description": "x"}}))'
+          # guard SYSTEM DIRECTORY COMMAND [CWD [PROJECT [HOME]]]: the guard once, uname answered by the stand-in of SYSTEM - W as Git Bash, L as Linux, R by the system itself - and the stand-ins of DIRECTORY first on its path; GOT its exit in brackets and the cause it names, NOTE the folder it notes for the fact hook
+          guard() {
+            local out rc=0
+            rm -f "$T/tmp"/devloop-install-note-* "$T/bin/log" "$T/named/log"
+            out=$(cd "$P" && MSYS2_ARG_CONV_EXCL='*' "$PY" -c "$PROG" "${4:-$P}" "$3" | env -u CARGO_HOME -u CARGO_INSTALL_ROOT -u CLAUDE_ENV_FILE -u CLAUDE_CODE_ENTRYPOINT PATH="$T/on/$1:$2:$PATH" HOME="${6:-$T/home}" TMPDIR="$T/tmp" CLAUDE_PROJECT_DIR="${5:-$P}" "$ROOT/hooks/pre-tool-use-install-guard.sh" 2>&1) || rc=$?
+            GOT="[$rc] $(printf '%s\n' "$out" | sed -n 's/.*does not open it, because \(.*\)\. The install is the user.s to run, not yours.*/\1/p')"
+            NOTE=$(cat "$T/tmp"/devloop-install-note-* 2>/dev/null | cut -d "$US" -f 1) || true
+          }
+          # held NAME WANT [FOLDER]: ok where GOT opens with WANT and, where a FOLDER is named, NOTE is that folder; RED with what came otherwise
+          held() {
+            local r=""
+            [ "${GOT#"$2"}" != "$GOT" ] || r=" it answered '$GOT', expected '$2';"
+            [ $# -lt 3 ] || [ "$NOTE" = "$3" ] || r="$r it noted the folder '$NOTE', expected '$3';"
+            [ -n "$r" ] || { echo "ok   $1"; return 0; }
+            echo "RED  $1:$r"; red=1
+          }
+          WH='C:\Users\devloop-probe'
+          GEM='RubyGems Environment:\r\n  - RUBYGEMS VERSION: 3.5.22\r\n  - USER INSTALLATION DIRECTORY: %s\r\n  - EXECUTABLE DIRECTORY: %s\r\n  - GEM PATHS:\r\n'
+
+          # the answers as measured on windows-latest on 26 November 2026, under a record that names the route npm and under one that names the places, each place in another form than the answer
+          record 'install-place: /usr/local/bin' 'install-route: npm'
+          says "$T/bin" npm prefix_-g '%s\n' 'C:\npm\prefix'
+          guard W "$T/bin" 'npm install -g semver'
+          held "as Git Bash, the record naming the route npm, npm prefix -g answering C:\\npm\\prefix: let through, the folder the prefix itself in the form of Git Bash" "[0] " /c/npm/prefix
+          guard L "$T/bin" 'npm install -g semver'
+          held "as Linux, the same answer: no absolute path, blocked as not answered, as before" "[2] where it lands cannot be read here; npm (npm prefix -g did not answer)"
+          says "$T/bin" npm prefix_-g '%s\n' /opt/devloop-probe/npm
+          guard L "$T/bin" 'npm install -g semver'
+          held "as Linux, npm prefix -g answering a folder: let through, the folder bin under the prefix, as before" "[0] " /opt/devloop-probe/npm/bin
+          record 'install-place: c:\npm\prefix' 'install-place: C:/Program Files (x86)/pipx_bin' 'install-place: /c/hostedtoolcache/windows/Ruby/3.3.13/x64/bin' 'install-place: C:\Users\devloop-probe\.local\bin' 'install-place: ~/.bun/bin' 'install-place: ~/go/bin' 'install-place: D:/cy-elsewhere' 'install-place: /opt/devloop-probe/go/bin' 'install-place: /opt/devloop-probe/gems/bin'
+          says "$T/bin" npm prefix_-g '%s\n' 'C:\npm\prefix'
+          guard W "$T/bin" 'npm install -g semver'
+          held "as Git Bash, the record naming the place c:\\npm\\prefix and npm answering C:\\npm\\prefix: one folder, let through" "[0] " /c/npm/prefix
+          guard W "$T/bin" 'npm install -g --prefix C:/npm-elsewhere semver'
+          held "as Git Bash, --prefix C:/npm-elsewhere on npm: an absolute path outside the project, the prefix itself, blocked as a place the record does not name" "[2] it lands in /c/npm-elsewhere, which the record does not name"
+          guard L "$T/bin" 'npm install -g --prefix C:/npm-elsewhere semver'
+          held "as Linux, the same command: a relative path inside the project, which opens nothing, as before" "[0] " ""
+          guard W "$T/bin" 'npm install -g --prefix C:npm-elsewhere semver'
+          held "as Git Bash, --prefix C:npm-elsewhere, a drive letter and a colon with no slash behind them: no path inside the project, blocked" "[2] it lands in C:npm-elsewhere, which the record does not name"
+          guard W "$T/bin" 'cd C:/elsewhere && npm install -g --prefix tools semver'
+          held "as Git Bash, cd C:/elsewhere before an install to a relative path: the cd leaves the project, blocked" "[2] it lands in tools, which the record does not name"
+          guard L "$T/bin" 'cd C:/elsewhere && npm install -g --prefix tools semver'
+          held "as Linux, the same command: a cd to a relative path, the install inside the project, as before" "[0] " ""
+          says "$T/bin" yarn global_bin '%s\n' 'yarn global v1.22' 'C:\npm\prefix\bin'
+          guard W "$T/bin" 'yarn global add json5'
+          held "as Git Bash, yarn global bin answering C:\\npm\\prefix\\bin: under the place the record names, let through" "[0] " /c/npm/prefix/bin
+          says "$T/bin" pipx environment_--value_PIPX_BIN_DIR '%s\n' 'C:\Program Files (x86)\pipx_bin'
+          guard W "$T/bin" 'pipx install pycowsay'
+          held "as Git Bash, pipx answering a folder with blanks and parentheses, the record naming it with slashes: let through" "[0] " "/c/Program Files (x86)/pipx_bin"
+          says "$T/bin" gem environment "$GEM" 'C:/Users/devloop-probe/.local/share/gem/ruby/3.3.0' 'C:/hostedtoolcache/windows/Ruby/3.3.13/x64/bin'
+          guard W "$T/bin" 'gem install coderay'
+          held "as Git Bash, gem environment answering with CRLF and C:/...: the folder without the carriage return, the record naming it as /c/..., let through" "[0] " /c/hostedtoolcache/windows/Ruby/3.3.13/x64/bin
+          guard W "$T/bin" 'gem install --user-install coderay' "$P" "$P" "$WH"
+          held "as Git Bash, gem install --user-install, the home directory in the form of Windows: bin under the user installation directory, written with ~, blocked as not named" "[2] it lands in ~/.local/share/gem/ruby/3.3.0/bin, which the record does not name"
+          says "$T/bin" gem environment "$GEM" /opt/devloop-probe/user /opt/devloop-probe/gems/bin
+          guard L "$T/bin" 'gem install coderay'
+          held "as Linux, gem environment answering with CRLF: the folder without the carriage return, let through under the record that names it" "[0] " /opt/devloop-probe/gems/bin
+          says "$T/bin" uv tool_dir_--bin '%s\n' 'C:\Users\devloop-probe\.local\bin'
+          guard W "$T/bin" 'uv tool install pyjokes' "$P" "$P" "$WH"
+          held "as Git Bash, uv answering under the home directory, the home directory and the record's place in the form of Windows: let through, the folder written with ~" "[0] " "~/.local/bin"
+          says "$T/bin" bun pm_bin_-g '%s\n' 'C:\Users\devloop-probe\.bun\bin'
+          guard W "$T/bin" 'bun add -g cowsay' "$P" "$P" "$WH"
+          held "as Git Bash, bun answering under the home directory, the record naming the place with ~: let through" "[0] " "~/.bun/bin"
+          says "$T/bin" pnpm bin_-g '%s\n' 'C:\Users\devloop-probe\AppData\Local\pnpm\bin'
+          guard W "$T/bin" 'pnpm add -g nanoid' "$P" "$P" "$WH"
+          held "as Git Bash, pnpm answering a folder the record does not name: blocked, the folder written with ~" "[2] it lands in ~/AppData/Local/pnpm/bin, which the record does not name"
+          says "$T/bin" go env_GOBIN '\n'
+          says "$T/bin" go env_GOPATH '%s\n' 'C:\Users\devloop-probe\go;D:\work\go'
+          guard W "$T/bin" 'go install example.invalid/x@latest' "$P" "$P" "$WH"
+          held "as Git Bash, go env GOPATH answering two folders parted by a semicolon: bin under the first, let through" "[0] " "~/go/bin"
+          says "$T/bin" go env_GOPATH '%s\n' /opt/devloop-probe/go:/opt/devloop-other/go
+          guard L "$T/bin" 'go install example.invalid/x@latest'
+          held "as Linux, go env GOPATH answering two folders parted by a colon: bin under the first, as before" "[0] " /opt/devloop-probe/go/bin
+          guard W "$T/none" 'PLAYWRIGHT_BROWSERS_PATH=C:/pw-elsewhere npx playwright install chromium'
+          held "as Git Bash, PLAYWRIGHT_BROWSERS_PATH=C:/pw-elsewhere: an absolute path outside the project, blocked as a place the record does not name" "[2] it lands in /c/pw-elsewhere, which the record does not name"
+          guard L "$T/none" 'PLAYWRIGHT_BROWSERS_PATH=C:/pw-elsewhere npx playwright install chromium'
+          held "as Linux, the same command: a relative path inside the project, as before" "[0] " ""
+          guard W "$T/none" 'PLAYWRIGHT_BROWSERS_PATH=C:pw-elsewhere npx playwright install chromium'
+          held "as Git Bash, PLAYWRIGHT_BROWSERS_PATH=C:pw-elsewhere, no slash behind the colon: not read, blocked" "[2] where it lands cannot be read here; playwright (where it puts things is not read off this machine by this guard)"
+          guard W "$T/none" 'CYPRESS_CACHE_FOLDER=D:/cy-elsewhere npx cypress install'
+          held "as Git Bash, CYPRESS_CACHE_FOLDER=D:/cy-elsewhere, the record naming that place: let through" "[0] " /d/cy-elsewhere
+          guard W "$T/none" "npx puppeteer browsers install chrome --path 'C:\\pp-elsewhere'"
+          held "as Git Bash, --path C:\\pp-elsewhere on puppeteer browsers install: an absolute path outside the project, blocked" "[2] it lands in /c/pp-elsewhere, which the record does not name"
+          guard W "$T/none" 'C:/devloop-probe/python -m pip install pyfiglet'
+          held "as Git Bash, an interpreter written C:/devloop-probe/python before -m pip: outside the project, another path than the one the path finds, not asked" "[2] where it lands cannot be read here; C:/devloop-probe/python -m pip (not asked: the command writes python with a path that is not the one this hook's PATH finds for it)"
+          guard L "$T/none" 'C:/devloop-probe/python -m pip install pyfiglet'
+          held "as Linux, the same command: an interpreter by a relative path inside the project, as before" "[0] " ""
+          record
+          guard W "$T/none" 'PLAYWRIGHT_BROWSERS_PATH=C:/elsewhere npx playwright install chromium'
+          held "as Git Bash, no record at all, PLAYWRIGHT_BROWSERS_PATH=C:/elsewhere: blocked like every install to the outside" "[2] there is no docs/agents/environment.md on origin/main as last fetched"
+
+          # an installer written with its path: asked only where that path is the one the path finds for it, character for character, and then as the one written bare is; another installation, a link to the one the path finds, a relative path and a path at which nothing stands are asked nothing, and no installer is asked where the command sets PATH; each of the nine routes the guard asks
+          for d in bin named; do
+            says "$T/$d" brew --prefix '%s\n' "/opt/devloop-$d/brew"
+            says "$T/$d" npm prefix_-g '%s\n' "/opt/devloop-$d/npm"
+            says "$T/$d" go env_GOBIN '%s\n' "/opt/devloop-$d/go"
+            says "$T/$d" pnpm bin_-g '%s\n' "/opt/devloop-$d/pnpm"
+            says "$T/$d" yarn global_bin '%s\n' "/opt/devloop-$d/yarn"
+            says "$T/$d" bun pm_bin_-g '%s\n' "/opt/devloop-$d/bun"
+            says "$T/$d" pipx environment_--value_PIPX_BIN_DIR '%s\n' "/opt/devloop-$d/pipx"
+            says "$T/$d" uv tool_dir_--bin '%s\n' "/opt/devloop-$d/uv"
+            says "$T/$d" gem environment "$GEM" "/opt/devloop-$d/user" "/opt/devloop-$d/gem"
+          done
+          # the same stand-in under the home directory and inside the project, a symbolic link and a hard link to the brew the path finds, a copy where the system makes no link, and a brew the path finds under the home directory
+          mkdir -p "$T/link" "$T/hard" "$T/home/pbin"
+          cp "$T/named/brew" "$T/named/brew.--prefix" "$T/home/named/"; cp "$T/named/brew" "$T/named/brew.--prefix" "$P/tools/"
+          ln -s "$T/bin/brew" "$T/link/brew" 2>/dev/null || cp "$T/bin/brew" "$T/link/brew"
+          ln "$T/bin/brew" "$T/hard/brew" 2>/dev/null || cp "$T/bin/brew" "$T/hard/brew"
+          says "$T/home/pbin" brew --prefix '%s\n' /opt/devloop-home/brew
+          # quiet NAME: RED where a stand-in for an installer was started in one of the folders of these cases
+          quiet() { local f; for f in "$T/bin/log" "$T/named/log" "$T/home/named/log" "$T/home/pbin/log" "$P/tools/log" "$T/link/log" "$T/hard/log"; do [ ! -e "$f" ] || { echo "RED  $1: an installer was started: $(tr '\n' ';' < "$f")"; red=1; rm -f "$f"; }; done; }
+          OTHER="with a path that is not the one this hook's PATH finds for it)"
+          record 'install-place: /opt/devloop-named'
+          guard L "$T/bin" 'brew install yq'
+          held "brew written bare: the one the path finds asked, blocked as a place the record does not name, as before" "[2] it lands in /opt/devloop-bin/brew/bin, which the record does not name"
+          record 'install-place: /opt/devloop-bin' 'install-place: /opt/devloop-named' 'install-place: /opt/devloop-home'
+          while IFS='|' read -r words folder route <&3; do
+            guard L "$T/bin" "$T/bin/$words"
+            held "${words%% *} written with the path the path finds: asked as the one written bare is, let through under the record that names its folder" "[0] " "/opt/devloop-bin/$folder"
+            [ -e "$T/bin/log" ] || { echo "RED  ${words%% *} written with the path the path finds: it was asked nothing"; red=1; }
+            guard L "$T/bin" "$T/named/$words"
+            held "${words%% *} written with the path of another installation: not asked, blocked under a record that names the folders of both" "[2] where it lands cannot be read here; $route (not asked: the command writes ${words%% *} $OTHER"
+            quiet "${words%% *} written with the path of another installation"
+          done 3<<'ROUTES'
+          brew install yq|brew/bin|brew
+          npm install -g semver|npm/bin|npm
+          go install example.invalid/x@latest|go|go
+          pnpm add -g nanoid|pnpm|pnpm
+          yarn global add json5|yarn|yarn
+          bun add -g cowsay|bun|bun
+          pipx install pycowsay|pipx|pipx
+          uv tool install pyjokes|uv|uv tool
+          gem install coderay|gem|gem
+          ROUTES
+          NOTBREW="[2] where it lands cannot be read here; brew (not asked: the command writes brew $OTHER"
+          while IFS='|' read -r words name <&3; do
+            guard L "$T/bin" "$words"
+            held "brew written $name: not asked, blocked" "$NOTBREW"
+            quiet "brew written $name"
+          done 3<<PATHS
+          ~/named/brew install yq|with another path that opens with ~
+          tools/brew install yq|with a path inside the project, a relative one
+          $P/tools/brew install yq|with a path inside the project, an absolute one
+          ../tools/brew install yq|with a path that carries ..
+          $T/link/brew install yq|with the path of a symbolic link to the brew the path finds
+          $T/hard/brew install yq|with the path of a hard link to the brew the path finds
+          $T/bin/../bin/brew install yq|with the path the path finds, a .. in it, another text
+          /opt/devloop-nowhere/brew install yq|with a path at which nothing stands
+          PATHS
+          guard L "$T/home/pbin" '~/pbin/brew install yq'
+          held "brew written ~/pbin/brew, the path the path finds: the home directory put in, asked, let through" "[0] " /opt/devloop-home/brew/bin
+          [ -e "$T/home/pbin/log" ] || { echo "RED  brew written ~/pbin/brew, the path the path finds: it was asked nothing"; red=1; }
+          rm -f "$T/home/pbin/log"; guard L "$T/home/pbin" '$HOME/pbin/brew install yq'
+          held "brew written \$HOME/pbin/brew, the path the path finds: the home directory put in, asked, let through" "[0] " /opt/devloop-home/brew/bin
+          [ -e "$T/home/pbin/log" ] || { echo "RED  brew written \$HOME/pbin/brew, the path the path finds: it was asked nothing"; red=1; }
+          rm -f "$T/home/pbin/log"
+          guard L "$T/bin" "$T/named/npm install -g --prefix /opt/devloop-named/x semver"
+          held "npm written with the path of another installation and --prefix on the line: the place is written in the command, nothing to ask, let through as before" "[0] " /opt/devloop-named/x/bin
+          quiet "npm written with the path of another installation and --prefix on the line"
+          SETS="[2] where it lands cannot be read here; brew (not asked: the command sets PATH, and which brew that PATH finds is not read by this guard)"
+          while IFS='|' read -r words name <&3; do
+            guard L "$T/bin" "$words"
+            held "PATH set $name: not asked, blocked" "$SETS"
+            quiet "PATH set $name"
+          done 3<<SETTINGS
+          PATH=$T/named:\$PATH brew install yq|before brew written bare
+          export PATH=$T/named:\$PATH && brew install yq|with export earlier in the string
+          env PATH=$T/named brew install yq|with env
+          PATH=$T/named:\$PATH; brew install yq|on a line of its own before brew
+          PATH=$T/named:\$PATH $T/bin/brew install yq|before brew written with the path the path finds
+          SETTINGS
+          guard W "$T/bin" 'C:/devloop-probe/nodejs/npm install -g semver'
+          held "as Git Bash, npm written C:/devloop-probe/nodejs/npm: another path than the one the path finds, not asked" "[2] where it lands cannot be read here; npm (not asked: the command writes npm $OTHER"
+          quiet "as Git Bash, npm written C:/devloop-probe/nodejs/npm"
+
+          # the interpreter of a python -m pip by the same rule: a stand-in that writes its call into the log of its folder and answers every query with one folder, and a link to it in the bin of a virtual environment outside the project
+          mkdir -p "$T/py" "$T/venv/bin"
+          printf '%s\n' '#!/bin/sh' 'echo "python3 $1" >> "$(dirname "$0")/log"' '[ "$1" = -c ] || exit 1' 'echo /opt/devloop-py/bin' > "$T/py/python3"; chmod +x "$T/py/python3"
+          ln -s "$T/py/python3" "$T/venv/bin/python3" 2>/dev/null || cp "$T/py/python3" "$T/venv/bin/python3"
+          record 'install-place: /opt/devloop-py/bin'
+          guard L "$T/py" 'python3 -m pip install pyfiglet'
+          held "an interpreter written bare before -m pip: the one the path finds asked, let through under the record that names its folder, as before" "[0] "
+          rm -f "$T/py/log"; guard L "$T/py" "$T/py/python3 -m pip install pyfiglet"
+          held "an interpreter written with the path the path finds: asked as the one written bare is, let through" "[0] "
+          [ -e "$T/py/log" ] || { echo "RED  an interpreter written with the path the path finds: it was asked nothing"; red=1; }
+          rm -f "$T/py/log" "$T/venv/bin/log"; guard L "$T/py" "$T/venv/bin/python3 -m pip install pyfiglet"
+          held "the interpreter of a virtual environment outside the project, a link to the one the path finds: not asked, blocked" "[2] where it lands cannot be read here; $T/venv/bin/python3 -m pip (not asked: the command writes python3 $OTHER"
+          guard L "$T/py" "PATH=$T/venv/bin:\$PATH python3 -m pip install pyfiglet"
+          held "PATH set before an interpreter written bare: not asked, blocked" "[2] where it lands cannot be read here; python3 -m pip (not asked: the command sets PATH, and which python3 that PATH finds is not read by this guard)"
+          [ ! -e "$T/py/log" ] && [ ! -e "$T/venv/bin/log" ] || { echo "RED  an interpreter not to be asked was started: $(cat "$T/py/log" "$T/venv/bin/log" 2>/dev/null | tr '\n' ';')"; red=1; }
+
+          # under Windows itself: the project's directory, the directory of the command and the home directory in the forms of Windows, and bin/devloop-tool-state at an answer in the form of Windows that names a folder of this step
+          if command -v cygpath >/dev/null 2>&1; then
+            record 'install-place: /usr/local/bin'
+            guard R "$T/none" 'npm install -g --prefix tools semver' "$(cygpath -m "$P")" "$(cygpath -w "$P")"
+            held "under Windows, the project's directory with backslashes and the directory of the command with slashes: a relative path placed inside the project, which opens nothing" "[0] " ""
+            guard R "$T/none" "npm install -g --prefix '$(cygpath -w "$P/tools")' semver" "$(cygpath -w "$P")" "$(cygpath -m "$P")"
+            held "under Windows, --prefix naming a folder of the project with backslashes, the project's directory with slashes: inside the project" "[0] " ""
+            guard R "$T/none" 'npm install -g --prefix C:/npm-elsewhere semver' "$(cygpath -w "$P")" "$(cygpath -w "$P")"
+            held "under Windows, --prefix C:/npm-elsewhere: outside the project, blocked" "[2] it lands in /c/npm-elsewhere, which the record does not name"
+            record "install-place: $(cygpath -m "$T/home")/.local/bin"
+            says "$T/bin" uv tool_dir_--bin '%s\n' "$(cygpath -w "$T/home/.local/bin")"
+            guard R "$T/bin" 'uv tool install pyjokes' "$P" "$P" "$(cygpath -w "$T/home")"
+            held "under Windows, uv answering with backslashes under a home directory given with backslashes, the record naming the place with slashes: let through, the folder written with ~" "[0] " "~/.local/bin"
+            mkdir -p "$T/np" "$T/home/.local/bin" "$T/gm"
+            : > "$T/np/semver.cmd"; : > "$T/home/.local/bin/pyjoke"; : > "$T/gm/coderay"
+            says "$T/bin" npm prefix_-g '%s\n' "$(cygpath -w "$T/np")"
+            says "$T/bin" gem environment "$GEM" 'C:/devloop-probe/user' "$(cygpath -m "$T/gm")"
+            # state HOME COMMAND TOOL: the folder line of bin/devloop-tool-state --installed, the day taken off
+            state() { ( cd "$P" && env -u DEVLOOP_TOOL_STATE_SYSTEM -u CARGO_HOME -u CARGO_INSTALL_ROOT PATH="$T/bin:$PATH" HOME="$1" CLAUDE_PROJECT_DIR="$P" "$ROOT/bin/devloop-tool-state" --installed "$2" "$3" 2>&1 | head -n 1 | sed 's/ (on [0-9-]*)$//' ) || true; }
+            GOT=$(state "$T/home" 'npm install -g semver' semver)
+            held "under Windows, bin/devloop-tool-state at npm prefix -g answering a folder of this step with backslashes: semver.cmd found in the prefix itself" "semver: found at $T/np/semver.cmd, the folder npm writes to, read off npm prefix -g"
+            GOT=$(state "$(cygpath -w "$T/home")" 'uv tool install pyjokes' pyjoke)
+            held "under Windows, bin/devloop-tool-state at uv answering with backslashes under a home directory given with backslashes: found, the folder written with ~" "pyjoke: found at ~/.local/bin/pyjoke, the folder uv writes to, read off uv tool dir --bin"
+            GOT=$(state "$T/home" 'gem install coderay' coderay)
+            held "under Windows, bin/devloop-tool-state at gem environment answering with CRLF and a drive letter: found" "coderay: found at $T/gm/coderay, the folder gem writes to, read off the EXECUTABLE DIRECTORY of gem environment"
+            # an installer written with the path the path finds, in a form of Windows: that very path in the one form, asked by the guard and by bin/devloop-tool-state
+            record 'install-place: /opt/devloop-bin'
+            guard R "$T/bin" "$(cygpath -m "$T/bin/brew") install yq"
+            held "under Windows, brew written with the path the path finds, a drive letter and slashes: that very path in the one form, asked, let through" "[0] " /opt/devloop-bin/brew/bin
+            GOT=$(state "$T/home" "$(cygpath -w "$T/bin/npm") install -g semver" semver)
+            held "under Windows, bin/devloop-tool-state at npm written with the path the search path finds, backslashes and a drive letter: asked, semver.cmd found in the prefix itself" "semver: found at $T/np/semver.cmd, the folder npm writes to, read off npm prefix -g"
+          else
+            echo "note the cases under Windows itself left out here, no cygpath on the path: they give the guard and bin/devloop-tool-state the directories of this step in the forms of Windows, which the system itself must read"
+          fi
+          rm -rf "$T"
+          [ "$red" -eq 0 ]
 
       - name: every place that reads a file of the project, with the file at LF, with CRLF from a checkout under core.autocrlf=true and with CRLF committed, and the three calls of awk with input that reaches them
         run: |

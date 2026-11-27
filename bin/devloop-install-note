@@ -130,7 +130,7 @@ folder() {
 }
 
 selftest() {
-  local me T out rc n=0 P Q G H S L A B K e
+  local me T out rc n=0 P Q G H S L A B K e NPMDIR
   me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-install-note.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -288,24 +288,35 @@ stands already: - \`$k\` installed into /opt/x/bin"
   G=$(cd "$(dirname "$me")/.." && pwd)
   mkdir -p "$T/home" && export HOME="$T/home"
   project "$T/yes" yes; P="$T/yes/p"; L="$T/yes/tools"
+  # The folder npm puts a global tool in under --prefix $L, as the guard reads
+  # it: $L itself under Windows, bin under $L on every other system. It is set
+  # here once, and every expectation below that names this folder takes it
+  # from here, since 26 November 2026, the second addendum to part 3a of order
+  # (5) of milestone 12: the guard reads the prefix itself under Windows since
+  # 0.197.0, and until that day the expectations named bin under $L on every
+  # system, red on windows-latest at the first of them. Windows is read as
+  # the guard reads it, uname -s opening with MINGW, MSYS or CYGWIN, so that
+  # the same cases hold behind a stand-in for uname on the three other
+  # systems. The text of a command a case hands the hook stays as it stands.
+  NPMDIR="$L/bin"; uname -s 2>/dev/null | grep -qE '^(MINGW|MSYS|CYGWIN)' && NPMDIR="$L"
   out=$(cd "$P" && git checkout -q -b work 2>&1) || { echo "FAIL no branch in the throwaway project"; exit 1; }
   hook PostToolUse "npm install -g --prefix $L alpha" t10
-  expect "an install alone, its output seen: the line, as today" 0 "[InstallFact] written into $FILE under \\\"$HEADING\\\", on this branch, by the hook and not by you: - \`npm install -g --prefix $L alpha\` installed into $L/bin"
+  expect "an install alone, its output seen: the line, as today" 0 "[InstallFact] written into $FILE under \\\"$HEADING\\\", on this branch, by the hook and not by you: - \`npm install -g --prefix $L alpha\` installed into $NPMDIR"
   absent "sent away" "an install alone, its output seen: the line, as today"
   hook PostToolUse "npm install -g --prefix $L beta 2>&1" t11
-  expect "an install alone, 2>&1 behind it: the line without the redirection, its output seen" 0 "by the hook and not by you: - \`npm install -g --prefix $L beta\` installed into $L/bin"
+  expect "an install alone, 2>&1 behind it: the line without the redirection, its output seen" 0 "by the hook and not by you: - \`npm install -g --prefix $L beta\` installed into $NPMDIR"
   absent "sent away" "an install alone, 2>&1 behind it: the line without the redirection, its output seen"
   hook PostToolUse "npm install -g --prefix $L gamma >/dev/null 2>&1" t12
-  expect "an install alone, its output sent away: the line, and the context names the redirection" 0 "by the hook and not by you: - \`npm install -g --prefix $L gamma\` installed into $L/bin. The output of this install was sent away (>/dev/null 2>&1), so what the package manager did besides is not known from it: say so in the report."
+  expect "an install alone, its output sent away: the line, and the context names the redirection" 0 "by the hook and not by you: - \`npm install -g --prefix $L gamma\` installed into $NPMDIR. The output of this install was sent away (>/dev/null 2>&1), so what the package manager did besides is not known from it: say so in the report."
   hook PostToolUse "npm install -g --prefix $L delta &> $T/install.log" t13
-  expect "an install alone, &> into a file: the line without it, the redirection named" 0 "installed into $L/bin. The output of this install was sent away (&>$T/install.log)"
+  expect "an install alone, &> into a file: the line without it, the redirection named" 0 "installed into $NPMDIR. The output of this install was sent away (&>$T/install.log)"
   hook PostToolUse "npm install -g --prefix $L epsilon 2>/dev/null" t14
-  expect "an install alone, its error output sent away: the redirection named" 0 "installed into $L/bin. The output of this install was sent away (2>/dev/null)"
+  expect "an install alone, its error output sent away: the redirection named" 0 "installed into $NPMDIR. The output of this install was sent away (2>/dev/null)"
   hook PostToolUse "npm install -g --prefix $L zeta 2>&1 | tail -5; ls $L/bin" t15
-  expect "an install not alone, a pipe behind it and a command after it: no line, context f and the sentence on the pipe" 0 "[InstallFact] not written: \`npm install -g --prefix $L zeta\` did not stand alone in its call, so the call's exit may not be the install's, and this hook cannot tell whether it went through. Read whether the tool stands in $L/bin; where it does, write its line with " "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L zeta'. Run the next install alone in its call. The output of this install was cut by \`| tail -5\`, so what the package manager did besides is not known from it: say so in the report.\"}}" '"hookEventName":"PostToolUse"'
+  expect "an install not alone, a pipe behind it and a command after it: no line, context f and the sentence on the pipe" 0 "[InstallFact] not written: \`npm install -g --prefix $L zeta\` did not stand alone in its call, so the call's exit may not be the install's, and this hook cannot tell whether it went through. Read whether the tool stands in $NPMDIR; where it does, write its line with " "/bin/devloop-install-note put '$NPMDIR' 'npm install -g --prefix $L zeta'. Run the next install alone in its call. The output of this install was cut by \`| tail -5\`, so what the package manager did besides is not known from it: say so in the report.\"}}" '"hookEventName":"PostToolUse"'
   absent "sent away" "an install not alone, a pipe behind it and a command after it: no line, context f and the sentence on the pipe"
   hook PostToolUse "cd $P && npm install -g --prefix $L eta" t16
-  expect "an install with a command before it: not alone, since the reader does not tell ; && and || apart, context f without a sentence on the output" 0 "[InstallFact] not written: \`npm install -g --prefix $L eta\` did not stand alone in its call, so the call's exit may not be the install's" "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L eta'. Run the next install alone in its call.\"}}"
+  expect "an install with a command before it: not alone, since the reader does not tell ; && and || apart, context f without a sentence on the output" 0 "[InstallFact] not written: \`npm install -g --prefix $L eta\` did not stand alone in its call, so the call's exit may not be the install's" "/bin/devloop-install-note put '$NPMDIR' 'npm install -g --prefix $L eta'. Run the next install alone in its call.\"}}"
   absent "The output of this install" "an install with a command before it: not alone, since the reader does not tell ; && and || apart, context f without a sentence on the output"
   hook PostToolUse "cd $P && npm install -g --prefix $L lambda >/dev/null 2>&1" t30
   expect "an install not alone, its output sent away and no pipe reading it: context f and the second sentence of e" 0 "'npm install -g --prefix $L lambda'. Run the next install alone in its call. The output of this install was sent away (>/dev/null 2>&1), so what the package manager did besides is not known from it: say so in the report.\"}}"
@@ -333,16 +344,16 @@ install-answered: 2026-10-24
 
 ## Installed outside the project
 
-- \`npm install -g --prefix $L alpha\` installed into $L/bin
-- \`npm install -g --prefix $L beta\` installed into $L/bin
-- \`npm install -g --prefix $L gamma\` installed into $L/bin
-- \`npm install -g --prefix $L delta\` installed into $L/bin
-- \`npm install -g --prefix $L epsilon\` installed into $L/bin
+- \`npm install -g --prefix $L alpha\` installed into $NPMDIR
+- \`npm install -g --prefix $L beta\` installed into $NPMDIR
+- \`npm install -g --prefix $L gamma\` installed into $NPMDIR
+- \`npm install -g --prefix $L delta\` installed into $NPMDIR
+- \`npm install -g --prefix $L epsilon\` installed into $NPMDIR
 EOF
   n=$((n+1)); echo "ok   the section after the calls: one line per install that stood alone and went through, none for the others"
   ( cd "$P" && git checkout -q -- . && git checkout -q main ) || exit 1
   hook PostToolUse "npm install -g --prefix $L kappa >/dev/null" t19
-  expect "an install alone on the default branch: exit 2, not written, the line in the message, the redirection named" 2 "Not written: the install went through, and the line for $FILE is not written while the tree stands on the default branch main" "as it stands here: - \`npm install -g --prefix $L kappa\` installed into $L/bin. The output of this install was sent away (>/dev/null)"
+  expect "an install alone on the default branch: exit 2, not written, the line in the message, the redirection named" 2 "Not written: the install went through, and the line for $FILE is not written while the tree stands on the default branch main" "as it stands here: - \`npm install -g --prefix $L kappa\` installed into $NPMDIR. The output of this install was sent away (>/dev/null)"
 
   # the call of put a run types, an install command in it, under a record
   # saying no: the guard lets it through and leaves no note, where it blocks
