@@ -405,12 +405,15 @@ loaded text no longer carries stands here at its rule.
   of them built and one closed, four defects closed as left on purpose and one
   as lapsed; 20 October 2026, version 0.152.0.".
 - **A refresh adds to a record under a yes the places this version names for
-  the kinds the yes covers, the five places for the browsers of tests among
-  them, without a question, and names them under what changed and so in its
+  the kinds the yes covers, every one of the fifteen it lacks, without a
+  question, and names them under what changed and so in its
   pull request; the answer, the routes and the date stay.** The question names
   kinds, tools and browsers for tests, and not places, `shared/install-question.md`,
   so the yes covers a place a later version adds, and the case returns with every
-  version that adds one; "not amended" in `docs/roadmap-archive-1.md` line 13047
+  version that adds one: the five places for the browsers of tests on macOS
+  and Linux first, then the two for the browsers under Windows and the two
+  npm and yarn put a global tool into there, a tool being a kind the yes
+  covers, entry "Under Windows a yes opens the folders of browsers, npm and yarn"; "not amended" in `docs/roadmap-archive-1.md` line 13047
   was a ruling of that order, not of the person. Decision (7) of entry "Defects
   sorted into milestones, 13 to 15 added, the Done check built.", built in entry "Decided contradictions mended, the mark guard reads the mode's record."; the case is the block "install-record.md says the five browser places
   are added with the person there and no text names a run that adds them" of
@@ -3522,16 +3525,34 @@ Nothing in this file stood as history; its rules carry their own reasons.
   approved wording is not written into the text as an example, entry "An
   approved wording as an example in a skill." under "Decisions taken against".
 - **The result of a browser download is read in the folder the vendor names for
-  the system, or in one a setting of the vendor names where the run finds one
+  the system, on macOS, on Linux and on Windows, or in one a setting of the
+  vendor names where the run finds one
   set.** The guard reads no such setting, so only the run that reads the result
-  sees a moved location. Entry "The install guard reads the commands that fetch
+  sees a moved location. Under Windows Playwright and Cypress take the folder
+  `LOCALAPPDATA` names, `AppData/Local` in the home directory where it names
+  none, with `ms-playwright` and `Cypress/Cache` under it, and Puppeteer
+  `.cache/puppeteer` in the home directory, which Node reads off `USERPROFILE`
+  there: the vendors' sources at their newest release, and measured on
+  windows-latest under the bash of Git for Windows, where the three put a
+  browser there, entries "Under Windows a yes opens the folders of browsers, npm and yarn" and "The guard reads a folder of Windows and asks only the installer on PATH"; the install guard and
+  `bin/devloop-tool-state` read the folders so, and a text that named none
+  for Windows left the run with no folder to read there. Entry "The install guard reads the commands that fetch
   a tool and run it without saying install, and the browser downloads for tests,
   which it holds against the vendor's default place for the system it runs on;
   the drivers half of milestone 3 built, defect 8 of 4 October 2026 answered
   otherwise, one finding; 8 October 2026, version 0.131.0.".
 - **Whether an install worked is read at the path the installer writes to, not
-  with `command -v`.** `command -v` finds any copy on `PATH`, an older one
-  included. Case: on 6 September 2026 the broken gitleaks line looked like a
+  with `command -v`: for go `GOBIN`, and with it empty `bin` under the first
+  folder of `GOPATH`, for a global npm `bin` under its prefix and on Windows
+  the prefix itself.** `command -v` finds any copy on `PATH`, an older one
+  included. The folders are named as the install guard and
+  `bin/devloop-tool-state` read them, so that the run looks where the program
+  looks: under Windows npm puts a global tool into its prefix itself, measured
+  on windows-latest, `semver`, `semver.cmd` and `semver.ps1` standing in the
+  folder `npm prefix -g` names and no `bin` under it; and `GOPATH` is a list,
+  parted by a semicolon on Windows and by a colon elsewhere, into whose first
+  folder go installs, `go help gopath`; entry "The guard reads a folder of Windows and asks only the installer on PATH", built into the text in
+  entry "Under Windows a yes opens the folders of browsers, npm and yarn". Case: on 6 September 2026 the broken gitleaks line looked like a
   success on the user's own machine, because an older gitleaks already stood on
   `PATH`, entry "An install command handed to the user without being backed,
   measured on 6 September 2026 in `devloop-test-o`.".
@@ -4461,13 +4482,30 @@ Nothing in this file stood as history; its rules carry their own reasons.
   where it carries one; the hook run on a bench in four cases and the step's
   command on the tree and on a copy with a date over a line break; 20 October
   2026, version 0.153.0.".
+- **The places a yes opens are fifteen: the six bin directories, the seven
+  where Playwright, Cypress and Puppeteer put a browser by default on macOS,
+  on Linux and on Windows, and the two where npm and yarn put a global tool on
+  Windows with no setting of their own.** The guard holds a browser download
+  against the place the vendor names for the system it runs on, so the record
+  names that place for every system devloop runs on; under Windows they are
+  `~/AppData/Local/ms-playwright` and `~/AppData/Local/Cypress/Cache`, with
+  `~/.cache/puppeteer` as on the two others, the vendors' sources at their
+  newest release and the measurement on windows-latest. And the guard holds
+  the answer of a route the record does not name against the places: under
+  Windows npm answers `%AppData%\npm` and yarn of version 1
+  `%LOCALAPPDATA%\Yarn\bin` where nothing of their own moves them, no bin
+  directory lies there, and without the two places `npm install -g` and `yarn
+  global add` would go to the person there where the same command passes on a
+  Mac with Homebrew, whose `npm prefix -g` and `yarn global bin` answer under
+  `/opt`; decided for the two places of npm and yarn with that reason, not
+  chosen that nothing is added under Windows. Entry "Under Windows a yes opens the folders of browsers, npm and yarn".
 - **A record under a no that still carries places and routes is not amended; a
-  record under a yes with the six bin directories and not the five places for
-  browsers is amended by the refresh of the setup, which adds the places this
+  record under a yes that carries fewer than the fifteen places is amended by
+  the refresh of the setup, which adds the places this
   version names without a question and names them in its pull request.** The
   line at session start says `places: none` and `routes: none` under a no
-  whatever the record carries; under the older yes the guard blocks a browser
-  download naming the place until that refresh has landed. The refresh by
+  whatever the record carries; under a yes that lacks a place the guard blocks
+  an install into it, naming the place, until that refresh has landed. The refresh by
   decision (7) of entry "Defects sorted into milestones, 13 to 15 added, the Done
   check built.", the question naming kinds and not places, built in entry
   "Decided contradictions mended, the mark guard reads the mode's record.".

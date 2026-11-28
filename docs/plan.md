@@ -375,8 +375,10 @@ Since 8 October 2026, version 0.131.0, the guard reads the download —
 `playwright install` in every form the vendor documents, `cypress install`,
 `puppeteer browsers install` — and holds it against the vendor's default place
 for the system it runs on, which the record names among eleven places since
-that day; the roadmap entry of that date carries the vendors' pages and the
-measurement. Since 12 October 2026, version 0.137.0, the guard reads every
+that day and among fifteen since 28 November 2026, version 0.199.0, with the
+vendor's default under Windows and the folders npm and yarn put a global tool
+into there; the roadmap entry of 8 October 2026 carries the vendors' pages
+and the measurement. Since 12 October 2026, version 0.137.0, the guard reads every
 command of a call for itself, through `bin/devloop-command-reader`, which
 takes the command apart as the shell runs it, and a browser download moved
 by a variable before the command is held against the place the variable
@@ -1331,8 +1333,9 @@ and the second since the second part of (5) built it, below.
 Of (4) the second of its three parts is built, since 21 November 2026, and
 the third, since 22 November 2026, both below; of (5) the second of its six
 parts is built, since 25 November 2026, below, the first having written its
-decisions down and changed no code, and of its third part the first of two
-orders, 3a, since 26 November 2026, below; of 3b, of its other three parts,
+decisions down and changed no code, and of its third part the first two of
+three orders, 3a, since 26 November 2026, and 3b, since 28 November 2026,
+both below; of 3c, of its other three parts,
 of (6) and of (7) nothing is built yet. Since 18 November
 2026, by the
 order before (3) the person decided on that day, below, the job stock-take
@@ -1494,8 +1497,8 @@ the addendum, on an installer written with its path, which
 Fix since part 3a of the third part built them on 26 November 2026, below.
 The third, by the second addendum, is on put of
 `bin/devloop-install-note` answering written where the file could not be
-replaced, and stands with Fix none; part 3b of the third part builds it, the
-decision of 26 November 2026 after the paragraph on (7) below.
+replaced, and stands with Fix none; part 3c of the third part builds it, the
+decision of 28 November 2026 on the orders 3b and 3c below.
 Until 25 November 2026 this paragraph said that of (5) to (7) nothing was
 built yet, that what the order before (3) found and did not build "stands in
 three more blocks of this milestone with Fix none", and of the three blocks
@@ -1508,7 +1511,7 @@ written on main after the merge", that the one on the line endings put
 writes "waits for the log of the job hooks on every system under
 windows-latest at the merge", and that what the second addendum builds "is
 measured by its next run".
-Since 26 November 2026 the first of the two orders of the third part, 3a,
+Since 26 November 2026 the first of the orders of the third part, 3a,
 is built, the roadmap entry of that date, "The guard reads a folder of Windows and asks only the installer on PATH", after a measurement of that
 day under Windows with the installers themselves, two runs of a workflow of
 its own: under Windows the install guard and `bin/devloop-tool-state` read a
@@ -1578,7 +1581,8 @@ Mac, the second run green and, in a counter-check, red at the case that had
 gone red first under windows-latest. The
 block on the fifteen minutes is Built, never walked and cannot be forced, by
 the decision of the person of 27 November 2026 below. For the first of the three no order is named yet: it is one of
-the ten blocks that follow 3b by the decision of 27 November 2026 below.
+the ten blocks that follow 3b by the decision of 27 November 2026 below, and
+3c since the decision of 28 November 2026 on the orders 3b and 3c below.
 Of the eight built, seven are walked: three by their runs on macOS, on an
 installer written with its path, on the guard asking an installer through its
 own PATH and on PATH set in the command; and four, their shoulds asking for
@@ -1637,6 +1641,41 @@ its merge found stand in three blocks of this milestone with Fix none; until
 14 November 2026, that of the rest nothing was built, the second order
 before (2) among it; until 13 November 2026, that nothing of the orders
 before (2) was built.
+
+Since 28 November 2026 the second of the three orders of the third part, 3b,
+is built, the roadmap entry of that date, "Under Windows a yes opens the folders of browsers, npm and yarn": under Windows the install guard holds a browser download that no
+setting before the command moves against the vendor's default folder there,
+`ms-playwright` and `Cypress/Cache` in the folder `LOCALAPPDATA` names and
+`.cache/puppeteer` in the home directory, read from the vendors' sources at
+their newest release on that day and measured on windows-latest on 26
+November 2026, and `bin/devloop-tool-state` reads a browser of Cypress and of
+Puppeteer there; the places a yes opens are fifteen, with the two folders of
+the browsers under Windows and the two npm and yarn put a global tool into
+there, `~/AppData/Roaming/npm` and `~/AppData/Local/Yarn/bin`, in
+`shared/install-record.md`, at the refresh of `setup-project`, in
+`docs/skill-conventions.md` and in `docs/rationale.md`; and
+`shared/backed-command.md` names the folders of the browsers under Windows,
+the prefix of npm itself there and `bin` under the first folder of GOPATH.
+Four blocks of this milestone that order builds: three that stood, on the
+browser downloads under Windows with Git Bash, on the places a yes opens and
+on the folders `shared/backed-command.md` names; and one it wrote, on the
+folders of npm and yarn under Windows, the decision of 28 November 2026
+below. All four are Built, never walked: the first and the last until the job
+hooks on every system of its pull request has walked their cases under
+windows-latest and a record is written after the merge, the two on the texts
+until a session exercises them.
+Not built, though the decision of that day on the orders 3b and 3c gives it
+to 3b: the block on the folders for browsers read before and after every
+install. Its rule stands in `shared/install-alone.md`, and stood there when
+run 2 missed it, so that by decision (1) of 24 November 2026 below the text
+as it stands is no repair; which of the ways of that decision takes its
+place is put to the person by the report of that order.
+Three more blocks that order wrote and did not build, Fix none: on scoop,
+which the guard holds for a system package manager, the decision of 28
+November 2026 below, built after 3c; on a folder outside the user folder in
+the line for PowerShell, built by 3c; and one found by a counter-check of
+that order, on a home directory set before the command, which the guard does
+not read for a browser download, with no order named for it yet.
 
 Decided on 16 November 2026 by the person, the roadmap entry of that date on
 four blocks of `scripts/devloop-run-workflow` decided: the program is
@@ -2546,6 +2585,85 @@ hangs, which its first run then shows red already; the second run costs the
 limit once more only where nothing bounds the call of the program, and leaving
 it out would take an order of its own with a case, a thing and a run. Not
 chosen: the second run left out after a first run stopped at the limit.
+
+Decided on 28 November 2026 by the person: the places a yes opens name
+`~/AppData/Roaming/npm` and `~/AppData/Local/Yarn/bin`, at every place that
+names the places, and the refresh of `setup-project` adds them to a record
+under a yes that lacks them, as it adds the places of the browsers. Under
+Windows npm puts a global tool into its prefix itself, `%AppData%\npm` with
+no setting of its own, and yarn of version 1 into `%LOCALAPPDATA%\Yarn\bin`:
+`docs/lib/content/configuring-npm/folders.md` of npm at v12.2.3 and
+`getGlobalPrefix` with `getBinFolder` in `src/cli/commands/global.js` of yarn
+at v1.22.22, read raw on that day, and measured on windows-latest on 26
+November 2026, runs 45784957955 and 45787008409 of the roadmap entry of that
+date. None of the eleven places of that day lies there, and the guard holds
+the answer of a route the record does not name against the places. Reason:
+without them the guard stops `npm install -g` and `yarn global add` under
+Windows outside the routes of the project, where the same command passes on
+the person's Mac, `npm prefix -g` answering `/opt/homebrew` there,
+`docs/roadmap-archive-1.md` line 13864, and `yarn global bin`
+`/opt/homebrew/bin`, `docs/roadmap-archive-1.md` lines 6359 to 6360, both
+under the place `/opt`. Not
+chosen: under Windows the six bin directories stay as they are and nothing
+is added, so that every such install would go to the person. Part 3b of
+order (5) builds it, the roadmap entry of that date, "Under Windows a yes opens the folders of browsers, npm and yarn", with the block of this milestone
+"under Windows a yes opens no folder that npm and yarn put a global tool into with no setting of their own, so that the guard blocks npm install -g and yarn global add there outside the routes of the project".
+
+Decided on 28 November 2026 by the person: the install guard treats scoop as
+it treats Homebrew. It reads where scoop installs on this machine, in the
+order scoop itself takes; `~/scoop` stands among the places a yes opens, and
+the refresh of `setup-project` adds the place; `scoop install` with
+`--global` or `-g` stays blocked under every answer. Whether the guard asks
+scoop itself or reads the variable and the setting is decided by the order
+that builds the block, by a measurement of the time under Windows, since
+scoop starts PowerShell at every call from Git Bash, through the shim
+without an ending that `lib/core.ps1` of scoop writes for a program in
+PowerShell. Reason: the guard reads scoop among the system package managers
+and blocks it under every answer, and that block rests on their owning no
+directory of their own and needing root, `docs/roadmap-archive-1.md` lines
+6224 to 6226; scoop, by its sources at v0.6.0, read raw on that day,
+installs without administrator rights into a folder of its own, and
+`--global` alone needs them; and a yes is to open for a program outside the
+project under Windows what it opens with Homebrew on the Mac. Not chosen:
+scoop stays with the system package managers and only the cause is put
+right. The block of this milestone
+"the install guard holds scoop for a system package manager and blocks scoop install under every answer, where scoop installs without administrator rights into a folder of its own"
+carries it, written by part 3b of order (5), the roadmap entry of that date, "Under Windows a yes opens the folders of browsers, npm and yarn", with Fix none: it is built with the blocks that concern the guard
+after 3c, and `~/scoop` is not among the places yet. Read with it: the line
+of `lib/core.ps1` that forms the folder of scoop has four members at that
+version and not three, the variable `SCOOP`, the setting `ROOT_PATH`, the
+folder four levels above the script itself and `scoop` under the user
+profile, of which the third is never empty; the block quotes it, and the
+order that builds the block reads the order scoop takes off that line.
+
+Decided on 28 November 2026 by the person: what the decision of 26 November
+2026 above gives to 3b, two orders build, 3b and 3c. 3b: the default folders
+of the browsers under Windows, the places of a yes for them, the folders of
+npm and yarn, the browser folders before and after every install and the
+folders `shared/backed-command.md` names, with the three blocks that order
+writes, on the folders of npm and yarn under Windows, on scoop, and on a
+folder outside the user folder in the line for PowerShell,
+"shared/path-steps.md says no word on how a folder outside the user folder that bin/devloop-tool-state --installed names as /c/x/y stands in the line for PowerShell".
+3c: the guard's message on the steps for the PATH with that last block, the
+message of `bin/devloop-install-note` on the default branch, the answer of
+put, and the two blocks on `scripts/devloop-run-workflow`,
+"no case of the self-test of scripts/devloop-run-workflow holds the value of DEVLOOP_UNAME_STAND_IN, so that the thing on the environment of the second run counts as walked in a part no run shows"
+and
+"the head of scripts/devloop-run-workflow says of OSTYPE in the second run more than holds, the self-test of bin/devloop-bounded red under Linux with no condition and no branch brought to run".
+Reason: as one order its reading list would have measured 235995 bytes, more
+than the 209567 of 3a named above; divided, that of 3b measures 184712 and a
+provisional one of 3c 164825, and each session builds half as many blocks.
+Not chosen: one order, as decided on 26 November 2026. The order of the work
+after it: 3b, 3c, then the other blocks of this milestone on the guard, on
+`bin/devloop-tool-state` and on the fact hook, the block on scoop among
+them; so the ten blocks the decision of 27 November 2026 above places after
+3b follow 3c. The notes of five blocks name 3c since that day: on the guard's
+message on the steps for the PATH, which the next order that changes
+`hooks/pre-tool-use-install-guard.sh` was to build, by the decision of 18
+November 2026 above, and which 3b, changing that hook, does not build; on
+put answering written; on the install of run 2 on main before the cut, for
+the half on the message on the default branch; and the two on
+`scripts/devloop-run-workflow`.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
