@@ -1482,11 +1482,19 @@ for tests through the commands that name the act — `playwright install` in
 every form the vendor documents, `cypress install`, `puppeteer browsers
 install` — into the vendor's default place for the system the guard runs on,
 read off `uname -s`, which the record names since that day among its eleven
-places: `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress` and
+places, fifteen since 28 November 2026: `~/Library/Caches/ms-playwright`,
+`~/Library/Caches/Cypress` and
 `~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
 and `~/.cache/puppeteer` on Linux, read from the vendors on 8 October 2026
 and quoted in the roadmap entry of that date; on any other system the
-destination is not read, and not read is a block. Since the review of pull
+destination is not read, and not read is a block. Under Windows the guard
+reads it since 28 November 2026, version 0.199.0, the roadmap entry of that
+date, "Under Windows a yes opens the folders of browsers, npm and yarn": `ms-playwright` and `Cypress/Cache` in the folder `LOCALAPPDATA`
+names, read off the hook's own environment, or in `AppData/Local` under the
+home directory where it names none, and `.cache/puppeteer` in the home
+directory, the home directory there the one Node gives, `USERPROFILE` where
+the hook's environment carries it; `LOCALAPPDATA` before the command is read
+there as `XDG_CACHE_HOME` is on Linux. Since the review of pull
 request #159 the same day, `puppeteer browsers install` is read with a
 version behind `puppeteer` as without one, `npx puppeteer@latest browsers
 install chrome`, as `playwright install` and `cypress install` were read
@@ -2866,7 +2874,22 @@ vendor's default for a browser downloaded for tests on macOS and on Linux
 each, the one the guard holds a browser download against for the system it
 runs on. A record written before that day carries the six and is not amended:
 under its yes a browser download is blocked naming the place, as every place
-a record does not name is, until the five are added with the person there. A route named in the
+a record does not name is, until the five are added with the person there;
+since 5 November 2026 the refresh of the setup adds the places a record
+under a yes lacks, without a question, decision (7) of the roadmap entry of
+that date on the sorting into the milestones, as `shared/install-record.md`
+and the refresh of `setup-project` say. Since 28 November 2026, version
+0.199.0, four more stand beside the eleven, fifteen places in all:
+`~/AppData/Local/ms-playwright` and `~/AppData/Local/Cypress/Cache`, the
+vendor's default for a browser downloaded for tests under Windows,
+`~/.cache/puppeteer` being Puppeteer's there as on macOS and on Linux, read
+from the vendors' sources at their newest release on that day and measured
+on windows-latest on 26 November 2026; and `~/AppData/Roaming/npm` and
+`~/AppData/Local/Yarn/bin`, where npm and yarn of version 1 put a global tool
+under Windows with no setting of their own, so that a yes opens there what
+`/opt` opens on a Mac with Homebrew, decided by the person on that day,
+`docs/plan.md` under milestone 12; the roadmap entry of that date,
+"Under Windows a yes opens the folders of browsers, npm and yarn", carries the sources. A route named in the
 record opens the directory that route answers on the machine the run is on,
 read at the moment of the command and written nowhere: the record holds what
 survives the machine changing rather than the answer of the machine it was

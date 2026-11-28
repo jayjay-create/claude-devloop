@@ -22,13 +22,20 @@ folder where a dry run backed it.
 
 **Whether it worked is read off the result, not off their message.** Look
 where this command puts things — the path that installer writes to, read from
-the installer itself rather than assumed: `$(go env GOPATH)/bin`, or `$GOBIN`
-where it is set, for `go install`; `$(brew --prefix)/bin` for `brew`;
-`$(npm prefix -g)/bin` for a global `npm` — and see the tool standing there.
+the installer itself rather than assumed: for `go install` `$(go env GOBIN)`,
+and with `GOBIN` empty `bin` under the first folder of `$(go env GOPATH)`, a
+list parted by `;` on Windows and by `:` on every other system;
+`$(brew --prefix)/bin` for `brew`; `$(npm prefix -g)/bin` for a global `npm`,
+on Windows the prefix itself, `$(npm prefix -g)` — and see the tool standing
+there.
 For a browser for tests: the directory the vendor names
 for this system — `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress`
 and `~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
-and `~/.cache/puppeteer` on Linux — or the directory a setting of the vendor
+and `~/.cache/puppeteer` on Linux, `~/AppData/Local/ms-playwright`,
+`~/AppData/Local/Cypress/Cache` and `~/.cache/puppeteer` on Windows, the first
+two under the folder `LOCALAPPDATA` names where that is another than
+`~/AppData/Local`, the third under the one `USERPROFILE` names where that is
+another than `~` — or the directory a setting of the vendor
 names, `PLAYWRIGHT_BROWSERS_PATH`, `CYPRESS_CACHE_FOLDER` or
 `PUPPETEER_CACHE_DIR` and the vendor's configuration files, where the run
 finds one set; the guard looks at no such setting, the run that reads the

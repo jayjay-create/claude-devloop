@@ -15690,6 +15690,377 @@ and for the proofs of closings.
   the branch at `d605177` was green on Linux as well in this check, 14 steps
   with the second run among them, no record.
 
+- **Under Windows a yes opens the folders of browsers, npm and yarn**
+
+  28 November 2026, version 0.199.0. On `task/auftrag-5-teil-3b`, off
+  `origin/main` at `63a7884`, in four commits: the code with the version,
+  the documents with the table, the runs with their records, and the
+  corrections of the audit before the push. The order:
+  part 3b of order (5) of milestone 12, the second of three orders of its
+  third part since the decision of this day below. Its report stands on this
+  machine as `~/devloop-auftrag-5-teil-3b.md`, in German, outside the
+  repository. No session log was read; nothing was installed.
+
+  **Built.** Under Windows, where `uname -s` opens with MINGW, MSYS or
+  CYGWIN, `hooks/pre-tool-use-install-guard.sh` holds a browser download that
+  no setting before the command moves against the vendor's default folder
+  there, its function `windefault`: `ms-playwright` and `Cypress/Cache` in
+  the folder `LOCALAPPDATA` names, or in `AppData/Local` under the home
+  directory where it names none, and `.cache/puppeteer` in the home
+  directory. `bin/devloop-tool-state` reads a browser of Cypress and of
+  Puppeteer in the same folders, where its line said not read; Playwright it
+  reads off its own dry run, as before. Its self-test has 144 cases where it
+  had 136. `shared/backed-command.md` names the three folders for Windows,
+  and for a tool the folders as the two programs read them: `GOBIN`, with it
+  empty `bin` under the first folder of `GOPATH`, and on Windows the prefix
+  of npm itself. `shared/install-record.md` writes fifteen places under a yes
+  where it wrote eleven: `~/AppData/Local/ms-playwright` and
+  `~/AppData/Local/Cypress/Cache` for the browsers, `~/.cache/puppeteer`
+  being Puppeteer's under Windows too, and `~/AppData/Roaming/npm` and
+  `~/AppData/Local/Yarn/bin` for npm and yarn; the refresh of
+  `skills/setup-project/SKILL.md` adds every one of the fifteen that a record
+  under a yes lacks. For npm and yarn the guard needed no line: it holds the
+  answer of a route the record does not name against the places already. The
+  step on the folders the install guard reads, in
+  `.github/workflows/stock-take.yml`, has 86 cases behind the stand-ins for
+  uname where it had 67, and reads the places off the template of
+  `shared/install-record.md`, so that the guard is held against the places
+  as that text writes them; under Windows itself it gains four cases. Eleven
+  things are new in `docs/stock-take.tsv`, three of the guard, two of
+  `bin/devloop-tool-state`, four of `shared/backed-command.md` and two of
+  `shared/install-record.md`; `docs/rationale.md` carries the reasons under
+  the three loaded files, and `docs/skill-conventions.md` the fifteen places.
+
+  Decided on 28 November 2026 by the person: the places a yes opens name
+  `~/AppData/Roaming/npm` and `~/AppData/Local/Yarn/bin`, at every place that
+  names the places, and the refresh of `setup-project` adds them to a record
+  under a yes that lacks them, as it adds the places of the browsers. Reason:
+  under Windows npm puts a global tool into its prefix itself and yarn of
+  version 1 into `bin` under its own, none of the eleven places lies there,
+  and the guard holds the answer of a route the record does not name against
+  the places, so that without them `npm install -g` and `yarn global add`
+  stop at the guard there, where the same command passes on the person's
+  Mac under the place `/opt`. Not chosen: under Windows the six bin
+  directories stay as they are and nothing is added, so that every such
+  install would go to the person. The block is new and built by this entry.
+
+  Decided on 28 November 2026 by the person: the install guard treats scoop
+  as it treats Homebrew. It reads where scoop installs on this machine, in
+  the order scoop itself takes; `~/scoop` stands among the places a yes
+  opens, and the refresh of `setup-project` adds the place; `scoop install`
+  with `--global` or `-g` stays blocked under every answer. Whether the guard
+  asks scoop itself or reads the variable and the setting, the order that
+  builds the block decides by a measurement of the time under Windows, since
+  scoop starts PowerShell at every call from Git Bash. Reason: the block of
+  the system package managers rests on their owning no directory of their
+  own and needing root, and neither holds for scoop; a yes is to open for a
+  program outside the project under Windows what it opens with Homebrew on
+  the Mac. Not chosen: scoop stays with the system package managers and only
+  the cause is put right. The block is new, Fix none: it is built with the
+  blocks that concern the guard after 3c, and `~/scoop` is not among the
+  places yet.
+
+  Decided on 28 November 2026 by the person: what the decision of 26
+  November 2026 gave to 3b, two orders build. 3b, this entry: the default
+  folders of the browsers under Windows, the places of a yes for them, the
+  folders of npm and yarn, the browser folders before and after every
+  install and the folders `shared/backed-command.md` names, with three blocks
+  it writes. 3c: the guard's message on the steps for the PATH, the message
+  of `bin/devloop-install-note` on the default branch, the answer of put,
+  and the two blocks on `scripts/devloop-run-workflow`. Reason: as one order
+  the reading list would have measured 235995 bytes, more than the 209567 of
+  3a; divided, that of 3b measures 184712 and a provisional one of 3c
+  164825, and each session builds half as many blocks. Not chosen: one
+  order, as decided on 26 November 2026. After it: 3b, 3c, then the other
+  blocks of this milestone on the guard, `bin/devloop-tool-state` and the
+  fact hook, the block on scoop among them. `docs/plan.md` carries the three
+  decisions under milestone 12.
+
+  **The blocks**, eight, each under milestone 12 in `docs/defects.md`, which
+  carries the wrong, the should and the line of the repair. Built, and Built,
+  never walked: the block on the browser downloads under Windows with Git
+  Bash; the block on the places a yes opens, which named no default folder
+  under Windows; the block on the folders `shared/backed-command.md` names
+  for npm and for GOPATH; and, new, the block on the folders npm and yarn put
+  a global tool into under Windows. New with Fix none, Recorded, not built:
+  the block on scoop, held for a system package manager; the block on a
+  folder outside the user folder, which `bin/devloop-tool-state --installed`
+  names as `/c/x/y` and `shared/path-steps.md` asks for as Windows writes it,
+  built by 3c; and one this entry found itself, below, on a home directory
+  set before the command. Not built, and Recorded, not built as before: the
+  block on the folders for browsers read before and after every install,
+  below. Five notes name 3c since this entry as the order that builds their
+  block, by the third decision above: on the guard's message on the steps
+  for the PATH, which until now named 3b as the next order to change the
+  hook; on put answering written; on the install of run 2 on main before the
+  cut, for its half on the message on the default branch; and the two on
+  `scripts/devloop-run-workflow`, whose notes ended on "no order is named for
+  it yet".
+
+  **The block not built.** The order names the block "run 2 read the folders
+  for browsers only around the npm install and only ~/.cache/puppeteer, none
+  around brew install htmlq" among those it builds and leaves it to the
+  counter-check where the text stands. It stands in `shared/install-alone.md`,
+  "Before the install and after it, the run reads the folders for browsers
+  that "Whether it worked is read off the result" names for this system, and
+  the one a vendor's setting names where one is set, and the report names
+  what came into them", inserted into `build-work` and `setup-checks` and
+  among the four texts a subagent is told to read before it installs. It
+  stood there at `e9deec2` of 24 October 2026, before run 2 of 26 October
+  2026, as the entry "Install blocks held to the code, systems and surfaces
+  decided." found. By decision (1) of 24 November 2026, `docs/plan.md` under
+  milestone 12, a text that said the should already when a run missed it is
+  no repair as it stands: a hook takes the duty over where that can be done,
+  else a program, and a rewritten text counts only where the old text shows
+  the cause. The old text may show one. At `e9deec2` the sentence went on:
+  "run 2a's `npm install -g @mermaid-js/mermaid-cli` downloaded Chrome into
+  `~/.cache/puppeteer` inside the install call, which its report named as a
+  download on first use", and run 2 read that one folder around that one
+  install, the package of `mmdc`, and no folder around `brew install htmlq`,
+  `docs/roadmap-archive-1.md` lines 39601 to 39613. That case left the text
+  on 1 November 2026, at `f665141`, with the history of the loaded texts.
+  Whether it counts as the cause shown, so that the text rewritten counts,
+  or a hook takes the reading over, the guard at its pass and the fact hook
+  after it, is a decision of the person, put with both ways in the report;
+  nothing is built there, and the note of the block says so. What the build
+  does reach: the folders the rule points at are named for Windows now.
+
+  **The counter-check before the build.** The wrong of the four blocks the
+  order builds stood at `63a7884` as their blocks quote it, the lines having
+  moved: in the guard the two systems at lines 959 and 960, in
+  `bin/devloop-tool-state` `cache()` at lines 825 to 834, in
+  `shared/backed-command.md` lines 25 to 31 and in `shared/install-record.md`
+  lines 9 to 19 and 38 to 40. Two sentences of the order did not hold at the
+  place they name, and the blocks follow the place. The order has the guard
+  block scoop "with the cause in lines 1095 to 1096", the cause of system
+  packages; that cause belongs to `--with-deps`, `install-deps` and
+  `--install-deps`, and scoop gets the cause of line 1288, "a system package
+  manager: each package decides where it lands, and it needs root". And it
+  has the line of `lib/core.ps1` form the folder of scoop of three members,
+  where at v0.6.0 it has four, the third the folder four levels above the
+  script itself, never empty; the block on scoop quotes the line.
+
+  The vendors' sources, each read raw at its newest release, the tag checked
+  with `git ls-remote --tags`. Playwright, microsoft/playwright v1.65.1,
+  `packages/playwright-core/src/server/registry/index.ts` lines 382 to 383,
+  "if (process.platform === 'win32')" and "return process.env.LOCALAPPDATA ||
+  path.join(os.homedir(), 'AppData', 'Local');", and line 394, "return
+  path.join(defaultCacheDirectory(), 'ms-playwright');". Cypress,
+  cypress-io/cypress v16.4.0, `cli/lib/tasks/state.ts` line 76, "let
+  cache_directory = util.getCacheDir()", and `cli/lib/util.ts` line 578,
+  "return cachedir('Cypress')", the package `cachedir` at "^2.4.0" in
+  `cli/package.json` line 39; LinusU/node-cachedir v2.4.0, `index.js` lines
+  14 to 15, "const appData = process.env.LOCALAPPDATA ||
+  path.join(os.homedir(), 'AppData', 'Local')" and "return
+  path.join(appData, id, 'Cache')". Puppeteer, puppeteer/puppeteer
+  puppeteer-v25.19.0, `packages/puppeteer/src/getConfiguration.ts` lines 162
+  to 165, "process.env['PUPPETEER_CACHE_DIR'] ??", "configuration.cacheDirectory
+  ??", "join(homedir(), '.cache', 'puppeteer');". npm, npm/cli v12.2.3,
+  `docs/lib/content/configuring-npm/folders.md` line 26, "On Windows, it's
+  `%AppData%\npm`.", and line 47, "executables are linked into `{prefix}/bin`
+  on Unix, or directly into `{prefix}` on Windows". yarn, yarnpkg/yarn
+  v1.22.22, `src/cli/commands/global.js` lines 94 to 97 in
+  `getGlobalPrefix`, "potentialPrefixFolders.unshift(path.join(process.env.LOCALAPPDATA,
+  'Yarn'));", and line 123 in `getBinFolder`, "return path.resolve(prefix,
+  'bin');". scoop, ScoopInstaller/Scoop v0.6.0: `README.md` lines 38, 49, 58
+  and 67 to 69; `lib/core.ps1` lines 366, 368, 1375 and 1378, and lines 1045
+  to 1054 for the shim without an ending; `libexec/scoop-install.ps1` lines
+  46, 49 and 62 to 64; the block on scoop quotes them. No source names
+  another folder under Windows than the measurement of 26 November 2026, and
+  the folders hang on `LOCALAPPDATA` and, through `os.homedir()`, on
+  `USERPROFILE`, both of which the guard can read: the order's rule to halt
+  did not take hold.
+
+  The situations, each run before the build at `63a7884` and after it, on
+  macOS, in a throwaway project whose record `origin/main` carries, behind a
+  stand-in for uname that answers MINGW64_NT-10.0-26100 for Windows; no
+  record. Under a record with the eleven places `npx playwright install
+  chromium` and `npx cypress install` ended with 2 before, "where it puts
+  things is not read off this machine by this guard", and end with 2 after,
+  "it lands in ~/AppData/Local/ms-playwright, which the record does not name"
+  and the same for `~/AppData/Local/Cypress/Cache`, what the block on the
+  places foretold; `npx puppeteer browsers install chrome` ended with 2
+  before and ends with 0 after, `~/.cache/puppeteer` standing among the
+  eleven. Under a record with the fifteen the three ended with 2 before and
+  end with 0 after, with and without `LOCALAPPDATA` reaching the hook, the
+  folder noted for the fact hook written with `~`. `npm install -g
+  example-tool` and `yarn global add example-tool`, the installers answering
+  under the home directory in the form of Windows, end with 2 under the
+  eleven, "it lands in ~/AppData/Roaming/npm, which the record does not
+  name" and `~/AppData/Local/Yarn/bin`, and with 0 under the fifteen, before
+  and after alike, the record naming no route. On macOS itself and behind a
+  stand-in that answers Linux the same commands under the fifteen came out
+  line for line as before. `bin/devloop-tool-state --planning cypress:binary`
+  and `--planning puppeteer:chrome` said not read before, "shared/backed-command.md
+  names no folder for Cypress on this system (MINGW64_NT-10.0-26100)", and
+  say after "not found: nothing stands at ~/AppData/Local/Cypress/Cache/13.6.0"
+  and "~/.cache/puppeteer/chrome/win64-156.0.1".
+
+  **Beyond the words of the order**, each decided while building, without a
+  question. The home directory the folders hang on is the one Node gives
+  under Windows, `USERPROFILE` where the environment carries it,
+  nodejs/node v26.13.1, `doc/api/os.md` lines 217 to 218, "On Windows, it
+  uses the `USERPROFILE` environment variable if defined."; the guard and
+  `bin/devloop-tool-state` read it so, and the home directory of their own
+  otherwise, the folder written `~` where the two are one, as Git Bash sets
+  them. Reason: the vendors call `os.homedir()`; where the two differ, a
+  download would land in a folder the guard had not held against the record.
+  Not chosen: the home directory of the hook alone. `LOCALAPPDATA` before
+  the command is read under Windows for Playwright and Cypress as
+  `XDG_CACHE_HOME` is on Linux, the system each vendor reads it on. Where
+  what the two variables name is no absolute path, the download is not read,
+  a block, and `bin/devloop-tool-state` says not read with that cause. The
+  self-test of `bin/devloop-tool-state` takes both variables out of the
+  environment of every case, and the step of the workflow hands the hook
+  neither unless a case names it, so that under Windows itself no case hangs
+  on the two the runner carries.
+
+  **Found besides.** `HOME=/elsewhere npx puppeteer browsers install chrome`
+  passes under a yes as `~/.cache/puppeteer`, shown at `63a7884` on macOS and
+  behind the stand-in for Linux for the three vendors: the guard reads no
+  home directory set before the command, and since this entry the same holds
+  under Windows for `USERPROFILE` before the command. A block of milestone
+  12, Fix none; not built, since the repair changes what the guard does on
+  macOS and on Linux, where the order asks for the same result as before.
+
+  **Mended where the text stood.** `docs/plan.md`: the paragraph on the
+  record said of the default place of a browser download "which the record
+  names among eleven places since that day"; the paragraph on what is built
+  of milestone 12 said "of its third part the first of two orders, 3a, since
+  26 November 2026, below; of 3b, of its other three parts, of (6) and of (7)
+  nothing is built yet", and of the block on put "part 3b of the third part
+  builds it, the decision of 26 November 2026 after the paragraph on (7)
+  below"; the paragraph on 3a opened "Since 26 November 2026 the first of the
+  two orders of the third part, 3a," and said of the block on a `python -m
+  pip` that leaves the fact hook no note that it "is one of the ten blocks
+  that follow 3b by the decision of 27 November 2026 below." Each reads now
+  as the third decision above has it. `docs/skill-conventions.md`, the
+  paragraph "The install guard reads a record", said of a record of six
+  places that it "is not amended" "until the five are added with the person
+  there", where the refresh of the setup adds them since 5 November 2026; the
+  sentence on that refresh stands behind it now. `docs/stock-take.tsv`: four
+  rows of `shared/install-record.md` carry the anchors of the new wording,
+  the row on the record's form said "eleven places since 8 October 2026", and
+  two rows went with their lines, one of `shared/backed-command.md` and one
+  of the refresh of `setup-project`; the thing on a record of six places
+  keeps its name, its runs being keyed by it, and its note says what holds.
+
+  **The run**, at the second commit, `4e2516f`, the day and the times read
+  off `date -u`, 28 November 2026.
+
+  Run M1, on the Mac from 12:34:15 to 12:40:45 UTC: the tree clean,
+  `scripts/devloop-run-workflow` over `.github/workflows/stock-take.yml`
+  under `bin/devloop-bounded 600`, exit 0 after 390 seconds, "green: 14 steps
+  run, every one ended with 0", the last line as at `63a7884`, where the
+  same run took 344 seconds. The step on the folders the install guard reads
+  ended with 0, 86 cases ok and none red, the nineteen new ones among them,
+  each behind the stand-in for uname that answers MINGW64_NT-10.0-26100 but
+  one, which runs as Linux: the three downloads let through under the places
+  of the template, the folder noted for the fact hook
+  `~/AppData/Local/ms-playwright`, `~/AppData/Local/Cypress/Cache` and
+  `~/.cache/puppeteer`, with `LOCALAPPDATA` and `USERPROFILE` in the form of
+  Windows and with neither reaching the hook; `LOCALAPPDATA` on another
+  drive and `USERPROFILE` naming another folder blocked as a place the
+  record does not name; `LOCALAPPDATA` naming no absolute path not read;
+  `LOCALAPPDATA` before the command taken for the folder, blocked outside
+  the project and opening nothing inside it; as Linux none of the three
+  variables read; npm and yarn let through at `~/AppData/Roaming/npm` and
+  `~/AppData/Local/Yarn/bin` with no route in the record; and under the
+  places that name no folder of Windows the download of Playwright, npm and
+  yarn blocked naming the place. The self-test of `bin/devloop-tool-state`
+  passed with 144 cases in the first run of the hooks step and in the
+  second, as under Git Bash, the eight new ones among them. M1 walks the
+  three new things of the guard and the two of `bin/devloop-tool-state`,
+  each behind a stand-in for the system; the six of the two shared texts
+  have no run.
+
+  **The tool and the checks**, at the third commit.
+  `scripts/devloop-stock-take` exit 0, broken records 0, uncovered lines 0 of
+  5022: Undetermined 24, Recorded, not built 254, Built, never walked 1733,
+  Walked 935, Closed 85; milestone 12 at 185 blocks, Recorded, not built 33,
+  Built, never walked 70, Walked 65, Closed 17; nothing Walked on this branch
+  without a run the branch adds. At `63a7884` uncovered lines 0 of 5018,
+  Built, never walked 1723 and Walked 930, and milestone 12 at 181 blocks
+  with Built, never walked 66: three blocks leave Recorded, not built for
+  Built, never walked and three new ones enter it; the new block on npm and
+  yarn and the six things of the two shared texts are Built, never walked;
+  the five things M1 walks are Walked; and the search set has four lines
+  more, six new ones, two in the guard, one in `bin/devloop-tool-state`, two
+  in `shared/backed-command.md` and one in `shared/install-record.md`, and
+  two gone with their wording, one of `shared/backed-command.md` and one of
+  `skills/setup-project/SKILL.md`. The self-test of the tool has its 159
+  cases. `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0
+  red", its self-test 126 cases; with `--all` it is red under entry-heads
+  and plan-lines with the finds it had at `63a7884`.
+
+  **Open.** The job hooks on every system of the pull request walks under
+  windows-latest what no run on the Mac can: the four cases under Windows
+  itself, with `LOCALAPPDATA`, `USERPROFILE` and the home directory as the
+  system gives them and `bin/devloop-tool-state` at a cache that stands
+  under a `LOCALAPPDATA` of the step; and, as Git Bash itself and not behind
+  a stand-in, the nineteen cases of the step and the eight of the self-test.
+  The records of the two blocks whose should asks for Windows are written
+  after the merge, off the log of that job. The refresh of a project whose
+  record lacks the new places, and a run that reads the result of an install
+  under Windows by `shared/backed-command.md`, have no run. The decision on
+  the block not built is the person's.
+
+  **The corrections of the audit**, of 28 November 2026, the day read off
+  `date -u`, the fourth commit, made before the push by a session that did
+  not build the branch. It held this entry sentence by sentence against the
+  code, the tool, the table and the runs, the plan, the blocks, the
+  conventions and `docs/rationale.md` with it, and searched the repository
+  for what the branch makes wrong. The fourth commit changes `docs/` alone.
+  Its report stands on this machine as `~/devloop-audit-5-teil-3b.md`, in
+  German, outside the repository. No session log was read; nothing was
+  installed.
+
+  Corrected where the text stood, three places. This entry said "in three
+  commits: the code with the version, the documents with the table, and the
+  runs with their records". `docs/plan.md`, the paragraph on 3a under
+  milestone 12, said of the six blocks 3a and its addendum wrote and did not
+  build "Fix none: on the places a yes opens, which name no default folder
+  of a browser under Windows, and on the folders `shared/backed-command.md`
+  names, both built by 3b", where those two carry their Fix since this
+  entry; the sentence says so now, and a sentence "Until 28 November 2026
+  this paragraph said" stands in that paragraph for it and for the sentences
+  of the same paragraph under "Mended where the text stood" above, as that
+  paragraph has them for its earlier changes. And `docs/skill-conventions.md`,
+  the paragraph "The second kind is a browser for tests", said of the
+  vendor's default place that the record names it "since that day among its
+  eleven places", where the places are fifteen since this entry and the
+  second commit mended the same sentence of `docs/plan.md`; it reads "among
+  its eleven places, fifteen since 28 November 2026" now.
+
+  Held besides, with nothing found, each outside the repository and none of
+  them a record. The tool in a worktree of `63a7884`: the numbers this entry
+  gives for that commit; the search set of both states, read off the tool
+  loaded as a module: the six lines new and the two gone. Every tag named
+  above stands and is the highest of its series by `git ls-remote --tags`,
+  and every line quoted from a vendor's source stands at the number given.
+  M1 made again at the third commit: exit 0 after 392 seconds, "green: 14
+  steps run, every one ended with 0", 86 cases ok and none red in the step
+  on the folders the install guard reads, the nineteen new ones among them,
+  and the self-test of `bin/devloop-tool-state` with 144 cases in both runs
+  of the hooks step. The situations made again with the guard of `63a7884`
+  and with that of the branch, in a throwaway project behind the stand-ins:
+  each came out as the paragraph on them has it, and `USERPROFILE=D:/elsewhere
+  npx puppeteer browsers install chrome` ends with 2 at `63a7884`, not read,
+  and with 0 on the branch, noting `~/.cache/puppeteer`, which "Found
+  besides" says and the block on a home directory set before the command
+  carries.
+
+  Put to the person by the report of the audit and not changed, a text
+  devloop loads being no document: `shared/backed-command.md` says of the
+  folders of the browsers under Windows "the first two under the folder
+  `LOCALAPPDATA` names where that is another than `~/AppData/Local`, the
+  third under the one `USERPROFILE` names where that is another than `~`".
+  Where `LOCALAPPDATA` names no folder and `USERPROFILE` names another than
+  the home directory, the first two lie under `AppData/Local` in the folder
+  `USERPROFILE` names, as the guard, `bin/devloop-tool-state` and
+  `docs/rationale.md` have it, and the text names `~/AppData/Local` there.
+  No block is written for it before the person has decided.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
