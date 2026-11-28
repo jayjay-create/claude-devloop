@@ -57,7 +57,7 @@
 # read, the line naming the path looked at. The vendors' configuration
 # files are not read. Where the project has no package of the vendor to
 # say which version it needs, and on a system for which the shared text
-# names no folder - Windows among them - with no setting of the vendor
+# names no folder, with no setting of the vendor
 # set, the line says neither found nor not found but not read, with the
 # cause: a run says of the browser that it could not be read and why, in
 # the person's language and not in the program's words - the wording
@@ -65,7 +65,22 @@
 # 2026 on this program - nothing is handed over and no issue is raised on
 # a thing nobody read, "In doubt, a run with nobody there is not blocked"
 # in docs/skill-conventions.md, and under a yes the vendor's own install
-# leaves a browser that stands already as it stands.
+# leaves a browser that stands already as it stands. Under Windows the
+# shared text names the folders since 28 November 2026, part 3b of order
+# (5) of milestone 12, read from the vendors' sources at their newest
+# release that day and measured on windows-latest on 26 November 2026, the
+# roadmap entry of that date: Cypress under Cypress/Cache in the folder
+# LOCALAPPDATA names, cachedir('Cypress') in cli/lib/util.ts of Cypress at
+# v16.4.0 and index.js of the package cachedir at v2.4.0, and under
+# AppData/Local in the home directory where LOCALAPPDATA names none;
+# Puppeteer under .cache/puppeteer in the home directory,
+# packages/puppeteer/src/getConfiguration.ts at puppeteer-v25.19.0; the home
+# directory there the one Node gives, USERPROFILE where the environment
+# carries it and the home directory of this program otherwise. Until that
+# day Windows was among the systems with no folder, and the line said not
+# read there for Cypress and for Puppeteer. Where under Windows the folder
+# is no absolute path, LOCALAPPDATA or USERPROFILE naming none, the line
+# says not read with that cause.
 #
 # One line per TOOL, in the order given, each ending with the day it was
 # read, so that the line can stand in a spec as it is:
@@ -121,7 +136,9 @@
 # in - C:\x\y, C:/x/y, c:\x\y and /c/x/y name one folder - since the same
 # day: the answer of an installer or a vendor, CYPRESS_CACHE_FOLDER,
 # PUPPETEER_CACHE_DIR, CARGO_INSTALL_ROOT and CARGO_HOME, the installer
-# written with its path and the home directory; measured that day on
+# written with its path and the home directory, and since 28 November 2026
+# LOCALAPPDATA and USERPROFILE, on which the folder of a browser hangs
+# there; measured that day on
 # windows-latest with the bash of Git for Windows, where every installer
 # asked answers in the form of Windows, gem environment with slashes and
 # the others with backslashes, the roadmap entry of that date. A browser
@@ -303,7 +320,7 @@ install-answered: 2026-10-25'
 install-tools: no
 install-answered: 2026-10-26'
   # fresh: a new script, every stand-in without an answer, the log empty, the clock at 0, the folders of the home directory as they were made, the program the one of the repository
-  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x" "$P/node_modules" "$T/node_modules"; mkdir "$T/s"; : > "$T/s/log"; echo 0 > "$T/s/clock"; SYS=Darwin; WITH=; PROG=$self; }
+  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/AppData" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x" "$P/node_modules" "$T/node_modules"; mkdir "$T/s"; : > "$T/s/log"; echo 0 > "$T/s/clock"; SYS=Darwin; WITH=; PROG=$self; }
   # pw: the project gets a Playwright, the stand-in standing as node_modules/.bin/playwright and answering under the label project-playwright
   pw() { mkdir -p "$P/node_modules/.bin"; standin "$P/node_modules/.bin/playwright" project-playwright; }
   # pkg NAME [VERSION]: the project gets the package NAME in its node_modules, with VERSION in its package.json
@@ -318,7 +335,7 @@ install-answered: 2026-10-26'
   folder() { mkdir -p "$1"; [ -z "${2:-}" ] || : > "$1/$2"; }
   # run [ARGUMENT...]: the program, PROG, once, in the throwaway project, against the stand-ins, with the home directory of the self-test, SYS for uname -s, the self-test's clock and the variables of WITH
   run() { rundir "$P" "$@"; }
-  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH NODE_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" DEVLOOP_TOOL_STATE_CLOCK="$T/s/clock" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$PROG" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH NODE_PATH LOCALAPPDATA USERPROFILE && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" DEVLOOP_TOOL_STATE_CLOCK="$T/s/clock" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$PROG" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
   # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
   fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
   # calls NAME LINE...: the stand-ins were called with these lines, in this order, and with nothing else
@@ -422,8 +439,8 @@ FFmpeg (playwright ffmpeg v1013)
   expect "cypress: the folder of this system on macOS, absent, not found" 1 "cypress:binary: not found: nothing stands at ~/Library/Caches/Cypress/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
   fresh; pkg cypress 13.6.0; SYS=Linux; folder "$T/home/.cache/Cypress/13.6.0" Cypress; run --planning cypress:binary
   expect "cypress: the folder of this system on Linux, found" 0 "cypress:binary: found at ~/.cache/Cypress/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
-  fresh; pkg cypress 13.6.0; SYS=MINGW64_NT-10.0-20348; run --planning cypress:binary
-  expect "cypress: no folder for this system and no setting, not read" 1 "cypress:binary: not read, because shared/backed-command.md names no folder for Cypress on this system (MINGW64_NT-10.0-20348) and CYPRESS_CACHE_FOLDER is not set (on $DAY)"
+  fresh; pkg cypress 13.6.0; SYS=FreeBSD; run --planning cypress:binary
+  expect "cypress: no folder for this system and no setting, not read" 1 "cypress:binary: not read, because shared/backed-command.md names no folder for Cypress on this system (FreeBSD) and CYPRESS_CACHE_FOLDER is not set (on $DAY)"
   fresh; outside cypress; ans cypress d 0 '13.6.0'; run --planning cypress:binary
   calls "cypress: no package in the project, one above it and one on the path: not read, nothing asked"
   expect "cypress: no package in the project, one above it and one on the path: not read, nothing asked" 1 "cypress:binary: not read, because the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json (on $DAY)"
@@ -441,9 +458,9 @@ FFmpeg (playwright ffmpeg v1013)
   expect "puppeteer: node refuses a module outside the project's node_modules, not read" 1 "puppeteer:chrome: not read, because the project's Puppeteer did not say which build of chrome it needs: node, asked for the build of chrome and its folder under ~/.cache/puppeteer, did not answer: puppeteer-core/internal/revisions.js resolved outside the project's node_modules, at ~/x/node_modules/puppeteer-core/internal/revisions.js (on $DAY)"
   fresh; pkg puppeteer-core; ans node d 0 "$(printf '\n')"; run --planning puppeteer:firefox
   expect "puppeteer: no build for the browser, not read" 1 "puppeteer:firefox: not read, because the project's Puppeteer names no build of firefox, PUPPETEER_REVISIONS having no entry for it (on $DAY)"
-  fresh; pkg puppeteer-core; SYS=MINGW64_NT-10.0-20348; run --planning puppeteer:chrome
+  fresh; pkg puppeteer-core; SYS=FreeBSD; run --planning puppeteer:chrome
   calls "puppeteer: no folder for this system and no setting, not read, node not asked"
-  expect "puppeteer: no folder for this system and no setting, not read, node not asked" 1 "puppeteer:chrome: not read, because shared/backed-command.md names no folder for Puppeteer on this system (MINGW64_NT-10.0-20348) and PUPPETEER_CACHE_DIR is not set (on $DAY)"
+  expect "puppeteer: no folder for this system and no setting, not read, node not asked" 1 "puppeteer:chrome: not read, because shared/backed-command.md names no folder for Puppeteer on this system (FreeBSD) and PUPPETEER_CACHE_DIR is not set (on $DAY)"
   fresh; outside puppeteer-core; folder "$T/home/x/node_modules/puppeteer-core" package.json; WITH="NODE_PATH=$T/home/x/node_modules"; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; run --planning puppeteer:chrome
   calls "puppeteer: no package in the project, one above it and one on NODE_PATH that would answer: not read, node not asked"
   expect "puppeteer: no package in the project, one above it and one on NODE_PATH that would answer: not read, node not asked" 1 "puppeteer:chrome: not read, because the project has no Puppeteer package to say which build of chrome it needs, neither node_modules/puppeteer-core nor node_modules/puppeteer (on $DAY)"
@@ -702,6 +719,24 @@ OTHERS
   expect "under Windows CYPRESS_CACHE_FOLDER in the form of Windows: read as /d/..." 1 "cypress:binary: not found: nothing stands at /d/devloop-selftest-cy/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
   fresh; SYS=MINGW64_NT-10.0-26100; pkg puppeteer-core; WITH='PUPPETEER_CACHE_DIR=C:/devloop-selftest-pp'; ans node d 0 "$(printf '156.0.1\n%s' 'C:\devloop-selftest-pp\chrome\win64-156.0.1\chrome-win64\chrome.exe')"; run --planning puppeteer:chrome
   expect "under Windows PUPPETEER_CACHE_DIR with slashes and the answer of node with backslashes: one folder, the build's folder under it" 1 "puppeteer:chrome: not found: nothing stands at /c/devloop-selftest-pp/chrome/win64-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  # the folder of a browser under Windows where no setting names one, since 28 November 2026: Cypress under Cypress/Cache in the folder LOCALAPPDATA names, under AppData/Local in the home directory where it names none, Puppeteer under .cache/puppeteer in the home directory, the home directory the one USERPROFILE names where it is set
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; folder "$T/home/AppData/Local/Cypress/Cache/13.6.0" Cypress; run --planning cypress:binary
+  expect "under Windows cypress with no setting and no LOCALAPPDATA: Cypress/Cache under AppData/Local in the home directory, found" 0 "cypress:binary: found at ~/AppData/Local/Cypress/Cache/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; WITH="$WINHOME LOCALAPPDATA=C:\\Users\\devloop-probe\\AppData\\Local USERPROFILE=C:\\Users\\devloop-probe"; run --planning cypress:binary
+  expect "under Windows cypress with no setting, LOCALAPPDATA in the form of Windows under the home directory: Cypress/Cache under it, written with ~" 1 "cypress:binary: not found: nothing stands at ~/AppData/Local/Cypress/Cache/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; WITH="$WINHOME LOCALAPPDATA=D:\\devloop-selftest-local"; run --planning cypress:binary
+  expect "under Windows cypress with no setting, LOCALAPPDATA naming a folder on another drive: Cypress/Cache under that folder" 1 "cypress:binary: not found: nothing stands at /d/devloop-selftest-local/Cypress/Cache/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; WITH="$WINHOME USERPROFILE=D:\\devloop-selftest-profile"; run --planning cypress:binary
+  expect "under Windows cypress with no setting and no LOCALAPPDATA, USERPROFILE naming another folder than the home directory: AppData/Local under USERPROFILE" 1 "cypress:binary: not found: nothing stands at /d/devloop-selftest-profile/AppData/Local/Cypress/Cache/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg cypress 13.6.0; WITH="$WINHOME LOCALAPPDATA=C:devloop-selftest-local"; run --planning cypress:binary
+  expect "under Windows cypress with no setting, LOCALAPPDATA naming no absolute path: not read" 1 "cypress:binary: not read, because the folder of Cypress under Windows hangs on LOCALAPPDATA and USERPROFILE, which name no absolute path here, and CYPRESS_CACHE_FOLDER is not set (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg puppeteer-core; WITH=$WINHOME; ans node d 0 "$(printf '156.0.1\n%s' 'C:\Users\devloop-probe\.cache\puppeteer\chrome\win64-156.0.1\chrome-win64\chrome.exe')"; run --planning puppeteer:chrome
+  expect "under Windows puppeteer with no setting: .cache/puppeteer in the home directory, the build's folder under it, written with ~" 1 "puppeteer:chrome: not found: nothing stands at ~/.cache/puppeteer/chrome/win64-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg puppeteer-core; WITH="$WINHOME USERPROFILE=D:\\devloop-selftest-profile"; ans node d 0 "$(printf '156.0.1\n%s' 'D:\devloop-selftest-profile\.cache\puppeteer\chrome\win64-156.0.1\chrome-win64\chrome.exe')"; run --planning puppeteer:chrome
+  expect "under Windows puppeteer with no setting, USERPROFILE naming another folder than the home directory: .cache/puppeteer under USERPROFILE" 1 "puppeteer:chrome: not found: nothing stands at /d/devloop-selftest-profile/.cache/puppeteer/chrome/win64-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-26100; pkg puppeteer-core; WITH="$WINHOME USERPROFILE=C:devloop-selftest-profile"; run --planning puppeteer:chrome
+  calls "under Windows puppeteer with no setting, USERPROFILE naming no absolute path: not read, node not asked"
+  expect "under Windows puppeteer with no setting, USERPROFILE naming no absolute path: not read, node not asked" 1 "puppeteer:chrome: not read, because the folder of Puppeteer under Windows hangs on LOCALAPPDATA and USERPROFILE, which name no absolute path here, and PUPPETEER_CACHE_DIR is not set (on $DAY)"
 
   # the limit over the whole call, on the self-test's clock and with the copy beside the stand-in for the bound: a query has its sixty seconds, or what is left of the ninety-five where that is less, and none starts once fewer than ten are left
   fresh; PROG=$T/copy/devloop-tool-state; pw; ans project-playwright d 0 "$DRY"; takes project-playwright 1 59; takes project-playwright 2 26; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit playwright:chromium playwright:firefox
@@ -749,6 +784,9 @@ norm() {
   case $NORM in /?|/?/*) d=${NORM#/}; d=${d%%/*}; r=${UPPER%%"$d"*}; [ "${#r}" -eq 26 ] || NORM="/${LOWER:${#r}:1}${NORM#/?}" ;; esac
 }
 [ -z "$WIN" ] || [ -z "${HOME:-}" ] || { norm "$HOME"; HOME=$NORM; }
+# NODEHOME and LOCALDATA, under Windows alone, since 28 November 2026, part 3b of order (5) of milestone 12: the two folders the default of a browser for tests hangs on there, as the vendors' sources name it, the head above. NODEHOME, the home directory as Node gives it under Windows, USERPROFILE where the environment carries it, doc/api/os.md of Node at v26.13.1, and the home directory of this program otherwise; LOCALDATA, the folder LOCALAPPDATA names, and AppData/Local under NODEHOME where it names none; both in the one form of norm
+NODEHOME=""; LOCALDATA=""
+[ -z "$WIN" ] || { NODEHOME=${HOME:-}; [ -z "${USERPROFILE:-}" ] || { norm "$USERPROFILE"; NODEHOME=${NORM%/}; }; LOCALDATA=$NODEHOME/AppData/Local; [ -z "${LOCALAPPDATA:-}" ] || { norm "$LOCALAPPDATA"; LOCALDATA=${NORM%/}; }; }
 # node resolves from the project and from nothing else that answers: the lookup starts at the project's puppeteer where one stands in its node_modules, else at the project, and a module whose real path lies outside the project's node_modules is refused with exit 3, since 28 October 2026
 PUPPETEER_JS='const fs=require("fs"),path=require("path");const name=process.argv[1],cache=process.argv[2],proj=fs.realpathSync(process.argv[3]);const inside=path.join(proj,"node_modules")+path.sep;const within=p=>fs.realpathSync(p).startsWith(inside);const home=process.env.HOME;const show=p=>home&&p.startsWith(home+path.sep)?"~"+p.slice(home.length):p;const from=[proj];try{const d=path.dirname(require.resolve("puppeteer/package.json",{paths:[proj]}));if(within(d))from.unshift(d)}catch(e){}const need=id=>{const p=require.resolve(id,{paths:from});if(!within(p)){process.stderr.write(id+" resolved outside the project'"'"'s node_modules, at "+show(p)+"\n");process.exit(3)}return require(p)};const r=need("puppeteer-core/internal/revisions.js").PUPPETEER_REVISIONS;const b=need("@puppeteer/browsers");const id=r[name]||"";console.log(id);console.log(id&&b.computeExecutablePath({browser:name,buildId:id,cacheDir:cache}));'
 WAY="a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7"
@@ -821,7 +859,7 @@ ask() {
 }
 # stands_at FOLDER TOOL: the path of the tool in the folder, TOOL.exe, TOOL.cmd and TOOL.bat on Windows counting as well; nothing where none stands
 stands_at() { local x; for x in "" ${WIN:+.exe .cmd .bat}; do [ -e "$1/$2$x" ] && { printf '%s' "$1/$2$x"; return; }; done; }
-# cache SETTING_NAME DARWIN_FOLDER LINUX_FOLDER VENDOR: CACHE the vendor's cache folder, the setting where it is set, else the folder shared/backed-command.md names for this system; empty, with CAUSE set, where neither names one
+# cache SETTING_NAME DARWIN_FOLDER LINUX_FOLDER VENDOR WINDOWS_FOLDER: CACHE the vendor's cache folder, the setting where it is set, else the folder shared/backed-command.md names for this system, under macOS and Linux a folder under the home directory and under Windows, since 28 November 2026, the folder handed over whole, built on NODEHOME or LOCALDATA; empty, with CAUSE set, where neither names one, and under Windows where the folder is no absolute path, LOCALAPPDATA or USERPROFILE naming none
 cache() {
   local set; eval "set=\${$1:-}"
   CACHE=""; CAUSE=""
@@ -829,6 +867,7 @@ cache() {
   case $SYSTEM in
     Darwin) CACHE=$HOME/$2 ;;
     Linux) CACHE=$HOME/$3 ;;
+    MINGW*|MSYS*|CYGWIN*|Windows*) CACHE=$5; case $CACHE in /*) ;; *) CACHE=""; CAUSE="the folder of $4 under Windows hangs on LOCALAPPDATA and USERPROFILE, which name no absolute path here, and $1 is not set" ;; esac ;;
     *) CAUSE="shared/backed-command.md names no folder for $4 on this system ($SYSTEM) and $1 is not set" ;;
   esac
 }
@@ -855,12 +894,12 @@ browser_line() {
     cypress)
       version=$(sed -n 's/^ *"version": *"\([^"]*\)".*/\1/p' node_modules/cypress/package.json 2>/dev/null | head -n 1)
       [ -n "$version" ] || CAUSE="the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json"
-      [ -n "$CAUSE" ] || cache CYPRESS_CACHE_FOLDER Library/Caches/Cypress .cache/Cypress Cypress
+      [ -n "$CAUSE" ] || cache CYPRESS_CACHE_FOLDER Library/Caches/Cypress .cache/Cypress Cypress "$LOCALDATA/Cypress/Cache"
       [ -n "$CAUSE" ] || { folder=$CACHE/$version; probe=$folder; version="Cypress $version"; } ;;
     puppeteer)
       # only where the project holds the package: node would resolve a module from the directories above the project, NODE_PATH and its global folders as well, since 28 October 2026
       [ -e node_modules/puppeteer-core/package.json ] || [ -e node_modules/puppeteer/package.json ] || CAUSE="the project has no Puppeteer package to say which build of $name it needs, neither node_modules/puppeteer-core nor node_modules/puppeteer"
-      [ -n "$CAUSE" ] || cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer
+      [ -n "$CAUSE" ] || cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer "$NODEHOME/.cache/puppeteer"
       [ -n "$CAUSE" ] || ask "node, asked for the build of $name and its folder under $(tilde "$CACHE")," node -e "$PUPPETEER_JS" "$name" "$CACHE" "$PWD"
       [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Puppeteer did not say which build of $name it needs: $FAIL"
       [ -n "$CAUSE" ] || { id=$(printf '%s\n' "$OUT" | sed -n 1p); norm "$(printf '%s\n' "$OUT" | sed -n 2p)"; exe=$NORM; }

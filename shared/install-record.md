@@ -17,6 +17,10 @@ since a script reads the start of each line. Under a yes:
     install-place: ~/Library/Caches/Cypress
     install-place: ~/.cache/Cypress
     install-place: ~/.cache/puppeteer
+    install-place: ~/AppData/Local/ms-playwright
+    install-place: ~/AppData/Local/Cypress/Cache
+    install-place: ~/AppData/Roaming/npm
+    install-place: ~/AppData/Local/Yarn/bin
     install-route: cargo
     install-route: pip
     install-answered: YYYY-MM-DD
@@ -28,23 +32,28 @@ Under a no, the answer and the date alone:
     install-tools: no
     install-answered: YYYY-MM-DD
 
-`install-tools` is the answer, `yes` or `no` and nothing else. The eleven
+`install-tools` is the answer, `yes` or `no` and nothing else. The fifteen
 `install-place` lines are the places a yes opens in this version, written
 under a yes and under no other answer: under a no they do nothing, the guard
 blocking on `install-tools: no` before it reads a place, and listed under a no
 they read as though something were open; the line at session start says `places:
 none` and `routes: none` under a no whatever the record carries, and a record
 under a no that carries places and routes keeps them, not amended. The places:
-the six bin directories, and the five where Playwright, Cypress and Puppeteer
-put the browsers they download for tests, the vendor's default on macOS and on
-Linux each, since the guard holds a browser download against the place the
-vendor names for the system it runs on. A record under a yes that carries the
-six and not the five is amended by the refresh of the setup, which adds the
+the six bin directories; the seven where Playwright, Cypress and Puppeteer
+put the browsers they download for tests, the vendor's default on macOS, on
+Linux and on Windows each, `~/.cache/puppeteer` being Puppeteer's on all
+three, since the guard holds a browser download against the place the vendor
+names for the system it runs on; and the two where npm and yarn put a global
+tool on Windows with no setting of their own, `~/AppData/Roaming/npm` and
+`~/AppData/Local/Yarn/bin`, since no bin directory lies there and the guard
+holds the answer of a route the record does not name against the places. A
+record under a yes that carries fewer than the fifteen is amended by the
+refresh of the setup, which adds the
 places this version names for the kinds the yes covers, without a question,
 and says so in its pull request; until that refresh has landed, the guard
-blocks a browser download under such a record naming the place, as it blocks
-every place a record does not name. The `install-route` lines are the routes
-this
+blocks an install into a place such a record lacks, naming the place, as it
+blocks every place a record does not name. The `install-route` lines are the
+routes this
 project's stack has, read by the run that writes the record off what the
 project declares and the lockfiles beside it, one line per route and none for
 a route the stack does not have, the two above standing as an example; with

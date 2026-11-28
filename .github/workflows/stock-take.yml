@@ -1011,11 +1011,12 @@ jobs:
             ( cd "$P" && $GIT add -A && $GIT commit -q -m "record $N" && git update-ref refs/remotes/origin/main HEAD && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main ) || { echo "the throwaway project could not be committed to"; false; }
           }
           PROG='import json, sys; sys.stdout.write(json.dumps({"session_id": "s1", "cwd": sys.argv[1], "permission_mode": "default", "tool_use_id": "t1", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"command": sys.argv[2], "description": "x"}}))'
-          # guard SYSTEM DIRECTORY COMMAND [CWD [PROJECT [HOME]]]: the guard once, uname answered by the stand-in of SYSTEM - W as Git Bash, L as Linux, R by the system itself - and the stand-ins of DIRECTORY first on its path; GOT its exit in brackets and the cause it names, NOTE the folder it notes for the fact hook
+          # guard SYSTEM DIRECTORY COMMAND [CWD [PROJECT [HOME]]]: the guard once, uname answered by the stand-in of SYSTEM - W as Git Bash, L as Linux, R by the system itself - and the stand-ins of DIRECTORY first on its path; GOT its exit in brackets and the cause it names, NOTE the folder it notes for the fact hook. LA and UP, since 28 November 2026: LOCALAPPDATA and USERPROFILE as a case hands them to the hook, which gets neither where they are empty, so that under Windows itself no case hangs on the two the runner carries
+          LA=""; UP=""
           guard() {
             local out rc=0
             rm -f "$T/tmp"/devloop-install-note-* "$T/bin/log" "$T/named/log"
-            out=$(cd "$P" && MSYS2_ARG_CONV_EXCL='*' "$PY" -c "$PROG" "${4:-$P}" "$3" | env -u CARGO_HOME -u CARGO_INSTALL_ROOT -u CLAUDE_ENV_FILE -u CLAUDE_CODE_ENTRYPOINT PATH="$T/on/$1:$2:$PATH" HOME="${6:-$T/home}" TMPDIR="$T/tmp" CLAUDE_PROJECT_DIR="${5:-$P}" "$ROOT/hooks/pre-tool-use-install-guard.sh" 2>&1) || rc=$?
+            out=$(cd "$P" && MSYS2_ARG_CONV_EXCL='*' "$PY" -c "$PROG" "${4:-$P}" "$3" | env -u CARGO_HOME -u CARGO_INSTALL_ROOT -u CLAUDE_ENV_FILE -u CLAUDE_CODE_ENTRYPOINT -u LOCALAPPDATA -u USERPROFILE ${LA:+"LOCALAPPDATA=$LA"} ${UP:+"USERPROFILE=$UP"} PATH="$T/on/$1:$2:$PATH" HOME="${6:-$T/home}" TMPDIR="$T/tmp" CLAUDE_PROJECT_DIR="${5:-$P}" "$ROOT/hooks/pre-tool-use-install-guard.sh" 2>&1) || rc=$?
             GOT="[$rc] $(printf '%s\n' "$out" | sed -n 's/.*does not open it, because \(.*\)\. The install is the user.s to run, not yours.*/\1/p')"
             NOTE=$(cat "$T/tmp"/devloop-install-note-* 2>/dev/null | cut -d "$US" -f 1) || true
           }
@@ -1101,6 +1102,62 @@ jobs:
           record
           guard W "$T/none" 'PLAYWRIGHT_BROWSERS_PATH=C:/elsewhere npx playwright install chromium'
           held "as Git Bash, no record at all, PLAYWRIGHT_BROWSERS_PATH=C:/elsewhere: blocked like every install to the outside" "[2] there is no docs/agents/environment.md on origin/main as last fetched"
+
+          # since 28 November 2026, part 3b of order (5) of milestone 12: the folder a browser download lands in under Windows with no setting that moves it, as the vendors' sources name it, and the folders npm and yarn answer there with no setting of their own, each held against the places a yes opens as shared/install-record.md writes them under a yes, read off its template; then the same commands under the places that name no folder of Windows, as a record written until that day carries them
+          TEMPLATE=$(sed -n 's/^    \(install-place: .*\)$/\1/p' "$ROOT/shared/install-record.md")
+          set --; while IFS= read -r l; do [ -z "$l" ] || set -- "$@" "$l"; done <<< "$TEMPLATE"
+          [ $# -gt 0 ] || { echo "RED  no install-place line read off the template of shared/install-record.md"; red=1; }
+          record "$@"
+          WL='C:\Users\devloop-probe\AppData\Local'
+          LA=$WL; UP=$WH
+          guard W "$T/none" 'npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, the places of shared/install-record.md, playwright install with no setting, LOCALAPPDATA and the home directory in the form of Windows: ms-playwright under LOCALAPPDATA, let through, written with ~" "[0] " "~/AppData/Local/ms-playwright"
+          guard W "$T/none" 'npx cypress install' "$P" "$P" "$WH"
+          held "as Git Bash, cypress install with no setting: Cypress/Cache under LOCALAPPDATA, let through" "[0] " "~/AppData/Local/Cypress/Cache"
+          guard W "$T/none" 'npx puppeteer browsers install chrome' "$P" "$P" "$WH"
+          held "as Git Bash, puppeteer browsers install with no setting and no --path: .cache/puppeteer under the home directory, let through" "[0] " "~/.cache/puppeteer"
+          LA=""; UP=""
+          guard W "$T/none" 'npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, neither LOCALAPPDATA nor USERPROFILE reaching the hook: ms-playwright under AppData/Local in the home directory, let through" "[0] " "~/AppData/Local/ms-playwright"
+          guard W "$T/none" 'npx cypress install' "$P" "$P" "$WH"
+          held "as Git Bash, neither of the two reaching the hook: Cypress/Cache under AppData/Local in the home directory, let through" "[0] " "~/AppData/Local/Cypress/Cache"
+          guard W "$T/none" 'npx puppeteer browsers install chrome' "$P" "$P" "$WH"
+          held "as Git Bash, neither of the two reaching the hook: .cache/puppeteer under the home directory, let through" "[0] " "~/.cache/puppeteer"
+          LA='D:\devloop-probe\Local'
+          guard W "$T/none" 'npx cypress install' "$P" "$P" "$WH"
+          held "as Git Bash, LOCALAPPDATA naming a folder on another drive: Cypress/Cache under it, blocked as a place the record does not name" "[2] it lands in /d/devloop-probe/Local/Cypress/Cache, which the record does not name"
+          LA=""; UP='D:\devloop-probe'
+          guard W "$T/none" 'npx puppeteer browsers install chrome' "$P" "$P" "$WH"
+          held "as Git Bash, USERPROFILE naming another folder than the home directory: .cache/puppeteer under USERPROFILE, blocked as a place the record does not name" "[2] it lands in /d/devloop-probe/.cache/puppeteer, which the record does not name"
+          guard W "$T/none" 'npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, no LOCALAPPDATA and USERPROFILE naming another folder: ms-playwright under AppData/Local in the folder USERPROFILE names, blocked" "[2] it lands in /d/devloop-probe/AppData/Local/ms-playwright, which the record does not name"
+          LA='C:devloop-probe'; UP=""
+          guard W "$T/none" 'npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, LOCALAPPDATA naming no absolute path: not read, blocked" "[2] where it lands cannot be read here; playwright (where it puts things is not read off this machine by this guard)"
+          LA=$WL; UP=$WH
+          guard W "$T/none" 'LOCALAPPDATA=D:/pw-elsewhere npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, LOCALAPPDATA=D:/pw-elsewhere before playwright install: ms-playwright under that folder, blocked as a place the record does not name" "[2] it lands in /d/pw-elsewhere/ms-playwright, which the record does not name"
+          guard W "$T/none" 'LOCALAPPDATA=D:/cy-elsewhere npx cypress install' "$P" "$P" "$WH"
+          held "as Git Bash, LOCALAPPDATA=D:/cy-elsewhere before cypress install: Cypress/Cache under that folder, blocked as a place the record does not name" "[2] it lands in /d/cy-elsewhere/Cypress/Cache, which the record does not name"
+          guard W "$T/none" 'LOCALAPPDATA=tools/local npx cypress install' "$P" "$P" "$WH"
+          held "as Git Bash, LOCALAPPDATA=tools/local before cypress install: a folder inside the project, which opens nothing" "[0] " ""
+          guard L "$T/none" 'LOCALAPPDATA=D:/pw-elsewhere npx playwright install chromium'
+          held "as Linux, the same variable before playwright install, LOCALAPPDATA and USERPROFILE reaching the hook: none of the three read there, the folder of Linux, as before" "[0] " "~/.cache/ms-playwright"
+          says "$T/bin" npm prefix_-g '%s\n' 'C:\Users\devloop-probe\AppData\Roaming\npm'
+          guard W "$T/bin" 'npm install -g semver' "$P" "$P" "$WH"
+          held "as Git Bash, no route in the record, npm prefix -g answering AppData\\Roaming\\npm under the home directory: a place the template names, let through" "[0] " "~/AppData/Roaming/npm"
+          says "$T/bin" yarn global_bin '%s\n' 'C:\Users\devloop-probe\AppData\Local\Yarn\bin'
+          guard W "$T/bin" 'yarn global add json5' "$P" "$P" "$WH"
+          held "as Git Bash, no route in the record, yarn global bin answering AppData\\Local\\Yarn\\bin under the home directory: a place the template names, let through" "[0] " "~/AppData/Local/Yarn/bin"
+          set --; while IFS= read -r l; do [ -z "$l" ] || set -- "$@" "$l"; done <<< "$(printf '%s\n' "$TEMPLATE" | grep -v AppData)"
+          record "$@"
+          guard W "$T/none" 'npx playwright install chromium' "$P" "$P" "$WH"
+          held "as Git Bash, a record with the places of the template that name no folder of Windows: playwright install blocked, ms-playwright under LOCALAPPDATA named as a place the record does not name" "[2] it lands in ~/AppData/Local/ms-playwright, which the record does not name"
+          guard W "$T/bin" 'npm install -g semver' "$P" "$P" "$WH"
+          held "as Git Bash, the same record, npm prefix -g answering AppData\\Roaming\\npm: blocked as a place the record does not name" "[2] it lands in ~/AppData/Roaming/npm, which the record does not name"
+          guard W "$T/bin" 'yarn global add json5' "$P" "$P" "$WH"
+          held "as Git Bash, the same record, yarn global bin answering AppData\\Local\\Yarn\\bin: blocked as a place the record does not name" "[2] it lands in ~/AppData/Local/Yarn/bin, which the record does not name"
+          LA=""; UP=""
 
           # an installer written with its path: asked only where that path is the one the path finds for it, character for character, and then as the one written bare is; another installation, a link to the one the path finds, a relative path and a path at which nothing stands are asked nothing, and no installer is asked where the command sets PATH; each of the nine routes the guard asks
           for d in bin named; do
@@ -1233,6 +1290,21 @@ jobs:
             held "under Windows, brew written with the path the path finds, a drive letter and slashes: that very path in the one form, asked, let through" "[0] " /opt/devloop-bin/brew/bin
             GOT=$(state "$T/home" "$(cygpath -w "$T/bin/npm") install -g semver" semver)
             held "under Windows, bin/devloop-tool-state at npm written with the path the search path finds, backslashes and a drive letter: asked, semver.cmd found in the prefix itself" "semver: found at $T/np/semver.cmd, the folder npm writes to, read off npm prefix -g"
+            # since 28 November 2026: the folder of a browser where the system itself gives LOCALAPPDATA and USERPROFILE, in the form of Windows, and the home directory, in the form of Git Bash - one folder, written with ~ - and bin/devloop-tool-state at a Cypress whose cache stands under a LOCALAPPDATA of this step
+            set --; while IFS= read -r l; do [ -z "$l" ] || set -- "$@" "$l"; done <<< "$TEMPLATE"
+            record "$@"
+            LA=$LOCALAPPDATA; UP=$USERPROFILE
+            guard R "$T/none" 'npx playwright install chromium' "$P" "$P" "$HOME"
+            held "under Windows, LOCALAPPDATA, USERPROFILE and the home directory as the system gives them: ms-playwright under LOCALAPPDATA, let through, written with ~" "[0] " "~/AppData/Local/ms-playwright"
+            guard R "$T/none" 'npx cypress install' "$P" "$P" "$HOME"
+            held "under Windows, the three as the system gives them: Cypress/Cache under LOCALAPPDATA, let through, written with ~" "[0] " "~/AppData/Local/Cypress/Cache"
+            guard R "$T/none" 'npx puppeteer browsers install chrome' "$P" "$P" "$HOME"
+            held "under Windows, the three as the system gives them: .cache/puppeteer under USERPROFILE, let through, written with ~" "[0] " "~/.cache/puppeteer"
+            LA=""; UP=""
+            mkdir -p "$P/node_modules/cypress" "$T/home/AppData/Local/Cypress/Cache/13.6.0"
+            printf '{\n  "name": "cypress",\n  "version": "13.6.0"\n}\n' > "$P/node_modules/cypress/package.json"; : > "$T/home/AppData/Local/Cypress/Cache/13.6.0/Cypress"
+            GOT=$( ( cd "$P" && env -u DEVLOOP_TOOL_STATE_SYSTEM -u CYPRESS_CACHE_FOLDER LOCALAPPDATA="$(cygpath -w "$T/home/AppData/Local")" USERPROFILE="$(cygpath -w "$T/home")" HOME="$T/home" CLAUDE_PROJECT_DIR="$P" "$ROOT/bin/devloop-tool-state" --planning cypress:binary 2>&1 | head -n 1 | sed 's/ (on [0-9-]*)$//' ) || true)
+            held "under Windows, bin/devloop-tool-state at a Cypress with no setting, LOCALAPPDATA in the form of Windows naming a folder of this step: found under Cypress/Cache, written with ~" "cypress:binary: found at ~/AppData/Local/Cypress/Cache/13.6.0, Cypress 13.6.0 as the project's Cypress needs it"
           else
             echo "note the cases under Windows itself left out here, no cygpath on the path: they give the guard and bin/devloop-tool-state the directories of this step in the forms of Windows, which the system itself must read"
           fi

@@ -431,6 +431,36 @@ onpath() {
   case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; $L (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac
   way "puppeteer browsers install"
 }
+# windefault BROWSER: D, the folder a download of that vendor lands in under
+# Windows where no setting before the command moves it, since 28 November
+# 2026, part 3b of order (5) of milestone 12, as the vendors' sources name
+# it, read raw that day at their newest release: Playwright, at v1.65.1,
+# computeDefaultCacheDirectory in
+# packages/playwright-core/src/server/registry/index.ts, "process.env.LOCALAPPDATA
+# || path.join(os.homedir(), 'AppData', 'Local')", and ms-playwright under
+# it; Cypress, at v16.4.0, cachedir('Cypress') in cli/lib/util.ts, the
+# package cachedir at v2.4.0 naming the same folder for win32 and Cypress and
+# Cache under it; Puppeteer, at puppeteer-v25.19.0,
+# packages/puppeteer/src/getConfiguration.ts, "join(homedir(), '.cache',
+# 'puppeteer')". Measured on 26 November 2026 on windows-latest under the
+# bash of Git for Windows, the roadmap entry of that date: the three put a
+# browser there. LOCALAPPDATA is read off this hook's own environment, in
+# the one form of norm, since Windows sets it for every program and the
+# default hangs on it; a setting of a vendor in that environment stays
+# unread, as before. The home directory is the one Node gives under Windows,
+# USERPROFILE where this hook's environment carries it, doc/api/os.md of
+# Node at v26.13.1, and the home directory of this hook otherwise, written ~
+# where the two are one folder, as Git Bash sets them. Where what the two
+# variables name is no absolute path, D stays empty, and the download is not
+# read, which is a block.
+windefault() {
+  local h='~' l
+  [ -z "${USERPROFILE:-}" ] || { norm "$USERPROFILE"; h="${NORM%/}"; }
+  l="$h/AppData/Local"
+  [ -z "${LOCALAPPDATA:-}" ] || { norm "$LOCALAPPDATA"; l="${NORM%/}"; }
+  case "$1" in playwright) D="$l/ms-playwright" ;; cypress) D="$l/Cypress/Cache" ;; puppeteer) D="$h/.cache/puppeteer" ;; esac
+  case "$D" in /*|'~'/*) ;; *) D="" ;; esac
+}
 # spelling ROUTE VERB: the way of the rule where the command takes the route
 # in the spelling the rule writes - the verb it names, the global options of
 # npm, pnpm and bun read as the route reads them, the route firing on none
@@ -941,13 +971,22 @@ py$US$ID$US${W[$F]}" ;;
     # opens nothing and sets nothing here, and what the command brings
     # outside otherwise - sudo before it, another download on the line - stands
     # as it stands, since 13 October 2026.
+    # Under Windows too, since 28 November 2026, part 3b of order (5) of
+    # milestone 12: the vendor's default there, windefault above, and
+    # LOCALAPPDATA before the command, which Playwright and Cypress read
+    # there as they read XDG_CACHE_HOME on Linux, read as that one is. Until
+    # that day Windows was among the systems not read, and every browser
+    # download no setting before the command moved was blocked there under a
+    # record that says yes.
     if [ -n "${BROWSER:-}" ]; then
       D=""; M=""
       case "$BROWSER" in
         playwright) M=$(moved PLAYWRIGHT_BROWSERS_PATH); [ "$(var PLAYWRIGHT_BROWSERS_PATH)" = 0 ] && M=INSIDE
-          [ -n "$M" ] || { [ "$OS" = Linux ] && X=$(moved XDG_CACHE_HOME) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/ms-playwright"; }; } ;;
+          [ -n "$M" ] || { [ "$OS" = Linux ] && X=$(moved XDG_CACHE_HOME) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/ms-playwright"; }; }
+          [ -n "$M" ] || { [ -n "$WIN" ] && X=$(moved LOCALAPPDATA) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/ms-playwright"; }; } ;;
         cypress) M=$(moved CYPRESS_CACHE_FOLDER)
-          [ -n "$M" ] || { [ "$OS" = Linux ] && X=$(moved XDG_CACHE_HOME) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/Cypress"; }; } ;;
+          [ -n "$M" ] || { [ "$OS" = Linux ] && X=$(moved XDG_CACHE_HOME) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/Cypress"; }; }
+          [ -n "$M" ] || { [ -n "$WIN" ] && X=$(moved LOCALAPPDATA) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/Cypress/Cache"; }; } ;;
         puppeteer) M=$(moved PUPPETEER_CACHE_DIR) ;;
       esac
       [ "$M" = INSIDE ] || case "$BROWSER" in playwright) way "playwright install" ;; cypress) way "cypress install" ;; puppeteer) way "puppeteer browsers install" ;; esac
@@ -958,6 +997,7 @@ py$US$ID$US${W[$F]}" ;;
           case "$OS" in
             Darwin) case "$BROWSER" in playwright) D='~/Library/Caches/ms-playwright' ;; cypress) D='~/Library/Caches/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
             Linux) case "$BROWSER" in playwright) D='~/.cache/ms-playwright' ;; cypress) D='~/.cache/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
+            *) [ -z "$WIN" ] || windefault "$BROWSER" ;;
           esac
           if [ -n "$D" ]; then dest "$D"; else UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)"; BEYOND=yes; fi ;;
         *) dest "$M" ;;

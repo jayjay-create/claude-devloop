@@ -114,9 +114,9 @@ nothing changed too: the guard blocks every install on such a record, and a
 finding is said whatever else is, as "How to ask" says of reporting.
 
 Where the record says yes and names fewer places than this version writes
-under a yes — the eleven `install-place` lines of the record's template below,
-a record written before the five places for the browsers of tests came in
-carrying the six bin directories alone — the refresh adds the missing
+under a yes — the fifteen `install-place` lines of the record's template below,
+a record that carries the bin directories alone, or the places for macOS and
+Linux and none of those for Windows, among them — the refresh adds the missing
 `install-place` lines to the section, under the ones that stand, without a
 question: the question names kinds, tools and browsers for tests, and not
 places, so the yes covers them, and the case returns with every version that
