@@ -15693,8 +15693,9 @@ and for the proofs of closings.
 - **Under Windows a yes opens the folders of browsers, npm and yarn**
 
   28 November 2026, version 0.199.0. On `task/auftrag-5-teil-3b`, off
-  `origin/main` at `63a7884`, in three commits: the code with the version,
-  the documents with the table, and the runs with their records. The order:
+  `origin/main` at `63a7884`, in four commits: the code with the version,
+  the documents with the table, the runs with their records, and the
+  corrections of the audit before the push. The order:
   part 3b of order (5) of milestone 12, the second of three orders of its
   third part since the decision of this day below. Its report stands on this
   machine as `~/devloop-auftrag-5-teil-3b.md`, in German, outside the
@@ -16003,6 +16004,62 @@ and for the proofs of closings.
   record lacks the new places, and a run that reads the result of an install
   under Windows by `shared/backed-command.md`, have no run. The decision on
   the block not built is the person's.
+
+  **The corrections of the audit**, of 28 November 2026, the day read off
+  `date -u`, the fourth commit, made before the push by a session that did
+  not build the branch. It held this entry sentence by sentence against the
+  code, the tool, the table and the runs, the plan, the blocks, the
+  conventions and `docs/rationale.md` with it, and searched the repository
+  for what the branch makes wrong. The fourth commit changes `docs/` alone.
+  Its report stands on this machine as `~/devloop-audit-5-teil-3b.md`, in
+  German, outside the repository. No session log was read; nothing was
+  installed.
+
+  Corrected where the text stood, three places. This entry said "in three
+  commits: the code with the version, the documents with the table, and the
+  runs with their records". `docs/plan.md`, the paragraph on 3a under
+  milestone 12, said of the six blocks 3a and its addendum wrote and did not
+  build "Fix none: on the places a yes opens, which name no default folder
+  of a browser under Windows, and on the folders `shared/backed-command.md`
+  names, both built by 3b", where those two carry their Fix since this
+  entry; the sentence says so now, and a sentence "Until 28 November 2026
+  this paragraph said" stands in that paragraph for it and for the sentences
+  of the same paragraph under "Mended where the text stood" above, as that
+  paragraph has them for its earlier changes. And `docs/skill-conventions.md`,
+  the paragraph "The second kind is a browser for tests", said of the
+  vendor's default place that the record names it "since that day among its
+  eleven places", where the places are fifteen since this entry and the
+  second commit mended the same sentence of `docs/plan.md`; it reads "among
+  its eleven places, fifteen since 28 November 2026" now.
+
+  Held besides, with nothing found, each outside the repository and none of
+  them a record. The tool in a worktree of `63a7884`: the numbers this entry
+  gives for that commit; the search set of both states, read off the tool
+  loaded as a module: the six lines new and the two gone. Every tag named
+  above stands and is the highest of its series by `git ls-remote --tags`,
+  and every line quoted from a vendor's source stands at the number given.
+  M1 made again at the third commit: exit 0 after 392 seconds, "green: 14
+  steps run, every one ended with 0", 86 cases ok and none red in the step
+  on the folders the install guard reads, the nineteen new ones among them,
+  and the self-test of `bin/devloop-tool-state` with 144 cases in both runs
+  of the hooks step. The situations made again with the guard of `63a7884`
+  and with that of the branch, in a throwaway project behind the stand-ins:
+  each came out as the paragraph on them has it, and `USERPROFILE=D:/elsewhere
+  npx puppeteer browsers install chrome` ends with 2 at `63a7884`, not read,
+  and with 0 on the branch, noting `~/.cache/puppeteer`, which "Found
+  besides" says and the block on a home directory set before the command
+  carries.
+
+  Put to the person by the report of the audit and not changed, a text
+  devloop loads being no document: `shared/backed-command.md` says of the
+  folders of the browsers under Windows "the first two under the folder
+  `LOCALAPPDATA` names where that is another than `~/AppData/Local`, the
+  third under the one `USERPROFILE` names where that is another than `~`".
+  Where `LOCALAPPDATA` names no folder and `USERPROFILE` names another than
+  the home directory, the first two lie under `AppData/Local` in the folder
+  `USERPROFILE` names, as the guard, `bin/devloop-tool-state` and
+  `docs/rationale.md` have it, and the text names `~/AppData/Local` there.
+  No block is written for it before the person has decided.
 
 ## Decisions taken against
 

@@ -1482,7 +1482,8 @@ for tests through the commands that name the act — `playwright install` in
 every form the vendor documents, `cypress install`, `puppeteer browsers
 install` — into the vendor's default place for the system the guard runs on,
 read off `uname -s`, which the record names since that day among its eleven
-places: `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress` and
+places, fifteen since 28 November 2026: `~/Library/Caches/ms-playwright`,
+`~/Library/Caches/Cypress` and
 `~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
 and `~/.cache/puppeteer` on Linux, read from the vendors on 8 October 2026
 and quoted in the roadmap entry of that date; on any other system the

@@ -1534,9 +1534,10 @@ its end, and on an installer written with its path; three the order found and
 wrote, on the prefix of npm under Windows, on the first colon of GOPATH, and
 on the guard asking an installer through its own PATH; and one the addendum
 found and wrote, on PATH set in the command. Six more blocks they wrote and
-did not build, Fix none: on the places a yes opens, which name no default
+did not build: on the places a yes opens, which named no default
 folder of a browser under Windows, and on the folders
-`shared/backed-command.md` names, both built by 3b; and four with no order
+`shared/backed-command.md` names, both carrying their Fix since part 3b
+built them on 28 November 2026, below; and four with Fix none and no order
 named for them yet, two found by counter-checks of the order, on an installer
 written with the ending of a program of Windows, with backslashes or in other
 capitals, which the guard takes for no installer, and on
@@ -1599,6 +1600,15 @@ a carriage return, of the second part, is walked since that day by the
 measurement under Windows, run W0 of that entry: `gem environment` answered
 with CRLF there, and the program at 0.196.0 named the folder without the
 carriage return and found the tool.
+Until 28 November 2026 this paragraph said that of the third part "the first
+of two orders, 3a," was built and "of 3b" nothing, of the block on put that
+"part 3b of the third part builds it", and of the block on a `python -m pip`
+that leaves the fact hook no note only that it follows 3b, each changed by
+part 3b itself; and it said of the six blocks 3a and its addendum wrote and
+did not build "Fix none", the two on the places a yes opens and on the
+folders `shared/backed-command.md` names "both built by 3b", where those two
+carry their Fix since that day, mended by the audit of part 3b before its
+push, the roadmap entry of that date, "Under Windows a yes opens the folders of browsers, npm and yarn".
 Until the order of 27 November 2026 on those two blocks this paragraph said
 of the three blocks the merge of 3a wrote "No order is named for them yet.",
 mended by that order, the roadmap entry of that date, "The self-tests run again as Git Bash, and the job has thirty minutes".
