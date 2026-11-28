@@ -15944,6 +15944,54 @@ and for the proofs of closings.
   of the refresh of `setup-project`; the thing on a record of six places
   keeps its name, its runs being keyed by it, and its note says what holds.
 
+  **The run**, at the second commit, `4e2516f`, the day and the times read
+  off `date -u`, 28 November 2026.
+
+  Run M1, on the Mac from 12:34:15 to 12:40:45 UTC: the tree clean,
+  `scripts/devloop-run-workflow` over `.github/workflows/stock-take.yml`
+  under `bin/devloop-bounded 600`, exit 0 after 390 seconds, "green: 14 steps
+  run, every one ended with 0", the last line as at `63a7884`, where the
+  same run took 344 seconds. The step on the folders the install guard reads
+  ended with 0, 86 cases ok and none red, the nineteen new ones among them,
+  each behind the stand-in for uname that answers MINGW64_NT-10.0-26100 but
+  one, which runs as Linux: the three downloads let through under the places
+  of the template, the folder noted for the fact hook
+  `~/AppData/Local/ms-playwright`, `~/AppData/Local/Cypress/Cache` and
+  `~/.cache/puppeteer`, with `LOCALAPPDATA` and `USERPROFILE` in the form of
+  Windows and with neither reaching the hook; `LOCALAPPDATA` on another
+  drive and `USERPROFILE` naming another folder blocked as a place the
+  record does not name; `LOCALAPPDATA` naming no absolute path not read;
+  `LOCALAPPDATA` before the command taken for the folder, blocked outside
+  the project and opening nothing inside it; as Linux none of the three
+  variables read; npm and yarn let through at `~/AppData/Roaming/npm` and
+  `~/AppData/Local/Yarn/bin` with no route in the record; and under the
+  places that name no folder of Windows the download of Playwright, npm and
+  yarn blocked naming the place. The self-test of `bin/devloop-tool-state`
+  passed with 144 cases in the first run of the hooks step and in the
+  second, as under Git Bash, the eight new ones among them. M1 walks the
+  three new things of the guard and the two of `bin/devloop-tool-state`,
+  each behind a stand-in for the system; the six of the two shared texts
+  have no run.
+
+  **The tool and the checks**, at the third commit.
+  `scripts/devloop-stock-take` exit 0, broken records 0, uncovered lines 0 of
+  5022: Undetermined 24, Recorded, not built 254, Built, never walked 1733,
+  Walked 935, Closed 85; milestone 12 at 185 blocks, Recorded, not built 33,
+  Built, never walked 70, Walked 65, Closed 17; nothing Walked on this branch
+  without a run the branch adds. At `63a7884` uncovered lines 0 of 5018,
+  Built, never walked 1723 and Walked 930, and milestone 12 at 181 blocks
+  with Built, never walked 66: three blocks leave Recorded, not built for
+  Built, never walked and three new ones enter it; the new block on npm and
+  yarn and the six things of the two shared texts are Built, never walked;
+  the five things M1 walks are Walked; and the search set has four lines
+  more, six new ones, two in the guard, one in `bin/devloop-tool-state`, two
+  in `shared/backed-command.md` and one in `shared/install-record.md`, and
+  two gone with their wording, one of `shared/backed-command.md` and one of
+  `skills/setup-project/SKILL.md`. The self-test of the tool has its 159
+  cases. `scripts/devloop-handover-checks` exit 0, "green: 22 checks green, 0
+  red", its self-test 126 cases; with `--all` it is red under entry-heads
+  and plan-lines with the finds it had at `63a7884`.
+
   **Open.** The job hooks on every system of the pull request walks under
   windows-latest what no run on the Mac can: the four cases under Windows
   itself, with `LOCALAPPDATA`, `USERPROFILE` and the home directory as the
